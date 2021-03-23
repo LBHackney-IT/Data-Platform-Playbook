@@ -1,0 +1,37 @@
+{
+  "name": "hackney-data-documentation-site",
+  "version": "1.0.0",
+  "description": "Hackney Data Documentation Site.",
+  "scripts": {
+    "start": "npm-run-all --parallel dev:*",
+    "build": "npm-run-all build:*",
+    "dev:assets": "copyfiles node_modules/lbh-frontend/lbh/assets/**/**/**/* assets -u 4",
+    "dev:parcel": "parcel watch javascript/index.js --dist-dir _site/js",
+    "dev:11ty": "eleventy --serve --input=pages",
+    "build:assets": "copyfiles node_modules/lbh-frontend/lbh/assets/**/**/**/* assets -u 4",
+    "build:parcel": "parcel build javascript/index.js --dist-dir _site/js",
+    "build:11ty": "ELEVENTY_ENV=production eleventy --input=pages"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LBHackney-IT/lbh-hackney-data-platform-docs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LBHackney-IT/hackney-prototype-kit/issues"
+  },
+  "homepage": "https://github.com/LBHackney-IT/hackney-prototype-kit#readme",
+  "dependencies": {
+    "@11ty/eleventy": "^0.12.1",
+    "eleventy-plugin-sass": "^1.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "copyfiles": "^2.4.1",
+    "lbh-frontend": "^3.3.1",
+    "npm-run-all": "^4.1.5",
+    "parcel": "^2.0.0-beta.2"
+  }
+}
