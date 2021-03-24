@@ -1,0 +1,127 @@
+<h1>Resident</h1>
+<table>
+<thead>
+<tr>
+<th>Entity name</th>
+<th>Entity Description</th>
+<th>Column</th>
+<th>Data type</th>
+<th>References</th>
+<th>Source</th>
+<th>Nullable</th>
+<th>Sensitive</th>
+<th>Primary Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Resident</td>
+<td>Someone who lives in Hackney</td>
+<td>resident_id</td>
+<td>int</td>
+<td></td>
+<td>Auto</td>
+<td>false</td>
+<td></td>
+<td>true</td>
+<td>Primary key of table</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>first_name</td>
+<td>varchar(50)</td>
+<td>person</td>
+<td></td>
+<td>false</td>
+<td>true</td>
+<td></td>
+<td>Resident first name</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>last_name</td>
+<td>varchar(50)</td>
+<td>person</td>
+<td></td>
+<td>false</td>
+<td>true</td>
+<td></td>
+<td>Resident last name</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>address_first_line</td>
+<td>varchar(50)</td>
+<td>property</td>
+<td></td>
+<td>false</td>
+<td>true</td>
+<td></td>
+<td>Resident first line address</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>address_second_line</td>
+<td>varchar(50)</td>
+<td>property</td>
+<td></td>
+<td>true</td>
+<td>true</td>
+<td></td>
+<td>Resident second line address</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>address_third_line</td>
+<td>varchar(50)</td>
+<td>property</td>
+<td></td>
+<td>true</td>
+<td>true</td>
+<td></td>
+<td>Resident third line address</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>postcode</td>
+<td>varchar(50)</td>
+<td>property</td>
+<td></td>
+<td>false</td>
+<td></td>
+<td></td>
+<td>Resident address postcode</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>uprn</td>
+<td>int</td>
+<td>property</td>
+<td></td>
+<td>false</td>
+<td></td>
+<td></td>
+<td>Unique property reference number</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>dob</td>
+<td>datetime</td>
+<td>person</td>
+<td></td>
+<td>false</td>
+<td></td>
+<td></td>
+<td>Resident date of birth</td>
+</tr>
+</tbody>
+</table>
