@@ -5,6 +5,8 @@
   "scripts": {
     "start": "npm-run-all --parallel dev:*",
     "build": "npm-run-all build:*",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "dev:assets": "copyfiles node_modules/lbh-frontend/lbh/assets/**/**/**/* assets -u 4",
     "dev:parcel": "parcel watch javascript/index.js --dist-dir _site/js",
     "dev:11ty": "eleventy --serve --input=pages",
@@ -22,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/LBHackney-IT/hackney-prototype-kit/issues"
   },
-  "homepage": "https://github.com/LBHackney-IT/hackney-prototype-kit#readme",
+  "homepage": "http://LBHackney-IT.github.io/lbh-hackney-data-platform-docs",
   "dependencies": {
     "@11ty/eleventy": "^0.12.1",
     "eleventy-plugin-sass": "^1.2.0"
@@ -30,6 +32,7 @@
   "devDependencies": {
     "@babel/core": "^7.13.10",
     "copyfiles": "^2.4.1",
+    "gh-pages": "^3.1.0",
     "lbh-frontend": "^3.3.1",
     "npm-run-all": "^4.1.5",
     "parcel": "^2.0.0-beta.2"
