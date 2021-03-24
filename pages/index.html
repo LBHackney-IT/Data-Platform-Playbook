@@ -3,15 +3,14 @@ title: My first page
 layout: layout
 ---
 
-<h1 class="lbh-heading-h1">Example</h1>
+<h1 class="lbh-heading-h1">Data Entities</h1>
 
 <p class="lbh-body">
-  Hello world, example body content
+  A list of data entities
 </p>
-<div>
-  <a href="/person">Person</a>
-  <a href="/resident">Resident</a>
-  <a href="/property">Property</a>
-</div>
 
-
+<ol>
+  {%- for entity in collections.entity %}
+  <li><a href="{{ entity.url | url}}">{{entity.data.title}}</a></li>
+  {% endfor -%}
+</ol>

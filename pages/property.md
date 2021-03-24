@@ -1,4 +1,10 @@
-# Property
+---
+title: "Property"
+tags: entity
+layout: layout
+---
+
+# {{title}}
 
 | Entity name | Entity Description           | Column              | Data type   | References | Source | Nullable | Sensitive | Primary Key | Description                      |
 |-------------|------------------------------|---------------------|-------------|------------|--------|----------|-----------|-------------|----------------------------------|
