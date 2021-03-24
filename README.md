@@ -10,7 +10,7 @@ You need Node.js and npm installed.
 
 ```
 npm install
-npm start
+npm run deploy
 ```
 
-It will be on `localhost:8080`
+It will be on `https://lbhackney-it.github.io/lbh-hackney-data-platform-docs/`
