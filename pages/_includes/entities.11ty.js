@@ -7,7 +7,7 @@ class Entities {
         };
     }
     render(data) {
-        const relationships = data.relationships.map(relationship => `- ${relationship.relationship} [${relationship.entity}](${data.collections.entity.find(entity => entity.fileSlug === relationship.entity).url})`
+        const relationships = data.relationships.map(relationship => `- ${relationship.relationship} [${relationship.entity}](lbh-hackney-data-platform-docs${data.collections.entity.find(entity => entity.fileSlug === relationship.entity).url})`
         ).join("\n");
         return `# ${data.title}
 
