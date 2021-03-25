@@ -12,7 +12,7 @@
     "dev:11ty": "eleventy --serve --input=pages",
     "build:assets": "copyfiles node_modules/lbh-frontend/lbh/assets/**/**/**/* assets -u 4",
     "build:parcel": "parcel build javascript/index.js --dist-dir _site/js",
-    "build:11ty": "ELEVENTY_ENV=production eleventy --input=pages"
+    "build:11ty": "ELEVENTY_ENV=production eleventy --input=pages  --pathprefix='/lbh-hackney-data-platform-docs'"
   },
   "repository": {
     "type": "git",
