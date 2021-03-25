@@ -1,0 +1,16 @@
+---
+title: Data Dictionary
+layout: layout
+---
+<div class="govuk-breadcrumbs lbh-breadcrumbs lbh-container">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="{{'/' | url}}">Home</a></li>
+        <li class="govuk-breadcrumbs__list-item">Data Dictionary</li>
+    </ol>
+</div>
+<h1>Data Dictionary</h1>
+<ul>
+    {%- for entity in collections.entities -%}
+      <li><label class="govuk-label lbh-label"><a href="{{entity.url | url}}">{{entity.data.title}}</a></label></li>
+    {%- endfor -%}
+</ul>
