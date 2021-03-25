@@ -1,16 +1,16 @@
 ---
-title: My first page
+title: Data Entities
 layout: layout
 ---
 
 <h1 class="lbh-heading-h1">Data Entities</h1>
 
 <p class="lbh-body">
-  A list of data entities
+    A list of data entities
 </p>
 
 <ol>
-  {%- for entity in collections.entity %}
-  <li><a href="{{ entity.url | url}}">{{entity.data.title}}</a></li>
-  {% endfor -%}
+    {%- for entity in collections.entity %}
+    <li><a href="{{ entity.url | url}}">{{entity.data.title}}</a></li>
+    {% endfor -%}
 </ol>

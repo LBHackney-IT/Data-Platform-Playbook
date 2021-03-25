@@ -1,0 +1,13 @@
+---
+title: "Person"
+description: "Someone belonging to a household or living in a property in Hackney"
+tags: entity
+layout: entities
+relationships: 
+    - entity: property
+      relationship: "lives in"
+    - entity: resident
+      relationship: "can be a"
+---
+
+foobar
