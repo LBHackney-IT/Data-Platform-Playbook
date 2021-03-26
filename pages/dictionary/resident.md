@@ -2,7 +2,7 @@
 title: "Resident"
 description: "Someone who lives in Hackney"
 tags: entities
-layout: entities
+layout: entities_js
 relationships:
     - entity: property
       relationship: "lives in"

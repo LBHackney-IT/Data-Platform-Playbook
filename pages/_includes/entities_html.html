@@ -1,0 +1,23 @@
+---
+layout: layout
+---
+
+<div class="govuk-breadcrumbs lbh-breadcrumbs lbh-container">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="{{'/' | url}}">Home</a></li>
+        <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="{{'/dictionary' | url}}">Data Dictionary</a></li>
+        <li class="govuk-breadcrumbs__list-item" aria-current="page">{{data.title}}</li>
+    </ol>
+</div>
+<h1>{{data.title}}</h1>
+
+<details id="help-with-nationality" class="govuk-details lbh-details" data-module="govuk-details" open>
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text"> Description </span>
+  </summary>
+  <div class="govuk-details__text">
+  {{data.description}}
+  </div>
+</details>
+
+{{content | safe}}
