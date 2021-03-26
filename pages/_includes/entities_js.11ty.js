@@ -1,5 +1,3 @@
-module.exports = Entities;
-
 class Entities {
     data() {
         return {
@@ -54,3 +52,5 @@ ${data.content}
 `;
     }
 }
+
+module.exports = Entities;
