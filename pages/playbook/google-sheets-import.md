@@ -45,4 +45,4 @@ layout: playbook_js
   - By default, the import job will run every weekday at 11pm which is set using Cron time format
   - To create a new Cron time use a [Cron Expression Generator](https://www.freeformatter.com/cron-expression-generator-quartz.html)
   - To override and set a new time schedule, add a new row to the respective module with the new Cron time: e.g. `google_sheet_import_schedule = "cron(0 23 ? * 1-5 *)"`
-
+  - You can set up a glue job without a schedule by setting `enable_glue_trigger` to be false in the respective module, otherwise this defaults to true. E.g. `enable_glue_trigger = false`. Note you cannot make a change to the cron schedule at the same time as setting `enable_glue_trigger` to false
