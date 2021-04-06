@@ -7,6 +7,7 @@ layout: playbook_js
 # Preparing Google sheet for import
 
 - Open the Google sheet you would like to import
+- Ensure that all columns have headers. Columns without headers will be lost
 - Click `Share` in the top right corner of the sheet
 - If the document is unnamed, name it
 - Paste in the service account email address you have been provided into the email box
@@ -40,3 +41,8 @@ layout: playbook_js
   - google_sheets_worksheet_name = "The name of your worksheet - see the `Getting Google sheet detail` section above"
   - department_folder_name = "The name of the department folder you would like to store in e.g. `housing`, `social-care`"
   - output_folder_name = "The name of the folder you would like to store in under the department e.g. `housing-repair`"
+- Optional: update the time schedule for the import job to run
+  - By default, the import job will run every weekday at 11pm which is set using Cron time format
+  - To create a new Cron time use a [Cron Expression Generator](https://www.freeformatter.com/cron-expression-generator-quartz.html)
+  - To override and set a new time schedule, add a new row to the respective module with the new Cron time: e.g. `google_sheet_import_schedule = "cron(0 23 ? * 1-5 *)"`
+
