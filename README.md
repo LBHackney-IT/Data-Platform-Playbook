@@ -7,9 +7,9 @@ You can edit the pages files directly in this project, which are formated as .md
 The site is broken down into two sections:
 
 - Data Dictionary
- - The Data Dictonary contains definitions of Data Entities
+-- The Data Dictonary contains definitions of Data Entities
 - Playbook
- - The Playbook contains articles on the processes involved in using the Data Platform
+-- The Playbook contains articles on the processes involved in using the Data Platform
 
 ## Developer Info
 
