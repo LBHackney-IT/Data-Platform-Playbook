@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template lbh-template">
+  <head>
+    <meta charset="utf-8" />
+    <title>Using Glue Studio | Hackney Council</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <link
+      rel="shortcut icon"
+      sizes="16x16 32x32 48x48"
+      href="assets/images/favicon.ico"
+      type="image/x-icon"
+    />
+    <meta name="theme-color" content="#0b0c0c" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link href="/lbh-hackney-data-platform-docs/styles/style.css" rel="stylesheet" />
+  </head>
+
+  <body class="govuk-template__body">
+    <script>
+      document.body.className = document.body.className
+        ? document.body.className + " js-enabled"
+        : "js-enabled"
+    </script>
+    <a href="#main-content" class="govuk-skip-link lbh-skip-link"
+      >Skip to main content</a
+    >
+    <!-- Cookie banner goes here -->
+
+    <header class="lbh-header ">
+      <div class="lbh-header__main">
+        <div class="lbh-container lbh-header__wrapper lbh-header__wrapper--stacked">
+          <div class="lbh-header__title">
+            <a href="/lbh-hackney-data-platform-docs/" class="lbh-header__title-link">
+              <svg
+                      class="lbh-header__logo"
+                      role="presentation"
+                      focusable="false"
+                      width="208px"
+                      height="37px"
+                      viewBox="0 0 208 37"
+                      xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>Hackney logo</title>
+                <g stroke="none" fill="currentColor" fillRule="evenodd">
+                  <path
+                          d="M36,15.9985404 C36,9.03922642 32.0578091,3.00529101 26.2909886,0 L26.2909886,12.0328407 L9.70901142,12.0328407 L9.70901142,0 C3.94073354,3.00529101 0,9.03922642 0,15.9985404 C0,22.9607736 3.94073354,28.9961686 9.70901142,32 L9.70901142,19.9671593 L26.2909886,19.9671593 L26.2909886,32 C32.0578091,28.9961686 36,22.959314 36,15.9985404"
+                  ></path>
+                  <polyline
+                          points="42 1 50.8590247 1 50.8590247 11.1301668 59.1380971 11.1301668 59.1380971 1 68 1 68 30 59.1380971 30 59.1380971 18.5708703 50.8590247 18.5708703 50.8590247 30 42 30 42 1"
+                  ></polyline>
+                  <path
+                          d="M91.0145371,16.1849059 C91.0145371,12.1530391 91.0951926,8 80.9296736,8 C75.887975,8 70.2303622,8.96793653 69.9854629,14.8548948 L77.5274802,14.8548948 C77.5700077,13.9417743 78.0612726,12.6824471 80.5615914,12.6824471 C81.8711426,12.6824471 83.2246876,13.2089699 83.2246876,14.6327454 C83.2246876,15.9728542 82.1175083,16.2974231 81.0117955,16.5008196 C76.870505,17.2725723 69,17.028785 69,23.6889384 C69,28.0756672 72.4021933,30 76.5038893,30 C79.1259245,30 81.6247768,29.4359714 83.346404,27.5145236 L83.4299923,27.5145236 C83.3874649,28.0367189 83.5121143,28.8849256 83.7159526,29.4489542 L92,29.4489542 C91.0951926,28.116058 91.0145371,26.3403056 91.0145371,24.7679496 L91.0145371,16.1849059 Z M83.2246876,21.986755 C83.1015047,24.1635303 81.6687707,25.2526392 79.8224943,25.2526392 C78.3486993,25.2526392 77.2811145,24.2832601 77.2811145,23.3167661 C77.2811145,21.9059734 78.2255164,21.4631172 80.027799,21.0606518 C81.1335119,20.8197495 82.2406912,20.5355714 83.2246876,20.053767 L83.2246876,21.986755 L83.2246876,21.986755 Z"
+                  ></path>
+                  <path
+                          d="M106.908596,16.4807453 C106.823548,15.6320934 106.532598,14.9465328 105.989491,14.5149905 C105.489653,14.0719019 104.780928,13.8308732 103.905092,13.8308732 C100.735971,13.8308732 100.274927,16.4865184 100.274927,19.0223709 C100.274927,21.5567802 100.735971,24.1691268 103.905092,24.1691268 C105.697048,24.1691268 106.948881,22.7604802 107.115991,21.1136915 L115,21.1136915 C114.206228,26.8074526 109.577879,30 103.737982,30 C97.2236782,30 92,25.6383914 92,19.0165978 C92,12.4020206 97.2236782,8 103.737982,8 C109.409277,8 114.249497,10.7061602 114.749335,16.4807453 L106.908596,16.4807453"
+                  ></path>
+                  <polyline
+                          points="115 1 123.245818 1 123.245818 15.0160369 128.483831 8.93525108 137.794201 8.93525108 130.104448 16.8806756 139 30 129.106802 30 124.7014 22.3510574 123.245818 23.8959607 123.245818 30 115 30 115 1"
+                  ></polyline>
+                  <path
+                          d="M139,8.55177515 L146.79367,8.55177515 L146.79367,11.2677515 L146.873792,11.2677515 C148.375712,9.1183432 150.528804,8 153.736591,8 C157.531453,8 161,10.3579882 161,15.285503 L161,30 L152.920805,30 L152.920805,18.7559172 C152.920805,16.2781065 152.63528,14.5414201 150.284068,14.5414201 C148.904516,14.5414201 147.077738,15.2426036 147.077738,18.6745562 L147.077738,30 L139,30 L139,8.55177515"
+                          id="Fill-18"
+                  ></path>
+                  <path
+                          d="M185,20.7649334 C185,12.6088781 181.402905,8 173.076217,8 C166.446107,8 162,12.9305619 162,19.0338994 C162,26.0618976 167.055025,30 173.763237,30 C178.531883,30 182.938938,27.9097764 184.557414,23.411973 L177.076846,23.411973 C176.436109,24.4130877 175.020123,24.9064324 173.727078,24.9064324 C171.219092,24.9064324 169.845051,23.1811684 169.641114,20.7649334 L185,20.7649334 Z M169.684505,16.621992 C170.046095,14.3485673 171.420136,13.0906826 173.802289,13.0906826 C175.864797,13.0906826 177.318388,14.6731362 177.318388,16.621992 L169.684505,16.621992 L169.684505,16.621992 Z"
+                  ></path>
+                  <path
+                          d="M200.955311,28.5221077 C200.298901,30.3958684 199.56337,32.7989483 198.29304,34.3912803 C196.164103,37.0407925 192.887912,37 189.733333,37 L186.048352,37 L186.048352,30.5577263 L187.92967,30.5577263 C188.750183,30.5577263 189.813919,30.6408425 190.389744,30.3550393 C190.880586,30.1115234 191.1663,29.7032331 191.1663,28.7670818 C191.1663,27.7463561 188.054212,19.964052 187.604396,18.7406393 L184,9 L192.681319,9 L196.082051,21.1451774 L196.164103,21.1451774 L199.604396,9 L208,9 L200.955311,28.5221077"
+                  ></path>
+                </g>
+                <image
+                        src="/assets/images/lbh-logo.png"
+                        xlinkHref=""
+                        class="lbh-header__logo-fallback-image"
+                        width="206"
+                        height="37"
+                ></image>
+              </svg>
+              <span class="lbh-header__logo-text"> Hackney </span>
+              <span class="lbh-header__service-name">Data Platform</span>
+            </a>
+          </div>
+          <div class="lbh-header__links">
+            <a href="/lbh-hackney-data-platform-docs/dictionary">Data Dictionary</a>
+            <a href="/lbh-hackney-data-platform-docs/playbook">Playbook</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Phase banner goes here -->
+    <!-- Announcements go here -->
+    <!-- Breadcrumbs go here -->
+    <main class="lbh-main-wrapper" id="main-content" role="main">
+      <div class="lbh-container">
+        <!-- Main content components go here -->
+
+        
+
+<div class="govuk-breadcrumbs lbh-breadcrumbs lbh-container">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href=/lbh-hackney-data-platform-docs/>Home</a></li>
+        <li class="govuk-breadcrumbs__list-item" aria-current="page">Using Glue Studio</li>
+    </ol>
+</div>
+<h1>Using Glue Studio</h1>
+
+<details id="help-with-nationality" class="govuk-details lbh-details" data-module="govuk-details" open>
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text"> Description </span>
+  </summary>
+  <div class="govuk-details__text">
+  Using AWS Glue Studio to create ETL processes.
+  </div>
+</details>
+
+<details id="help-with-nationality" class="govuk-details lbh-details" data-module="govuk-details" open>
+<summary class="govuk-details__summary">
+  <span class="govuk-details__summary-text"> Notes </span>
+</summary>
+<div class="govuk-details__text">
+<h1>Using AWS Glue Studio to create ETL processes</h1>
+<p><a href="https://docs.aws.amazon.com/glue/latest/ug/what-is-glue-studio.html">AWS Glue Studio</a> is a new graphical interface that makes it easy to create, run, and monitor extract, transform, and load (ETL) jobs in AWS Glue.</p>
+<p>To use AWS Glue Studio the job needs to be created manually. This guide includes the steps needed to create an editable job in Glue Studio. Templates may have already been created and existing jobs can be duplicated to make it easier to get started with Glue Studio. Dynamically created scripts using <a href="https://www.terraform.io/">terraform</a> (the infrastructure as code tool Hackney use) will not have the ability to use the visual editor.</p>
+<p>Note: If a job has already been created manually you can select the job using the radio button and in the job <em>Actions</em> mennu, select <strong>Clone job</strong>.</p>
+<h2>Creating a new Glue job</h2>
+<p>Note: The instructions below assume an S3 Data Source and Target Location.</p>
+<ol>
+<li>Log in to AWS Management Console.</li>
+<li>Select the <strong>AWS Glue</strong> service from the services menu (or search field).</li>
+<li>From the AWS Glue menu ETL section, select <strong>AWS Glue Studio</strong>.</li>
+<li>From the AWS Glue Studio main page, choose the <strong>Create and manage jobs</strong> option.</li>
+<li>Within the <em>Create Job</em> section, select <strong>Source and target added to the graph</strong> and select desired Source and Target values.</li>
+<li>Click the <strong>Create</strong> button.</li>
+<li>In the Visual editor that is now displayed, click on the <em>Data Source - S3</em> box and in the <em>Data source properties - S3</em> tab to set <em>S3 source type</em> to <strong>S3 location</strong> and set the <em>S3 URL</em> for the source data.</li>
+<li>Also <em>Data Target - S3</em> box and in the <em>Data target properties - S3</em> tab set the <em>S3 URL</em> for the data target, usually your department folder in the Data Platform account (you can add additional folders at this point for your new data within your department folder). <strong>Data source and data target (amongst other operations) must be set to be able to save the job. You can also apply <em>Transformations</em> specific to your job via the Visual tab. See the <a href="https://docs.aws.amazon.com/glue/latest/ug/edit-nodes-chapter.html">AWS Glue Studio Documentation</a></strong>.</li>
+<li>To complete the set up you need to select the <strong>Job details</strong> tab.</li>
+<li>Complete the <em>Name</em> and optional <em>Description</em> fields. You may use this job as a template for repeat use, so a generic name to use as a template might be useful to begin with.</li>
+<li>Select <strong>dataengineers-dataplatform-prod-glue-role</strong> as the <em>IAM Role</em> for the job.</li>
+<li>The remaining standard fields default values are usually fine to use. The programming language Glue Studio creates can be Scala or Python.</li>
+<li>In <em>Advanced properties</em> check the <em>Script filename</em> refers to the task being carried out.</li>
+<li>Set the <em>Script path</em> to the central scripts S3 bucket: <code>s3://dataengineers-dataplatform-stg-glue-scripts/custom/</code> - you can create new folders or specify existing folders in the S3 bucket like this: <code>s3://dataengineers-dataplatform-stg-glue-scripts/custom/YOUR_FOLDER_NAME/</code>.</li>
+<li>In <em>Security configuration</em> select the appropriate security configuration for your target bucket location (for example for the Raw Zone, use <strong>glue-job-security-configuration-to-raw</strong>).</li>
+<li>Ensure the <em>Server-side encryption</em> option is <strong>checked</strong>.</li>
+<li>Add any further libraries or parameters you need in the <em>Advanced properties</em> section.</li>
+</ol>
+<h2>Clone and edit an existing Glue job</h2>
+<ol>
+<li>In the <em>Your jobs</em> sections, select the radio button of the job you would like to clone.</li>
+<li>In the <em>Actions</em> dropdown, select <em>Clone job</em>. If there is an information banner with a message <em>Your job was created outside of Glue Studio and has no DAG available</em> (see screenshot below) there will not be a Visual tab and therefore you will not have an interface to edit your job. Instead you will need to edit your job in the python job script. To do this navigate to the <em>Script</em> tab. If you prefer to use the interface, then select another job which has a Visual tab or create a new job as instructed in the <em>Creating a new Glue job</em> section above.</li>
+<li>In the Job Details tab, update the <em>Name</em> for your new job and check the <em>Creating a new Glue job</em> seciton above to ensure the configuration suits your needs.</li>
+<li>To save your job, select the <strong><em>Save</em></strong> button.</li>
+</ol>
+<p><img src="https://user-images.githubusercontent.com/46002877/114702251-bcac0500-9d1b-11eb-8475-814523fd58dc.png" alt="image"></p>
+
+</div>
+</details>
+
+
+        <!-- Finish main components -->
+      </div>
+    </main>
+    <!-- Put your path to the LBHFrontend JS File in the src attribute here -->
+    <script src="/js/index.js"></script>
+  </body>
+</html>
