@@ -6,9 +6,16 @@ class Playbook {
         };
     }
     render(data) {
-        console.log("===============")
-        console.log("title", data.title)
-        console.log("===============")
+        const playbookNavItem = `${data.collections.playbook.map(playbookpage => {
+          return `<li>
+            ${data.page.url == playbookpage.url ?
+              `<strong>${playbookpage.data.title}</strong>`
+                :
+                `<a class="lbh-link" href=${this.url(playbookpage.url)}>${playbookpage.data.title}</a>`
+                }
+                </li>`
+          }).join('')
+        }`
         return `
           <div class="govuk-breadcrumbs lbh-breadcrumbs lbh-container">
               <ol class="govuk-breadcrumbs__list">
@@ -23,27 +30,7 @@ class Playbook {
                 <p>${data.description}</p>
                 <h4>Navigation</h4>
                 <ol class="lbh-list lbh-list--number">
-                  <li>
-                    ${data.page.url == "/playbook/managing-departments/" ?
-                      `<strong>Managing Departments</strong>`
-                    :
-                      `<a class="lbh-link" href=${this.url("/playbook/managing-departments/")}>Managing Departments</a>`
-                    }
-                  </li>
-                  <li>
-                    ${data.page.url == "/playbook/google-sheets-import/" ?
-                      `<strong>Importing Google Sheets</strong>`
-                    :
-                      `<a class="lbh-link" href=${this.url("/playbook/google-sheets-import/")}>Importing Google Sheets</a>`
-                    }
-                  </li>
-                  <li>
-                    ${data.page.url == "/playbook/using-glue-studio/" ?
-                      `<strong>Using AWS Glue Studio</strong>`
-                    :
-                      `<a class="lbh-link" href=${this.url("/playbook/using-glue-studio/")}>Using AWS Glue Studio</a>`
-                    }
-                  </li>
+                    ${playbookNavItem}
                 </ol>
               </div>
               <div class="lbh-body lbh-playbook-content">

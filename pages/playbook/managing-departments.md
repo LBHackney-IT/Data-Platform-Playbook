@@ -2,6 +2,7 @@
 title: Managing Departments
 description: "Managing departments for the Data Platform"
 layout: playbook_js
+tags: playbook
 ---
 
 # Adding a department
