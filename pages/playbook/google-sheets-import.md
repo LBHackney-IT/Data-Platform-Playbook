@@ -4,7 +4,7 @@ description: "Google Sheets import description"
 layout: playbook_js
 ---
 
-# Preparing Google sheet for import
+## Preparing Google sheet for import
 
 - Open the Google sheet you would like to import
 - Ensure that all columns have headers. Columns without headers will be lost
@@ -18,7 +18,7 @@ layout: playbook_js
 - You will be asked to confirm sharing outside the organisation, click `share anyway`
 - Your Google sheet is now available for import
 
-# Getting Google sheet detail
+## Getting Google sheet detail
 
 - You will need to obtain the document key from the url
 - The document id is the portion of the url between `https://docs.google.com/spreadsheets/d/` and `/edit#gid=0`. See example below
@@ -29,7 +29,7 @@ layout: playbook_js
   (screenshot)
 - If you would like multiple sheets imported, provide each worksheet name
 
-# Setting up AWS Glue job
+## Setting up AWS Glue job
 - Before setting up an AWS Glue job, ensure that the relevant department configuration for that account is set up in AWS
   - see `Adding a department` section in `managing-departments.md`
 - Open the [Data Platform Project](https://github.com/LBHackney-IT/data-platform)

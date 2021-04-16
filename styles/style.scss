@@ -5,3 +5,20 @@
 // Write your custom styles here
 // Help: https://design-system.hackney.gov.uk/developing/installing-from-npm#importing-styles
 //////////////////////////////////
+
+.lbh-playbook-layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  > .lbh-body {
+    margin-top: 0;
+  }
+}
+
+.lbh-playbook-nav {
+  max-width: 30%;
+}
+.lbh-playbook-content {
+  max-width: 60%;
+}
