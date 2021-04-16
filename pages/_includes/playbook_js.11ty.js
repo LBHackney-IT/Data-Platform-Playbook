@@ -24,7 +24,25 @@ class Playbook {
                 <h4>Navigation</h4>
                 <ol class="lbh-list lbh-list--number">
                   <li>
-                    <a class="lbh-link" href=${this.url("/playbook/google-sheets-import/")}>Importing Google Sheets</a>
+                    ${data.page.url == "/playbook/managing-departments/" ?
+                      `<strong>Managing Departments</strong>`
+                    :
+                      `<a class="lbh-link" href=${this.url("/playbook/managing-departments/")}>Managing Departments</a>`
+                    }
+                  </li>
+                  <li>
+                    ${data.page.url == "/playbook/google-sheets-import/" ?
+                      `<strong>Importing Google Sheets</strong>`
+                    :
+                      `<a class="lbh-link" href=${this.url("/playbook/google-sheets-import/")}>Importing Google Sheets</a>`
+                    }
+                  </li>
+                  <li>
+                    ${data.page.url == "/playbook/using-glue-studio/" ?
+                      `<strong>Using AWS Glue Studio</strong>`
+                    :
+                      `<a class="lbh-link" href=${this.url("/playbook/using-glue-studio/")}>Using AWS Glue Studio</a>`
+                    }
                   </li>
                 </ol>
               </div>
