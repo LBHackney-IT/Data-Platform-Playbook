@@ -101,29 +101,30 @@
 
         
 
-<div class="govuk-breadcrumbs lbh-breadcrumbs lbh-container">
-    <ol class="govuk-breadcrumbs__list">
-        <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href=/lbh-hackney-data-platform-docs/>Home</a></li>
-        <li class="govuk-breadcrumbs__list-item" aria-current="page">Google Sheets import</li>
-    </ol>
-</div>
-<h1>Google Sheets import</h1>
+          <div class="govuk-breadcrumbs lbh-breadcrumbs lbh-container">
+              <ol class="govuk-breadcrumbs__list">
+                  <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href=/lbh-hackney-data-platform-docs/>Home</a></li>
+                  <li class="govuk-breadcrumbs__list-item" aria-current="page">Google Sheets import</li>
+              </ol>
+          </div>
+          <h1 class="lbh-heading-h1">Google Sheets import</h1>
 
-<details id="help-with-nationality" class="govuk-details lbh-details" data-module="govuk-details" open>
-  <summary class="govuk-details__summary">
-    <span class="govuk-details__summary-text"> Description </span>
-  </summary>
-  <div class="govuk-details__text">
-  Google Sheets import description
-  </div>
-</details>
-
-<details id="help-with-nationality" class="govuk-details lbh-details" data-module="govuk-details" open>
-<summary class="govuk-details__summary">
-  <span class="govuk-details__summary-text"> Notes </span>
-</summary>
-<div class="govuk-details__text">
-<h1>Preparing Google sheet for import</h1>
+            <div class="lbh-playbook-layout">
+              <div class="lbh-body lbh-playbook-nav">
+                <p>Google Sheets import description</p>
+                <h4>Navigation</h4>
+                <ol class="lbh-list lbh-list--number">
+                    <li>
+            <strong>Google Sheets import</strong>
+                </li><li>
+            <a class="lbh-link" href=/lbh-hackney-data-platform-docs/playbook/managing-departments/>Managing Departments</a>
+                </li><li>
+            <a class="lbh-link" href=/lbh-hackney-data-platform-docs/playbook/using-glue-studio/>Using Glue Studio</a>
+                </li>
+                </ol>
+              </div>
+              <div class="lbh-body lbh-playbook-content">
+                <h2>Preparing Google sheet for import</h2>
 <ul>
 <li>Open the Google sheet you would like to import</li>
 <li>Ensure that all columns have headers. Columns without headers will be lost</li>
@@ -137,14 +138,14 @@
 <li>You will be asked to confirm sharing outside the organisation, click <code>share anyway</code></li>
 <li>Your Google sheet is now available for import</li>
 </ul>
-<h1>Getting Google sheet detail</h1>
+<h2>Getting Google sheet detail</h2>
 <ul>
 <li>
 <p>You will need to obtain the document key from the url</p>
 </li>
 <li>
-<p>The document id is the portion of the url between <code>https://docs.google.com/spreadsheets/d/</code> and <code>/edit#gid=0</code>. See example below
-(screenshot) https://docs.google.com/spreadsheets/d/<code>1VPmt9njf0Xk1sHf8nZxw2_Ti2IspAD_SJPnkuzm0oeo</code>/edit#gid=0</p>
+<p>The document id is the portion of the url between <code>https://docs.google.com/spreadsheets/d/</code> and <code>/edit#gid=0</code>. See example below<br />
+<img src="../../assets/images/google-sheet-and-tab-id-1.png" alt="image"></p>
 </li>
 <li>
 <p>You will also need to obtain the worksheet name that you wish to have imported</p>
@@ -157,7 +158,7 @@
 <p>If you would like multiple sheets imported, provide each worksheet name</p>
 </li>
 </ul>
-<h1>Setting up AWS Glue job</h1>
+<h2>Setting up AWS Glue job</h2>
 <ul>
 <li>Before setting up an AWS Glue job, ensure that the relevant department configuration for that account is set up in AWS
 <ul>
@@ -187,9 +188,9 @@
 </li>
 </ul>
 
-</div>
-</details>
-
+              </div>
+            </div>
+        
 
         <!-- Finish main components -->
       </div>

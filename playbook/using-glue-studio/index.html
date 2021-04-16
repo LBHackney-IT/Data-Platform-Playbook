@@ -101,29 +101,30 @@
 
         
 
-<div class="govuk-breadcrumbs lbh-breadcrumbs lbh-container">
-    <ol class="govuk-breadcrumbs__list">
-        <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href=/lbh-hackney-data-platform-docs/>Home</a></li>
-        <li class="govuk-breadcrumbs__list-item" aria-current="page">Using Glue Studio</li>
-    </ol>
-</div>
-<h1>Using Glue Studio</h1>
+          <div class="govuk-breadcrumbs lbh-breadcrumbs lbh-container">
+              <ol class="govuk-breadcrumbs__list">
+                  <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href=/lbh-hackney-data-platform-docs/>Home</a></li>
+                  <li class="govuk-breadcrumbs__list-item" aria-current="page">Using Glue Studio</li>
+              </ol>
+          </div>
+          <h1 class="lbh-heading-h1">Using Glue Studio</h1>
 
-<details id="help-with-nationality" class="govuk-details lbh-details" data-module="govuk-details" open>
-  <summary class="govuk-details__summary">
-    <span class="govuk-details__summary-text"> Description </span>
-  </summary>
-  <div class="govuk-details__text">
-  Using AWS Glue Studio to create ETL processes.
-  </div>
-</details>
-
-<details id="help-with-nationality" class="govuk-details lbh-details" data-module="govuk-details" open>
-<summary class="govuk-details__summary">
-  <span class="govuk-details__summary-text"> Notes </span>
-</summary>
-<div class="govuk-details__text">
-<h1>Using AWS Glue Studio to create ETL processes</h1>
+            <div class="lbh-playbook-layout">
+              <div class="lbh-body lbh-playbook-nav">
+                <p>Using AWS Glue Studio to create ETL processes.</p>
+                <h4>Navigation</h4>
+                <ol class="lbh-list lbh-list--number">
+                    <li>
+            <a class="lbh-link" href=/lbh-hackney-data-platform-docs/playbook/google-sheets-import/>Google Sheets import</a>
+                </li><li>
+            <a class="lbh-link" href=/lbh-hackney-data-platform-docs/playbook/managing-departments/>Managing Departments</a>
+                </li><li>
+            <strong>Using Glue Studio</strong>
+                </li>
+                </ol>
+              </div>
+              <div class="lbh-body lbh-playbook-content">
+                <h1>Using AWS Glue Studio to create ETL processes</h1>
 <p><a href="https://docs.aws.amazon.com/glue/latest/ug/what-is-glue-studio.html">AWS Glue Studio</a> is a new graphical interface that makes it easy to create, run, and monitor extract, transform, and load (ETL) jobs in AWS Glue.</p>
 <p>To use AWS Glue Studio the job needs to be created manually. This guide includes the steps needed to create an editable job in Glue Studio. Templates may have already been created and existing jobs can be duplicated to make it easier to get started with Glue Studio. Dynamically created scripts using <a href="https://www.terraform.io/">terraform</a> (the infrastructure as code tool Hackney use) will not have the ability to use the visual editor.</p>
 <p>Note: If a job has already been created manually you can select the job using the radio button and in the job <em>Actions</em> mennu, select <strong>Clone job</strong>.</p>
@@ -151,15 +152,15 @@
 <h2>Clone and edit an existing Glue job</h2>
 <ol>
 <li>In the <em>Your jobs</em> sections, select the radio button of the job you would like to clone.</li>
-<li>In the <em>Actions</em> dropdown, select <em>Clone job</em>. If there is an information banner with a message <em>Your job was created outside of Glue Studio and has no DAG available</em> (see screenshot below) there will not be a Visual tab and therefore you will not have an interface to edit your job. Instead you will need to edit your job in the python job script. To do this navigate to the <em>Script</em> tab. If you prefer to use the interface, then select another job which has a Visual tab or create a new job as instructed in the <em>Creating a new Glue job</em> section above.</li>
+<li>In the <em>Actions</em> dropdown, select <em>Clone job</em>. If there is an information banner with a message <em>Your job was created outside of Glue Studio and has no DAG available</em> (see screenshot below) there will not be a Visual tab and therefore you will not have an interface to edit your job. Instead you will need to edit your job in the python job script. To do this navigate to the <em>Script</em> tab. If you prefer to use the interface, then select another job which has a Visual tab or create a new job as instructed in the <em>Creating a new Glue job</em> section above.
+<img src="https://user-images.githubusercontent.com/46002877/114702251-bcac0500-9d1b-11eb-8475-814523fd58dc.png" alt="image"></li>
 <li>In the Job Details tab, update the <em>Name</em> for your new job and check the <em>Creating a new Glue job</em> seciton above to ensure the configuration suits your needs.</li>
 <li>To save your job, select the <strong><em>Save</em></strong> button.</li>
 </ol>
-<p><img src="https://user-images.githubusercontent.com/46002877/114702251-bcac0500-9d1b-11eb-8475-814523fd58dc.png" alt="image"></p>
 
-</div>
-</details>
-
+              </div>
+            </div>
+        
 
         <!-- Finish main components -->
       </div>
