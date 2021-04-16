@@ -21,8 +21,8 @@ layout: playbook_js
 ## Getting Google sheet detail
 
 - You will need to obtain the document key from the url
-- The document id is the portion of the url between `https://docs.google.com/spreadsheets/d/` and `/edit#gid=0`. See example below
-  (screenshot) https://docs.google.com/spreadsheets/d/`1VPmt9njf0Xk1sHf8nZxw2_Ti2IspAD_SJPnkuzm0oeo`/edit#gid=0
+- The document id is the portion of the url between ``https://docs.google.com/spreadsheets/d/`` and ``/edit#gid=0``. See example below<br />
+  ![image](../../assets/images/google-sheet-and-tab-id-1.png)
 
 - You will also need to obtain the worksheet name that you wish to have imported
 - The worksheet name is located at the bottom left of the screen and unless it has been changed or other worksheets added, it will be called `Sheet1`. See example below
