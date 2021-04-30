@@ -24,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/LBHackney-IT/hackney-prototype-kit/issues"
   },
-  "homepage": "http://LBHackney-IT.github.io/lbh-hackney-data-platform-docs",
+  "homepage": "https://playbook.hackney.gov.uk/lbh-hackney-data-platform-docs/",
   "dependencies": {
     "@11ty/eleventy": "^0.12.1",
     "eleventy-plugin-sass": "^1.2.0"

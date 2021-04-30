@@ -10,6 +10,19 @@ The site is broken down into two sections:
   * The Data Dictonary contains definitions of Data Entities
 * Playbook
   * The Playbook contains articles on the processes involved in using the Data Platform
+* Architecture Decision Records
+  * Records of architecture decisions made regarding the platform. *See Architecture Decision Records (ADRs) below*.
+* Technical Spikes (Discovery)
+  * Records of findings around technical investigations concluding in an Architecture Decision Record (ADR).
+
+## Architecture Decision Records (ADRs)
+
+The Data Platform uses Architecture Decision Records (ADRs) to document architecture decisions that have been made.
+They can be found in `pages/architecture-decisions` and contributed to with
+[adr-tools](https://github.com/npryce/adr-tools).
+
+Note: A custom template is provided in this project user `pages/architecture-decisions/templates/template.md`, this is
+automatically picked up by [adr-tools](https://github.com/npryce/adr-tools).
 
 ## Developer Info
 
