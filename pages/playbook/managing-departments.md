@@ -5,6 +5,9 @@ layout: playbook_js
 tags: playbook
 ---
 
+# Deprecated
+This article has been deprecated as will be removed.
+
 # Adding a department
 - Open `04-account-configuration.tf` and copy an existing department configuration and paste it below
 - Update the department name to be the name of your department
