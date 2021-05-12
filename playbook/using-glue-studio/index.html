@@ -143,10 +143,10 @@
 <li>Also <em>Data Target - S3</em> box and in the <em>Data target properties - S3</em> tab set the <em>S3 URL</em> for the data target, usually your department folder in the Data Platform account (you can add additional folders at this point for your new data within your department folder). <strong>Data source and data target (amongst other operations) must be set to be able to save the job. You can also apply <em>Transformations</em> specific to your job via the Visual tab. See the <a href="https://docs.aws.amazon.com/glue/latest/ug/edit-nodes-chapter.html">AWS Glue Studio Documentation</a></strong>.</li>
 <li>To complete the set up you need to select the <strong>Job details</strong> tab.</li>
 <li>Complete the <em>Name</em> and optional <em>Description</em> fields. You may use this job as a template for repeat use, so a generic name to use as a template might be useful to begin with.</li>
-<li>Select <strong>dataengineers-dataplatform-prod-glue-role</strong> as the <em>IAM Role</em> for the job.</li>
+<li>Select <strong>dataplatform-{environment}-glue-role</strong>  where environment is either 'stg' or 'prod'; as the <em>IAM Role</em> for the job.</li>
 <li>The remaining standard fields default values are usually fine to use. The programming language Glue Studio creates can be Scala or Python.</li>
 <li>In <em>Advanced properties</em> check the <em>Script filename</em> refers to the task being carried out.</li>
-<li>Set the <em>Script path</em> to the central scripts S3 bucket: <code>s3://dataengineers-dataplatform-stg-glue-scripts/custom/</code> - you can create new folders or specify existing folders in the S3 bucket like this: <code>s3://dataengineers-dataplatform-stg-glue-scripts/custom/YOUR_FOLDER_NAME/</code>.</li>
+<li>Set the <em>Script path</em> to the central scripts S3 bucket: <code>s3://dataplatform-{environment}-glue-scripts/custom/</code> where environment is either 'stg' or 'prod' - you can create new folders or specify existing folders in the S3 bucket like this: <code>s3://dataplatform-{environment}-glue-scripts/custom/YOUR_FOLDER_NAME/</code>.</li>
 <li>In <em>Security configuration</em> select the appropriate security configuration for your target bucket location (for example for the Raw Zone, use <strong>glue-job-security-configuration-to-raw</strong>).</li>
 <li>Ensure the <em>Server-side encryption</em> option is <strong>checked</strong>.</li>
 <li>Add any further libraries or parameters you need in the <em>Advanced properties</em> section.</li>

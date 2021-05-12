@@ -2,7 +2,7 @@
 <html lang="en" class="govuk-template lbh-template">
   <head>
     <meta charset="utf-8" />
-    <title>Tech Spikes | Hackney Council</title>
+    <title>Qlik Integration | Hackney Council</title>
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover"
@@ -101,16 +101,68 @@
       <div class="lbh-container">
         <!-- Main content components go here -->
 
-        <div class="govuk-breadcrumbs lbh-breadcrumbs lbh-container">
-    <ol class="govuk-breadcrumbs__list">
-        <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/lbh-hackney-data-platform-docs/">Home</a></li>
-        <li class="govuk-breadcrumbs__list-item">Data Dictionary</li>
-    </ol>
-</div>
-<h1>Tech Spikes</h1>
-<p></p>
-<h2>Records:</h2>
-<ul></ul>
+        <h1>Spike: Qlik Integration</h1>
+<h3>SUB-TITLE</h3>
+<h2>Objective</h2>
+<p>Ensure a performant connection between the data platform and Hackney Business Insights tools. This spike will consider the
+following:</p>
+<ul>
+<li>Apache Drill</li>
+<li>Amazon Redshift Spectrum</li>
+<li>Amazon Athena</li>
+<li>Qlik Custom Connectors</li>
+</ul>
+<h2>Considerations</h2>
+<p>While investigating these options the following factors should be taken into account:</p>
+<ul>
+<li>Time to implement the solution</li>
+<li>Cost of the solution</li>
+<li>Performance of reading large quantities of data</li>
+</ul>
+<h2>Findings</h2>
+<h3>Apache Drill:</h3>
+<p>Apache Drill is a Schema-free SQL Query Engine for Hadoop, NoSQL and Cloud Storage providers such as Amazon S3. The
+software is provided for free, however there would be associated costs with deploying the product with the Data Platform.</p>
+<h4>Limitation</h4>
+<p>Apache Drill is not currently provided as a managed service by AWS, which means the product would need to be installed
+and maintained by Hackney. We are unaware of anyone within Hackney with knowledge of Apache Drill knowledge and this
+could prove to be an issue in the longer term.</p>
+<h4>Suggestion</h4>
+<p>We could install and configure the service in conjunction with Hackney staff to ensure knowledge share through this
+would not resolve longer term support issues.</p>
+<h3>Amazon Redshift Spectrum:</h3>
+<p>Amazon Redshift is a Data Warehousing that provides an SQL style interface for querying data.
+In addition to being able to warehouse data Amazon Redshift Spectrum is able to query data directly from external
+storage such as Amazon S3 without the additional cost of storing the data within the warehouse itself. Essentially
+separating the compute-layer from the storage-layer.
+Amazon Redshift is provided as an AWS managed and supported service, with the ability to upscale and downscale as
+Hackney requirements change in addition to being paused and unpaused on a scheduled basis.</p>
+<h4>Limitation</h4>
+<p>The biggest limitation with Amazon Redshift is that it can get expensive to run large clusters. Running a single node
+continuously is $120 per month and with our lack of visibility of the quantities of data that is being queried.</p>
+<h4>Suggestion</h4>
+<p>We can reduce the overall cost of running the infrastructure by scheduling period where the nodes are paused such as
+evening and weekend.</p>
+<h3>Qlik Custom Connectors:</h3>
+<p>Qlik provides the option of building a custom connector which can allow the system to interact with a dataset. This in
+theory could be used to allow Qlik to interact with AWS S3 directly.</p>
+<h4>Limitation</h4>
+<p>Building a Qlik Custom Connector would require unspecified amount of development time and would likely require further investigation
+into the specifics of how this would be implemented.</p>
+<h4>Suggestion</h4>
+<h2>Helpful Resources/Documentation</h2>
+<ul>
+<li>
+<p><a href="https://drill.apache.org/">Apache Drill - Website</a></p>
+</li>
+<li>
+<p><a href="https://aws.amazon.com/redshift/">Redshift - Overview</a></p>
+</li>
+<li>
+<p><a href="https://help.qlik.com/en-US/sense-developer/February2021/Subsystems/QVXSDKAPI/Content/Sense_QVXSDKAPI/Introducing-QVX.htm">Qlik Custom Connectors - Documentation</a></p>
+</li>
+</ul>
+
 
         <!-- Finish main components -->
       </div>
