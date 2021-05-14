@@ -1,89 +1,43 @@
-<h1>Spike: Full-text address search with fuzzy matching.</h1>
-<h3>Postgres Tools vs Elasticsearch</h3>
-<h2>Objective</h2>
-<p>We want to determine which tools or technologies would be best for us to use to implement a full-text address search with fuzzy matching. This spike focused on two possibilities:</p>
-<ul>
-<li>Postgres tools: We have a live Postgres RDS instance with address data.</li>
-<li>Elasticsearch: It is a popular search engine &amp; analytics tool.</li>
-</ul>
-<h2>Considerations</h2>
-<p>For this spike, a few user scenarios were used to determine which tool would be appropriate in fulfilling our desired address matching requirements:</p>
-<ul>
-<li>Free text search across all address lines, i.e. Line1, Line2, Line3 &amp; Line4.</li>
-<li>Abbreviations of common street names (e.g. str, rd) are accepted.</li>
-<li>Spelling mistakes are allowed.</li>
-<li>Names with/ without an apostrophe return expected results.</li>
-<li>Variations in describing address, e.g. Flat A 100 Mare Street vs 100A Mare Street.</li>
-<li>Match proper names regardless of the words street, road, lane, etc. e.g Cromwell street query should also return Cromwell Avenue matches.</li>
-</ul>
-<h2>Findings</h2>
-<h3>Postgres:</h3>
-<p>Postgres has quite a number of tools (or extensions) that we can install on our AWS RDS instance giving us the functionality that we want for our full-text search.
-With Postgres we can:</p>
-<ul>
-<li>Parse address strings into tokens (or lexemes). Tokenising should allow mapping of words in a query even if the way the user inputs the query varies e.g:
-<ul>
-<li>Saved string: “Try not to become a man of success, but rather try to become a man of value”</li>
-<li>Tokens (or lexemes) created: 'becom', 'man', 'rather', 'success', 'tri', 'valu'</li>
-<li>User one query: “Trying not to become a man of success”</li>
-<li>User two query: “Becoming a valued man”</li>
-<li>Both queries (after tokenising as well) should return the saved string. Note: Tokenising removes stop words like e.g ‘the’, ‘a’, ‘of’, etc.</li>
-<li>We can structure how to get the most relevant matches first by adding rankings to specific columns when queried.</li>
-<li>We can add custom dictionaries that would hold any stop words we don’t want to be ignored and can also hold synonyms for words e.g apartment vs flat. Str vs street.</li>
-<li>Entity framework has support for Postgres full-text searching.
-This is a quick overview of what Postgres full-text searching can offer us. The documentation for implementing this is very extensive and detailed.</li>
-</ul>
-</li>
-</ul>
-<p>####Limitation
-Currently AWS RDS doesn’t support custom dictionaries. This is because custom dictionaries are created as files that need to be uploaded into the database. You currently can’t do this in RDS which would affect synonym and stop word matching.</p>
-<p>####Suggestion
-It might be possible to get around this by how we parse the user query i.e the parsed query for full-text search would use boolean operators, “AND”, “OR”, “NOT”. We would most likely use AND operations to get more relevant matches but there might be a way to use OR operators before certain abbreviations/synonyms but this would likely be custom code and could get a bit unwieldy. This also might result in more irrelevant matches but matches nonetheless whereas using just AND would return nothing.</p>
-<h3>Elasticsearch:</h3>
-<p>This is a search and analytics engine tool so has been designed to tackle the full-text searching to a specialised degree. To use Elasticsearch we would need to get the data we want to index into it but if we use AWS Elasticsearch this can be accomplished by DMS.</p>
-<p>Getting data in Elasticsearch also requires mapping, however, we don’t need to transfer all the data in the database. Might need more clarification on this but it sounds like an efficient way is to only transfer and index the data related to address search queries e.g the address line columns and postcode.</p>
-<p>Elasticsearch also can:</p>
-<ul>
-<li>Parse address strings into tokens (or lexemes) using its analysers.</li>
-<li>Can install packages that add custom dictionaries of synonyms or words to ignore or stop words to not ignore.</li>
-<li>Can also add weights for ranking.
-Elasticsearch comes with an extensive toolset for searching, analysing data and returning the relevant matches and can be integrated into dotnet project by using a package called NEST.</li>
-</ul>
-<p>####Limitation
-This is would be a separate tool that requires configuration and some understanding of what we should implement and don’t need from Elasticsearch.</p>
-<p>AWS has an Elasticsearch service we could spin up in our AWS environments. If we use AWS Elasticsearch we can benefit from using DMS to get the data we need into it, however, if we do not use AWS Elasticsearch, we would need to create a script to import the data into our Elasticsearch instance.</p>
-<p>Using AWS Elasticsearch means we’ll be adding an additional tool to our current stack in AWS and this would need to be managed and maintained. It also means that we would be adding an additional cost to the running of the stack. There is a free tier option but we would be charged for usages over that limit.</p>
-<p>####Suggestion
-From reading the ONS paper on address matching, Elasticsearch was being implemented for retrieving addresses. Since this paper was focused on tackling the address matching problem, it might be worth using this as a tool for indexing and searching rather than relying on database tools.</p>
-<p>We currently have indexes in the Postgres DB but it might be worth understanding a bit more about the indexing in Elasticsearch and whether these would have an effect on query performance compared to what we have in Postgres.</p>
-<p>In our case, we might be able to use Elasticsearch as our indexing tool for a subset of data, retrieve a list of matching ids and then query the database using these ids, which could result in faster retrieval but this needs to be checked.</p>
-<p>##Helpful Resources/Documentation</p>
-<ul>
-<li>
-<p>Postgres documentation on Full-Text Searching</p>
-</li>
-<li>
-<p>Postgres Full-Text Search with Entity Framework Core</p>
-</li>
-<li>
-<p>Postgres full-text search is Good Enough! Blog</p>
-</li>
-<li>
-<p>Postgres Full-Text Search How-To Video</p>
-</li>
-<li>
-<p>Setting up Elasticsearch with .Net and Docker Blog</p>
-</li>
-<li>
-<p>Amazon Elasticsearch Pricing</p>
-</li>
-<li>
-<p>Amazon Elasticsearch Overview</p>
-</li>
-<li>
-<p>Querying Elasticsearch using the Search API</p>
-</li>
-<li>
-<p>Using DMS to migrate data into Elasticsearch</p>
-</li>
-</ul>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Docusaurus v2.0.0-alpha.70">
+<link rel="alternate" type="application/rss+xml" href="/Data-Platform-Playbook/blog/rss.xml" title="Hackney Data Platform Playbook Blog RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/Data-Platform-Playbook/blog/atom.xml" title="Hackney Data Platform Playbook Blog Atom Feed">
+<link rel="search" type="application/opensearchdescription+xml" title="Hackney Data Platform Playbook" href="/Data-Platform-Playbook/opensearch.xml"><title data-react-helmet="true">example | Hackney Data Platform Playbook</title><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"><meta data-react-helmet="true" name="docsearch:language" content="en"><meta data-react-helmet="true" name="docsearch:version" content="current"><meta data-react-helmet="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-react-helmet="true" property="og:title" content="example | Hackney Data Platform Playbook"><meta data-react-helmet="true" name="description" content="Spike: Full-text address search with fuzzy matching."><meta data-react-helmet="true" property="og:description" content="Spike: Full-text address search with fuzzy matching."><meta data-react-helmet="true" property="og:url" content="https://playbook.hackney.gov.uk/Data-Platform-Playbook//Data-Platform-Playbook/spikes/templates/example"><link data-react-helmet="true" rel="shortcut icon" href="/Data-Platform-Playbook/img/favicon.png"><link data-react-helmet="true" rel="preconnect" href="https://BH4D9OD16A-dsn.algolia.net" crossorigin="anonymous"><link data-react-helmet="true" rel="canonical" href="https://playbook.hackney.gov.uk/Data-Platform-Playbook//Data-Platform-Playbook/spikes/templates/example"><link rel="stylesheet" href="/Data-Platform-Playbook/styles.2116970b.css">
+<link rel="stylesheet" href="/Data-Platform-Playbook/main.4a16e2e4.css">
+<link rel="preload" href="/Data-Platform-Playbook/styles.bb705646.js" as="script">
+<link rel="preload" href="/Data-Platform-Playbook/runtime~main.97167b06.js" as="script">
+<link rel="preload" href="/Data-Platform-Playbook/main.1da809a3.js" as="script">
+<link rel="preload" href="/Data-Platform-Playbook/1.e229678f.js" as="script">
+<link rel="preload" href="/Data-Platform-Playbook/2.0dbcb678.js" as="script">
+<link rel="preload" href="/Data-Platform-Playbook/30.672866b0.js" as="script">
+<link rel="preload" href="/Data-Platform-Playbook/33.cd044013.js" as="script">
+<link rel="preload" href="/Data-Platform-Playbook/935f2afb.68b28171.js" as="script">
+<link rel="preload" href="/Data-Platform-Playbook/17896441.0870a702.js" as="script">
+<link rel="preload" href="/Data-Platform-Playbook/18a9cfd1.5c3af21d.js" as="script">
+</head>
+<body>
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){var t=null;try{t=localStorage.getItem("theme")}catch(t){}return t}();t(null!==e?e:"light")}()</script><div id="__docusaurus">
+<nav aria-label="Skip navigation links"><button type="button" tabindex="0" class="skipToContent_11B0">Skip to main content</button></nav><nav class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><div aria-label="Navigation bar toggle" class="navbar__toggle" role="button" tabindex="0"><svg aria-label="Menu" width="30" height="30" viewBox="0 0 30 30" role="img" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></div><a class="navbar__brand" href="/Data-Platform-Playbook/"><img src="/Data-Platform-Playbook/img/logo-long.svg" alt="Data Platform Playbook" class="themedImage_YANc themedImage--light_3CMI navbar__logo"><img src="/Data-Platform-Playbook/img/logo-long.svg" alt="Data Platform Playbook" class="themedImage_YANc themedImage--dark_3ARp navbar__logo"><strong class="navbar__title">Data Platform Playbook</strong></a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/LBHackney-IT/data-platform-playbook" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub</a><div class="react-toggle react-toggle--disabled displayOnlyInLargeViewport_2N3Q"><div class="react-toggle-track"><div class="react-toggle-track-check"><span class="toggle_3NWk">🌜</span></div><div class="react-toggle-track-x"><span class="toggle_3NWk">🌞</span></div></div><div class="react-toggle-thumb"></div><input type="checkbox" disabled="" aria-label="Dark mode toggle" class="react-toggle-screenreader-only"></div><button type="button" class="DocSearch DocSearch-Button" aria-label="Search"><span class="DocSearch-Button-Container"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 20 20"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span></button></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div><div class="navbar-sidebar"><div class="navbar-sidebar__brand"><a class="navbar__brand" href="/Data-Platform-Playbook/"><img src="/Data-Platform-Playbook/img/logo-long.svg" alt="Data Platform Playbook" class="themedImage_YANc themedImage--light_3CMI navbar__logo"><img src="/Data-Platform-Playbook/img/logo-long.svg" alt="Data Platform Playbook" class="themedImage_YANc themedImage--dark_3ARp navbar__logo"><strong class="navbar__title">Data Platform Playbook</strong></a></div><div class="navbar-sidebar__items"><div class="menu"><ul class="menu__list"><li class="menu__list-item"><a href="https://github.com/LBHackney-IT/data-platform-playbook" target="_blank" rel="noopener noreferrer" class="menu__link">GitHub</a></li></ul></div></div></div></nav><div class="main-wrapper"><div class="docPage_vMrn"><main class="docMainContainer_2iGs"><div class="container padding-vert--lg docItemWrapper_1bxp"><div class="row"><div class="col docItemCol_U38p"><div class="docItemContainer_a7m4"><article><header><h1 class="docTitle_Oumm">example</h1></header><div class="markdown"><h1><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_prK2" id="spike-full-text-address-search-with-fuzzy-matching"></a>Spike: Full-text address search with fuzzy matching.<a class="hash-link" href="#spike-full-text-address-search-with-fuzzy-matching" title="Direct link to heading">#</a></h1><h3><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_prK2" id="postgres-tools-vs-elasticsearch"></a>Postgres Tools vs Elasticsearch<a class="hash-link" href="#postgres-tools-vs-elasticsearch" title="Direct link to heading">#</a></h3><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_prK2" id="objective"></a>Objective<a class="hash-link" href="#objective" title="Direct link to heading">#</a></h2><p>We want to determine which tools or technologies would be best for us to use to implement a full-text address search with fuzzy matching. This spike focused on two possibilities:</p><ul><li>Postgres tools: We have a live Postgres RDS instance with address data.</li><li>Elasticsearch: It is a popular search engine &amp; analytics tool.</li></ul><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_prK2" id="considerations"></a>Considerations<a class="hash-link" href="#considerations" title="Direct link to heading">#</a></h2><p>For this spike, a few user scenarios were used to determine which tool would be appropriate in fulfilling our desired address matching requirements:</p><ul><li>Free text search across all address lines, i.e. Line1, Line2, Line3 &amp; Line4.</li><li>Abbreviations of common street names (e.g. str, rd) are accepted.</li><li>Spelling mistakes are allowed.</li><li>Names with/ without an apostrophe return expected results.</li><li>Variations in describing address, e.g. Flat A 100 Mare Street vs 100A Mare Street.</li><li>Match proper names regardless of the words street, road, lane, etc. e.g Cromwell street query should also return Cromwell Avenue matches.</li></ul><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_prK2" id="findings"></a>Findings<a class="hash-link" href="#findings" title="Direct link to heading">#</a></h2><h3><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_prK2" id="postgres"></a>Postgres:<a class="hash-link" href="#postgres" title="Direct link to heading">#</a></h3><p>Postgres has quite a number of tools (or extensions) that we can install on our AWS RDS instance giving us the functionality that we want for our full-text search.
+With Postgres we can:</p><ul><li>Parse address strings into tokens (or lexemes). Tokenising should allow mapping of words in a query even if the way the user inputs the query varies e.g:<ul><li>Saved string: “Try not to become a man of success, but rather try to become a man of value”</li><li>Tokens (or lexemes) created: &#x27;becom&#x27;, &#x27;man&#x27;, &#x27;rather&#x27;, &#x27;success&#x27;, &#x27;tri&#x27;, &#x27;valu&#x27;</li><li>User one query: “Trying not to become a man of success”</li><li>User two query: “Becoming a valued man”</li><li>Both queries (after tokenising as well) should return the saved string. Note: Tokenising removes stop words like e.g ‘the’, ‘a’, ‘of’, etc.</li><li>We can structure how to get the most relevant matches first by adding rankings to specific columns when queried.</li><li>We can add custom dictionaries that would hold any stop words we don’t want to be ignored and can also hold synonyms for words e.g apartment vs flat. Str vs street.</li><li>Entity framework has support for Postgres full-text searching.
+This is a quick overview of what Postgres full-text searching can offer us. The documentation for implementing this is very extensive and detailed.</li></ul></li></ul><p>####Limitation
+Currently AWS RDS doesn’t support custom dictionaries. This is because custom dictionaries are created as files that need to be uploaded into the database. You currently can’t do this in RDS which would affect synonym and stop word matching.</p><p>####Suggestion
+It might be possible to get around this by how we parse the user query i.e the parsed query for full-text search would use boolean operators, “AND”, “OR”, “NOT”. We would most likely use AND operations to get more relevant matches but there might be a way to use OR operators before certain abbreviations/synonyms but this would likely be custom code and could get a bit unwieldy. This also might result in more irrelevant matches but matches nonetheless whereas using just AND would return nothing.</p><h3><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_prK2" id="elasticsearch"></a>Elasticsearch:<a class="hash-link" href="#elasticsearch" title="Direct link to heading">#</a></h3><p>This is a search and analytics engine tool so has been designed to tackle the full-text searching to a specialised degree. To use Elasticsearch we would need to get the data we want to index into it but if we use AWS Elasticsearch this can be accomplished by DMS.</p><p>Getting data in Elasticsearch also requires mapping, however, we don’t need to transfer all the data in the database. Might need more clarification on this but it sounds like an efficient way is to only transfer and index the data related to address search queries e.g the address line columns and postcode.</p><p>Elasticsearch also can:</p><ul><li>Parse address strings into tokens (or lexemes) using its analysers.</li><li>Can install packages that add custom dictionaries of synonyms or words to ignore or stop words to not ignore.</li><li>Can also add weights for ranking.
+Elasticsearch comes with an extensive toolset for searching, analysing data and returning the relevant matches and can be integrated into dotnet project by using a package called NEST.</li></ul><p>####Limitation
+This is would be a separate tool that requires configuration and some understanding of what we should implement and don’t need from Elasticsearch.</p><p>AWS has an Elasticsearch service we could spin up in our AWS environments. If we use AWS Elasticsearch we can benefit from using DMS to get the data we need into it, however, if we do not use AWS Elasticsearch, we would need to create a script to import the data into our Elasticsearch instance.</p><p>Using AWS Elasticsearch means we’ll be adding an additional tool to our current stack in AWS and this would need to be managed and maintained. It also means that we would be adding an additional cost to the running of the stack. There is a free tier option but we would be charged for usages over that limit.</p><p>####Suggestion
+From reading the ONS paper on address matching, Elasticsearch was being implemented for retrieving addresses. Since this paper was focused on tackling the address matching problem, it might be worth using this as a tool for indexing and searching rather than relying on database tools.</p><p>We currently have indexes in the Postgres DB but it might be worth understanding a bit more about the indexing in Elasticsearch and whether these would have an effect on query performance compared to what we have in Postgres.</p><p>In our case, we might be able to use Elasticsearch as our indexing tool for a subset of data, retrieve a list of matching ids and then query the database using these ids, which could result in faster retrieval but this needs to be checked.</p><p>##Helpful Resources/Documentation</p><ul><li>Postgres documentation on Full-Text Searching</li><li>Postgres Full-Text Search with Entity Framework Core</li><li>Postgres full-text search is Good Enough! Blog</li><li>Postgres Full-Text Search How-To Video</li></ul><ul><li>Setting up Elasticsearch with .Net and Docker Blog</li><li>Amazon Elasticsearch Pricing</li><li>Amazon Elasticsearch Overview</li><li>Querying Elasticsearch using the Search API</li><li>Using DMS to migrate data into Elasticsearch</li></ul></div></article><div class="margin-vert--xl"><div class="row"><div class="col"><a href="https://github.com/LBHackney-IT/data-platform-playbook/edit/master/docs/spikes/templates/example.md" target="_blank" rel="noreferrer noopener"><svg fill="currentColor" height="1.2em" width="1.2em" preserveAspectRatio="xMidYMid meet" role="img" viewBox="0 0 40 40" class="iconEdit_2LL7"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div></div></div><div class="margin-vert--lg"><nav class="pagination-nav" aria-label="Blog list page navigation"><div class="pagination-nav__item"></div><div class="pagination-nav__item pagination-nav__item--next"></div></nav></div></div></div><div class="col col--3"><div class="tableOfContents_2xL- thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#postgres-tools-vs-elasticsearch" class="table-of-contents__link">Postgres Tools vs Elasticsearch</a></li><li><a href="#objective" class="table-of-contents__link">Objective</a></li><li><a href="#considerations" class="table-of-contents__link">Considerations</a></li><li><a href="#findings" class="table-of-contents__link">Findings</a><ul><li><a href="#postgres" class="table-of-contents__link">Postgres:</a></li><li><a href="#elasticsearch" class="table-of-contents__link">Elasticsearch:</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="footer__bottom text--center"><div class="footer__copyright">Made by HackIT.</div></div></div></footer></div>
+<script src="/Data-Platform-Playbook/styles.bb705646.js"></script>
+<script src="/Data-Platform-Playbook/runtime~main.97167b06.js"></script>
+<script src="/Data-Platform-Playbook/main.1da809a3.js"></script>
+<script src="/Data-Platform-Playbook/1.e229678f.js"></script>
+<script src="/Data-Platform-Playbook/2.0dbcb678.js"></script>
+<script src="/Data-Platform-Playbook/30.672866b0.js"></script>
+<script src="/Data-Platform-Playbook/33.cd044013.js"></script>
+<script src="/Data-Platform-Playbook/935f2afb.68b28171.js"></script>
+<script src="/Data-Platform-Playbook/17896441.0870a702.js"></script>
+<script src="/Data-Platform-Playbook/18a9cfd1.5c3af21d.js"></script>
+</body>
+</html>
