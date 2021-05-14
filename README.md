@@ -1,8 +1,8 @@
 # Data Platform - Data Dictionary & Playbook
 
-This project is used to generate the [Data Platform Documentation Site](https://lbhackney-it.github.io/lbh-hackney-data-platform-docs/).
+This project is used to generate the [Data Platform Documentation Site](https://lbhackney-it.github.io/Data-Platform-Playbook/).
 
-You can edit the pages files directly in this project, which are formated as .md files and once commited the changes will become visiable on the site.
+You can edit the pages files directly in this project, which are formated as .md files and once committed the changes will become visible on the site.
 
 The site is broken down into two sections:
 
@@ -26,19 +26,35 @@ automatically picked up by [adr-tools](https://github.com/npryce/adr-tools).
 
 ## Developer Info
 
-### Eleventy
-
-An example showing how to use the Hackney design system with the [Eleventy](https://www.11ty.dev/) static site generator, along with Parcel for bundling JS.
-
-It has a script for [copying assets to the root](https://design-system.hackney.gov.uk/developing/installing-from-npm#2-copying-assets), which are then included in the Eleventy build.
+This website is built using [Docusaurus 2](https://v2.docusaurus.io/), a modern static website generator.
 
 ### Installation
 
-You need Node.js and npm installed.
-
-```
-npm install
-npm start
+```console
+yarn install
 ```
 
-It will be on `localhost:8080`
+### Local Development
+
+```console
+yarn start
+```
+
+This command starts a local development server and open up a browser window. Most changes are reflected live without having to restart the server.
+
+### Build
+
+```console
+yarn build
+```
+
+This command generates static content into the `build` directory and can be served using any static contents hosting service.
+
+### Deployment
+
+```console
+GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
+```
+
+If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+
