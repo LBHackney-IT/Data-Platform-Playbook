@@ -5,7 +5,7 @@ layout: playbook_js
 tags: playbook
 ---
 
-# Add rds instance id to the environamnet variables
+## Add rds instance id to the environamnet variables
 
 - Ensure you have access to the [Data Platform repository](https://github.com/LBHackney-IT/data-platform/)
 - [Clone the the repository](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
@@ -19,12 +19,12 @@ tags: playbook
 rds_instance_ids = ["rds-instance-1", "rds-instance-2"]
 ```
 
-# Release a new version of the data platform
+## Release a new version of the data platform
 
 - Once you have added the rds instance id as an enviroenment variable, you are ready to release a new version of the data platform. To do this [Create a pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)
 - Ask the Data platform team to review the pull request
 
-# Create a snapshot of the relevant rds instance
+## Create a snapshot of the relevant rds instance
 
 Once your pull request has been approved and released to production, you want to log in to the relevant AWS account to create a snapshot
 
