@@ -20,6 +20,13 @@ module.exports = {
         "playbook/snapshot-to-s3",
       ],
     },
+    {
+      type: "category",
+      label: "Docs",
+      items: [
+        "docs/snapshot-to-s3",
+      ],
+    },
     //   {
     //     type: 'category',
     //     label: 'Principles',
