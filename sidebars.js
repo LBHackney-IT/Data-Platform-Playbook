@@ -1,24 +1,25 @@
 module.exports = {
   docs: [
-    'release-notes',
+    "release-notes",
     {
-      type: 'category',
-      label: 'Home',
+      type: "category",
+      label: "Home",
       items: [
-        'introduction',
+        "introduction",
         //'api_standards',
         //'platform_api_vs_service_api',
         //'documentation'
       ],
     },
     {
-      type: 'category',
-      label: 'Playbook',
+      type: "category",
+      label: "Playbook",
       items: [
-        'playbook/google-sheets-import',
-        'playbook/using-glue-studio'
-      ]
-    }
+        "playbook/google-sheets-import",
+        "playbook/using-glue-studio",
+        "playbook/snapshot-to-s3",
+      ],
+    },
     //   {
     //     type: 'category',
     //     label: 'Principles',
@@ -78,5 +79,5 @@ module.exports = {
     // 'first_end_point',
     // 'developer_hub',
     // 'contact_us'
-  ]
+  ],
 };
