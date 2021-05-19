@@ -27,6 +27,23 @@ module.exports = {
         "docs/snapshot-to-s3",
       ],
     },
+    {
+      type: "category",
+      label: "Architecture Decision",
+      items: [
+        "architecture-decisions/index",
+        {
+          type: "category",
+          label: "Records",
+          items: [
+            "architecture-decisions/0001-record-architecture-decisions",
+            "architecture-decisions/0002-ingest-google-sheets-data",
+            "architecture-decisions/0003-role-based-access-control",
+            "architecture-decisions/0004-partition-strategy"
+          ],
+        },
+      ],
+    },
     //   {
     //     type: 'category',
     //     label: 'Principles',
