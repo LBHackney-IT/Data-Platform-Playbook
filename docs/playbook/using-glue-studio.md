@@ -5,7 +5,7 @@ layout: playbook_js
 tags: playbook
 ---
 
-# Using AWS Glue Studio to create ETL processes
+## Using AWS Glue Studio to create ETL processes
 
 [AWS Glue Studio](https://docs.aws.amazon.com/glue/latest/ug/what-is-glue-studio.html) is a new graphical interface that makes it easy to create, run, and monitor extract, transform, and load (ETL) jobs in AWS Glue.
 
