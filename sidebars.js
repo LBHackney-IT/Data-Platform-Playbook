@@ -39,7 +39,8 @@ module.exports = {
             "architecture-decisions/0001-record-architecture-decisions",
             "architecture-decisions/0002-ingest-google-sheets-data",
             "architecture-decisions/0003-role-based-access-control",
-            "architecture-decisions/0004-partition-strategy"
+            "architecture-decisions/0004-partition-strategy",
+            "architecture-decisions/0005-recovered-data"
           ],
         },
       ],
