@@ -6,6 +6,7 @@ module.exports = {
       label: "Home",
       items: [
         "introduction",
+        "zones"
         //'api_standards',
         //'platform_api_vs_service_api',
         //'documentation'
