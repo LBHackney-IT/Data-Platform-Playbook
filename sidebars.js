@@ -23,7 +23,7 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Docs",
+      label: "Technical Documentation",
       items: [
         "docs/snapshot-to-s3",
       ],
