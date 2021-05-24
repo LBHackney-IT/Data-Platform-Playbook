@@ -3,7 +3,7 @@ module.exports = {
     "release-notes",
     {
       type: "category",
-      label: "Home",
+      label: "About",
       items: [
         "introduction",
         "zones"
