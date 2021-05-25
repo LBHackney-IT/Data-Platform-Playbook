@@ -20,6 +20,7 @@ module.exports = {
         "playbook/google-sheets-import",
         "playbook/using-glue-studio",
         "playbook/snapshot-to-s3",
+        "playbook/ingest-data-from-csv-files"
       ],
     },
     {
