@@ -3,10 +3,11 @@ module.exports = {
     "release-notes",
     {
       type: "category",
-      label: "Home",
+      label: "About",
       items: [
         "introduction",
         "zones",
+        "environments"
         //'api_standards',
         //'platform_api_vs_service_api',
         //'documentation'
@@ -19,11 +20,12 @@ module.exports = {
         "playbook/google-sheets-import",
         "playbook/using-glue-studio",
         "playbook/exporting-snapshot-to-landing-zone",
+        "playbook/ingest-data-from-csv-files"
       ],
     },
     {
       type: "category",
-      label: "Docs",
+      label: "Technical Documentation",
       items: ["docs/exporting-snapshot-to-landing-zone"],
     },
     {
