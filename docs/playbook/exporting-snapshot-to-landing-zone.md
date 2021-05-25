@@ -1,11 +1,11 @@
 ---
-title: Exporting snapshot to s3
-description: "Exporting a snapshot of an rds instance to the DataPlatform landing zone"
+title: Exporting database snapshot to the Data Platform Landing Zone
+description: "Exporting a snapshot of an rds instance in AWS to the DataPlatform landing zone"
 layout: playbook_js
 tags: playbook
 ---
 
-This guide explains the process of ingesting data from a RDS instance in the AWS API accounts to the DataPlatform landing zone.
+This guide explains the process of ingesting data from a RDS instance in the AWS API accounts to the DataPlatform landing zone by creating db snapshots.
 
 ## Add rds instance id to the environment variables
 
@@ -29,20 +29,19 @@ rds_instance_ids = ["rds-instance-1", "rds-instance-2"]
 - Your pull request is now ready for review by the Data platform team, and your changes will be applied once they have approved and merged your pull request and a new production release has been made
 - You can view the progress of the staging and production release by navigating to the [actions tab](https://github.com/LBHackney-IT/Data-Platform/actions) of the repository
 
-  - To verify that your changes have been released to the production environment, check that there is a workflow with your release.
+  - To verify that your changes have been released to the production environment, check that there is a workflow with your release
   - Once the workflow has successfully completed, your changes will have been deployed to production
 
     - The workflow for the staging deployment will contain the following text under the workflow title:
 
     ```
-    Data-Platform (Staging) #XXX: Commit XXXX pushed by xxxxx
+    Data-Platform (Staging) #xxx: Commit xxxx pushed by xxxxx
     ```
 
     - The production release workflow will contain the following text under the workflow title:
 
     ```
-    Data-Platform (Production) #X: Release X.X.X published by xxxxx
-
+    Data-Platform (Production) #x: Release x.x.x published by xxxxx
     ```
 
 ## Create a snapshot of the relevant rds instance
@@ -54,7 +53,7 @@ Once your pull request has been approved and released to production, you will ne
 - Select `Take snapshot` on the Manual tab
 - On `Take a Snapshot` page, use the `DB Instance` drop down and select the rds instance id as your DB instance
 
-  - In the `Snapshot Name` input field, add a name for your snapshot according to the following convention, (rds_instance_id)-dataplatform-YYYY-MM-DD-(optional_descriptor) e.g.:
+  - In the `Snapshot Name` input field, add a name for your snapshot according to the following convention, `rds_instance_id-dataplatform-YYYY-MM-DD-optional_descriptor` e.g.:
 
   ```
   golive-db-dataplatform-15-05-2021
@@ -64,8 +63,8 @@ Once your pull request has been approved and released to production, you will ne
 - The snapshot should immediately appear in the `Manual` tab in the `Manual snapshots` list
 - The snapshot is complete when it has a `Snapshot creation time`
 - Once the snapshot has been created, it will automatically trigger the export process to the Data Platform landing zone bucket
-- First it will export a copy of the db instance in parquet format to an S3 bucket in the same service account. Once this is complete, it will be exported from the service account bucket to the landing zone S3 bucket in the Data Platform account (see [snapshot to S3 page](http://playbook.hackney.gov.uk/Data-Platform-Playbook/docs/snapshot-to-s3/) for more detail on the ingestion process)
-- You can view the progress of the first export by navigating to `Exports in Amazon S3` tab. This will take about an hour to complete
+- First it will export a copy of the db instance in parquet format to an S3 bucket in the same service account. Once this is complete, it will be exported from the service account bucket to the landing zone S3 bucket in the Data Platform account (see [exporting db snapshots to the landing zone](http://playbook.hackney.gov.uk/Data-Platform-Playbook/docs/exporting-snapshot-to-landing-zone/) for more detail on the ingestion process)
+- You can view the progress of the first export by navigating to `Exports in Amazon S3` tab (this will take about an hour to complete)
 - Once the export has completed, you can view it by clicking on the link in the `S3 bucket` column which will take you to the relevant directory in `dataplatform-prod-rds-export-storage` bucket where all the initial exports are stored
 - Shortly after this, the data will become available in the Data Platform account
 - To view this, switch to the `DataPlatform-Production` account

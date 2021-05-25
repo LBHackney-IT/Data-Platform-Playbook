@@ -6,7 +6,7 @@ module.exports = {
       label: "Home",
       items: [
         "introduction",
-        "zones"
+        "zones",
         //'api_standards',
         //'platform_api_vs_service_api',
         //'documentation'
@@ -18,15 +18,13 @@ module.exports = {
       items: [
         "playbook/google-sheets-import",
         "playbook/using-glue-studio",
-        "playbook/snapshot-to-s3",
+        "playbook/exporting-snapshot-to-landing-zone",
       ],
     },
     {
       type: "category",
       label: "Docs",
-      items: [
-        "docs/snapshot-to-s3",
-      ],
+      items: ["docs/exporting-snapshot-to-landing-zone"],
     },
     {
       type: "category",
@@ -41,7 +39,7 @@ module.exports = {
             "architecture-decisions/0002-ingest-google-sheets-data",
             "architecture-decisions/0003-role-based-access-control",
             "architecture-decisions/0004-partition-strategy",
-            "architecture-decisions/0005-recovered-data"
+            "architecture-decisions/0005-recovered-data",
           ],
         },
       ],
