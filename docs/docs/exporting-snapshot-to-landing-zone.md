@@ -1,17 +1,18 @@
 ---
-title: Snapshot to S3
-description: "How the export of snapshot to S3 module works"
+title: Exporting database snapshots to the Data Platform Landing Zone
+description: "Overview of how db snapshots are exported to the Data Platform Landing Zone"
 layout: playbook_js
 tags: playbook
 ---
 
-One of the ways of uploading data into the Data Platform is by exporting RDS snapshot into S3.
+This section covers the technical overview of uploading data into the data platform from a db instance in AWS. For step by step instructions on how to do this, refer to [exporting db snapshot to the DataPlatform Landing zone](http://localhost:3000/Data-Platform-Playbook/playbook/exporting-snapshot-to-landing-zone) guide.
 
 The terraform module [`db_snapshot_to_s3`](https://github.com/LBHackney-IT/Data-Platform/tree/main/modules/db-snapshot-to-s3) will provision the following resources:
-![export-snapshot-to-s3](https://user-images.githubusercontent.com/8051117/118656536-83ffbf80-b7e2-11eb-8adf-7075e72c2d42.png)
+![exporting-snapshot-to-landing-zone](https://user-images.githubusercontent.com/8051117/118656536-83ffbf80-b7e2-11eb-8adf-7075e72c2d42.png)
 
 After the deployment these resources will export the data from any instance listed in this [environment variable](https://github.com/LBHackney-IT/Data-Platform/blob/main/config/terraform/prod.tfvars#L12) by executing the following steps:
-1. An RDS even subscription is provisioned, which attaches to the defined instance and pushes events to an SNS topic
+
+1. [An RDS event subscription](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html) is provisioned, which attaches to the defined instance and pushes events to an [SNS topic](https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html)
 2. When a snapshot of the defined instance is created a message is sent to an SQS queue
 3. The sent SQS message invokes the export lambda by passing it the RDS instance id
 4. The export lambda retrieves the last snapshot created for the received instance id and starts an [RDS snapshot export task](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ExportSnapshot.html)
