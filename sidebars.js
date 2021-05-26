@@ -42,6 +42,7 @@ module.exports = {
             "architecture-decisions/0003-role-based-access-control",
             "architecture-decisions/0004-partition-strategy",
             "architecture-decisions/0005-recovered-data",
+            "architecture-decisions/0006-ingest-sql-flat-files",
           ],
         },
       ],
