@@ -17,3 +17,5 @@ maintained in a project constitute its decision log.
 - [3: Role Based Access Control](0003-role-based-access-control.md)
 - [4: Partition Strategy](0004-partition-strategy.md)
 - [5: Recovered Data](0005-recovered-data.md)
+- [6: Ingest SQL flat files](0006-ingest-sql-flat-files.md)
+- [7: Copy Liberator data from sftp to s3](0007-sftp-to-s3-lambda.md)
