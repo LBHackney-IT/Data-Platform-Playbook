@@ -51,12 +51,17 @@ Once your pull request has been approved and released to production, you will ne
 - On the sidebar, select `Snapshots`
 - Select `Take snapshot` on the Manual tab
 - On `Take a Snapshot` page, use the `DB Instance` drop down and select the rds instance id as your DB instance
-
-  - In the `Snapshot Name` input field, add a name for your snapshot according to the following convention: `rds_instance_id-dataplatform-YYYY-MM-DD-optional_descriptor`. See example below:
-
-  ```
-  golive-db-dataplatform-2021-05-15
-  ```
+  
+    In the `Snapshot Name` input field, enter a unique name for your snapshot according to the following convention: `dataplatform-YYYY-MM-DD-rds_instance_id`. See example below:
+      
+    ```
+    dataplatform-2021-05-15-golive-db
+    ```
+    
+    If you're creating more than one snapshot to be exported on the same day, you would need to make the snapshot name unique by adding a `snapshot_version` after the date according to the following convention: `dataplatform-YYYY-MM-DD-snapshot_version-rds_instance_id`. For example if this is your second snapshot in the same day, you can name as follows:
+    ```
+    dataplatform-2021-05-15-v2-golive-db
+    ```
 
 - Select `Take snapshot`
 - The snapshot should immediately appear in the `Manual snapshots` list under the `Manual` tab
