@@ -19,6 +19,7 @@ module.exports = {
       items: [
         "playbook/google-sheets-import",
         "playbook/using-glue-studio",
+        "playbook/querying-data-using-sql",
         "playbook/exporting-snapshot-to-landing-zone",
         "playbook/ingest-data-from-csv-files"
       ],
