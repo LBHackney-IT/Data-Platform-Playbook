@@ -25,6 +25,7 @@ Please contact the Data Platform team if you haven't used this before.
 - Inside of the manual folder, create a new folder for the dataset you wish to create inside the data platform.
   The name of the folder you create here will be used throughout the platform, e.g. if you create a folder
   called "cake-designs" you will see a table called "cake_designs" within [AWS Athena](querying-data-using-sql.md).
+  If you are appending data to an already existing dataset, you can skip this step.
 
 - Inside of your dataset folder, upload a CSV containing your dataset.  Any CSVs uploaded within this folder
   will be combined into one dataset, and should have a matching set of columns.
