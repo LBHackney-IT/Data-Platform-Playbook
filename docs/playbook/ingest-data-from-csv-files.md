@@ -52,6 +52,7 @@ Please contact the Data Platform team if you haven't used this before.
   console until it's status returns to "Ready".
 
 - Once crawled, there will be a newly created table within the database `raw-zone-<department>-manual-uploads-database`.
+  You can then view the newly imported tables under the tables tab.
 
 [aws_s3_console]: https://console.aws.amazon.com/s3/
 [aws_glue_jobs_console]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=jobs
