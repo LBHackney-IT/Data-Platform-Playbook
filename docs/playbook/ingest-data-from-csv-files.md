@@ -5,11 +5,14 @@ layout: playbook_js
 tags: playbook
 ---
 
+## Prerequisites
 
-:::info
-This functionality needs to be configured for your department before it can be used.
-Please contact the Data Platform team if you haven't used this before.
-:::
+* You have some structured data files in CSV format you wish to have available from the Data Platform
+* You have access to the Hackney Data Platform
+* The department you are placing this data into the data platform has the manual CSV upload
+  functionality enabled.
+
+## Steps
 
 - Sign in to the AWS Management Console and open the [Amazon S3 console][aws_s3_console].
 
