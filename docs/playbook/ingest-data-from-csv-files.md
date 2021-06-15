@@ -25,6 +25,7 @@ Please contact the Data Platform team if you haven't used this before.
 - Inside of the manual folder, create a new folder for the dataset you wish to create inside the data platform.
   The name of the folder you create here will be used throughout the platform, e.g. if you create a folder
   called "cake-designs" you will see a table called "cake_designs" within [AWS Athena](querying-data-using-sql.md).
+  If you are appending data to an already existing dataset, you can skip this step.
 
 - Inside of your dataset folder, upload a CSV containing your dataset.  Any CSVs uploaded within this folder
   will be combined into one dataset, and should have a matching set of columns.
@@ -52,6 +53,7 @@ Please contact the Data Platform team if you haven't used this before.
   console until it's status returns to "Ready".
 
 - Once crawled, there will be a newly created table within the database `raw-zone-<department>-manual-uploads-database`.
+  You can then view the newly imported tables under the tables tab.
 
 [aws_s3_console]: https://console.aws.amazon.com/s3/
 [aws_glue_jobs_console]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=jobs
