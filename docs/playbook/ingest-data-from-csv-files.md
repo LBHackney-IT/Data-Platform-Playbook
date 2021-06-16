@@ -26,20 +26,25 @@ tags: playbook
   ```
 
 - Inside of the manual folder, create a new folder for the dataset you wish to create inside the data platform.
-  The name of the folder you create here will be used throughout the platform, e.g. if you create a folder
-  called "cake-designs" you will see a table called "cake_designs" within [AWS Athena](querying-data-using-sql.md).
+  The name of the folder you create here will be used as the table name for the datasource throughout the platform.
   If you are appending data to an already existing dataset, you can skip this step.
 
-- Inside of your dataset folder, upload a CSV containing your dataset.  Any CSVs uploaded within this folder
-  will be combined into one dataset, and should have a matching set of columns.
+- Inside of your dataset folder, upload a CSV containing your dataset by clicking the "Add files" button
+  and selecting the local files you want to upload then afterwards click the "Upload" button.
+  Alternatively, you can use "Add folder" taking care not to have any files in your local folder that you do not want to upload.
+  Any CSVs uploaded within this folder will be combined into one dataset, and should have a matching set of columns.
+  The status of each file should say "Upload succeeded", then click on the "Close" button.
 
-- Now switch to [AWS Glue Jobs][aws_glue_jobs_console], where you will run the job called
+- Now go to [AWS Glue Jobs][aws_glue_jobs_console], where you will run the job called
   `<department> copy manually uploaded CSVs to raw`.
-  Select this job and click the "Run job" option underneath the Action menu.
+  Select this job and click the "Run job" option in the Action pull-down menu.
+  If a "Parameters" dialogue box appears then click "Run job".
 
-- Observe the progress of this job using the "History" tab, and wait for the "Run status" to reach "Succeeded".
-  This job will have created a S3 folder structure as shown below inside the Raw zone, and an Apache Parquet file
-  containing your CSV data inside of there.
+- Observe the progress of this job by selecting the job again, looking the "History" tab,
+  and wait for the "Run status" to reach "Succeeded".
+  This job will have created a S3 folder structure as shown below inside the [Raw zone][raw_zone]
+  and an Apache Parquet file containing your CSV data inside of there.
+  You can check the output by navigating to S3 Bucket `dataplatform-stg_raw-zone` and checking the folder structure there.
 
   ```
   <department>/
@@ -52,12 +57,18 @@ tags: playbook
 
 - To access this data within [AWS Athena](querying-data-using-sql.md), you will need to crawl this data, using
   the matching crawler.  Navigate to the [AWS Glue Crawler][aws_glue_crawler_console] interface, find the job
-  named `raw-zone-<department>-manual-uploads-crawler`, and select "Run crawler".  Observe the job within the
+  named `raw-zone-<department>-manual-uploads-crawler`, and click on "Run crawler".  Observe the job within the
   console until it's status returns to "Ready".
+  Check the "Last runtime" of previous jobs to get an idea of how long you might have to wait.
 
-- Once crawled, there will be a newly created table within the database `raw-zone-<department>-manual-uploads-database`.
+- Once crawled, there will be a newly created table within the database which you can access in Athena as
+  `dataplatform-stg-raw-zone-<department>-manual-uploads-database`.
+  You should see a table eg. "cake\_designs" with the column names as per the CSV header.
+  You should also see various "import\_..." columns at the end some of which are marked (Partitioned).
   You can then view the newly imported tables under the tables tab.
+  Note: The original names of the files, when they were uploaded, is not captured here at the moment.
 
+[raw_zone]: ../zones.md#raw-zone
 [aws_s3_console]: https://console.aws.amazon.com/s3/
 [aws_glue_jobs_console]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=jobs
 [aws_glue_crawler_console]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#catalog:tab=crawlerss
