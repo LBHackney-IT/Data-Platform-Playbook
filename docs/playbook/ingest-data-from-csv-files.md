@@ -71,4 +71,4 @@ tags: playbook
 [raw_zone]: ../zones.md#raw-zone
 [aws_s3_console]: https://console.aws.amazon.com/s3/
 [aws_glue_jobs_console]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=jobs
-[aws_glue_crawler_console]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#catalog:tab=crawlerss
+[aws_glue_crawler_console]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#catalog:tab=crawlers
