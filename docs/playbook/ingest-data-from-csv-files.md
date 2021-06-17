@@ -7,12 +7,20 @@ tags: playbook
 
 ## Prerequisites
 
-* You have some structured data files in CSV format you wish to have available from the Data Platform
+* You have some structured data files you wish to have available from the Data Platform
 * You have access to the Hackney Data Platform
 * The department you are placing this data into the data platform has the manual CSV upload
   functionality enabled.
 
 ## Steps
+
+- Ensure your data meets the following requirments before proceeding.
+    - You have saved the data as a "CSV" file format, using a comma to separate fields.
+      When [exporting from Excel][excel_csv], select the "CSV UTF-8" option.
+    - The first line of the CSV contains the names of the columns as you wish them
+      to appear within the Data Platform.
+      If there are any empty rows before the column names delete them before exporting
+      the file.
 
 - Sign in to the AWS Management Console and open the [Amazon S3 console][aws_s3_console].
 
@@ -70,6 +78,7 @@ tags: playbook
   You can then view the newly imported tables under the tables tab.
   Note: The original names of the files, when they were uploaded, is not captured here at the moment.
 
+[excel_csv]: https://docs.workstars.com/en/latest/howto/save-csv-utf8.html
 [raw_zone]: ../zones.md#raw-zone
 [aws_s3_console]: https://console.aws.amazon.com/s3/
 [aws_glue_jobs_console]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=jobs
