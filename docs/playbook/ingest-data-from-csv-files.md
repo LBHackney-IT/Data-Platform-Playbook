@@ -48,8 +48,8 @@ tags: playbook
   Select this job and click the "Run job" option in the Action pull-down menu.
   If a "Parameters" dialogue box appears then click "Run job".
 
-- Observe the progress of this job by selecting the job again, looking the "History" tab,
-  and wait for the "Run status" to reach "Succeeded".
+- Reselect the Job, observe the progress of its run within the "History" tab, and wait
+  for the "Run status" to reach "Succeeded".
   This job will have created a S3 folder structure as shown below inside the [Raw zone][raw_zone]
   and an Apache Parquet file containing your CSV data inside of there.
   You can check the output by navigating to S3 Bucket `dataplatform-stg-raw-zone`, confirming
