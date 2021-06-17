@@ -44,7 +44,8 @@ tags: playbook
   and wait for the "Run status" to reach "Succeeded".
   This job will have created a S3 folder structure as shown below inside the [Raw zone][raw_zone]
   and an Apache Parquet file containing your CSV data inside of there.
-  You can check the output by navigating to S3 Bucket `dataplatform-stg_raw-zone` and checking the folder structure there.
+  You can check the output by navigating to S3 Bucket `dataplatform-stg-raw-zone`, confirming
+  the folder structure, and observing that Apache Parquet file(s) have been created.
 
   ```
   <department>/
@@ -53,6 +54,7 @@ tags: playbook
           └── import_year=<year>/
               └── import_month=<month>/
                   └── import_day=<day>/
+                      └── part-xxxxx-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.xxxx.snappy.parquet
   ```
 
 - To access this data within [AWS Athena](querying-data-using-sql.md), you will need to crawl this data, using
