@@ -7,17 +7,25 @@ tags: playbook
 
 ## Prerequisites
 
-* You have some structured data files in CSV format you wish to have available from the Data Platform
+* You have some structured data files you wish to have available from the Data Platform
 * You have access to the Hackney Data Platform
 * The department you are placing this data into the data platform has the manual CSV upload
   functionality enabled.
 
 ## Steps
 
+- Ensure your data meets the following requirments before proceeding.
+    - You have saved the data as a "CSV" file format, using a comma to separate fields.
+      When [exporting from Excel][excel_csv], select the "CSV UTF-8" option.
+    - The first row of the CSV contains the names of the columns as you wish them
+      to appear within the Data Platform.
+      If there are any empty rows before the column names delete them before exporting
+      the file.
+
 - Sign in to the AWS Management Console and open the [Amazon S3 console][aws_s3_console].
 
-- In the Buckets list, choose a landing zone bucket, either the `dataplatform-stg-landing-zone`
-  or `dataplatform-prod-landing-zone` bucket.
+- In the Buckets list, select the landing zone bucket, at
+  [dataplatform-stg-landing-zone][aws_dataplatform_stg_landing_zone].
   Navigate to your departments manual upload folder, see below for structure.
 
   ```
@@ -40,11 +48,12 @@ tags: playbook
   Select this job and click the "Run job" option in the Action pull-down menu.
   If a "Parameters" dialogue box appears then click "Run job".
 
-- Observe the progress of this job by selecting the job again, looking the "History" tab,
-  and wait for the "Run status" to reach "Succeeded".
+- Reselect the Job, observe the progress of its run within the "History" tab, and wait
+  for the "Run status" to reach "Succeeded".
   This job will have created a S3 folder structure as shown below inside the [Raw zone][raw_zone]
   and an Apache Parquet file containing your CSV data inside of there.
-  You can check the output by navigating to S3 Bucket `dataplatform-stg_raw-zone` and checking the folder structure there.
+  You can check the output by navigating to S3 Bucket [dataplatform-stg-raw-zone][aws_dataplatform_stg_raw_zone],
+  confirming the folder structure, and observing that Apache Parquet file(s) have been created.
 
   ```
   <department>/
@@ -53,22 +62,32 @@ tags: playbook
           └── import_year=<year>/
               └── import_month=<month>/
                   └── import_day=<day>/
+                      └── part-xxxxx-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.xxxx.snappy.parquet
   ```
 
-- To access this data within [AWS Athena](querying-data-using-sql.md), you will need to crawl this data, using
-  the matching crawler.  Navigate to the [AWS Glue Crawler][aws_glue_crawler_console] interface, find the job
-  named `raw-zone-<department>-manual-uploads-crawler`, and click on "Run crawler".  Observe the job within the
-  console until it's status returns to "Ready".
+## Confirm the import worked
+
+Next we'll confirm the data has been imported correctly by inspecting it within
+[AWS Athena](querying-data-using-sql.md).
+
+- Before accessing the data within Athena, you will need to run the crawler for this data.
+  Navigate to the [AWS Glue Crawler][aws_glue_crawler_console] interface, select the crawler named
+  `data-platform-stg-raw-zone-<department>-manual-uploads-crawler`, then click on "Run crawler".
+  Wait until its status returns to "Ready".
   Check the "Last runtime" of previous jobs to get an idea of how long you might have to wait.
 
-- Once crawled, there will be a newly created table within the database which you can access in Athena as
+- Once crawled, there will be a newly created table within the database which you can access in [Athena][aws_athena_console] as
   `dataplatform-stg-raw-zone-<department>-manual-uploads-database`.
   You should see a table eg. "cake\_designs" with the column names as per the CSV header.
   You should also see various "import\_..." columns at the end some of which are marked (Partitioned).
   You can then view the newly imported tables under the tables tab.
   Note: The original names of the files, when they were uploaded, is not captured here at the moment.
 
+[excel_csv]: https://docs.workstars.com/en/latest/howto/save-csv-utf8.html
 [raw_zone]: ../zones.md#raw-zone
 [aws_s3_console]: https://console.aws.amazon.com/s3/
+[aws_athena_console]: https://eu-west-2.console.aws.amazon.com/athena/home?region=eu-west-2#query
 [aws_glue_jobs_console]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=jobs
-[aws_glue_crawler_console]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#catalog:tab=crawlerss
+[aws_glue_crawler_console]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#catalog:tab=crawlers
+[aws_dataplatform_stg_landing_zone]: https://s3.console.aws.amazon.com/s3/buckets/dataplatform-stg-landing-zone?region=eu-west-2&tab=objects
+[aws_dataplatform_stg_raw_zone]: https://s3.console.aws.amazon.com/s3/buckets/dataplatform-stg-raw-zone?region=eu-west-2&tab=objects
