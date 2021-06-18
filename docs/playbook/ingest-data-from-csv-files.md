@@ -67,8 +67,8 @@ tags: playbook
 
 ## Confirm the import worked
 
-Next we'll confirm the data has been imported correctly by inspecting it within
-[AWS Athena](querying-data-using-sql.md).
+Next we'll confirm the data has been imported correctly by crawling the data and then inspecting it
+within [AWS Athena](querying-data-using-sql.md).
 
 - Before accessing the data within Athena, you will need to run the crawler for this data.
   Navigate to the [AWS Glue Crawler][aws_glue_crawler_console] interface, select the crawler named
