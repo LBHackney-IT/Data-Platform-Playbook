@@ -72,7 +72,7 @@ Next we'll confirm the data has been imported correctly by inspecting it within
 
 - Before accessing the data within Athena, you will need to run the crawler for this data.
   Navigate to the [AWS Glue Crawler][aws_glue_crawler_console] interface, find the job named
-  `raw-zone-<department>-manual-uploads-crawler`, and click on "Run crawler".
+  `data-platform-stg-raw-zone-<department>-manual-uploads-crawler`, then click on "Run crawler".
   Observe the job within the console until it's status returns to "Ready".
   Check the "Last runtime" of previous jobs to get an idea of how long you might have to wait.
 
