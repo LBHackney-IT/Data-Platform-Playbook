@@ -17,7 +17,7 @@ tags: playbook
 - Ensure your data meets the following requirments before proceeding.
     - You have saved the data as a "CSV" file format, using a comma to separate fields.
       When [exporting from Excel][excel_csv], select the "CSV UTF-8" option.
-    - The first line of the CSV contains the names of the columns as you wish them
+    - The first row of the CSV contains the names of the columns as you wish them
       to appear within the Data Platform.
       If there are any empty rows before the column names delete them before exporting
       the file.
