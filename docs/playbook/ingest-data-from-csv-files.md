@@ -76,7 +76,7 @@ Next we'll confirm the data has been imported correctly by inspecting it within
   Observe the job within the console until it's status returns to "Ready".
   Check the "Last runtime" of previous jobs to get an idea of how long you might have to wait.
 
-- Once crawled, there will be a newly created table within the database which you can access in Athena as
+- Once crawled, there will be a newly created table within the database which you can access in [Athena][aws_athena_console] as
   `dataplatform-stg-raw-zone-<department>-manual-uploads-database`.
   You should see a table eg. "cake\_designs" with the column names as per the CSV header.
   You should also see various "import\_..." columns at the end some of which are marked (Partitioned).
@@ -86,6 +86,7 @@ Next we'll confirm the data has been imported correctly by inspecting it within
 [excel_csv]: https://docs.workstars.com/en/latest/howto/save-csv-utf8.html
 [raw_zone]: ../zones.md#raw-zone
 [aws_s3_console]: https://console.aws.amazon.com/s3/
+[aws_athena_console]: https://eu-west-2.console.aws.amazon.com/athena/home?region=eu-west-2#query
 [aws_glue_jobs_console]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=jobs
 [aws_glue_crawler_console]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#catalog:tab=crawlers
 [aws_dataplatform_stg_landing_zone]: https://s3.console.aws.amazon.com/s3/buckets/dataplatform-stg-landing-zone?region=eu-west-2&tab=objects
