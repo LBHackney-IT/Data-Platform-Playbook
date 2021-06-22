@@ -21,7 +21,8 @@ module.exports = {
         "playbook/using-glue-studio",
         "playbook/querying-data-using-sql",
         "playbook/exporting-snapshot-to-landing-zone",
-        "playbook/ingest-data-from-csv-files"
+        "playbook/ingest-data-from-csv-files",
+        "workshop/aws_glue_studio_parking"
       ],
     },
     {
