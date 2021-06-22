@@ -111,16 +111,20 @@ into the `dataplatform-stg-refined-zone`.
 Turning our first query into a Glue Job which transforms the data into a new dataset, will allow us
 to share this into a permit renewals dashboard on Google Data Studio.
 
-We will first create a new AWS Glue Studio job by follow a modified version of the guide
+We will first create a new AWS Glue Studio job by following a modified version of the guide
 "[creating a new Glue Job][creating_a_new_glue_job]".
 * For the environment, we'll be using `stg`.
 * For the __Data source__ node, we'll select __Data catalogue table__ for "S3 source type"
   under the "Data source properties" tab.
   Then choosing `dataplatform-stg-liberator-landing-zone` and `liberator_permit_renewals`
   for Database and Table respectively.
-* For the __Data target__ node, we'll specify the destination as
-  `s3://dataplatform-stg-refined-zone/parking/liberator/NAME_parking_permit_renewals/`,
-  and Format set to Parquet.
+* For the __Data target__ node:
+  1. Set the Format to "Glue Parquet"
+  1. Specify the destination as `s3://dataplatform-stg-refined-zone/parking/liberator/NAME_parking_permit_renewals/`.
+  1. For "Data Catalog update options" select "Create a table in the Data Catalog and on subsequent runs, update the schema and add new partitions".
+  1. For "Database" select "dataplatform-stg-liberator-refined-zone" from the dropdown.
+  1. In "Table name" write `NAME_parking_permit_renewals`.
+
 * For the __Name__ of the Job, specify `NAME_GlueStudioWorkshop`
 * For the "Number of retries" under "Job details" specify 0.
 * For the "Security configuration" select "dataplatform-stg-config-to-refined".
@@ -151,12 +155,9 @@ AnalysisException: "
 
 Switching back to the "Visual" tab, continue modifying, saving and running the SQL query
 of your AWS Glue job until the "Run status" becomes "Succeeded".
-The Spark SQL `spark_sql_to_timestamp` [function documentation][spark_sql_to_timestamp] will be useful.
+The Spark SQL `to_timestamp` [function documentation][spark_sql_to_timestamp] will be useful.
 
-At this point, run and wait for the [dataplatform-stg-refined-zone-liberator][refined_liberator_crawler]
-AWS Glue Crawler to run until completion.
-
-Confirm your AWS Glue Job has worked as you expected by query the newly created table
+Confirm your AWS Glue Job has worked as you expected by querying the newly created table
 in [AWS Athena][aws_athena_console] under the database `dataplatform-stg-liberator-refined-zone`, with the
 name `NAME_parking_permit_renewals`.
 :::
@@ -179,7 +180,6 @@ Once you have finished the exercise
 [aws_athena]: ../playbook/querying-data-using-sql.md
 [athena_data_types]: https://docs.aws.amazon.com/athena/latest/ug/data-types.html
 [creating_a_new_glue_job]: ../playbook/using-glue-studio.md#creating-a-new-glue-job
-[refined_liberator_crawler]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#crawler:name=dataplatform-stg-refined-zone-liberator
 [aws_athena_console]: https://eu-west-2.console.aws.amazon.com/athena/home?region=eu-west-2#query
 [aws_glue_jobs_console]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=jobs
 [aws_s3_conosole_refined_zone]:https://s3.console.aws.amazon.com/s3/buckets/dataplatform-stg-refined-zone?region=eu-west-2&prefix=parking/liberator/&showversions=false
