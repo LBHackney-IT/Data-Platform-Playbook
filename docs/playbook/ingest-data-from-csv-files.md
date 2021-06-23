@@ -65,6 +65,12 @@ tags: playbook
                       └── part-xxxxx-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.xxxx.snappy.parquet
   ```
 
+:::info
+Files uploaded to the CSV folder will only be copied over to the raw zone once.
+
+The job uses the CSVs "created at" timestamp to process only the CSVs which have been uploaded since the last time the job successfully ran.
+:::
+
 ## Confirm the import worked
 
 Next we'll confirm the data has been imported correctly by crawling the data with
