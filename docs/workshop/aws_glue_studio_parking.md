@@ -14,7 +14,7 @@ layout: layout
 ## Learning objectives
 
 * Know how to create a batch transformation job written in SparkSQL, hosted inside of AWS Glue Studio.
-* Aware of some of the differences between the Presto SQL language, and SparkSQL lanugage.
+* Aware there are differences between the Presto SQL language, and SparkSQL lanugage.
 
 ## Introduction
 
@@ -47,6 +47,8 @@ When writing jobs outside of this guide, you don't need to follow this conventio
 
 Imagine we want to perform analysis on the number and duration of parking permit renewals.
 
+We first prototype our query inside of AWS Athena using its Presto SQL language.
+
 :::note Exercise
 
 Create an SQL query for [AWS Athena][aws_athena_console] which extracts, and aggregates permit renewals and produces
@@ -57,6 +59,9 @@ The data platform provides source data within the table
 
 You will want to convert VARCHAR columns to [appropriate AWS Athena data types][athena_data_types].
 Specifically, the time columns should have a TIMESTAMP type.
+Presto SQL provide a variety of [date/time functions][presto_sql_datetime_functions].
+Note that some of the renewal records have empty string values which may cause a cryptic error
+message to appear when passing an empty string into a time function.
 
 Keep a copy of the query you create somewhere safe, for the next part of this guide.
 :::
@@ -111,19 +116,34 @@ into the `dataplatform-stg-refined-zone`.
 Turning our first query into a Glue Job which transforms the data into a new dataset, will allow us
 to share this into a permit renewals dashboard on Google Data Studio.
 
-We will first create a new AWS Glue Studio job by follow a modified version of the guide
-"[creating a new Glue Job][creating_a_new_glue_job]".
+We will first create a new AWS Glue Studio job by following a modified version of the guide
+[creating a new Glue Job][creating_a_new_glue_job].
 * For the environment, we'll be using `stg`.
 * For the __Data source__ node, we'll select __Data catalogue table__ for "S3 source type"
   under the "Data source properties" tab.
   Then choosing `dataplatform-stg-liberator-landing-zone` and `liberator_permit_renewals`
   for Database and Table respectively.
-* For the __Data target__ node, we'll specify the destination as
-  `s3://dataplatform-stg-refined-zone/parking/liberator/NAME_parking_permit_renewals/`,
-  and Format set to Parquet.
+* For the __Data target__ node:
+  1. Set the Format to "Glue Parquet"
+  1. Specify the destination as `s3://dataplatform-stg-refined-zone/parking/liberator/NAME_parking_permit_renewals/`.
+  1. For "Data Catalog update options" select "Create a table in the Data Catalog and on subsequent runs, update the schema and add new partitions".
+  1. For "Database" select "dataplatform-stg-liberator-refined-zone" from the dropdown.
+  1. In "Table name" write `NAME_parking_permit_renewals`.
+  1. Under the parition keys, add in the following order: `import_year`, `import_month`, `import_day`.
+
 * For the __Name__ of the Job, specify `NAME_GlueStudioWorkshop`
 * For the "Number of retries" under "Job details" specify 0.
 * For the "Security configuration" select "dataplatform-stg-config-to-refined".
+
+:::info
+AWS Glue enables a feature called [Job Bookmarks][aws_glue_job_bookmarks] by default.
+
+Job bookmarks cause a glue job to perform its batch processing on data which has not
+already been processed previously by the same job.
+
+This is useful to reduce the cost of processing, but when developing jobs you will
+want to temporarily disable this feature from the "Job Details" tab.
+:::
 
 Once you have created and saved this job, we will replace the default transformation with
 our SQL created above.
@@ -131,15 +151,16 @@ our SQL created above.
 1. Switch to the "Visual" tab, and click on the "Transform - ApplyMapping" node.
    In the properties bar on the right, switch to the "Node Properties" tab and change the "Node Type"
    to "Spark SQL".
-1. Staying within the properties bar, switch to the "Transform" tab, and paste in your SQL
-   query from above into the "Code Block" box.
-1. Change the value of "Spark SQL aliases" to `liberator_permit_renewals`, and make sure your
-   SQL query inside of the "Code Block" is also using this table name.
-   If your query joined multiple data sources, each table would need a "Data Source", linked
+1. Switch to the "Transform" tab paste in your SQL query from above into the "Code Block" box.
+   The Spark SQL executor will only accept a single SQL query, and that query mustn't have
+   a trailing semicolon.
+1. Change the value of "Spark SQL aliases" to `liberator_permit_renewals`, and remove any usage of a
+   database prefix `dataplatform-stg-liberator-landing-zone` from the SQL query inside of the "Code Block".
+   If your query joined multiple tables, each table would need a distinct "Data Source" linked
    to the "Spark SQL" node.
 1. Click the __Save__ button, followed by the __Run__ button.
 1. Click on the "Runs" tab, and follow the progress of your job.
-1. Once finished, the job should fail with an error message similar to this
+1. Once finished, the job might fail with an error message similar to this
 ```shell
 AnalysisException: "
   Undefined function: 'date_parse'.
@@ -151,12 +172,9 @@ AnalysisException: "
 
 Switching back to the "Visual" tab, continue modifying, saving and running the SQL query
 of your AWS Glue job until the "Run status" becomes "Succeeded".
-The Spark SQL `spark_sql_to_timestamp` [function documentation][spark_sql_to_timestamp] will be useful.
+The Spark SQL `to_timestamp` [function documentation][spark_sql_to_timestamp] might be useful.
 
-At this point, run and wait for the [dataplatform-stg-refined-zone-liberator][refined_liberator_crawler]
-AWS Glue Crawler to run until completion.
-
-Confirm your AWS Glue Job has worked as you expected by query the newly created table
+Confirm your AWS Glue Job has worked as you expected by querying the newly created table
 in [AWS Athena][aws_athena_console] under the database `dataplatform-stg-liberator-refined-zone`, with the
 name `NAME_parking_permit_renewals`.
 :::
@@ -178,9 +196,10 @@ Once you have finished the exercise
 [scala]: https://www.scala-lang.org/
 [aws_athena]: ../playbook/querying-data-using-sql.md
 [athena_data_types]: https://docs.aws.amazon.com/athena/latest/ug/data-types.html
+[presto_sql_datetime_functions]: https://prestodb.io/docs/0.217/functions/datetime.html
 [creating_a_new_glue_job]: ../playbook/using-glue-studio.md#creating-a-new-glue-job
-[refined_liberator_crawler]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#crawler:name=dataplatform-stg-refined-zone-liberator
 [aws_athena_console]: https://eu-west-2.console.aws.amazon.com/athena/home?region=eu-west-2#query
+[aws_glue_job_bookmarks]: https://docs.aws.amazon.com/glue/latest/dg/monitor-continuations.html
 [aws_glue_jobs_console]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=jobs
 [aws_s3_conosole_refined_zone]:https://s3.console.aws.amazon.com/s3/buckets/dataplatform-stg-refined-zone?region=eu-west-2&prefix=parking/liberator/&showversions=false
 [aws_glue_table]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#catalog:tab=tables
