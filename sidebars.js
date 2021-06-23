@@ -22,7 +22,8 @@ module.exports = {
         "playbook/querying-data-using-sql",
         "playbook/exporting-snapshot-to-landing-zone",
         "playbook/ingest-data-from-csv-files",
-        "workshop/aws_glue_studio_parking"
+        "workshop/aws_glue_studio_parking",
+        "playbook/scheduling-liberator-glue-jobs"
       ],
     },
     {
