@@ -28,18 +28,32 @@ transformed data in, say, the [refined zone][refined_zone] is based on the most 
 
 This is so that the job will update the tables in [AWS Athena][aws_athena] after it runs, without having to run a crawler.
 
-- Navigate to [Amazon Glue Triggers][aws_glue_triggers].
 
-- Select the trigger named `trigger-liberator-jobs` by checking the box.
+- Naviagte to [AWS Glue Workflows][aws_glue_workflows].
 
-- Click on "Action" to open the dropdown. Click on "Choose jobs to trigger".
+- Select the workflow called `dataplatform-{environment}-liberator-data-workflow`, a diagram should appear at the bottom.
 
-- Look for the job you just created in the "All Jobs" list on the left. Click "Add" next to your job, so that it moves to the "Jobs to start" list on the right.
+- There should be a trigger (diamond shaped) labeled `trigger-liberator-jobs`. If this trigger doesn't exist follow [these steps](##creating-a-trigger-to-start-liberator-glue-jobs) to create it.
 
-- Click "Choose jobs" at the bottom.
+- Click on the shape, then on the "Action" dropdown and select "Add jobs/crawlers to trigger".
+
+- Click on the "Jobs" tab. Find and select the job you just created.
+
+- Click "Add". Your job should appear in the diagram, connected to the trigger. 
 
 Your job is now scheduled to run when new liberator data is added to the landing zone.
 
+
+## Creating a trigger to start liberator glue jobs
+
+- Click on "Action" to display the dropdown and select "Add trigger".
+- Click on the "Add new" tab, put `trigger-liberator-jobs` in the Name field then click "Add'.
+A new diamond shape will appear in the diagram with a broken link symbol, this is the trigger you have just added and it now needs to be linked to the rest of the workflow.
+- Click on the shape, then on the "Action" dropdown and select "Add jobs/crawlers to watch".
+Click on the "Crawlers" tab. Select the crawler `dataplatform-{environmant}-landing-zone-liberator` from, then list then click "Add".
+- Continue following the instructions above.
+
+[aws_glue_workflows]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=workflows;workflowView=workflow-list
 [landing_zone]: ../zones.md#landing-zone
 [refined_zone]: ../zones.md#refined-zone
 [aws_glue_triggers]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=triggers
