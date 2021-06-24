@@ -50,7 +50,7 @@ Your job is now scheduled to run when new liberator data is added to the landing
 - Click on the "Add new" tab, put `trigger-liberator-jobs` in the Name field then click "Add'.
 A new diamond shape will appear in the diagram with a broken link symbol, this is the trigger you have just added and it now needs to be linked to the rest of the workflow.
 - Click on the shape, then on the "Action" dropdown and select "Add jobs/crawlers to watch".
-Click on the "Crawlers" tab. Select the crawler `dataplatform-{environmant}-landing-zone-liberator` from, then list then click "Add".
+Click on the "Crawlers" tab. Select the crawler `dataplatform-{environment}-landing-zone-liberator` from, then list then click "Add".
 - Continue following the instructions above.
 
 [aws_glue_workflows]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=workflows;workflowView=workflow-list
