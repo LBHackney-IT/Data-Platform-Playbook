@@ -11,7 +11,7 @@ status: "Accepted"
 
 The Data Platform is currently broken up into three separate accounts, Development, Staging, and Production.
 
-Production has been designed to run reporting, repeating etl process and provide a stable environment for staff to run Qlik
+Production has been designed to run reporting, repeating ETL process and provide a stable environment for staff to run Qlik
 or other BI tools against.
 
 Development has been designed for engineers to independently test out new features, functionality or
