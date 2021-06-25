@@ -17,22 +17,23 @@ Note: If a job has already been created manually you can select the job using th
 Note: The instructions below assume an S3 Data Source and Target Location.
 
 1. Log in to AWS Management Console.
-2. Select the **AWS Glue** service from the services menu (or search field).
-3. From the AWS Glue menu ETL section, select **AWS Glue Studio**.
-4. From the AWS Glue Studio main page, choose the **Create and manage jobs** option.
-5. Within the _Create Job_ section, select **Source and target added to the graph** and select desired Source and Target values.
-6. Click the **Create** button.
-7. In the Visual editor that is now displayed, click on the _Data Source - S3_ box and in the _Data source properties - S3_ tab to set _S3 source type_ to **S3 location** and set the _S3 URL_ for the source data.
-8. Also _Data Target - S3_ box and in the _Data target properties - S3_ tab set the _S3 URL_ for the data target, usually your department folder in the Data Platform account (you can add additional folders at this point for your new data within your department folder). **Data source and data target (amongst other operations) must be set to be able to save the job. You can also apply _Transformations_ specific to your job via the Visual tab. See the [AWS Glue Studio Documentation](https://docs.aws.amazon.com/glue/latest/ug/edit-nodes-chapter.html)**.
-9. To complete the set up you need to select the **Job details** tab.
-10. Complete the _Name_ and optional _Description_ fields. You may use this job as a template for repeat use, so a generic name to use as a template might be useful to begin with.
-11. Select **dataplatform-{environment}-glue-role**  where environment is either 'stg' or 'prod'; as the _IAM Role_ for the job.
-12. The remaining standard fields default values are usually fine to use. The programming language Glue Studio creates can be Scala or Python.
-13. In _Advanced properties_ check the _Script filename_ refers to the task being carried out.
-14. Set the _Script path_ to the central scripts S3 bucket: `s3://dataplatform-{environment}-glue-scripts/custom/` where environment is either 'stg' or 'prod' - you can create new folders or specify existing folders in the S3 bucket like this: `s3://dataplatform-{environment}-glue-scripts/custom/YOUR_FOLDER_NAME/`.
-15. In _Security configuration_ select the appropriate security configuration for your target bucket location (for example for the Raw Zone, use **glue-job-security-configuration-to-raw**).
-16. Ensure the _Server-side encryption_ option is **checked**.
-17. Add any further libraries or parameters you need in the _Advanced properties_ section.
+1. Select the **AWS Glue** service from the services menu (or search field).
+1. From the AWS Glue menu ETL section, select **AWS Glue Studio**.
+1. From the AWS Glue Studio main page, choose the **Create and manage jobs** option.
+1. Within the _Create Job_ section, select **Source and target added to the graph** and select desired Source and Target values.
+1. Click the **Create** button.
+1. In the Visual editor that is now displayed, click on the _Data Source - S3_ box and in the _Data source properties - S3_ tab to set _S3 source type_ to **S3 location** and set the _S3 URL_ for the source data.
+1. Also _Data Target - S3_ box and in the _Data target properties - S3_ tab set the _S3 URL_ for the data target, usually your department folder in the Data Platform account (you can add additional folders at this point for your new data within your department folder). **Data source and data target (amongst other operations) must be set to be able to save the job. You can also apply _Transformations_ specific to your job via the Visual tab. See the [AWS Glue Studio Documentation](https://docs.aws.amazon.com/glue/latest/ug/edit-nodes-chapter.html)**.
+1. To complete the set up you need to select the **Job details** tab.
+1. Complete the _Name_ and optional _Description_ fields. You may use this job as a template for repeat use, so a generic name to use as a template might be useful to begin with.
+1. Select **dataplatform-{environment}-glue-role**  where environment is either 'stg' or 'prod'; as the _IAM Role_ for the job.
+1. The remaining standard fields default values are usually fine to use. The programming language Glue Studio creates can be Scala or Python.
+1. In _Advanced properties_ check the _Script filename_ refers to the task being carried out.
+1. Set the _Script path_ to the central scripts S3 bucket: `s3://dataplatform-{environment}-glue-scripts/custom/` where environment is either 'stg' or 'prod' - you can create new folders or specify existing folders in the S3 bucket like this: `s3://dataplatform-{environment}-glue-scripts/custom/YOUR_FOLDER_NAME/`.
+1. Set the _Temporary path_ to the central temp storage S3 bucket: `s3://dataplatform-{environment}-glue-temp-storage/` where environment is either 'stg' or 'prod'.
+1. In _Security configuration_ select the appropriate security configuration for your target bucket location (for example for the Raw Zone, use **glue-job-security-configuration-to-raw**).
+1. Ensure the _Server-side encryption_ option is **checked**.
+1. Add any further libraries or parameters you need in the _Advanced properties_ section.
 
 ### Note: Exporting Data
 When exporting data from your Glue Job it is important that you follow the Data Platforms partitioning stratagy. To do this, exports must be exported with the partitions import_year, import_month, & import_day at a minimum. To accomplish this using AWS Glue Studio use the `Add a partition` key option at the bottom of the Data target node. It is important to further note, that inorder to add these attributes as partitions, they must exist within the dataset as fields.
