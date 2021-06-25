@@ -19,8 +19,11 @@ module.exports = {
       items: [
         "playbook/google-sheets-import",
         "playbook/using-glue-studio",
+        "playbook/querying-data-using-sql",
         "playbook/exporting-snapshot-to-landing-zone",
-        "playbook/ingest-data-from-csv-files"
+        "playbook/ingest-data-from-csv-files",
+        "workshop/aws_glue_studio_parking",
+        "playbook/scheduling-liberator-glue-jobs"
       ],
     },
     {
@@ -43,7 +46,8 @@ module.exports = {
             "architecture-decisions/0004-partition-strategy",
             "architecture-decisions/0005-recovered-data",
             "architecture-decisions/0006-ingest-sql-flat-files",
-            "architecture-decisions/0007-production-data-in-staging"
+            "architecture-decisions/0007-sftp-to-s3-lambda",
+            "architecture-decisions/0008-production-data-in-staging"
           ],
         },
       ],

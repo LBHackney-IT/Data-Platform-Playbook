@@ -22,12 +22,13 @@ tags: playbook
 ## Getting Google sheet detail
 
 - You will need to obtain the document key from the url
-- The document id is the portion of the url between ``https://docs.google.com/spreadsheets/d/`` and ``/edit#gid=0``. See example below<br />
+- The document id is the portion of the url between ``https://docs.google.com/spreadsheets/d/`` and ``/edit#gid=0``. See example below
+  
+  ![Google sheet id](./images/google_spreadsheet_id_example.png)
 
 - You will also need to obtain the worksheet name that you wish to have imported
-- The worksheet name is located at the bottom left of the screen and unless it has been changed or other worksheets added, it will be called `Sheet1`. See example below
-  (screenshot)
-- If you would like multiple sheets imported, provide each worksheet name
+- The worksheet name is located at the bottom left of the screen and unless it has been changed or other worksheets added, it will be called `Sheet1`
+- To import multiple worksheets from the same Google sheet, repeat the instructions in the below section for each worksheet
 
 ## Setting up AWS Glue job
 - Before setting up an AWS Glue job, ensure that the relevant department configuration for that account is set up in AWS
@@ -40,7 +41,7 @@ tags: playbook
   - `module` = "your-unique-module-name" (it is helpful to keep the same naming convention as your dataset/folder)
   - `glue_job_name` = "Your AWS Glue job name" (this is what you'll see in the Glue console)
   - `google_sheets_document_id` = "Your document id - see the `Getting Google sheet detail` section above"
-  - `google_sheets_worksheet_name` = "The name of your worksheet - see the `Getting Google sheet detail` section above" [if you want multiple sheets do you add them all here or do you need a separate module for each?]
+  - `google_sheets_worksheet_name` = "The name of your worksheet - see the `Getting Google sheet detail` section above" 
   - `department_folder_name` = "The name of the department folder you would like to store in e.g. `housing`, `social-care`" (if this folder doesn't already exist in S3 you can name it here and this script will create it)
   - `output_folder_name` = "The name of the folder you would like to store in under the department e.g. `housing-repair`" (if this folder doesn't already exist in S3 you can name it here and this script will create it)
 

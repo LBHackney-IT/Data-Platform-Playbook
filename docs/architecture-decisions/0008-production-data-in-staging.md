@@ -2,8 +2,8 @@
 title: "production-data-in-staging"
 description: ""
 tags: adr
-number: "7"
-date-issued: "2021-05-27"
+number: "8"
+date-issued: "2021-06-25"
 status: "Accepted"
 ---
 
@@ -11,17 +11,17 @@ status: "Accepted"
 
 The Data Platform is currently broken up into three separate accounts, Development, Staging, and Production.
 
-Production is designed to run reporting, repeating etl process and provide a stable environment for staff to run Qlik
+Production has been designed to run reporting, repeating etl process and provide a stable environment for staff to run Qlik
 or other BI tools against.
 
-Development is designed to be used by the engineers to independently test out new features, functionality or
+Development has been designed for engineers to independently test out new features, functionality or
 infrastructure relating to the platform.
 
-Staging, a term normally used to refer to a mirror, clone or close approximation of the Production environment is
-normally used test out changes intended on being placed in Production.
+Staging, a term normally used to refer to a mirror, clone or close approximation of the Production environment which is
+normally used to test out changes intended on being placed in Production.
 
 Analysts/Engineers require a place to build, modify and test new or existing ETL process in an environment that will not
-have an impact on the production environment.
+have an impact on the Production environment.
 
 The data that the Analysts/Engineers will need to use in order to develop these process will need to have the same
 schema structure and underlying data structure as the production data. Generating such data as "dummy data" would be
