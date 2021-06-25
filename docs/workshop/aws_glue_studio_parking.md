@@ -131,7 +131,8 @@ We will first create a new AWS Glue Studio job by following a modified version o
   1. In "Table name" write `NAME_parking_permit_renewals`.
   1. Under the parition keys, add in the following order: `import_year`, `import_month`, `import_day`.
 
-* For the __Name__ of the Job, specify `NAME_GlueStudioWorkshop`
+* For the __Name__ of the job, specify `NAME_GlueStudioWorkshop`
+* For the __IAM Role__ of the job, specify `dataplatform-stg-parking-glue`
 * For the "Number of retries" under "Job details" specify 0.
 * For the "Security configuration" select "dataplatform-stg-config-to-refined".
 
