@@ -47,6 +47,7 @@ module.exports = {
             "architecture-decisions/0005-recovered-data",
             "architecture-decisions/0006-ingest-sql-flat-files",
             "architecture-decisions/0007-sftp-to-s3-lambda",
+            "architecture-decisions/0008-production-data-in-staging"
           ],
         },
       ],
