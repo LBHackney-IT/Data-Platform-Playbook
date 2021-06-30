@@ -23,7 +23,8 @@ module.exports = {
         "playbook/exporting-snapshot-to-landing-zone",
         "playbook/ingest-data-from-csv-files",
         "workshop/aws_glue_studio_parking",
-        "playbook/scheduling-liberator-glue-jobs"
+        "playbook/scheduling-liberator-glue-jobs",
+        "playbook/connecting-to-redshift-from-data-studio"
       ],
     },
     {
