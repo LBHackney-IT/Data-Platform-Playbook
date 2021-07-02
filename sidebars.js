@@ -1,3 +1,14 @@
+const fs = require('fs');
+const path = require('path');
+
+const getItems = (folder) =>{
+  return fs.readdirSync(`./docs/${folder}/`).filter((f)=>{
+    return f.includes(".md")
+  }).map(file => {
+      return `${folder}/${file.split(".")[0]}`
+    })
+}
+
 module.exports = {
   docs: [
     "release-notes",
@@ -16,21 +27,12 @@ module.exports = {
     {
       type: "category",
       label: "Playbook",
-      items: [
-        "playbook/google-sheets-import",
-        "playbook/using-glue-studio",
-        "playbook/querying-data-using-sql",
-        "playbook/exporting-snapshot-to-landing-zone",
-        "playbook/ingest-data-from-csv-files",
-        "workshop/aws_glue_studio_parking",
-        "playbook/scheduling-liberator-glue-jobs",
-        "playbook/connecting-to-redshift-from-data-studio"
-      ],
+      items: getItems("playbook"),
     },
     {
       type: "category",
       label: "Technical Documentation",
-      items: ["docs/exporting-snapshot-to-landing-zone"],
+      items: getItems("docs"),
     },
     {
       type: "category",
@@ -40,16 +42,7 @@ module.exports = {
         {
           type: "category",
           label: "Records",
-          items: [
-            "architecture-decisions/0001-record-architecture-decisions",
-            "architecture-decisions/0002-ingest-google-sheets-data",
-            "architecture-decisions/0003-role-based-access-control",
-            "architecture-decisions/0004-partition-strategy",
-            "architecture-decisions/0005-recovered-data",
-            "architecture-decisions/0006-ingest-sql-flat-files",
-            "architecture-decisions/0007-sftp-to-s3-lambda",
-            "architecture-decisions/0008-production-data-in-staging"
-          ],
+          items: getItems("architecture-decisions"),
         },
       ],
     },
