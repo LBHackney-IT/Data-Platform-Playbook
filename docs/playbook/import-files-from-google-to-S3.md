@@ -32,8 +32,8 @@ tags: playbook
 - Open the [Data Platform Project](https://github.com/LBHackney-IT/data-platform). You'll need to have a Github account (which you can create yourself using your Hackney email) and have been added to the 'LBHackney-IT' team to view this project (you'll need to request this from Rashmi Shetty). If you don't have the correct permissions, you'll get a '404' error.
 - Navigate to the main `terraform` directory (data-platform/terraform)
 - Open the `65-g-drive-to-s3` terraform file
-- Copy one of the modules above and paste at the bottom of the file
-- Switch to 'edit mode' (using edit button on top right) and update the following fields:
+- Switch to 'edit mode' (using edit button on top right) 
+- Copy one of the modules above, paste at the bottom of the file and update the following fields:
 
   - `module` = "your-unique-module-name" (it is helpful to keep the same naming convention as your dataset/folder)
   - `lambda_name` = "Your lambda name" (this is what you'll see in the Glue console, can be the same as your module name)
