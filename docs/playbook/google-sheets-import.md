@@ -39,7 +39,7 @@ tags: playbook
 - Switch to 'edit mode' (using edit button on top right) 
 - Copy one of the modules above, paste at the bottom of the file and update the following fields:
   - `module` = "your-unique-module-name" (it is helpful to keep the same naming convention as your dataset/folder)
-  - `glue_job_name` = "Your AWS Glue job name" (this is what you'll see in the Glue console)
+  - `glue_job_name` = "Your AWS Glue job name" (this is what you'll see in the Glue console, please avoid using slashes `/`)
   - `google_sheets_document_id` = "Your document id - see the `Getting Google sheet detail` section above"
   - `google_sheets_worksheet_name` = "The name of your worksheet - see the `Getting Google sheet detail` section above" 
   - `department_folder_name` = "The name of the department folder you would like to store in e.g. `housing`, `social-care`" (if this folder doesn't already exist in S3 you can name it here and this script will create it)
