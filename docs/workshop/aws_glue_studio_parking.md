@@ -76,6 +76,7 @@ Keep a copy of the query you create somewhere safe, for the next part of this gu
       <th>import_year</th>
       <th>import_month</th>
       <th>import_day</th>
+      <th>import_date</th>
     </tr>
   </thead>
   <tbody>
@@ -100,9 +101,9 @@ SELECT
       MAX(DATE_PARSE(NULLIF(renewal_end_date, ''), '%Y-%m-%d %H:%i:%S')) AS last_end_date,
       MIN(DATE_PARSE(NULLIF(renewal_start_date, ''), '%Y-%m-%d %H:%i:%S')) AS earliest_start_date,
       COUNT(*) AS number_of_renewals,
-      import_year, import_month, import_day
+      import_year, import_month, import_day, import_date
 FROM "dataplatform-stg-liberator-landing-zone"."liberator_permit_renewals"
-GROUP BY permit_reference, import_year, import_month, import_day
+GROUP BY permit_reference, import_year, import_month, import_day, import_date
 ```
 </details>
 
@@ -129,7 +130,7 @@ We will first create a new AWS Glue Studio job by following a modified version o
   1. For "Data Catalog update options" select "Create a table in the Data Catalog and on subsequent runs, update the schema and add new partitions".
   1. For "Database" select "dataplatform-stg-liberator-refined-zone" from the dropdown.
   1. In "Table name" write `NAME_parking_permit_renewals`.
-  1. Under the parition keys, add in the following order: `import_year`, `import_month`, `import_day`.
+  1. Under the parition keys, add in the following order: `import_year`, `import_month`, `import_day`, `import_date`.
 
 * For the __Name__ of the job, specify `NAME_GlueStudioWorkshop`
 * For the __IAM Role__ of the job, specify `dataplatform-stg-parking-glue`
