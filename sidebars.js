@@ -27,7 +27,7 @@ module.exports = {
     {
       type: "category",
       label: "Playbook",
-      items: getItems("playbook"),
+      items: [...getItems("playbook"), ...getItems("workshop")],
     },
     {
       type: "category",
