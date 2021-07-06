@@ -33,9 +33,10 @@ This is so that the job will update the tables in [AWS Athena][aws_athena] after
 
 - Select the workflow called `parking-liberator-data-workflow`, a diagram should appear at the bottom.
 
-- There should be a trigger (diamond shaped) labeled `trigger-liberator-jobs`. If this trigger doesn't exist follow [these steps](##creating-a-trigger-to-start-liberator-glue-jobs) to create it.
+- There should be a trigger (diamond shaped) labeled `trigger-liberator-jobs`.
+  If this trigger doesn't exist follow [these steps](#creating-a-trigger-to-start-liberator-glue-jobs) to create it.
 
-- Click on the shape, then on the "Action" dropdown and select "Add jobs/crawlers to trigger".
+- Click on the trigger shape, then on the "Action" dropdown and select "Add jobs/crawlers to trigger".
 
 - Click on the "Jobs" tab. Find and select the job you just created.
 
