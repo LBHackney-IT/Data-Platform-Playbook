@@ -62,7 +62,8 @@ tags: playbook
           └── import_year=<year>/
               └── import_month=<month>/
                   └── import_day=<day>/
-                      └── part-xxxxx-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.xxxx.snappy.parquet
+                      └── import_date=<YYYYMMDD>
+                          └── part-xxxxx-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.xxxx.snappy.parquet
   ```
 
 :::info
@@ -84,7 +85,7 @@ Next we'll confirm the data has been imported correctly by crawling the data wit
   Check the "Last runtime" of previous jobs to get an idea of how long you might have to wait.
 
 - Once crawled, there will be a newly created table within the database which you can access in [Athena][aws_athena_console] as
-  `dataplatform-stg-raw-zone-<department>-manual-uploads-database`.
+  `<department>-raw-zone`.
   You should see a table eg. "cake\_designs" with the column names as per the CSV header.
   You should also see various "import\_..." columns at the end some of which are marked (Partitioned).
   You can then view the newly imported tables under the tables tab.
