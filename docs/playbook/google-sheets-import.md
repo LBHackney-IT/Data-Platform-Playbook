@@ -10,21 +10,28 @@ tags: playbook
 - You have been added to the 'LBHackney-IT' team, you can request this from Rashmi Shetty.
 - You have a service account email address listed below.
 
+### Department Specific Information
 <table>
   <thead>
     <tr>
       <th>Department</th>
       <th>Service account email</th>
+      <th>Sheets credentials name</th>
+      <th>Glue role arn</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>Parking</td>
       <td>parking@dataplatform-stg.iam.gserviceaccount.com</td>
+      <td>module.department_parking.google_service_account.credentials_secret.name</td>
+      <td>aws_iam_role.parking_glue.arn</td>
     </tr>
     <tr>
       <td>Housing repairs</td>
       <td>housing-repairs@dataplatform-stg.iam.gserviceaccount.com</td>
+      <td>aws_secretsmanager_secret.sheets_credentials_housing.name</td>
+      <td>aws_iam_role.glue_role.arn</td>
     </tr>
   </tbody>
 </table>
@@ -58,7 +65,9 @@ tags: playbook
 - Switch to 'edit mode' (using edit button on top right)
 - Copy one of the modules above, paste at the bottom of the file and update the following fields:
   - `module` = "your-unique-module-name" (it is helpful to keep the same naming convention as your dataset/folder)
-  - `glue_job_name` = "Your AWS Glue job name" (this is what you'll see in the Glue console, please avoid using slashes `/`)
+  - `glue_role_arn` = Find the value for your department in [the table above](#department_specific_information)
+  - `glue_catalog_database_name` = module.department_\<department-name\>.raw_zone_catalog_database_name (e.g. module.department_parking.raw_zone_catalog_database_name)
+  - `sheets_credentials_name` = Find the value for your department in [the table above](#department_specific_information)
   - `google_sheets_document_id` = "Your document id - see the `Getting Google sheet detail` section above"
   - `google_sheets_worksheet_name` = "The name of your worksheet - see the `Getting Google sheet detail` section above"
   - `department_name` = "The name of the department folder you would like to store in e.g. `housing`, `social-care`"
@@ -74,8 +83,8 @@ tags: playbook
 - Committing your changes: The Data Platform team needs to approve any changes to the code, so your change won't happen automatically. To submit your change:
   - Provide a description to explain what you've changed
   - Select the option to create a `new branch` for this commit (i.e. the code you've changed). You can just use the suggested name for your branch.
-  - Once you click 'Propose changes' you'll have the opportunity to add even more detail if needed before submitted for review.
-  - You'll receive an email to confirm that your changes have been approved.
+  - Once you click 'Propose changes' you'll have the opportunity to add even more detail if needed before submitted for review. Once finished adding details, click "Create pull request".
+  - You'll receive an email to confirm that your changes have been approved & then merged. After it has been merged into the main code base the job will run at the next scheduled time.
 
 [aws_cron_expressions]: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions
 [github_signup]: https://github.com/signup
