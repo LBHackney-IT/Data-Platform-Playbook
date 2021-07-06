@@ -10,7 +10,7 @@ tags: playbook
 This guide will step you through how to schedule a glue job, from the AWS console, that runs on the liberator data in the [landing zone][landing_zone].
 
 Scheduling your glue job will mean that it will run whenever new liberator data is added in the data platform so that your
-transformed data in, say, the [refined zone][refined_zone] is based on the most up to date data, with no manual intervention. 
+transformed data in, say, the [refined zone][refined_zone] is based on the most up to date data, with no manual intervention.
 
 ## Prerequisites
 
@@ -31,7 +31,7 @@ This is so that the job will update the tables in [AWS Athena][aws_athena] after
 
 - Naviagte to [AWS Glue Workflows][aws_glue_workflows].
 
-- Select the workflow called `dataplatform-{environment}-liberator-data-workflow`, a diagram should appear at the bottom.
+- Select the workflow called `parking-liberator-data-workflow`, a diagram should appear at the bottom.
 
 - There should be a trigger (diamond shaped) labeled `trigger-liberator-jobs`. If this trigger doesn't exist follow [these steps](##creating-a-trigger-to-start-liberator-glue-jobs) to create it.
 
@@ -39,7 +39,7 @@ This is so that the job will update the tables in [AWS Athena][aws_athena] after
 
 - Click on the "Jobs" tab. Find and select the job you just created.
 
-- Click "Add". Your job should appear in the diagram, connected to the trigger. 
+- Click "Add". Your job should appear in the diagram, connected to the trigger.
 
 Your job is now scheduled to run when new liberator data is added to the landing zone.
 
