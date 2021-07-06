@@ -68,7 +68,6 @@ tags: playbook
   - `glue_role_arn` = Find the value for your department in [the table above](#department_specific_information)
   - `glue_catalog_database_name` = module.department_\<department-name\>.raw_zone_catalog_database_name (e.g. module.department_parking.raw_zone_catalog_database_name)
   - `sheets_credentials_name` = Find the value for your department in [the table above](#department_specific_information)
-  - `glue_job_name` = "Your AWS Glue job name" (this is what you'll see in the Glue console, please avoid using slashes `/`)
   - `google_sheets_document_id` = "Your document id - see the `Getting Google sheet detail` section above"
   - `google_sheets_worksheet_name` = "The name of your worksheet - see the `Getting Google sheet detail` section above"
   - `department_name` = "The name of the department folder you would like to store in e.g. `housing`, `social-care`"
