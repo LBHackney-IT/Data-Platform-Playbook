@@ -6,7 +6,7 @@ tags: playbook
 ---
 
 This section covers the technical overview of uploading data into the data
-platform from a db instance in AWS. For step by step instructions on how to do
+platform from an xlsx spreadsheet stored in Google drive. For step by step instructions on how to do
 this, refer to [Import XLXS from G Drive](../playbook/import-xlsx-from-g-drive)
 guide.
 
