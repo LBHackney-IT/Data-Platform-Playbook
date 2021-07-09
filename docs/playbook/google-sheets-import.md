@@ -65,20 +65,23 @@ tags: playbook
 - Switch to 'edit mode' (using edit button on top right)
 - Copy one of the modules above, paste at the bottom of the file and update the following fields:
   - `module` = "your-unique-module-name" (it is helpful to keep the same naming convention as your dataset/folder)
-  - `glue_role_arn` = Find the value for your department in [the table above](#department_specific_information)
+  - `glue_role_arn` = Find the value for your department in [the table above](#department-specific-information)
   - `glue_catalog_database_name` = module.department_\<department-name\>.raw_zone_catalog_database_name (e.g. module.department_parking.raw_zone_catalog_database_name)
-  - `sheets_credentials_name` = Find the value for your department in [the table above](#department_specific_information)
+  - `sheets_credentials_name` = Find the value for your department in [the table above](#department-specific-information)
   - `google_sheets_document_id` = "Your document id - see the `Getting Google sheet detail` section above"
   - `google_sheets_worksheet_name` = "The name of your worksheet - see the `Getting Google sheet detail` section above"
   - `department_name` = "The name of the department folder you would like to store in e.g. `housing`, `social-care`"
   - `dataset_name` = "The name of the dataset as you'd like it to appear within the data platform e.g. `housing-repair`"
 
 
-- _Optional: update the time schedule for the import job to run_
-  - By default, the import job will run every weekday at 11pm which is set using Cron time format if 'enable_glue_trigger' is not specified (i.e. there's no line for this in your module) or it's set to 'true'. If this is set to 'false' then your job will not run automatically on a schedule, and will have to be run manually within AWS.
-  - To create a new Cron expression follow the guidance provided by the [AWS Cron Expression documentation][aws_cron_expressions].
+- _Optional: stop your google sheet from importing automatically_
+  - The import job will run every weekday at 11pm if 'enable_glue_trigger' is not specified (i.e. there's no line for this in your module) or it's set to 'true'. If this is set to 'false' then your job will not run automatically on a schedule, and will have to be run manually within AWS.
+  See the section [Running the import manually](#running-the-import-manually) for instructions on how to do this.
+
+- _Optional: update the time schedule for the google sheets import_
+  - If a value for `google_sheet_import_schedule` is not provided, the import will run at 11pm on weekdays.
   - To override and set a new time schedule, add a new row to the respective module with the new Cron time: e.g. `google_sheet_import_schedule = "cron(0 23 ? * 1-5 *)"`
-  - Note you cannot make a change to the cron schedule at the same time as setting `enable_glue_trigger` to false
+  - To create a new Cron expression follow the guidance provided by the [AWS Cron Expression documentation][aws_cron_expressions].
 
 - Committing your changes: The Data Platform team needs to approve any changes to the code, so your change won't happen automatically. To submit your change:
   - Provide a description to explain what you've changed
@@ -86,5 +89,12 @@ tags: playbook
   - Once you click 'Propose changes' you'll have the opportunity to add even more detail if needed before submitted for review. Once finished adding details, click "Create pull request".
   - You'll receive an email to confirm that your changes have been approved & then merged. After it has been merged into the main code base the job will run at the next scheduled time.
 
+### Running the import manually
+
+Once you have been notified that your pull request has been merged, you can run the import manually from the AWS console or wait until the scheduled time (if you set one).
+
+You can do this by navigating to [AWS glue workflows][aws_glue_workflow], selecting the workflow named `<department_name>-<dataset_name>`, clicking the "Actions" dropdown and then "Run".
+
 [aws_cron_expressions]: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions
 [github_signup]: https://github.com/signup
+[aws_glue_workflow]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=workflows
