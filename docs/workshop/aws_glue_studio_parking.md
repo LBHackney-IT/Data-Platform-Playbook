@@ -7,7 +7,7 @@ layout: layout
 
 ## Prerequisities
 
-* Have access to the Parking Liberator Landing zone.
+* Have access to the Parking Liberator Raw zone.
 * Have experience with writing SQL queries in [AWS Athena][aws_athena] already.
 * Have experience running AWS Glue Crawlers.
 
@@ -55,7 +55,7 @@ Create an SQL query for [AWS Athena][aws_athena_console] which extracts, and agg
 a resultset with the below format.
 
 The data platform provides source data within the table
-  `"dataplatform-stg-liberator-landing-zone"."liberator_permit_renewals"`.
+  `"dataplatform-stg-liberator-raw-zone"."liberator_permit_renewals"`.
 
 You will want to convert VARCHAR columns to [appropriate AWS Athena data types][athena_data_types].
 Specifically, the time columns should have a TIMESTAMP type.
@@ -102,7 +102,7 @@ SELECT
       MIN(DATE_PARSE(NULLIF(renewal_start_date, ''), '%Y-%m-%d %H:%i:%S')) AS earliest_start_date,
       COUNT(*) AS number_of_renewals,
       import_year, import_month, import_day, import_date
-FROM "dataplatform-stg-liberator-landing-zone"."liberator_permit_renewals"
+FROM "dataplatform-stg-liberator-raw-zone"."liberator_permit_renewals"
 GROUP BY permit_reference, import_year, import_month, import_day, import_date
 ```
 </details>
@@ -111,7 +111,7 @@ GROUP BY permit_reference, import_year, import_month, import_day, import_date
 ## Moving your query to AWS Glue Studio
 
 Once you have written, and seen a successful execution of your query in AWS Athena, we can move onto
-creating an AWS Glue Job which will transform and copy the `dataplatform-stg-landing-zone` data
+creating an AWS Glue Job which will transform and copy the `dataplatform-stg-raw-zone` data
 into the `dataplatform-stg-refined-zone`.
 
 Turning our first query into a Glue Job which transforms the data into a new dataset, will allow us
@@ -122,7 +122,7 @@ We will first create a new AWS Glue Studio job by following a modified version o
 * For the environment, we'll be using `stg`.
 * For the __Data source__ node, we'll select __Data catalogue table__ for "S3 source type"
   under the "Data source properties" tab.
-  Then choosing `dataplatform-stg-liberator-landing-zone` and `liberator_permit_renewals`
+  Then choosing `dataplatform-stg-liberator-raw-zone` and `liberator_permit_renewals`
   for Database and Table respectively.
 * For the __Data target__ node:
   1. Set the Format to "Glue Parquet"
@@ -157,7 +157,7 @@ our SQL created above.
    The Spark SQL executor will only accept a single SQL query, and that query mustn't have
    a trailing semicolon.
 1. Change the value of "Spark SQL aliases" to `liberator_permit_renewals`, and remove any usage of a
-   database prefix `dataplatform-stg-liberator-landing-zone` from the SQL query inside of the "Code Block".
+   database prefix `dataplatform-stg-liberator-raw-zone` from the SQL query inside of the "Code Block".
    If your query joined multiple tables, each table would need a distinct "Data Source" linked
    to the "Spark SQL" node.
 1. Click the __Save__ button, followed by the __Run__ button.
