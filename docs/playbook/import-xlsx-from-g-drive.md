@@ -43,7 +43,7 @@ tags: playbook
   - `department_folder_name` = "Name of the department this data belongs to"
   - `output_folder_name` = "Name of the folder where this data will be exported to"
   - `input_file_name` = "The name of the file you are importing from"
-  - `worksheets` = Each worksheet that needs to be imported should be listed out in a map containing the header row number and the name of your worksheet - see the `Getting spreadsheet detail` section above. The worksheet name needs to match exactly (including any spaces or punctuation), so you may want to copy and paste the name directly from your worksheet. If you need to add more sheets, you can copy and paste this section and continue numbering (e.g. sheet3, sheet4 etc). Remove any worksheet sections you don't need.
+  - `worksheets` = Each worksheet that needs to be imported should be listed out in a map containing the header row number and the name of your worksheet - see the `Getting spreadsheet detail` section above. The worksheet name needs to match exactly (including any spaces or punctuation, but excluding any slashes `/`), so you may want to copy and paste the name directly from your worksheet. If you need to add more sheets, you can copy and paste this section and continue numbering (e.g. sheet3, sheet4 etc). Remove any worksheet sections you don't need.
 
 - Committing your changes: The Data Platform team needs to approve any changes to the code, so your change won't happen automatically. To submit your change:
   - Provide a description to explain what you've changed
