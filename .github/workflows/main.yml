@@ -17,8 +17,12 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install yarn
         run: npm install yarn -g
+      - name: Install PlantUML
+        run: sudo apt-get install plantuml
       - name: Install Packages
         run: yarn install
+      - name: Build diagrams
+        run: make -C diagrams
       - name: Build page
         run: yarn run build
       - name: Deploy to gh-pages
