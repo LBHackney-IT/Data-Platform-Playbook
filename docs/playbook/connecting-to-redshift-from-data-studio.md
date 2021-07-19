@@ -54,6 +54,6 @@ Then, when adding a data source in [Google Data Studio][google_data_studio]
 [client_private_key]: https://dataplatform-stg-ssl-connection-resources.s3.eu-west-2.amazonaws.com/client_private_key.key
 [server_certificate]: https://s3.amazonaws.com/redshift-downloads/redshift-ca-bundle.crt
 [aws_sso_link]: https://hackney.awsapps.com/start/#/
-[parking_user_secret_staging]: https://eu-west-2.console.aws.amazon.com/secretsmanager/home?region=eu-west-2#!/secret?name=dataplatform-stg-parking%2Fredshift-cluster-parking-user
+[parking_user_secret_staging]: https://eu-west-2.console.aws.amazon.com/secretsmanager/home?region=eu-west-2#!/secret?name=dataplatform-stg%2Fparking%2Fredshift-cluster-user
 [google_data_studio]: https://datastudio.google.com/u/0/datasources/create/
 [aws_athena]: https://eu-west-2.console.aws.amazon.com/athena/home?region=eu-west-2#query
