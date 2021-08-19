@@ -46,6 +46,11 @@ module.exports = {
         },
       ],
     },
+    {
+      type: "category",
+      label: "Spikes",
+      items: getItems("spikes"),
+    },
     //   {
     //     type: 'category',
     //     label: 'Principles',
