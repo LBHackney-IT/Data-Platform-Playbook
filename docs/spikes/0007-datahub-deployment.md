@@ -34,14 +34,18 @@ Can enable OIDC SSO in React application (datahub frontend). This was not invest
 
 ### Role Based Access Control
 
-#### Limitation
+*Limitation:* Not reviewed as part of the spike, ran out of time.
 
-- Not using datahub CLI with the deployment process specified above
+## Summary
+
+#### Limitations
+
+- Could not get DataHub CLI with the deployment process specified above to work
 - Must ensure a process for constantly re-cloning the repo for updates
 - Datahub has various dependencies
 - There are no obvious solutions for notifications or alerts
 
-#### Suggestion
+#### Suggestions
 
 - Investigate datahub SAAS as an option
 
