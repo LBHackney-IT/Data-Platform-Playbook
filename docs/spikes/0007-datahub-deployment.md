@@ -30,7 +30,11 @@ Finally, we got deployed datahub by [provisioning an ec2 instance](https://gist.
 
 ### SSO
 
-Can enable OIDC SSO in React application (datahub frontend). This was not investigated in this spike due to lack of time. Dathub does not have (or have removed) the documentation for this.
+You can [enable OIDC SSO][datahub-oidc-sso] in React application (datahub frontend).
+
+This was not investigated in this spike due to lack of time.
+
+[datahub-oidc-sso]: https://datahubproject.io/docs/how/auth/sso/configure-oidc-react/
 
 ### Role Based Access Control
 
