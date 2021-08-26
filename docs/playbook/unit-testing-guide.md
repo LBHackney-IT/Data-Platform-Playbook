@@ -19,7 +19,7 @@ The most valuable code to test is the code which is subject to change,
 and has some complicated behaviour.  We recommend that when writing PySpark 
 code which isn’t exceedingly simple that you write some tests alongside that production code.
 
-HackneyIT have produced [a video describing unit testing principles for C#][unit_testing_principles] 
+HackIT have produced [a video describing unit testing principles for C#][unit_testing_principles] 
 which are transferable to Spark scripts.
 
 ## Organising your code so it can be tested
@@ -46,12 +46,12 @@ Test files should be named with "test" at the beginning of the file. For example
 - Define a function within `script_name.py`, which takes in the input DataFrame(s), and returns the DataFrame to be written.
 - Within your `test_script_name.py` start creating tests, using the `test_address_cleaning.py` as template. Test method names should start with a "test" in their name, otherwise the tests won’t be run. 
 Ensure the name clearly describes what is being tested. 
-For example, if you are testing the behaviour of adding a unique id column, then a suitable name may be along the lines of `test_creates_unique_id_colum`.
+For example, if you are testing the behaviour of adding a unique id column, then a suitable name may be along the lines of `test_creates_unique_id_column`.
 
 
 We use the following things to help write and run tests against pyspark scripts.
 
-- The testing framework that we use for the glue scripts is called  [Pytest][pytest].
+- The testing framework that we use for the glue scripts is called [Pytest][pytest].
 - [Unittest][unittest], is a testing framework like pytest, that has some helpful features that we use in some of the tests.
 - Docker is used to run the tests locally. 
   We use a [docker image provided by amazon][aws_docker_docs] that helps us replicate the environment that our glue jobs are run in. 
