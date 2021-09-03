@@ -37,17 +37,22 @@ that code from being run within the testing environment.
 
 ## Writing your own tests
 
-Ensure that you run the tests and that they are all passing before writing your own tests. 
-See [README.md][readme] for instructions on how to do this.
-
+- Ensure that you run the tests and that they are all passing before writing your own tests. 
+See [README.md][readme] for instructions on how to do this
 - The tests are stored in the scripts folder of the project alongside the glue scripts themselves. 
 Start by creating your own glue job script as usual, `script_name.py`, and also a test file `test_script_name.py`.  
-Test files should be named with "test" at the beginning of the file. For example, `test_cleaning_script.py`
+Test files should be named with "test" at the beginning of the file. For example, `test_cleaning_script.py`.
+  - You will need to organise your script according to the [Organising your code so it can be tested](#organising-your-code-so-it-can-be-tested) above
 - Define a function within `script_name.py`, which takes in the input DataFrame(s), and returns the DataFrame to be written.
-- Within your `test_script_name.py` start creating tests, using the `test_address_cleaning.py` as template. Test method names should start with a "test" in their name, otherwise the tests won’t be run. 
-Ensure the name clearly describes what is being tested. 
-For example, if you are testing the behaviour of adding a unique id column, then a suitable name may be along the lines of `test_creates_unique_id_column`.
-
+- Within your `test_script_name.py` start creating tests. 
+  You can use the [test_spark_example][test_spark_example] as a template and [address cleaning][address_cleaning] as an example of a fully tested script. 
+  Test method names should start with a "test" in their name, otherwise the tests won’t be run. 
+  Ensure the name clearly describes what is being tested. 
+  For example, if you are testing the behaviour of adding a unique id column, then a suitable name may be along the lines of `test_creates_unique_id_column`.
+- There are some helper functions in `unit_testing_helpers.py` which you can use in your tests. 
+  If you do decide to use these functions, ensure you import them at the top of your test file.
+- If your script is using a logger, you will need to pass it into your testable method. 
+  See the `clean_addresses` function in the `test_address_cleaning.py` for an example of how you can do this. 
 
 We use the following things to help write and run tests against pyspark scripts.
 
@@ -58,6 +63,7 @@ We use the following things to help write and run tests against pyspark scripts.
   It also has pyspark and pytest installed to allow us to easily run the tests. You will need [docker installed][docker] to run tests locally.
 
 [address_cleaning]: https://github.com/LBHackney-IT/Data-Platform/blob/2e4a89e280c326576a976b4f28c9b7faaa691ea4/scripts/address_cleaning.py#L16-L99
+[test_spark_example]: https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/test_spark_example.py
 [tests_example]: https://github.com/LBHackney-IT/Data-Platform/blob/2e4a89e280c326576a976b4f28c9b7faaa691ea4/scripts/test_address_cleaning.py#L7-L15
 [main_script_example]: https://github.com/LBHackney-IT/Data-Platform/blob/2e4a89e280c326576a976b4f28c9b7faaa691ea4/scripts/address_cleaning.py#L103-L140
 [unittest]: https://docs.python.org/3/library/unittest.html
