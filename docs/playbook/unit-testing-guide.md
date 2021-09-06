@@ -16,7 +16,7 @@ Historically, unit testing practices have helped:
   of breaking existing functionality
 
 The most valuable code to test is the code which is subject to change, 
-and has some complicated behaviour.  We recommend that when writing PySpark 
+and has some complicated behaviour. We recommend that when writing PySpark 
 code which isn’t exceedingly simple that you write some tests alongside that production code.
 
 HackIT have produced [a video describing unit testing principles for C#][unit_testing_principles] 
@@ -57,6 +57,14 @@ We use the following things to help write and run tests against pyspark scripts.
   We use a [docker image provided by amazon][aws_docker_docs] that helps us replicate the environment that our glue jobs are run in. 
   It also has pyspark and pytest installed to allow us to easily run the tests. You will need [docker installed][docker] to run tests locally.
 
+## CI/CD Pipeline
+
+The tests will run each time a commit is made to a branch including when branches are merged into main.
+The build will not run/deploy if there are failing tests. 
+This is to prevent breaking changes from being deployed to the Data Platform staging environment.
+
+This has been configured in the [Github workflows configuration file][github_workflows_configuration]
+
 [address_cleaning]: https://github.com/LBHackney-IT/Data-Platform/blob/2e4a89e280c326576a976b4f28c9b7faaa691ea4/scripts/address_cleaning.py#L16-L99
 [tests_example]: https://github.com/LBHackney-IT/Data-Platform/blob/2e4a89e280c326576a976b4f28c9b7faaa691ea4/scripts/test_address_cleaning.py#L7-L15
 [main_script_example]: https://github.com/LBHackney-IT/Data-Platform/blob/2e4a89e280c326576a976b4f28c9b7faaa691ea4/scripts/address_cleaning.py#L103-L140
@@ -66,3 +74,4 @@ We use the following things to help write and run tests against pyspark scripts.
 [readme]: https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/README.md
 [docker]: https://docs.docker.com/get-docker/
 [unit_testing_principles]: https://www.youtube.com/embed/M-_F_Tr6paQ
+[github_workflows_configuration]: https://github.com/LBHackney-IT/Data-Platform/blob/main/.github/workflows/data_platform_stg.yml
