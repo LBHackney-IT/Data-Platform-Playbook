@@ -1,6 +1,6 @@
 ---
 title: Guide to testing data quality in Glue Jobs
-description: "A guide to testing data quality in Glue Jobs"
+description: "A guide to continuous data quality testing in Glue Jobs"
 layout: playbook_js
 tags: playbook
 ---
@@ -8,47 +8,62 @@ tags: playbook
 ## Resources
 - [PyDeequ README][pydeequ-readme]
 
-Better quality data
+## Prerequisites
 
-## How?
+- Need to include `s3://dataplatform-stg-glue-scripts/jars/deequ-1.0.3.jar` in the glue job extra jars (--extra-jars).
+- Need to include `s3://dataplatform-stg-glue-scripts/python-modules/pydeequ-1.0.1.zip` in the glue job extra python files (--extra-py-files).
+- Write your metrics repository data to the S3 location which uses the template format `s3://dataplatform-stg-EXAMPLE-zone/quality-metrics/department=EXAMPLE/dataset=EXAMPLE/deequ-metrics.json`
 
-- Need the inclue `s3://dataplatform-stg-glue-scripts/jars/deequ-1.0.3.jar` in the glue job extra jars.
+### Example Check
 
-### Saving metrics to S3
-
-Here is an example of analysing your data and saving the resulting metrics to S3.
+Here is an example of using deequ checks to validate a dataframe, and storing related metrics to S3.
+The `description_of_work` column is checked to be complete, and `work_priority_priority_code` between
+1 and 4 inclusively.
 
 ```python
-# s3_bucket_target is the path where the output data is saved in S3.
-metrics_target_location = f"{s3_bucket_target}/metrics.json"
-metricsRepository = FileSystemMetricsRepository(spark, metrics_target_location)
+metrics_target_location = "s3://dataplatform-stg-refined-zone/quality-metrics/department=housing-repairs/dataset=tv-aerials-cleaned/deequ-metrics.json"
 
-# Add any tags to be saved against the metrics here.
-# A timestamp is already added on the line below.
-tags = {'data_set': 'housing_repairs_elec_mech_fire_tv_aerials_cleaned', 'department': 'housing-repairs'}
-resultKey = ResultKey(spark, ResultKey.current_milli_time(), tags)
+metricsRepository = FileSystemMetricsRepository(spark_session, metrics_target_location)
+resultKey = ResultKey(spark_session, ResultKey.current_milli_time(), {})
 
-# Add as many analyzers as you list here.
-analysisResult = AnalysisRunner(spark) \
-                    .onData(df) \
-                    .addAnalyzer(Size()) \
-                    .addAnalyzer(Completeness("description_of_work")) \
-                    .addAnalyzer(Minimum("work_priority_priority_code")) \
-                    .addAnalyzer(Maximum("work_priority_priority_code")) \
-                    .useRepository(metricsRepository) \
-                    .saveOrAppendResult(resultKey) \
-                    .run()
+checkResult = VerificationSuite(spark_session) \
+    .onData(df) \
+    .useRepository(metricsRepository) \
+    .addCheck(Check(spark_session, CheckLevel.Error, "data quality checks") \
+        .hasMin("work_priority_priority_code", lambda x: x >= 1) \
+        .hasMax("work_priority_priority_code", lambda x: x <= 4)  \
+        .isComplete("description_of_work")) \
+    .saveOrAppendResult(resultKey) \
+    .run()
 ```
 
-Here is a [list of analysers][pydeequ-analysers] that are available to use.
+Here is a [list of checks][pydeequ-checks] that are available to use.
 
-Metrics which are calculating when [validating against constraints](#validating-against-a-pre-defined-constraints) can be saved to the metrics file at the point of validation. 
+### Example Anomaly Detection
 
-### Validating against a pre defined constraints
+Anomaly detection uses historic metrics to determine if a value is invalid.
+For example we check if the size of a dataframe has increased by more than twice the previous size.
+
+```python
+metrics_target_location = "s3://dataplatform-stg-refined-zone/quality-metrics/department=housing-repairs/dataset=tv-aerials-cleaned/deequ-metrics.json"
+
+metricsRepository = FileSystemMetricsRepository(spark_session, metrics_target_location)
+resultKey = ResultKey(spark_session, ResultKey.current_milli_time(), {})
+
+anomalyCheckResult = VerificationSuite(spark_session) \
+    .onData(df) \
+    .useRepository(metricsRepository) \
+    .addAnomalyCheck(RelativeRateOfChangeStrategy(maxRateIncrease = 2.0), Size()) \
+    .saveOrAppendResult(resultKey) \
+    .run()
+
+anomalyCheckResult_df = VerificationResult.checkResultsAsDataFrame(spark_session, anomalyCheckResult)
+anomalyCheckResult_df.show()
+```
+
+Here is a [list of anomaly detection types][pydeequ-checks] that are available to use.
 
 
-
-
-
-[pydeequ-readme]: https://github.com/awslabs/python-deequ 
-[pydeequ-analysers]: https://pydeequ.readthedocs.io/en/latest/pydeequ.html#pydeequ.analyzers.ApproxCountDistinct
+[pydeequ-readme]: https://github.com/awslabs/python-deequ
+[pydeequ-checks]: https://pydeequ.readthedocs.io/en/latest/pydeequ.html#module-pydeequ.checks
+[pydeequ-anomaly-detection]: https://pydeequ.readthedocs.io/en/latest/pydeequ.html#module-pydeequ.anomaly_detection
