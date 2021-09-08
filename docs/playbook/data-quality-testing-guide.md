@@ -56,8 +56,9 @@ For example, we check if the size of a dataframe has increased by more than twic
 
 ```python
 from helpers import get_metrics_target_location
-from pydeequ.verification import VerificationSuite, VerificationResult, RelativeRateOfChangeStrategy
+from pydeequ.verification import VerificationSuite, VerificationResult
 from pydeequ.repository import FileSystemMetricsRepository, ResultKey
+from pydeequ.anomaly_detection import RelativeRateOfChangeStrategy
 
 metrics_target_location = get_metrics_target_location()
 
