@@ -10,9 +10,11 @@ tags: playbook
 
 ## Prerequisites
 
-- Need to include `s3://dataplatform-stg-glue-scripts/jars/deequ-1.0.3.jar` in the glue job extra jars (--extra-jars).
-- Need to include `s3://dataplatform-stg-glue-scripts/python-modules/pydeequ-1.0.1.zip` in the glue job extra python files (--extra-py-files).
-- Write your metrics repository data to the S3 location which uses the template format `s3://dataplatform-stg-EXAMPLE-zone/quality-metrics/department=EXAMPLE/dataset=EXAMPLE/deequ-metrics.json`
+Update the job arguments of your Glue job to include:
+- Extra jars: `--extra-jars = s3://dataplatform-stg-glue-scripts/jars/deequ-1.0.3.jar` 
+- Extra Python files: `--extra-py-file = s3://dataplatform-stg-glue-scripts/python-modules/pydeequ-1.0.1.zip` 
+- Metrics repository S3 target location using the template format: 
+  `--deequ_metrics_location = s3://dataplatform-stg-EXAMPLE-zone/quality-metrics/department=EXAMPLE/dataset=EXAMPLE/deequ-metrics.json`
 
 ### Example Check
 
@@ -21,7 +23,12 @@ The `description_of_work` column is checked to be complete, and `work_priority_p
 1 and 4 inclusively.
 
 ```python
-metrics_target_location = "s3://dataplatform-stg-refined-zone/quality-metrics/department=housing-repairs/dataset=tv-aerials-cleaned/deequ-metrics.json"
+from helpers import get_metrics_target_location
+from pydeequ.checks import Check, CheckLevel
+from pydeequ.repository import FileSystemMetricsRepository, ResultKey
+from pydeequ.verification import VerificationSuite, VerificationResult, RelativeRateOfChangeStrategy
+
+metrics_target_location = get_metrics_target_location()
 
 metricsRepository = FileSystemMetricsRepository(spark_session, metrics_target_location)
 resultKey = ResultKey(spark_session, ResultKey.current_milli_time(), {})
@@ -35,6 +42,9 @@ checkResult = VerificationSuite(spark_session) \
         .isComplete("description_of_work")) \
     .saveOrAppendResult(resultKey) \
     .run()
+    
+checkResult_df = VerificationResult.checkResultsAsDataFrame(spark_session, checkResult)
+checkResult_df.show()
 ```
 
 Here is a [list of checks][pydeequ-checks] that are available to use.
@@ -42,10 +52,14 @@ Here is a [list of checks][pydeequ-checks] that are available to use.
 ### Example Anomaly Detection
 
 Anomaly detection uses historic metrics to determine if a value is invalid.
-For example we check if the size of a dataframe has increased by more than twice the previous size.
+For example, we check if the size of a dataframe has increased by more than twice the previous size.
 
 ```python
-metrics_target_location = "s3://dataplatform-stg-refined-zone/quality-metrics/department=housing-repairs/dataset=tv-aerials-cleaned/deequ-metrics.json"
+from helpers import get_metrics_target_location
+from pydeequ.verification import VerificationSuite, VerificationResult, RelativeRateOfChangeStrategy
+from pydeequ.repository import FileSystemMetricsRepository, ResultKey
+
+metrics_target_location = get_metrics_target_location()
 
 metricsRepository = FileSystemMetricsRepository(spark_session, metrics_target_location)
 resultKey = ResultKey(spark_session, ResultKey.current_milli_time(), {})
