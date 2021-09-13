@@ -46,5 +46,10 @@ module.exports = {
         },
       ],
     },
+    {
+      type: "category",
+      label: "Spikes",
+      items: getItems("spikes"),
+    }
   ],
 };
