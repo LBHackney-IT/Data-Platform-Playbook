@@ -32,8 +32,7 @@ the behaviours of that [with tests][tests_example].
 
 The "main" part of the ETL job which will run within the AWS Glue environment
 is then [wrapped in a conditional][main_script_example] which prevents
-that code from being run within the testing environment.
-
+that code from being run within the testing environment. All code, except import statements, that isn't in a method should be included in this conditional.
 
 ## Writing your own tests
 
