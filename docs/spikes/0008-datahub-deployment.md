@@ -186,9 +186,12 @@ To accomplish this we:
 - Created a Name Server (NS) record on the data.hackney.gov.uk Hosted Zone for the stg.data.hackney.gov.uk sub-domain.
   - This granted the staging Data Platform account control over the sub-domain.
 - Created a CName record on the stg.data.hackney.gov.uk Hosted Zone for the datahub.stg.data.hackney.gove.uk sub-domain that points at the Kubernetes cluster.
+- Using AWS Certificate Manager created a security certificate for datahub.stg.data.hackney.gove.uk by DNS validation.
+  - A guide to creating a certificate is referenced by the datahub setup guide and can be found here: [Create Certificate][aws-create-certificate]
 
 [datahub-makefile]: https://github.com/LBHackney-IT/Data-Platform/blob/datahub-eks-deployment/datahub-deployment/Makefile
 [metadata-ingestion-example]: https://github.com/linkedin/datahub/blob/master/metadata-ingestion/examples/recipes/glue_to_datahub.yml
 [datahub-metadata-ingestion]: https://datahubproject.io/docs/metadata-ingestion
 [datahub-aws-setup-guide]: https://datahubproject.io/docs/deploy/aws
 [dns-record-pull-request]: https://github.com/LBHackney-IT/infrastructure/pull/456/files#diff-ca01997613717d7b58e624d2faf9e939b9e1bc8debc83fd01c85158003b7d8ac
+[aws-create-certificate]: https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-request-public.html
