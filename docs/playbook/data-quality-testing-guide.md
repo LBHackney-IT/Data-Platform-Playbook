@@ -15,12 +15,29 @@ Update the job arguments of your Glue job to include:
 - Extra Python files: `--extra-py-file = s3://dataplatform-stg-glue-scripts/python-modules/pydeequ-1.0.1.zip` 
 - Metrics repository S3 target location using the template format: 
   `--deequ_metrics_location = s3://dataplatform-stg-EXAMPLE-zone/quality-metrics/department=EXAMPLE/dataset=EXAMPLE/deequ-metrics.json`
+  
+:::caution
+
+There is a [defect with PyDeequ][defect with PyDeequ] which causes the Glue Spark session to hang.
+While this issue still exists, we recommend wrapping your data quality verification code in a "try/finally" block (see example [here][try-finally-example]).
+
+```python
+try:
+  ...
+finally:
+    spark_session.sparkContext._gateway.close()
+    spark_session.stop()
+```
+:::
 
 ### Example Check
 
 Here is an example of using deequ checks to validate a dataframe, and storing related metrics to S3.
 The `description_of_work` column is checked to be complete, and `work_priority_priority_code` between
-1 and 4 inclusively.
+1 and 4 inclusively. 
+There is also the option to include a hint message on each of the checks which will be 
+displayed to the user in the event there is a failing constraint to help diagnose the problem.
+For example, the `hasMin` check has the hint message: "`The minimum(work_priority_priority_code) >= 1')`". 
 
 ```python
 from helpers import get_metrics_target_location
@@ -37,8 +54,8 @@ checkResult = VerificationSuite(spark_session) \
     .onData(df) \
     .useRepository(metricsRepository) \
     .addCheck(Check(spark_session, CheckLevel.Error, "data quality checks") \
-        .hasMin("work_priority_priority_code", lambda x: x >= 1) \
-        .hasMax("work_priority_priority_code", lambda x: x <= 4)  \
+        .hasMin("work_priority_priority_code", lambda x: x >= 1, 'The minimum(work_priority_priority_code) >= 1') \
+        .hasMax("work_priority_priority_code", lambda x: x <= 4, 'The maximum(work_priority_priority_code) <= 4')  \
         .isComplete("description_of_work")) \
     .saveOrAppendResult(resultKey) \
     .run()
@@ -78,7 +95,29 @@ anomalyCheckResult_df.show()
 
 Here is a [list of anomaly detection types][pydeequ-checks] that are available to use.
 
+### Stopping Glue jobs when constraint checks fail
+
+In order to ensure that only trusted data is outputted from your Glue job, it is important 
+to make an assertion against your constraints to check that they have been satisfied.
+
+You can do this by including a helper function called `cancel_job_if_failing_quality_checks()`
+in your script (see [helpers.py][helpers.py] for more info).
+
+When a constraint check fails, an error message will be provided which might look something like
+the below message:
+
+```markdown
+  Exception: data quality checks. Value: 1.0 does not meet the constraint requirement! 
+  The minimum(work_priority_priority_code) >= 2 
+  | Anomaly check for Size(None). Value: 486.0 does not meet the constraint requirement!
+```
+
+Multiple constraint failures are delimited by a `|` character in the error message.
+
 
 [pydeequ-readme]: https://github.com/awslabs/python-deequ
 [pydeequ-checks]: https://pydeequ.readthedocs.io/en/latest/pydeequ.html#module-pydeequ.checks
 [pydeequ-anomaly-detection]: https://pydeequ.readthedocs.io/en/latest/pydeequ.html#module-pydeequ.anomaly_detection
+[helpers.py]: https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/helpers.py
+[defect with PyDeequ]: https://github.com/awslabs/python-deequ/issues/7
+[try-finally-example]: https://github.com/LBHackney-IT/Data-Platform/blob/6468778d865c6203d1d11df78805720da9cd22b5/scripts/elec_mech_fire_tv_aerials_cleaning.py#L79-L105
