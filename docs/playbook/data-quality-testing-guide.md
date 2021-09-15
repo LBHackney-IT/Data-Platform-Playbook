@@ -69,6 +69,19 @@ Here is a [list of checks][pydeequ-checks] that are available to use.
 ### Example Anomaly Detection
 
 Anomaly detection uses historic metrics to determine if a value is invalid.
+
+:::caution
+You can only run an anomaly check if there are historic metrics results in the metrics repository you are using.
+If no historic metrics results exist, you will get the below error message:
+
+```markdown
+Can't execute the assertion: requirement failed: 
+There have to be previous results in the MetricsRepository!!
+```
+
+To avoid this error, run the standard verification constraint checks first (see [Example Check](#example-check) section above) and then add your anomaly constraint checks afterwards.
+:::
+
 For example, we check if the size of a dataframe has increased by more than twice the previous size.
 
 ```python
