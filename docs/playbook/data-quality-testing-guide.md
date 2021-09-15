@@ -72,7 +72,7 @@ Anomaly detection uses historic metrics to determine if a value is invalid.
 For example, we check if the size of a dataframe has increased by more than twice the previous size.
 
 ```python
-from helpers import get_metrics_target_location
+from helpers import get_metrics_target_location, cancel_job_if_failing_quality_checks
 from pydeequ.verification import VerificationSuite, VerificationResult
 from pydeequ.repository import FileSystemMetricsRepository, ResultKey
 from pydeequ.anomaly_detection import RelativeRateOfChangeStrategy
@@ -82,33 +82,35 @@ metrics_target_location = get_metrics_target_location()
 metricsRepository = FileSystemMetricsRepository(spark_session, metrics_target_location)
 resultKey = ResultKey(spark_session, ResultKey.current_milli_time(), {})
 
-anomalyCheckResult = VerificationSuite(spark_session) \
+anomalyVerificationSuite = VerificationSuite(spark_session) \
     .onData(df) \
     .useRepository(metricsRepository) \
-    .addAnomalyCheck(RelativeRateOfChangeStrategy(maxRateIncrease = 2.0), Size()) \
-    .saveOrAppendResult(resultKey) \
-    .run()
+    .addAnomalyCheck(RelativeRateOfChangeStrategy(maxRateIncrease = 2.0), Size())
 
-anomalyCheckResult_df = VerificationResult.checkResultsAsDataFrame(spark_session, anomalyCheckResult)
-anomalyCheckResult_df.show()
+cancel_job_if_failing_quality_checks(VerificationResult.checkResultsAsDataFrame(spark_session, anomalyVerificationSuite.run()))
+
+# Only update the metrics repository if cancel_job_if_failing_quality_checks succeeds.
+# Otherwise the next time anomaly check runs it will compare against "incorrect" metrics.
+anomalyVerificationSuite.saveOrAppendResult(resultKey).run()
 ```
 
 Here is a [list of anomaly detection types][pydeequ-checks] that are available to use.
 
 ### Stopping Glue jobs when constraint checks fail
 
-In order to ensure that only trusted data is outputted from your Glue job, it is important 
+In order to ensure that only trusted data is outputted from your Glue job, it is important
 to make an assertion against your constraints to check that they have been satisfied.
 
 You can do this by including a helper function called `cancel_job_if_failing_quality_checks()`
 in your script (see [helpers.py][helpers.py] for more info).
+You can see an example usage in the [Example Anomaly Detection](#example-anomaly-detection) section.
 
 When a constraint check fails, an error message will be provided which might look something like
 the below message:
 
 ```markdown
-  Exception: data quality checks. Value: 1.0 does not meet the constraint requirement! 
-  The minimum(work_priority_priority_code) >= 2 
+  Exception: data quality checks. Value: 1.0 does not meet the constraint requirement!
+  The minimum(work_priority_priority_code) >= 2
   | Anomaly check for Size(None). Value: 486.0 does not meet the constraint requirement!
 ```
 
