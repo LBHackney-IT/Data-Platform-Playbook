@@ -96,6 +96,26 @@ anomalyVerificationSuite.saveOrAppendResult(resultKey).run()
 
 Here is a [list of anomaly detection types][pydeequ-checks] that are available to use.
 
+### Providing tags to metrics for verification constraint checks
+
+You can add tags to your verification metrics which may be helpful when reviewing the metric
+results for a particular job. 
+To do this, include a dictionary containing key value pairs in the `ResultKey` as shown in example below:
+
+```python
+import sys
+from awsglue.utils import getResolvedOptions
+
+args = getResolvedOptions(sys.argv, ['JOB_NAME'])
+
+resultKey = ResultKey(spark_session, ResultKey.current_milli_time(), {
+    "source_database": source_catalog_database, 
+    "source_table": source_catalog_table,
+    "glue_job_id": args['JOB_RUN_ID']
+})
+```
+
+
 ### Stopping Glue jobs when constraint checks fail
 
 In order to ensure that only trusted data is outputted from your Glue job, it is important
