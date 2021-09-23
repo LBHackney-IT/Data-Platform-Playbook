@@ -12,14 +12,16 @@ To overcome this you can create a “Data Extract” of an existing data connect
 
 It is highly recommended that the data extract is created before the dashboard is developed as any calculated fields or dimensions may need to be rebuilt. 
 
+## Limitations
+Google Data Studio has row limits relating to different data sources and the limit for the PostGresSQL connection used for the Data Platform is 100K.
 
 ## Prerequisites
 
-* An initial data connection to the Data Platform must be [set up][redshift] before creating a data extract. 
+* An initial data connection to the Data Platform must be created before creating a data extract. If using a redshift connection the guidance on how to set up the initial connection is [here][redshift] 
 
 ## Create an extracted data source
 * Sign in to [Data Studio][google data studio].
-* In the top left, click , then select Data Source
+* In the top left, click the + button, then select Data Source
 * In the connectors list, select Extract Data.
 * Select an existing data source to extract from.
 * Select the dimensions and metrics to extract by dragging them from the Available Fields list onto the targets, or by clicking Add. All the fields you add appear in the list on the far right.
