@@ -47,7 +47,7 @@ See [README.md][readme] for instructions on how to do this.
   - In the non-ideal scenario, you are writing tests at posteriori for a script that already exists. Pick this script and create the corresponding test file named `test_script_name.py`.
 
 - You will need to organise your script (or reorganise it if it already exists) according to the [Organising your code so it can be tested](#organising-your-code-so-it-can-be-tested) above. For existing scripts, it includes adding the line
-` __name__ = “__main__”:`
+`if  __name__ = “__main__”:`
 Just after the methods definitions and just before the part that reads arguments from the AWS environment (look at examples). Indent everything under this new line.
 - Define a function within `script_name.py`, which takes in the input DataFrame(s), and returns the DataFrame to be written. (For existing scripts: take the processing code out of the main part and turn it into one or several methods).
 - Within your `test_script_name.py` start creating tests. You can use the [test_spark_example][test_spark_example] as a template and [address cleaning][address_cleaning] as an example of a fully tested script. If you do, rename the class name into something relevant, for instance TestMechFireDpaCleaning. 
