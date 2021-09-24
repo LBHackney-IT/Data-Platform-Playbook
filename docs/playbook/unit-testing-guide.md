@@ -37,7 +37,7 @@ The “main” part is also the part where AWS connections should happen. Make s
 
 ## Writing your own tests
 
-- Before starting, pull the latest Data Platform code from GitHub. You need to have git working and ready in your IDE. In VSCode, you may need to use the bash command line for git commands to be recognised. 
+- Before starting, pull the latest Data Platform code from GitHub. You need to have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) working and ready in your IDE. In VSCode, you may need to use the bash command line for git commands to be recognised. 
 - Ensure that you run the tests and that they are all passing before writing your own tests. 
 See [README.md][readme] for instructions on how to do this.
 - Create and check out a new branch to develop your tests. For example, if you are testing the individual cleaning scripts for Housing repairs Google sheets, you could use: 	`git checkout -b testing_housing_repairs_cleaning_scripts`. 
