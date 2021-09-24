@@ -54,7 +54,7 @@ Just after the methods definitions and just before the part that reads arguments
   Test method names should start with a "test" in their name, otherwise the tests won’t be run. 
   Ensure the name clearly describes what is being tested. 
   For example, if you are testing the behaviour of adding a unique id column, then a suitable name may be along the lines of `test_creates_unique_id_column`.
-- There are some helper functions in `unit_testing_helpers.py` which you can use in your tests. For example, `assertDictionaryContains` is a useful function that asserts that a specific field and value exist in an output, instead of asserting equality for a full data line.
+- There are some helper functions in `unit_testing_helpers.py` which you can use in your tests. For example, `assertDictionaryContains` is a useful function that asserts that specific fields and values exist in an output, instead of asserting equality for a full data line.
   If you do decide to use these functions, ensure you import them at the top of your test file.
 - If your script is using a logger, you will need to pass it into your testable method. 
   See the `clean_addresses` function in the `test_address_cleaning.py` for an example of how you can do this. 
