@@ -46,7 +46,7 @@ npm install --global yarn
 yarn start
 ```
 
-This command starts a local development server and open up a browser window. Most changes are reflected live without having to restart the server.
+This command starts a local development server which you can view at [http://localhost:3000/Data-Platform-Playbook/](http://localhost:3000/Data-Platform-Playbook/). Most changes are reflected live without having to restart the server.
 
 ### Build
 
