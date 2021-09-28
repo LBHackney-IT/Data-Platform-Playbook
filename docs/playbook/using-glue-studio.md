@@ -33,6 +33,8 @@ Note: The instructions below assume an S3 Data Source and Target Location.
 1. Set the _Temporary path_ to the central temp storage S3 bucket: `s3://dataplatform-{environment}-glue-temp-storage/` where environment is either 'stg' or 'prod'.
 1. In _Security configuration_ select the appropriate security configuration for your target bucket location (for example for the Raw Zone, use **glue-job-security-configuration-to-raw**).
 1. Ensure the _Server-side encryption_ option is **not checked**, so that it uses the buckets default encryption configuration.
+1. In the _Tags_ section, add the key `PlatformDepartment` and set the value as the name of your department. 
+   This should be the same name which was used to set up the department on the [Data Platform](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/05-departments.tf).
 1. Add any further libraries or parameters you need in the _Advanced properties_ section.
 
 ### Note: Exporting Data
