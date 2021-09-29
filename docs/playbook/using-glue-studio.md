@@ -64,7 +64,7 @@ The message will include:
 In order to receive email notifications, you will need to ensure that you are subscribed to receive emails from your department's [Google group][google-groups] and that you have confirmed your subscription to receive AWS Notifications when prompted.
 
 :::important
-Ensure the **PlatformDepartment** tag is correctly set in the _Advanced details_ section in the Glue job's _Job Details_ (see [Using Glue Studio][using-glue-studio]).
+Ensure the **PlatformDepartment** tag is correctly set in the _Advanced details_ section in the Glue job's _Job Details_ (see [Creating a new Glue job](#creating-a-new-glue-job) section above).
 :::
 
 [google-groups]: https://groups.google.com/my-groups
