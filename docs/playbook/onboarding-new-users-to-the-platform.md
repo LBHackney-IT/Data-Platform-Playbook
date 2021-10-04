@@ -14,6 +14,7 @@ tags: playbook
 ### Adding a user to a department
 
 - To add a user to a Google group, follow the instructions [here][add_user_google_group]
+- If you would like the user to receive AWS email notifications, then ensure you set their subscription preference to "Each email" (see [section 5.2][membership_settings] of this guide)
 - This can take up to two hours to sync with AWS
 
 [add_user_google_group]: https://support.google.com/groups/answer/2465464?hl=en
@@ -24,6 +25,8 @@ tags: playbook
   - You can do this by contacting the Hackney Service team via the [`ask-devops` Slack channel][ask_devops_slack]
   - Ensure you specify at least one manager for the group you are creating. This person is responsible for adding/removing
     users to your department
+  - Enable the collaborative inbox feature on your Google group by step 2 in this [guide][collaborative_inbox].
+  This will allow your group and its members to receive emails from outside the Hackney organisation as you will need to be able to receive AWS email notifications.
 - Wait for 2 hours for the next AWS sync before moving onto the next step
 - Create a new department using the [existing resources][department.tf] as a template
   - Specify `google_group_display_name` with the email address of the Google Group you created earlier
@@ -31,3 +34,5 @@ tags: playbook
 
 [department.tf]: https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/05-departments.tf
 [ask_devops_slack]: https://hackit-lbh.slack.com/archives/C01FX9ERRSL
+[collaborative_inbox]: https://support.google.com/a/users/answer/10375787?hl=en
+[membership_settings]: https://support.google.com/a/users/answer/9303224?hl=en
