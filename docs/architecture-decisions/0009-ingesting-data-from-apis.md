@@ -1,7 +1,7 @@
 ---
 title: "Ingesting data from APIs"
 description: ""
-tags: adr
+tags: [adr]
 number: "9"
 date-issued: "2021-08-16"
 status: "Accepted"

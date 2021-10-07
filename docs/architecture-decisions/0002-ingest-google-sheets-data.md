@@ -1,7 +1,7 @@
 ---
 title: "Ingest Google Sheets Data"
 description: ""
-tags: adr
+tags: [adr]
 number: "2"
 date-issued: "2021-03-23"
 status: "Accepted"

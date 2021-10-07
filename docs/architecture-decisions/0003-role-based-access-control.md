@@ -1,7 +1,7 @@
 ---
 title: "Role-Based Access Control"
 description: ""
-tags: adr
+tags: [adr]
 number: "3"
 date-issued: "2021-03-23"
 status: "Accepted"

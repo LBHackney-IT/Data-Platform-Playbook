@@ -2,7 +2,7 @@
 title: Exporting database snapshots to the Data Platform Landing Zone
 description: "Overview of how db snapshots are exported to the Data Platform Landing Zone"
 layout: playbook_js
-tags: playbook
+tags: [playbook]
 ---
 
 This section covers the technical overview of uploading data into the data platform from a db instance in AWS. For step by step instructions on how to do this, refer to [exporting db snapshot to the DataPlatform Landing zone](http://localhost:3000/Data-Platform-Playbook/playbook/exporting-snapshot-to-landing-zone) guide.

@@ -2,7 +2,7 @@
 title: Import files from google to s3
 description: "Import files from google to s3 description"
 layout: playbook_js
-tags: playbook
+tags: [playbook]
 ---
 
 ## Preparing to import the file from Google drive

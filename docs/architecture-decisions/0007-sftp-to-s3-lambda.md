@@ -1,7 +1,7 @@
 ---
 title: "Copy Liberator data from sftp to s3"
 description: "Retrieve daily zip file from SFTP server and upload to S3 (landing zone bucket)"
-tags: adr
+tags: [adr]
 number: "007"
 date-issued: "2021-05-28"
 status: "Accepted"

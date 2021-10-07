@@ -1,7 +1,7 @@
 ---
 title: "Record architecture decisions"
 description: ""
-tags: adr
+tags: [adr]
 number: "1"
 date-issued: "2021-03-23"
 status: "Accepted"

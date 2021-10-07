@@ -1,7 +1,7 @@
 ---
 title: "Service"
 description: "A service that is provided by LBH"
-tags: entities
+tags: [entities]
 layout: entities_js
 relationships: 
     - entity: resident

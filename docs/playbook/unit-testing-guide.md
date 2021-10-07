@@ -2,7 +2,7 @@
 title: Guide to testing on the Data Platform
 description: "A beginners guide to testing on the data platform"
 layout: playbook_js
-tags: playbook
+tags: [playbook]
 ---
 
 ## Context
@@ -33,25 +33,35 @@ the behaviours of that [with tests][tests_example].
 The "main" part of the ETL job which will run within the AWS Glue environment
 is then [wrapped in a conditional][main_script_example] which prevents
 that code from being run within the testing environment. All code, except import statements, that isn't in a method should be included in this conditional.
+The “main” part is also the part where AWS connections should happen. Make sure that your testable methods, outside the “main” part, don’t require AWS connections, or you won’t be able to test them locally.
 
 ## Writing your own tests
 
+- Before starting, pull the latest Data Platform code from GitHub. You need to have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) working and ready in your IDE. In VSCode, you may need to use the bash command line for git commands to be recognised. 
 - Ensure that you run the tests and that they are all passing before writing your own tests. 
-See [README.md][readme] for instructions on how to do this
+See [README.md][readme] for instructions on how to do this.
+- Create and check out a new branch to develop your tests. For example, if you are testing the individual cleaning scripts for Housing repairs Google sheets, you could use: 	`git checkout -b testing_housing_repairs_cleaning_scripts`. 
 - The tests are stored in the scripts folder of the project alongside the glue scripts themselves. 
-Start by creating your own glue job script as usual, `script_name.py`, and also a test file `test_script_name.py`.  
-Test files should be named with "test" at the beginning of the file. For example, `test_cleaning_script.py`.
-  - You will need to organise your script according to the [Organising your code so it can be tested](#organising-your-code-so-it-can-be-tested) above
-- Define a function within `script_name.py`, which takes in the input DataFrame(s), and returns the DataFrame to be written.
-- Within your `test_script_name.py` start creating tests. 
-  You can use the [test_spark_example][test_spark_example] as a template and [address cleaning][address_cleaning] as an example of a fully tested script. 
+- There are 2 scenarios: 
+  - In the ideal scenario, you should be writing your script and your tests at the same time. Start by creating your own glue job script as usual, `script_name.py`, and also a test file `test_script_name.py`. Test files should be named with "test" at the beginning of the file. For example, `test_cleaning_script.py`.
+  - In the non-ideal scenario, you are writing tests at posteriori for a script that already exists. Pick this script and create the corresponding test file named `test_script_name.py`.
+
+- You will need to organise your script (or reorganise it if it already exists) according to the [Organising your code so it can be tested](#organising-your-code-so-it-can-be-tested) above. For existing scripts, it includes adding the line
+`if  __name__ = “__main__”:`
+Just after the methods definitions and just before the part that reads arguments from the AWS environment (look at examples). Indent everything under this new line.
+- Define a function within `script_name.py`, which takes in the input DataFrame(s), and returns the DataFrame to be written. (For existing scripts: take the processing code out of the main part and turn it into one or several methods).
+- Within your `test_script_name.py` start creating tests. You can use the [test_spark_example][test_spark_example] as a template and [address cleaning][address_cleaning] as an example of a fully tested script. If you do, rename the class name into something relevant, for instance TestMechFireDpaCleaning. 
   Test method names should start with a "test" in their name, otherwise the tests won’t be run. 
   Ensure the name clearly describes what is being tested. 
   For example, if you are testing the behaviour of adding a unique id column, then a suitable name may be along the lines of `test_creates_unique_id_column`.
-- There are some helper functions in `unit_testing_helpers.py` which you can use in your tests. 
+- There are some helper functions in `unit_testing_helpers.py` which you can use in your tests. For example, `assertDictionaryContains` is a useful function that asserts that specific fields and values exist in an output, instead of asserting equality for a full data line.
   If you do decide to use these functions, ensure you import them at the top of your test file.
 - If your script is using a logger, you will need to pass it into your testable method. 
   See the `clean_addresses` function in the `test_address_cleaning.py` for an example of how you can do this. 
+- When you’ve written your first test, run it using one of the commands in the [README.md][readme]. It is common practice to write a test in such a way that it initially fails, and then to change it to make it pass. This practice is called Test-driven development (TDD), for more information [this video][unit_testing_principles] talks through the principles of TDD.
+- When you’re happy with your test, commit your changes locally on your branch. 
+- To have your tests published on the Data Platform, push your commits to GitHub and create a Pull Request on your branch, so others can review and merge your code.
+
 
 We use the following things to help write and run tests against pyspark scripts.
 

@@ -2,7 +2,7 @@
 title: Exporting database snapshot to the Data Platform Landing Zone
 description: "Exporting a snapshot of an rds instance in AWS to the DataPlatform landing zone"
 layout: playbook_js
-tags: playbook
+tags: [playbook]
 ---
 
 This guide explains the process of ingesting data from a RDS instance in the AWS API accounts to the Data Platform landing zone by creating db snapshots.

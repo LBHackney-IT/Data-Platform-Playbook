@@ -2,7 +2,7 @@
 title: Querying the Platform using SQL
 description: "AWS Athena to query data in S3"
 layout: playbook_js
-tags: playbook
+tags: [playbook]
 ---
 
 ## Intro
@@ -25,7 +25,7 @@ You'll want to make sure that your region is currently set to London, in AWS thi
 
 ![AWS Console region selector](images/region-selector.png)
 
-Then you'll want to ensure that you are switched to the Athena Workgroup you were given during your onboarding.
+Then you'll want to ensure that you are switched to the Athena Workgroup for your department.
 You can check your current workgroup by hovering over the workgroup tab displayed at the top of the Athena page.
 If the workgroup isn't correct then [switch your workgroup][switch_workgroup] to the one you were given before proceeding.
 

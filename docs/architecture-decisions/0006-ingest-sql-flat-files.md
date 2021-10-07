@@ -1,7 +1,7 @@
 ---
 title: "Ingest SQL flat files"
 description: ""
-tags: adr
+tags: [adr]
 number: "6"
 date-issued: "2021-05-26"
 status: "Accepted"

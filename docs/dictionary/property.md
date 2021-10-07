@@ -1,7 +1,7 @@
 ---
 title: "Property"
 description: "land and buildings in Hackney"
-tags: entities
+tags: [entities]
 layout: entities_js
 relationships:
     - entity: boundary
