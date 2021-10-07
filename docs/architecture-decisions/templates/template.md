@@ -1,7 +1,7 @@
 ---
 title: "TITLE"
 description: ""
-tags: adr
+tags: [adr]
 number: "NUMBER"
 date-issued: "DATE"
 status: "STATUS"

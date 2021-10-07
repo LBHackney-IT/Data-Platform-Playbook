@@ -5,7 +5,7 @@ const getItems = (folder) =>{
   return fs.readdirSync(`./docs/${folder}/`).filter((f)=>{
     return f.includes(".md")
   }).map(file => {
-      return `${folder}/${file.split(".")[0]}`
+      return `${folder}/${file.split(".")[0].replace(/^[0-9]+\-/i, '')}`
     })
 }
 
@@ -18,7 +18,7 @@ module.exports = {
       items: [
         "introduction",
         "zones",
-        "environments"
+        "environments",
         //'api_standards',
         //'platform_api_vs_service_api',
         //'documentation'

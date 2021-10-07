@@ -2,7 +2,7 @@
 title: Using Glue Studio
 description: "Using AWS Glue Studio to create ETL processes."
 layout: playbook_js
-tags: playbook
+tags: [playbook]
 ---
 
 ## Using AWS Glue Studio to create ETL processes

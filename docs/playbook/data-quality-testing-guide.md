@@ -2,7 +2,7 @@
 title: Guide to testing data quality in Glue Jobs
 description: "A guide to continuous data quality testing in Glue Jobs"
 layout: playbook_js
-tags: playbook
+tags: [playbook]
 ---
 
 ## Resources

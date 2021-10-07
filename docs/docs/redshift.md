@@ -2,7 +2,7 @@
 title: Redshift Configuration
 description: ""
 layout: playbook_js
-tags: playbook
+tags: [playbook]
 ---
 
 ## Collection Structure

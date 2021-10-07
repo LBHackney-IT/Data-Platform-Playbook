@@ -2,7 +2,7 @@
 title: Onboarding new users to the platform
 description: "How to add users to a Google group or add a new group for a department."
 layout: playbook_js
-tags: playbook
+tags: [playbook]
 ---
 
 

@@ -2,7 +2,7 @@
 title: Connecting to the redshift cluster from Google Data Studio
 description: "Connect to the redshift cluster from Google Data Studio"
 layout: playbook_js
-tags: playbook
+tags: [playbook]
 ---
 
 ## Intro

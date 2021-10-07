@@ -2,7 +2,7 @@
 title: Import XLXS from G Drive
 description: "Overview of how data is imported from XLXS files that are stored in G drive"
 layout: playbook_js
-tags: playbook
+tags: [playbook]
 ---
 
 This section covers the technical overview of uploading data into the data

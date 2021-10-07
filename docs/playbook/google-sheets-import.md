@@ -2,7 +2,7 @@
 title: Google Sheets import
 description: "Google Sheets import description"
 layout: playbook_js
-tags: playbook
+tags: [playbook]
 ---
 
 ## Prerequisites

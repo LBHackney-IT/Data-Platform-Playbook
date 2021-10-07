@@ -1,7 +1,7 @@
 ---
 title: "Partition Strategy"
 description: ""
-tags: adr
+tags: [adr]
 number: "4"
 date-issued: "2021-05-19"
 status: "Accepted"

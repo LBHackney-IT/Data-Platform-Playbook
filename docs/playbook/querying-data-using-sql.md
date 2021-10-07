@@ -2,7 +2,7 @@
 title: Querying the Platform using SQL
 description: "AWS Athena to query data in S3"
 layout: playbook_js
-tags: playbook
+tags: [playbook]
 ---
 
 ## Intro
