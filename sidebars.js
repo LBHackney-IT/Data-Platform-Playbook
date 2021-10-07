@@ -5,7 +5,7 @@ const getItems = (folder) =>{
   return fs.readdirSync(`./docs/${folder}/`).filter((f)=>{
     return f.includes(".md")
   }).map(file => {
-      return `${folder}/${file.split(".")[0]}`
+      return `${folder}/${file.split(".")[0].replace(/^[0-9]+\-/i, '')}`
     })
 }
 
@@ -34,22 +34,22 @@ module.exports = {
       label: "Technical Documentation",
       items: getItems("docs"),
     },
-    // {
-    //   type: "category",
-    //   label: "Architecture Decision",
-    //   items: [
-    //     "architecture-decisions/index",
-    //     {
-    //       type: "category",
-    //       label: "Records",
-    //       items: getItems("architecture-decisions"),
-    //     },
-    //   ],
-    // },
-    // {
-    //   type: "category",
-    //   label: "Spikes",
-    //   items: getItems("spikes"),
-    // }
+    {
+      type: "category",
+      label: "Architecture Decision",
+      items: [
+        "architecture-decisions/index",
+        {
+          type: "category",
+          label: "Records",
+          items: getItems("architecture-decisions"),
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Spikes",
+      items: getItems("spikes"),
+    }
   ],
 };
