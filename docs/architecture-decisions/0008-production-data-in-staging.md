@@ -1,7 +1,7 @@
 ---
 title: "production-data-in-staging"
 description: ""
-tags: adr
+tags: [adr]
 number: "8"
 date-issued: "2021-06-25"
 status: "Accepted"

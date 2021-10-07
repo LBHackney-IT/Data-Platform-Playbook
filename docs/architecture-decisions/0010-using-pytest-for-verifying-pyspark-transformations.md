@@ -1,7 +1,7 @@
 ---
 title: "Using pytest for verifying PySpark transformations"
 description: ""
-tags: adr
+tags: [adr]
 number: "10"
 date-issued: "2021-08-25"
 status: "Accepted"

@@ -18,7 +18,7 @@ module.exports = {
       items: [
         "introduction",
         "zones",
-        "environments"
+        "environments",
         //'api_standards',
         //'platform_api_vs_service_api',
         //'documentation'
@@ -34,22 +34,22 @@ module.exports = {
       label: "Technical Documentation",
       items: getItems("docs"),
     },
-    {
-      type: "category",
-      label: "Architecture Decision",
-      items: [
-        "architecture-decisions/index",
-        {
-          type: "category",
-          label: "Records",
-          items: getItems("architecture-decisions"),
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Spikes",
-      items: getItems("spikes"),
-    }
+    // {
+    //   type: "category",
+    //   label: "Architecture Decision",
+    //   items: [
+    //     "architecture-decisions/index",
+    //     {
+    //       type: "category",
+    //       label: "Records",
+    //       items: getItems("architecture-decisions"),
+    //     },
+    //   ],
+    // },
+    // {
+    //   type: "category",
+    //   label: "Spikes",
+    //   items: getItems("spikes"),
+    // }
   ],
 };

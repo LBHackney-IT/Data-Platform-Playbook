@@ -1,7 +1,7 @@
 ---
 title: "TITLE"
 description: ""
-tags: tech-spike
+tags: [tech-spike]
 layout: layout
 ---
 

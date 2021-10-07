@@ -2,7 +2,7 @@ module.exports = {
   title: "Hackney Data Platform Playbook",
   tagline:
     "A guide on Hackney's Data Platform practices, and how to follow them",
-  url: "https://playbook.hackney.gov.uk/Data-Platform-Playbook/",
+  url: "https://playbook.hackney.gov.uk/",
   baseUrl: "/Data-Platform-Playbook/",
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",

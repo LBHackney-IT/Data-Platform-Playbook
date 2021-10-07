@@ -2,7 +2,7 @@
 title: Create a data extract in Google Data Studio
 description: "Create an extract to optimise dashboard performance"
 layout: playbook_js
-tags: playbook
+tags: [playbook]
 ---
 
 ## Introduction

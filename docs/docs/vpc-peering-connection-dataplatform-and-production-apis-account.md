@@ -2,7 +2,7 @@
 title: VPC Peering Connection between Data Platform and Production APIs AWS accounts
 description: "Overview of how the VPC Peering Connection and its purpose"
 layout: playbook_js
-tags: playbook
+tags: [playbook]
 ---
 ![VPC Peering Connection](./images/vpc-peering-connection.png)
 

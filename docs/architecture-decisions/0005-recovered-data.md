@@ -1,7 +1,7 @@
 ---
 title: "Recovered Data"
 description: ""
-tags: adr
+tags: [adr]
 number: "5"
 date-issued: "2021-05-20"
 status: "Accepted"

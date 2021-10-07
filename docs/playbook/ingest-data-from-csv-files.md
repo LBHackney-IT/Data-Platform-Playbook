@@ -2,7 +2,7 @@
 title: Ingest manually uploaded csv files
 description: "Ingest data from csv files"
 layout: playbook_js
-tags: playbook
+tags: [playbook]
 ---
 
 ## Prerequisites

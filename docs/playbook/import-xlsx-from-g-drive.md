@@ -2,7 +2,7 @@
 title: Import XLXS from G Drive
 description: "Import XLXS from G Drive description"
 layout: playbook_js
-tags: playbook
+tags: [playbook]
 ---
 
 ## Prerequisites
