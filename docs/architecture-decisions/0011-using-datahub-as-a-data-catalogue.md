@@ -4,7 +4,7 @@ description: ""
 tags: [adr]
 number: "11"
 date-issued: "2021-10-07"
-status: "?"
+status: "Accepted"
 ---
 
 ## Context
