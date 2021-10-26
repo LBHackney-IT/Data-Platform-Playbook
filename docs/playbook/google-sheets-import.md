@@ -17,21 +17,18 @@ tags: [playbook]
       <th>Department</th>
       <th>Service account email</th>
       <th>Sheets credentials name</th>
-      <th>Glue role arn</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Parking</td>
+      <td>parking</td>
       <td>parking@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>module.department_parking.google_service_account.credentials_secret.name</td>
-      <td>aws_iam_role.parking_glue.arn</td>
+      <td></td>
     </tr>
     <tr>
-      <td>Housing repairs</td>
+      <td>housing_repairs</td>
       <td>housing-repairs@dataplatform-stg.iam.gserviceaccount.com</td>
       <td>aws_secretsmanager_secret.sheets_credentials_housing.name</td>
-      <td>aws_iam_role.glue_role.arn</td>
     </tr>
   </tbody>
 </table>
@@ -65,12 +62,11 @@ tags: [playbook]
 - Switch to 'edit mode' (using edit button on top right)
 - Copy one of the modules above, paste at the bottom of the file and update the following fields:
   - `module` = "your-unique-module-name" (it is helpful to keep the same naming convention as your dataset/folder)
-  - `glue_role_arn` = Find the value for your department in [the table above](#department-specific-information)
   - `glue_catalog_database_name` = module.department_\<department-name\>.raw_zone_catalog_database_name (e.g. module.department_parking.raw_zone_catalog_database_name)
-  - `sheets_credentials_name` = Find the value for your department in [the table above](#department-specific-information)
+  - `sheets_credentials_name` = Find the value for your department in [the table above](#department-specific-information). If this is blank for your department then you don't need to include this at all.
   - `google_sheets_document_id` = "Your document id - see the `Getting Google sheet detail` section above"
   - `google_sheets_worksheet_name` = "The name of your worksheet - see the `Getting Google sheet detail` section above"
-  - `department_name` = "The name of the department folder you would like to store in e.g. `housing`, `social-care`"
+  - `department` = module.department_\<department-name\> (department name should appear as in [the table above](#department-specific-information), e.g. module.department_housing_repairs)
   - `dataset_name` = "The name of the dataset as you'd like it to appear within the data platform e.g. `housing-repair`"
 
 
