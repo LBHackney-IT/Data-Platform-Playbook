@@ -1,16 +1,25 @@
 ---
-title: Google Sheets import
-description: "Google Sheets import description"
+title: Importing data from Google Sheets
 layout: playbook_js
 tags: [playbook]
 ---
 
-## Prerequisites
-- You have a Github account, you can [create one][github_signup] yourself using your Hackney email.
-- You have been added to the 'LBHackney-IT' team, you can request this from Rashmi Shetty.
-- You have a service account email address listed below.
+## Objective
 
-### Department Specific Information
+Ingest data contained within a Google Sheet for use on the Data Platform, optionally setting a recurring schedule to import new data.
+
+## Intended audience
+
+- Data Analyst
+
+## Prerequisites
+
+- You have a Github account - you can [create one][github_signup] yourself using your Hackney email
+- You have been added to the 'LBHackney-IT' team - you can request this from Rashmi Shetty
+- You have a service account email address, such as one listed in the table below:
+
+### Department specific information
+
 <table>
   <thead>
     <tr>
@@ -30,22 +39,27 @@ tags: [playbook]
       <td>housing-repairs@dataplatform-stg.iam.gserviceaccount.com</td>
       <td>aws_secretsmanager_secret.sheets_credentials_housing.name</td>
     </tr>
+    <tr>
+      <td>data_and_insights [Can someone confirm this please]</td>
+      <td>data-and-insight@dataplatform-stg.iam.gserviceaccount.com</td>
+      <td></td>
+    </tr>
   </tbody>
 </table>
 
-## Preparing Google sheet for import
+## Preparing a Google sheet for import
 
-- Open the Google sheet you would like to import
-- Ensure that all columns have headers. Columns without headers will be lost
-- Click `Share` in the top right corner of the sheet
-- If the document is unnamed, name it
-- Paste in the service account email address you have been provided into the email box
-- Ensure the suggested email matches the service account email and select it
-- On the new window, choose from the dropdown on the right hand side and select `Viewer`
-- Uncheck the `Notify people` checkbox
-- Click `Share`
-- You will be asked to confirm sharing outside the organisation, click `share anyway`
-- Your Google sheet is now available for import
+1. Open the Google sheet you would like to import
+2. Ensure that all columns have headers. Columns without headers will be lost
+3. Click `Share` in the top right corner of the sheet
+4. If the document is unnamed, name it
+5. Paste in the service account email address you have been provided into the email box
+6. Ensure the suggested email matches the service account email and select it
+7. On the new window, choose from the dropdown on the right hand side and select `Viewer`
+8. Uncheck the `Notify people` checkbox
+9. Click `Share`
+10. You will be asked to confirm sharing outside the organisation, click `share anyway`
+11. Your Google sheet is now available for import
 
 ## Getting Google sheet detail
 
@@ -56,34 +70,33 @@ tags: [playbook]
 - You will also need to obtain the worksheet name that you wish to have imported. The worksheet name is located at the bottom left of the screen and unless it has been changed or other worksheets added, it will be called `Sheet1`
 - To import multiple worksheets from the same Google sheet, repeat the instructions in the below section for each worksheet
 
-## Setting up AWS Glue job
-- Open the [Data Platform Project](https://github.com/LBHackney-IT/data-platform). If you don't have the correct permissions, you'll get a '404' error (see [prerequisites](#prerequisites)).
-- Navigate to the main `terraform` directory, and open `26-google-sheets-imports.tf`
-- Switch to 'edit mode' (using edit button on top right)
-- Copy one of the modules above, paste at the bottom of the file and update the following fields:
-  - `module` = "your-unique-module-name" (it is helpful to keep the same naming convention as your dataset/folder)
-  - `glue_catalog_database_name` = module.department_\<department-name\>.raw_zone_catalog_database_name (e.g. module.department_parking.raw_zone_catalog_database_name)
-  - `sheets_credentials_name` = Find the value for your department in [the table above](#department-specific-information). If this is blank for your department then you don't need to include this at all.
-  - `google_sheets_document_id` = "Your document id - see the `Getting Google sheet detail` section above"
-  - `google_sheets_worksheet_name` = "The name of your worksheet - see the `Getting Google sheet detail` section above"
-  - `department` = module.department_\<department-name\> (department name should appear as in [the table above](#department-specific-information), e.g. module.department_housing_repairs)
-  - `dataset_name` = "The name of the dataset as you'd like it to appear within the data platform e.g. `housing-repair`"
+## Setting up the AWS Glue job
 
+This is what will handle the import of the data from Google Sheets to the Data Platform.
 
-- _Optional: stop your google sheet from importing automatically_
-  - The import job will run every weekday at 11pm if 'enable_glue_trigger' is not specified (i.e. there's no line for this in your module) or it's set to 'true'. If this is set to 'false' then your job will not run automatically on a schedule, and will have to be run manually within AWS.
-  See the section [Running the import manually](#running-the-import-manually) for instructions on how to do this.
+1. Open the [Data Platform Project](https://github.com/LBHackney-IT/data-platform). If you don't have the correct permissions, you'll get a '404' error (see [prerequisites](#prerequisites)).
+2. Navigate to the main `terraform` directory, and open `26-google-sheets-imports.tf`
+3. Switch to 'edit mode' (using edit button on top right)
+4. Copy one of the modules above, paste at the bottom of the file and update the following fields:
+   - `module` - in the format `your-unique-module-name`, and unique to all other `module` names in this file (it is helpful to keep the same naming convention as your dataset/folder)
+   - `glue_catalog_database_name` - Using `module.department_DEPARTMENT-NAME.raw_zone_catalog_database_name` (e.g. `module.department_parking.raw_zone_catalog_database_name`)
+   - `sheets_credentials_name` - Find the value for your department in [the table above](#department-specific-information). If this is blank for your department then you don't need to include this at all.
+   - `google_sheets_document_id` - Your Google Sheets document ID - see the `Getting Google sheet detail` section above
+   - `google_sheets_worksheet_name` - The name of the worksheet within your Google Sheet document - see the `Getting Google sheet detail` section above
+   - `department` - `module.department_DEPARTMENT-NAME` (department name should appear as in [the table above](#department-specific-information), e.g. `module.department_housing_repairs`)
+   - `dataset_name` - The name of the dataset as you'd like it to appear within the data platform e.g. `housing-repair`
 
-- _Optional: update the time schedule for the google sheets import_
-  - If a value for `google_sheet_import_schedule` is not provided, the import will run at 11pm on weekdays.
-  - To override and set a new time schedule, add a new row to the respective module with the new Cron time: e.g. `google_sheet_import_schedule = "cron(0 23 ? * 1-5 *)"`
-  - To create a new Cron expression follow the guidance provided by the [AWS Cron Expression documentation][aws_cron_expressions].
+   - **Optional: stop your Google Sheet from importing automatically** - The import job will run every weekday at 11pm if `enable_glue_trigger` is not specified (i.e. there's no line for this in your module) or it's set to `true`. If this is set to `false` then your job will not run automatically on a schedule, and will have to be run manually within AWS. See the section [Running the import manually](#running-the-import-manually) for instructions on how to do this.
 
-- Committing your changes: The Data Platform team needs to approve any changes to the code, so your change won't happen automatically. To submit your change:
-  - Provide a description to explain what you've changed
-  - Select the option to create a `new branch` for this commit (i.e. the code you've changed). You can just use the suggested name for your branch.
-  - Once you click 'Propose changes' you'll have the opportunity to add even more detail if needed before submitted for review. Once finished adding details, click "Create pull request".
-  - You'll receive an email to confirm that your changes have been approved & then merged. After it has been merged into the main code base the job will run at the next scheduled time.
+   - **Optional: update the time schedule for the Google Sheet's import** - If a value for `google_sheet_import_schedule` is not provided, the import will run at 11pm on weekdays.
+     - To override and set a new time schedule, add a new row to the respective module with the new cron time: e.g. `google_sheet_import_schedule = "cron(0 23 ? * 1-5 *)"`
+     - To create a new Cron expression follow the guidance provided by the [AWS Cron Expression documentation][aws_cron_expressions].
+
+5. The Data Platform team needs to approve any changes to the code that you make, so your change won't happen automatically. To submit your change:
+   1. Provide a description to explain what you've changed
+   2. Select the option to create a `new branch` for this commit (i.e. the code you've changed). You can just use the suggested name for your branch.
+   3. Once you click 'Propose changes' you'll have the opportunity to add even more detail if needed before submitted for review. Once finished adding details, click "Create pull request".
+   4. You'll receive an email to confirm that your changes have been approved & then merged. After it has been merged into the main code base the job will run at the next scheduled time.
 
 ### Running the import manually
 
