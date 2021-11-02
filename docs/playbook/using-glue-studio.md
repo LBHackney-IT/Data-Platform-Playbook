@@ -24,7 +24,7 @@ Note: The instructions below assume an S3 Data Source and Target Location.
 1. Click the **Create** button.
 1. In the Visual editor that is now displayed, click on the _Data Source - S3_ box and in the _Data source properties - S3_ tab to set _S3 source type_ to **S3 location** and set the _S3 URL_ for the source data.
 1. Also _Data Target - S3_ box and in the _Data target properties - S3_ tab set the _S3 URL_ for the data target, usually your department folder in the Data Platform account. 
-_NB: You can add additional folders at this point for your new data within your department folder. All departments also have access to an unrestricted folder within each zone, in order to add further cross-department insights_
+_NB: You can add additional folders at this point for your new data within your department folder. Each department has an unrestricted directory within each zone where unrestricted datasets can be stored, in order to add further cross-department insights and maintain datasets. There is also an unrestricted department which  allows users to maintain datasets which don't have access restrictions across each zone_
 **Data source and data target (amongst other operations) must be set to be able to save the job. You can also apply _Transformations_ specific to your job via the Visual tab. See the [AWS Glue Studio Documentation][aws-glue-studio-documentation]**.
 1. To complete the set up you need to select the **Job details** tab.
 1. Complete the _Name_ and optional _Description_ fields. You may use this job as a template for repeat use, so a generic name to use as a template might be useful to begin with.
