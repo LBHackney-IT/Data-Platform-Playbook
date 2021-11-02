@@ -5,6 +5,19 @@ layout: playbook_js
 tags: [playbook]
 ---
 
+## Objective / Who is this for?
+After this article, you should be able to
+* Create a user in redshift ?
+* Create a schema for your tables ?
+* Grant permissions to a user to view the tables ?
+
+## Prerequisites
+In order to complete this article, you will need
+* (fill in)
+* Access to Amazon Redshift
+* Access to Amazon Glue Databases
+
+
 ## Collection Structure
 Unlike most Database services. Redshift has a three tier collection setup:
 1. The top most tier is called a Database, a Database contains multiple Schemas
@@ -13,8 +26,14 @@ Unlike most Database services. Redshift has a three tier collection setup:
 
 ```Database -> Schema -> Table```
 
-## Creat a User
-To create a new user in Redshift, run the following command:
+## Open Redshift Query Editor
+Use the search bar at the top of AWS to search for Redshift. Then on the left, go to "Editor" then "Query Editor"
+
+## Connect to the Database
+(fill in)
+
+## Create a User
+To create a new user in Redshift, run the following command as a query:
 ```sql
 CREATE USER {username} WITH PASSWORD '{password}';
 ```
@@ -30,12 +49,22 @@ Redshift Spectrum is able to access data in S3 that has been cataloged via AWS G
 schema. An external schema acts like a database but instead of holding the data within the redshift cluster it uses an
 attached IAM role to read the data from S3.
 
-### Adding an External Schema
+### Adding an External Schema requirements
 
 To create an External Schema you will need the name of the AWS Glue Database to be added. An IAM role that can be used
 to read the data from S3 (A role has been included in the Data Platform) and a schema name that the database will be
 displayed as.
 
+## Finding the name of the AWS Glue Database to be added
+(fill in)
+
+## Finding the IAM Role details
+(fill in)
+
+## Schema Name ?
+(Fill in)
+
+### Adding an External Schema
 Execute the following SQL against the Redshift Cluster:
 ```
 CREATE EXTERNAL SCHEMA {schema-name}
@@ -95,3 +124,9 @@ GRANT SELECT
 	ON ALL TABLES IN SCHEMA housing_repairs_raw_zone
     TO housing_repairs;
 ```
+
+## Storing the credentials of the created user in a parameters store?
+
+## How do we know if it worked?
+
+## Are there any more steps?
