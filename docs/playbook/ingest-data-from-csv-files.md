@@ -79,8 +79,7 @@ Next we'll confirm the data has been imported correctly by crawling the data wit
 [AWS Athena](querying-data-using-sql.md).
 
 - Before accessing the data within Athena, you will need to run the crawler for this data.
-  Navigate to the [AWS Glue Crawler][aws_glue_crawler_console] interface, select the crawler named
-  `data-platform-stg-raw-zone-<department>-manual-uploads-crawler`, then click on "Run crawler".
+  Navigate to the [AWS Glue Crawler][aws_glue_crawler_console] interface, select the crawler named `<department>-copy-manually-uploaded-csvs-to-raw`, then click on "Run crawler".
   Wait until its status returns to "Ready".
   Check the "Last runtime" of previous jobs to get an idea of how long you might have to wait.
 
