@@ -13,6 +13,12 @@ To use AWS Glue Studio the job needs to be created manually. This guide includes
 
 Note: If a job has already been created manually you can select the job using the radio button and in the job _Actions_ mennu, select **Clone job**.
 
+:::note
+The aim of this guide is to help you get started in creating and testing your Glue jobs.
+Once your Glue job is ready and working as expected, you can refer to [this guide][create-glue-jobs] 
+to deploy your Glue job to the Data Platform AWS account and then delete your manually created job afterwards.
+:::
+
 ## Creating a new Glue job
 Note: The instructions below assume an S3 Data Source and Target Location.
 
@@ -75,3 +81,4 @@ Ensure the **PlatformDepartment** tag is correctly set in the _Advanced details_
 [terraform]: https://www.terraform.io/
 [aws-glue-studio-documentation]: https://docs.aws.amazon.com/glue/latest/ug/edit-nodes-chapter.html
 [using-glue-studio]: https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/using-glue-studio
+[create-glue-jobs]: https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/create-glue-jobs
