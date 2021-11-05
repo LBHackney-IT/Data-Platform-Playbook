@@ -12,11 +12,11 @@ maintained in a project constitute its decision log.
 
 ## Records:
 
-- [1: Record Architecture Decisions](0001-record-architecture-decisions.md)
-- [2: Ingest Google Sheets Data](0002-ingest-google-sheets-data.md)
-- [3: Role Based Access Control](0003-role-based-access-control.md)
-- [4: Partition Strategy](0004-partition-strategy.md)
-- [5: Recovered Data](0005-recovered-data.md)
-- [6: Ingest SQL flat files](0006-ingest-sql-flat-files.md)
-- [7: Copy Liberator Data from SFTP to S3](0007-sftp-to-s3-lambda.md)
-- [8: Production Data in Staging](0008-production-data-in-staging.md)
+- [1: Record Architecture Decisions](record-architecture-decisions.md)
+- [2: Ingest Google Sheets Data](ingest-google-sheets-data.md)
+- [3: Role Based Access Control](role-based-access-control.md)
+- [4: Partition Strategy](partition-strategy.md)
+- [5: Recovered Data](recovered-data.md)
+- [6: Ingest SQL flat files](ingest-sql-flat-files.md)
+- [7: Copy Liberator Data from SFTP to S3](sftp-to-s3-lambda.md)
+- [8: Production Data in Staging](production-data-in-staging.md)
