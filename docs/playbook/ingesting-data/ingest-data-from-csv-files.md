@@ -76,7 +76,7 @@ The job uses the CSVs "created at" timestamp to process only the CSVs which have
 
 Next we'll confirm the data has been imported correctly by crawling the data with
 [AWS Glue Crawler][aws_glue_crawler_console] and then inspecting it within
-[AWS Athena](querying-data-using-sql.md).
+[AWS Athena](../querying-data/querying-data-using-sql.md).
 
 - Before accessing the data within Athena, you will need to run the crawler for this data.
   Navigate to the [AWS Glue Crawler][aws_glue_crawler_console] interface, select the crawler named `<department>-copy-manually-uploaded-csvs-to-raw`, then click on "Run crawler".
@@ -91,7 +91,7 @@ Next we'll confirm the data has been imported correctly by crawling the data wit
   Note: The original names of the files, when they were uploaded, is not captured here at the moment.
 
 [excel_csv]: https://docs.workstars.com/en/latest/howto/save-csv-utf8.html
-[raw_zone]: ../zones.md#raw-zone
+[raw_zone]: ../../zones.md#raw-zone
 [aws_s3_console]: https://console.aws.amazon.com/s3/
 [aws_athena_console]: https://eu-west-2.console.aws.amazon.com/athena/home?region=eu-west-2#query
 [aws_glue_jobs_console]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=jobs

@@ -28,7 +28,7 @@ tags: [playbook]
 
 - You will need to obtain the document key from the url. The document id is the portion of the url between ``https://docs.google.com/file/d/`` and ``/edit#gid=0``. See example below
 
-  ![spreadsheet id](./images/google_spreadsheet_id_example.png)
+  ![spreadsheet id](../images/google_spreadsheet_id_example.png)
 
 - You will also need to obtain the worksheet name(s) that you wish to have imported. The worksheet name is located at the bottom left of the screen and unless it has been changed or other worksheets added, it will be called `Sheet1`
 

@@ -55,11 +55,11 @@ Ensure the "Jobs" tab is selected. Select the job `Copy parking Liberator landin
 - Continue following the instructions above.
 
 [aws_glue_workflows]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=workflows;workflowView=workflow-list
-[raw_zone]: ../zones.md#raw-zone
-[refined_zone]: ../zones.md#refined-zone
+[raw_zone]: ../../zones.md#raw-zone
+[refined_zone]: ../../zones.md#refined-zone
 [aws_glue_triggers]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=triggers
 [aws_glue_studio]: https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/jobs
 [aws_athena]: https://eu-west-2.console.aws.amazon.com/athena/home?region=eu-west-2#query
 [hackney_aws_sso]: https://hackney.awsapps.com/start#/
-[creating_a_glue_job]: ./using-glue-studio.md
-[workshop]: ../workshop/aws_glue_studio_parking.md
+[creating_a_glue_job]: using-glue-studio.md
+[workshop]: ../../workshop/aws_glue_studio_parking.md
