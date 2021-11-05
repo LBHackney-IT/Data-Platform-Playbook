@@ -15,7 +15,7 @@ If the file `23-aws-glue-jobs-<YOUR_DEPARTMENT_NAME>.tf` in the terraform direct
 
 _Create a new tf file for your department, named `23-aws-glue-jobs-<YOUR_DEPARTMENT_NAME>.tf` if it does not exist and refer to the [example](#example-module-block) below_
 
-Update the `module` name in the format `your-unique-module-name`, and unique to all other module names in this file (it is helpful to keep the same naming convention as your dataset/folder)
+Update the `module` name using the name convention `<job_name>_<department_name>`, for example "liberator_pcn_denormalisation_parking", it must be all lowercase with words separated by underscores. Ensure it's unique to all other module names in this file.
 
 #### The following input variables are required:
 - __department__: This will be `module.department_<YOUR_DEPARTMENT_NAME>`
