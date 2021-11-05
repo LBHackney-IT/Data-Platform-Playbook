@@ -52,7 +52,7 @@ Update the `module` name using the name convention `<job_name>_<department_name>
   - Provide a description to explain what you've changed.
   - Select the option to create a `new branch` for this commit (i.e. the code you've changed). You can just use the suggested name for your branch.
   - Once you click 'Propose changes' you'll have the opportunity to add even more detail if needed before submitting it for review.  Click 'Create Pull Request' when finished.
-  - You'll receive an email to confirm that your changes have been approved.
+  - You'll receive an email to confirm when your changes have been approved.
 
 ## Example module block
 ```markdown
