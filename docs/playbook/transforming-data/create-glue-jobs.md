@@ -25,10 +25,11 @@ Update the `module` name using the name convention `<job_name>_<department_name>
 #### The following variables are optional:
 - __job_description__: A description of the AWS glue job e.g. "Glue job description"
 - __job_parameters__: Parameters used in your Glue job. For example the source database and table
-    - If you are setting __job_parameters__, you should include the below parameter:
-      ```
-        "--TempDir" = "${module.glue_temp_storage.bucket_url}/${module.department_housing_repairs.identifier}/"
-        ```
+    - If you are setting __job_parameters__, you should also set the __glue_job_temp_storage_bucket_url__ variable below
+- __glue_temp_storage_bucket_url__: This should be 
+```
+  "${module.glue_temp_storage.bucket_url}/${module.department_<YOUR_DEPARTMENT_NAME>.identifier}/"
+```
 - __script_name__: Name of the Glue job script. If no value is provided, then this will default to the same name as the job name
 - __workflow_name__: Workflow to add the triggers to.
 - __triggered_by_crawler__: Can populate either this variable, the __triggered_by_job__ variable or the schedule.
