@@ -8,12 +8,12 @@ tags: playbook
 ## Creating Glue jobs using the Glue jobs Terraform template
 
 #### 1. Copy an existing Glue job or use the example below and populate the variables
-If the file `23-aws-glue-jobs-<YOUR_DEPARTMENT_NAME>.tf` in the terraform directory exists, copy an existing module block. 
-
-- Do not change any spacing before the `=`
-- Do not remove the `"quotation marks"` around any values which use them
-
+- Open the [Data Platform Project](https://github.com/LBHackney-IT/data-platform). If you don't have the correct permissions, you'll get a '404' error (see [prerequisites](./google-sheets-import#prerequisites)).
+- Navigate to the main `terraform` directory. Open `23-aws-glue-jobs-<YOUR_DEPARTMENT_NAME>.tf` and copy an existing module block. 
 _Create a new tf file for your department, named `23-aws-glue-jobs-<YOUR_DEPARTMENT_NAME>.tf` if it does not exist and refer to the [example](#example-module-block) below_
+- When updating the module
+  - Do not change any spacing before the `=`
+  - Do not remove the `"quotation marks"` around any values which use them
 
 Update the `module` name using the name convention `<job_name>_<department_name>`, for example "liberator_pcn_denormalisation_parking", it must be all lowercase with words separated by underscores. Ensure it's unique to all other module names in this file.
 
@@ -42,7 +42,9 @@ Update the `module` name using the name convention `<job_name>_<department_name>
     - __s3_target_location__: The S3 location to be crawled.
     - __table_prefix__ (Optional): The table prefix used for catalog tables that are created.
     - __configuration__ (Optional): By default, the `TableGroupingPolicy` will be set to `CombineCompatibleSchemas`  
-- __schedule__: Schedule to run the Glue job. Can populate either this variable, __triggered_by_job__ or the __triggered_by_crawler__. 
+- __schedule__: Schedule to run the Glue job, eg `"cron(0 23 ? * 1-5 *)"`. Can populate either this variable, __triggered_by_job__ or the __triggered_by_crawler__. 
+    - To create a new Cron expression follow the guidance provided by the [AWS Cron Expression documentation][aws_cron_expressions].
+
 - __number_of_workers_for_glue_job__: Specify the number of workers to use for the glue job. The is set to 2 by default.
 - __glue_job_worker_type__: Worker type for Glue job. The default is Standard. This can either be set as "Standard", "G.1X" or "G.2X". 
 - __max_concurrent_runs_of_glue_job__: Max number of concurrent runs for the glue job. The is set to 1 by default.
@@ -78,3 +80,5 @@ database_name      = module.department_parking.raw_zone_catalog_database_name
 s3_target_location = "s3://${module.raw_zone.bucket_id}/<YOUR_DEPARTMENT_NAME>/"
 }
 ```
+
+[aws_cron_expressions]: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions
