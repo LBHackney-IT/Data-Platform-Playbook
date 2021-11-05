@@ -48,7 +48,7 @@ Update the `module` name using the name convention `<job_name>_<department_name>
 - __max_concurrent_runs_of_glue_job__: Max number of concurrent runs for the glue job. The is set to 1 by default.
 - __trigger_enabled__: Set to `false` to disable scheduled or conditional triggers for the glue job. This is set to `true` by default.
 
-#### 3. Committing your changes: The Data Platform team needs to approve any changes to the code, so your change won't happen automatically. To submit your change:
+#### 3. Committing your changes using the GitHub UI: The Data Platform team needs to approve any changes to the code, so your change won't happen automatically. To submit your change:
   - Provide a description to explain what you've changed
   - Select the option to create a `new branch` for this commit (i.e. the code you've changed). You can just use the suggested name for your branch.
   - Once you click 'Propose changes' you'll have the opportunity to add even more detail if needed before submitted for review.
