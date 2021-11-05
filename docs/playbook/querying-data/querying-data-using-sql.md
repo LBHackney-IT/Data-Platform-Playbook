@@ -27,11 +27,11 @@ AWS provide [documenation on what functions][sql_functions] they make available 
 
 After logging into the Data Platform AWS account, navigate to Athena using the AWS console.
 
-![Searching for Athena in the AWS navigation bar](images/navigate-athena.png)
+![Searching for Athena in the AWS navigation bar](../images/navigate-athena.png)
 
 You'll want to make sure that your region is currently set to London, in AWS this is achieved using the region selector as shown below.
 
-![AWS Console region selector](images/region-selector.png)
+![AWS Console region selector](../images/region-selector.png)
 
 Then you'll want to ensure that you are switched to the Athena Workgroup for your department. You can check your current workgroup by hovering over the workgroup tab displayed at the top of the Athena page. If the workgroup isn't correct then [switch your workgroup][switch_workgroup] to the one you were given before proceeding.
 
@@ -41,4 +41,4 @@ Then you'll want to ensure that you are switched to the Athena Workgroup for you
 
 From the "Query editor" you should have access to a number of tables, from which you can construct and execute queries.
 
-![AWS Athena query editor](images/query-athena.png)
+![AWS Athena query editor](../images/query-athena.png)

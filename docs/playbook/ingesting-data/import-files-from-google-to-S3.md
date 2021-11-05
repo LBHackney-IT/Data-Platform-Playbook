@@ -24,7 +24,7 @@ tags: [playbook]
 - You will need to obtain the document key from the url
 - The document id is the portion of the url between ``https://docs.google.com/file/d/`` and ``/edit#gid=0``. See example below
 
-  ![file id](./images/google_spreadsheet_id_example.png)
+  ![file id](../images/google_spreadsheet_id_example.png)
 
 ## Setting up the copier lambda
 - Before setting up an AWS Glue job, ensure that the relevant department configuration for that account is set up in AWS

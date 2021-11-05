@@ -27,7 +27,50 @@ module.exports = {
     {
       type: "category",
       label: "Playbook",
-      items: [...getItems("playbook"), ...getItems("workshop")],
+      items: [
+        {
+          type: "category",
+          label: "Getting set up on the platform",
+          items: [
+            "playbook/getting-set-up/index",
+            {
+              type: "category",
+              label: "Administrating Users & Departments",
+              items: getItems("playbook/getting-set-up"),
+            },
+          ]
+        },
+        {
+          type: "category",
+          label: "Finding data on the platform",
+          items: getItems("playbook/finding-data"),
+        },
+        {
+          type: "category",
+          label: "Getting access to data",
+          items: getItems("playbook/getting-access-to-data"),
+        },
+        {
+          type: "category",
+          label: "Ingesting data",
+          items: getItems("playbook/ingesting-data"),
+        },
+        {
+          type: "category",
+          label: "Transforming data",
+          items: getItems("playbook/transforming-data"),
+        },
+        {
+          type: "category",
+          label: "Querying data",
+          items: getItems("playbook/querying-data"),
+        },
+        {
+          type: "category",
+          label: "Connecting to other tools",
+          items: getItems("playbook/connecting-to-other-tools"),
+        },
+      ],
     },
     {
       type: "category",
