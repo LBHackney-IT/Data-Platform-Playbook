@@ -33,7 +33,7 @@ Update the `module` name using the name convention `<job_name>_<department_name>
 - __workflow_name__: Workflow to add the triggers to.
 - __triggered_by_crawler__: Can populate either this variable, the __triggered_by_job__ variable or the schedule.
   The job created in this module will be triggered on completion of either
-  the crawler given here or the job given in job_to_trigger or the schedule.
+  the crawler given here or the job given in __triggered_by_job__ or the schedule.
 - __triggered_by_job__: Can populate either this variable, the __triggered_by_crawler__ variable or the schedule.
   The job created in this module will be triggered on completion of either
   the job given here or the crawler given in __triggered_by_crawler__.
