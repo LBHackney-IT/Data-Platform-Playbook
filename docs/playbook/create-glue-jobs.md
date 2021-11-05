@@ -37,7 +37,7 @@ Update the `module` name using the name convention `<job_name>_<department_name>
 - __triggered_by_job__: Can populate either this variable, the __triggered_by_crawler__ variable or the schedule.
   The job created in this module will be triggered on completion of either
   the job given here or the crawler given in __triggered_by_crawler__.
-- __crawler_details__: Inputs required to create a crawler. These are:
+- __crawler_details__: Inputs required to create a crawler. If this is not provided then no crawler will be created. These are:
     - __database_name__: Glue database where results are written. 
     - __s3_target_location__: The S3 location to be crawled.
     - __table_prefix__ (Optional): The table prefix used for catalog tables that are created.
