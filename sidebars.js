@@ -31,12 +31,14 @@ module.exports = {
         {
           type: "category",
           label: "Getting set up on the platform",
-          items: getItems("playbook/getting-set-up"),
-        },
-        {
-          type: "category",
-          label: "Administrating Users & Departments",
-          items: getItems("playbook/administrating-users-and-departments"),
+          items: [
+            "playbook/getting-set-up/index",
+            {
+              type: "category",
+              label: "Administrating Users & Departments",
+              items: getItems("playbook/getting-set-up"),
+            },
+          ]
         },
         {
           type: "category",
