@@ -2,7 +2,7 @@
 title: Creating Glue jobs
 description: "Creating Glue jobs in terraform"
 layout: playbook_js
-tags: playbook
+tags: [playbook]
 ---
 
 ## Creating Glue jobs using the Glue jobs Terraform template
