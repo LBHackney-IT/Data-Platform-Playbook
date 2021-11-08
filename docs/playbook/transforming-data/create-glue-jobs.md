@@ -56,17 +56,21 @@ it must be all lowercase with words separated by underscores. Ensure it's unique
 - __script_name__: Name of the Glue job script. If no value is provided, then this will default to the same name as the job name.
 - __workflow_name__: An existing workflow to add the triggers to
   - _NOTE: this module does not create Glue workflows_
-- __triggered_by_crawler__: The Glue job that will trigger this job e.g. 
+- __triggered_by_crawler__: The Glue crawler that will trigger this job e.g. 
   ```
-  module.<job_name>_<department_name>.crawler_name
+  module.<NAME_OF_GLUE_JOB_MODULE>.crawler_name
   ```
+  Where `NAME_OF_GLUE_JOB_MODULE` is the existing Glue job module from which the crawler is being referenced
+  
   Can populate either this variable, the __triggered_by_job__ variable, or the __schedule__ variable.
   The job created in this module will be triggered on completion of either
   the crawler given here or the job given in __triggered_by_job__, or the __schedule__.
 - __triggered_by_job__: The Glue job that will trigger this job e.g. 
   ```
-  module.<job_name>_<department_name>.job_name
+  module.<NAME_OF_GLUE_JOB_MODULE>.job_name
   ```
+  Where `NAME_OF_GLUE_JOB_MODULE` is the existing Glue job module from which the job is being referenced
+  
   Can populate either this variable, the __triggered_by_crawler__ variable, or the __schedule__ variable.
   The job created in this module will be triggered on completion of either
   the job given here or the crawler given in __triggered_by_crawler__, or the __schedule__.
