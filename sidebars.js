@@ -36,7 +36,7 @@ module.exports = {
             {
               type: "category",
               label: "Administrating Users & Departments",
-              items: getItems("playbook/getting-set-up"),
+              items: getItems("playbook/getting-set-up/administrating-users-and-departments"),
             },
           ]
         },
