@@ -7,13 +7,14 @@ tags: [playbook]
 
 ## Objective / Who is this for?
 After this article, you should be able to
-* Create a user in redshift ?
-* Create a schema for your tables ?
-* Grant permissions to a user to view the tables ?
+* Create a user in redshift
+* Create a schema for your tables
+* Grant permissions to a user to view the tables
+* Make the connection with an AWS Glue database to see the data in the tables
 
 ## Prerequisites
 In order to complete this article, you will need
-* (fill in)
+* Permissions to configure Redshift
 * Access to Amazon Redshift
 * Access to Amazon Glue Databases
 
@@ -27,10 +28,10 @@ Unlike most Database services. Redshift has a three tier collection setup:
 ```Database -> Schema -> Table```
 
 ## Open Redshift Query Editor
-Use the search bar at the top of AWS to search for Redshift. Then on the left, go to "Editor" then "Query Editor"
+Use the search bar at the top of AWS to search for Redshift. Then on the left, go to "Editor" then "Query Editor". You will enter the code here.
 
 ## Connect to the Database
-(fill in)
+You must have an open connection to see the tables. 
 
 ## Create a User
 To create a new user in Redshift, run the following command as a query:
@@ -56,13 +57,10 @@ to read the data from S3 (A role has been included in the Data Platform) and a s
 displayed as.
 
 ## Finding the name of the AWS Glue Database to be added
-(fill in)
+Navigate to AWS Glue and retrieve the name of the database you want to expose in Redshift. The example below uses 'housing-repairs-raw-zone'.
 
 ## Finding the IAM Role details
-(fill in)
-
-## Schema Name ?
-(Fill in)
+Use the appropriate IAM role that you will find in the IAM console in AWS.
 
 ### Adding an External Schema
 Execute the following SQL against the Redshift Cluster:
@@ -125,8 +123,11 @@ GRANT SELECT
     TO housing_repairs;
 ```
 
-## Storing the credentials of the created user in a parameters store?
+### Storing the credentials of the created user in a parameters store
+The password created for the user needs to be added to the record created by Terraform in the AWS Secret Manager. 
 
-## How do we know if it worked?
+### How do we know if it worked?
+You will know if it has worked because the data will be visible in the redshift and via the redshift connectors in tools such as Qlik or Google Data Studio using the credentials in AWS Secret Manager. 
 
-## Are there any more steps?
+### Related documents
+https://lbhackney-it.github.io/Data-Platform-Playbook/playbook/connecting-to-other-tools/connecting-to-redshift-from-data-studio
