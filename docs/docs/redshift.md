@@ -1,5 +1,5 @@
 ---
-title: Redshift: Creating users, databases and exposing data from Glue
+title: Redshift - Creating users, databases and exposing data from Glue
 description: ""
 layout: playbook_js
 tags: [playbook]
