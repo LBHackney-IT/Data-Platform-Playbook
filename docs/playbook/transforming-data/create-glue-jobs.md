@@ -53,6 +53,7 @@ it must be all lowercase with words separated by underscores. Ensure it's unique
       
   See the [example module](#example-module-block) below for a complete example.
   
+- __glue_role_arn__: Set this as `aws_iam_role.glue_role.arn` if your Glue job needs to use a dataset from an S3 location or Glue catalog database that belongs to another department. 
 - __script_name__: Name of the Glue job script. If no value is provided, then this will default to the same name as the job name.
 - __workflow_name__: An existing workflow to add the triggers to
   - _NOTE: this module does not create Glue workflows_
