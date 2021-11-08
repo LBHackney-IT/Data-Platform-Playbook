@@ -52,7 +52,8 @@ __We want the platform to enable deeper insight:__
 
 There are a series of processes data will go through as it moves through the platform. Depending on whether the data you need is already in the platform or not, and whether it's in the format you need.
 
-1. __Ingesting data__: This is the process of bringing data from its original source (e.g. Google Sheet, database, API, etc.) into the data lake. The exact process will depend on the type of data source which are documented in this playbook in the [ingesting data section]. However for each process, the result will be that:
+### 1. __Ingesting data__ 
+This is the process of bringing data from its original source (e.g. Google Sheet, database, API, etc.) into the data lake. The exact process will depend on the type of data source which are documented in this playbook in the [ingesting data section]. However for each process, the result will be that:
 
 - The data is stored in [Amazon S3 storage](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html)
 - Data is stored in a service bucket (e.g. 'Parking' or 'Council Tax') which can only be accessed by approved members of that service group
@@ -60,7 +61,8 @@ There are a series of processes data will go through as it moves through the pla
 - Data will be partitioned (stored in sections to help speed up querying) by the day it was ingested
 - Optionally, the ingestion will run on a schedule so that the data will be loaded into the lake each day, week, etc.
 
-2. __Transforming data__: Most often source data in its raw form is not ready for analysis and needs some kind of transformation to make it usable, for example:
+### 2. __Transforming data__ 
+Most often source data in its raw form is not ready for analysis and needs some kind of transformation to make it usable, for example:
 
 - _Cleaning data_ for example removing inconsistent formats, populating missing values, removing duplicates, etc.
 - _Denormalising data_ by joining together tables from a database
@@ -71,28 +73,10 @@ There are a series of processes data will go through as it moves through the pla
  
 These transformations can be scripted in Spark SQL or PySpark (dialects of SQL and Python that run using [Apache Spark](https://spark.apache.org/)), and scheduled/triggered using [AWS Glue](https://spark.apache.org/). You can find more information about the tools and processes in the [transforming data] section of the playbook.
 
-3. __Analysing data__:
+### 3. __Analysing data__ 
+There are various ways to analyse data data from the platform:
 
-
-4. __Publishing data__:
-
-D
-
-
-
-
-[move these to a new 'About the playbook' section]
-## Why a Playbook?
-
-## Our Playbook journey
-
-## Who this Playbook is for
-
-Each section has different audiences:
-
-- __About__ - Anybody who will work with or on the data platform
-- __Playbook__ - Analysts, and engineers looking to consume and manipulate data on the Data Platform
-- __Technical Documentation, Architecture Decision__ - Engineers working on improving the platform
-
-## Help us improve
-We are always looking at ways we can improve. If you have any ideas or suggestions please share your feedback on our playbook [GitHub Repository](https://github.com/LBHackney-IT/Data-Platform-Playbook).
+- Querying your data using SQL in [AWS Athena](https://aws.amazon.com/athena)
+- Connecting your data to a Business Intelligence tool (e.g. Qlik, Google Data Studio, Tableau) using [AWS Redshift](https://aws.amazon.com/redshift/)
+- Connecting your data to a notebooking tool (e.g. Jupyter) so that you can write scripts in a coding language (e.g. Python, R)
+- Connecting your data to Earthlight for mapping and geographical analysis
