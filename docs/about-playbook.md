@@ -13,4 +13,4 @@ This Playbook provides step-by-step guidance about how to use the Data Platform,
 - __Spikes__ : Contains information gathered by the team during technical 'spikes' when we explore different solutions. Most useful for engineers who want to maintain or further develop the platform. 
 
 ## Help us improve
-This Playbook is a living document that will continue to develop alongside the development of the Data Platform. We're always looking for ways to improve it for our users. If you have any ideas or suggestions please share your feedback on our playbook [GitHub Repository](https://github.com/LBHackney-IT/Data-Platform-Playbook) or get in touch with a member of the Data Platform team.
+This Playbook is a living document that will continue to develop alongside the development of the Data Platform. We're always looking for ways to improve it for our users. If you have any ideas or suggestions please share your feedback on our playbook [GitHub Repository](https://github.com/LBHackney-IT/Data-Platform-Playbook) by opening a Pull Request or get in touch with a member of the Data Platform team.
