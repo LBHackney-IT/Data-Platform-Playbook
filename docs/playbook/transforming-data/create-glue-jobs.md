@@ -7,8 +7,13 @@ tags: [playbook]
 
 ## Creating Glue jobs using the Glue jobs Terraform template
 
-#### 1. Copy an existing Glue job module block or use the example below and populate the variables
-- Open the [Data Platform Project](https://github.com/LBHackney-IT/data-platform). 
+#### 1. Add your script to the Data Platform Project
+- Open the [scripts directory][scripts-directory] in the Data Platform Project and click `Add file` and then `Create new file`
+- Name your file, using underscores as separators and then paste your code in field below
+- Follow step 3 below to commit your new file to the project 
+
+#### 2. Copy an existing Glue job module block or use the example below and populate the variables
+- Open the [Data Platform Project][data-platform-project]  
   If you don't have the correct permissions, you'll get a '404' error (see [prerequisites][prerequisites]).
 - Navigate to the main `terraform` directory. Open `23-aws-glue-jobs-<YOUR-DEPARTMENT-NAME>.tf` and copy an existing module block. 
 _Create a new tf file for your department, named `23-aws-glue-jobs-<YOUR-DEPARTMENT-NAME>.tf` if it does not exist and refer to the [example](#example-module-block) below_
@@ -127,3 +132,5 @@ crawler_details = {
 
 [aws_cron_expressions]: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions
 [prerequisites]: ../ingesting-data/google-sheets-import.md#prerequisites
+[data-platform-project]: https://github.com/LBHackney-IT/data-platform
+[scripts-directory]: https://github.com/LBHackney-IT/Data-Platform/tree/main/scripts
