@@ -17,11 +17,9 @@ module.exports = {
       label: "About",
       items: [
         "introduction",
+        "about-playbook",
         "zones",
         "environments",
-        //'api_standards',
-        //'platform_api_vs_service_api',
-        //'documentation'
       ],
     },
     {
