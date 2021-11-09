@@ -1,7 +1,7 @@
 ---
 id: about-playbook
 title: About this Playbook
-slug: /
+slug: /about-playbook
 ---
 
 This Playbook provides step-by-step guidance about how to use the Data Platform, along with technical documentation about how the platform has been set up and decisions we've made. The Playbook has several intended audiences, and each section will be relevant to some more than others:
