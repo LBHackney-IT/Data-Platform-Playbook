@@ -81,4 +81,4 @@ Ensure the **PlatformDepartment** tag is correctly set in the _Advanced details_
 [terraform]: https://www.terraform.io/
 [aws-glue-studio-documentation]: https://docs.aws.amazon.com/glue/latest/ug/edit-nodes-chapter.html
 [using-glue-studio]: https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/using-glue-studio
-[create-glue-jobs]: ./create-glue-jobs
+[create-glue-jobs]: ./002-create-glue-jobs

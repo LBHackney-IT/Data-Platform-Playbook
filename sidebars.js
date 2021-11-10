@@ -5,13 +5,13 @@ const getItems = (folder) =>{
   return fs.readdirSync(`./docs/${folder}/`).filter((f)=>{
     return f.includes(".md")
   }).map(file => {
-      return `${folder}/${file.split(".")[0].replace(/^[0-9]+\-/i, '')}`
+      return `${folder}/${file.split(".")[0]}`
     })
 }
 
 module.exports = {
   docs: [
-    "release-notes",
+    //"release-notes",
     {
       type: "category",
       label: "About",

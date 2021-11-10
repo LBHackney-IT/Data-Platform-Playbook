@@ -38,4 +38,3 @@ did have access to the entire bucket (such as the AWS Account Root) they would h
 
 - Security around AWS terraform deployments
 - Review process for Infrastructure as Code deployments
-- 
