@@ -7,17 +7,17 @@ tags: [playbook]
 
 ## Using AWS Glue Studio to create ETL processes
 
+:::important
+The aim of this guide is to help you get started in creating and testing your Glue jobs.
+Once your Glue job is ready and working as expected, you can refer to [this guide][create-glue-jobs]
+to deploy your Glue job to the Data Platform AWS account and then delete your manually created job afterwards.
+:::
+
 [AWS Glue Studio][aws-glue-studio] is a new graphical interface that makes it easy to create, run, and monitor extract, transform, and load (ETL) jobs in AWS Glue.
 
 To use AWS Glue Studio the job needs to be created manually. This guide includes the steps needed to create an editable job in Glue Studio. Templates may have already been created and existing jobs can be duplicated to make it easier to get started with Glue Studio. Dynamically created scripts using [terraform][terraform] (the infrastructure as code tool Hackney use) will not have the ability to use the visual editor.
 
 Note: If a job has already been created manually you can select the job using the radio button and in the job _Actions_ mennu, select **Clone job**.
-
-:::important
-The aim of this guide is to help you get started in creating and testing your Glue jobs.
-Once your Glue job is ready and working as expected, you can refer to [this guide][create-glue-jobs] 
-to deploy your Glue job to the Data Platform AWS account and then delete your manually created job afterwards.
-:::
 
 ## Creating a new Glue job
 Note: The instructions below assume an S3 Data Source and Target Location.
