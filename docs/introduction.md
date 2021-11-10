@@ -58,7 +58,7 @@ __We want the platform to enable deeper insight:__
 
 There are a series of processes data will go through as it moves through the platform, illustrated in the diagram below. The starting point of your journey will depend on whether the data you need is already in the platform or not, and whether it's in the format you need.
 
-  ![data lake diagram](https://github.com/LBHackney-IT/Data-Platform-Playbook/blob/7b7da4b97cc60e427fdf51acddc377a22fde6224/docs/playbook/images/data-lake-diagram.png)
+  ![data lake diagram](./playbook/images/data-lake-diagram.png)
 
 ### 1. __Ingesting data__ 
 This is the process of bringing data from its original source (e.g. Google Sheet, database, API, etc.) into the data lake. The exact process will depend on the type of data source which are documented in this playbook in the [ingesting data section]. However for each process, the result will be that:
