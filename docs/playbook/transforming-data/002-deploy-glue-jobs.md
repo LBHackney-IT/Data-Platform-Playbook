@@ -194,4 +194,4 @@ crawler_details = {
 [scripts-directory]: https://github.com/LBHackney-IT/Data-Platform/tree/main/scripts
 [committing-changes]: #3-committing-your-changes-using-the-github-ui 
 [adding-script]: #1-add-your-script-to-the-data-platform-project
-[using-glue-studio]: ./001-using-glue-studio
+[using-glue-studio]: ./using-glue-studio
