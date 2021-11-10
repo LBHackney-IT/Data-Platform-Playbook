@@ -10,7 +10,7 @@ tags: [playbook]
 :::important
 This guide contains instructions on how to deploy your Glue job to the Data Platform using the GitHub UI. 
 It assumes you have finished developing your script, and it is ready to be deployed to the Data Platform.
-If you are still testing or prototyping your script, it is recommended that you refer to [this guide](./using-glue-studio.md) first.
+If you are still testing or prototyping your script, it is recommended that you refer to [this guide][using-glue-studio] first.
 :::
   
 ### 1. Add your script to the Data Platform Project
@@ -193,3 +193,4 @@ crawler_details = {
 [scripts-directory]: https://github.com/LBHackney-IT/Data-Platform/tree/main/scripts
 [committing-changes]: #3-committing-your-changes-using-the-github-ui 
 [adding-script]: #1-add-your-script-to-the-data-platform-project
+[using-glue-studio]: ./001-using-glue-studio
