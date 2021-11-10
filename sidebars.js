@@ -83,7 +83,7 @@ module.exports = {
         {
           type: "category",
           label: "Records",
-          items: getItems("architecture-decisions"),
+          items: getItems("architecture-decisions/records"),
         },
       ],
     },

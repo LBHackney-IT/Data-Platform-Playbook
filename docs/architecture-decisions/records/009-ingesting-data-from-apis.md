@@ -14,7 +14,7 @@ The Data Platform currently has no capacity to ingest data from external APIs
 
 ## Decision
 
-![API ingestion](./images/api-ingestion.png)
+![API ingestion](../images/api-ingestion.png)
 
 Deploy a Lambda that will call the the required API and save the returned data
 object into S3, once all the records have been downloaded the lambda will
