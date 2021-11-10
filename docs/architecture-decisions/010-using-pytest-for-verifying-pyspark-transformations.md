@@ -1,4 +1,5 @@
 ---
+id: using-pytest-for-verifying-pyspark-transformations
 title: "Using pytest for verifying PySpark transformations"
 description: ""
 tags: [adr]

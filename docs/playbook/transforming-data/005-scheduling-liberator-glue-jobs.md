@@ -1,4 +1,5 @@
 ---
+id: scheduling-liberator-glue-jobs
 title: Scheduling Liberator Glue Jobs
 description: "Schedule a glue job to run when new liberator data is added into the platform"
 layout: playbook_js

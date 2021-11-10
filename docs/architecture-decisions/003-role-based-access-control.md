@@ -1,4 +1,5 @@
 ---
+id: role-based-access-control
 title: "Role-Based Access Control"
 description: ""
 tags: [adr]

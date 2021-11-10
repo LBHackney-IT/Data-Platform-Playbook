@@ -1,4 +1,5 @@
 ---
+id: partition-strategy
 title: "Partition Strategy"
 description: ""
 tags: [adr]

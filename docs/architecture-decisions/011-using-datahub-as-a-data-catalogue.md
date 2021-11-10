@@ -1,4 +1,5 @@
 ---
+id: using-datahub-as-a-data-catalogue
 title: "Using DataHub as a Data Catalogue"
 description: ""
 tags: [adr]

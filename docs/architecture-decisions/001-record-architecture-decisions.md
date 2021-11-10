@@ -1,4 +1,5 @@
 ---
+id: record-architecture-decisions
 title: "Record architecture decisions"
 description: ""
 tags: [adr]
