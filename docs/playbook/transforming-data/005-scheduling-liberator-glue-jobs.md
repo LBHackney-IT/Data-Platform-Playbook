@@ -61,5 +61,5 @@ Ensure the "Jobs" tab is selected. Select the job `Copy parking Liberator landin
 [aws_glue_studio]: https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/jobs
 [aws_athena]: https://eu-west-2.console.aws.amazon.com/athena/home?region=eu-west-2#query
 [hackney_aws_sso]: https://hackney.awsapps.com/start#/
-[creating_a_glue_job]: using-glue-studio.md
+[creating_a_glue_job]: 001-using-glue-studio.md
 [workshop]: ../../workshop/aws_glue_studio_parking.md
