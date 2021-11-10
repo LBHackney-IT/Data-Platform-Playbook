@@ -12,8 +12,14 @@ A data platform is an integrated technology solution that allows data located in
 
 
 - __A Data Catalogue__: this is a place to store documentation and metadata about the datasets within the data lake. It helps users discover what data exists, understand what the data mean, and find out who owns the data.
+
+
 - __A Data Warehouse__: this is a store of 'gold standard' data that is ready for analysis or publication. It is the result of processes to ingest, clean and transform data in the data lake.
+
+
 - __A Data Dictionary__: this defines domain-driven design entities and their relationships to one another at a high level. (For example, how a 'person' relates to a 'household', 'property', etc.)
+
+
 - __This Playbook__: this playbook provides step-by-step guidance about how to use the platform, along with technical documentation about how the platform has been set up and decisions we've made.
 
 
@@ -50,7 +56,9 @@ __We want the platform to enable deeper insight:__
 
 ## Processing data through the platform
 
-There are a series of processes data will go through as it moves through the platform. Depending on whether the data you need is already in the platform or not, and whether it's in the format you need.
+There are a series of processes data will go through as it moves through the platform, illustrated in the diagram below. The starting point of your journey will depend on whether the data you need is already in the platform or not, and whether it's in the format you need.
+
+  ![data lake diagram](https://github.com/LBHackney-IT/Data-Platform-Playbook/blob/7b7da4b97cc60e427fdf51acddc377a22fde6224/docs/playbook/images/data-lake-diagram.png)
 
 ### 1. __Ingesting data__ 
 This is the process of bringing data from its original source (e.g. Google Sheet, database, API, etc.) into the data lake. The exact process will depend on the type of data source which are documented in this playbook in the [ingesting data section]. However for each process, the result will be that:
