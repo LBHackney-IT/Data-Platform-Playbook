@@ -52,14 +52,19 @@ module.exports = {
           items: [ 
             {
               type: "category",
-              label: "Glue Jobs and Testing",
-              items: getItems("playbook/transforming-data"),
+              label: "Guides to testing in the platform",
+              items: getItems("playbook/transforming-data/guides-to-testing-in-the-platform"),
             },
             {
               type: "category",
-              label: "Scheduling Glue Jobs",
-              items: getItems("playbook/transforming-data/scheduling-glue-jobs"),
+              label: "Using AWS Glue",
+              items: getItems("playbook/transforming-data/using-aws-glue"),
             },
+            {
+              type: "category",
+              label: "Practical example",
+              items: getItems("playbook/transforming-data/practical-examples")
+            }
           ],
         },
         {
