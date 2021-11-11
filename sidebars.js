@@ -29,14 +29,7 @@ module.exports = {
         {
           type: "category",
           label: "Getting set up on the platform",
-          items: [
-            "playbook/getting-set-up/index",
-            {
-              type: "category",
-              label: "Administrating Users & Departments",
-              items: getItems("playbook/getting-set-up/administrating-users-and-departments"),
-            },
-          ]
+          items: getItems ("playbook/getting-set-up"),
         },
         {
           type: "category",
@@ -60,13 +53,8 @@ module.exports = {
         },
         {
           type: "category",
-          label: "Querying data",
-          items: getItems("playbook/querying-data"),
-        },
-        {
-          type: "category",
-          label: "Connecting to other tools",
-          items: getItems("playbook/connecting-to-other-tools"),
+          label: "Querying and analysing data",
+          items: getItems("playbook/querying-and-analysing-data"),
         },
       ],
     },
