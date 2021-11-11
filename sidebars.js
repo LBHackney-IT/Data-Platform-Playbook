@@ -49,7 +49,23 @@ module.exports = {
         {
           type: "category",
           label: "Transforming data",
-          items: getItems("playbook/transforming-data"),
+          items: [ 
+            {
+              type: "category",
+              label: "Guides to testing in the platform",
+              items: getItems("playbook/transforming-data/guides-to-testing-in-the-platform"),
+            },
+            {
+              type: "category",
+              label: "Using AWS Glue",
+              items: getItems("playbook/transforming-data/using-aws-glue"),
+            },
+            {
+              type: "category",
+              label: "Practical example",
+              items: getItems("playbook/transforming-data/practical-examples")
+            }
+          ],
         },
         {
           type: "category",
