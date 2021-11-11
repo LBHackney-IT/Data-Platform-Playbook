@@ -49,7 +49,18 @@ module.exports = {
         {
           type: "category",
           label: "Transforming data",
-          items: getItems("playbook/transforming-data"),
+          items: [ 
+            {
+              type: "category",
+              label: "Glue Jobs and Testing",
+              items: getItems("playbook/transforming-data"),
+            },
+            {
+              type: "category",
+              label: "Scheduling Glue Jobs",
+              items: getItems("playbook/transforming-data/scheduling-glue-jobs"),
+            },
+          ],
         },
         {
           type: "category",
