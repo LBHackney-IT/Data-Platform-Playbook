@@ -57,40 +57,42 @@ e.g. `"address_cleaning_housing_repairs"`
 #### The following variables are optional:
 - #### Variables used for scheduling a Glue job
 To schedule your Glue job, you will need to set one of the following optional variables: 
-__triggered_by_crawler__, __triggered_by_job__ or __schedule__
+__triggered_by_crawler__, __triggered_by_job__ or __schedule__.
+The job created in this module will be triggered on completion of either
+the crawler specified in __triggered_by_crawler__, the job specified in __triggered_by_job__, or the __schedule__.
+
+  _Note: the placeholder variable `<NAME_OF_GLUE_JOB_MODULE>` used in __trigger_by_job__ and __triggered_by_crawler__ 
+  refers to the existing Glue job module from which the job or crawler is being referenced_
 
   - __triggered_by_crawler__ (optional): The Glue crawler that will trigger this job e.g.
   ```
   module.<NAME_OF_GLUE_JOB_MODULE>.crawler_name
   ```
-  Where `NAME_OF_GLUE_JOB_MODULE` is the existing Glue job module from which the crawler is being referenced.
-  From the [example template below](#example-module-block) this would be `manually_uploaded_parking_data_to_raw`, and therefore you would write:
+  From the [example template below](#example-module-block), the name of the Glue job module would be `manually_uploaded_parking_data_to_raw`, and therefore you would write:
   ```
   module.manually_uploaded_parking_data_to_raw.crawler_name
   ```
 
-  Can populate either this variable, the __triggered_by_job__ variable, or the __schedule__ variable.
-  The job created in this module will be triggered on completion of either
-  the crawler given here, or the job given in __triggered_by_job__, or the __schedule__.
-  
   - __triggered_by_job__ (optional): The Glue job that will trigger this job e.g.
   ```
   module.<NAME_OF_GLUE_JOB_MODULE>.job_name
   ```
-  Where `NAME_OF_GLUE_JOB_MODULE` is the existing Glue job module from which the job is being referenced. 
-
-  Can populate either this variable, the __triggered_by_crawler__ variable, or the __schedule__ variable.
-  The job created in this module will be triggered on completion of either
-  the job given here or the crawler given in __triggered_by_crawler__, or the __schedule__.
-  - __schedule__ (optional): Schedule to run the Glue job, e.g. `"cron(0 23 ? * 1-5 *)"`. Can populate either this variable, __triggered_by_job__ or the __triggered_by_crawler__.
-    - To create a new Cron expression follow the guidance provided by the [AWS Cron Expression documentation][aws_cron_expressions].
+  - __schedule__ (optional): Schedule to run the Glue job specified using Cron expressions (see [AWS Cron Expression documentation][aws_cron_expressions]). 
+    - For example, if you wanted your Glue job to run at 23:00:00pm, on every Monday, Tuesday, Wednesday, Thursday and Friday, every month, 
+    your Cron expression would look like:
+      ```
+      "cron(0 0 23 ? * MON,TUE,WED,THU,FRI *)"
+      ```
+    
+    - You can use [this tool][cron-expression-generator] to generate your Cron expressions. 
+    
 
 
 - __job_description__ (optional): A description of the AWS glue job e.g. "Exports Google Sheets imported datasets to the landing zone"
 - __job_parameters__ (optional): If your Glue job uses environment variables/ job parameters, you can set them here. 
   _Note: the __"--extra-py-files"__ job parameter is __required__ if you are setting your own job parameters._
   
-    - __"--extra-py-files"__: this should be set to: 
+    - _"--extra-py-files"_: this should be set to: 
       ```
       "s3://${var.glue_scripts_bucket_id}/${var.helper_script_key}"
       ```
@@ -103,25 +105,25 @@ __triggered_by_crawler__, __triggered_by_job__ or __schedule__
       
       Other example job parameters:
 
-    - __"--s3_bucket_target"__: the output S3 location for your Glue job
+    - _"--s3_bucket_target"_ (optional): the output S3 location for your Glue job
       e.g. 
       ```
       "s3://${module.<S3_BUCKET_ZONE>_zone.bucket_id}/<YOUR_DEPARTMENT_NAME>/<FOLDER_NAME>"
       ```
       - Where `<S3_BUCKET_ZONE>` can be either: `raw`, `landing`, `refined`, or `trusted`
         
-    - __"--s3_bucket_source"__: the S3 source of the data used in the glue job
+    - _"--s3_bucket_source"_ (optional): the S3 source of the data used in the glue job
       e.g.
       ```
       "s3://${module.<S3_BUCKET_ZONE>_zone.bucket_id}/<YOUR_DEPARTMENT_NAME>/<FOLDER_NAME>"
       ```
       - Where `<S3_BUCKET_ZONE>` can be either: `raw`, `landing`, `refined`, or `trusted`
     
-    - __"--source_catalog_table"__: the Glue catalog source table of the data used in the Glue job
+    - _"--source_catalog_table"_ (optional): the Glue catalog source table of the data used in the Glue job
       e.g. `"housing_repairs_repairs_purdy"`
       
-      -  _Note: if sourcing data from a catalog table, the __`--source_catalog_database`__ job parameter must be set as well_
-    - __"--source_catalog_database"__: the Glue database which contains the Glue __catalog table__ needed for the Glue job
+      -  _Note: if sourcing data from a catalog table, the _`--source_catalog_database`_ job parameter must be set as well_
+    - _"--source_catalog_database"_ (optional): the Glue database which contains the Glue _source_catalog table_ needed for the Glue job
       e.g. 
       ```
       module.department_<YOUR_DEPARTMENT_NAME>.<ZONE>_catalog_database_name
@@ -133,22 +135,22 @@ See the [example module](#example-module-block) below for guidance on how to set
 - __workflow_name__ (optional): An existing workflow to add the triggers to
   - _Note: this module __does not__ create Glue workflows_
 - __crawler_details__ (optional): Inputs required to create a crawler. If this variable is not provided then no crawler will be created. These are:
-    - __database_name__: Glue database where results are written
+    - _database_name_: Glue database where results are written
       ```
       module.department_<YOUR_DEPARTMENT_NAME>.<S3_BUCKET_ZONE>_catalog_database_name
       ```
       - Where `<S3_BUCKET_ZONE>` can be either: `raw`, `landing`, `refined`, or `trusted`
 
-    - __s3_target_location__: The S3 location to be crawled. 
+    - _s3_target_location_: The S3 location to be crawled. 
       This will likely be the same as the value of Glue job job parameter: __`--s3_bucket_target`__
       ```
       "s3://${module.<S3_BUCKET_ZONE>_zone_bucket_id}/<YOUR_DEPARTMENT_NAME>/<FOLDER_NAME>/"
       ```
       
-    - __table_prefix__ (Optional): The table prefix used for catalog tables that are created in the specified Glue database (__database_name__ variable set above) in __Athena__,
+    - _table_prefix_ (Optional): The table prefix used for catalog tables that are created in the specified Glue database (__database_name__ variable set above) in __Athena__,
       after crawling the __s3_target_location__ e.g. `"housing_repairs_"`
         
-    - __configuration__ (Optional): By default, the `TableGroupingPolicy` will be set to `CombineCompatibleSchemas`  
+    - _configuration_ (Optional): By default, the `TableGroupingPolicy` will be set to `CombineCompatibleSchemas`  
 
 - __number_of_workers_for_glue_job__ (optional): The number of workers to use for the glue job. The is set to __2__ by default.
   If your Glue job is processing a very large dataset, it is likely that you will need to increase this.
@@ -195,3 +197,4 @@ crawler_details = {
 [committing-changes]: #3-committing-your-changes-using-the-github-ui 
 [adding-script]: #1-add-your-script-to-the-data-platform-project
 [using-glue-studio]: ./using-glue-studio
+[cron-expression-generator]: https://www.freeformatter.com/cron-expression-generator-quartz.html
