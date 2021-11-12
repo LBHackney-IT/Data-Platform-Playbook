@@ -60,7 +60,7 @@ Just after the methods definitions and just before the part that reads arguments
 - If your script is using a logger, you will need to pass it into your testable method. 
   See the `clean_addresses` function in the `test_address_cleaning.py` for an example of how you can do this. 
 - When you’ve written your first test, run it using one of the commands in the [README.md][readme]. It is common practice to write a test in such a way that it initially fails, and then to change it to make it pass. This practice is called Test-driven development (TDD), for more information [this video][unit_testing_principles] talks through the principles of TDD.
-- If you need to add any packages in order to write your tests, you can add them to the `requirements.txt` file and they will be installed when you run your tests.
+- If you need to add any packages in order to write your tests, you can add them to the `requirements.test.txt` file and they will be installed when you run your tests.
 - When you’re happy with your test, commit your changes locally on your branch. 
 - To have your tests published on the Data Platform, push your commits to GitHub and create a Pull Request on your branch, so others can review and merge your code.
 
