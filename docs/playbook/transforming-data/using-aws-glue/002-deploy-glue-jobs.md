@@ -111,7 +111,7 @@ the crawler specified in __triggered_by_crawler__, the job specified in __trigge
       - _"--s3_bucket_target"_ (optional): the output S3 location for your Glue job
       e.g. 
         ```
-        "s3://${module.<ZONE>_zone.bucket_id}/<YOUR_DEPARTMENT_NAME>/<FOLDER_NAME>"
+        "s3://${module.<ZONE>_zone.bucket_id}/<YOUR_DEPARTMENT_NAME>/<FOLDER_NAME>/"
         ```
         
       - _"--s3_bucket_source"_ (optional): the S3 source of the data used in the glue job
