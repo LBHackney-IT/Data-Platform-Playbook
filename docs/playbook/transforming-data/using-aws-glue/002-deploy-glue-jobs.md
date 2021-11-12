@@ -94,21 +94,13 @@ the crawler specified in __triggered_by_crawler__, the job specified in __trigge
 
 - __job_description__ (optional): A description of the AWS glue job e.g. "Exports Google Sheets imported datasets to the landing zone"
 - __job_parameters__ (optional): If your Glue job uses environment variables/ job parameters, you can set them here. 
-  _Note: the __"--extra-py-files"__ job parameter is __required__ if you are setting your own job parameters.
-  
-    - _"--extra-py-files"_: this should be set to: 
-      ```
-      "s3://${var.glue_scripts_bucket_id}/${var.helper_script_key}"
-      ```
-      _Note: You can also include other Python helper files by adding a comma just before the closing quotation marks, 
-      and then pasting the S3 path to the helper file._
+      Add this import statement to your script: `from helpers.helpers import get_glue_env_var`
+      to retrieve the job parameters you set here.
       
-      Then add this import statement to your script: `from helpers import get_glue_env_var` 
-      
-      You can then get the value of your job parameters to use in your script like this:
-      ```
-      s3_target_location = get_glue_env_var('s3_bucket_target', '')
-      ```
+    You can then get the value of your job parameters to use in your script like this:
+    ```
+    s3_target_location = get_glue_env_var('s3_bucket_target', '')
+    ```
   - In the following optional job parameters; _"--s3_bucket_target"_, _"--s3_bucket_source"_ and _"--source_catalog_database"_:
     - `<ZONE>` refers to either: `raw`, `landing`, `refined`, or `trusted` S3 or Glue database zones.
     - Specifically for _"--s3_bucket_target"_ and _"--s3_bucket_source"_, and any other S3 location path,
