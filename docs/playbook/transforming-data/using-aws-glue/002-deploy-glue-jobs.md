@@ -199,7 +199,6 @@ source = "../modules/aws-glue-job"
 
 department                     = module.department_housing_repairs
 job_name                       = "${local.short_identifier_prefix}housing repairs address cleaning"
-glue_scripts_bucket_id         = module.glue_scripts.bucket_id
 schedule                       = "cron(0 0 23 ? * MON,TUE,WED,THU,FRI *)"
 job_parameters = {
   "--s3_bucket_target"    = module.raw_zone.bucket_id
