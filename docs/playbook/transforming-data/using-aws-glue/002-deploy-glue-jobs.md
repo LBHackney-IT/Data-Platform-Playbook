@@ -53,10 +53,15 @@ The module name must be all lowercase with words separated by underscores. Ensur
   ```
   "${local.short_identifier_prefix}housing repairs address cleaning"
   ```
-- __script_name__ (required): Name of the Glue job script. This will be the same as the script file you named in [step 1 above][adding-script] without the file extension  
-e.g. `"address_cleaning_housing_repairs"`           
-    _Note: you must add quotes around the script name as shown in the example._
-- __glue_scripts_bucket_id__ (required): This should be `module.glue_scripts.bucket_id`
+- #### Script Name/ Location (required)
+  One of the following variables must be populated.
+  If you are adding a new script to only be used for one glue job you should provide a value for __script_name__ and leave the second blank.
+  If your script file is already saved in S3 you should provide __script_s3_object_key__.
+  - __script_name__ : Name of the Glue job script. Set this to the name of the script file you created in [step 1][adding-script]  
+  e.g. `"address_cleaning_housing_repairs"`. This file must be saved within your departmental folder.
+      _Note: you must add quotes around the script name as shown in the example._
+  - __script_s3_object_key__ : S3 object key of the script file.
+    If your script is used accross multiple jobs it may already be saved in S3, in this case you can provide the key for that object within the scripts S3 bucket e.g. `aws_s3_bucket_object.address_matching.key`.
 
 #### The following variables are optional:
 - #### Variables used for scheduling a Glue job
@@ -194,7 +199,6 @@ source = "../modules/aws-glue-job"
 
 department                     = module.department_housing_repairs
 job_name                       = "${local.short_identifier_prefix}housing repairs address cleaning"
-glue_scripts_bucket_id         = module.glue_scripts.bucket_id
 schedule                       = "cron(0 0 23 ? * MON,TUE,WED,THU,FRI *)"
 job_parameters = {
   "--s3_bucket_target"    = module.raw_zone.bucket_id
