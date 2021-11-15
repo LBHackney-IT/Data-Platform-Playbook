@@ -16,6 +16,10 @@ If you are still testing or prototyping your script, it is recommended that you 
 
 ### 1. Add your script to the Data Platform Project using the GitHub UI
 
+:::note
+If your Glue job was created using the Glue Studio UI, you can find the automatically generated script from the "Script" tab when viewing your job in Glue Studio.
+:::
+
 - Open the [scripts directory][scripts-directory] in the Data Platform Project and navigate to your department folder
 - Click `Add file` and then `Create new file`
 - Name your file, using underscores as separators e.g. `address_cleaning_housing_repairs`, and then paste your code in field below
@@ -57,9 +61,9 @@ The module name must be all lowercase with words separated by underscores. Ensur
   ```
   "${local.short_identifier_prefix}housing repairs address cleaning"
   ```
-- __helper_module_key__ (required): This will be `aws_s3_bucket_object.helpers.key`. It is the S3 object key for the helpers python module.
-This gives you access to all of the functions defined in the [helpers folder][helpers-folder-github]. You can add new files or functions to the folder and they will be available in your glue jobs.
-- __pydeequ_zip_key__ (required): This will be `aws_s3_bucket_object.pydeequ.key`. It is the S3 object key for the PyDeequ python library, which is used for data quality testing in the Data Platform.
+- **helper_module_key** (required): This will be `aws_s3_bucket_object.helpers.key`. It is the S3 object key for the helpers python module.
+  This gives you access to all of the functions defined in the [helpers folder][helpers-folder-github]. You can add new files or functions to the folder and they will be available in your glue jobs.
+- **pydeequ_zip_key** (required): This will be `aws_s3_bucket_object.pydeequ.key`. It is the S3 object key for the PyDeequ python library, which is used for data quality testing in the Data Platform.
 - #### Script Name/ Location (required)
   One of the following variables must be populated.
   If you are adding a new script to only be used for one glue job you should provide a value for **script_name** and leave the second blank.
@@ -215,15 +219,15 @@ source = "../modules/aws-glue-job"
 
 department = module.department*housing_repairs
 job_name = "${local.short_identifier_prefix}housing repairs address cleaning"
-schedule                       = "cron(0 0 23 ? * MON,TUE,WED,THU,FRI *)"
+schedule = "cron(0 0 23 ? * MON,TUE,WED,THU,FRI _)"
 job_parameters = {
-  "--s3_bucket_target"    = module.raw_zone.bucket_id
-  "--s3_bucket_source"    = "${module.landing_zone.bucket_id}/housing-repairs/repairs-axis/"
+"--s3_bucket_target" = module.raw_zone.bucket_id
+"--s3_bucket_source" = "${module.landing_zone.bucket_id}/housing-repairs/repairs-axis/"
 }
 crawler_details = {
 database_name = module.department_housing_repairs.raw_zone_catalog_database_name
 s3_target_location = "s3://${module.raw_zone.bucket_id}/housing-repairs/repairs-axis/"
-table_prefix = "housing_repairs*"
+table_prefix = "housing_repairs_"
 }
 ```
 
