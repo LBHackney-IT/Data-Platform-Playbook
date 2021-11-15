@@ -1,5 +1,5 @@
 ---
-title: Introduction 
+title: Introduction
 ---
 
 # Getting set up on the Data Platform

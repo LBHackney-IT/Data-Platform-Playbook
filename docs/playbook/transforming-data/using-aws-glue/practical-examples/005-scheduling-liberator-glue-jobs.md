@@ -15,20 +15,19 @@ transformed data in, say, the [refined zone][refined_zone] is based on the most 
 
 ## Prerequisites
 
-* You have created a glue job that transforms the liberator data in the [raw zone][raw_zone]. There is guidance on [creating a glue job][creating_a_glue_job] and a [workshop][workshop] if you need help with this.
-* You have access to the Hackney Data Platform
+- You have created a glue job that transforms the liberator data in the [raw zone][raw_zone]. There is guidance on [creating a glue job][creating_a_glue_job] and a [workshop][workshop] if you need help with this.
+- You have access to the Hackney Data Platform
 
 ## Steps
 
 - Sign in to the [AWS Management Console][hackney_aws_sso]
 
-- In [AWS Glue Studio][aws_glue_studio], Check the properties for all of the __Data targets__ in your glue job. Ensure you have the following properties set in the "Data target properties" tab.
+- In [AWS Glue Studio][aws_glue_studio], Check the properties for all of the **Data targets** in your glue job. Ensure you have the following properties set in the "Data target properties" tab.
   1. The Format is set to "Glue Parquet"
   1. Under "Data Catalog update options", the option "Create a table in the Data Catalog and on subsequent runs, update the schema and add new partitions" is selected.
   1. A "Database" and "Table name" should also be filled in.
 
 This is so that the job will update the tables in [AWS Athena][aws_athena] after it runs, without having to run a crawler.
-
 
 - Naviagte to [AWS Glue Workflows][aws_glue_workflows].
 
@@ -45,14 +44,13 @@ This is so that the job will update the tables in [AWS Athena][aws_athena] after
 
 Your job is now scheduled to run when new liberator data is added to the platform.
 
-
 ## Creating a trigger to start liberator glue jobs
 
 - Click on "Action" to display the dropdown and select "Add trigger".
 - Click on the "Add new" tab, put `trigger-liberator-jobs` in the Name field then click "Add'.
-A new diamond shape will appear in the diagram with a broken link symbol, this is the trigger you have just added and it now needs to be linked to the rest of the workflow.
+  A new diamond shape will appear in the diagram with a broken link symbol, this is the trigger you have just added and it now needs to be linked to the rest of the workflow.
 - Click on the shape, then on the "Action" dropdown and select "Add jobs/crawlers to watch".
-Ensure the "Jobs" tab is selected. Select the job `Copy parking Liberator landing zone to raw` from, then list then click "Add".
+  Ensure the "Jobs" tab is selected. Select the job `Copy parking Liberator landing zone to raw` from, then list then click "Add".
 - Continue following the instructions above.
 
 [aws_glue_workflows]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=workflows;workflowView=workflow-list

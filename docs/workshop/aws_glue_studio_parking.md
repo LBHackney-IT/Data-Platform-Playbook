@@ -7,14 +7,14 @@ layout: layout
 
 ## Prerequisities
 
-* Have access to the Parking Liberator Raw zone.
-* Have experience with writing SQL queries in [AWS Athena][aws_athena] already.
-* Have experience running AWS Glue Crawlers.
+- Have access to the Parking Liberator Raw zone.
+- Have experience with writing SQL queries in [AWS Athena][aws_athena] already.
+- Have experience running AWS Glue Crawlers.
 
 ## Learning objectives
 
-* Know how to create a batch transformation job written in SparkSQL, hosted inside of AWS Glue Studio.
-* Aware there are differences between the Presto SQL language, and SparkSQL lanugage.
+- Know how to create a batch transformation job written in SparkSQL, hosted inside of AWS Glue Studio.
+- Aware there are differences between the Presto SQL language, and SparkSQL lanugage.
 
 ## Introduction
 
@@ -36,7 +36,7 @@ Once written, AWS Glue batch jobs can be scheduled to run unattended over very l
 datasets.
 
 :::info
-Throughout this documentation, whereever you see __NAME__, replace this with your name
+Throughout this documentation, whereever you see **NAME**, replace this with your name
 e.g. "adrian".
 
 This is so that this guide can be performed independently by multiple people at the same time.
@@ -55,7 +55,7 @@ Create an SQL query for [AWS Athena][aws_athena_console] which extracts, and agg
 a resultset with the below format.
 
 The data platform provides source data within the table
-  `"dataplatform-stg-liberator-raw-zone"."liberator_permit_renewals"`.
+`"dataplatform-stg-liberator-raw-zone"."liberator_permit_renewals"`.
 
 You will want to convert VARCHAR columns to [appropriate AWS Athena data types][athena_data_types].
 Specifically, the time columns should have a TIMESTAMP type.
@@ -105,8 +105,8 @@ SELECT
 FROM "dataplatform-stg-liberator-raw-zone"."liberator_permit_renewals"
 GROUP BY permit_reference, import_year, import_month, import_day, import_date
 ```
-</details>
 
+</details>
 
 ## Moving your query to AWS Glue Studio
 
@@ -119,12 +119,14 @@ to share this into a permit renewals dashboard on Google Data Studio.
 
 We will first create a new AWS Glue Studio job by following a modified version of the guide
 [creating a new Glue Job][creating_a_new_glue_job].
-* For the environment, we'll be using `stg`.
-* For the __Data source__ node, we'll select __Data catalogue table__ for "S3 source type"
+
+- For the environment, we'll be using `stg`.
+- For the **Data source** node, we'll select **Data catalogue table** for "S3 source type"
   under the "Data source properties" tab.
   Then choosing `dataplatform-stg-liberator-raw-zone` and `liberator_permit_renewals`
   for Database and Table respectively.
-* For the __Data target__ node:
+- For the **Data target** node:
+
   1. Set the Format to "Glue Parquet"
   1. Specify the destination as `s3://dataplatform-stg-refined-zone/parking/liberator/NAME_parking_permit_renewals/`.
   1. For "Data Catalog update options" select "Create a table in the Data Catalog and on subsequent runs, update the schema and add new partitions".
@@ -132,10 +134,10 @@ We will first create a new AWS Glue Studio job by following a modified version o
   1. In "Table name" write `NAME_parking_permit_renewals`.
   1. Under the parition keys, add in the following order: `import_year`, `import_month`, `import_day`, `import_date`.
 
-* For the __Name__ of the job, specify `NAME_GlueStudioWorkshop`
-* For the __IAM Role__ of the job, specify `dataplatform-stg-parking-glue`
-* For the "Number of retries" under "Job details" specify 0.
-* For the "Security configuration" select "dataplatform-stg-config-to-refined".
+- For the **Name** of the job, specify `NAME_GlueStudioWorkshop`
+- For the **IAM Role** of the job, specify `dataplatform-stg-parking-glue`
+- For the "Number of retries" under "Job details" specify 0.
+- For the "Security configuration" select "dataplatform-stg-config-to-refined".
 
 :::info
 AWS Glue enables a feature called [Job Bookmarks][aws_glue_job_bookmarks] by default.
@@ -160,9 +162,10 @@ our SQL created above.
    database prefix `dataplatform-stg-liberator-raw-zone` from the SQL query inside of the "Code Block".
    If your query joined multiple tables, each table would need a distinct "Data Source" linked
    to the "Spark SQL" node.
-1. Click the __Save__ button, followed by the __Run__ button.
+1. Click the **Save** button, followed by the **Run** button.
 1. Click on the "Runs" tab, and follow the progress of your job.
 1. Once finished, the job might fail with an error message similar to this
+
 ```shell
 AnalysisException: "
   Undefined function: 'date_parse'.
@@ -184,6 +187,7 @@ name `NAME_parking_permit_renewals`.
 ## Cleaning up
 
 Once you have finished the exercise
+
 1. Find and delete your job within [AWS Glue Jobs list][aws_glue_jobs_console].
 1. From the [S3 console][aws_s3_conosole_refined_zone], delete the folders your job created.
    There will be a folder called `NAME_parking_permit_renewals` and a file called `NAME_parking_permit_renewals_$folder$`
@@ -203,5 +207,5 @@ Once you have finished the exercise
 [aws_athena_console]: https://eu-west-2.console.aws.amazon.com/athena/home?region=eu-west-2#query
 [aws_glue_job_bookmarks]: https://docs.aws.amazon.com/glue/latest/dg/monitor-continuations.html
 [aws_glue_jobs_console]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=jobs
-[aws_s3_conosole_refined_zone]:https://s3.console.aws.amazon.com/s3/buckets/dataplatform-stg-refined-zone?region=eu-west-2&prefix=parking/liberator/&showversions=false
+[aws_s3_conosole_refined_zone]: https://s3.console.aws.amazon.com/s3/buckets/dataplatform-stg-refined-zone?region=eu-west-2&prefix=parking/liberator/&showversions=false
 [aws_glue_table]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#catalog:tab=tables

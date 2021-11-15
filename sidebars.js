@@ -1,13 +1,16 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
-const getItems = (folder) =>{
-  return fs.readdirSync(`./docs/${folder}/`).filter((f)=>{
-    return f.includes(".md")
-  }).map(file => {
-      return `${folder}/${file.split(".")[0].replace(/^[0-9]+\-/i, '')}`
+const getItems = (folder) => {
+  return fs
+    .readdirSync(`./docs/${folder}/`)
+    .filter((f) => {
+      return f.includes(".md");
     })
-}
+    .map((file) => {
+      return `${folder}/${file.split(".")[0].replace(/^[0-9]+\-/i, "")}`;
+    });
+};
 
 module.exports = {
   docs: [
@@ -15,12 +18,7 @@ module.exports = {
     {
       type: "category",
       label: "About",
-      items: [
-        "introduction",
-        "about-playbook",
-        "zones",
-        "environments",
-      ],
+      items: ["introduction", "about-playbook", "zones", "environments"],
     },
     {
       type: "category",
@@ -29,7 +27,7 @@ module.exports = {
         {
           type: "category",
           label: "Getting set up on the platform",
-          items: getItems ("playbook/getting-set-up"),
+          items: getItems("playbook/getting-set-up"),
         },
         {
           type: "category",
@@ -49,20 +47,27 @@ module.exports = {
         {
           type: "category",
           label: "Transforming data",
-          items: [ 
+          items: [
             {
               type: "category",
               label: "Guides to testing in the platform",
-              items: getItems("playbook/transforming-data/guides-to-testing-in-the-platform"),
+              items: getItems(
+                "playbook/transforming-data/guides-to-testing-in-the-platform"
+              ),
             },
             {
               type: "category",
               label: "Using AWS Glue",
-              items: [...getItems("playbook/transforming-data/using-aws-glue"), {
-                type: "category",
-                label: "Practical example",
-                items: getItems("playbook/transforming-data/using-aws-glue/practical-examples"),
-              }],
+              items: [
+                ...getItems("playbook/transforming-data/using-aws-glue"),
+                {
+                  type: "category",
+                  label: "Practical example",
+                  items: getItems(
+                    "playbook/transforming-data/using-aws-glue/practical-examples"
+                  ),
+                },
+              ],
             },
           ],
         },
@@ -94,6 +99,6 @@ module.exports = {
       type: "category",
       label: "Spikes",
       items: getItems("spikes"),
-    }
+    },
   ],
 };

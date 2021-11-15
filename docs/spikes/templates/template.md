@@ -6,6 +6,7 @@ layout: layout
 ---
 
 # Spike: {{ title }}
+
 ### SUB-TITLE
 
 ## Objective
@@ -13,6 +14,7 @@ layout: layout
 ## Considerations
 
 ## Findings
+
 ### Postgres:
 
 ####Limitation

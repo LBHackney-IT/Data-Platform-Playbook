@@ -5,8 +5,9 @@ slug: /zones
 ---
 
 The Platform has 4 data zones, as data moves from the landing to the trusted zone it will become:
-* more valuable to the council
-* smaller in volume
+
+- more valuable to the council
+- smaller in volume
 
 ## Landing Zone
 

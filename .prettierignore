@@ -1,6 +1,9 @@
-build/
-coverage/
-assets/
+build
+coverage
+assets
 yarn.lock
 babel.config.js
 docusaurus.config.js
+.docusaurus
+.idea
+node_modules
