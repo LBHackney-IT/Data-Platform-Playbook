@@ -17,7 +17,8 @@ If you are still testing or prototyping your script, it is recommended that you 
 ### 1. Add your script to the Data Platform Project using the GitHub UI
 
 :::note
-If your Glue job was created using the Glue Studio UI, you can find the automatically generated script from the "Script" tab when viewing your job in Glue Studio.
+If your Glue job was created using the Glue Studio UI,
+you can find the automatically generated script by navigating to the `Script` tab when viewing your job in Glue Studio.
 :::
 
 - Open the [scripts directory][scripts-directory] in the Data Platform Project and navigate to your department folder
