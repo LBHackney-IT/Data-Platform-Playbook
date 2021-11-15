@@ -1,0 +1,6 @@
+build/
+coverage/
+assets/
+yarn.lock
+babel.config.js
+docusaurus.config.js
