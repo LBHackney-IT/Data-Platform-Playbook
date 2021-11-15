@@ -40,7 +40,7 @@ Ingest data contained within a Google Sheet for use on the Data Platform, option
       <td>aws_secretsmanager_secret.sheets_credentials_housing.name</td>
     </tr>
     <tr>
-      <td>data_and_insights [Can someone confirm this please]</td>
+      <td>data_and_insight</td>
       <td>data-and-insight@dataplatform-stg.iam.gserviceaccount.com</td>
       <td></td>
     </tr>
