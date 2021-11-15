@@ -53,6 +53,9 @@ The module name must be all lowercase with words separated by underscores. Ensur
   ```
   "${local.short_identifier_prefix}housing repairs address cleaning"
   ```
+- __helper_module_key__ (required): This will be `aws_s3_bucket_object.helpers.key`. It is the S3 object key for the helpers python module.
+This gives you access to all of the functions defined in the [helpers folder][helpers-folder-github]. You can add new files or functions to the folder and they will be available in your glue jobs.
+- __pydeequ_zip_key__ (required): This will be `aws_s3_bucket_object.pydeequ.key`. It is the S3 object key for the PyDeequ python library, which is used for data quality testing in the Data Platform.
 - #### Script Name/ Location (required)
   One of the following variables must be populated.
   If you are adding a new script to only be used for one glue job you should provide a value for __script_name__ and leave the second blank.
@@ -212,3 +215,4 @@ crawler_details = {
 [using-glue-studio]: ./using-glue-studio
 [cron-expression-generator]: https://www.freeformatter.com/cron-expression-generator-quartz.html
 [glue-worker-types]: https://docs.aws.amazon.com/glue/latest/dg/add-job.html#:~:text=Own%20Custom%20Scripts.-,Worker%20type,-The%20following%20worker
+[helpers-folder-github]: https://github.com/LBHackney-IT/Data-Platform/tree/main/scripts/helpers
