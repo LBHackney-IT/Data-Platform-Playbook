@@ -2,6 +2,7 @@
 id: release-notes
 title: Release Notes
 ---
+
 ## Target Audience
 
 ## Enhancements

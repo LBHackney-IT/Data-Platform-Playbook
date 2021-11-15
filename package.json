@@ -9,7 +9,8 @@
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "serve": "docusaurus serve",
-    "clear": "docusaurus clear"
+    "clear": "docusaurus clear",
+    "format": "yarn prettier --write '**/*.{js,md}'"
   },
   "dependencies": {
     "@docusaurus/core": "^2.0.0-beta.6",
@@ -18,6 +19,7 @@
     "bootstrap": "^4.6.0",
     "clsx": "^1.1.1",
     "docusaurus-plugin-sass": "^0.1.11",
+    "prettier": "^2.4.1",
     "react": "^16.8.4",
     "react-bootstrap": "^1.5.2",
     "react-dom": "^16.8.4",

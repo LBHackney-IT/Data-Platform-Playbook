@@ -38,7 +38,7 @@ This was not investigated in this spike due to lack of time.
 
 ### Role Based Access Control
 
-*Limitation:* Not reviewed as part of the spike, ran out of time.
+_Limitation:_ Not reviewed as part of the spike, ran out of time.
 
 ## Summary
 
@@ -99,12 +99,14 @@ datahub ingest -c glue_to_datahub.yml
 - When deploying to a production environment we would prefer to deploy using terraform.
 
 We have added helper files to the data platform project under the `datahub-deployment` directory. This directory includes:
+
 - A [makefile][datahub-makefile] with commands for various common tasks
 - A values.yaml file which contains a helm config for the datahub chart
 - A kubeconfig file with the details for connecting to staging eks cluster
   - Note: The file does NOT contain credentials, your aws credentials are used
 
 ##### Makefile
+
 The make file contains the following commands:
 
 `generate-kubeconfig-file`
@@ -130,6 +132,7 @@ Git clone the datahub project repo to your current location
 To ingest data into the data catalogue we followed this guide: [Metadata Ingestion][datahub-metadata-ingestion]
 
 This involved installing the PyPI prerequisites on a engineer machine using the following commands:
+
 ```sh
 python3 -m venv venv
 source venv/bin/activate
@@ -151,6 +154,7 @@ datahub check plugins
 Once the prerequisites and the required plugins are installed you can then ingest the data from the glue catalogue by locate and update the glue_to_datahub.yml metadata ingestion example receipe which can be found here: [/metadata-ingestion/examples/recipes/glue_to_datahub.yml][metadata-ingestion-example]
 
 The contents of which should look as below:
+
 ```
 # see https://datahubproject.io/docs/metadata-ingestion/source_docs/glue for complete documentation
 source:
@@ -167,11 +171,13 @@ sink:
 ```
 
 You will need to update the following properties:
+
 - `source -> config -> aws_region`
 - `sink -> config -> server`
 
 With values which reflect the staging environment. One you have updated the recipe configuration you can run the
 ingestion with the following command:
+
 ```sh/
 datahub ingest -c ./metadata-ingestion/examples/recipes/glue_to_datahub.yml
 ```
@@ -181,6 +187,7 @@ datahub ingest -c ./metadata-ingestion/examples/recipes/glue_to_datahub.yml
 When setting up the DataHub data catalogue site we required both a security certificate and a domain name to be associatable with the Kubernetes cluster.
 
 To accomplish this we:
+
 - Created a Name Server (NS) record on the Hackney domain for the data.hackney.gov.uk sub-domain. [Pull Request][dns-record-pull-request]
   - This granted the production Data Platform account control over the sub-domain.
 - Created a Name Server (NS) record on the data.hackney.gov.uk Hosted Zone for the stg.data.hackney.gov.uk sub-domain.

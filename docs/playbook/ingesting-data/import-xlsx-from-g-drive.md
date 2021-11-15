@@ -6,6 +6,7 @@ tags: [playbook]
 ---
 
 ## Prerequisites
+
 - You have a Github account, you can [create one][github_signup] yourself using your Hackney email.
 - You have been added to the 'LBHackney-IT' team, you can request this from Rashmi Shetty.
 - You have a Data Platform service account email address for your relevant domain or service area. A service account would look something like this: dataplatform-stg-service_area@dataplatform-stg.iam.gserviceaccount.com. If you don't know which service account you should use, you can request this from the Data Platform team.
@@ -26,17 +27,19 @@ tags: [playbook]
 
 ## Getting spreadsheet detail
 
-- You will need to obtain the document key from the url. The document id is the portion of the url between ``https://docs.google.com/file/d/`` and ``/edit#gid=0``. See example below
+- You will need to obtain the document key from the url. The document id is the portion of the url between `https://docs.google.com/file/d/` and `/edit#gid=0`. See example below
 
   ![spreadsheet id](../images/google_spreadsheet_id_example.png)
 
 - You will also need to obtain the worksheet name(s) that you wish to have imported. The worksheet name is located at the bottom left of the screen and unless it has been changed or other worksheets added, it will be called `Sheet1`
 
 ## Setting up AWS Glue job
+
 - Open the [Data Platform Project](https://github.com/LBHackney-IT/data-platform) repository in Github. If you don't have the correct permissions, you'll get a '404' error (see [prerequisites](#prerequisites)).
 - Navigate to the main `terraform` directory, and open `27-xlsx-imports-from-g-drive.tf`
 - Switch to 'edit mode' (using edit button on top right)
 - Copy one of the modules above, paste at the bottom of the file and update the following fields:
+
   - `module` = "your-unique-module-name" (it is helpful to keep the same naming convention as your dataset/folder)
   - `google_sheets_document_id` = "Your document id - see the `Getting spreadsheet detail` section above"
   - `glue_job_name` = "Name that will be displayed in the data platform"

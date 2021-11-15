@@ -7,19 +7,21 @@ tags: [playbook]
 ---
 
 ## Resources
+
 - [PyDeequ README][pydeequ-readme]
 
 ## Prerequisites
 
 Update the job arguments of your Glue job to include:
-- Extra jars: `--extra-jars = s3://dataplatform-stg-glue-scripts/jars/deequ-1.0.3.jar` 
-- Extra Python files: `--extra-py-file = s3://dataplatform-stg-glue-scripts/python-modules/pydeequ-1.0.1.zip` 
-- Metrics repository S3 target location using the template format: 
+
+- Extra jars: `--extra-jars = s3://dataplatform-stg-glue-scripts/jars/deequ-1.0.3.jar`
+- Extra Python files: `--extra-py-file = s3://dataplatform-stg-glue-scripts/python-modules/pydeequ-1.0.1.zip`
+- Metrics repository S3 target location using the template format:
   `--deequ_metrics_location = s3://dataplatform-stg-EXAMPLE-zone/quality-metrics/department=EXAMPLE/dataset=EXAMPLE/deequ-metrics.json`
-  
+
 :::caution
 
-There is a [defect with PyDeequ][defect with PyDeequ] which causes the Glue Spark session to hang.
+There is a [defect with PyDeequ][defect with pydeequ] which causes the Glue Spark session to hang.
 While this issue still exists, we recommend wrapping your data quality verification code in a "try/finally" block (see example [here][try-finally-example]).
 
 ```python
@@ -29,16 +31,17 @@ finally:
     spark_session.sparkContext._gateway.close()
     spark_session.stop()
 ```
+
 :::
 
 ### Example Check
 
 Here is an example of using deequ checks to validate a dataframe, and storing related metrics to S3.
 The `description_of_work` column is checked to be complete, and `work_priority_priority_code` between
-1 and 4 inclusively. 
-There is also the option to include a hint message on each of the checks which will be 
+1 and 4 inclusively.
+There is also the option to include a hint message on each of the checks which will be
 displayed to the user in the event there is a failing constraint to help diagnose the problem.
-For example, the `hasMin` check has the hint message: "`The minimum(work_priority_priority_code) >= 1')`". 
+For example, the `hasMin` check has the hint message: "`The minimum(work_priority_priority_code) >= 1')`".
 
 ```python
 from helpers import get_metrics_target_location
@@ -60,7 +63,7 @@ checkResult = VerificationSuite(spark_session) \
         .isComplete("description_of_work")) \
     .saveOrAppendResult(resultKey) \
     .run()
-    
+
 checkResult_df = VerificationResult.checkResultsAsDataFrame(spark_session, checkResult)
 checkResult_df.show()
 ```
@@ -76,7 +79,7 @@ You can only run an anomaly check if there are historic metrics results in the m
 If no historic metrics results exist, you will get the below error message:
 
 ```markdown
-Can't execute the assertion: requirement failed: 
+Can't execute the assertion: requirement failed:
 There have to be previous results in the MetricsRepository!!
 ```
 
@@ -113,7 +116,7 @@ Here is a [list of anomaly detection types][pydeequ-checks] that are available t
 ### Providing tags to metrics for verification constraint checks
 
 You can add tags to your verification metrics which may be helpful when reviewing the metric
-results for a particular job. 
+results for a particular job.
 To do this, include a dictionary containing key value pairs in the `ResultKey` as shown in example below:
 
 ```python
@@ -123,12 +126,11 @@ from awsglue.utils import getResolvedOptions
 args = getResolvedOptions(sys.argv, ['JOB_NAME'])
 
 resultKey = ResultKey(spark_session, ResultKey.current_milli_time(), {
-    "source_database": source_catalog_database, 
+    "source_database": source_catalog_database,
     "source_table": source_catalog_table,
     "glue_job_id": args['JOB_RUN_ID']
 })
 ```
-
 
 ### Stopping Glue jobs when constraint checks fail
 
@@ -143,9 +145,9 @@ When a constraint check fails, the Glue job will fail and, an error message will
 the below message:
 
 ```markdown
-  Exception: data quality checks. Value: 1.0 does not meet the constraint requirement!
-  The minimum(work_priority_priority_code) >= 2
-  | Anomaly check for Size(None). Value: 486.0 does not meet the constraint requirement!
+Exception: data quality checks. Value: 1.0 does not meet the constraint requirement!
+The minimum(work_priority_priority_code) >= 2
+| Anomaly check for Size(None). Value: 486.0 does not meet the constraint requirement!
 ```
 
 Multiple constraint failures are delimited by a `|` character in the error message.
@@ -155,6 +157,7 @@ Multiple constraint failures are delimited by a `|` character in the error messa
 Each time a Glue job fails as a result of failing constraint checks, an email notification with details of the error message is sent to the respective department, and their subscribed members.
 
 The message will include:
+
 - Name of the Glue job
 - Error message from the failing constraint check
 - Time of failure
@@ -165,17 +168,15 @@ The message will include:
 
 In order to receive email notifications, you will need to ensure that you are subscribed to receive emails from your department's [Google group][google-groups] and that you have confirmed your subscription to receive AWS Notifications when prompted.
 
-
 :::important
-Ensure the **PlatformDepartment** tag is correctly set in the _Advanced details_ section in the Glue job's _Job Details_ (see [Using Glue Studio][using-glue-studio]). 
+Ensure the **PlatformDepartment** tag is correctly set in the _Advanced details_ section in the Glue job's _Job Details_ (see [Using Glue Studio][using-glue-studio]).
 :::
-
 
 [pydeequ-readme]: https://github.com/awslabs/python-deequ
 [pydeequ-checks]: https://pydeequ.readthedocs.io/en/latest/pydeequ.html#module-pydeequ.checks
 [pydeequ-anomaly-detection]: https://pydeequ.readthedocs.io/en/latest/pydeequ.html#module-pydeequ.anomaly_detection
 [helpers.py]: https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/helpers.py
-[defect with PyDeequ]: https://github.com/awslabs/python-deequ/issues/7
+[defect with pydeequ]: https://github.com/awslabs/python-deequ/issues/7
 [try-finally-example]: https://github.com/LBHackney-IT/Data-Platform/blob/6468778d865c6203d1d11df78805720da9cd22b5/scripts/elec_mech_fire_tv_aerials_cleaning.py#L79-L105
-[using-glue-studio]: ./using-glue-studio 
+[using-glue-studio]: ./using-glue-studio
 [google-groups]: https://groups.google.com/my-groups
