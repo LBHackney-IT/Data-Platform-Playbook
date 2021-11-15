@@ -216,19 +216,20 @@ The Data Platform team needs to approve any changes to the code, so your change 
 
 ```markdown
 module "manually_uploaded_parking_data_to_raw" {
-source = "../modules/aws-glue-job"
+  source = "../modules/aws-glue-job"
 
-department = module.department*housing_repairs
-job_name = "${local.short_identifier_prefix}housing repairs address cleaning"
-schedule = "cron(0 0 23 ? * MON,TUE,WED,THU,FRI _)"
-job_parameters = {
-"--s3_bucket_target" = module.raw_zone.bucket_id
-"--s3_bucket_source" = "${module.landing_zone.bucket_id}/housing-repairs/repairs-axis/"
-}
-crawler_details = {
-database_name = module.department_housing_repairs.raw_zone_catalog_database_name
-s3_target_location = "s3://${module.raw_zone.bucket_id}/housing-repairs/repairs-axis/"
-table_prefix = "housing_repairs_"
+  department = module.department*housing_repairs
+  job_name   = "${local.short_identifier_prefix}housing repairs address cleaning"
+  schedule   = "cron(0 0 23 ? * MON,TUE,WED,THU,FRI _)"
+  job_parameters = {
+    "--s3_bucket_target" = module.raw_zone.bucket_id
+    "--s3_bucket_source" = "${module.landing_zone.bucket_id}/housing-repairs/repairs-axis/"
+  }
+  crawler_details = {
+    database_name      = module.department_housing_repairs.raw_zone_catalog_database_name
+    s3_target_location = "s3://${module.raw_zone.bucket_id}/housing-repairs/repairs-axis/"
+    table_prefix       = "housing_repairs_"
+  }
 }
 ```
 
