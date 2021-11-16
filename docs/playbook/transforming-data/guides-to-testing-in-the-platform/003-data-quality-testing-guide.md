@@ -14,8 +14,6 @@ tags: [playbook]
 
 Update the job arguments of your Glue job to include:
 
-- Extra jars: `--extra-jars = s3://dataplatform-stg-glue-scripts/jars/deequ-1.0.3.jar`
-- Extra Python files: `--extra-py-file = s3://dataplatform-stg-glue-scripts/python-modules/pydeequ-1.0.1.zip`
 - Metrics repository S3 target location using the template format:
   `--deequ_metrics_location = s3://dataplatform-stg-EXAMPLE-zone/quality-metrics/department=EXAMPLE/dataset=EXAMPLE/deequ-metrics.json`
 
