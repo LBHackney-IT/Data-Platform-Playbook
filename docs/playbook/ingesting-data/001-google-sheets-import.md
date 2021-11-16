@@ -1,12 +1,12 @@
 ---
-title: Importing data from Google Sheets
+title: Ingesting data from Google Sheets
 layout: playbook_js
 tags: [playbook]
 ---
 
 ## Objective
 
-Ingest data contained within a Google Sheet for use on the Data Platform, optionally setting a recurring schedule to import new data.
+Ingest data contained within a Google Sheet for use on the Data Platform, optionally setting a recurring schedule to ingest new data.
 
 ## Intended audience
 
@@ -47,9 +47,9 @@ Ingest data contained within a Google Sheet for use on the Data Platform, option
   </tbody>
 </table>
 
-## Preparing a Google sheet for import
+## Preparing a Google sheet for ingestion
 
-1. Open the Google sheet you would like to import
+1. Open the Google sheet you would like to ingest
 2. Ensure that all columns have headers. Columns without headers will be lost
 3. Click `Share` in the top right corner of the sheet
 4. If the document is unnamed, name it
@@ -59,7 +59,7 @@ Ingest data contained within a Google Sheet for use on the Data Platform, option
 8. Uncheck the `Notify people` checkbox
 9. Click `Share`
 10. You will be asked to confirm sharing outside the organisation, click `share anyway`
-11. Your Google sheet is now available for import
+11. Your Google sheet is now ready to ingest
 
 ## Getting Google sheet detail
 
@@ -67,12 +67,12 @@ Ingest data contained within a Google Sheet for use on the Data Platform, option
 
   ![Google sheet id](../images/google_spreadsheet_id_example.png)
 
-- You will also need to obtain the worksheet name that you wish to have imported. The worksheet name is located at the bottom left of the screen and unless it has been changed or other worksheets added, it will be called `Sheet1`
-- To import multiple worksheets from the same Google sheet, repeat the instructions in the below section for each worksheet
+- You will also need to obtain the worksheet name that you wish to ingest. The worksheet name is located at the bottom left of the screen and unless it has been changed or other worksheets added, it will be called `Sheet1`
+- To ingest multiple worksheets from the same Google sheet, repeat the instructions in the below section for each worksheet
 
 ## Setting up the AWS Glue job
 
-This is what will handle the import of the data from Google Sheets to the Data Platform.
+This is what will handle the ingestion of the data from Google Sheets to the Data Platform.
 
 1. Open the [Data Platform Project](https://github.com/LBHackney-IT/data-platform). If you don't have the correct permissions, you'll get a '404' error (see [prerequisites](#prerequisites)).
 2. Navigate to the main `terraform` directory, and open `26-google-sheets-imports.tf`
@@ -87,9 +87,9 @@ This is what will handle the import of the data from Google Sheets to the Data P
    - `department` - `module.department_DEPARTMENT-NAME` (department name should appear as in [the table above](#department-specific-information), e.g. `module.department_housing_repairs`)
    - `dataset_name` - The name of the dataset as you'd like it to appear within the data platform e.g. `housing-repair`
 
-   - **Optional: stop your Google Sheet from importing automatically** - The import job will run every weekday at 11pm if `enable_glue_trigger` is not specified (i.e. there's no line for this in your module) or it's set to `true`. If this is set to `false` then your job will not run automatically on a schedule, and will have to be run manually within AWS. See the section [Running the import manually](#running-the-import-manually) for instructions on how to do this.
+   - **Optional: stop your Google Sheet from ingesting automatically** - The ingest job will run every weekday at 11pm if `enable_glue_trigger` is not specified (i.e. there's no line for this in your module) or it's set to `true`. If this is set to `false` then your job will not run automatically on a schedule, and will have to be run manually within AWS. See the section [Running the ingestion manually](#running-the-ingestion-manually) for instructions on how to do this.
 
-   - **Optional: update the time schedule for the Google Sheet's import** - If a value for `google_sheet_import_schedule` is not provided, the import will run at 11pm on weekdays.
+   - **Optional: update the time schedule for the Google Sheet ingestion** - If a value for `google_sheet_import_schedule` is not provided, the ingestion will run at 11pm on weekdays.
      - To override and set a new time schedule, add a new row to the respective module with the new cron time: e.g. `google_sheet_import_schedule = "cron(0 23 ? * 1-5 *)"`
      - To create a new Cron expression follow the guidance provided by the [AWS Cron Expression documentation][aws_cron_expressions].
 
@@ -99,9 +99,9 @@ This is what will handle the import of the data from Google Sheets to the Data P
    3. Once you click 'Propose changes' you'll have the opportunity to add even more detail if needed before submitted for review. Once finished adding details, click "Create pull request".
    4. You'll receive an email to confirm that your changes have been approved & then merged. After it has been merged into the main code base the job will run at the next scheduled time.
 
-### Running the import manually
+### Running the ingestion manually
 
-Once you have been notified that your pull request has been merged, you can run the import manually from the AWS console or wait until the scheduled time (if you set one).
+Once you have been notified that your pull request has been merged, you can run the ingestion manually from the AWS console or wait until the scheduled time (if you set one).
 
 You can do this by navigating to [AWS glue workflows][aws_glue_workflow], selecting the workflow named `<department_name>-<dataset_name>`, clicking the "Actions" dropdown and then "Run".
 
