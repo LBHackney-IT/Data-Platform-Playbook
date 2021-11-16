@@ -200,10 +200,10 @@ Once you have finished the exercise
 [spark_sql_to_timestamp]: https://spark.apache.org/docs/latest/api/sql/index.html#to_timestamp
 [python]: https://www.python.org/
 [scala]: https://www.scala-lang.org/
-[aws_athena]: ../playbook/querying-data/querying-data-using-sql.md
+[aws_athena]: ../playbook/querying-and-analysing-data/querying-data-using-sql.md
 [athena_data_types]: https://docs.aws.amazon.com/athena/latest/ug/data-types.html
 [presto_sql_datetime_functions]: https://prestodb.io/docs/0.217/functions/datetime.html
-[creating_a_new_glue_job]: ../playbook/transforming-data/using-glue-studio.md#creating-a-new-glue-job
+[creating_a_new_glue_job]: ../playbook/transforming-data/using-aws-glue/001-using-glue-studio.md#creating-a-new-glue-job
 [aws_athena_console]: https://eu-west-2.console.aws.amazon.com/athena/home?region=eu-west-2#query
 [aws_glue_job_bookmarks]: https://docs.aws.amazon.com/glue/latest/dg/monitor-continuations.html
 [aws_glue_jobs_console]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=jobs
