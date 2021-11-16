@@ -50,7 +50,7 @@ It is therefore helpful to have a good understanding of the purpose of the data 
 ```
 from pydeequ.repository import FileSystemMetricsRepository, ResultKey
 from pydeequ.verification import VerificationSuite, VerificationResult
-from helpers.helpers import get_metrics_target_location, cancel_job_if_failing_quality_checks
+from helpers.data_quality_testing import get_metrics_target_location, cancel_job_if_failing_quality_checks
 ```
 
 :::caution
@@ -90,10 +90,10 @@ displayed to the user in the event there is a failing constraint to help diagnos
 For example, the `hasMin` check has the hint message: "`The minimum(work_priority_priority_code) >= 1')`".
 
 ```python
-from helpers import get_metrics_target_location
 from pydeequ.checks import Check, CheckLevel
 from pydeequ.repository import FileSystemMetricsRepository, ResultKey
 from pydeequ.verification import VerificationSuite, VerificationResult, RelativeRateOfChangeStrategy
+from helpers.data_quality_testing import get_metrics_target_location 
 
 metrics_target_location = get_metrics_target_location()
 
@@ -135,10 +135,10 @@ To avoid this error, run the standard verification constraint checks first (see 
 For example, we check if the size of a dataframe has increased by more than twice the previous size.
 
 ```python
-from helpers import get_metrics_target_location, cancel_job_if_failing_quality_checks
 from pydeequ.verification import VerificationSuite, VerificationResult
 from pydeequ.repository import FileSystemMetricsRepository, ResultKey
 from pydeequ.anomaly_detection import RelativeRateOfChangeStrategy
+from helpers.data_quality_testing import get_metrics_target_location, cancel_job_if_failing_quality_checks
 
 metrics_target_location = get_metrics_target_location()
 
