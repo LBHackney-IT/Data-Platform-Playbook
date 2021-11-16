@@ -6,14 +6,14 @@ You can edit the pages files directly in this project, which are formated as .md
 
 The site is broken down into two sections:
 
-* Data Dictionary
-  * The Data Dictionary contains definitions of Data Entities
-* Playbook
-  * The Playbook contains articles on the processes involved in using the Data Platform
-* Architecture Decision Records
-  * Records of architecture decisions made regarding the platform. *See Architecture Decision Records (ADRs) below*.
-* Technical Spikes (Discovery)
-  * Records of findings around technical investigations concluding in an Architecture Decision Record (ADR).
+- Data Dictionary
+  - The Data Dictionary contains definitions of Data Entities
+- Playbook
+  - The Playbook contains articles on the processes involved in using the Data Platform
+- Architecture Decision Records
+  - Records of architecture decisions made regarding the platform. _See Architecture Decision Records (ADRs) below_.
+- Technical Spikes (Discovery)
+  - Records of findings around technical investigations concluding in an Architecture Decision Record (ADR).
 
 ## Architecture Decision Records (ADRs)
 

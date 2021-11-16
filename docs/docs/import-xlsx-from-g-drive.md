@@ -12,7 +12,7 @@ guide.
 
 The terraform module [`import_xlsx_file_from_g_drive`](https://github.com/LBHackney-IT/Data-Platform/tree/main/modules/import-xlsx-file-from-g-drive) will provision the following resources:
 
-  ![import xlsx from g-drive](./images/import-xlsx-from-g-drive.png)
+![import xlsx from g-drive](./images/import-xlsx-from-g-drive.png)
 
 At deployment a single lambda will be deployed per file along side a glue job
 and crawler provisioned for each worksheet that will be imported.

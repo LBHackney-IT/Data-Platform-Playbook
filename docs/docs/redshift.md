@@ -6,40 +6,50 @@ tags: [playbook]
 ---
 
 ## Objective / Who is this for?
+
 After this article, you should be able to
-* Create a user in redshift
-* Create a schema for your tables
-* Grant permissions to a user to view the tables
-* Make the connection with an AWS Glue database to see the data in the tables
+
+- Create a user in redshift
+- Create a schema for your tables
+- Grant permissions to a user to view the tables
+- Make the connection with an AWS Glue database to see the data in the tables
 
 ## Prerequisites
-In order to complete this article, you will need
-* Permissions to configure Redshift
-* Access to Amazon Redshift
-* Access to Amazon Glue Databases
 
+In order to complete this article, you will need
+
+- Permissions to configure Redshift
+- Access to Amazon Redshift
+- Access to Amazon Glue Databases
 
 ## Collection Structure
+
 Unlike most Database services. Redshift has a three tier collection setup:
+
 1. The top most tier is called a Database, a Database contains multiple Schemas
 2. The second tier is called a Schema, a Schema contains multiple Tables
 3. The final tier is called a Table, a Table contains multiple rows of data or references a location in S3
 
-```Database -> Schema -> Table```
+`Database -> Schema -> Table`
 
 ## Open Redshift Query Editor
+
 Use the search bar at the top of AWS to search for Redshift. Then on the left, go to "Editor" then "Query Editor". You will enter the code here.
 
 ## Connect to the Database
-You must have an open connection to see the tables. 
+
+You must have an open connection to see the tables.
 
 ## Create a User
+
 To create a new user in Redshift, run the following command as a query:
+
 ```sql
 CREATE USER {username} WITH PASSWORD '{password}';
 ```
 
 Example:
+
 ```sql
 CREATE USER housing_repairs WITH PASSWORD 'th1s1sANEx&mpl3';
 ```
@@ -57,13 +67,17 @@ to read the data from S3 (A role has been included in the Data Platform) and a s
 displayed as.
 
 ## Finding the name of the AWS Glue Database to be added
+
 Navigate to AWS Glue and retrieve the name of the database you want to expose in Redshift. The example below uses 'housing-repairs-raw-zone'.
 
 ## Finding the IAM Role details
+
 Use the appropriate IAM role that you will find in the IAM console in AWS.
 
 ### Adding an External Schema
+
 Execute the following SQL against the Redshift Cluster:
+
 ```
 CREATE EXTERNAL SCHEMA {schema-name}
     FROM DATA CATALOG
@@ -73,6 +87,7 @@ CREATE EXTERNAL SCHEMA {schema-name}
 ```
 
 Example:
+
 ```sql
 CREATE EXTERNAL SCHEMA housing_repairs_raw_zone
     FROM DATA CATALOG
@@ -93,6 +108,7 @@ GRANT temp
 ```
 
 Example:
+
 ```sql
 GRANT temp
 	ON DATABASE data_platform
@@ -113,6 +129,7 @@ GRANT SELECT
 ```
 
 Example:
+
 ```sql
 GRANT USAGE
 	ON SCHEMA housing_repairs_raw_zone
@@ -124,10 +141,13 @@ GRANT SELECT
 ```
 
 ### Storing the credentials of the created user in a parameters store
-The password created for the user needs to be added to the record created by Terraform in the AWS Secret Manager. 
+
+The password created for the user needs to be added to the record created by Terraform in the AWS Secret Manager.
 
 ### How do we know if it worked?
-You will know if it has worked because the data will be visible in the redshift and via the redshift connectors in tools such as Qlik or Google Data Studio using the credentials in AWS Secret Manager. 
+
+You will know if it has worked because the data will be visible in the redshift and via the redshift connectors in tools such as Qlik or Google Data Studio using the credentials in AWS Secret Manager.
 
 ### Related documents
+
 https://lbhackney-it.github.io/Data-Platform-Playbook/playbook/connecting-to-other-tools/connecting-to-redshift-from-data-studio

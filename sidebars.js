@@ -63,12 +63,9 @@ module.exports = {
                 {
                   type: "category",
                   label: "Practical example",
-                  items: [
-                    ...getItems(
-                      "playbook/transforming-data/using-aws-glue/practical-examples"
-                    ),
-                    "workshop/aws_glue_studio_parking",
-                  ],
+                  items: getItems(
+                    "playbook/transforming-data/using-aws-glue/practical-examples"
+                  ),
                 },
               ],
             },

@@ -20,7 +20,7 @@ The Data Platform provides AWS Athena as the tool to execute SQL queries against
 AWS Athena is built on top of Presto, and we're using Athena engine version 2.
 AWS provide [documenation on what functions][sql_functions] they make available as part of their [SQL reference][sql_reference].
 
-[sql_reference]:https://docs.aws.amazon.com/athena/latest/ug/ddl-sql-reference.html
+[sql_reference]: https://docs.aws.amazon.com/athena/latest/ug/ddl-sql-reference.html
 [sql_functions]: https://docs.aws.amazon.com/athena/latest/ug/presto-functions.html
 
 ## Logging into Athena

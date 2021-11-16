@@ -4,6 +4,7 @@ description: "Overview of how the VPC Peering Connection and its purpose"
 layout: playbook_js
 tags: [playbook]
 ---
+
 ![VPC Peering Connection](./images/vpc-peering-connection.png)
 
 The VPC Peering connection is set up between the Data Platform Staging account VPC and the Production APIs account VPC. This will allow traffic to flow to and from these AWS accounts.

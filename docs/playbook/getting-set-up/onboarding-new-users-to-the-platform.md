@@ -37,9 +37,9 @@ If you would like the user to receive AWS email notifications, then ensure you s
 1. Create a Google group, with the name `saml-aws-data-platform-collaborator-${department_name}` as a template
    - You can do this by contacting the Hackney Service team via the [`ask-devops` Slack channel][ask_devops_slack]
    - Ensure you specify at least one manager for the group you are creating. This person is responsible for adding/removing
-    users to your department
+     users to your department
    - Enable the collaborative inbox feature on your Google group by following step 2 in this [guide][collaborative_inbox].
-  This will allow your group and its members to receive emails from outside the Hackney organisation as you will need to be able to receive AWS email notifications
+     This will allow your group and its members to receive emails from outside the Hackney organisation as you will need to be able to receive AWS email notifications
 2. Wait for 2 hours for the next AWS sync before moving onto the next step
 3. Create a new department using the [existing resources][department.tf] as a template
    - Specify `google_group_display_name` with the email address of the Google group you created earlier

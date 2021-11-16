@@ -19,7 +19,7 @@ In order to limit access, we propose to store all S3 buckets in a single AWS acc
 directly will have little or no access to the owned S3 buckets, instead through the infrastructure deployment process
 (terraform) we will share a partition of the S3 buckets to relevant department accounts.
 
-E.g. s3://s3-bucket/social-care/* -> Social Care Account
+E.g. s3://s3-bucket/social-care/\* -> Social Care Account
 
 ## Consequences
 

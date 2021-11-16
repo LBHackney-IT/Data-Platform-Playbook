@@ -63,7 +63,7 @@ Ingest data contained within a Google Sheet for use on the Data Platform, option
 
 ## Getting Google sheet detail
 
-- You will need to obtain the document key from the url. The document id is the portion of the url between ``https://docs.google.com/spreadsheets/d/`` and ``/edit#gid=0``. See example below
+- You will need to obtain the document key from the url. The document id is the portion of the url between `https://docs.google.com/spreadsheets/d/` and `/edit#gid=0`. See example below
 
   ![Google sheet id](../images/google_spreadsheet_id_example.png)
 
@@ -78,6 +78,7 @@ This is what will handle the import of the data from Google Sheets to the Data P
 2. Navigate to the main `terraform` directory, and open `26-google-sheets-imports.tf`
 3. Switch to 'edit mode' (using edit button on top right)
 4. Copy one of the modules above, paste at the bottom of the file and update the following fields:
+
    - `module` - in the format `your-unique-module-name`, and unique to all other `module` names in this file (it is helpful to keep the same naming convention as your dataset/folder)
    - `glue_catalog_database_name` - Using `module.department_DEPARTMENT-NAME.raw_zone_catalog_database_name` (e.g. `module.department_parking.raw_zone_catalog_database_name`)
    - `sheets_credentials_name` - Find the value for your department in [the table above](#department-specific-information). If this is blank for your department then you don't need to include this at all.
