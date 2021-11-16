@@ -73,11 +73,11 @@ Files uploaded to the CSV folder will only be copied over to the raw zone once.
 The job uses the CSVs "created at" timestamp to process only the CSVs which have been uploaded since the last time the job successfully ran.
 :::
 
-## Confirm the import worked
+## Confirm the ingestion worked
 
-Next we'll confirm the data has been imported correctly by crawling the data with
+Next we'll confirm the data has been ingested correctly by crawling the data with
 [AWS Glue Crawler][aws_glue_crawler_console] and then inspecting it within
-[AWS Athena](../querying-data/querying-data-using-sql.md).
+[AWS Athena](../querying-and-analysing-data/querying-data-using-sql.md).
 
 - Before accessing the data within Athena, you will need to run the crawler for this data.
   Navigate to the [AWS Glue Crawler][aws_glue_crawler_console] interface, select the crawler named `<department>-copy-manually-uploaded-csvs-to-raw`, then click on "Run crawler".
