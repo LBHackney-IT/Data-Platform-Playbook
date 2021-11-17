@@ -93,11 +93,9 @@ This is what will handle the ingestion of the data from Google Sheets to the Dat
      - To override and set a new time schedule, add a new row to the respective module with the new cron time: e.g. `google_sheet_import_schedule = "cron(0 23 ? * 1-5 *)"`
      - To create a new Cron expression follow the guidance provided by the [AWS Cron Expression documentation][aws_cron_expressions].
 
-5. The Data Platform team needs to approve any changes to the code that you make, so your change won't happen automatically. To submit your change:
-   1. Provide a description to explain what you've changed
-   2. Select the option to create a `new branch` for this commit (i.e. the code you've changed). You can just use the suggested name for your branch.
-   3. Once you click 'Propose changes' you'll have the opportunity to add even more detail if needed before submitted for review. Once finished adding details, click "Create pull request".
-   4. You'll receive an email to confirm that your changes have been approved & then merged. After it has been merged into the main code base the job will run at the next scheduled time.
+5. The Data Platform team needs to approve any changes to the code that you make, so your change won't happen automatically.
+   To submit your changes, refer to the [Committing changes][committing-changes] section of the **Using Github** guide.
+   Once your changes have been approved, the job will run at the next scheduled time.
 
 ### Running the ingestion manually
 
@@ -108,3 +106,4 @@ You can do this by navigating to [AWS glue workflows][aws_glue_workflow], select
 [aws_cron_expressions]: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions
 [github_signup]: https://github.com/signup
 [aws_glue_workflow]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=workflows
+[committing-changes]: ../getting-set-up/using-github#committing-your-changes-using-the-github-ui

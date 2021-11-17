@@ -243,3 +243,4 @@ module "manually_uploaded_parking_data_to_raw" {
 [cron-expression-generator]: https://www.freeformatter.com/cron-expression-generator-quartz.html
 [glue-worker-types]: https://docs.aws.amazon.com/glue/latest/dg/add-job.html#:~:text=Own%20Custom%20Scripts.-,Worker%20type,-The%20following%20worker
 [helpers-folder-github]: https://github.com/LBHackney-IT/Data-Platform/tree/main/scripts/helpers
+[committing-changes]: ../../getting-set-up/using-github#committing-your-changes-using-the-github-ui

@@ -26,24 +26,8 @@ rds_instance_ids = ["rds-instance-1", "rds-instance-2", "YOUR_DB_INSTANCE_ID"]
 
 _The `rds_instance_ids` environment variable lists all the RDS instances that are configured to ingest into the Data Platform landing zone_
 
-- Once the rds instance id has been added, navigate to the bottom of the page to the `Commit changes` section and add a short descriptive commit message in the first input field (80 characters max) and an optional description in the second input field
-- Select the radio button labelled `Create a new branch for this commit and start a pull request` and give the new branch an appropriate name (separate words by dashes)
-- Select `Commit changes`
-- Populate the pull request template and select `Create pull request`
-- Your pull request is now ready for review by the Data Platform team, and your changes will be applied once they have approved and merged your pull request, and a new production release has been made
-- After your pull request has been approved and merged, you will be able to view the progress of the staging deployment. Once completed, the Data Platform team will then create a production release which will deploy your changes to production. You can view the progress of these steps by navigating to the `Data-Platform (Staging)` and `Data-Platform (Production)` workflows in the [actions tab](https://github.com/LBHackney-IT/Data-Platform/actions) of the repository.
-
-  - The workflow for the staging deployment will contain the following text under the workflow title:
-
-  ```
-  Data-Platform (Staging) #xxx: Commit xxxx pushed by xxxxx
-  ```
-
-  - The production release workflow will contain the following text under the workflow title:
-
-  ```
-  Data-Platform (Production) #x: Release x.x.x published by xxxxx
-  ```
+- Once the rds instance id has been added, refer to the [Committing changes][committing-changes] section of the **Using Github** guide to submit your changes.
+  The Data Platform team needs to approve any changes to the code that you make, so your change won't happen automatically.
 
 ## Create a snapshot of the rds instance
 
@@ -79,3 +63,5 @@ The creation of this snapshot will trigger the ingestion process of the data int
   - Switch to the `DataPlatform-Production` account
   - Search for `S3` and select
   - Select `dataplatform-prod-landing-zone` and navigate to the relevant department folder
+
+[committing-changes]: ../getting-set-up/using-github#committing-your-changes-using-the-github-ui
