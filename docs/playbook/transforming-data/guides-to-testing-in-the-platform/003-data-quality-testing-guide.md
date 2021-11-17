@@ -38,8 +38,12 @@ It is therefore helpful to have a good understanding of the purpose of the data 
 - Metrics repository S3 target location using the template format:
 
   ```
-  "--deequ_metrics_location" = "s3://dataplatform-stg-EXAMPLE-zone/quality-metrics/department=<YOUR-DEPARTMENT-NAME>/dataset=<DATASET>/deequ-metrics.json"
+  "--deequ_metrics_location" = "s3://${module.<ZONE>_zone.bucket_id}/quality-metrics/department=<YOUR-DEPARTMENT-NAME>/dataset=<DATASET-NAME>/deequ-metrics.json"
   ```
+
+  _`<ZONE>` refers to either: `raw`, `landing`, `refined`, or `trusted` S3 zones._
+
+  _`<YOUR-DEPARTMENT-NAME>` and `<DATASET-NAME>` should be all lowercase letters and separated by `"-"` if necessary._
 
   The metrics stored here can help you understand the profile of your data as well as help you come up with suitable constraints to measure the data quality of your dataset.
 
