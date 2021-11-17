@@ -143,7 +143,7 @@ Can't execute the assertion: requirement failed:
 There have to be previous results in the MetricsRepository!!
 ```
 
-To avoid this error, run the standard verification constraint checks first (see [Example Check](#example-check) section above) and then add your anomaly constraint checks afterwards.
+To avoid this error, run the standard verification constraint checks first (see [Fact-checking of data values example](#1-fact-checking-of-data-values-example) section above) and then add your anomaly constraint checks afterwards.
 :::
 
 For example, we check if the size of a dataframe has increased by more than twice the previous size.
@@ -199,7 +199,7 @@ to make an assertion against your constraints to check that they have been satis
 
 You can do this by including a helper function called `cancel_job_if_failing_quality_checks()`
 in your script (see [data quality testing helpers][data-quality-testing-helpers] for more info).
-You can see an example usage in the [Example Anomaly Detection](#example-anomaly-detection) section.
+You can see an example usage in the [Historical analysis of the dataset - Example Anomaly Detection](#2-historical-analysis-of-the-dataset---example-anomaly-detection) section.
 
 When a constraint check fails, the Glue job will fail and, an error message will be provided which might look something like
 the below message:
@@ -238,5 +238,5 @@ Ensure the **PlatformDepartment** tag is correctly set in the _Advanced details_
 [data-quality-testing-helpers]: https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/helpers/data_quality_testing.py
 [defect with pydeequ]: https://github.com/awslabs/python-deequ/issues/7
 [try-finally-example]: https://github.com/LBHackney-IT/Data-Platform/blob/6468778d865c6203d1d11df78805720da9cd22b5/scripts/elec_mech_fire_tv_aerials_cleaning.py#L79-L105
-[using-glue-studio]: ../using-aws-glue/using-glue-studio
+[using-glue-studio]: ../../transforming-data/using-aws-glue/using-glue-studio
 [google-groups]: https://groups.google.com/my-groups
