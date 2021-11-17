@@ -161,7 +161,7 @@ cancel_job_if_failing_quality_checks(VerificationResult.checkResultsAsDataFrame(
 anomalyVerificationSuite.saveOrAppendResult(resultKey).run()
 ```
 
-Here is a [list of anomaly detection types][pydeequ-checks] that are available to use.
+Here is a [list of anomaly detection types][pydeequ-anomaly-detection] that are available to use.
 
 ### Providing tags to metrics for verification constraint checks
 
@@ -188,7 +188,7 @@ In order to ensure that only trusted data is outputted from your Glue job, it is
 to make an assertion against your constraints to check that they have been satisfied.
 
 You can do this by including a helper function called `cancel_job_if_failing_quality_checks()`
-in your script (see [helpers.py][helpers.py] for more info).
+in your script (see [data quality testing helpers][data-quality-testing-helpers] for more info).
 You can see an example usage in the [Example Anomaly Detection](#example-anomaly-detection) section.
 
 When a constraint check fails, the Glue job will fail and, an error message will be provided which might look something like
@@ -225,8 +225,8 @@ Ensure the **PlatformDepartment** tag is correctly set in the _Advanced details_
 [pydeequ-readme]: https://github.com/awslabs/python-deequ
 [pydeequ-checks]: https://pydeequ.readthedocs.io/en/latest/pydeequ.html#module-pydeequ.checks
 [pydeequ-anomaly-detection]: https://pydeequ.readthedocs.io/en/latest/pydeequ.html#module-pydeequ.anomaly_detection
-[helpers.py]: https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/helpers.py
+[data-quality-testing-helpers]: https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/helpers/data_quality_testing.py
 [defect with pydeequ]: https://github.com/awslabs/python-deequ/issues/7
 [try-finally-example]: https://github.com/LBHackney-IT/Data-Platform/blob/6468778d865c6203d1d11df78805720da9cd22b5/scripts/elec_mech_fire_tv_aerials_cleaning.py#L79-L105
-[using-glue-studio]: ./using-glue-studio
+[using-glue-studio]: ../using-aws-glue/using-glue-studio
 [google-groups]: https://groups.google.com/my-groups
