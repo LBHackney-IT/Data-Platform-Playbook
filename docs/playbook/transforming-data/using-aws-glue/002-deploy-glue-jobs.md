@@ -234,7 +234,7 @@ module "manually_uploaded_parking_data_to_raw" {
 ```
 
 [aws_cron_expressions]: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions
-[prerequisites]: ../../ingesting-data/google-sheets-import.md#prerequisites
+[prerequisites]: ../../ingesting-data/google-sheets-import#prerequisites
 [data-platform-project]: https://github.com/LBHackney-IT/data-platform
 [scripts-directory]: https://github.com/LBHackney-IT/Data-Platform/tree/main/scripts
 [committing-changes]: #3-committing-your-changes-using-the-github-ui
