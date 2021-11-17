@@ -238,5 +238,5 @@ Ensure the **PlatformDepartment** tag is correctly set in the _Advanced details_
 [data-quality-testing-helpers]: https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/helpers/data_quality_testing.py
 [defect with pydeequ]: https://github.com/awslabs/python-deequ/issues/7
 [try-finally-example]: https://github.com/LBHackney-IT/Data-Platform/blob/6468778d865c6203d1d11df78805720da9cd22b5/scripts/elec_mech_fire_tv_aerials_cleaning.py#L79-L105
-[using-glue-studio]: ../../transforming-data/using-aws-glue/using-glue-studio
+[using-glue-studio]: ../using-aws-glue/using-glue-studio
 [google-groups]: https://groups.google.com/my-groups
