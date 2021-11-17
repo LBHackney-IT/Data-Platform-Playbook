@@ -106,4 +106,4 @@ You can do this by navigating to [AWS glue workflows][aws_glue_workflow], select
 [aws_cron_expressions]: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions
 [github_signup]: https://github.com/signup
 [aws_glue_workflow]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=workflows
-[committing-changes]: ../getting-set-up/using-github#committing-your-changes-using-the-github-ui
+[committing-changes]: ../getting-set-up/using-github#committing-your-changes-to-the-data-platform-project

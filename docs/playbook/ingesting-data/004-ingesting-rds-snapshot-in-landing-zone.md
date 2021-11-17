@@ -64,4 +64,4 @@ The creation of this snapshot will trigger the ingestion process of the data int
   - Search for `S3` and select
   - Select `dataplatform-prod-landing-zone` and navigate to the relevant department folder
 
-[committing-changes]: ../getting-set-up/using-github#committing-your-changes-using-the-github-ui
+[committing-changes]: ../getting-set-up/using-github#committing-your-changes-to-the-data-platform-project

@@ -53,4 +53,4 @@ tags: [playbook]
 
 [aws_cron_expressions]: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions
 [github_signup]: https://github.com/signup
-[committing-changes]: ../getting-set-up/using-github#committing-your-changes-using-the-github-ui
+[committing-changes]: ../getting-set-up/using-github#committing-your-changes-to-the-data-platform-project

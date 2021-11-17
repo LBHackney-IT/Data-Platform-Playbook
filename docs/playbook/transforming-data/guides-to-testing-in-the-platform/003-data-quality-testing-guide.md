@@ -250,5 +250,5 @@ If you are still prototyping your data quality tests in Glue Studio, ensure the 
 [try-finally-example]: https://github.com/LBHackney-IT/Data-Platform/blob/6468778d865c6203d1d11df78805720da9cd22b5/scripts/elec_mech_fire_tv_aerials_cleaning.py#L79-L105
 [using-glue-studio]: ../using-aws-glue/using-glue-studio
 [google-groups]: https://groups.google.com/my-groups
-[committing-changes]: ../../getting-set-up/using-github#committing-your-changes-using-the-github-ui
+[committing-changes]: ../../getting-set-up/using-github#committing-your-changes-to-the-data-platform-project
 [deploy-glue-jobs]: ../using-aws-glue/deploy-glue-jobs
