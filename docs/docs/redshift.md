@@ -150,4 +150,6 @@ You will know if it has worked because the data will be visible in the redshift 
 
 ### Related documents
 
-https://lbhackney-it.github.io/Data-Platform-Playbook/playbook/connecting-to-other-tools/connecting-to-redshift-from-data-studio
+- [Connecting to the Redshift cluster from Google Data Studio][connecting-to-redshift-from-data-studio]
+
+[connecting-to-redshift-from-data-studio]: ../playbook/querying-and-analysing-data/connecting-to-redshift-from-data-studio
