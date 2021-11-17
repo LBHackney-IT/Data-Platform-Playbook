@@ -43,7 +43,13 @@ It is therefore helpful to have a good understanding of the purpose of the data 
 
   _`<ZONE>` refers to either: `raw`, `landing`, `refined`, or `trusted` S3 zones._
 
-  _`<YOUR-DEPARTMENT-NAME>` and `<DATASET-NAME>` should be all lowercase letters and separated by `"-"` if necessary._
+  _`<YOUR-DEPARTMENT-NAME>` and `<DATASET-NAME>` must be all lowercase with words separated by hyphens._
+
+  For example:
+
+  ```
+  "--deequ_metrics_location" = "s3://${module.refined_zone.bucket_id}/quality-metrics/department=housing-repairs/dataset=repairs-axis/deequ-metrics.json"
+  ```
 
   The metrics stored here can help you understand the profile of your data as well as help you come up with suitable constraints to measure the data quality of your dataset.
 
