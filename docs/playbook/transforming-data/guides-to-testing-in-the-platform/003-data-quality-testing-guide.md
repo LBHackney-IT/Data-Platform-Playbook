@@ -10,14 +10,48 @@ tags: [playbook]
 
 - [PyDeequ README][pydeequ-readme]
 
-## Prerequisites
+## Context
 
-Update the job arguments of your Glue job to include:
+Data Quality tests are used to verify the quality of production datasets.
+They are intended to make assertions against the data itself as opposed to the code when unit testing.
 
-- Extra jars: `--extra-jars = s3://dataplatform-stg-glue-scripts/jars/deequ-1.0.3.jar`
-- Extra Python files: `--extra-py-file = s3://dataplatform-stg-glue-scripts/python-modules/pydeequ-1.0.1.zip`
+This guide introduces the Python library 'PyDeequ' which can be used to perform data quality testing in your Glue scripts.
+PyDeequ allows you to calculate data quality metrics on your dataset, define and verify data quality constraints,
+and be informed about changes in the data distribution.
+
+## Pre-requisites of data quality testing
+
+In order to efficiently test your data, it is necessary that you define and set the right expectations from the ETL process and the data itself.
+It is therefore helpful to have a good understanding of the purpose of the data and think about the following questions:
+
+- What do you want to achieve with your data?
+
+  - Knowing what the intended purpose of the data is and what specific business questions it will help answer.
+
+- What does high-quality data mean to you?
+  - You must understand the metrics that will help you to measure data quality.
+
+## Pre-requisites to using PyDeequ
+
+1. Update the job arguments of your Glue job to include:
+
 - Metrics repository S3 target location using the template format:
-  `--deequ_metrics_location = s3://dataplatform-stg-EXAMPLE-zone/quality-metrics/department=EXAMPLE/dataset=EXAMPLE/deequ-metrics.json`
+
+  ```
+  "--deequ_metrics_location" = "s3://dataplatform-stg-EXAMPLE-zone/quality-metrics/department=<YOUR-DEPARTMENT-NAME>/dataset=<DATASET>/deequ-metrics.json"
+  ```
+
+  The metrics stored here can help you understand the profile of your data as well as help you come up with suitable constraints to measure the data quality of your dataset.
+
+2. Import the following functions from PyDeequ in the top of your script.
+   As you are writing your tests, you may discover that you need additional functions from the PyDeequ library.
+   You may import these as required. The examples in this guide also introduce some functions that may be used.
+
+```
+from pydeequ.repository import FileSystemMetricsRepository, ResultKey
+from pydeequ.verification import VerificationSuite, VerificationResult
+from helpers.data_quality_testing import get_metrics_target_location, cancel_job_if_failing_quality_checks
+```
 
 :::caution
 
@@ -34,9 +68,21 @@ finally:
 
 :::
 
-### Example Check
+## Types of Data Quality tests
 
-Here is an example of using deequ checks to validate a dataframe, and storing related metrics to S3.
+We introduce two types of data quality tests; **fact-checking of data values** and **historical analysis of the dataset** being processed.
+
+- **Fact-checking of data values**: involves validating the values of columns and checking that they conform to set standards.
+  For example, an ID column only contains unique values or values in a given column should be in a specific range, between a minimum and maximum value.
+
+- **Historical analysis of the dataset**: involves analysing a dataset as it evolves over time and testing that the new data is consistent with a baseline.
+  This requires having a profile or baseline of the data to compare to.
+
+Below are examples of these two types of data quality tests.
+
+### 1. Fact-checking of data values example
+
+Here is an example of using Deequ checks to validate a dataframe, and storing related metrics to S3.
 The `description_of_work` column is checked to be complete, and `work_priority_priority_code` between
 1 and 4 inclusively.
 There is also the option to include a hint message on each of the checks which will be
@@ -44,10 +90,10 @@ displayed to the user in the event there is a failing constraint to help diagnos
 For example, the `hasMin` check has the hint message: "`The minimum(work_priority_priority_code) >= 1')`".
 
 ```python
-from helpers import get_metrics_target_location
 from pydeequ.checks import Check, CheckLevel
 from pydeequ.repository import FileSystemMetricsRepository, ResultKey
 from pydeequ.verification import VerificationSuite, VerificationResult, RelativeRateOfChangeStrategy
+from helpers.data_quality_testing import get_metrics_target_location 
 
 metrics_target_location = get_metrics_target_location()
 
@@ -70,7 +116,7 @@ checkResult_df.show()
 
 Here is a [list of checks][pydeequ-checks] that are available to use.
 
-### Example Anomaly Detection
+### 2. Historical analysis of the dataset - Example Anomaly Detection
 
 Anomaly detection uses historic metrics to determine if a value is invalid.
 
@@ -89,10 +135,10 @@ To avoid this error, run the standard verification constraint checks first (see 
 For example, we check if the size of a dataframe has increased by more than twice the previous size.
 
 ```python
-from helpers import get_metrics_target_location, cancel_job_if_failing_quality_checks
 from pydeequ.verification import VerificationSuite, VerificationResult
 from pydeequ.repository import FileSystemMetricsRepository, ResultKey
 from pydeequ.anomaly_detection import RelativeRateOfChangeStrategy
+from helpers.data_quality_testing import get_metrics_target_location, cancel_job_if_failing_quality_checks
 
 metrics_target_location = get_metrics_target_location()
 
