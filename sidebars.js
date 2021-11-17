@@ -62,10 +62,13 @@ module.exports = {
                 ...getItems("playbook/transforming-data/using-aws-glue"),
                 {
                   type: "category",
-                  label: "Practical example",
-                  items: getItems(
-                    "playbook/transforming-data/using-aws-glue/practical-examples"
-                  ),
+                  label: "Practical examples",
+                  items: [
+                    ...getItems(
+                      "playbook/transforming-data/using-aws-glue/practical-examples"
+                    ),
+                    "workshop/aws_glue_studio_parking",
+                  ],
                 },
               ],
             },
