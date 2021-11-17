@@ -91,13 +91,17 @@ The `description_of_work` column is checked to be complete, and `work_priority_p
 1 and 4 inclusively.
 There is also the option to include a hint message on each of the checks which will be
 displayed to the user in the event there is a failing constraint to help diagnose the problem.
-For example, the `hasMin` check has the hint message: "`The minimum(work_priority_priority_code) >= 1')`".
+For example, the `hasMin` check has the hint message:
+
+```
+'The minimum(work_priority_priority_code) >= 1'
+```
 
 ```python
 from pydeequ.checks import Check, CheckLevel
 from pydeequ.repository import FileSystemMetricsRepository, ResultKey
 from pydeequ.verification import VerificationSuite, VerificationResult, RelativeRateOfChangeStrategy
-from helpers.data_quality_testing import get_metrics_target_location 
+from helpers.data_quality_testing import get_metrics_target_location
 
 metrics_target_location = get_metrics_target_location()
 
