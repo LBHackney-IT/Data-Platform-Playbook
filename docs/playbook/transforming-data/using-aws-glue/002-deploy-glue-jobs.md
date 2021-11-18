@@ -217,11 +217,6 @@ The module name must be all lowercase with words separated by underscores. Ensur
 Once you have finished creating your Glue job using the template and have populated all relevant variables,
 you should refer to step 3 below to have your job submitted for review by the Data Platform team.
 
-### 3. Commit your changes
-
-The Data Platform team needs to approve any changes to the code, so your change won't happen automatically.
-To submit your changes, refer to the [Committing changes][committing-changes] section of the **Using Github** guide.
-
 ## Example module block
 
 ```markdown
