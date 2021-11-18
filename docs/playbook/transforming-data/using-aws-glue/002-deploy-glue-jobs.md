@@ -116,7 +116,14 @@ The module name must be all lowercase with words separated by underscores. Ensur
 
     - You can use [this tool][cron-expression-generator] to generate your Cron expressions.
 
-- **job_description** (optional): A description of the AWS glue job e.g. "Exports Google Sheets imported datasets to the landing zone"
+- **job_description** (optional): A description of the AWS Glue job e.g. "Exports Google Sheets imported datasets to the landing zone"
+- **extra_jars** (optional): If your Glue job requires extra packages that are zipped in a JAR file, you can provide the list of the S3 path(s) to the JAR file(s) here.
+  For example:
+  ```
+  ["s3://${module.department_<DEPARTMENT_NAME>.glue_scripts_bucket.bucket_id}/<JARS_FILE_NAME>.jar"]
+  ```
+  _Note: ensure that your department name is all lowercase with words separated by underscores
+  e.g. `housing_repairs`._
 - **job_parameters** (optional): If your Glue job uses environment variables/ job parameters, you can set them here.
   Add this import statement to your script: `from helpers.helpers import get_glue_env_var`
   to retrieve the job parameters you set here.
@@ -162,7 +169,7 @@ The module name must be all lowercase with words separated by underscores. Ensur
 
         - _Note: if sourcing data from a catalog table, the _`--source_catalog_database`_ job parameter must be set as well_
 
-See the [example module](#example-module-block) below for guidance on how to set your own job parameters.
+  See the [example module](#example-module-block) below for guidance on how to set your own job parameters.
 
 - **workflow_name** (optional): An existing workflow to add the triggers to
   - _Note: this module **does not** create Glue workflows_
