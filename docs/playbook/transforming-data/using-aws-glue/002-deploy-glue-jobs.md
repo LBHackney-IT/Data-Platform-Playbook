@@ -53,6 +53,8 @@ The module name must be all lowercase with words separated by underscores. Ensur
 
 #### The following input variables are required:
 
+- **source** (required): This will be `"../modules/aws_glue_job"`. It is the path to where the glue job module is saved within the repository.
+
 - **department** (required): This will be `module.department_<YOUR_DEPARTMENT_NAME>`
 
   _Note: the department name should be all lowercase and separated by underscores
@@ -116,10 +118,23 @@ The module name must be all lowercase with words separated by underscores. Ensur
 
     - You can use [this tool][cron-expression-generator] to generate your Cron expressions.
 
-- **job_description** (optional): A description of the AWS glue job e.g. "Exports Google Sheets imported datasets to the landing zone"
-- **job_parameters** (optional): If your Glue job uses environment variables/ job parameters, you can set them here.
-  Add this import statement to your script: `from helpers.helpers import get_glue_env_var`
-  to retrieve the job parameters you set here.
+- **job_description** (optional): A description of the AWS Glue job e.g. "Exports Google Sheets imported datasets to the landing zone"
+- **extra_jars** (optional): If your Glue job requires extra packages that are zipped in a JAR file, you can provide the list of the S3 path(s) to the JAR file(s) here.
+  For example:
+  ```
+  extra_jars = ["s3://${module.department_<DEPARTMENT_NAME>.glue_scripts_bucket.bucket_id}/<JARS_FILE_NAME>.jar", "s3://${module.department_<DEPARTMENT_NAME>.glue_scripts_bucket.bucket_id}/<JARS_FILE_NAME>.jar"]
+  ```
+  _Note: ensure that your department name is all lowercase with words separated by underscores
+  e.g. replace `<DEPARTMENT_NAME>` with `housing_repairs`._
+
+- **job_parameters** (optional): Here you can set both some configuration for your glue job or if your Glue job uses environment variables/ job parameters, you can set them here aswell.
+  - You can find a list of optional glue job configuration in [AWS's documentation][list-of-glue-job-arguments]. A common one used in the Data Platform is job bookmarking. Which can be enabled like this: 
+    ```
+    {
+      "--job-bookmark-option" = "job-bookmark-enable"
+    }
+    ``` 
+  - To retrieve the job parameters you set here, add this import statement to your script: `from helpers.helpers import get_glue_env_var`
 
   You can then get the value of your job parameters to use in your script like this:
 
@@ -162,7 +177,7 @@ The module name must be all lowercase with words separated by underscores. Ensur
 
         - _Note: if sourcing data from a catalog table, the _`--source_catalog_database`_ job parameter must be set as well_
 
-See the [example module](#example-module-block) below for guidance on how to set your own job parameters.
+  See the [example module](#example-module-block) below for guidance on how to set your own job parameters.
 
 - **workflow_name** (optional): An existing workflow to add the triggers to
   - _Note: this module **does not** create Glue workflows_
@@ -237,3 +252,4 @@ module "manually_uploaded_housing_data_to_raw" {
 [glue-worker-types]: https://docs.aws.amazon.com/glue/latest/dg/add-job.html#:~:text=Own%20Custom%20Scripts.-,Worker%20type,-The%20following%20worker
 [helpers-folder-github]: https://github.com/LBHackney-IT/Data-Platform/tree/main/scripts/helpers
 [committing-changes]: ../../getting-set-up/using-github#committing-your-changes-to-the-data-platform-project
+[list-of-glue-job-arguments]: https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html

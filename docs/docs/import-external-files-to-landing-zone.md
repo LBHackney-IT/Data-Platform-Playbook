@@ -12,6 +12,9 @@ The terraform script [33-liberator-iam.tf](https://github.com/LBHackney-IT/Data-
 The login details for the user can be used by the external provider by executing the following steps:
 
 1. The external supplier logs into AWS using the [AWS Command Line Interface](https://aws.amazon.com/cli/)
-2. The external supplier uses the `aws s3 cp` command with the source location and the destination as arguments, e.g. `aws s3 cp c:\<SUPPLIER_COMPUTER\<SOURCE_FILE_NAME>.csv s3://dataplatform-stg-liberator-data-storage/parking/`
+2. The external supplier uses the `aws s3 cp` command with the source location and the destination as arguments, e.g.
+   ```
+   aws s3 cp c:\<SUPPLIER_COMPUTER>\<SOURCE_FILE_NAME>.csv s3://dataplatform-stg-liberator-data-storage/parking/
+   ```
 3. When the document has been uploaded to the Data Storage Zone the external supplier can disconnect.
 4. In the case of the Liberator data, the upload will automatically trigger a process which converts the data dump in the data storage zone into parquet format. Following this, there is a Lambda which moves the parquet data into the Landing Zone for further processing.
