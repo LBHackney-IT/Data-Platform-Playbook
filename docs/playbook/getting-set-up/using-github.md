@@ -11,7 +11,7 @@ Assist you in performing common tasks in the GitHub UI.
 
 :::important
 This guide assumes you have the correct permissions to access the Data Platform project in GitHub.
-If you are unsure, refer to the [pre-requisites][pre-requisites] section here.
+If you are unsure, refer to the [prerequisites][prerequisites] section here.
 :::
 
 ### Committing your changes to the Data Platform Project
@@ -39,6 +39,6 @@ If you are unsure, refer to the [pre-requisites][pre-requisites] section here.
   Data-Platform (Production) #x: Release x.x.x published by xxxxx
   ```
 
-[pre-requisites]: ./index.md
+[prerequisites]: ./index.md
 [github_signup]: https://github.com/signup
 [actions-tab]: https://github.com/LBHackney-IT/Data-Platform/actions
