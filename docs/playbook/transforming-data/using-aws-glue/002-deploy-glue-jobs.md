@@ -16,21 +16,17 @@ If you are still testing or prototyping your script, it is recommended that you 
 
 ### 1. Add your script to the Data Platform Project using the GitHub UI
 
-:::note
-If your Glue job was created using the Glue Studio UI,
-you can find the automatically generated script by navigating to the `Script` tab when viewing your job in Glue Studio.
-:::
-
 - Open the [scripts directory][scripts-directory] in the Data Platform Project and navigate to your department folder
 - Click `Add file` and then `Create new file`
 - Name your file. 
   This should be the same name you gave your job in Glue Studio, but should be with all lowercase letters, words separated by underscores, and with the extension `.py` at the end.
   e.g. `address_cleaning_housing_repairs.py`
-- Open your job in Glue Studio and copy your script by navigating to the `Script` tab
+- Open your Glue job in Glue Studio and copy your script by navigating to the `Script` tab
   
   _Note: This is only applicable if you Glue job was created using the Glue Studio UI._
-- Copy yourPaste your code in field below
-- Follow [the instructions here][committing-changes] to commit your new file to the project
+- Navigate back to the new script file you created in GitHub and paste your script
+- Submit your changes by referring to the [Committing changes][committing-changes] section of the **Using Github** guide
+  The Data Platform team needs to approve any changes to the code, so your change won't happen automatically.
 
 ### 2. Copy an existing Glue job module block or use the example below and populate the necessary variables
 
