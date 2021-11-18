@@ -26,7 +26,7 @@ rds_instance_ids = ["rds-instance-1", "rds-instance-2", "YOUR_DB_INSTANCE_ID"]
 
 _The `rds_instance_ids` environment variable lists all the RDS instances that are configured to ingest into the Data Platform landing zone_
 
-- Once the rds instance id has been added, refer to the [Committing changes][committing-changes] section of the **Using Github** guide to submit your changes.
+- Once the rds instance id has been added, submit your changes by referring to the [Committing changes][committing-changes] section of the **Using Github** guide.
   The Data Platform team needs to approve any changes to the code that you make, so your change won't happen automatically.
 
 ## Create a snapshot of the rds instance

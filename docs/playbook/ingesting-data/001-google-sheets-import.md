@@ -94,8 +94,8 @@ This is what will handle the ingestion of the data from Google Sheets to the Dat
      - To create a new Cron expression follow the guidance provided by the [AWS Cron Expression documentation][aws_cron_expressions].
 
 5. The Data Platform team needs to approve any changes to the code that you make, so your change won't happen automatically.
-   To submit your changes, refer to the [Committing changes][committing-changes] section of the **Using Github** guide.
-   Once your changes have been approved, the job will run at the next scheduled time.
+   - Submit your changes, by referring to the [Committing changes][committing-changes] section of the **Using Github** guide.
+     Once your changes have been approved, the job will run at the next scheduled time.
 
 ### Running the ingestion manually
 

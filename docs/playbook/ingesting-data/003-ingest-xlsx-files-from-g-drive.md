@@ -49,7 +49,7 @@ tags: [playbook]
   - `worksheets` = Each worksheet that needs to be ingested should be listed out in a map containing the header row number and the name of your worksheet - see the `Getting spreadsheet detail` section above. The worksheet name needs to match exactly (including any spaces or punctuation, but excluding any slashes `/`), so you may want to copy and paste the name directly from your worksheet. If you need to add more sheets, you can copy and paste this section and continue numbering (e.g. sheet3, sheet4 etc). Remove any worksheet sections you don't need.
 
 - The Data Platform team needs to approve any changes to the code, so your change won't happen automatically.
-  To submit your changes, refer to the [Committing changes][committing-changes] section of the **Using Github** guide.
+  - Submit your changes by referring to the [Committing changes][committing-changes] section of the **Using Github** guide.
 
 [aws_cron_expressions]: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions
 [github_signup]: https://github.com/signup
