@@ -10,7 +10,7 @@ tags: [playbook]
 
 :::important
 The aim of this guide is to help you get started in creating and testing your Glue jobs.
-Once your Glue job is ready and working as expected, you can refer to [this guide][create-glue-jobs]
+Once your Glue job is ready and working as expected, you can refer to [this guide][deploy-glue-jobs]
 to deploy your Glue job to the Data Platform AWS account and then delete your manually created job afterwards.
 :::
 
@@ -85,4 +85,4 @@ Ensure the **PlatformDepartment** tag is correctly set in the _Advanced details_
 [terraform]: https://www.terraform.io/
 [aws-glue-studio-documentation]: https://docs.aws.amazon.com/glue/latest/ug/edit-nodes-chapter.html
 [using-glue-studio]: https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/using-glue-studio
-[create-glue-jobs]: ./deploy-glue-jobs
+[deploy-glue-jobs]: ./deploy-glue-jobs

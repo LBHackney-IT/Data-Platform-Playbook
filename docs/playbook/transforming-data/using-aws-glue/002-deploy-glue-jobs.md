@@ -215,30 +215,23 @@ The module name must be all lowercase with words separated by underscores. Ensur
 Once you have finished creating your Glue job using the template and have populated all relevant variables,
 you should refer to step 3 below to have your job submitted for review by the Data Platform team.
 
-### 3. Committing your changes using the GitHub UI
+### 3. Commit your changes
 
-The Data Platform team needs to approve any changes to the code, so your change won't happen automatically. To submit your change:
-
-- Navigate to the `Commit new file` or `Commit changes` section at the bottom of the page.
-- Provide a short sentence in the first field and then an optional description in the field below to explain what you've changed.
-- Select the option to create a `new branch` for this commit (i.e. the code you've changed).
-  You can just use the suggested name for your branch.
-- Once you click `Commit new file` or `Commit changes` you'll have the opportunity to add even more detail if needed before submitting it for review.  
-  Click `Create Pull Request` when finished.
-- The Data Platform team will then review your Pull Request, and you'll receive an email to confirm when your changes have been approved.
+The Data Platform team needs to approve any changes to the code, so your change won't happen automatically.
+To submit your changes, refer to the [Committing changes][committing-changes] section of the **Using Github** guide.
 
 ## Example module block
 
 ```markdown
-module "manually_uploaded_parking_data_to_raw" {
+module "manually_uploaded_housing_data_to_raw" {
   source = "../modules/aws-glue-job"
 
   department = module.department*housing_repairs
   job_name   = "${local.short_identifier_prefix}housing repairs address cleaning"
   schedule   = "cron(0 0 23 ? * MON,TUE,WED,THU,FRI _)"
   job_parameters = {
-    "--s3_bucket_target" = module.raw_zone.bucket_id
-    "--s3_bucket_source" = "${module.landing_zone.bucket_id}/housing-repairs/repairs-axis/"
+    "--s3_bucket_source" = "${module.landing_zone.bucket_id}/manual/housing-repairs/repairs-axis/"
+    "--s3_bucket_target" = "${module.raw_zone.bucket_id}/housing-repairs/repairs-axis/"
   }
   crawler_details = {
     database_name      = module.department_housing_repairs.raw_zone_catalog_database_name
@@ -258,4 +251,5 @@ module "manually_uploaded_parking_data_to_raw" {
 [cron-expression-generator]: https://www.freeformatter.com/cron-expression-generator-quartz.html
 [glue-worker-types]: https://docs.aws.amazon.com/glue/latest/dg/add-job.html#:~:text=Own%20Custom%20Scripts.-,Worker%20type,-The%20following%20worker
 [helpers-folder-github]: https://github.com/LBHackney-IT/Data-Platform/tree/main/scripts/helpers
+[committing-changes]: ../../getting-set-up/using-github#committing-your-changes-to-the-data-platform-project
 [list-of-glue-job-arguments]: https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html
