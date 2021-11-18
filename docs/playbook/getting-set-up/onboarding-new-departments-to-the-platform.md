@@ -23,6 +23,12 @@ Before a department is able to use the data platform, its details must be config
 
    _Note: ensure that your `department-name` is all lowercase with words separated by hyphens._
 
+   For example, the Housing Repairs Google group name would be:
+
+   ```
+   saml-aws-data-platform-collaborator-housing-repairs
+   ```
+
    - You can do this by contacting the Hackney Service team via the [`ask-devops` Slack channel][ask_devops_slack]
    - Ensure you specify at least one manager for the group you are creating. This person is responsible for adding/removing
      users to your department
