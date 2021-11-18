@@ -215,8 +215,9 @@ Multiple constraint failures are delimited by a `|` character in the error messa
 ## Commit your data quality tests to your Glue job
 
 Once you are satisfied with your data quality tests, you will need to commit them to the Data Platform project so that they can be deployed to your existing Glue job.
-To submit your changes, refer to the [Committing changes][committing-changes] section of the **Using Github** guide.
-The Data Platform team needs to approve any changes to the code, so your change won't happen automatically.
+
+- Submit your changes by referring to the [Committing changes][committing-changes] section of the **Using Github** guide.
+  The Data Platform team needs to approve any changes to the code, so your change won't happen automatically.
 
 :::important
 If you are working with a new Glue job that has not yet been deployed to the Data Platform project, refer to [this guide][deploy-glue-jobs] to have it added to the project.

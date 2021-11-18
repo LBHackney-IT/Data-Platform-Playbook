@@ -93,8 +93,8 @@ This is what will handle the ingestion of the data from Google Sheets to the Dat
      - To override and set a new time schedule, add a new row to the respective module with the new cron time: e.g. `google_sheet_import_schedule = "cron(0 23 ? * 1-5 *)"`
      - To create a new Cron expression follow the guidance provided by the [AWS Cron Expression documentation][aws_cron_expressions].
 
-5. The Data Platform team needs to approve any changes to the code that you make, so your change won't happen automatically.
-   - Submit your changes, by referring to the [Committing changes][committing-changes] section of the **Using Github** guide.
+5. Submit your changes, by referring to the [Committing changes][committing-changes] section of the **Using Github** guide.
+   - The Data Platform team needs to approve any changes to the code that you make, so your change won't happen automatically.
      Once your changes have been approved, the job will run at the next scheduled time.
 
 ### Running the ingestion manually
