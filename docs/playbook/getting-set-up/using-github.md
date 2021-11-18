@@ -1,5 +1,5 @@
 ---
-title: Using GitHub
+title: Using the GitHub UI
 description: "A guide on how to carry out common tasks in the GitHub UI"
 layout: playbook_js
 tags: [playbook]
