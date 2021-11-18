@@ -44,6 +44,8 @@ Then, when adding a data source in [Google Data Studio][google_data_studio]
 1. Go to the AWS Secrets Manager secret for your department
 
    - [Parking Credentials][parking_user_secret_staging]
+   - [Planning Credentials][planning_user_secret_staging]
+   - [Housing Repairs Credentials][housing_repairs_user_secret_staging]
 
    If you clicking the link above before logging into the DataPlatform-staging account you will be presented with an
    AWS login screen.
@@ -54,6 +56,8 @@ Then, when adding a data source in [Google Data Studio][google_data_studio]
 [client_private_key]: https://dataplatform-stg-ssl-connection-resources.s3.eu-west-2.amazonaws.com/client_private_key.key
 [server_certificate]: https://s3.amazonaws.com/redshift-downloads/redshift-ca-bundle.crt
 [aws_sso_link]: https://hackney.awsapps.com/start/#/
-[parking_user_secret_staging]: https://eu-west-2.console.aws.amazon.com/secretsmanager/home?region=eu-west-2#!/secret?name=dataplatform-stg%2Fparking%2Fredshift-cluster-user
+[parking_user_secret_staging]: https://eu-west-2.console.aws.amazon.com/secretsmanager/home?region=eu-west-2#!/secret?name=dataplatform-stg%2Fparking%2Fredshift-cluster-user20211116150110800200000001
+[planning_user_secret_staging]: https://eu-west-2.console.aws.amazon.com/secretsmanager/home?region=eu-west-2#!/secret?name=dataplatform-stg%2Fplanning%2Fredshift-cluster-user20211116150112018900000006
+[housing_repairs_user_secret_staging]: https://eu-west-2.console.aws.amazon.com/secretsmanager/home?region=eu-west-2#!/secret?name=dataplatform-stg%2Fhousing-repairs%2Fredshift-cluster-user20211116150111083800000002
 [google_data_studio]: https://datastudio.google.com/u/0/datasources/create/
 [aws_athena]: https://eu-west-2.console.aws.amazon.com/athena/home?region=eu-west-2#query
