@@ -23,7 +23,13 @@ you can find the automatically generated script by navigating to the `Script` ta
 
 - Open the [scripts directory][scripts-directory] in the Data Platform Project and navigate to your department folder
 - Click `Add file` and then `Create new file`
-- Name your file, using underscores as separators e.g. `address_cleaning_housing_repairs`, and then paste your code in field below
+- Name your file. 
+  This should be the same name you gave your job in Glue Studio, but should be with all lowercase letters, words separated by underscores, and with the extension `.py` at the end.
+  e.g. `address_cleaning_housing_repairs.py`
+- Open your job in Glue Studio and copy your script by navigating to the `Script` tab
+  
+  _Note: This is only applicable if you Glue job was created using the Glue Studio UI._
+- Copy yourPaste your code in field below
 - Follow [the instructions here][committing-changes] to commit your new file to the project
 
 ### 2. Copy an existing Glue job module block or use the example below and populate the necessary variables
