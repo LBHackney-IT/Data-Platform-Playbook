@@ -9,6 +9,11 @@ tags: [playbook]
 
 Assist you in performing common tasks in the GitHub UI.
 
+:::important
+This guide assumes you have the correct permissions to access the Data Platform project in GitHub.
+If you are unsure, refer to the [pre-requisites][pre-requisites] section here.
+:::
+
 ### Committing your changes to the Data Platform Project
 
 - Navigate to the `Commit new file` or `Commit changes` section at the bottom of the page.
@@ -34,4 +39,6 @@ Assist you in performing common tasks in the GitHub UI.
   Data-Platform (Production) #x: Release x.x.x published by xxxxx
   ```
 
+[pre-requisites]: ./index.md
+[github_signup]: https://github.com/signup
 [actions-tab]: https://github.com/LBHackney-IT/Data-Platform/actions
