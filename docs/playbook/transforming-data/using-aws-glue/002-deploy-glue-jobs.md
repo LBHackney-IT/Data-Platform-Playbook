@@ -261,7 +261,7 @@ _Note: If you've copied an existing module block from your department folder the
 - You have not removed the `"quotation marks"` around any values which use them
 - All equal signs (`=`) line up as shown in the example below
 - Any unneeded variables are removed by deleting the entire line
-  :::
+:::
 
 6. Once you have finished creating your Glue job using the template and have populated all relevant variables,
    submit your job for review by the Data Platform team by following [this guide][committing-changes].
