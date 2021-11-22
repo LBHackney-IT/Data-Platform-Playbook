@@ -45,13 +45,13 @@ In this section, you will be creating a module (or updating an existing one if y
 
    - If you don't have the correct permissions, you'll get a '404' error (see [prerequisites][prerequisites]).
 
-1. Open `23-aws-glue-jobs-<YOUR-DEPARTMENT-NAME>.tf`. e.g. `23-aws-glue-job-parking.tf`
+1. Open `25-aws-glue-jobs-<YOUR-DEPARTMENT-NAME>.tf`. e.g. `25-aws-glue-job-parking.tf`
 
    - _If this file does not exist, create a new terraform file for your department by clicking `Add file` then `Create new file`.
      The name of the new file should be:_
 
    ```
-   23-aws-glue-jobs-<YOUR-DEPARTMENT-NAME>.tf
+   25-aws-glue-jobs-<YOUR-DEPARTMENT-NAME>.tf
    ```
 
    - _Refer to the [example](#example-module-block) below to get started._
@@ -299,4 +299,4 @@ module "manually_uploaded_housing_data_to_raw" {
 [helpers-folder-github]: https://github.com/LBHackney-IT/Data-Platform/tree/main/scripts/helpers
 [committing-changes]: ../../getting-set-up/using-github#committing-your-changes-to-the-data-platform-project
 [list-of-glue-job-arguments]: https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html
-[project-module-example]: https://github.com/LBHackney-IT/Data-Platform/blob/ac2a8d56e77ba94f1123fcdb983387081887a72f/terraform/23-aws-glue-job-parking.tf#L31-L44
+[project-module-example]: https://github.com/LBHackney-IT/Data-Platform/blob/ac2a8d56e77ba94f1123fcdb983387081887a72f/terraform/25-aws-glue-job-parking.tf#L31-L44
