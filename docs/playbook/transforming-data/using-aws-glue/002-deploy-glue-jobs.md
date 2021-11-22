@@ -274,18 +274,18 @@ _Note: If you've copied an existing module block from your department folder the
 module "manually_uploaded_housing_data_to_raw" {
   source = "../modules/aws-glue-job"
 
-  department = module.department*housing_repairs
-  job_name = "${local.short_identifier_prefix}housing repairs address cleaning"
+  department  = module.department*housing_repairs
+  job_name    = "${local.short_identifier_prefix}housing repairs address cleaning"
   script_name = "address_cleaning_housing_repairs"
-  schedule = "cron(0 0 23 ? * MON,TUE,WED,THU,FRI _)"
+  schedule    = "cron(0 0 23 ? * MON,TUE,WED,THU,FRI _)"
   job_parameters = {
     "--s3_bucket_source" = "${module.landing_zone.bucket_id}/manual/housing-repairs/repairs-axis/"
     "--s3_bucket_target" = "${module.raw_zone.bucket_id}/housing-repairs/repairs-axis/"
   }
   crawler_details = {
-    database_name = module.department_housing_repairs.raw_zone_catalog_database_name
+    database_name      = module.department_housing_repairs.raw_zone_catalog_database_name
     s3_target_location = "s3://${module.raw_zone.bucket_id}/housing-repairs/repairs-axis/"
-    table_prefix = "housing_repairs_"
+    table_prefix       = "housing_repairs_"
   }
 }
 ```
