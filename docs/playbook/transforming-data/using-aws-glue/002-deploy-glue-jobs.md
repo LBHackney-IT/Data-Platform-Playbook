@@ -74,7 +74,7 @@ In this section, you will be creating a module (or updating an existing one if y
 
 #### The following input variables are required:
 
-_Note: If you've copied an existing module block from your department folder then you won’t need to change the **source** and **department** variables and will only need to update the **job_name** variable._
+_Note: If you've copied an existing module block from your department folder then you won’t need to change the **source**, **department**, **helper_module_key** and, **pydeequ_zip_key** variables and will only need to update the **job_name** variable._
 
 - **source** (required): This will be `"../modules/aws_glue_job"`. It is the path to where the glue job module is saved within the repository.
 
