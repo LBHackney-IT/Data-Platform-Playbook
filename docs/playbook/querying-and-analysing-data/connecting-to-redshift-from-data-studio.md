@@ -35,7 +35,7 @@ Then, when adding a data source in [Google Data Studio][google_data_studio]
     ) limit 100000;
     ```
     This query can only return a maximum of 100,000 rows as specified in [Googles Documentation](https://support.google.com/datastudio/answer/7288010?hl=en#zippy=%2Cin-this-article). It might be helpful to test your query in [AWS Athena][aws_athena] first to check there aren't too many rows.
-1.  Click "Add", this bit might take a little while.
+1.  Click "Add", this bit might take a little while. To improve the query performance you may also want to [create a data extract][data extract].
 
 ### Department specific credentials
 
@@ -61,3 +61,4 @@ Then, when adding a data source in [Google Data Studio][google_data_studio]
 [housing_repairs_user_secret_staging]: https://eu-west-2.console.aws.amazon.com/secretsmanager/home?region=eu-west-2#!/secret?name=dataplatform-stg%2Fhousing-repairs%2Fredshift-cluster-user20211116150111083800000002
 [google_data_studio]: https://datastudio.google.com/u/0/datasources/create/
 [aws_athena]: https://eu-west-2.console.aws.amazon.com/athena/home?region=eu-west-2#query
+[data extract]: https://lbhackney-it.github.io/Data-Platform-Playbook/playbook/querying-and-analysing-data/create_a_data_extract_in_GDS/
