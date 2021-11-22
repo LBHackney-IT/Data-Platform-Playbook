@@ -97,7 +97,7 @@ _Note: If you've copied an existing module block from your department folder the
   If you are adding a new script to only be used for one glue job you should provide a value for **script_name** and leave the second blank.
   If your script file is already saved in S3 you should provide **script_s3_object_key**.
 
-  - **script_name** : Name of the Glue job script. Set this to the name of the script file you created in [step 1][adding-script].
+  - **script_name** : Name of the Glue job script. Set this to the name of the script file you created in [step 1][adding-script] without the `.py` extension.
     This file must be saved within your departmental folder.
     For example:
 
