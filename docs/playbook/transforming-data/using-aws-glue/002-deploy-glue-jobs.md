@@ -35,7 +35,7 @@ If you need to update your Glue job script in the future, you must follow steps 
 ### 2. Copy an existing Glue job module block or use the example below and populate the necessary variables
 
 In this section, you will be writing the code, using a template format, that will deploy your Glue job (and crawler) to the Data Platform Project (or update an existing one if you need to make changes to an existing Glue job).
-You can view a complete example [here](#example-module-block). 
+You can view a complete example [here](#example-module-block).
 
 1. Open the [terraform directory][terraform-directory] in the Data Platform Project in GitHub.
 
@@ -80,13 +80,15 @@ _Note: If you've copied an existing module block from your department folder the
   e.g. `module.department_housing_repairs`_
 
 - **job_name** (required): Name of the Glue job. Set this to the name of the script file you created in the previous section (without the `.py` extension)
-  and prefix it with `${local.short_identifier_prefix}`. 
-  
+  and prefix it with `${local.short_identifier_prefix}`.
+
   If the name of your Glue job doesn't already have your department name, you should add it as a suffix here.
   For example:
+
   ```
   job_name = "${local.short_identifier_prefix}address_cleaning_housing_repairs"
   ```
+
 - **helper_module_key** (required): This will be `aws_s3_bucket_object.helpers.key`. It is the S3 object key for the helpers python module.
   This gives you access to all of the functions defined in the [helpers folder][helpers-folder-github]. You can add new files or functions to the folder and they will be available in your glue jobs.
 - **pydeequ_zip_key** (required): This will be `aws_s3_bucket_object.pydeequ.key`. It is the S3 object key for the PyDeequ python library, which is used for data quality testing in the Data Platform.
