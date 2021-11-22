@@ -72,11 +72,11 @@ You can view a complete example [here](#example-module-block).
 
 _Note: If you've copied an existing module block from your department folder then you won’t need to change the **source**, **department**, **helper_module_key** and, **pydeequ_zip_key** variables and will only need to update the **job_name** variable._
 
-- **source** (required): This will be `"../modules/aws_glue_job"`. It is the path to where the glue job module is saved within the repository.
+- **source** (required): This will be `"../modules/aws_glue_job"`. It is the path to where the Glue job module is saved within the repository.
 
 - **department** (required): This will be `module.department_<YOUR_DEPARTMENT_NAME>`
 
-  _Note: the department name should be all lowercase and separated by underscores
+  _Note: the department name must be all lowercase and separated by underscores
   e.g. `module.department_housing_repairs`_
 
 - **job_name** (required): Name of the Glue job. Set this to the name of the script file you created in the previous section (without the `.py` extension)
@@ -94,8 +94,8 @@ _Note: If you've copied an existing module block from your department folder the
 
   One of the following variables must be populated: **script_name** OR **script_s3_object_key**.
 
-  If you are adding a new script to only be used for one glue job you should provide a value for **script_name** and leave the second blank.
-  If your script file is already saved in S3 you should provide **script_s3_object_key**.
+  If you are adding a new script to only be used for one Glue job you must provide a value for **script_name** and leave the second blank.
+  If your script file is already saved in S3 then you must provide a value for **script_s3_object_key**.
 
   - **script_name** : Name of the Glue job script. Set this to the name of the script file you created in [step 1][adding-script] without the `.py` extension.
     This file must be saved within your departmental folder.
@@ -165,7 +165,7 @@ _Note: If you've copied an existing module block from your department folder the
 
 - **job_parameters** (optional): Here you can set some configuration for your Glue job or if your Glue job uses environment variables/ job parameters, you can set them here as well.
 
-  - You can find a list of optional glue job configuration in [AWS's documentation][list-of-glue-job-arguments]. A common one used in the Data Platform is job bookmarking. Which can be enabled like this:
+  - You can find a list of optional Glue job configuration in [AWS's documentation][list-of-glue-job-arguments]. A common one used in the Data Platform is job bookmarking. Which can be enabled like this:
     ```
     {
       "--job-bookmark-option" = "job-bookmark-enable"
@@ -187,7 +187,7 @@ _Note: If you've copied an existing module block from your department folder the
       and that there is a **`"/"`** after the folder name. For example, if your department is "Housing Repairs", it
       should be written as `housing-repairs`.
 
-      - _"--s3_bucket_source"_ (optional): the S3 source of the data used in the glue job
+      - _"--s3_bucket_source"_ (optional): the S3 source of the data used in the Glue job
         e.g.
 
         ```
@@ -252,7 +252,7 @@ _Note: If you've copied an existing module block from your department folder the
   In most instances, the default settings are fine, and you would only need to set or change these variables if your Glue job is processing very large datasets
   or performing complex transformations.
 
-  - **number_of_workers_for_glue_job** (optional): The number of workers to use for the glue job. The is set to **2** by default.
+  - **number_of_workers_for_glue_job** (optional): The number of workers to use for the Glue job. The is set to **2** by default.
   - **glue_job_worker_type** (optional): Worker type for Glue job (see [AWS documentation on 'Worker types][glue-worker-types]'). The default is **Standard**. This can either be set as "Standard", "G.1X" or "G.2X".
 
 :::warning Before committing your changes, please check that:
