@@ -37,10 +37,8 @@ If you need to update your Glue job script in the future, you must follow steps 
 
 ### 2. Copy an existing Glue job module block or use the example below and populate the necessary variables
 
-Once the Pull Request to add or update your script has been approved, and you have confirmed that your script is in the Data Platform Project,
-you can proceed to follow the steps in this section.
-
-In this section, you will be creating a module (or updating an existing one if you need to make changes to an existing Glue job) which will deploy your Glue job (and crawler) to the Data Platform Project.
+In this section, you will be writing the code, using a template format, that will deploy your Glue job (and crawler) to the Data Platform Project (or update an existing one if you need to make changes to an existing Glue job).
+You can view a complete example [here](#example-module-block). 
 
 1. Open the [terraform directory][terraform-directory] in the Data Platform Project in GitHub.
 
