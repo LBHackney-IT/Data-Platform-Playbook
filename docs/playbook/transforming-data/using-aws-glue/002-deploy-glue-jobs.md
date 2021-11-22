@@ -19,8 +19,9 @@ If you are still testing or prototyping your script, it is recommended that you 
 1. Navigate to the [jobs directory][jobs-directory] in the Data Platform Project and open your department folder.
 1. Click `Add file` and then `Create new file`.
 1. Name your file.
-   This should be the same name you gave your job in Glue Studio, but should be with all **lowercase letters**, **words separated by underscores**, and with the extension **`.py`** at the end.
-   e.g. `address_cleaning_housing_repairs.py`.
+   This should be the same name you gave your job in Glue Studio.
+   Ensure the file name only contains **lowercase letters**, **words are separated by underscores**, and has the extension **`.py`** at the end.
+   For example: `address_cleaning_housing_repairs.py`.
    - _Remember this name as you will need it for the following section._
 1. Open your Glue job in Glue Studio and copy the auto generated **Python** script by navigating to the `Script` tab.
 
@@ -61,13 +62,13 @@ In this section, you will be creating a module (or updating an existing one if y
 
 1. Update the `module` name using the name convention `<job_name>_<department_name>`, for example: `"liberator_pcn_denormalisation_housing_repairs"`.
 
-   - The `job_name` must be the same as the script name you specified in the previous section (without the `.py` extension).
-   - The module name (`<job_name>_<department_name>`) must be all **lowercase** with **words separated by underscores**.
+   - The `<job_name>` here must be the same as the script name you specified in the previous section (without the `.py` extension).
+   - The final module name (`<job_name>_<department_name>`) must be all **lowercase** with **words separated by underscores**.
      Ensure the name is unique to all other module names in this file.
 
 1. #### Update or add your input variables.
    For this section, you will need the following values from your Glue job.
-   You can find them by navigating to the `Job Details` tab in Glue Studio.
+   You can find them by navigating to the `Job Details` tab of your job in Glue Studio.
    - **Name**
    - **Description**
    - **Job parameters**. Expand the `Advanced properties` section and scroll down to `Job parameters`.
@@ -83,9 +84,13 @@ _Note: If you've copied an existing module block from your department folder the
   _Note: the department name should be all lowercase and separated by underscores
   e.g. `module.department_housing_repairs`_
 
-- **job_name** (required): The name of your glue job prefixed with `${local.short_identifier_prefix}` and your department name. For example:
+- **job_name** (required): Name of the Glue job. Set this to the name of the script file you created in the previous section (without the `.py` extension)
+  and prefix it with `${local.short_identifier_prefix}`. 
+  
+  If the name of your Glue job doesn't already have your department name, you should add it as a suffix here.
+  For example:
   ```
-  job_name = "${local.short_identifier_prefix}housing repairs address cleaning"
+  job_name = "${local.short_identifier_prefix}address_cleaning_housing_repairs"
   ```
 - **helper_module_key** (required): This will be `aws_s3_bucket_object.helpers.key`. It is the S3 object key for the helpers python module.
   This gives you access to all of the functions defined in the [helpers folder][helpers-folder-github]. You can add new files or functions to the folder and they will be available in your glue jobs.
