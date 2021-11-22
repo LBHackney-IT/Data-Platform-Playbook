@@ -23,10 +23,7 @@ If you are still testing or prototyping your script, it is recommended that you 
    Ensure the file name only contains **lowercase letters**, **words are separated by underscores**, and has the extension **`.py`** at the end.
    For example: `address_cleaning_housing_repairs.py`.
    - _Remember this name as you will need it for the following section._
-1. Open your Glue job in Glue Studio and copy the auto generated **Python** script by navigating to the `Script` tab.
-
-_Note: This is only applicable if your Glue job was created using the Glue Studio UI._
-
+1. If your Glue job was created using Glue Studio, open your Glue job and copy the auto generated **Python** script by navigating to the `Script` tab.
 1. Navigate back to the new script file you created in the GitHub UI (or existing script file, if you are updating your script), and paste your script.
 1. Submit your changes by referring to the [Committing changes][committing-changes] section of the **Using Github** guide
    The Data Platform team needs to approve any changes to the code, so your change won't happen automatically.
