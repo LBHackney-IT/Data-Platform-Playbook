@@ -185,8 +185,8 @@ _Note: If you've copied an existing module block from your department folder the
 
     - `<ZONE>` refers to either: `raw`, `landing`, `refined`, or `trusted` S3 or Glue database zones.
     - Specifically for _"--s3_bucket_source"_ and _"--s3_bucket_target"_, and any other S3 location path,
-      ensure that your department name and folder name is all **lowercase** and **hyphen separated** if necessary
-      and that there is a **`"/"`** after the folder name. For example, if your department is "Housing Repairs", it
+      ensure that your department name and folder name is all **lowercase** and **hyphen separated** if necessary,
+      and that there is a **`"/"`** after the folder name (end of S3 path). For example, if your department is "Housing Repairs", it
       should be written as `housing-repairs`.
 
       - _"--s3_bucket_source"_ (optional): the S3 source of the data used in the Glue job
