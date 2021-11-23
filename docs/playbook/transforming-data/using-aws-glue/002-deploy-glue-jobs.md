@@ -245,6 +245,8 @@ _Note: If you've copied an existing module block from your department folder the
     after crawling the **s3_target_location** e.g. `"housing_repairs_"`
   - _configuration_ (Optional): By default, the `TableGroupingPolicy` will be set to `CombineCompatibleSchemas`
 
+#### Advanced optional variables:
+
 - **max_concurrent_runs_of_glue_job** (optional): Max number of concurrent runs for the Glue job. The is set to **1** by default.
 - **trigger_enabled** (optional): Set to **`false`** to disable scheduled or conditional triggers for the Glue job.
   This is set to **`true`** by default. _Note: the value of this variable does not need to be surrounded by quotes._
