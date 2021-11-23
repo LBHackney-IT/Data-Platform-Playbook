@@ -1,18 +1,32 @@
 ---
-title: Using the GitHub UI
-description: "A guide on how to carry out common tasks in the GitHub UI"
+title: Using GitHub
+description: "A guide on how to carry out common tasks in GitHub"
 layout: playbook_js
 tags: [playbook]
 ---
 
-## Objective
+## Objective of this article
 
-Assist you in performing common tasks in the GitHub UI.
+To provide general guidance and assist you in performing common tasks in GitHub.
 
-:::important
-This guide assumes you have the correct permissions to access the Data Platform project in GitHub.
-If you are unsure, refer to the [prerequisites][prerequisites] section here.
-:::
+## What is GitHub used for?
+
+GitHub is a repository which stores the code for the data platform's infrastructure and processes (including the code for this playbook). It enables us to track and test any changes in the code before they reach the platform. Many of the processes within this playbook require you to make changes to code in GitHub in order to see them in the data platform, for example [ingesting data from Google Sheets](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/ingesting-data/google-sheets-import) or [creating Glue jobs to transform your data](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/transforming-data/using-aws-glue/deploy-glue-jobs).
+
+## Getting access to GitHub
+
+You'll need to [create a GitHub account](https://github.com/signup) if you don't already have one, using your Hackney email. You'll also need to [set up 2 factor authentication](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication) in your GitHub account.
+
+Once you've done this, you'll need to ask Rashmi Shetty (Development Manager) to add you to the 'LBHackney-IT' team. This will enable you to contribute to the Data Platform projects in the team account.
+
+There are two ways to use GitHub:
+
+1. Using the GitHub web browser interface (simply at [github.com](https://github.com/)). This is the easiest to use and enables you to make simple changes through a user interface.
+2. Using the [GitHub app](https://desktop.github.com/). This is a more advanced tool which requires more configuration and coding.
+
+## Making changes in GitHub
+
+The process for making changes in GitHub will depend on what you're trying to do. Please refer to other sections of the playbook.
 
 ### Committing your changes to the Data Platform Project
 
