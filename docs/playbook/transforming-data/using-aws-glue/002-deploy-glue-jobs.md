@@ -175,11 +175,11 @@ _Note: If you've copied an existing module block from your department folder the
     ```
   - To retrieve the job parameters you set here, add this import statement to your script: `from helpers.helpers import get_glue_env_var`
 
-  You can then get the value of your job parameters to use in your script like this:
+    You can then get the value of your job parameters to use in your script like this:
 
-  ```
-  s3_target_location = get_glue_env_var('s3_bucket_target', '')
-  ```
+    ```
+    s3_target_location = get_glue_env_var('s3_bucket_target', '')
+    ```
 
   - In the following optional job parameters; _"--s3_bucket_target"_, _"--s3_bucket_source"_ and _"--source_catalog_database"_:
 
