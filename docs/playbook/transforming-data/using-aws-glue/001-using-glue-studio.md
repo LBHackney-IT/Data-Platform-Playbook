@@ -10,11 +10,10 @@ tags: [playbook]
 
 :::important
 The aim of this guide is to help you get started in creating and testing your Glue jobs.
-Once your Glue job is ready and working as expected, you can refer to [this guide][deploy-glue-jobs]
-to deploy your Glue job to the Data Platform Production environment.
 
-You should keep your original Glue job (which was created in Glue Studio) should you need to make further improvements to it in the future
-and refer to the note at the bottom of [section 1][updating-job-script] of deploying your Glue job to the Data Platform, to re-deploy the new version to the Production environment.
+Once your Glue job is ready and working as expected, you can refer to [this guide][deploy-glue-jobs]
+to deploy your Glue job to the Data Platform Production environment. You should keep your original Glue job (which was created in Glue Studio) should you need to make further improvements to it in the future
+and refer to the note at the bottom of [section 1][updating-job-script] of **Deploying Glue jobs to the Data Platform**, to re-deploy the new version to the Data Platform Production environment.
 :::
 
 [AWS Glue Studio][aws-glue-studio] is a new graphical interface that makes it easy to create, run, and monitor extract, transform, and load (ETL) jobs in AWS Glue.
