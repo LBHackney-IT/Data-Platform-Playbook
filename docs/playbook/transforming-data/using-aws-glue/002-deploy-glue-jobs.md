@@ -257,7 +257,7 @@ _If a variable is not needed you should delete the entire line in the module blo
 
 #### Advanced optional input variables:
 
-The default values for the following optional input variables are generally fine don't need to be changed.
+The default values for the following optional input variables are generally fine and don't need to be changed.
 
 - **max_concurrent_runs_of_glue_job** (optional): Max number of concurrent runs for the Glue job. The is set to **1** by default.
 - **trigger_enabled** (optional): Set to **`false`** to disable scheduled or conditional triggers for the Glue job.
