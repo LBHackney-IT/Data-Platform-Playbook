@@ -10,7 +10,7 @@ tags: [playbook]
 
 :::important
 This guide contains instructions on how to deploy your Glue job to the Data Platform using the GitHub UI.
-It assumes you have finished developing your script, and it is ready to be deployed to the Data Platform.
+It assumes you have finished developing your script, and it is ready to be deployed to the Data Platform Production environment.
 If you are still testing or prototyping your script, it is recommended that you refer to [this guide][using-glue-studio] first.
 :::
 
@@ -25,7 +25,7 @@ If you are still testing or prototyping your script, it is recommended that you 
    - _Remember this name as you will need it for the following section._
 1. If your Glue job was created using Glue Studio, open your Glue job and copy the auto generated **Python** script by navigating to the `Script` tab.
 1. Navigate back to the new script file you created in the GitHub UI (or existing script file, if you are updating your script), and paste your script.
-1. Submit your changes by referring to the [Committing changes][committing-changes] section of the **Using Github** guide
+1. Submit your changes by referring to the [Committing changes][committing-changes] section of the **Using Github** guide.
    The Data Platform team needs to approve any changes to the code, so your change won't happen automatically.
 
 :::important Updating your Glue job script
@@ -52,25 +52,30 @@ You can view a complete example [here](#example-module-block).
 
    - _Refer to the [example](#example-module-block) below to get started._
 
-1. Click `edit` or the **pencil icon** (:pencil2:) and copy and paste an existing module block.
+1. Click `edit` or the **pencil icon** (:pencil2:) then copy the last module block and paste it at the bottom of the file.
    An example of what a module block looks like can be seen [here][project-module-example].
 
-1. Update the `module` name using the name convention `<job_name>_<department_name>`, for example: `"liberator_pcn_denormalisation_housing_repairs"`.
+1. Update the `module` name using the name convention `<job_name>_<department_name>`, for example: `"manually_uploaded_csv_data_to_raw_parking"`.
 
-   - The `<job_name>` here must be the same as the script name you specified in the previous section (without the `.py` extension).
+   - The `<job_name>` here must be the same as the script name you specified in the [previous section][adding-script] (without the `.py` extension).
    - The final module name (`<job_name>_<department_name>`) must be all **lowercase** with **words separated by underscores**.
      Ensure the name is unique to all other module names in this file.
+   - _**Note:** If your department name is already in the name of your Glue job, you do not need to repeat it in the module name
+     and can just name the module after your `<job_name>`._
 
 1. #### Update or add your input variables.
-   For this section, you will need the following values from your Glue job.
+   For this section, you will need the following values from your Glue job if applicable.
    You can find them by navigating to the `Job Details` tab of your job in Glue Studio.
    - **Name**
    - **Description**
+   - **Job bookmark**. The value of this will either be `Enable` or `Disable`.
    - **Job parameters**. Expand the `Advanced properties` section and scroll down to `Job parameters`.
 
 #### The following input variables are required:
 
-_Note: If you've copied an existing module block from your department folder then you won’t need to change the **source**, **department**, **helper_module_key** and, **pydeequ_zip_key** variables and will only need to update the **job_name** variable._
+_**Note**: If you've copied an existing module block from your department folder then you won’t need to change the **source**, **department**, **helper_module_key** and, **pydeequ_zip_key** variables and will only need to update the **job_name** variable._
+
+_If a variable is not needed you should delete the entire line in the module block._
 
 - **source** (required): This will be `"../modules/aws_glue_job"`. It is the path to where the Glue job module is saved within the repository.
 
@@ -99,8 +104,9 @@ _Note: If you've copied an existing module block from your department folder the
   If you are adding a new script to only be used for one Glue job you must provide a value for **script_name** and leave the second blank.
   If your script file is already saved in S3 then you must provide a value for **script_s3_object_key**.
 
-  - **script_name** : Name of the Glue job script. Set this to the name of the script file you created in [step 1][adding-script] without the `.py` extension.
-    This file must be saved within your departmental folder.
+  - **script_name** : Name of the Glue job script. Set this to the name of the script file you created in [section 1][adding-script] **without the `.py` extension** and ensure the name is all **lowercase**.
+    _This file must have been saved in your departmental folder._
+
     For example:
 
     ```
@@ -112,7 +118,7 @@ _Note: If you've copied an existing module block from your department folder the
   - **script_s3_object_key** : S3 object key of the script file.
     If your script is used across multiple jobs it may already be saved in S3, in this case you can provide the key for that object within the scripts S3 bucket e.g. `aws_s3_bucket_object.address_matching.key`.
 
-#### The following variables are optional:
+#### The following input variables are optional:
 
 - #### Variables used for scheduling a Glue job
 
@@ -131,10 +137,10 @@ _Note: If you've copied an existing module block from your department folder the
   triggered_by_crawler = module.<NAME_OF_GLUE_JOB_MODULE>.crawler_name
   ```
 
-  From the [example template below](#example-module-block), the name of the Glue job module would be `manually_uploaded_parking_data_to_raw`, and therefore you would write:
+  From the [example template below](#example-module-block), the name of the Glue job module would be `manually_uploaded_csv_data_to_raw_parking`, and therefore you would write:
 
   ```
-  triggered_by_crawler = module.manually_uploaded_parking_data_to_raw.crawler_name
+  triggered_by_crawler = module.manually_uploaded_csv_data_to_raw_parking.crawler_name
   ```
 
   - **triggered_by_job** (optional): The Glue job that will trigger this job e.g.
@@ -167,12 +173,16 @@ _Note: If you've copied an existing module block from your department folder the
 
 - **job_parameters** (optional): Here you can set some configuration for your Glue job or if your Glue job uses environment variables/ job parameters, you can set them here as well.
 
-  - You can find a list of optional Glue job configuration in [AWS's documentation][list-of-glue-job-arguments]. A common one used in the Data Platform is job bookmarking. Which can be enabled like this:
+  - You can find a list of optional Glue job configuration in [AWS's documentation][list-of-glue-job-arguments]. A common one used in the Data Platform is **job bookmarking**. Which can be enabled like this:
     ```
     {
       "--job-bookmark-option" = "job-bookmark-enable"
     }
     ```
+    _Note: job bookmarking is disabled by default._
+
+  **If your Glue job was created using the `Visual` tab in Glue Studio, you won't need to set any other job parameters and can continue setting other input variables where necessary.**
+
   - To retrieve the job parameters you set here, add this import statement to your script: `from helpers.helpers import get_glue_env_var`
 
     You can then get the value of your job parameters to use in your script like this:
@@ -181,7 +191,7 @@ _Note: If you've copied an existing module block from your department folder the
     s3_target_location = get_glue_env_var('s3_bucket_target', '')
     ```
 
-  - In the following optional job parameters; _"--s3_bucket_target"_, _"--s3_bucket_source"_ and _"--source_catalog_database"_:
+  - In the following optional **job parameters**; _"--s3_bucket_target"_, _"--s3_bucket_source"_ and _"--source_catalog_database"_:
 
     - `<ZONE>` refers to either: `raw`, `landing`, `refined`, or `trusted` S3 or Glue database zones.
     - Specifically for _"--s3_bucket_source"_ and _"--s3_bucket_target"_, and any other S3 location path,
@@ -245,7 +255,9 @@ _Note: If you've copied an existing module block from your department folder the
     after crawling the **s3_target_location** e.g. `"housing_repairs_"`
   - _configuration_ (Optional): By default, the `TableGroupingPolicy` will be set to `CombineCompatibleSchemas`
 
-#### Advanced optional variables:
+#### Advanced optional input variables:
+
+The default values for the following optional input variables are generally fine and don't need to be changed.
 
 - **max_concurrent_runs_of_glue_job** (optional): Max number of concurrent runs for the Glue job. The is set to **1** by default.
 - **trigger_enabled** (optional): Set to **`false`** to disable scheduled or conditional triggers for the Glue job.
@@ -273,7 +285,7 @@ _Note: If you've copied an existing module block from your department folder the
 ## Example module block
 
 ```markdown
-module "manually_uploaded_housing_data_to_raw" {
+module "manually_uploaded_csv_data_to_raw_parking" {
   source = "../modules/aws-glue-job"
 
   department  = module.department*housing_repairs
@@ -294,13 +306,13 @@ module "manually_uploaded_housing_data_to_raw" {
 
 [aws_cron_expressions]: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions
 [prerequisites]: ../../ingesting-data/google-sheets-import#prerequisites
-[terraform-directory]: https://github.com/LBHackney-IT/Data-Platform/tree/ac2a8d56e77ba94f1123fcdb983387081887a72f/terraform
+[terraform-directory]: https://github.com/LBHackney-IT/Data-Platform/tree/main/terraform
 [jobs-directory]: https://github.com/LBHackney-IT/Data-Platform/tree/main/scripts/jobs
-[adding-script]: #1-add-your-script-to-the-data-platform-project
+[adding-script]: #1-add-your-script-to-the-data-platform-project-using-the-github-ui
 [using-glue-studio]: ./using-glue-studio
 [cron-expression-generator]: https://www.freeformatter.com/cron-expression-generator-quartz.html
 [glue-worker-types]: https://docs.aws.amazon.com/glue/latest/dg/add-job.html#:~:text=Own%20Custom%20Scripts.-,Worker%20type,-The%20following%20worker
 [helpers-folder-github]: https://github.com/LBHackney-IT/Data-Platform/tree/main/scripts/helpers
 [committing-changes]: ../../getting-set-up/using-github#committing-your-changes-to-the-data-platform-project
 [list-of-glue-job-arguments]: https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html
-[project-module-example]: https://github.com/LBHackney-IT/Data-Platform/blob/ac2a8d56e77ba94f1123fcdb983387081887a72f/terraform/25-aws-glue-job-parking.tf#L31-L44
+[project-module-example]: https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/25-aws-glue-job-parking.tf#L31-L44
