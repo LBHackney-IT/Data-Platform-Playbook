@@ -15,26 +15,30 @@ This section describes how Tascomi Planning data gets ingested and transformed i
 
 # Details of individual steps
 ## 0 - Initial full ingestion
+This [process](https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/editor/job/stg%20tascomi_api_ingestion_planning/script) queries one API endpoint (e.g. the applications endpoint) and writes the data into a table of the same name.
+
 This process wrote into the raw zone, in the 'api_response' bucket. The data is partitionned by import_date.
 ## 1 - Daily ingestion of latest updated records
+This [process](https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/editor/job/stg%20tascomi_api_ingestion_planning/script) is the same as the previous one, but it only queries the data updated since a certain date. It relies on the ```last_updated``` column that is present on all Tascomi tables.
+
 This process writes into the raw zone, in the 'api_response' bucket. The data is partitionned by import_date.
 ## 2 - Daily parsing of the json increments
-This process uses job bookmarking to only process new increments.
+This [process](https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/editor/job/stg%20tascomi_parse_tables_increments_planning/script) uses job bookmarking to only process new increments.
 It processes all tables in a loop. For each table, the large json blob containing all the fields is exploded into separate textual columns.
 
 This process writes into the raw zone, in the 'parsed' bucket. The data is partitionned by import_date.
 ## 3 - Daily refinement of the parsed increments
-This process uses job bookmarking to only process new increments.
-It processes all tables in a loop. For each table, the text columns are converted into correct data types (dates, boolean etc.). It uses a [column type dictionary] (https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi-column-type-dictionary.json) saved in a separate json file. This dictionary was created semi-automatically with FME (an ETL tool used in the Data and Insight team), by converting the list of columns described in the [API endpoints documentation] (https://hackney-planning.tascomi.com/rest/v1/documentation.html?public_key=dd95bcd473f46a4325a4021d54500c7d#available-resources).
+This [process](https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/editor/job/stg%20tascomi_recast_tables_increments_planning/script) uses job bookmarking to only process new increments.
+It processes all tables in a loop. For each table, the text columns are converted into correct data types (dates, boolean etc.). It uses a [column type dictionary](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi-column-type-dictionary.json) saved in a separate json file. This dictionary was created semi-automatically with FME (an ETL tool used in the Data and Insight team), by converting the list of columns described in the [API endpoints documentation](https://hackney-planning.tascomi.com/rest/v1/documentation.html?public_key=dd95bcd473f46a4325a4021d54500c7d#available-resources).
 
 This process writes into the refined zone, in the 'increment' bucket. The data is partitionned by import_date.
 ## 4 - Creation of the daily snapshot
-This process combines the latest snapshot and all increments created since that day, to create a new snapshot. It uses pushdown predicate and job bookmarking to only process new increments. Like the 2 previous steps, it processes all tables in a loop. If several days increments need to be applied, the process first ensures that no duplicate records are present, by only keeping the latest updated one (for instance, if a planning application has changed status 2 times, it only keeps the record with the latest status). To apply the increments to the previous snapshot, we just replace pre-existing records with the newer version, using the unique id.
+This [process](https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/editor/job/stg%20tascomi_create_daily_snapshot_planning/script) combines the latest snapshot and all increments created since that day, to create a new snapshot. It uses pushdown predicate and job bookmarking to only process new increments. Like the 2 previous steps, it processes all tables in a loop. If several days increments need to be applied, the process first ensures that no duplicate records are present, by only keeping the latest updated one (for instance, if a planning application has changed status 2 times, it only keeps the record with the latest status). To apply the increments to the previous snapshot, we just replace pre-existing records with the newer version, using the unique id.
 
 This process writes into the refined zone, in the 'snapshot' bucket. The data is partitionned by snapshot_date.
 
 # Full workflow and scheduling
-The full workflow is defined in the [glue-tascomi-data terraform script] (https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/24-aws-glue-tascomi-data.tf). 
+The full workflow is defined in the [glue-tascomi-data terraform script](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/24-aws-glue-tascomi-data.tf). 
 It defines a list of tables that needs updating everyday, and a list of static tables that are only updated weekly (these are the static tables like application types). The schedule is as follows:
 - 3am: as many jobs as tables to update are triggered. Each job queries one API endpoint for latest updated records. That's 25 jobs on Sundays (including static tables), about half of that on other days.
 - 4am: a crawler crawls the API results bucket
