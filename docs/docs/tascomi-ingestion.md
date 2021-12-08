@@ -1,11 +1,11 @@
 ---
 title: Tascomi data ingestion
-description: "Details about the ingestion and pre-processing of Tascomi planning data in the platform"
+description: "Description of the ingestion and refinement pipeline for Tascomi planning data"
 layout: playbook_js
 tags: [playbook]
 ---
 
-This section describes how Tascomi Planning data gets ingested and transformed in the data platform. The steps are as follows:
+This section describes how Tascomi Planning data gets ingested and refined in the data platform. The steps are as follows:
 
 - An initial full ingestion from Tascomi API (only once, happened thougout October 2021)
 - A daily call to the Tascomi API to get latest updated records (increment)
