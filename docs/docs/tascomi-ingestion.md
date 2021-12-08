@@ -7,7 +7,7 @@ tags: [playbook]
 
 This section describes how Tascomi Planning data gets ingested and transformed in the data platform. The steps are as follows:
 
-- An initial full ingestion from Tascomi API (only once, thougout October 2021)
+- An initial full ingestion from Tascomi API (only once, happened thougout October 2021)
 - A daily call to the Tascomi API to get latest updated records (increment)
 - Parsing of the json data increment returned by the API
 - Refinement of the parsed data to recast all columns to the right data type
