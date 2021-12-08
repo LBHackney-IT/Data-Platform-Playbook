@@ -13,15 +13,17 @@ This section describes how Tascomi Planning data gets ingested and transformed i
 - Refinement of the parsed data to recast all columns to the right data type
 - Creation of a full snapshot by applying the daily increment to the previous snapshot
 
-# Initial full ingestion
-
-# Daily ingestion of latest updated records
-
-# Daily parsing of the json increments
-
-# Daily refinement of the parsed increments
-
-# Creation of the daily snapshot
+# Details of individual steps
+## Initial full ingestion
+This process wrote into the raw zone, in the 'api_response' bucket. The data is partitionned by import_date.
+## Daily ingestion of latest updated records
+This process writes into the raw zone, in the 'api_response' bucket. The data is partitionned by import_date.
+## Daily parsing of the json increments
+This process writes into the raw zone, in the 'parsed' bucket. The data is partitionned by import_date.
+## Daily refinement of the parsed increments
+This process writes into the refined zone, in the 'increment' bucket. The data is partitionned by import_date.
+## Creation of the daily snapshot
+This process writes into the refined zone, in the 'snapshot' bucket. The data is partitionned by snapshot_date.
 
 # Full workflow and scheduling
 The full workflow is defined in the [glue-tascomi-data terraform script] (https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/24-aws-glue-tascomi-data.tf). 
@@ -36,3 +38,4 @@ It defines a list of tables that needs updating everyday, and a list of static t
   - the previous crawler triggers the recasting job and the crawling of its results. Most of the time, there won't be new data process so the job will finish early.
   - the previsous crawler triggers the daily snapshot creation job and the crawling of its results. Most of the time, there won't be new data process so the job will finish early.
 
+# Structure of the S3 buckets
