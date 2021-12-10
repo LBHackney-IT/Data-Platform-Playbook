@@ -44,11 +44,11 @@ It defines a list of tables that needs updating everyday, and a list of static t
 - 4am: a crawler crawls the API results bucket
   - the previous crawler triggers the parsing job and the crawling of its results
   - the previous crawler triggers the recasting job and the crawling of its results
-  - the previsous crawler triggers the daily snapshot creation job and the crawling of its results
-- 5am: a crawler crawls the API results bucket again - this is in case the ingestion had not finished at 4am when the first crawling happened, and some tables were missed.
+  - the previous crawler triggers the daily snapshot creation job and the crawling of its results
+- 5am: the API results bucket gets crawled again - this is in case the ingestion had not finished at 4am when the first crawling happened, and some tables were missed.
   - the previous crawler triggers the parsing job and the crawling of its results. Most of the time, there won't be new data process so the job will finish early.
   - the previous crawler triggers the recasting job and the crawling of its results. Most of the time, there won't be new data process so the job will finish early.
-  - the previsous crawler triggers the daily snapshot creation job and the crawling of its results. Most of the time, there won't be new data process so the job will finish early.
+  - the previous crawler triggers the daily snapshot creation job and the crawling of its results. Most of the time, there won't be new data process so the job will finish early.
 
 # Data quality testing
 
