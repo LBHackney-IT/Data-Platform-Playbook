@@ -5,7 +5,7 @@ layout: playbook_js
 tags: [playbook]
 ---
 
-This section describes how Tascomi Planning data gets ingested and refined in the data platform. The process relies on [Tascomi API](https://hackney-planning.tascomi.com/rest/v1/documentation.html?public_key=dd95bcd473f46a4325a4021d54500c7d#available-resources) and is composed of the following steps steps:
+This section describes how Tascomi Planning data gets ingested and refined in the data platform. The process relies on [Tascomi API](https://hackney-planning.tascomi.com/rest/v1/documentation.html?public_key=dd95bcd473f46a4325a4021d54500c7d#available-resources) and is composed of the following steps:
 
 - An initial full ingestion from Tascomi API (only once, happened thougout October 2021)
 - A daily call to the Tascomi API to get latest updated records (increment)
