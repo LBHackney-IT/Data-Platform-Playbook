@@ -50,8 +50,6 @@ It defines a list of tables that needs updating everyday, and a list of static t
   - the previous crawler triggers the recasting job and the crawling of its results. Most of the time, there won't be new data process so the job will finish early.
   - the previous crawler triggers the daily snapshot creation job and the crawling of its results. Most of the time, there won't be new data process so the job will finish early.
 
-# Data quality testing
-
 # Structure of the S3 buckets and Glue tables
 The data created along the process (initial full load, increments and snapshots) is stored in S3 in the raw and refined zones, with one folder per table.
 
