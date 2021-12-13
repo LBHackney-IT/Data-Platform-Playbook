@@ -21,7 +21,7 @@ This process wrote into the raw zone, in the 'api_response' bucket. The data is 
 ### 1 - Daily ingestion of latest updated records
 This [process](https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/editor/job/stg%20tascomi_api_ingestion_planning/script) is the same as the previous one, but it only queries the data updated since a certain date. It relies on the ```last_updated``` column that is present on all Tascomi tables.
 
-This process writes into the raw zone, in the 'api_response' bucket. The data is partitioned by import_date.
+This process writes into the raw zone, in the 'api_response' bucket. The data is partitioned by `import_date`.
 ### 2 - Daily parsing of the json increments
 This [process](https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/editor/job/stg%20tascomi_parse_tables_increments_planning/script) uses job bookmarking to only process new increments.
 It processes all tables in a loop. For each table, the large json blob containing all the fields is exploded into separate textual columns.
