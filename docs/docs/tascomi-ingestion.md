@@ -13,7 +13,7 @@ This section describes how Tascomi Planning data gets ingested and refined in th
 - Refinement of the parsed data to recast all columns to the right data type
 - Creation of a full snapshot by applying the daily increment to the previous snapshot
 
-# Details of individual steps
+## Details of individual steps
 ## 0 - Initial full ingestion
 This [process](https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/editor/job/stg%20tascomi_api_ingestion_planning/script) queries one API endpoint (e.g. the applications endpoint) and writes the data into a table of the same name.
 
