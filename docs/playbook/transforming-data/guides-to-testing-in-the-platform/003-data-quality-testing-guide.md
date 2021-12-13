@@ -63,6 +63,15 @@ from pydeequ.verification import VerificationSuite, VerificationResult
 from helpers.data_quality_testing import get_metrics_target_location, cancel_job_if_failing_quality_checks
 ```
 
+3. Add the metrics target location and also a metrics repoistory and result key instance. This will ensure that data quality metrics are written to the deequ-metrics.json file in S3.
+
+```
+metrics_target_location = get_metrics_target_location()
+
+metricsRepository = FileSystemMetricsRepository(spark_session, metrics_target_location)
+resultKey = ResultKey(spark_session, ResultKey.current_milli_time(), {})
+```
+
 :::caution
 
 There is a [defect with PyDeequ][defect with pydeequ] which causes the Glue Spark session to hang.
@@ -129,6 +138,10 @@ checkResult_df.show()
 ```
 
 Here is a [list of checks][pydeequ-checks] that are available to use.
+
+:::caution
+Remember to ensure that any checks, analyzers, anomaly checks are included within the imports.
+:::
 
 ### 2. Historical analysis of the dataset - Example Anomaly Detection
 
