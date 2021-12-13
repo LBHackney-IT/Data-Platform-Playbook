@@ -26,7 +26,7 @@ This process writes into the raw zone, in the 'api_response' bucket. The data is
 This [process](https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/editor/job/stg%20tascomi_parse_tables_increments_planning/script) uses job bookmarking to only process new increments.
 It processes all tables in a loop. For each table, the large json blob containing all the fields is exploded into separate textual columns.
 
-This process writes into the raw zone, in the 'parsed' bucket. The data is partitioned by import_date.
+This process writes into the raw zone, in the 'parsed' bucket. The data is partitioned by `import_date`.
 ### 3 - Daily refinement of the parsed increments
 This [process](https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/editor/job/stg%20tascomi_recast_tables_increments_planning/script) uses job bookmarking to only process new increments.
 It processes all tables in a loop. For each table, the text columns are converted into correct data types (dates, boolean etc.). It uses a [column type dictionary](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi-column-type-dictionary.json) saved in a separate json file. This dictionary was created semi-automatically with FME (an ETL tool used in the Data and Insight team), by converting the list of columns described in the [API endpoints documentation](https://hackney-planning.tascomi.com/rest/v1/documentation.html?public_key=dd95bcd473f46a4325a4021d54500c7d#available-resources).
