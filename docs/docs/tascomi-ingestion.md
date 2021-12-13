@@ -18,7 +18,7 @@ This section describes how Tascomi Planning data gets ingested and refined in th
 This [process](https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/editor/job/stg%20tascomi_api_ingestion_planning/script) queries one API endpoint (e.g. the applications endpoint) and writes the data into a table of the same name.
 
 This process wrote into the raw zone, in the 'api_response' bucket. The data is partitioned by import_date.
-## 1 - Daily ingestion of latest updated records
+### 1 - Daily ingestion of latest updated records
 This [process](https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/editor/job/stg%20tascomi_api_ingestion_planning/script) is the same as the previous one, but it only queries the data updated since a certain date. It relies on the ```last_updated``` column that is present on all Tascomi tables.
 
 This process writes into the raw zone, in the 'api_response' bucket. The data is partitioned by import_date.
