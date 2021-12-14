@@ -68,3 +68,45 @@ The raw data returned by the API is in the Raw zone Planning bucket, in the `api
 ```
 select count(*) from "dataplatform-stg-tascomi-raw-zone"."api_response_applications" where import_date = '20211208'
 ```
+
+# How to reset Tascomi data
+If you suspect a problem in the increments or snapshots, you can delete and recreate them in their respective buckets.  
+
+## Reset the ingested increments:
+- In S3 raw zone 'api_response' bucket, in each table repository, delete the data up to the last date you want to keep ! Do not delete the initial full load!
+- Run the api_response crawler
+- Run the ingestion job
+- Run the api_response crawler again
+As a result you should see in S3 a new partition wit today's date. It contains all records updated since the last day you kept in the bucket.
+
+## Reset the parsed increments:
+- In S3 raw zone, empty the 'parsed' bucket
+- Reset the job bookmark (In Glue, > job view > select the job and click on actions)
+- Remove the pushdown predicate: open the job script and edit the line that sets the pushdown predicae to 0 days, then save:
+`pushdown_predicate = create_pushdown_predicate(partitionDateColumn='import_date', daysBuffer=0)`
+- Run the job
+- Set back the pushdown predicate to its initial value:
+`pushdown_predicate = create_pushdown_predicate(partitionDateColumn='import_date', daysBuffer=5)`
+- Run the parsed bucket crawler
+
+## Reset the refined increments:
+- In S3 refined zone, empty the 'increments' bucket
+- Reset the job bookmark (In Glue, > job view > select the job and click on actions)
+- Remove the pushdown predicate: open the job script and edit the line that sets the pushdown predicae to 0 days, then save:
+`pushdown_predicate = create_pushdown_predicate(partitionDateColumn='import_date', daysBuffer=0)`
+- Run the job
+- Set back the pushdown predicate to its initial value:
+`pushdown_predicate = create_pushdown_predicate(partitionDateColumn='import_date', daysBuffer=5)`
+- Run the refined increment crawler
+
+## Reset the refined snapshot:
+- In S3 refined zone, empty the 'snapshot' bucket
+- Delete all the snapshot tables in the Glue catalogue
+- Reset the job bookmark (In Glue, > job view > select the job and click on actions)
+- Remove the pushdown predicate: open the job script and edit the line that sets the pushdown predicae to 0 days, then save:
+`pushdown_predicate = create_pushdown_predicate(partitionDateColumn='snapshot_date', daysBuffer=0)`
+- Run the job
+- Set back the pushdown predicate to its initial value:
+`pushdown_predicate = create_pushdown_predicate(partitionDateColumn='snapshot_date', daysBuffer=5)`
+- Run the refined snapshot crawler
+As a resut you should only have today's snapshot in the snapshot bucket.
