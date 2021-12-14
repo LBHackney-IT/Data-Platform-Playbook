@@ -67,7 +67,7 @@ The parsed increments are in the Raw zone Planning bucket, in the parsed area. T
 select count(*) from "dataplatform-stg-tascomi-raw-zone"."applications" where import_date = '20211208'
 ```
 
-The raw data returned by the API is in the Raw zone Planning bucket, in the api_response area. The tables are prefixed with api_response_, and partitioned by import_date with. To count the increment loaded on a specific day, you could use: 
+The raw data returned by the API is in the Raw zone Planning bucket, in the `api_response` area. The tables are prefixed with `api_response_`, and partitioned by `import_date` with. To count the increment loaded on a specific day, you could use: 
 ```
 select count(*) from "dataplatform-stg-tascomi-raw-zone"."api_response_applications" where import_date = '20211208'
 ```
