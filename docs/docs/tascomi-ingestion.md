@@ -45,10 +45,7 @@ It defines a list of tables that needs updating everyday, and a list of static t
   - the previous crawler triggers the parsing job and the crawling of its results
   - the previous crawler triggers the recasting job and the crawling of its results
   - the previous crawler triggers the daily snapshot creation job and the crawling of its results
-- 5am: the API results bucket gets crawled again - this is in case the ingestion had not finished at 4am when the first crawling happened, and some tables were missed.
-  - the previous crawler triggers the parsing job and the crawling of its results. Most of the time, there won't be new data process so the job will finish early.
-  - the previous crawler triggers the recasting job and the crawling of its results. Most of the time, there won't be new data process so the job will finish early.
-  - the previous crawler triggers the daily snapshot creation job and the crawling of its results. Most of the time, there won't be new data process so the job will finish early.
+- 5am: the API results bucket gets crawled again - this is in case the ingestion had not finished at 4am when the first crawling happened, and some tables were missed. The same sequence as above will repeat, each job being triggered by the crawler of the previous job. However, each job will usually finish early, as it is bookmarked and won't usually find any new data to process.
 
 # Structure of the S3 buckets and Glue tables
 The data created along the process (initial full load, increments and snapshots) is stored in S3 in the raw and refined zones, with one folder per table.
