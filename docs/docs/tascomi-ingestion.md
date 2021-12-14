@@ -62,7 +62,7 @@ The refined increments are in the Refined zone Planning bucket, in the increment
 select count(*) from "dataplatform-stg-tascomi-refined-zone"."increment_applications" where import_date = '20211208'
 ```
 
-The parsed increments are in the Raw zone Planning bucket, in the parsed area. The tables are not prefixed, and partitioned by import_date with. To count the increment loaded on a specific day, you could use: 
+The parsed increments are in the Raw zone Planning bucket, in the `parsed` area. The tables are not prefixed, and partitioned by `import_date` with. To count the increment loaded on a specific day, you could use: 
 ```
 select count(*) from "dataplatform-stg-tascomi-raw-zone"."applications" where import_date = '20211208'
 ```
