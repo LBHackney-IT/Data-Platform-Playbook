@@ -84,9 +84,11 @@ As a result you should see in S3 a new partition with today's date. It contains 
 - In S3 raw zone, empty the 'parsed' bucket
 - Reset the job bookmark (In Glue, > job view > select the job and click on actions)
 - Remove the pushdown predicate: open the job script and edit the line that sets the pushdown predicae to 0 days, then save:
+
 ```pushdown_predicate = create_pushdown_predicate(partitionDateColumn='import_date', daysBuffer=0)```
 - Run the job
 - Set back the pushdown predicate to its initial value, then save the script:
+
 ```pushdown_predicate = create_pushdown_predicate(partitionDateColumn='import_date', daysBuffer=5)```
 - Run the parsed bucket crawler
 
@@ -94,9 +96,11 @@ As a result you should see in S3 a new partition with today's date. It contains 
 - In S3 refined zone, empty the 'increments' bucket
 - Reset the job bookmark (In Glue, > job view > select the job and click on actions)
 - Remove the pushdown predicate: open the job script and edit the line that sets the pushdown predicae to 0 days, then save:
+
 ```pushdown_predicate = create_pushdown_predicate(partitionDateColumn='import_date', daysBuffer=0)```
 - Run the job
 - Set back the pushdown predicate to its initial value, then save:
+
 ```pushdown_predicate = create_pushdown_predicate(partitionDateColumn='import_date', daysBuffer=5)```
 - Run the refined increment crawler
 
@@ -105,9 +109,11 @@ As a result you should see in S3 a new partition with today's date. It contains 
 - Delete all the snapshot tables in the Glue catalogue
 - Reset the job bookmark (In Glue, > job view > select the job and click on actions)
 - Remove the pushdown predicate: open the job script and edit the line that sets the pushdown predicae to 0 days, then save:
+
 ```pushdown_predicate = create_pushdown_predicate(partitionDateColumn='snapshot_date', daysBuffer=0)```
 - Run the job
 - Set back the pushdown predicate to its initial value:
+
 ```pushdown_predicate = create_pushdown_predicate(partitionDateColumn='snapshot_date', daysBuffer=5)```
 - Run the refined snapshot crawler.
 
