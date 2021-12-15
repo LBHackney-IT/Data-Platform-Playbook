@@ -32,7 +32,7 @@ Note: The instructions below assume an S3 Data Source and Target Location.
 1. From the AWS Glue Studio main page, choose the **Create and manage jobs** option.
 1. Within the _Create Job_ section, select **Source and target added to the graph** and select desired Source and Target values.
 1. Click the **Create** button.
-1. In the Visual editor that is now displayed, click on the _Data Source - S3_ box and in the _Data source properties - S3_ tab to set _S3 source type_ to **S3 location** and set the _S3 URL_ for the source data. Follow [these steps][pushdown-predicates] to pre-filter the source data passed to your transformation step.
+1. In the Visual editor that is now displayed, click on the _Data Source - S3_ box and in the _Data source properties - S3_ tab to set _S3 source type_ to **S3 location** and set the _S3 URL_ for the source data. To reduce the time your job takes to run, you can follow [these steps][pushdown-predicates] to pre-filter the source data passed to your transformation step.
 1. Also _Data Target - S3_ box and in the _Data target properties - S3_ tab set the _S3 URL_ for the data target, usually your department folder in the Data Platform account.
    _NB: You can add additional folders at this point for your new data within your department folder. Each department has an unrestricted directory within each zone where unrestricted datasets can be stored, in order to add further cross-department insights and maintain datasets. There is also an unrestricted department which allows users to maintain datasets which don't have access restrictions across each zone_
    **Data source and data target (amongst other operations) must be set to be able to save the job. You can also apply _Transformations_ specific to your job via the Visual tab. See the [AWS Glue Studio Documentation][aws-glue-studio-documentation]**.
@@ -65,7 +65,7 @@ When exporting data from your Glue Job it is important that you follow the Data 
 
 By default, AWS glue will load all source data for a job before running the transformation steps.
 If the transformation is only interested in a subset of the data partitions, you can use a pushdown predicate to tell the glue job only to consider these partitions.
-If you have a large data set, this could have substantial performance benefits for your glue jobs.
+If you have a large data set, this could have substantial performance benefits for your glue jobs (i.e. it will reduce the time it takes them to run).
 
 Follow these steps to set this in Glue Studio.
 
