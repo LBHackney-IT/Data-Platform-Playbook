@@ -73,11 +73,11 @@ select count(*) from "dataplatform-stg-tascomi-raw-zone"."api_response_applicati
 If you suspect a problem in the increments or snapshots, you can delete and recreate them in their respective buckets.  
 
 ## Reset the ingested increments:
-- In S3 raw zone 'api_response' bucket, in each table repository, delete the data up to the last date you want to keep ! Do not delete the initial full load!
+- In S3 raw zone 'api_response' bucket, in each table repository, delete the data up to the last date you want to keep *Do not delete the initial full load!*
 - Run the api_response crawler
 - Run the ingestion job
 - Run the api_response crawler again
-As a result you should see in S3 a new partition wit today's date. It contains all records updated since the last day you kept in the bucket.
+As a result you should see in S3 a new partition with today's date. It contains all records updated since the last day you kept in the bucket.
 
 ## Reset the parsed increments:
 - In S3 raw zone, empty the 'parsed' bucket
