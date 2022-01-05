@@ -262,6 +262,7 @@ The default values for the following optional input variables are generally fine
 - **max_concurrent_runs_of_glue_job** (optional): Max number of concurrent runs for the Glue job. The is set to **1** by default.
 - **trigger_enabled** (optional): Set to **`false`** to disable scheduled or conditional triggers for the Glue job.
   This is set to **`true`** by default. _Note: the value of this variable does not need to be surrounded by quotes._
+- **glue_job_timeout** (optional): The job timeout in minutes. By default this is set to 2880 minutes (48 hours).
 - #### Optional variables used for configuring the capacity a Glue job
 
   To change the capacity of your Glue job, you will need to set the following **glue_job_worker_type** and **number_of_workers_for_glue_job** variables.
