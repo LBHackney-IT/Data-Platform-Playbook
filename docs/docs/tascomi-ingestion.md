@@ -87,6 +87,18 @@ The raw data returned by the API is in the Raw zone Planning bucket, in the `api
 select count(*) from "dataplatform-stg-tascomi-raw-zone"."api_response_applications" where import_date = '20211208'
 ```
 
+# How to add a table to the pipeline
+
+Follow these steps to start ingesting data from a new endpoint available from the API.
+
+## Test the endpoint
+You can use this notebook on your local install to check that the endpoint is returning what you expect.
+## Add the table to the Terraform
+...
+Create a branch for this commit
+## Add the table to the Tascomi columns dictionary
+## Add data quality tests
+
 # How to reset Tascomi data
 
 If you suspect a problem in the increments or snapshots, you can delete and recreate them in their respective buckets.
