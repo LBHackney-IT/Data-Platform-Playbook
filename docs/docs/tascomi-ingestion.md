@@ -92,7 +92,7 @@ select count(*) from "dataplatform-stg-tascomi-raw-zone"."api_response_applicati
 Follow these steps to start ingesting data from a new endpoint available from the API. 
 
 ## Test the endpoint
-You can use this notebook on your local install to check that the endpoint is returning what you expect.
+You can use a Jupyter notebook on your local install to check that the endpoint is returning what you expect. It is hard to test with Postman because of the time-dependent token that the Tascomi API is using for authentication.
 
 ## Create and check out a new branch in the repository
 All the changes below should be commited to this branch first.
