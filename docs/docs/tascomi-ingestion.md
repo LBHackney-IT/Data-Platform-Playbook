@@ -89,15 +89,36 @@ select count(*) from "dataplatform-stg-tascomi-raw-zone"."api_response_applicati
 
 # How to add a table to the pipeline
 
-Follow these steps to start ingesting data from a new endpoint available from the API.
+Follow these steps to start ingesting data from a new endpoint available from the API. 
 
 ## Test the endpoint
 You can use this notebook on your local install to check that the endpoint is returning what you expect.
-## Add the table to the Terraform
-...
-Create a branch for this commit
-## Add the table to the Tascomi columns dictionary
-## Add data quality tests
+
+## Create and check out a new branch in the repository
+All the changes below should be commited to this branch first.
+
+## Add the table to the [column type dictionary](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi-column-type-dictionary.json)
+This json dictionary supports the 'recast increment' step that converts string columns into their cortect data types. To amend the catalogue semi-automatically you need the following (TODO: create a Python script to replace the FME process)
+- Open de [Tascomi DDD web page](http://dynamic-ddd.tascomi.com/), navigate to the table you're adding, select and copy its content.
+- Open the [DDD spreadsheet](https://docs.google.com/spreadsheets/d/1ZZwWHSoudBgN9j0jV6ZrNZKgXYMOm7ObWTWLT3Xg8Rw/edit?usp=sharing), create a new tab for the new table and paste the content of the DDD
+- Launch FME desktop, open the Tascomi Dictionary workspace and run it for the new table. You'll get fragments of json that you can copy and paste into the proper dictionary.
+
+## Add the table the [Terraform script](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/24-aws-glue-tascomi-data.tf).
+Decide wether the new table should be ingested daily (in this case append it to the `tascomi_table_names` list) or weekly (in this case appen it to the `tascomi_static_tables` list).
+
+## Add data quality tests in the relevant scripts
+Quality testing with PyDeequ is specified inside each relevant script. At the moment, only the [parse table increment script](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi_parse_tables_increments.py) has tests implemented. To take your new table into account, you need to append a line in this section neat the top: 
+```
+dq_params = {'appeals': {'unique': ['id', 'import_date'], 'complete': 'id'},
+             'applications': {'unique': ['id', 'import_date'], 'complete': 'application_reference_number'},
+             'appeal_decision': {'unique': ['id', 'import_date'], 'complete': 'id'}
+             }
+```
+The last line means that, for the job to complete successfully, in the appeal_decision table increment, the combination (id, import_date) should be unique, and the id field should be complete. 
+This is the only script you need to amend at present, but it would be good to add quality testing to other bits of the process.
+
+## Commit your changes in the new branch and open a pull request
+Unit tests will run automatically when you push. At the moment, tests are implemented for all bits of the process except from the 'parse table increments' one.  
 
 # How to reset Tascomi data
 
