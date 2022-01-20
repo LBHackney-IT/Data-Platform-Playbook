@@ -98,16 +98,55 @@ You can use this notebook on your local install to check that the endpoint is re
 All the changes below should be commited to this branch first.
 
 ## Add the table to the [column type dictionary](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi-column-type-dictionary.json)
-This json dictionary supports the 'recast increment' step that converts string columns into their cortect data types. To amend the catalogue semi-automatically you need the following (TODO: create a Python script to replace the FME process)
-- Open de [Tascomi DDD web page](http://dynamic-ddd.tascomi.com/), navigate to the table you're adding, select and copy its content.
-- Open the [DDD spreadsheet](https://docs.google.com/spreadsheets/d/1ZZwWHSoudBgN9j0jV6ZrNZKgXYMOm7ObWTWLT3Xg8Rw/edit?usp=sharing), create a new tab for the new table and paste the content of the DDD
-- Launch FME desktop, open the Tascomi Dictionary workspace and run it for the new table. You'll get fragments of json that you can copy and paste into the proper dictionary.
+This json dictionary supports the 'recast increment' step that converts string columns into their cortect data types. It looks like this:
+```
+        "long": {
+            "applications": [
+                "site_address_x",
+                "site_address_y",
+                "tree_location_x",
+                "tree_location_y"
+            ],
+            "emails": [
+                "last_updated",
+                "submit_date",
+                "ceased_date"
+            ],
+            "enforcements": [
+                "complaint_location_x",
+                "complaint_location_y"
+            ],
+            "dtf_locations": ["parent_uprn","uprn","usrn"],
+            "users": ["mileage_rate"]
+        },
+        "double": {
+            "applications": [
+                "affordable_housing_balancing_sum",
+                "height_of_proposed_development",
+                "proposed_building_dimensions_breadth",
+                "proposed_building_dimensions_eaves",
+                "proposed_building_dimensions_length",
+                "proposed_building_dimensions_ridge",
+                "proposed_building_distance_from_proposal",
+                "proposed_building_overall_ground_area",
+                "proposed_fish_tank_cage_depth",
+                "proposed_fish_tank_cage_height",
+                "proposed_fish_tank_cage_length",
+                "proposed_fish_tank_cage_width"
+            ],
+            "appeals": ["appeal_location_x","appeal_location_y"]
+        }
+```
+To amend the catalogue semi-automatically you need to do the following (TODO: create a Python script to replace the FME process)
+- Open de [Tascomi DDD web page](http://dynamic-ddd.tascomi.com/). The credentials are in 1Password. Navigate to the table you're adding, select and copy its content.
+- Open the [DDD Google Sheet](https://docs.google.com/spreadsheets/d/1ZZwWHSoudBgN9j0jV6ZrNZKgXYMOm7ObWTWLT3Xg8Rw/edit?usp=sharing), create a new tab for the new table and paste the content of the DDD
+- Launch FME desktop, open the Tascomi Dictionary workspace and run it for the new tab of the Google Sheet. You'll get fragments of json that you can copy and paste into the proper dictionary.
 
 ## Add the table the [Terraform script](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/24-aws-glue-tascomi-data.tf).
 Decide wether the new table should be ingested daily (in this case append it to the `tascomi_table_names` list) or weekly (in this case appen it to the `tascomi_static_tables` list).
 
 ## Add data quality tests in the relevant scripts
-Quality testing with PyDeequ is specified inside each relevant script. At the moment, only the [parse table increment script](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi_parse_tables_increments.py) has tests implemented. To take your new table into account, you need to append a line in this section neat the top: 
+[Quality testing with PyDeequ](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/transforming-data/guides-to-testing-in-the-platform/data-quality-testing-guide) is parameterised inside each relevant script. At the moment, only the [parse table increment script](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi_parse_tables_increments.py) has tests implemented. For your new table to be quality-checked each day, you need to open this script and append a line in this section near the top: 
 ```
 dq_params = {'appeals': {'unique': ['id', 'import_date'], 'complete': 'id'},
              'applications': {'unique': ['id', 'import_date'], 'complete': 'application_reference_number'},
@@ -115,7 +154,7 @@ dq_params = {'appeals': {'unique': ['id', 'import_date'], 'complete': 'id'},
              }
 ```
 The last line means that, for the job to complete successfully, in the appeal_decision table increment, the combination (id, import_date) should be unique, and the id field should be complete. 
-This is the only script you need to amend at present, but it would be good to add quality testing to other bits of the process.
+This is the only script you need to amend at present, but it would be useful to add quality testing to other bits of the process.
 
 ## Commit your changes in the new branch and open a pull request
 Unit tests will run automatically when you push. At the moment, tests are implemented for all bits of the process except from the 'parse table increments' one.  
