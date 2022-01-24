@@ -138,7 +138,7 @@ This json dictionary supports the 'recast increment' step that converts string c
         }
 ```
 To amend the catalogue semi-automatically you need to do the following (TODO: create a Python script to replace the FME process)
-- Open de [Tascomi DDD web page](http://dynamic-ddd.tascomi.com/). The credentials are in 1Password. Navigate to the table you're adding, select and copy its content.
+- Open the [Tascomi API resources page]( https://hackney-planning.tascomi.com/rest/v1/documentation.html?public_key=dd95bcd473f46a4325a4021d54500c7d#available-resources). Navigate to the table you're adding, select and copy its content.
 - Open the [DDD Google Sheet](https://docs.google.com/spreadsheets/d/1ZZwWHSoudBgN9j0jV6ZrNZKgXYMOm7ObWTWLT3Xg8Rw/edit?usp=sharing), create a new tab for the new table and paste the content of the DDD
 - Launch FME desktop, open the Tascomi Dictionary workspace, refresh the feature types in the reader to see the new tab of the Google Sheet. Run the workspace for the new tab. You'll get fragments of json that you can copy and paste into the proper dictionary.
 
