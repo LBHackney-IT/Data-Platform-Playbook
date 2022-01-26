@@ -225,24 +225,32 @@ As a resut you should only have today's snapshot in the snapshot bucket.
 **This method uses the AWS CLI**
 Follow these steps if a problem occured at a recent date and you don't want to reset the full history of snapshots. You will reset the bookmarks to a date prior to the problem, delete all the snapshots since that date in S3, and run the snapshot job again.
 
-## Delete recent data in S3
+## Delete recent data in S3 and crawl
 Say something wrong happened on 23/01/2022 and we are the 25th. You need to delete the snapshots dated 20220123, 20220124 and 20220125.
 Do this in AWS CLI using:
 
-```aws s3 rm s3://dataplatform-stg-refined-zone/planning/tascomi/snapshot --recursive --exclude '*' --include '*20220123*'```
+```
+aws s3 rm s3://dataplatform-stg-refined-zone/planning/tascomi/snapshot --recursive --exclude '*' --include '*20220123*'
+```
 and then
-```aws s3 rm s3://dataplatform-stg-refined-zone/planning/tascomi/snapshot --recursive --exclude '*' --include '*20220124*'```
+```
+aws s3 rm s3://dataplatform-stg-refined-zone/planning/tascomi/snapshot --recursive --exclude '*' --include '*20220124*'
+```
 and then
-```aws s3 rm s3://dataplatform-stg-refined-zone/planning/tascomi/snapshot --recursive --exclude '*' --include '*20220125*'```
+```
+aws s3 rm s3://dataplatform-stg-refined-zone/planning/tascomi/snapshot --recursive --exclude '*' --include '*20220125*'
+```
 
 If you also want to delete the refined increments, you can go one level up: 
-```aws s3 rm s3://dataplatform-stg-refined-zone/planning/tascomi/ --recursive --exclude '*' --include '*20220124*'```
+```
+aws s3 rm s3://dataplatform-stg-refined-zone/planning/tascomi/ --recursive --exclude '*' --include '*20220124*'
+```
 etc.
 
 If you have AWS Vault configured with a profile called preprod, the command becomes: 
-```aws-vault exec preprod -- aws glue reset-job-bookmark --job-name 'stg tascomi_create_daily_snapshot_planning' --run-id jr_e6d6c7e66b27ff27929b3f46555ecdcd9f9e068675eaafaf231f4d338d04db33```
-
-## Crawl the data
+```
+aws-vault exec preprod -- aws glue reset-job-bookmark --job-name 'stg tascomi_create_daily_snapshot_planning' --run-id jr_e6d6c7e66b27ff27929b3f46555ecdcd9f9e068675eaafaf231f4d338d04db33
+```
 Don't forget to run the refined snapshot crawler so the Glue catalogue sees the recent changes.
 
 ## Rewind the job bookmark to the last day everything was fine
@@ -255,11 +263,13 @@ get-job-bookmark
 [--generate-cli-skeleton <value>]
 ```
 You'll find the job-name and the run-id of the last successful run in the 'jobs' section of the Glue console. An example of full command is:
-```aws glue reset-job-bookmark --job-name 'stg tascomi_create_daily_snapshot_planning' --run-id jr_e6d6c7e66b27ff27929b3f46555ecdcd9f9e068675eaafaf231f4d338d04db33```
+```
+aws glue reset-job-bookmark --job-name 'stg tascomi_create_daily_snapshot_planning' --run-id jr_e6d6c7e66b27ff27929b3f46555ecdcd9f9e068675eaafaf231f4d338d04db33
+```
 
 ## Extra steps needed depending on the scenario
 - If you're going more than 5 days back, the pushdown predicate menas you won't be loading any older snapshot. You need to allow a larger daysbuffer in the pushdown predicate before running the job. Save the script.
 - If you are going back to a point when one of the snapshots didn't exist (because the endpoint had not been used yet), you need to delete this snapshot table in the Glue catalogue before running the job.
 
-## Run the daily snapshot job
-Today's snapshot will be created. There won't be any snapshot between this one and the last day everything was fine.
+## Run the daily snapshot job and crawl
+Today's snapshot will be created. There won't be any snapshot between this one and the last day everything was fine. Don't forget to run the crawler to see the data in Athena.
