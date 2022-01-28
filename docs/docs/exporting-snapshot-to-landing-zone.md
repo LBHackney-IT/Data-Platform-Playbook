@@ -5,7 +5,7 @@ layout: playbook_js
 tags: [playbook]
 ---
 
-This section covers the technical overview of uploading data into the data platform from a db instance in AWS. For step by step instructions on how to do this, refer to [exporting db snapshot to the DataPlatform Landing zone](../playbook/ingesting-data/004-ingesting-rds-snapshot-in-landing-zone.md) guide.
+This section covers the technical overview of uploading data into the Data Platform from a db instance in AWS. For step by step instructions on how to do this, refer to [Ingesting RDS snapshot into the Data Platform Landing Zone](../playbook/ingesting-data/004-ingesting-rds-snapshot-in-landing-zone.md) guide.
 
 The terraform module [`db_snapshot_to_s3`](https://github.com/LBHackney-IT/Data-Platform/tree/main/modules/db-snapshot-to-s3) will provision the following resources:
 ![exporting-snapshot-to-landing-zone](https://user-images.githubusercontent.com/8051117/118656536-83ffbf80-b7e2-11eb-8adf-7075e72c2d42.png)
