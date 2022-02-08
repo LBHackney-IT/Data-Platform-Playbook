@@ -29,7 +29,7 @@ Before a department is able to use the data platform, its details must be config
    saml-aws-data-platform-collaborator-housing-repairs
    ```
 
-   - You can do this by contacting the Hackney Service team via the [`ask-devops` Slack channel][ask_devops_slack]
+   - You can do this by submitting a request to [ICT support](support.hackney.gov.uk) requesting a Google group.
    - Ensure you specify at least one manager for the group you are creating. This person is responsible for adding/removing
      users to your department
    - Enable the collaborative inbox feature on your Google group by following step 2 in this [guide][collaborative_inbox].
