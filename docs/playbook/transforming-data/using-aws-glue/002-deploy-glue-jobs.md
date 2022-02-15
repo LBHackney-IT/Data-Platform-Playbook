@@ -289,7 +289,7 @@ The default values for the following optional input variables are generally fine
 module "manually_uploaded_csv_data_to_raw_parking" {
   source = "../modules/aws-glue-job"
 
-  department  = module.department*housing_repairs
+  department  = module.department_housing_repairs
   job_name    = "${local.short_identifier_prefix}housing repairs address cleaning"
   script_name = "address_cleaning_housing_repairs"
   schedule    = "cron(0 0 23 ? * MON,TUE,WED,THU,FRI _)"
