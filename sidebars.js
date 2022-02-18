@@ -16,6 +16,11 @@ module.exports = {
   docs: [
     //"release-notes",
     {
+      type: "doc",
+      id: "glossary",
+      label: "Glossary",
+    },
+    {
       type: "category",
       label: "About",
       items: ["introduction", "about-playbook", "zones", "environments"],
