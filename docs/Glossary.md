@@ -2,6 +2,8 @@
 id: glossary
 title: Glossary
 slug: /glossary
+layout: playbook_js
+tags: [playbook]
 ---
 
 A Table of terms of Terms and Tools used by the Data Platform
