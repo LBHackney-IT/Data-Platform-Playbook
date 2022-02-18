@@ -1,4 +1,8 @@
-# Glossary
+---
+id: glossary
+title: Glossary
+slug: /glossary
+---
 
 A Table of terms of Terms and Tools used by the Data Platform
 
