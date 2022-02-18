@@ -24,25 +24,50 @@ Ingest data contained within a Google Sheet for use on the Data Platform, option
   <thead>
     <tr>
       <th>Department</th>
-      <th>Service account email</th>
-      <th>Sheets credentials name</th>
+      <th>Pre-Production Service account email</th>
+      <th>Production Service account email</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>parking</td>
       <td>parking@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td></td>
+      <td>parking@dataplatform-prod0.iam.gserviceaccount.com</td>
     </tr>
     <tr>
       <td>housing_repairs</td>
       <td>housing-repairs@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>aws_secretsmanager_secret.sheets_credentials_housing.name</td>
+      <td>housing-repairs@dataplatform-prod0.iam.gserviceaccount.com</td>
     </tr>
     <tr>
       <td>data_and_insight</td>
       <td>data-and-insight@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td></td>
+      <td>data-and-insight@dataplatform-prod0.iam.gserviceaccount.com</td>
+    </tr>
+    <tr>
+      <td>finance</td>
+      <td>finance@dataplatform-stg.iam.gserviceaccount.com</td>
+      <td>finance@dataplatform-prod0.iam.gserviceaccount.com</td>
+    </tr>
+    <tr>
+      <td>env_enforcement</td>
+      <td>env-enforcement@dataplatform-stg.iam.gserviceaccount.com</td>
+      <td>env-enforcement@dataplatform-prod0.iam.gserviceaccount.com</td>
+    </tr>
+    <tr>
+      <td>planning</td>
+      <td>planning@dataplatform-stg.iam.gserviceaccount.com</td>
+      <td>planning@dataplatform-prod0.iam.gserviceaccount.com</td>
+    </tr>
+    <tr>
+      <td>unrestricted</td>
+      <td>unrestricted@dataplatform-stg.iam.gserviceaccount.com</td>
+      <td>unrestricted@dataplatform-prod0.iam.gserviceaccount.com</td>
+    </tr>
+    <tr>
+      <td>sandbox</td>
+      <td>sandbox@dataplatform-stg.iam.gserviceaccount.com</td>
+      <td>sandbox@dataplatform-prod0.iam.gserviceaccount.com</td>
     </tr>
   </tbody>
 </table>
