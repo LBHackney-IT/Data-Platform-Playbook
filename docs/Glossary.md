@@ -10,17 +10,17 @@ A Table of terms of Terms and Tools used by the Data Platform
  ### API
 Application Programming Interface, which is a software intermediary that allows two applications to talk to each other. Each time you use an app like Facebook, send an instant message, or check the weather on your phone, you're using an API.
  ### ATHENA
-An AWS cloud-based service which enables you to query data in the data lake using SQL (Presto SQL). .<br/><br/>https://aws.amazon.com/athena/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc
+[Athena](https://docs.aws.amazon.com/athena/latest/ug/what-is.html) is an AWS cloud-based service which enables you to query data in the data lake using SQL (Presto SQL). You can find out in [the Playbook article about how to query data in Athena](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/querying-and-analysing-data/querying-data-using-sql).<br/><br/>
  ### AWS
-Amazon Web Services is a comprehensive cloud platform offering over 200 different services including data storage, computing power, and tools Glue, Athena and Redshift which we use in the data platform.. AWS is the council’s primary cloud supplier and the primary environment in which we are building the data platform. <br/><br/>https://aws.amazon.com/what-is-aws/
+[AWS (Amazon Web Services)](https://aws.amazon.com/what-is-aws/) is a comprehensive cloud platform offering over 200 different services including data storage, computing power, and tools Glue, Athena and Redshift which we use in the data platform.. AWS is the council’s primary cloud supplier and the primary environment in which we are building the data platform. <br/><br/>
  ### BUCKET
 Amazon S3 stores data as objects within resources called "buckets" which are equivalent to folders. Object storage keeps the blocks of data that make up a file together and adds all of its associated metadata to that file. We use buckets to separate the different zones in the data lake.
  ### CLUSTER
  ### CONTAINER
  ### CRAWLER
-Crawler is a job defined in Amazon Glue. It crawls databases and buckets in S3 and then creates tables in Amazon Glue together with their schema. Then, you can perform your data operations in Glue, like ETL.<br/><br/>https://docs.aws.amazon.com/glue/latest/dg/crawler-running.html
+A [crawler](https://docs.aws.amazon.com/glue/latest/dg/crawler-running.html) is a job defined in Amazon Glue. It crawls databases and buckets in S3 and then creates tables in Amazon Glue together with their schema. Then, you can perform your data operations in Glue, like ETL.<br/><br/>
  ### DATA CATALOGUE
-This is a place to store documentation and metadata about the datasets within the data lake. It helps users discover what data exists, understand what the data mean, and find out who owns the data.
+This is a place to store documentation and metadata about the datasets within the data lake. It helps users discover what data exists, understand what the data mean, and find out who owns the data. We use a tool called DataHub to provide our data catalogue.
  ### DATA DICTIONARY
 This defines domain-driven design entities and their relationships to one another at a high level. For example, what attributes are related to a person (name, date of birth) and how a ‘person’ relates to a 'household', 'property', etc.)
  ### DATA LAKE
@@ -28,7 +28,7 @@ A place in which versions and copies of our data is centrally stored
  ### DATA PIPELINE
 A data pipeline is a set of tools and processes used to automate the movement and transformation of data between a source system and a target repository (for example, a data lake or a BI dashboard).
  ### DATA PLATFORM
-A data platform is an integrated technology solution that allows data located in different data sources to be governed, accessed, and delivered to users, applications, or other technologies. A data platform isn’t just one ‘thing’, but a platform composed of a number of different elements, most notably the data lake.<br/><br/>https://lbhackney-it.github.io/Data-Platform-Playbook/
+A data platform is an integrated technology solution that allows data located in different data sources to be governed, accessed, and delivered to users, applications, or other technologies. A data platform isn’t just one ‘thing’, but a platform composed of a number of different elements, most notably the data lake. For a more thorough explanation, see [the Introduction session in the Playbook](https://playbook.hackney.gov.uk/Data-Platform-Playbook/).<br/><br/>
  ### DATA WAREHOUSE
 This is a store of 'gold standard' data that is ready for analysis or publication. It is the result of processes to ingest, clean and transform data in the data lake
  ### DOCKER
@@ -37,9 +37,9 @@ The platform has 3 environments: Development (used by engineers in the Data Plat
  ### ETL (EXTRACT, TRANSFORM AND LOAD)
 Extract the data from its original source, whether that is another database or an application, Transform data by cleaning it up, deduplicating it, combining it, and otherwise getting ready to Load the data into the target database.
  ### GITHUB
-GitHub is a code hosting platform for version control and collaboration. We use it as a repository to store the code for the data platform's infrastructure and processes (including the code for this playbook). It enables us to track and test any changes in the code before they reach the platform. Many of the processes within this playbook require you to make changes to code in GitHub in order to see them in the data platform. See our separate article for more information about using GitHub.https://docs.github.com/en/get-started/quickstart/hello-world
+[GitHub](https://docs.github.com/en/get-started/quickstart/hello-world) is a code hosting platform for version control and collaboration. We use it as a repository to store the code for the data platform's infrastructure and processes (including the code for this playbook). It enables us to track and test any changes in the code before they reach the platform. Many of the processes within this playbook require you to make changes to code in GitHub in order to see them in the data platform. See the [Playbook article for more information about using GitHub](https://lbhackney-it.github.io/Data-Platform-Playbook/playbook/getting-set-up/using-github).
  ### GLUE
-Glue is an AWS cloud-based service that we use to ingest data into the data lake, transform data (e.g. cleaning, joining, aggregating etc.), schedule these processes to run automatically, and collect metadata from the datasets in the data lake so that it can be used in the data catalogue. These processes are called Glue ‘jobs’. You can create and run jobs through the graphical interface in Glue Studio or deploy PySpark or Spark SQL scripts in Glue.<br/><br/>https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html
+[Glue](https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html) is an AWS cloud-based service that we use to ingest data into the data lake, transform data (e.g. cleaning, joining, aggregating etc.), schedule these processes to run automatically, and collect metadata from the datasets in the data lake so that it can be used in the data catalogue. These processes are called Glue ‘jobs’. You can create and run jobs through the graphical interface in [Glue Studio](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/transforming-data/using-aws-glue/using-glue-studio) or [deploy PySpark or Spark SQL scripts in Glue](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/transforming-data/using-aws-glue/deploy-glue-jobs).<br/><br/>
  ### IAM
 Identity and Access Management (IAM) provides fine-grained access control across all of AWS. With IAM, you can specify who can access which services and resources, and under which conditions. With IAM policies, you manage permissions to your workforce and systems to ensure least-privilege permissions.[ User Management Tool ]https://aws.amazon.com/iam/
  ### INGEST
