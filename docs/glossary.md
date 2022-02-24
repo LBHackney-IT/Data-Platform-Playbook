@@ -10,23 +10,23 @@ A Table of terms of Terms and Tools used by the Data Platform
  ### API
 Application Programming Interface, which is a software intermediary that allows two applications to talk to each other. Each time you use an app like Facebook, send an instant message, or check the weather on your phone, you're using an API.
  ### Athena
-[Athena](https://docs.aws.amazon.com/athena/latest/ug/what-is.html) is an AWS cloud-based service which enables you to query data in the data lake using SQL (Presto SQL). You can find out in [the Playbook article about how to query data in Athena](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/querying-and-analysing-data/querying-data-using-sql).<br/><br/>
+[Athena](https://docs.aws.amazon.com/athena/latest/ug/what-is.html) is an AWS cloud-based service which enables you to query data in the data lake using SQL (Presto SQL). You can find out in [the Playbook article about how to query data in Athena](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/querying-and-analysing-data/querying-data-using-sql).
  ### AWS
-[AWS (Amazon Web Services)](https://aws.amazon.com/what-is-aws/) is a comprehensive cloud platform offering over 200 different services including data storage, computing power, and tools Glue, Athena and Redshift which we use in the data platform.. AWS is the council’s primary cloud supplier and the primary environment in which we are building the data platform. <br/><br/>
+[AWS (Amazon Web Services)](https://aws.amazon.com/what-is-aws/) is a comprehensive cloud platform offering over 200 different services including data storage, computing power, and tools Glue, Athena and Redshift which we use in the data platform.. AWS is the council’s primary cloud supplier and the primary environment in which we are building the data platform.
  ### Bucket
 Amazon S3 stores data as objects within resources called "buckets" which are equivalent to folders. Object storage keeps the blocks of data that make up a file together and adds all of its associated metadata to that file. We use buckets to separate the different zones in the data lake.
  ### Cluster
-An environment to run data processing in Spark. A cluster may be composed of several nodes, which enables to distribute data processing and make it faster. 
+A cluster is a collection of servers that are connected together so that they can as a group provide the same service or accomplish the same task. We often use Clusters to spread the work that needs to be accomplished so that it can be completed faster but we also use them to provide resilience were one member of a cluster can fail so long as one member remains functional.
  ### Container
-See Docker entry.
+A container is essentially a virtual computer. Though there are specific technical differences between a Container and a Virtual Machine (VM) meaning they shouldn't be considered interchangeable.
  ### Crawler
-A [crawler](https://docs.aws.amazon.com/glue/latest/dg/crawler-running.html) is a job defined in Amazon Glue. It crawls databases and buckets in S3 and then creates tables in Amazon Glue together with their schema. Then, you can perform your data operations in Glue, like ETL.<br/><br/>
+A [crawler](https://docs.aws.amazon.com/glue/latest/dg/crawler-running.html) is a process which is designed to read through a collection of data and collage metadata about what is being held and stores this information within the AWS Glue Data Catalog. This information covers, the structure of the data such as the columns, data types and partitions along with information about the individual files that hold the data such as there format and where they are stored within S3.
  ### Data Catalogue
 This is a place to store documentation and metadata about the datasets within the data lake. It helps users discover what data exists, understand what the data mean, and find out who owns the data. We use a tool called DataHub to provide our data catalogue.
  ### Data Dictionary
 This defines domain-driven design entities and their relationships to one another at a high level. For example, what attributes are related to a person (name, date of birth) and how a ‘person’ relates to a 'household', 'property', etc.)
  ### Data Lake
-A place in which versions and copies of our data is centrally stored
+A data lake is a centralized repository designed to store, process and sure large amounts of structured, semistructured, and unstructured data. 
  ### Data Pipeline
 A data pipeline is a set of tools and processes used to automate the movement and transformation of data between a source system and a target repository (for example, a data lake or a BI dashboard).
  ### Data Platform

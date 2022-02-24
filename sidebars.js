@@ -1,5 +1,4 @@
 const fs = require("fs");
-const path = require("path");
 
 const getItems = (folder) => {
   return fs
@@ -107,6 +106,11 @@ module.exports = {
       type: "doc",
       id: "glossary",
       label: "Glossary",
+    },
+    {
+      type: "doc",
+      id: "roles",
+      label: "Roles",
     },
   ],
 };
