@@ -33,7 +33,7 @@ A data platform is an integrated technology solution that allows data located in
  ### Data Warehouse
 This is a store of 'gold standard' data that is ready for analysis or publication. It is the result of processes to ingest, clean and transform data in the data lake
  ### Docker
-Software platform that enables to run programs in any environment. In Docker, programs are defined as 'containers' that contain the full operating system and configuration items that the program requires. In the data platform, we use Docker to replicate the AWS Glue environment on a local machine. This enables us to write and test pySpark scripts locally before making them available a jobs in the platform.
+Software platform that enables to run programs in any environment. In Docker, programs run in 'containers' that contain the full operating system and configuration items that the program requires. In the data platform, we use Docker and a container that replicates the AWS Glue environment. This enables us to write and test pySpark scripts on a local machine (PC or Mac) before making them available a jobs in the platform.
  ### Environments
 The platform has 3 [Environments](https://lbhackney-it.github.io/Data-Platform-Playbook/environments): Development (used by engineers in the Data Platform team), Pre-Production/Staging (used by analysts to prototype processes to ingest or transform data) and Production (used by analysts to schedule and ‘productionise’ processes)
  ### ETL (EXTRACT, TRANSFORM AND LOAD)
