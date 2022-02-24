@@ -16,6 +16,7 @@ Application Programming Interface, which is a software intermediary that allows 
  ### Bucket
 Amazon S3 stores data as objects within resources called "buckets" which are equivalent to folders. Object storage keeps the blocks of data that make up a file together and adds all of its associated metadata to that file. We use buckets to separate the different zones in the data lake.
  ### Cluster
+An environment to run data processing in Spark. A cluster may be composed of several nodes, which enables to distribute data processing and make it faster. 
  ### Container
 See Docker entry.
  ### Crawler
