@@ -10,7 +10,7 @@ There are currently four tiers of role within the data platform project, and the
 ## Super Administrators
 _Relates to: saml-aws-data-platform-super-admins_
 
-Super administrators 
+Super administrators have full permissions to all accounts and are normally project heads and key people.
 
 | Account        | Has Access | Role                   |
 |----------------|------------|------------------------|
@@ -30,6 +30,9 @@ Administrators are granted broad permissions across all the Data Platform accoun
 | Production     | Yes        | AWSPowerUserAccess     |
 
 ## Power User
+_Relates to: saml-aws-data-platform-power-user_
+
+Power Users have a greater control over the Pre-Production account but are still restricted from Development and Production
 
 | Account        | Has Access | Role               |
 |----------------|------------|--------------------|
@@ -38,6 +41,9 @@ Administrators are granted broad permissions across all the Data Platform accoun
 | Production     | No         | N/A                |
 
 ## Collaborator
+_Relates to: saml-aws-data-platform-collaborator-*_
+
+Collaborators have limited access to both Pre-Production and Production allowing them to develop there ETL process and view the working jobs in Production.
 
 | Account        | Has Access | Role   |
 |----------------|------------|--------|
