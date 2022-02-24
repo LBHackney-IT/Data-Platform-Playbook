@@ -17,11 +17,12 @@ Application Programming Interface, which is a software intermediary that allows 
 Amazon S3 stores data as objects within resources called "buckets" which are equivalent to folders. Object storage keeps the blocks of data that make up a file together and adds all of its associated metadata to that file. We use buckets to separate the different zones in the data lake.
  ### Cluster
  ### Container
+See Docker entry.
  ### Crawler
 A [crawler](https://docs.aws.amazon.com/glue/latest/dg/crawler-running.html) is a job defined in Amazon Glue. It crawls databases and buckets in S3 and then creates tables in Amazon Glue together with their schema. Then, you can perform your data operations in Glue, like ETL.<br/><br/>
  ### Data Catalogue
 This is a place to store documentation and metadata about the datasets within the data lake. It helps users discover what data exists, understand what the data mean, and find out who owns the data. We use a tool called DataHub to provide our data catalogue.
- ### Data Dictionaru
+ ### Data Dictionary
 This defines domain-driven design entities and their relationships to one another at a high level. For example, what attributes are related to a person (name, date of birth) and how a ‘person’ relates to a 'household', 'property', etc.)
  ### Data Lake
 A place in which versions and copies of our data is centrally stored
@@ -32,6 +33,7 @@ A data platform is an integrated technology solution that allows data located in
  ### Data Warehouse
 This is a store of 'gold standard' data that is ready for analysis or publication. It is the result of processes to ingest, clean and transform data in the data lake
  ### Docker
+Software platform that enables to run programs in any environment. In Docker, programs are defined as 'containers' that contain the full operating system and configuration items that the program requires. In the data platform, we use Docker to replicate the AWS Glue environment on a local machine. This enables us to write and test pySpark scripts locally before making them available a jobs in the platform.
  ### Environments
 The platform has 3 [Environments](https://lbhackney-it.github.io/Data-Platform-Playbook/environments): Development (used by engineers in the Data Platform team), Pre-Production/Staging (used by analysts to prototype processes to ingest or transform data) and Production (used by analysts to schedule and ‘productionise’ processes)
  ### ETL (EXTRACT, TRANSFORM AND LOAD)
@@ -59,16 +61,17 @@ The initial ingestion point for some datasets where we need to separate the data
  ### Objects
 Object storage, also called object-based storage, is an approach to addressing and manipulating data storage as discrete units, called objects. Objects are kept inside a single repository, and are not nested as files inside a folder inside other folders.
  ### Parquet
-Parquet is the data storage format we use to store data in the data platform.It is an efficient columnar data storage format that supports complex nested data structures in a flat columnar format. This means it offers compressed storage and faster querying.
+Parquet is the data storage format we use to store data in the data platform. It is an efficient columnar data storage format that supports complex nested data structures in a flat columnar format. This means it offers compressed storage and faster querying.
  ### Partition
 Partitioning is the dividing of data into sections, often by date or age. It is used to enhance performance and make data easier to manage. For example, historic data from a service may be stored on the platform in a partition, and every day new data is added in it’s own partition. A user would then only need to query the partitions relevant to their work rather than the whole data set.
  ### [Playbook](https://lbhackney-it.github.io/Data-Platform-Playbook/about-playbook)
 Provides step-by-step guidance about how to use the Data Platform, along with technical documentation about how the platform has been set up and decisions we've made.
  ### Productionise
+Make a resource (e.g. a job) ready for deployment in the production environment. It involves describing the resource in Terraform so it can be replicated. For jobs, it also involves writing tests that will run automatically and prevent breaking changes.  
  ### PySpark
 PySpark is an interface for Apache Spark in Python.
  ### Python
-An open-source programming language that is commonly used for data tasks such as data cleaning, transformation, analysis and machine learning..
+An open-source programming language that is commonly used for data tasks such as data cleaning, transformation, analysis and machine learning.
  ### [Qlik](https://www.qlik.com/us/products/qlik-sense)
 The council’s primary Business Intelligence tool for analysing and visualising data. 
  ### Raw Zone
