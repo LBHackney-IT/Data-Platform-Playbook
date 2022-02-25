@@ -10,7 +10,7 @@ A Table of terms of Terms and Tools used by the Data Platform
  ### API
 Application Programming Interface, which is a software intermediary that allows two applications to talk to each other. Each time you use an app like Facebook, send an instant message, or check the weather on your phone, you're using an API.
  ### Athena
-[Athena](https://docs.aws.amazon.com/athena/latest/ug/what-is.html) is an AWS cloud-based service which enables you to query data in the data lake using SQL (Presto SQL). You can find out in [the Playbook article about how to query data in Athena](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/querying-and-analysing-data/querying-data-using-sql).
+[Athena][athena] is an AWS cloud-based service which enables you to query data in the data lake using SQL (Presto SQL). You can find out in [the Playbook article about how to query data in Athena][query-data-using-sql].
  ### AWS
 [AWS (Amazon Web Services)](https://aws.amazon.com/what-is-aws/) is a comprehensive cloud platform offering over 200 different services including data storage, computing power, and tools Glue, Athena and Redshift which we use in the data platform.. AWS is the council’s primary cloud supplier and the primary environment in which we are building the data platform.
  ### Bucket
@@ -30,13 +30,13 @@ A data lake is a centralized repository designed to store, process and sure larg
  ### Data Pipeline
 A data pipeline is a set of tools and processes used to automate the movement and transformation of data between a source system and a target repository (for example, a data lake or a BI dashboard).
  ### Data Platform
-A data platform is an integrated technology solution that allows data located in different data sources to be governed, accessed, and delivered to users, applications, or other technologies. A data platform isn’t just one ‘thing’, but a platform composed of a number of different elements, most notably the data lake. For a more thorough explanation, see [the Introduction session in the Playbook](https://playbook.hackney.gov.uk/Data-Platform-Playbook/)
+A data platform is an integrated technology solution that allows data located in different data sources to be governed, accessed, and delivered to users, applications, or other technologies. A data platform isn’t just one ‘thing’, but a platform composed of a number of different elements, most notably the data lake. For a more thorough explanation, see [the Introduction session in the Playbook][data-platform-intro]
  ### Data Warehouse
-This is a store of 'gold standard' data that is ready for analysis or publication. It is the result of processes to ingest, clean and transform data in the data lake
+This is a store of 'gold standard' data that is ready for analysis or publication. It is the result of processes to ingest, clean and transform data in the data lake. In the Data Platform, this typically consists on data stored in our [refined](#refined-zone) and [trusted](#trusted-zone) zones.
  ### Docker
-Software platform that enables to run programs in any environment. In Docker, programs run in 'containers' that contain the full operating system and configuration items that the program requires. In the data platform, we use Docker and a container that replicates the AWS Glue environment. This enables us to write and test pySpark scripts on a local machine (PC or Mac) before making them available a jobs in the platform.
+Software platform that enables to run programs in any environment. In Docker, programs run in '[containers](#container)' that contain the full operating system and configuration items that the program requires. In the data platform, we use Docker and a container that replicates the AWS Glue environment. This enables us to write and test pySpark scripts on a local machine (PC or Mac) before making them available a jobs in the platform.
  ### Environments
-The platform has 3 [Environments](https://lbhackney-it.github.io/Data-Platform-Playbook/environments): Development (used by engineers in the Data Platform team), Pre-Production/Staging (used by analysts to prototype processes to ingest or transform data) and Production (used by analysts to schedule and ‘productionise’ processes)
+The platform has 3 [Environments][environments]: Development (used by engineers in the Data Platform team), Pre-Production/Staging (used by analysts to prototype processes to ingest or transform data) and Production (used by analysts to schedule and ‘productionise’ processes)
  ### ETL (EXTRACT, TRANSFORM AND LOAD)
 Extract the data from its original source, whether that is another database or an application, Transform data by cleaning it up, deduplicating it, combining it, and otherwise getting ready to Load the data into the target database.
  ### Github
@@ -50,7 +50,7 @@ This is the process of bringing data from its original source (e.g. Google Sheet
  ### Jobs
 An AWS Glue job encapsulates a script that connects to your source data, processes it, and then writes it out to your data target. Typically, a job runs extract, transform, and load (ETL) scripts. Jobs can also run general-purpose Python scripts (Python shell jobs.) AWS Glue triggers can start jobs based on a schedule or event, or on demand. To find out more check [here](https://docs.aws.amazon.com/glue/latest/dg/how-it-works.html) and to find out about adding jobs, [here](https://docs.aws.amazon.com/glue/latest/dg/add-job.html)
  ### Jupyter
-Jupyter is a notebooking environment for Python. For more information, check [here](https://jupyter.org/)
+Jupyter is a notebooking environment for Python. For more information, check [here](https://jupyter.org/). On the Data Platform team we regularly use Jupyter to prototype jobs before scheduling them in [AWS Glue](#glue).
  ### Kafka
 [Apache Kafka](https://aws.amazon.com/msk/what-is-kafka/) is an open-source distributed data store optimised for ingesting and processing streaming data in real-time. We use Kafka to ingest some data sources (namely those developed by Hackney) onto the platform through event streaming so that we receive updates as they happen rather than taking a snapshot of a data source. For example, if a user changes a tenure in Manage My Home, the Tenure API sends a message to Kafka which processes this data and stores it in the data lake.
  ### Lambda
@@ -58,23 +58,23 @@ Jupyter is a notebooking environment for Python. For more information, check [he
  ### Landing Zone
 The initial ingestion point for some datasets where we need to separate the data between different departments (e.g. some Liberator data belongs to Parking and some belongs to Environmental services). Only the Data Platform team have access to the Landing Zone.
  ### Notebook
-[Wikipedia](https://en.wikipedia.org/wiki/Notebook_interface)
+[Wikipedia](https://en.wikipedia.org/wiki/Notebook_interface). We commonly use [Jupyter](#jupyter) in the Data Platform team.
  ### Objects
 Object storage, also called object-based storage, is an approach to addressing and manipulating data storage as discrete units, called objects. Objects are kept inside a single repository, and are not nested as files inside a folder inside other folders.
  ### Parquet
 Parquet is the data storage format we use to store data in the data platform. It is an efficient columnar data storage format that supports complex nested data structures in a flat columnar format. This means it offers compressed storage and faster querying.
  ### Partition
 Partitioning is the dividing of data into sections, often by date or age. It is used to enhance performance and make data easier to manage. For example, historic data from a service may be stored on the platform in a partition, and every day new data is added in it’s own partition. A user would then only need to query the partitions relevant to their work rather than the whole data set.
- ### [Playbook](https://lbhackney-it.github.io/Data-Platform-Playbook/about-playbook)
-Provides step-by-step guidance about how to use the Data Platform, along with technical documentation about how the platform has been set up and decisions we've made.
+ ### Playbook
+Our [playbook][playbook] provides step-by-step guidance about how to use the Data Platform, along with technical documentation about how the platform has been set up and decisions we've made.
  ### Productionise
 Make a resource (e.g. a job) ready for deployment in the production environment. It involves describing the resource in Terraform so it can be replicated. For jobs, it also involves writing tests that will run automatically and prevent breaking changes.  
  ### PySpark
 PySpark is an interface for Apache Spark in Python.
  ### Python
 An open-source programming language that is commonly used for data tasks such as data cleaning, transformation, analysis and machine learning.
- ### [Qlik](https://www.qlik.com/us/products/qlik-sense)
-The council’s primary Business Intelligence tool for analysing and visualising data. 
+ ### Qlik
+[Qlik][qlik] is the council’s primary Business Intelligence tool for analysing and visualising data. 
  ### Raw Zone
 The initial ingestion point for some datasets which belong to a single service. Data in the raw zone is a direct copy of the raw data in its original location (e.g. from a database, Google Sheet, API etc)
  ### Redshift
@@ -91,3 +91,11 @@ Apache Spark is an open source engine that is used to perform processing tasks q
 Data in this zone is 'gold standard' data that is well documented and can be easily shared between different services within the council. It may be anonymised or aggregated to make it suitable for wide use.
  ### Zones
 The Platform has 4 [data zones](https://lbhackney-it.github.io/Data-Platform-Playbook/zones), as data moves from the landing to the trusted zone it will:Increase the Usability, Quality of the Data to the council, by improved structure and cleaning of data. Reduce in volume as unusable data is removed.
+
+
+[data-platform-intro]: https://playbook.hackney.gov.uk/Data-Platform-Playbook/
+[query-data-using-sql]: https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/querying-and-analysing-data/querying-data-using-sql
+[athena]: https://docs.aws.amazon.com/athena/latest/ug/what-is.html
+[qlik]: https://www.qlik.com/us/products/qlik-sense
+[playbook]: https://lbhackney-it.github.io/Data-Platform-Playbook/about-playbook
+[environments]: https://lbhackney-it.github.io/Data-Platform-Playbook/environments
