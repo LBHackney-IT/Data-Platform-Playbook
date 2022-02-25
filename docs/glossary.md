@@ -69,7 +69,10 @@ Object storage, also called object-based storage, is an approach to addressing a
  ### Parquet
 Parquet is the data storage format we use to store data in the data platform. It is an efficient columnar data storage format that supports complex nested data structures in a flat columnar format. This means it offers compressed storage and faster querying.
  ### Partition
-Partitioning is the dividing of data into sections, often by date or age. It is used to enhance performance and make data easier to manage. For example, historic data from a service may be stored on the platform in a partition, and every day new data is added in it’s own partition. A user would then only need to query the partitions relevant to their work rather than the whole data set.
+Partitioning is the dividing of data into sections, often by date or age. It is used to enhance performance and make data easier to manage.
+For example, historic data from a service may be stored on the platform in a partition, and every day new data is added in it’s own partition.
+A user would then only need to query the partitions relevant to their work rather than the whole data set.
+In the Data Platform you will normally see data partitioned by `import_year`, `import_month`, `import_day` and `import_date`.
  ### Playbook
 Our [playbook][playbook] provides step-by-step guidance about how to use the Data Platform, along with technical documentation about how the platform has been set up and decisions we've made.
  ### Productionise
@@ -81,15 +84,16 @@ An open-source programming language that is commonly used for data tasks such as
  ### Qlik
 [Qlik][qlik] is the council’s primary Business Intelligence tool for analysing and visualising data. 
  ### Raw Zone
-The initial ingestion point for some datasets which belong to a single service. Data in the raw zone is a direct copy of the raw data in its original location (e.g. from a database, Google Sheet, API etc)
+The initial ingestion point for some datasets which belong to a single service. Data in the raw zone is a direct copy of the raw data in its original location (e.g. from a database, Google Sheet, API etc).
  ### Redshift
-[Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/welcome.html) is an AWS cloud-based data warehouse service which we use to publish data from the data lake into analytical tools like Qlik, Google Data Studio and Tableau
+[Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/welcome.html) is an AWS cloud-based [data warehouse](#data-warehouse) service which we use to publish data from the data lake into analytical tools like Qlik, Google Data Studio and Tableau.
  ### Refined Zone
-Data in this zone has been refined or transformed in some way to make it more suitable for analysis. For example, two tables have been merged together, data types have been recast (to convert strings into date format), unused columns dropped, etc. Data in the refined zone can be published into analytical tools like Qlik
+Data in this zone has been refined or transformed in some way to make it more suitable for analysis. For example, two tables have been merged together, data types have been recast (to convert strings into date format), unused columns dropped, etc. Data in the refined zone can be published into analytical tools like Qlik.
  ### S3
-[S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html) is short for Amazon Simple Storage Service, which provides cloud-based, scalable storage.We use S3 to store all of the data in our data lake.
+[S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html) is short for Amazon Simple Storage Service, which provides cloud-based, scalable storage.
+It is an [object](#objects) based storage and we use it to store all of the data in our data lake.
  ### Secrets Manager
-AWS Secrets Manager helps you protect secrets needed to access your applications, services, and IT resources. The service enables you to easily rotate, manage, and retrieve database credentials, API keys, and other secrets throughout their lifecycle.[ Credentials Storage/Management ](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html)
+AWS Secrets Manager helps you protect secrets needed to access your applications, services, and IT resources. The service enables you to easily rotate, manage, and retrieve database credentials, API keys, and other secrets throughout their lifecycle. [Credentials Storage/Management ](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html)
  ### Spark
 Apache Spark is an open source engine that is used to perform processing tasks quickly on large datasets. There is support for code written in Scala, Java, Python and R.
  ### Trusted Zone
