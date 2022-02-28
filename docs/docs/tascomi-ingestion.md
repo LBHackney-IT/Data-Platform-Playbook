@@ -15,7 +15,7 @@ This section describes how Tascomi Planning data gets ingested and refined in th
 
 ## Details of individual steps
 
-### 1 - Ingestion
+### Step 1 - Ingestion
 
 This [process](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi_api_ingestion.py) queries one API endpoint (e.g. the applications endpoint) and writes the data into a table of the same name. This process writes into the raw zone bucket, with the 'api_response' prefix. The data is partitioned by `import_date`.
 
@@ -27,21 +27,21 @@ This initial run imported the full Tascomi tables
 
 The subsequent runs only ingest the records updated since the last import. The process relies on the `last_updated` column that is present on all Tascomi tables.
 
-### 2 - Daily parsing of the json increments
+### Step 2 - Daily parsing of the json increments
 
 This [process](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi_parse_tables_increments.py) uses job bookmarking to only process new increments. It also uses a pushdown predicate to only load the last 5 daily prtitions (it is quicker than loading the full dataset).
 It processes all tables in a loop. For each table, the large json blob containing all the fields is exploded into separate textual columns.
 
 This process writes into the raw zone bucket, with the 'planning/tascomi/parsed' prefix. The data is partitioned by `import_date`.
 
-### 3 - Daily refinement of the parsed increments
+### Step 3 - Daily refinement of the parsed increments
 
 This [process](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi_recast_tables_increments.py) uses job bookmarking to only process new increments.
 It processes all tables in a loop. For each table, the text columns are converted into correct data types (dates, boolean etc.). It uses a [column type dictionary](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi-column-type-dictionary.json) saved in S3 in a separate json file. This dictionary was created semi-automatically with FME (an ETL tool used in the Data and Insight team), by converting the list of columns described in the [API endpoints documentation](https://hackney-planning.tascomi.com/rest/v1/documentation.html?public_key=dd95bcd473f46a4325a4021d54500c7d#available-resources).
 
 This process writes into the refined zone bucket, with the 'planning/tascomi/increment' prefix. The data is partitioned by `import_date`.
 
-### 4 - Creation of the daily snapshot
+### Step 4 - Creation of the daily snapshot
 
 This [process](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi_create_daily_snapshot.py) combines the latest snapshot and all increments created since that day, to create a new snapshot. It uses pushdown predicate and job bookmarking to only process new increments. Like the 2 previous steps, it processes all tables in a loop. If several days increments need to be applied, the process first ensures that no duplicate records are present, by only keeping the latest updated one (for instance, if a planning application has changed status 2 times, it only keeps the record with the latest status). To apply the increments to the previous snapshot, we just replace pre-existing records with the newer version, using the unique id. A new column 'snapshot_date' is created and set to the current date.
 
