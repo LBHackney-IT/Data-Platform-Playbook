@@ -1,27 +1,27 @@
 ---
-title: Ingesting data from databases into the Landing Zone
-description: "Ingesting database tables into the Data Platform landing zone using a JDBC Connection"
+title: Ingesting data from databases into the Data Platform
+description: "Ingesting database tables into the Data Platform using a JDBC Connection"
 layout: playbook_js
 tags: [playbook]
 ---
 
-This guide explains the process of ingesting data/tables from databases into the Data Platform landing zone using a AWS Glue JDBC Connection.
+This guide explains the process of ingesting data/tables from databases into the Data Platform using AWS Glue JDBC Connection.
 
 ## Prerequisites 
 
-- Check that your database is supported by AWS Glue JDBC Connection (see [AWS Glue JDBC Connection Properties][jdbc-connection-properties] section) 
+- Check that your database type is supported by AWS Glue JDBC Connection (see [AWS Glue JDBC Connection Properties][jdbc-connection-properties] section) 
 - Ensure that your database allows user login/authentication, and you have the login credentials
   - In addition to the database name and login credentials, you will also need:
     - the database host name/ endpoint
-    - the database port number and
-    - list of tables to ingest if only selecting specific tables from the target database
+    - the database port number
+    - list of tables to ingest if only selecting specific tables from the source database
   - These will be used to construct the [JDBC URL](#construct-the-jdbc-url) in a later section
 
 ## Overview
-In the following sections you will set up a connection to ingest data from your target database from the Data Platform by:
+In the following sections you will set up a connection from the Data Platform to your source database to ingest its data:
 - Adding the database credentials to Github Secrets and retrieving them in the Data Platform project
 - Constructing the JDBC URL for the respective database to create the Glue connection
-- Creating a Glue job to use this connection and read the data into the Data Platform Landing Zone S3 bucket 
+- Creating a Glue job to use this connection and read the data into the respective Data Platform S3 bucket 
 - Creating a crawler to crawl the tables in S3 and populate a predetermined Glue Catalog database to make the data available for querying in Athena and other Glue jobs
 
 ### Add the database credentials to the Data Platform project
@@ -111,11 +111,11 @@ _For more technical details on the overall process, see: [Database Ingestion doc
             e.g. `var.academy_production_database_password`
 
 ### Create a Glue job and Crawler 
-Here you will create a Glue job which will be used to pull the database tables into Landing Zone S3 bucket using the JDBC connection. 
+Here you will create a Glue job which will be used to pull the database tables into S3 using the JDBC connection. 
 You will also create a Crawler to read all the ingested tables from S3 and populate a Glue Catalog Database so that the
 data can be queried in Athena or consumed by other Glue jobs for further processing.
 
-#### Create a Glue job to ingest all database tables to Landing Zone S3 bucket
+#### Create a Glue job to ingest all database tables to S3
 
 You can prototype your script and test ingesting a few tables by referring to an [example script][TODO: Link to Github repo Glue script]
 and following [this guide][using-glue-studio].
@@ -127,7 +127,7 @@ The example script linked above will read all the tables and output them to a sp
     - `get_all_database_tables`: used to retrieve all the table names from the Glue Catalog Database
     - `update_table_ingestion_details`: used to create a dataframe containing stats, including errors, on the ingestion of each table
 
-**In addition to the variables and job parameters described [here][deploy-glue-job-and-crawler],the following need to be set:**
+**In addition to the variables and job parameters you'd normally set when [deploying a Glue job][deploy-glue-job-and-crawler], you need to set the following:**
 
 - **Input variables**:
     - **connections** (required): The list of connections used for this job, i.e. JDBC connection.
@@ -142,47 +142,57 @@ The example script linked above will read all the tables and output them to a sp
     _Note: ensure there are surrounding square brackets (`[]`) around the value provided here_
 
 - **Job parameters**:
-    - **source_catalog_database** (required): The Glue Catalog Database where your databases' table schemas are stored
+    - Note: In the following optional **job parameters**; *"--s3_ingestion_bucket_target"*, *"--s3_ingestion_details_target"*:
+        - `<ZONE>` refers to either: `raw` or `landing` S3 zones.
+      
+    - _"--source_catalog_database"_ (required): The Glue Catalog Database where your databases' table schemas are stored
         - This will be `module.<NAME_OF_CONNECTION_MODULE>[0].ingestion_database_name`.
         See step 4 in the section: [set up the glue JDBC connection](#set-up-the-glue-jdbc-connection) above for a reminder of the module name.
     
         For example:
         ```
-        [module.academy_lbhatestrbviews_database_ingestion[0].ingestion_database_name]
+        module.academy_lbhatestrbviews_database_ingestion[0].ingestion_database_name
         ``` 
       
-    - **s3_ingestion_bucket_target** (required): The S3 location where the ingested tables should be stored 
-    e.g. `"s3://${module.landing_zone.bucket_id}/academy/tables/"`
-    - **s3_ingestion_details_target** (required): The S3 location where the ingestion details should be stored. 
+    - _"--s3_ingestion_bucket_target"_ (required): The S3 location where the ingested tables should be stored. 
+      
+      For example:
+      ```
+      "--s3_ingestion_bucket_target" = "s3://${module.<ZONE>_zone.bucket_id}/<YOUR_DEPARTMENT_NAME>/<FOLDER_NAME>/"
+      ```
+
+    - _"--s3_ingestion_details_target"_ (required): The S3 location where the ingestion details should be stored. 
     
         _Note: in order for the Crawler to add your ingestion details to the Glue Catalog Database so that they can be analysed in Athena later,
-        you should set this parameter to have one additional folder level (e.g.`ingestion-details`) to what was set in **`s3_ingestion_bucket_target`**_
+        you should set this parameter to have one additional folder level (e.g.`ingestion-details`) to what was set in **`s3_ingestion_bucket_target`**_.
         
         For example:
         ```
-        "s3://${module.landing_zone.bucket_id}/academy/tables/ingestion-details/"
+        "--s3_ingestion_details_target" = "s3://${module.<ZONE>_zone.bucket_id}/<YOUR_DEPARTMENT_NAME>/<FOLDER_NAME>/ingestion-details/"
         ``` 
+      - _Note: ensure that your department name is all **lowercase** with **words separated by underscores**
+          e.g. `housing_repairs`._
 
     - **crawler_details**:
-        - **database_name** (required): Glue database where results are written.
-        
-        // TODO: new non-department specific glue job module will create a non-department catalog database
-        or create the catalog databases outside of the glue module to control the catalog db zones used?
-        e.g. `"academy_ingestion_landing_zone"`.
-    
-        The Glue job module will create a Glue Catalog Database with this name.
+      
+        - _database_name_ (required): Glue database where results are written after being crawled
+
+            ```
+            module.department_<YOUR_DEPARTMENT_NAME>.<S3_BUCKET_ZONE>_catalog_database_name
+            ```
+            - Where `<S3_BUCKET_ZONE>` can be either: `raw` or `landing`
   
-        - **s3_target_location** (required): This should be the same as **`s3_ingestion_bucket_target`** set above
-        - **configuration** (required): Set the `TableLevelConfiguration` to the number of directory levels in **`s3_ingestion_bucket_target`** plus 1.
+        - _s3_target_location_ (required): This should be the same as **`"--s3_ingestion_bucket_target"`** set above
+        - _configuration_ (required): Set the `TableLevelConfiguration` to the number of directory levels in **`"--s3_ingestion_bucket_target"`** plus 1.
         
-        For example: The value for `TableLevelConfiguration` with an **s3_ingestion_bucket_target** of `"s3://${module.landing_zone.bucket_id}/academy/tables/"` will be `4` 
+        For example: The value for `TableLevelConfiguration` with an **s3_ingestion_bucket_target** of `"s3://${module.raw_zone.bucket_id}/academy/tables/"` will be `4` 
 
         A complete example of **crawler_details** can be seen below:
 
         ```
         crawler_details = {
-            database_name      = "academy_ingestion_landing_zone"
-            s3_target_location = "s3://${module.landing_zone.bucket_id}/academy/tables/"
+            database_name      = module.department_academy.raw_zone_catalog_database_name 
+            s3_target_location = "s3://${module.raw_zone.bucket_id}/academy/tables/"
             configuration = jsonencode({
                 Version = 1.0
                 Grouping = {
