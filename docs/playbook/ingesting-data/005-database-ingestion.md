@@ -117,7 +117,7 @@ data can be queried in Athena or consumed by other Glue jobs for further process
 
 #### Create a Glue job to ingest all database tables to S3
 
-You can prototype your script and test ingesting a few tables by referring to an [example script][TODO: Link to Github repo Glue script]
+You can prototype your script and test ingesting a few tables by referring to an [example script][example-script]
 and following [this guide][using-glue-studio].
 Refer to [this guide][deploy-glue-job-and-crawler] when you are ready to deploy your Glue job along with a Crawler
 which will read all the tables from S3 into a Glue Catalog Database where the tables can be queried.
@@ -227,8 +227,6 @@ module "academy_lbhatestrbviews_database_ingestion" {
 }
 ```
 
-TODO: Add example Glue job module to example module block above
-
 [jdbc-connection-properties]: https://docs.aws.amazon.com/glue/latest/dg/connection-defining.html
 [database-ingestion]: ../../spikes/mssql-ingestion.md
 [committing-changes]: ../getting-set-up/using-github#committing-your-changes-to-the-data-platform-project
@@ -237,3 +235,4 @@ TODO: Add example Glue job module to example module block above
 [project-module-example]: https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/29-mssql-ingestion.tf
 [using-glue-studio]: ../transforming-data/using-aws-glue/001-using-glue-studio.md
 [deploy-glue-job-and-crawler]: ../transforming-data/using-aws-glue/002-deploy-glue-jobs.md
+[example-script]: https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/ingest_database_tables_via_jdbc_connection.py
