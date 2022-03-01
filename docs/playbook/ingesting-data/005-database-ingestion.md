@@ -10,11 +10,12 @@ This guide explains the process of ingesting data/tables from databases into the
 ## Prerequisites 
 
 - Check that your database type is supported by AWS Glue JDBC Connection (see [AWS Glue JDBC Connection Properties][jdbc-connection-properties] section) 
-- Ensure that your database allows user login/authentication, and you have the login credentials
-  - In addition to the database name and login credentials, you will also need:
+- Ensure that your database allows user login/authentication, and you have a database user with login credentials
+  - If you would like to restrict access to only a selection of tables in your database, then ensure the database's user permissions are updated to reflect this
+  - In addition to the database name and user login credentials, you will also need:
+    - the type of database you want to connect to e.g. `mssql`
     - the database host name/ endpoint
     - the database port number
-    - list of tables to ingest if only selecting specific tables from the source database
   - These will be used to construct the [JDBC URL](#construct-the-jdbc-url) in a later section
 
 ## Overview
@@ -25,22 +26,33 @@ In the following sections you will set up a connection from the Data Platform to
 - Creating a crawler to crawl the tables in S3 and populate a predetermined Glue Catalog database to make the data available for querying in Athena and other Glue jobs
 
 ### Add the database credentials to the Data Platform project
-The database credentials are retrieved from Github Secrets via the project build pipeline.
-These are used to allow the Data Platform to authenticate against the target database. 
+The database credentials are retrieved from AWS Secrets Manager.
+The credentials are used to allow the Data Platform to authenticate against the source database.
 
-- Contact a member of the Data Platform team to add the database credentials to Github Secrets and update the build pipeline to retrieve these secrets in the project
-    - You will be advised of the variables names for the database username and password which you will need to complete 
-      the section below to [set up the glue JDBC connection](#set-up-the-glue-jdbc-connection)
+- Contact a member of the Data Platform team to add the database credentials to Secrets Manager.
+   - You will need to request that the following key-value pairs be added:
+        - `database_name` = `"Name of your database"`
+        - `username` = `"Your database user username"`
+        - `password` = `"Your database user password"`
+    
 
+- Once the credentials have been added, you will be given a secret name which will be used to reference your stored credentials.
+Make a note of this as it will be needed in the [Set up the Glue JDBC Connection section](#set-up-the-glue-jdbc-connection) below.
+    
 ### Construct the JDBC URL
 
 Generally JDBC URLs for different types of databases are quite similar.
-However, some differ slightly. 
-Refer to [AWS Glue JDBC Connection Properties][jdbc-connection-properties] for examples on how to construct your JDBC URL.
+However, some differ slightly. You will be using the following to construct the JDBC URL:
+- Database type
+- Database name
+- Database host/ endpoint e.g. `127.0.0.1`
+- Database port number e.g. `1433`
+
+Refer to [AWS Glue JDBC Connection Properties][jdbc-connection-properties] for examples and guidance on how to construct your JDBC URL.
 
 ### Set up the Glue JDBC Connection 
 
-Here you will configure a module which will set up the connection to the database, as well as a crawler to crawl the target database which will retrieve the 
+Here you will configure a module which will set up the connection to the database, as well as a crawler to crawl the source database which will retrieve the 
 metadata and schemas of the database tables to populate in a Glue Catalog database.
 
 _For more technical details on the overall process, see: [Database Ingestion documentation][database-ingestion]_
@@ -87,7 +99,7 @@ _For more technical details on the overall process, see: [Database Ingestion doc
 
         For example: 
         ```
-        "jdbc:sqlserver://10.120.23.22:1433;databaseName=LBHATestRBViews"
+        jdbc_connection_url = "jdbc:sqlserver://10.120.23.22:1433;databaseName=LBHATestRBViews"
         ```
 
     - **jdbc_connection_description** (required): A description of the connection i.e. The type of connection and database that is used for data ingestion.
@@ -104,13 +116,21 @@ _For more technical details on the overall process, see: [Database Ingestion doc
 
     - **identifier_prefix** (required): Set this to `local.short_identifier_prefix`.
   
-     **The following variables for the database credentials will be shared with you:**
-        - **database_username** (required): Database username 
-            e.g. `var.academy_production_database_username`
-        - **database_password** (required): Database user password 
-            e.g. `var.academy_production_database_password`
+    - **database_secret_name** (required): Name of the secret in AWS Secrets Manager where your database credentials are being stored. 
+      This will be shared with you by a member of the Data Platform team. 
+        For example:
+        ```
+        database_secret_name = "academy-database-credentials"
+        ```
+  
+
+6. Commit your changes and create a Pull Request for review by the Data Platform team before moving onto the next step
+    - See [Committing changes][committing-changes] section of the **Using Github** guide.
+    The Data Platform team needs to approve any changes to the code that you make, so your change won't happen automatically.
 
 ### Create a Glue job and Crawler 
+Once your Pull Request for setting up the JDBC Connection has been approved and deployed, you can continue with this section.
+
 Here you will create a Glue job which will be used to pull the database tables into S3 using the JDBC connection. 
 You will also create a Crawler to read all the ingested tables from S3 and populate a Glue Catalog Database so that the
 data can be queried in Athena or consumed by other Glue jobs for further processing.
@@ -213,15 +233,13 @@ module "academy_lbhatestrbviews_database_ingestion" {
     count = local.is_live_environment ? 1 : 0
     tags  = module.tags.values
 
-    source = "../modules/database-ingestion"
+    source = "../modules/database-ingestion-via-jdbc-connection"
 
     jdbc_connection_url         = "jdbc:sqlserver://10.120.23.22:1433;databaseName=LBHATestRBViews"
     jdbc_connection_description = "JDBC connection to Academy Production Insights LBHATestRBViews database"
     jdbc_connection_subnet_id   = local.subnet_ids_list[local.subnet_ids_random_index]
     database_availability_zone  = "eu-west-2a"
-    database_name               = "LBHATestRBViews"
-    database_password           = var.academy_production_database_password
-    database_username           = var.academy_production_database_username
+    database_secret_name        = "academy-database-credentials"
     identifier_prefix           = local.short_identifier_prefix
     vpc_id                      = data.aws_vpc.network.id
 }
