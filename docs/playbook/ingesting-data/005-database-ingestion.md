@@ -92,6 +92,8 @@ _For more technical details on the overall process, see: [Database Ingestion doc
 
     - **source** (required): This will be `"../modules/database-ingestion"`. It is the path to where the Glue job module is saved within the repository.
         - _**Note**: If you've copied an existing module block from your department folder then you won’t need to change the **source** variable_.
+    
+    - **jdbc_connection_name** (required): Name of the dataset that will be ingested. e.g. `Council Tax`
 
     - **jdbc_connection_url** (required): This will be `jdbc:protocol://host:port/db_name`.
         - The format differs slightly depending on the database, 
@@ -235,6 +237,7 @@ module "academy_lbhatestrbviews_database_ingestion" {
 
     source = "../modules/database-ingestion-via-jdbc-connection"
 
+    jdbc_connection_name        = "Council Tax"
     jdbc_connection_url         = "jdbc:sqlserver://10.120.23.22:1433;databaseName=LBHATestRBViews"
     jdbc_connection_description = "JDBC connection to Academy Production Insights LBHATestRBViews database"
     jdbc_connection_subnet_id   = local.subnet_ids_list[local.subnet_ids_random_index]
