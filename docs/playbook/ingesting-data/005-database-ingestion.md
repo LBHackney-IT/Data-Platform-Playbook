@@ -179,6 +179,12 @@ In addition to the variables and job parameters you'd normally set when [deployi
   
     _Note: ensure there are surrounding square brackets (`[]`) around the value provided here_
 
+    - **schedule** (Optional): 
+      If you don't populate this variable then the Glue job and Crawler will run once on creation and after that you will be able to run the job manually 
+      in the AWS Console but, it won't run on a schedule. 
+      
+    If you want it to run on a schedule then please refer to the **"Variables used for scheduling a Glue job"** section of [this article][scheduling-glue-jobs] for an explanation on how to set the variables to do so.
+      
 - **Job parameters**:
   
     - Note: For the following optional **job parameters**; *"--s3_ingestion_bucket_target"* and *"--s3_ingestion_details_target"*:
@@ -213,7 +219,7 @@ In addition to the variables and job parameters you'd normally set when [deployi
         ``` 
       - _Note: ensure that your department name is all **lowercase** with **words separated by underscores**
           e.g. `housing_repairs`._
-
+        
     - **crawler_details**:
       
         - _database_name_ (required): Glue database where results are written after being crawled
@@ -247,10 +253,11 @@ In addition to the variables and job parameters you'd normally set when [deployi
 You can now submit your changes for review by the Data Platform team.
 - See [Committing changes][committing-changes] section of the **Using Github** guide.
   The Data Platform team needs to approve any changes to the code that you make, so your change won't happen automatically.
+  Once your changes have been approved and deployed, the job will run at the next scheduled time (if scheduled).
 
 ### Running the ingestion manually
 
-Once you have been notified that your Pull Request has been merged, you can run the ingestion manually from the AWS Console or wait until the scheduled time (if you set one).
+Once you have been notified that your Pull Request has been merged, you can run the ingestion manually from the AWS Console or wait until the scheduled time (if you've set one).
 
 ### Example module block
 ```
@@ -280,3 +287,4 @@ module "academy_lbhatestrbviews_database_ingestion" {
 [using-glue-studio]: ../transforming-data/using-aws-glue/001-using-glue-studio.md
 [deploy-glue-job-and-crawler]: ../transforming-data/using-aws-glue/002-deploy-glue-jobs.md
 [example-script]: https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/ingest_database_tables_via_jdbc_connection.py
+[scheduling-glue-jobs]: ../transforming-data/using-aws-glue/002-deploy-glue-jobs.md#variables-used-for-scheduling-a-glue-job
