@@ -1,6 +1,6 @@
 ---
 title: Ingesting Dynamo DB tables into the Landing Zone
-description: "Ingesting tables from a Dynamo DB instance in an Hakcney AWS account that is attached to the hub into the Data Platform landing zone"
+description: "Ingesting tables from a Dynamo DB instance into the Data Platform landing zone"
 layout: playbook_js
 tags: [playbook]
 ---
@@ -8,7 +8,6 @@ tags: [playbook]
 ## Objective
 
 To setup a job that will ingest specified tables from a Dynamo DB instance.
-The Dynamo DB instance must be in an AWS account that is linked to the Hackney Hub.
 
 ## Intended audience
 
