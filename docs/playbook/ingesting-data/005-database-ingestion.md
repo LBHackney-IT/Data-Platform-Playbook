@@ -72,8 +72,8 @@ _For more technical details on the overall process, see: [Database Ingestion doc
 
     - _Refer to the [example](#example-module-block) below to get started._
 
-1. Click `edit` or the **pencil icon** (:pencil2:) then copy the last two module blocks and paste it at the bottom of the file.
-   The module blocks will have `source = "../modules/database-ingestion"` and `source = "../aws-glue-job"` respectively.
+1. Click `edit` or the **pencil icon** (:pencil2:) then copy the module block with the line: `source = "../modules/database-ingestion-via-jdbc-connection"` inside it and paste it at the bottom of the file.
+   
    An example of what a module block looks like can be seen [here][project-module-example].
 
 1. Update the `module` name using the following name convention: 
@@ -92,33 +92,37 @@ _For more technical details on the overall process, see: [Database Ingestion doc
 
 - #### The following input variables are required:
 
-    - **source** (required): This will be `"../modules/database-ingestion"`. It is the path to where the Glue job module is saved within the repository.
-        - _**Note**: If you've copied an existing module block from your department folder then you won’t need to change the **source** variable_.
+    - **source** (required): This will be `"../modules/database-ingestion-via-jdbc-connection"`. It is the path to where the database ingestion module is saved within the repository
+        - _**Note**: If you've copied an existing module block from your department folder then you won’t need to change the **source** variable_
     
     - **jdbc_connection_name** (required): Name of the dataset that will be ingested. e.g. `Council Tax`
 
-    - **jdbc_connection_url** (required): This will be `jdbc:protocol://host:port/db_name`.
+    - **jdbc_connection_url** (required): This will be `jdbc:protocol://host:port/db_name`
         - The format differs slightly depending on the database, 
-        refer to [AWS Glue JDBC Connection Properties][jdbc-connection-properties] for guidance on how to construct your JDBC URL. 
+        refer to [AWS Glue JDBC Connection Properties][jdbc-connection-properties] for guidance on how to construct your JDBC URL 
 
-        For example: 
+        For example, a SQL Server database's JDBC Url will look like this: 
         ```
         jdbc_connection_url = "jdbc:sqlserver://10.120.23.22:1433;databaseName=LBHATestRBViews"
         ```
 
-    - **jdbc_connection_description** (required): A description of the connection i.e. The type of connection and database that is used for data ingestion.
+    - **jdbc_connection_description** (required): A description of the connection i.e. The type of connection, database and dataset that will be ingested
+    For example:
+      ```
+      "JDBC connection to Academy Production Insights LBHATestRBViews database to ingest Council Tax data"
+      ```
 
     - **jdbc_connection_subnet_id** (required): The subnet to deploy the connection to.
-    Set this to `local.subnet_ids_list[local.subnet_ids_random_index]`.
+    Set this to `local.subnet_ids_list[local.subnet_ids_random_index]`
 
     - **database_availability_zone** (required): The availability zone to deploy the connection to.
-    Set this to `"eu-west-2a"`.
+    Set this to `"eu-west-2a"`
     
-    - **database_name** (required): The name of the database you would like to connect to e.g. `"LBHATestRBViews"`. 
+    - **database_name** (required): The name of the database you would like to connect to e.g. `"LBHATestRBViews"`
 
-    - **vpc_id** (required): Set this to `data.aws_vpc.network.id`.
+    - **vpc_id** (required): Set this to `data.aws_vpc.network.id`
 
-    - **identifier_prefix** (required): Set this to `local.short_identifier_prefix`.
+    - **identifier_prefix** (required): Set this to `local.short_identifier_prefix`
   
     - **database_secret_name** (required): Name of the secret in AWS Secrets Manager where your database credentials are being stored. 
       This will be shared with you by a member of the Data Platform team. 
