@@ -32,7 +32,7 @@ The database credentials are retrieved from AWS Secrets Manager.
 The credentials are used to allow the Data Platform to authenticate against the source database.
 
 - Contact a member of the Data Platform team to add the database credentials to Secrets Manager.
-    - You will need to request that a **secret** is created following the naming convention below: 
+    - You will need to request that a **secret** (with an appropriate description) is created following the naming convention below: 
       ```
       database-credentials/DATABASE_NAME-DATASET_NAME
       ``` 
