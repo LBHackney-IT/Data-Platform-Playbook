@@ -49,6 +49,8 @@ Make a note of this as it will be needed in the [Set up the Glue JDBC Connection
     
 ### Construct the JDBC URL
 
+In this section, you will create the JDBC URL which will be used in the section below.
+
 Generally JDBC URLs for different types of databases are quite similar.
 However, some differ slightly. You will be using the following to construct the JDBC URL:
 - Database type
@@ -76,7 +78,7 @@ _For more technical details on the overall process, see: [Database Ingestion doc
     29-<YOUR-DEPARTMENT-NAME>-database-ingestion.tf
     ```
 
-    - _Refer to the [example](#example-module-block) below to get started._
+    - _Refer to this [example](#example-module-block) to get started._
 
 1. Click `edit` or the **pencil icon** (:pencil2:) then copy the module block with the line: `source = "../modules/database-ingestion-via-jdbc-connection"` inside it and paste it at the bottom of the file.
    
@@ -124,21 +126,20 @@ _For more technical details on the overall process, see: [Database Ingestion doc
     - **database_availability_zone** (required): The availability zone to deploy the connection to.
     Set this to `"eu-west-2a"`
     
-    - **database_name** (required): The name of the database you would like to connect to e.g. `"LBHATestRBViews"`
-
     - **vpc_id** (required): Set this to `data.aws_vpc.network.id`
 
     - **identifier_prefix** (required): Set this to `local.short_identifier_prefix`
   
     - **database_secret_name** (required): Name of the secret in AWS Secrets Manager where your database credentials are being stored. 
-      This will be shared with you by a member of the Data Platform team. 
+      This would have been shared with you by a member of the Data Platform team. 
         For example:
         ```
         database_secret_name = "academy-database-credentials"
         ```
   
 
-6. Commit your changes and create a Pull Request for review by the Data Platform team before moving onto the next step
+6. Commit your changes and create a Pull Request for review by the Data Platform team. 
+   You should wait for it to be aprroved and deployed before moving onto the next step.
     - See [Committing changes][committing-changes] section of the **Using Github** guide.
     The Data Platform team needs to approve any changes to the code that you make, so your change won't happen automatically.
 
