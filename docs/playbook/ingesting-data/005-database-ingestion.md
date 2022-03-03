@@ -19,11 +19,12 @@ This guide explains the process of ingesting data/tables from databases into the
   - These will be used to construct the [JDBC URL](#construct-the-jdbc-url) in a later section
 
 ## Overview
-In the following sections you will set up a connection from the Data Platform to your source database to ingest its data:
-- Adding the database credentials to Github Secrets and retrieving them in the Data Platform project
+In the following sections you will set up a connection from the Data Platform to your source database to ingest its data, which will involve:
+- Adding the database credentials to AWS Secrets Manager and retrieving them in the Data Platform project
 - Constructing the JDBC URL for the respective database to create the Glue connection
-- Creating a Glue job to use this connection and read the data into the respective Data Platform S3 bucket 
-- Creating a crawler to crawl the tables in S3 and populate a predetermined Glue Catalog database to make the data available for querying in Athena and other Glue jobs
+- Creating a Crawler and Glue Catalog database to crawl your source database and populate the Glue Catalog database with its tables' schema and metadata
+- Creating a Glue job to use this connection, reading the data from the source database, along with reading the table schema from the Glue Catalog database and writing it out to an S3 bucket 
+- Creating a Crawler to crawl the tables in S3 and populate a predetermined Glue Catalog database, making the data available for querying in Athena and other Glue jobs
 
 ### Add the database credentials to the Data Platform project
 The database credentials are retrieved from AWS Secrets Manager.
