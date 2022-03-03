@@ -139,27 +139,30 @@ _For more technical details on the overall process, see: [Database Ingestion doc
 ### Create a Glue job and Crawler 
 Once your Pull Request for setting up the JDBC Connection has been approved and deployed, you can continue with this section.
 
-Here you will create a Glue job which will be used to pull the database tables into S3 using the JDBC connection. 
+Here you will create a Glue job which will use the JDBC connection you've just created to pull the database tables into S3. 
 You will also create a Crawler to read all the ingested tables from S3 and populate a Glue Catalog Database so that the
 data can be queried in Athena or consumed by other Glue jobs for further processing.
 
 #### Create a Glue job to ingest all database tables to S3
 
 You can prototype your script and test ingesting a few tables by referring to an [example script][example-script]
-and following [this guide][using-glue-studio].
-Refer to [this guide][deploy-glue-job-and-crawler] when you are ready to deploy your Glue job along with a Crawler
+and following the [Using Glue Studio][using-glue-studio] guide.
+Refer to the [Deploying Glue jobs to the Data Platform][deploy-glue-job-and-crawler] guide when you are ready to deploy your Glue job along with a Crawler
 which will read all the tables from S3 into a Glue Catalog Database where the tables can be queried.
 
 The example script linked above will read all the tables and output them to a specified S3 location.
 - It uses two helper functions which are imported from `helpers.py`, these are: 
-    - `get_all_database_tables`: used to retrieve all the table names from the Glue Catalog Database
-    - `update_table_ingestion_details`: used to create a dataframe containing stats, including errors, on the ingestion of each table
+    - `get_all_database_tables`: used to retrieve all the table names from the specified Glue Catalog Database
+    - `update_table_ingestion_details`: used to create a dataframe containing stats, including errors, on the ingestion process for each table
 
-**In addition to the variables and job parameters you'd normally set when [deploying a Glue job][deploy-glue-job-and-crawler], you need to set the following:**
+**Set the input variables for the Glue job and Crawler using the [Glue job module][deploy-glue-job-and-crawler]**
+
+In addition to the variables and job parameters you'd normally set when [deploying a Glue job][deploy-glue-job-and-crawler], you need to set the following:
 
 - **Input variables**:
     - **connections** (required): The list of connections used for this job, i.e. JDBC connection.
-    This will be `[module.<NAME_OF_CONNECTION_MODULE>[0].jdbc_connection_name]`
+    This will be `[module.<NAME_OF_CONNECTION_MODULE>[0].jdbc_connection_name]`.
+    See step 4 in the section: [set up the glue JDBC connection](#set-up-the-glue-jdbc-connection) above for a reminder of the module name.
     
     For example: 
       
@@ -170,33 +173,34 @@ The example script linked above will read all the tables and output them to a sp
     _Note: ensure there are surrounding square brackets (`[]`) around the value provided here_
 
 - **Job parameters**:
-    - Note: In the following optional **job parameters**; *"--s3_ingestion_bucket_target"*, *"--s3_ingestion_details_target"*:
-        - `<ZONE>` refers to either: `raw` or `landing` S3 zones.
+    - Note: In the following optional **job parameters**; *"--s3_ingestion_bucket_target"* and *"--s3_ingestion_details_target"*:
+        - `<ZONE>` refers to either: `raw` or `landing` S3 zones
       
     - _"--source_catalog_database"_ (required): The Glue Catalog Database where your databases' table schemas are stored
         - This will be `module.<NAME_OF_CONNECTION_MODULE>[0].ingestion_database_name`.
-        See step 4 in the section: [set up the glue JDBC connection](#set-up-the-glue-jdbc-connection) above for a reminder of the module name.
     
         For example:
         ```
         module.academy_lbhatestrbviews_database_ingestion[0].ingestion_database_name
         ``` 
       
-    - _"--s3_ingestion_bucket_target"_ (required): The S3 location where the ingested tables should be stored. 
+    - _"--s3_ingestion_bucket_target"_ (required): The S3 location where the ingested tables should be stored
       
       For example:
       ```
-      "--s3_ingestion_bucket_target" = "s3://${module.<ZONE>_zone.bucket_id}/<YOUR_DEPARTMENT_NAME>/<FOLDER_NAME>/"
+      "--s3_ingestion_bucket_target" = "s3://${module.<ZONE>_zone.bucket_id}/<YOUR-DEPARTMENT-NAME>/<FOLDER-NAME>/"
       ```
+        - _Note: ensure that your department name and folder name is all **lowercase** with **words separated by hyphens**
+          e.g. `housing-repairs`._
 
-    - _"--s3_ingestion_details_target"_ (required): The S3 location where the ingestion details should be stored. 
+    - _"--s3_ingestion_details_target"_ (required): The S3 location where the ingestion details should be stored 
     
         _Note: in order for the Crawler to add your ingestion details to the Glue Catalog Database so that they can be analysed in Athena later,
         you should set this parameter to have one additional folder level (e.g.`ingestion-details`) to what was set in **`s3_ingestion_bucket_target`**_.
         
         For example:
         ```
-        "--s3_ingestion_details_target" = "s3://${module.<ZONE>_zone.bucket_id}/<YOUR_DEPARTMENT_NAME>/<FOLDER_NAME>/ingestion-details/"
+        "--s3_ingestion_details_target" = "s3://${module.<ZONE>_zone.bucket_id}/<YOUR-DEPARTMENT-NAME>/<FOLDER-NAME>/ingestion-details/"
         ``` 
       - _Note: ensure that your department name is all **lowercase** with **words separated by underscores**
           e.g. `housing_repairs`._
@@ -211,9 +215,9 @@ The example script linked above will read all the tables and output them to a sp
             - Where `<S3_BUCKET_ZONE>` can be either: `raw` or `landing`
   
         - _s3_target_location_ (required): This should be the same as **`"--s3_ingestion_bucket_target"`** set above
-        - _configuration_ (required): Set the `TableLevelConfiguration` to the number of directory levels in **`"--s3_ingestion_bucket_target"`** plus 1.
+        - _configuration_ (required): Set the `TableLevelConfiguration` to the number of directory levels in **`"--s3_ingestion_bucket_target"`**
         
-        For example: The value for `TableLevelConfiguration` with an **s3_ingestion_bucket_target** of `"s3://${module.raw_zone.bucket_id}/academy/tables/"` will be `4` 
+        For example: The value for `TableLevelConfiguration` with an **s3_ingestion_bucket_target** of `"s3://${module.raw_zone.bucket_id}/academy/tables/"` will be `3` 
 
         A complete example of **crawler_details** can be seen below:
 
@@ -224,7 +228,7 @@ The example script linked above will read all the tables and output them to a sp
             configuration = jsonencode({
                 Version = 1.0
                 Grouping = {
-                    TableLevelConfiguration = 4
+                    TableLevelConfiguration = 3
                 }
             })
         }
