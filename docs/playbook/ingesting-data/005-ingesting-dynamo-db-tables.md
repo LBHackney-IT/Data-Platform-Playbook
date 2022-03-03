@@ -147,10 +147,10 @@ You will need to changes the following values
    The following parameters are inside the `crawler_details`.
    - `s3_target_location` and `--s3_target` - This will specify the location in S3 bucket that the data is written to.
    The glue job will create a folder for each table that it is ingesting so you just need to give the prefixes for these tables to live in.
-   For example if you are writing to the landing this could be, `s3://${module.landing_zone.bucket_id}/mtfh/`, if the tables were coming from modern tools for housing.
+   For example if you are writing to the landing zone this could be, `s3://${module.landing_zone.bucket_id}/mtfh/`, if the tables were coming from modern tools for housing.
    Or if you are writing to a departmental folder in the raw zone this could be, `s3://${module.raw_zone.bucket_id}/department_name/mtfh/`
-   - `table_prefix` (Optional) - This is an optional variable that allows you to add a prefix to the table names that are created in the glue catalog.
-  For example, if you are ingesting a table with name "houses" and you set a prefix of "hackney\_borough\_" then the resulting table name in the glue catalog will be "hackney\_borough\_houses".
+   - `table_prefix` (Optional) - This is an optional variable that allows you to add a prefix to the table names that are created in the Glue catalog.
+  For example, if you are ingesting a table with name "houses" and you set a prefix of "hackney\_borough\_" then the resulting table name in the Glue catalog will be "hackney\_borough\_houses".
    - `TableLevelConfiguration` - This will be dependent on your `s3_target_location`. It is the level at which tables are created in glue, from the S3 path.
   Counting from the bucket name to the table name, so for the S3 paths `s3://${module.landing_zone.bucket_id}/mtfh/` and `s3://${module.raw_zone.bucket_id}/department_name/mtfh/` the table levels would be 3 and 4 respectively.
 
