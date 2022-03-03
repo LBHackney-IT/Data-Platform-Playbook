@@ -72,12 +72,13 @@ Complete this step in both pre-production & production AWS accounts.
 1. Login to AWS via [Hackney's SSO][hackney_sso].
 1. Navigate to [SSM parameter store][aws_console_ssm] in the AWS console.
 1. Click "Create parameter".
-1. Set the name of the parameter to be something like `/where-the-data-is-coming-from/prod/role-arn-to-access-dynamodb-tables`.
+1. Set the name of the parameter to be something like `/where-the-data-is-coming-from/prod/role-arn-to-access-dynamodb-tables`. 
+Changing the first section to be the name of the data source, the second section to be the environment the Dynamo DB instance is in, then leaving the third section as is.
 1. Keep note of the parameter name, as you will need it in the next section, and click "Create parameter".
 
 ## Setting up the AWS Glue job
 
-1. Open the [Data Platform Project][data_platform_github]. If you don't have the correct permissions, you'll get a '404' error (see [prerequisites](#prerequisites)).
+1. Open the [Data Platform Project][data_platform_github]. If you don't have the correct permissions, you'll get a '404' error (see [getting set up][getting_set_up]).
 2. Navigate to the main `terraform` directory and add a new file named after the dataset you are ingesting, for example `30-mtfh-tables-ingestion.tf`. Click on "Add file" then "Create new file" to do this.
 3. Load the role ARN saved in the [previous section](#saving-the-role-arn-in-the-data-platform-accounts) in to terraform.
   - Copy this example code block into the file.
