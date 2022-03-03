@@ -16,16 +16,14 @@ To setup a job that will ingest specified tables from a Dynamo DB instance.
 
 ## Prerequisites
 
-- You have a Github account - you can [create one][github_signup] yourself using your Hackney email
-- You have been added to the 'LBHackney-IT' team - you can request this from Rashmi Shetty
+- Ensure you have completed the pre-requisites in our [getting set up guide][getting_set_up].
 - You have an engineer in the account where the Dynamo DB instance is who can create an IAM role for you in that account.
 
-
-## Creating a role in the account where the Dynamo DB instance is
+## Creating a role in the account where the Dynamo DB instance is located
 
 You will need someone who has access to the account where the Dynamo DB tables live to help with this.
 They will need to create two roles, for both our pre-production and production AWS accounts.
-The roles will both need to have a trust policy that looks like this. One will hold the pre-production account number and one the production account number.
+The roles will both need to have a trust policy that looks like this. One will hold the pre-production account number and the other one, the production account number.
 ```
 {
     "Version": "2012-10-17",
@@ -41,7 +39,7 @@ The roles will both need to have a trust policy that looks like this. One will h
 }
 ```
 Both roles should have the following policy attached to the role.
-Where ` -- TABLE ARNs HERE -- ` can be replaces by a list of ARNs for the tables that you want to ingest. 
+Where ` -- TABLE ARNs HERE -- ` can be replaced by a list of ARNs for the tables that you want to ingest. 
 ```
 {
   "Version": "2012-10-17"
@@ -71,54 +69,30 @@ You will need the role ARN's of both roles, once they have been created, for the
 
 Complete this step in both pre-production & production AWS accounts.
 
-1. Login to AWS via [Hackneys SSO][hackney_sso].
+1. Login to AWS via [Hackney's SSO][hackney_sso].
 1. Navigate to [SSM parameter store][aws_console_ssm] in the AWS console.
 1. Click "Create parameter".
-1. Set the name of the parmeter to be something like `/where-the-data-is-coming-from/prod/role-arn-to-access-dynamodb-tables`.
+1. Set the name of the parameter to be something like `/where-the-data-is-coming-from/prod/role-arn-to-access-dynamodb-tables`.
 1. Keep note of the parameter name, as you will need it in the next section, and click "Create parameter".
 
 ## Setting up the AWS Glue job
 
-1. Open the [Data Platform Project](https://github.com/LBHackney-IT/data-platform). If you don't have the correct permissions, you'll get a '404' error (see [prerequisites](#prerequisites)).
+1. Open the [Data Platform Project][data_platform_github]. If you don't have the correct permissions, you'll get a '404' error (see [prerequisites](#prerequisites)).
 2. Navigate to the main `terraform` directory and add a new file named after the dataset you are ingesting, for example `30-mtfh-tables-ingestion.tf`. Click on "Add file" then "Create new file" to do this.
 3. Load the role ARN saved in the [previous section](#saving-the-role-arn-in-the-data-platform-accounts) in to terraform.
   - Copy this example code block into the file.
+    ```tf
+    data "aws_ssm_parameter" "role_arn_to_access_housing_tables" {
+      name = "/where-the-data-is-coming-from/prod/role-arn-to-access-dynamodb-table"
+    }
+    ```
   - Rename `role_arn_to_access_housing_tables` to be relevent to the kind of tables you are ingesting.
   - Change the name `/where-the-data-is-coming-from/prod/role-arn-to-access-dynamodb-table` to be the name of the parameter you created in the previous section.
 
-  ```tf
-  data "aws_ssm_parameter" "role_arn_to_access_housing_tables" {
-    name = "/where-the-data-is-coming-from/prod/role-arn-to-access-dynamodb-table"
-  }
-  ```
+
 
 4. Create the glue job & crawler.
 Copy the example terraform module below into the file.
-This is example terraform to create a glue job in the Data Platform account.
-You will then need to changes the following values
-   - The module name - Declared at the top, in the example it is set to "ingest_dataset_tables. You should rename this to reflect the entire collection of data that is being ingested this job.
-   - `job_name` - Name of your job with `${local.short_identifier_prefix}` prefixed in front of it like the example.
-   - `job_description` (Optional) - An optional description for what this job is doing.
-   - `database_name` - The name of the glue catalogue database where the tables will be writted to in the data platform. 
-   If you want to create the tables in the landing zone database, this will be `aws_glue_catalog_database.landing_zone_catalog_database.name`.
-   If you want to create the tables in a departments raw zone database, this will be `module.department_DEPARTMENT_NAME.raw_zone_catalog_database_name`.
-   - `--table_names` - A comma delimited list of table names to ingest from Dynamo DB.
-   - `--role_arn` - This should be the value of the data object created in the step above, for the example given it would be `data.aws_ssm_parameter.role_arn_access_housing_tables.value`. 
-   This signifies to terraform to go and get the value of this parameter, in which you have saved the ARN of the role created in the initial step. 
-   So eventually this will result to that role ARN, but it allows you tos configure a different role ARN for each environment.
-   - `--number_of_workers` and `number_of_workers_for_glue_job` - Both of these values should be set to the same value. More workers will mean more paralellisation and so if there is a large amount of data you might want to increase this, but if there is a small amount of data it will be expensive to have this too high as it won't utilise all of the workers.
-   As a guide, we have a table that has around 90000 rows in it and we're using 12 workers, please speak to an engineer if you are unsure. 
-
-   The following parameters are inside the `crawler_details`.
-   - `s3_target_location` and `--s3_target` - This will specify the location in S3 bucket that the data is written to.
-   The glue job will create a folder for each table that it is ingesting so you just need to give the prefixes for these tables to live in.
-   For example if you are writing to the landing this could be, `s3://${module.landing_zone.bucket_id}/mtfh/`, if the tables were coming from modern tools for housing.
-   Or if you are writing to a departmental folder in the raw zone this could be, `s3://${module.raw_zone.bucket_id}/department_name/mtfh/` 
-   - `table_prefix` (Optional) - This is an optional variable that allows you to add a prefix to the table names that are created in the glue catalog.
-  For example, if you are ingesting a table with name "houses" and you set a prefix of "hackney_borough_" then the resulting table name in the glue catalog will be "hackney_borough_houses".
-   - `TableLevelConfiguration` - This will be dependent on your `s3_target_location`. It is the level at which tables are created in glue, from the S3 path.
-  Counting from the bucket name to the table name, so for the S3 paths `s3://${module.landing_zone.bucket_id}/mtfh/` and `s3://${module.raw_zone.bucket_id}/department_name/mtfh/` the table levels would be 3 and 4 respectively.
-
   ```tf
   module "ingest_dataset_tables" {
     source        = "../modules/aws-glue-job"
@@ -154,6 +128,31 @@ You will then need to changes the following values
     }
   }
   ```
+This is example terraform to create a glue job in the Data Platform account.
+You will need to changes the following values
+   - The module name - Declared at the top, in the example it is set to "ingest_dataset_tables". You should rename this to reflect the entire collection of data that is being ingested by this job.
+   - `job_name` - Name of your job with `${local.short_identifier_prefix}` prefixed in front of it like the example.
+   - `job_description` (Optional) - An optional description for what this job is doing.
+   - `database_name` - The name of the glue catalogue database where the tables will be written to in the data platform.
+   If you want to create the tables in the landing zone database, this will be `aws_glue_catalog_database.landing_zone_catalog_database.name`.
+   If you want to create the tables in a departments raw zone database, this will be `module.department_DEPARTMENT_NAME.raw_zone_catalog_database_name`.
+   - `--table_names` - A comma delimited list of table names to ingest from Dynamo DB.
+   - `--role_arn` - This should be the value of the data object created in the step above, for the example given it would be `data.aws_ssm_parameter.role_arn_access_housing_tables.value`.
+   This signifies to terraform to go and get the value of this parameter, in which you have saved the ARN of the role created in the initial step.
+   Using the data object instead to writing the actual role ARN here allows you to configure a different role ARN for each environment.
+   - `--number_of_workers` and `number_of_workers_for_glue_job` - Both of these values should be set to the same value. More workers will mean more paralellisation and so if there is a large amount of data you might want to increase this, but if there is a small amount of data it will be expensive to have this too high as it won't utilise all of the workers.
+   As a guide, we have a table that has around 90000 rows in it and we're using 12 workers, please speak to an engineer if you are unsure.
+
+   The following parameters are inside the `crawler_details`.
+   - `s3_target_location` and `--s3_target` - This will specify the location in S3 bucket that the data is written to.
+   The glue job will create a folder for each table that it is ingesting so you just need to give the prefixes for these tables to live in.
+   For example if you are writing to the landing this could be, `s3://${module.landing_zone.bucket_id}/mtfh/`, if the tables were coming from modern tools for housing.
+   Or if you are writing to a departmental folder in the raw zone this could be, `s3://${module.raw_zone.bucket_id}/department_name/mtfh/`
+   - `table_prefix` (Optional) - This is an optional variable that allows you to add a prefix to the table names that are created in the glue catalog.
+  For example, if you are ingesting a table with name "houses" and you set a prefix of "hackney\_borough\_" then the resulting table name in the glue catalog will be "hackney\_borough\_houses".
+   - `TableLevelConfiguration` - This will be dependent on your `s3_target_location`. It is the level at which tables are created in glue, from the S3 path.
+  Counting from the bucket name to the table name, so for the S3 paths `s3://${module.landing_zone.bucket_id}/mtfh/` and `s3://${module.raw_zone.bucket_id}/department_name/mtfh/` the table levels would be 3 and 4 respectively.
+
 5. Schedule the job (Optional).
 If you don't complete this step then the job and crawler will run once on creation and after that you will be able to run the job manually in the AWS console but it won't run on a schedule.
 If you want it to run on a schedule then please refer to the "Variables used for scheduling a Glue job" section of [this article][scheduling_glue_jobs] for an explanation on how to set the variables to do so.
@@ -168,10 +167,10 @@ Once you have been notified that your pull request has been merged, you can run 
 
 You can do this by navigating to [AWS glue workflows][aws_glue_workflow], selecting the workflow named `<department_name>-<dataset_name>`, clicking the "Actions" dropdown and then "Run".
 
-[aws_cron_expressions]: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions
-[github_signup]: https://github.com/signup
 [aws_glue_workflow]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=workflows
 [committing-changes]: ../getting-set-up/using-github#committing-your-changes-to-the-data-platform-project
 [aws_console_ssm]: https://eu-west-2.console.aws.amazon.com/systems-manager/parameters/?region=eu-west-2&tab=Table
 [scheduling_glue_jobs]: ../transforming-data/using-aws-glue/002-deploy-glue-jobs.md#variables-used-for-scheduling-a-glue-job
 [hackney_sso]: https://hackney.awsapps.com/start#/
+[data_platform_github]: https://github.com/LBHackney-IT/data-platform
+[getting_set_up]: ../getting-set-up/index.md
