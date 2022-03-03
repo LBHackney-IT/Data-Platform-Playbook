@@ -260,7 +260,7 @@ module "academy_lbhatestrbviews_database_ingestion" {
     jdbc_connection_description = "JDBC connection to Academy Production Insights LBHATestRBViews database"
     jdbc_connection_subnet_id   = local.subnet_ids_list[local.subnet_ids_random_index]
     database_availability_zone  = "eu-west-2a"
-    database_secret_name        = "academy-database-credentials"
+    database_secret_name        = "database-credentials/lbhatestrbviews-council-tax"
     identifier_prefix           = local.short_identifier_prefix
     vpc_id                      = data.aws_vpc.network.id
 }
