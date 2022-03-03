@@ -71,19 +71,19 @@ _For more technical details on the overall process, see: [Database Ingestion doc
 1. Open the [terraform directory][terraform-directory] in the Data Platform Project in GitHub.
     - If you don't have the correct permissions, you'll get a '404' error (see [Getting Set Up on the Platform][getting-set-up]).
 
-1. Open `29-<YOUR-DEPARTMENT-NAME>-database-ingestion.tf` e.g. `29-academy-database-ingestion.tf`
-    - _If this file does not exist, create a new terraform file for your department by clicking `Add file` then `Create new file`.
-    The name of the new file should be:_
+**Note: If the data you're ingesting is for a specific department then it should be ingested into that department's `raw zone`, otherwise it should go into the `landing zone`**
+1. Create a new file `29-<YOUR-DEPARTMENT-NAME>-<DATABASE-NAME>-database-ingestion.tf` if department specific, otherwise `29-<DATABASE-NAME>-database-ingestion.tf` 
+   
+    For example, for Academy (database), which is not department specific, the file name will be:
+   
     ```
-    29-<YOUR-DEPARTMENT-NAME>-database-ingestion.tf
+    29-academy-database-ingestion.tf
     ```
 
     - _Refer to this [example](#example-module-block) to get started._
 
-1. Click `edit` or the **pencil icon** (:pencil2:) then copy the module block with the line: `source = "../modules/database-ingestion-via-jdbc-connection"` inside it and paste it at the bottom of the file.
+1. Copy the [example module block](#example-module-block) paste it in your file.
    
-   An example of what a module block looks like can be seen [here][project-module-example].
-
 1. Update the `module` name using the following name convention: 
    ```
    <department_name>_<database_name>_database_ingestion
@@ -101,15 +101,15 @@ _For more technical details on the overall process, see: [Database Ingestion doc
 - #### The following input variables are required:
 
     - **source** (required): This will be `"../modules/database-ingestion-via-jdbc-connection"`. It is the path to where the database ingestion module is saved within the repository
-        - _**Note**: If you've copied an existing module block from your department folder then you won’t need to change the **source** variable_
+        - _**Note**: If you've copied the example module block then you won’t need to change the **source** variable_
     
     - **jdbc_connection_name** (required): Name of the dataset that will be ingested. e.g. `Council Tax`
 
-    - **jdbc_connection_url** (required): This will be `jdbc:protocol://host:port/db_name`
-        - The format differs slightly depending on the database, 
-        refer to [AWS Glue JDBC Connection Properties][jdbc-connection-properties] for guidance on how to construct your JDBC URL 
+    - **jdbc_connection_url** (required): This will be in the format: `jdbc:protocol://host:port/db_name`
+        - Set this to the JDBC URL you constructed in the previous section.
+        You can refer to [AWS Glue JDBC Connection Properties][jdbc-connection-properties] for more guidance on how to construct your JDBC URL. 
 
-        For example, a SQL Server database's JDBC Url will look like this: 
+        For example, a SQL Server database's JDBC URL will look like this: 
         ```
         jdbc_connection_url = "jdbc:sqlserver://10.120.23.22:1433;databaseName=LBHATestRBViews"
         ```
@@ -180,8 +180,10 @@ In addition to the variables and job parameters you'd normally set when [deployi
     _Note: ensure there are surrounding square brackets (`[]`) around the value provided here_
 
 - **Job parameters**:
-    - Note: In the following optional **job parameters**; *"--s3_ingestion_bucket_target"* and *"--s3_ingestion_details_target"*:
+  
+    - Note: For the following optional **job parameters**; *"--s3_ingestion_bucket_target"* and *"--s3_ingestion_details_target"*:
         - `<ZONE>` refers to either: `raw` or `landing` S3 zones
+        - **If the data you're ingesting is for a specific department then it should be ingested into that department's `raw` zone, otherwise it should go into the `landing` zone**
       
     - _"--source_catalog_database"_ (required): The Glue Catalog Database where your databases' table schemas are stored
         - This will be `module.<NAME_OF_CONNECTION_MODULE>[0].ingestion_database_name`.
@@ -219,7 +221,7 @@ In addition to the variables and job parameters you'd normally set when [deployi
             ```
             module.department_<YOUR_DEPARTMENT_NAME>.<S3_BUCKET_ZONE>_catalog_database_name
             ```
-            - Where `<S3_BUCKET_ZONE>` can be either: `raw` or `landing`
+            - Where `<S3_BUCKET_ZONE>` can be either: `raw` or `landing`. The same zone you wrote the data to in S3.
   
         - _s3_target_location_ (required): This should be the same as **`"--s3_ingestion_bucket_target"`** set above
         - _configuration_ (required): Set the `TableLevelConfiguration` to 1 plus the number of directory levels in **`"--s3_ingestion_bucket_target"`**
