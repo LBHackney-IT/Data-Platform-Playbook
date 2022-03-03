@@ -188,7 +188,7 @@ In addition to the variables and job parameters you'd normally set when [deployi
       
       For example:
       ```
-      "--s3_ingestion_bucket_target" = "s3://${module.<ZONE>_zone.bucket_id}/<YOUR-DEPARTMENT-NAME>/<FOLDER-NAME>/"
+      "--s3_ingestion_bucket_target" = "s3://${module.<ZONE>_zone.bucket_id}/<YOUR-DEPARTMENT-NAME>/"
       ```
         - _Note: ensure that your department name and folder name is all **lowercase** with **words separated by hyphens**
           e.g. `housing-repairs`._
@@ -200,7 +200,7 @@ In addition to the variables and job parameters you'd normally set when [deployi
         
         For example:
         ```
-        "--s3_ingestion_details_target" = "s3://${module.<ZONE>_zone.bucket_id}/<YOUR-DEPARTMENT-NAME>/<FOLDER-NAME>/ingestion-details/"
+        "--s3_ingestion_details_target" = "s3://${module.<ZONE>_zone.bucket_id}/<YOUR-DEPARTMENT-NAME>/ingestion-details/"
         ``` 
       - _Note: ensure that your department name is all **lowercase** with **words separated by underscores**
           e.g. `housing_repairs`._
@@ -215,16 +215,16 @@ In addition to the variables and job parameters you'd normally set when [deployi
             - Where `<S3_BUCKET_ZONE>` can be either: `raw` or `landing`
   
         - _s3_target_location_ (required): This should be the same as **`"--s3_ingestion_bucket_target"`** set above
-        - _configuration_ (required): Set the `TableLevelConfiguration` to the number of directory levels in **`"--s3_ingestion_bucket_target"`**
+        - _configuration_ (required): Set the `TableLevelConfiguration` to 1 plus the number of directory levels in **`"--s3_ingestion_bucket_target"`**
         
-        For example: The value for `TableLevelConfiguration` with an **s3_ingestion_bucket_target** of `"s3://${module.raw_zone.bucket_id}/academy/tables/"` will be `3` 
+        For example: The value for `TableLevelConfiguration` with an **s3_ingestion_bucket_target** of `"s3://${module.raw_zone.bucket_id}/academy/"` will be `3` 
 
         A complete example of **crawler_details** can be seen below:
 
         ```
         crawler_details = {
             database_name      = module.department_academy.raw_zone_catalog_database_name 
-            s3_target_location = "s3://${module.raw_zone.bucket_id}/academy/tables/"
+            s3_target_location = "s3://${module.raw_zone.bucket_id}/academy/"
             configuration = jsonencode({
                 Version = 1.0
                 Grouping = {
