@@ -236,8 +236,10 @@ In addition to the variables and job parameters you'd normally set when [deployi
 
 ### Commit your changes and create a Pull Request for review by the Data Platform team
 You can now submit your changes for review by the Data Platform team.
- - See [Committing changes][committing-changes] section of the **Using Github** guide.
+- See [Committing changes][committing-changes] section of the **Using Github** guide.
   The Data Platform team needs to approve any changes to the code that you make, so your change won't happen automatically.
+- Once your Pull Request has been approved, and you receive confirmation that it has been deployed, your data will be ready to be ingested onto the Data Platform
+according to a schedule you may have configured when creating your Glue job.
 
 ### Example module block
 ```
