@@ -32,7 +32,13 @@ The database credentials are retrieved from AWS Secrets Manager.
 The credentials are used to allow the Data Platform to authenticate against the source database.
 
 - Contact a member of the Data Platform team to add the database credentials to Secrets Manager.
-   - You will need to request that the following key-value pairs be added:
+    - You will need to request that a **secret** is created following the naming convention below: 
+      ```
+      database-credentials/DATABASE_NAME-DATASET_NAME
+      ``` 
+      e.g. `database-credentials/geolive-permits`
+
+    - Request that the following key-value pairs be added to this secret:
         - `database_name` = `"Name of your database"`
         - `username` = `"Your database user username"`
         - `password` = `"Your database user password"`
