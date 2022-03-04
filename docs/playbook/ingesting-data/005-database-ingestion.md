@@ -9,6 +9,7 @@ This guide explains the process of ingesting data/tables from databases into the
 
 ## Prerequisites 
 
+
 - Check that your database type is supported by AWS Glue JDBC Connection (see [AWS Glue JDBC Connection Properties][jdbc-connection-properties] section) 
 - Ensure that your database allows user login/authentication, and you have a database user with login credentials
   - If you would like to restrict access to only a selection of tables in your database, then ensure the database's user permissions are updated to reflect this
