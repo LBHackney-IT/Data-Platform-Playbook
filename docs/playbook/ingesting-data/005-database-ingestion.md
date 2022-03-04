@@ -62,8 +62,16 @@ Refer to [AWS Glue JDBC Connection Properties][jdbc-connection-properties] for e
 
 ### Set up the Glue JDBC Connection 
 
-Here you will configure a module which will set up the connection to the database, as well as a crawler to crawl the source database which will retrieve the 
-metadata and schemas of the database tables to populate in a Glue Catalog database.
+Here you will configure a module which will set up the connection to the source database, as well as a Crawler to crawl the source database which will retrieve the 
+metadata and schemas of the database tables to populate in a Glue Catalog database. 
+The module will also create a Glue Workflow which the Crawler will be added to.
+You can then use this workflow to link your ingestion Glue job (and Crawler) which you will be creating in the following section.
+This will help facilitate the automation of the entire database ingestion process.
+
+:::important
+The Crawler will run automatically every weekday at 6am, however, in order to ingest your data on the same day of deployment, you will need to run it manually in the AWS Console. 
+It will have the same name as the value you set for the **name** input variable in this section. 
+:::
 
 _For more technical details on the overall process, see: [Database Ingestion documentation][database-ingestion]_
 
@@ -71,7 +79,7 @@ _For more technical details on the overall process, see: [Database Ingestion doc
 1. Open the [terraform directory][terraform-directory] in the Data Platform Project in GitHub.
     - If you don't have the correct permissions, you'll get a '404' error (see [Getting Set Up on the Platform][getting-set-up]).
 
-**Note: If the data you're ingesting is for a specific department then it should be ingested into that department's `raw zone`, otherwise it should go into the `landing zone`**
+**Note: If the data you're ingesting is for a specific department then it should be ingested into that department's `raw zone` S3 bucket, otherwise it should go into the `landing zone`** S3 bucket.
 1. Create a new file `29-<YOUR-DEPARTMENT-NAME>-<DATABASE-NAME>-database-ingestion.tf` if department specific, otherwise `29-<DATABASE-NAME>-database-ingestion.tf` 
    
     For example, for Academy (database), which is not department specific, the file name will be:
@@ -103,7 +111,8 @@ _For more technical details on the overall process, see: [Database Ingestion doc
     - **source** (required): This will be `"../modules/database-ingestion-via-jdbc-connection"`. It is the path to where the database ingestion module is saved within the repository
         - _**Note**: If you've copied the example module block then you won’t need to change the **source** variable_
     
-    - **jdbc_connection_name** (required): Name of the dataset that will be ingested. e.g. `Council Tax`
+    - **name** (required): Name of the dataset that will be ingested in all **lowercase letters** with **words separated by hyphens**. e.g. `"revenue-benefits-and-council-tax"`
+        - This will be the name of all your resources created as part of this step and will be needed to identify your resources in the AWS Console when populating the Glue job parameters to prototype your Glue job.
 
     - **jdbc_connection_url** (required): This will be in the format: `jdbc:protocol://host:port/db_name`
         - Set this to the JDBC URL you constructed in the previous section.
@@ -134,15 +143,24 @@ _For more technical details on the overall process, see: [Database Ingestion doc
       This would have been shared with you by a member of the Data Platform team. 
         For example:
         ```
-        database_secret_name = "academy-database-credentials"
+        database_secret_name = "database-credentials/lbhatestrbviews-council-tax"
         ```
   
 
 6. Commit your changes and create a Pull Request for review by the Data Platform team. 
-   You should wait for it to be aprroved and deployed before moving onto the next step.
+   You should wait for it to be approved and deployed before moving onto the next step.
     - See [Committing changes][committing-changes] section of the **Using Github** guide.
     The Data Platform team needs to approve any changes to the code that you make, so your change won't happen automatically.
 
+7. Once you get confirmation that the code has been successfully deployed,
+you will need to retrieve the ID of the security group for the JDBC Connection (created as part of this module), and request that it is
+added to the source database's inbound security group rules by the appropriate engineer.
+
+**To find the security group ID of your connection:**
+- Navigate to `AWS Glue` in the AWS Console, then click `Connections` in the left-hand navigation bar and search for your connection.
+    It will have the same name that you set in the **name** input variable above.
+- Click on your connection and copy the ID next to `Security groups` e.g. `sg-05a4fc711d3e12345`.
+ 
 ### Create a Glue job and Crawler 
 Once your Pull Request for setting up the JDBC Connection has been approved and deployed, you can continue with this section.
 
@@ -150,23 +168,37 @@ Here you will create a Glue job which will use the JDBC connection you've just c
 You will also create a Crawler to read all the ingested tables from S3 and populate a Glue Catalog Database so that the
 data can be queried in Athena or consumed by other Glue jobs for further processing.
 
+:::important
+If your data is **NOT** department specific, you will not be able to crawl the S3 output location to populate a Glue Catalog database and therefore you should **NOT** set any configurations in the `crawler_details` input variable (delete this input variable if necessary).  
+:::
+
 #### Create a Glue job to ingest all database tables to S3
 
-You can prototype your script and test ingesting a few tables by referring to an [example script][example-script]
-and following the [Using Glue Studio][using-glue-studio] guide.
-Refer to the [Deploying Glue jobs to the Data Platform][deploy-glue-job-and-crawler] guide when you are ready to deploy your Glue job along with a Crawler
-which will read all the tables from S3 into a Glue Catalog Database where the tables can be queried.
+You can prototype your Glue job and test ingesting a few tables by referring to and cloning an existing Glue job.
+You can search for the `"stg Revenue & Benefits and Council Tax Database Ingestion"` Glue job in the list of jobs in the [AWS Console][glue-jobs]
+to use as an example. You can also refer to the [Using Glue Studio][using-glue-studio] guide for guidance on prototyping your Glue job.
+:::tip
+To prototype your script you will need to manually set/ update all the Glue Job parameters and Connections in the `Job Details` tab.
+The `source_catalog_database` Glue Job parameter and the `Connections` should be the same as what you set for the **name** input variable in the previous section. 
+:::
 
-The example script linked above will read all the tables and output them to a specified S3 location.
+The example Glue job linked above will read all the tables and output them to a specified S3 location.
 - It uses two helper functions which are imported from `helpers.py`, these are: 
     - `get_all_database_tables`: used to retrieve all the table names from the specified Glue Catalog Database
     - `update_table_ingestion_details`: used to create a dataframe containing stats, including errors, on the ingestion process for each table
 
-**Set the input variables for the Glue job and Crawler using the [Glue job module][deploy-glue-job-and-crawler]**
+When you are ready to deploy your Glue job (and Crawler) to the Data Platform project, you can continue with the below steps. 
+Your Glue job will copy all the tables from your source database to S3 which will then be crawled and populated in a Glue Catalog Database where the tables can be queried.
 
-In addition to the variables and job parameters you'd normally set when [deploying a Glue job][deploy-glue-job-and-crawler], you need to set the following:
+**Set the input variables for the Glue job and Crawler** 
 
-- **Input variables**:
+:::tip
+You can follow the [Deploying Glue jobs][deploy-glue-job-and-crawler] documentation for additional guidance on how to configure Job parameters and input variables for your Glue job and Crawler along with the instructions set out below.
+:::
+
+The following **input variables** and **job parameters** need to be set:
+
+- **Input variables** (required):
     - **connections** (required): The list of connections used for this job, i.e. JDBC connection.
     This will be `[module.<NAME_OF_CONNECTION_MODULE>[0].jdbc_connection_name]`.
     See step 4 in the section: [set up the glue JDBC connection](#set-up-the-glue-jdbc-connection) above for a reminder of the module name.
@@ -179,11 +211,24 @@ In addition to the variables and job parameters you'd normally set when [deployi
   
     _Note: ensure there are surrounding square brackets (`[]`) around the value provided here_
 
-    - **schedule** (Optional): 
-      If you don't populate this variable then the Glue job and Crawler will run once on creation and after that you will be able to run the job manually 
-      in the AWS Console but, it won't run on a schedule. 
+    - **triggered_by_crawler** (optional): You can configure your job to run automatically once the Crawler created in the previous section has run successfully.
+      - To add this trigger, set this input variable to: 
+        ```
+        module.<NAME_OF_CONNECTION_MODULE>[0].crawler_name
+        ```
+      
+    If you don't populate this variable then the Glue job and Crawler will need to be run manually in the AWS Console.
       
     If you want it to run on a schedule then please refer to the **"Variables used for scheduling a Glue job"** section of [this article][scheduling-glue-jobs] for an explanation on how to set the variables to do so.
+      
+    - **workflow_name** (optional): Workflow to add your Glue job (and Crawler to).
+      This is required if you set a **schedule** or set the input variable **triggered_by_crawler** above.
+      
+        - To add your Glue job (and Crawler) to a workflow, set this input variable to:
+        ```
+        module.<NAME_OF_CONNECTION_MODULE>[0].workflow_name
+        ``` 
+
       
 - **Job parameters**:
   
@@ -221,13 +266,18 @@ In addition to the variables and job parameters you'd normally set when [deployi
           e.g. `housing_repairs`._
         
     - **crawler_details**:
+      :::caution
+      If your data is department specific, you should set the following parameters. 
+      Otherwise, if your data is **NOT** department specific, you should **NOT** set any of the below parameters (deleting the entire `crawler_details` configuration if present or working with a duplicated module block).
+      :::
       
         - _database_name_ (required): Glue database where results are written after being crawled
 
             ```
             module.department_<YOUR_DEPARTMENT_NAME>.<S3_BUCKET_ZONE>_catalog_database_name
             ```
-            - Where `<S3_BUCKET_ZONE>` can be either: `raw` or `landing`. The same zone you wrote the data to in S3.
+            
+            - Where `<S3_BUCKET_ZONE>` will be: `raw`. The same zone you wrote the data to in S3.
   
         - _s3_target_location_ (required): This should be the same as **`"--s3_ingestion_bucket_target"`** set above
         - _configuration_ (required): Set the `TableLevelConfiguration` to 1 plus the number of directory levels in **`"--s3_ingestion_bucket_target"`**
@@ -267,7 +317,7 @@ module "academy_lbhatestrbviews_database_ingestion" {
 
     source = "../modules/database-ingestion-via-jdbc-connection"
 
-    jdbc_connection_name        = "Council Tax"
+    name                        = "revenue-benefits-and-council-tax"
     jdbc_connection_url         = "jdbc:sqlserver://10.120.23.22:1433;databaseName=LBHATestRBViews"
     jdbc_connection_description = "JDBC connection to Academy Production Insights LBHATestRBViews database"
     jdbc_connection_subnet_id   = local.subnet_ids_list[local.subnet_ids_random_index]
@@ -286,5 +336,5 @@ module "academy_lbhatestrbviews_database_ingestion" {
 [project-module-example]: https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/29-mssql-ingestion.tf
 [using-glue-studio]: ../transforming-data/using-aws-glue/001-using-glue-studio.md
 [deploy-glue-job-and-crawler]: ../transforming-data/using-aws-glue/002-deploy-glue-jobs.md
-[example-script]: https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/ingest_database_tables_via_jdbc_connection.py
+[glue-jobs]: https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/jobs 
 [scheduling-glue-jobs]: ../transforming-data/using-aws-glue/002-deploy-glue-jobs.md#variables-used-for-scheduling-a-glue-job
