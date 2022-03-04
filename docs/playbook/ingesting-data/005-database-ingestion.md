@@ -153,13 +153,20 @@ _For more technical details on the overall process, see: [Database Ingestion doc
     The Data Platform team needs to approve any changes to the code that you make, so your change won't happen automatically.
 
 7. Once you get confirmation that the code has been successfully deployed,
-you will need to retrieve the ID of the security group for the JDBC Connection (created as part of this module), and request that it is
-added to the source database's inbound security group rules by the appropriate engineer.
-
-**To find the security group ID of your connection:**
-- Navigate to `AWS Glue` in the AWS Console, then click `Connections` in the left-hand navigation bar and search for your connection.
-    It will have the same name that you set in the **name** input variable above.
-- Click on your connection and copy the ID next to `Security groups` e.g. `sg-05a4fc711d3e12345`.
+you will need to do the following before moving on to the next section:
+   - Request that the ID of the security group of the Glue JDBC Connection (created in this module) is added to the source database's inbound security group rules by an appropriate engineer.
+     
+     - You can find the security group ID of your connection by navigating to `AWS Glue` in the AWS Console, 
+       then clicking `Connections` in the left-hand navigation bar and then searching for your connection.
+        It will have the same name that you set in the **name** input variable above.
+       
+     - Click on your connection and copy the ID next to `Security groups` e.g. `sg-05a4fc711d3e12345`.
+      
+    - Test your connection and ensure it works:
+        - Select your connection and click `Test Connection`.
+        - Assign the relevant department IAM role.
+          - **Note: If the data you are ingesting is not department specific, you should use the IAM role: `dataplatform-stg-glue-role`.**
+        - Lastly, click `Test Connection` (this can take up to a minute to complete).
  
 ### Create a Glue job and Crawler 
 Once your Pull Request for setting up the JDBC Connection has been approved and deployed, you can continue with this section.
