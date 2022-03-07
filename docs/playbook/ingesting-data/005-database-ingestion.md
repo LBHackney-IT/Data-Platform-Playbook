@@ -219,7 +219,7 @@ The following **input variables** and **job parameters** need to be set:
     - **script_name** (required): The name of the script which will be used to ingest the database tables.
     Set this to `"ingest_database_tables_via_jdbc_connection"`
     
-    - **connections** (required): The list of connections used for this job, i.e. JDBC connection.
+    - **jdbc_connections** (required): The list of connections used for this job, i.e. JDBC connection.
     This will be `[module.<NAME_OF_CONNECTION_MODULE>[0].jdbc_connection_name]`.
     See step 4 in the section: [set up the glue JDBC connection](#set-up-the-glue-jdbc-connection) above for a reminder of the module name.
     
