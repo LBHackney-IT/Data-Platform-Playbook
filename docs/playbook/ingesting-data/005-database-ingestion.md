@@ -173,7 +173,7 @@ you will need to do the following before moving on to the next section:
           - **Note: If the data you are ingesting is not department specific, you should use the IAM role: `dataplatform-stg-glue-role`.**
         - Lastly, click `Test Connection` (this can take up to a minute to complete).
  
-### Create a Glue job and Crawler 
+### Create a Glue job and Crawler to ingest all database tables 
 Once your Pull Request for setting up the JDBC Connection has been approved and deployed, you can continue with this section.
 
 Here you will create a Glue job which will use the JDBC connection you've just created to pull the database tables into S3. 
@@ -184,33 +184,41 @@ data can be queried in Athena or consumed by other Glue jobs for further process
 If your data is **NOT** department specific, you will not be able to crawl the S3 output location to populate a Glue Catalog database and therefore you should **NOT** set any configurations in the `crawler_details` input variable (delete this input variable if necessary).  
 :::
 
-#### Create a Glue job to ingest all database tables to S3
+#### Prototyping your Glue job
 
 You can prototype your Glue job and test ingesting a few tables by referring to and cloning an existing Glue job.
 You can search for the `"stg Revenue & Benefits and Council Tax Database Ingestion"` Glue job in the list of jobs in the [AWS Console][glue-jobs]
 to use as an example. You can also refer to the [Using Glue Studio][using-glue-studio] guide for guidance on prototyping your Glue job.
-:::tip
-To prototype your script you will need to manually set/ update all the Glue Job parameters and Connections in the `Job Details` tab.
-The `source_catalog_database` Glue Job parameter and the `Connections` should be the same as what you set for the **name** input variable in the previous section. 
-:::
+
+To prototype your script you will need to manually set/ update all the Glue Job parameters and Connections in the `Job Details` tab:
+- The `source_catalog_database` Glue Job parameter and the `Connections` input variable should be the same as what you set for the **name** input variable in the previous section.
 
 The example Glue job linked above will read all the tables and output them to a specified S3 location.
 - It uses two helper functions which are imported from `helpers.py`, these are: 
     - `get_all_database_tables`: used to retrieve all the table names from the specified Glue Catalog Database
     - `update_table_ingestion_details`: used to create a dataframe containing stats, including errors, on the ingestion process for each table
 
+#### Deploying your Glue job
+:::important
+Before continuing with this section, ensure that you have deleted any data that was copied to S3 whilst prototyping your Glue job.
+:::
+
 When you are ready to deploy your Glue job (and Crawler) to the Data Platform project, you can continue with the below steps. 
 Your Glue job will copy all the tables from your source database to S3 which will then be crawled and populated in a Glue Catalog Database where the tables can be queried.
 
-**Set the input variables for the Glue job and Crawler** 
+You will be using the existing [Glue job module][deploy-glue-job-and-crawler] to deploy your ingestion Glue job and Crawler.
+- **The steps below only serve as complementary guidance and should be followed along with the official documentation for the Glue job module linked above.**
 
-:::tip
-You can follow the [Deploying Glue jobs][deploy-glue-job-and-crawler] documentation for additional guidance on how to configure Job parameters and input variables for your Glue job and Crawler along with the instructions set out below.
-:::
+You can add the Glue job module Terraform code to the same file you created/ updated in the previous section when setting up the Glue JDBC Connection.
+
+**Set the input variables for the Glue job and Crawler** 
 
 The following **input variables** and **job parameters** need to be set:
 
 - **Input variables** (required):
+    - **script_name** (required): The name of the script which will be used to ingest the database tables.
+    Set this to `"ingest_database_tables_via_jdbc_connection"`
+    
     - **connections** (required): The list of connections used for this job, i.e. JDBC connection.
     This will be `[module.<NAME_OF_CONNECTION_MODULE>[0].jdbc_connection_name]`.
     See step 4 in the section: [set up the glue JDBC connection](#set-up-the-glue-jdbc-connection) above for a reminder of the module name.
