@@ -145,7 +145,11 @@ _For more technical details on the overall process, see: [Database Ingestion doc
         ```
         database_secret_name = "database-credentials/lbhatestrbviews-council-tax"
         ```
-  
+
+    - **schema_name** (optional): Name of schema in the database containing tables to be ingested. e.g. `"parking"`.
+      
+      For databases that support schemas, you can provide a schema name here to ingest all tables in the schema within the specified database.
+      Oracle Database and MySQL don’t support this; therefore **DO NOT** enter a value here.
 
 6. Commit your changes and create a Pull Request for review by the Data Platform team. 
    You should wait for it to be approved and deployed before moving onto the next step.
