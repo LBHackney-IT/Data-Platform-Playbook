@@ -330,9 +330,9 @@ You can now submit your changes for review by the Data Platform team.
 
 Once you have been notified that your Pull Request has been merged, you can run the ingestion manually from the AWS Console or wait until the scheduled time (if you've set one).
 
-### Example module block
+### Complete example with both Glue JDBC Connection and Glue job modules
 ```
-module "academy_lbhatestrbviews_database_ingestion" {
+module "academy_mssql_database_ingestion" {
     count = local.is_live_environment ? 1 : 0
     tags  = module.tags.values
 
@@ -346,6 +346,44 @@ module "academy_lbhatestrbviews_database_ingestion" {
     database_secret_name        = "database-credentials/lbhatestrbviews-council-tax"
     identifier_prefix           = local.short_identifier_prefix
     vpc_id                      = data.aws_vpc.network.id
+}
+
+module "ingest_rev_bev_council_tax" {
+  count = local.is_live_environment ? 1 : 0
+  tags  = module.tags.values
+
+  source = "../modules/aws-glue-job"
+
+  job_name               = "${local.short_identifier_prefix}Revenue & Benefits and Council Tax Database Ingestion"
+  script_name            = "ingest_database_tables_via_jdbc_connection"
+  environment            = var.environment
+  pydeequ_zip_key        = aws_s3_bucket_object.pydeequ.key
+  helper_module_key      = aws_s3_bucket_object.helpers.key
+  jdbc_connections       = [module.academy_mssql_database_ingestion[0].jdbc_connection_name]
+  glue_role_arn          = aws_iam_role.glue_role.arn
+  glue_temp_bucket_id    = module.glue_temp_storage.bucket_id
+  glue_scripts_bucket_id = module.glue_scripts.bucket_id
+  workflow_name          = module.academy_mssql_database_ingestion[0].workflow_name
+  triggered_by_crawler   = module.academy_mssql_database_ingestion[0].crawler_name
+  job_parameters = {
+    "--source_data_database"             = module.academy_mssql_database_ingestion[0].ingestion_database_name
+    "--s3_ingestion_bucket_target"       = "s3://${module.raw_zone.bucket_id}/academy/"
+    "--s3_ingestion_details_target"      = "s3://${module.raw_zone.bucket_id}/academy/ingestion-details/"
+    "--TempDir"                          = "s3://${module.glue_temp_storage.bucket_id}/"
+    "--extra-py-files"                   = "s3://${module.glue_scripts.bucket_id}/${aws_s3_bucket_object.helpers.key}"
+    "--extra-jars"                       = "s3://${module.glue_scripts.bucket_id}/jars/deequ-1.0.3.jar"
+    "--enable-continuous-cloudwatch-log" = "true"
+  }
+  crawler_details = {
+    database_name      = module.academy_mssql_database_ingestion[0].ingestion_database_name 
+    s3_target_location = "s3://${module.raw_zone.bucket_id}/academy/"
+    configuration = jsonencode({
+      Version = 1.0
+      Grouping = {
+        TableLevelConfiguration = 3
+      }
+    })
+  }
 }
 ```
 
