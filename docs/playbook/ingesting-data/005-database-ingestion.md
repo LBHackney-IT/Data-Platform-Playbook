@@ -287,8 +287,9 @@ The following **input variables** and **job parameters** need to be set:
         
     - **crawler_details**:
       :::caution
-      If your data is department specific, you should set the following parameters. 
-      Otherwise, if your data is **NOT** department specific, you should **NOT** set any of the below parameters (deleting the entire `crawler_details` configuration if present or working with a duplicated module block).
+      **If your data is department specific, you should set the following parameters.** 
+      Otherwise, if your data is **NOT** department specific, or **NOT** "unrestricted" data, you should **NOT** set any of the below parameters (deleting the entire `crawler_details` configuration if present or working with a duplicated module block).
+      In that case, the data will need to be moved to **raw** zone, and a specific **department** before it can be crawled and queried in Athena.
       :::
       
         - _database_name_ (required): Glue database where results are written after being crawled
