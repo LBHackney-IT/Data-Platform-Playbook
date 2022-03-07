@@ -158,13 +158,14 @@ _For more technical details on the overall process, see: [Database Ingestion doc
 
 7. Once you get confirmation that the code has been successfully deployed,
 you will need to do the following before moving on to the next section:
-   - Request that the ID of the security group of the Glue JDBC Connection (created in this module) is added to the source database's inbound security group rules by an appropriate engineer.
+   - Request that the ID of the security group of the Glue JDBC Connection (created in this module) is added to the source database's inbound security group rules by an appropriate engineer of the respective AWS account.
      
      - You can find the security group ID of your connection by navigating to `AWS Glue` in the AWS Console, 
        then clicking `Connections` in the left-hand navigation bar and then searching for your connection.
         It will have the same name that you set in the **name** input variable above.
        
      - Click on your connection and copy the ID next to `Security groups` e.g. `sg-05a4fc711d3e12345`.
+    This is the security group ID you need to provide to the engineer.
       
     - Test your connection and ensure it works:
         - Select your connection and click `Test Connection`.
