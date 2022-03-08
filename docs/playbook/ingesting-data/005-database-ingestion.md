@@ -216,8 +216,8 @@ You can add the Glue job module Terraform code to the same file you created/ upd
 The following **input variables** and **job parameters** need to be set:
 
 - **Input variables** (required):
-    - **script_name** (required): The name of the script which will be used to ingest the database tables.
-    Set this to `"ingest_database_tables_via_jdbc_connection"`
+    - **script_s3_object_key** (required): S3 object key of the script which will be used to ingest the database tables.
+    Set this to: `aws_s3_bucket_object.ingest_database_tables_via_jdbc_connection.key`
     
     - **jdbc_connections** (required): The list of connections used for this job, i.e. JDBC connection.
     This will be `[module.<NAME_OF_CONNECTION_MODULE>[0].jdbc_connection_name]`.
@@ -355,7 +355,7 @@ module "ingest_rev_bev_council_tax" {
   source = "../modules/aws-glue-job"
 
   job_name               = "${local.short_identifier_prefix}Revenue & Benefits and Council Tax Database Ingestion"
-  script_name            = "ingest_database_tables_via_jdbc_connection"
+  script_s3_object_key   = aws_s3_bucket_object.ingest_database_tables_via_jdbc_connection.key
   environment            = var.environment
   pydeequ_zip_key        = aws_s3_bucket_object.pydeequ.key
   helper_module_key      = aws_s3_bucket_object.helpers.key
