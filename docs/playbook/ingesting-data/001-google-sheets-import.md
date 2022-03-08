@@ -69,6 +69,21 @@ Ingest data contained within a Google Sheet for use on the Data Platform, option
       <td>sandbox@dataplatform-stg.iam.gserviceaccount.com</td>
       <td>sandbox@dataplatform-prod0.iam.gserviceaccount.com</td>
     </tr>
+    <tr>
+      <td>counicl_tax</td>
+      <td>council-tax@dataplatform-stg.iam.gserviceaccount.com</td>
+      <td>council-tax@dataplatform-prod0.iam.gserviceaccount.com</td>
+    </tr>
+    <tr>
+      <td>revenue_and_benefits</td>
+      <td>revenue-and-benefits@dataplatform-stg.iam.gserviceaccount.com</td>
+      <td>revenue-and-benefits@dataplatform-prod0.iam.gserviceaccount.com</td>
+    </tr>
+    <tr>
+      <td>environmental_services</td>
+      <td>environmental-services@dataplatform-stg.iam.gserviceaccount.com</td>
+      <td>environmental-services@dataplatform-prod0.iam.gserviceaccount.com</td>
+    </tr>
   </tbody>
 </table>
 
