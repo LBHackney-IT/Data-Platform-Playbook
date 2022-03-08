@@ -295,7 +295,7 @@ The following **input variables** and **job parameters** need to be set:
         - _database_name_ (required): Glue database where results are written after being crawled
 
             ```
-            module.department_<YOUR_DEPARTMENT_NAME>.<S3_BUCKET_ZONE>_catalog_database_name
+            module.department_<YOUR_DEPARTMENT_NAME>.<S3_BUCKET_ZONE>_zone_catalog_database_name
             ```
             
             - Where `<S3_BUCKET_ZONE>` will be: `raw`. The same zone you wrote the data to in S3.
@@ -375,7 +375,7 @@ module "ingest_rev_bev_council_tax" {
     "--enable-continuous-cloudwatch-log" = "true"
   }
   crawler_details = {
-    database_name      = module.academy_mssql_database_ingestion[0].ingestion_database_name 
+    database_name      = module.department_academy.raw_zone_catalog_database_name 
     s3_target_location = "s3://${module.raw_zone.bucket_id}/academy/"
     configuration = jsonencode({
       Version = 1.0
