@@ -70,7 +70,7 @@ Ingest data contained within a Google Sheet for use on the Data Platform, option
       <td>sandbox@dataplatform-prod0.iam.gserviceaccount.com</td>
     </tr>
     <tr>
-      <td>counicl_tax</td>
+      <td>council_tax</td>
       <td>council-tax@dataplatform-stg.iam.gserviceaccount.com</td>
       <td>council-tax@dataplatform-prod0.iam.gserviceaccount.com</td>
     </tr>
