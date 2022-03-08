@@ -70,14 +70,14 @@ Ingest data contained within a Google Sheet for use on the Data Platform, option
       <td>sandbox@dataplatform-prod0.iam.gserviceaccount.com</td>
     </tr>
     <tr>
-      <td>council_tax</td>
-      <td>council-tax@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>council-tax@dataplatform-prod0.iam.gserviceaccount.com</td>
+      <td>benefits_and_housing_needs</td>
+      <td>benefits-housing-needs@dataplatform-stg.iam.gserviceaccount.com</td>
+      <td>benefits-housing-needs@dataplatform-prod0.iam.gserviceaccount.com</td>
     </tr>
     <tr>
-      <td>revenue_and_benefits</td>
-      <td>revenue-and-benefits@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>revenue-and-benefits@dataplatform-prod0.iam.gserviceaccount.com</td>
+      <td>revenues</td>
+      <td>revenues@dataplatform-stg.iam.gserviceaccount.com</td>
+      <td>revenues@dataplatform-prod0.iam.gserviceaccount.com</td>
     </tr>
     <tr>
       <td>environmental_services</td>
