@@ -84,6 +84,11 @@ Ingest data contained within a Google Sheet for use on the Data Platform, option
       <td>environmental-services@dataplatform-stg.iam.gserviceaccount.com</td>
       <td>environmental-services@dataplatform-prod0.iam.gserviceaccount.com</td>
     </tr>
+    <tr>
+      <td>housing</td>
+      <td>housing@dataplatform-stg.iam.gserviceaccount.com</td>
+      <td>housing@dataplatform-prod0.iam.gserviceaccount.com</td>
+    </tr>
   </tbody>
 </table>
 
