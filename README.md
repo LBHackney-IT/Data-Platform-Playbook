@@ -2,7 +2,7 @@
 
 This project is used to generate the [Data Platform Documentation Site](https://lbhackney-it.github.io/Data-Platform-Playbook/).
 
-You can edit the pages files directly in this project, which are formated as .md files and once committed the changes will become visible on the site.
+You can edit the pages files directly in this project, which are formatted as .md files and once committed the changes will become visible on the site.
 
 The site is broken down into two sections:
 
