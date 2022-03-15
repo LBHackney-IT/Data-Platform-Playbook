@@ -10,7 +10,7 @@ status: "Accepted"
 
 ## Context
 
-Towards the end of December 2021 a component of our infrastructure the provided connectivity between a production and
+Towards the end of December 2021 a component of our infrastructure that provided connectivity between a production and
 staging account was flagged as a potential security breach and raised as an incident.
 
 As part of the process of reviewing the incident we discussed the topic of production data being held in a staging
