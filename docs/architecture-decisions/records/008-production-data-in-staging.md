@@ -1,11 +1,11 @@
 ---
 id: production-data-in-staging
-title: "production-data-in-staging"
+title: "Production Data in Staging"
 description: ""
 tags: [adr]
 number: "8"
 date-issued: "2021-06-25"
-status: "Accepted"
+status: "Superseded"
 ---
 
 ## Context
