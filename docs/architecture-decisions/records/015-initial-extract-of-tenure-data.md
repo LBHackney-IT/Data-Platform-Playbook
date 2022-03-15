@@ -49,5 +49,5 @@ the ingestion process works as expected and a subsequent ingestion to set the st
 - Any data inconsistencies will be difficult to resolve.
 
 ### Long Term
-- All APIs will need to be designed to emmit current state events when required.
+- All APIs will need to be designed to emit current state events when required.
 - Large amounts of data will be pushed through the event streaming infrastructure
