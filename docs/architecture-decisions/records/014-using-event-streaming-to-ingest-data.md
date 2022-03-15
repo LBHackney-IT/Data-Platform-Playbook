@@ -23,7 +23,7 @@ We have therefore explored different options for transferring the data into the 
 ## Considered Options
 
 - Access data via read-only replicas
-- Scrap the APIs to get the state of each object
+- Scrape the APIs to get the state of each object
 - Stream data change events from the system
 
 ## Decision
