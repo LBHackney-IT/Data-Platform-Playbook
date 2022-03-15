@@ -161,8 +161,8 @@ _If a variable is not needed you should delete the entire line in the module blo
     - You can use [this tool][cron-expression-generator] to generate your Cron expressions.
   
   - **create_starting_trigger** (optional): Defaults to `true`.
-    If you do not wish to create a starting trigger, or you're manually adding another trigger to your Glue job which already has a starting trigger, you should set this to `false`.
-    Conflicts with **triggered_by_job**, **triggered_by_crawler**, **schedule**. 
+    If you do not wish to create a starting trigger, or you're manually adding another trigger to your Glue job which is part of a workflow and already has a starting trigger, you should set this to `false`.
+    If this is set to `false`, you can't set the following input variables; **triggered_by_job**, **triggered_by_crawler**, **schedule**. 
   
 
 - **job_description** (optional): A description of the AWS Glue job e.g. "Exports Google Sheets imported datasets to the landing zone"
