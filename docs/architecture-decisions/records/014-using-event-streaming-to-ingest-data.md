@@ -4,7 +4,7 @@ title: "Using Event Streaming to Ingest Data"
 description: ""
 tags: [adr]
 number: "13"
-date-issued: "2022-02-??"
+date-issued: "2022-01-01"
 status: "Accepted"
 ---
 
