@@ -33,4 +33,4 @@ which could cause the related service to fail which would affect residents of Ha
 
 ## Consequences
 
-- Getting access to data is considerable harder unless the service implements Event Streaming as we have a limited set of options for ingesting data without a connection to the production system.
+- Getting access to data is considerably harder unless the service implements event streaming as we have a limited set of options for ingesting data without a connection to the production system.
