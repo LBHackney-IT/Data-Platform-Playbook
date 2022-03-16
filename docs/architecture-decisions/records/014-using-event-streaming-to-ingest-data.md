@@ -18,7 +18,9 @@ We have therefore explored different options for transferring the data into the 
 ## Decision Drivers
 
 - Security
-- 
+- Service Data Store Ownership
+- Time to Insight
+- Data Consistency
 
 ## Considered Options
 
