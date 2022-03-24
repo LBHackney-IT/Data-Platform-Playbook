@@ -7,7 +7,7 @@ layout: layout
 
 This section covers the overview of how Academy data is ingested onto the Data Platform from MS SQL databases and distributed to Housing Benefits & Needs and Revenues Departments
 
-![Ingesting Academy Data](./images/academy-data-ingestion.drawio.png)
+![Ingesting Academy Data](./images/academy-data-ingestion-process.png)
 
 ## Architecture 
 
@@ -23,6 +23,6 @@ The tables are then read from the Glue Catalog Database via multiple concurrent 
 
 Once the data has been ingested into the landing zone S3 buckets, it is then crawled and uploaded to a landing zone Glue Catalog database where another Glue job then copies it over to the respective Benefits & Housing Needs and Revenues raw zone department areas in S3 and Glue Catalog databases.
 
-The departments' data then becomes available for querying in Athena and other Business Intelligence tools such as Google Data Studio and Qlik.
+The departments' data then becomes available for querying in Athena and/or for further processing and transforming in Glue jobs to move the data to refined and trusted zones and ultimately pulled into BI tools such as Qlik and Google Data Studio.
 
 [aws-jdbc-connection]: https://docs.aws.amazon.com/glue/latest/dg/connection-defining.html
