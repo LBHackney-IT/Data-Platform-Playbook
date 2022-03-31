@@ -20,7 +20,9 @@ and crawler provisioned for each worksheet that will be imported.
 After deployed a CloudWatch trigger will invoke the copier lambda at 10 am daily.
 
 The lambda will copy the specified file into the S3 landing zone bucket and
-start all the glue jobs that will import data from the defined workbooks.
+start all the glue jobs that will import data from the defined workbooks. 
+Spark Web UI is used to monitior and debug the glue jobs. Every 30 seconds, 
+AWS Glue flushes the Spark event logs to an S3 bucket titled Spark UI Bucket.
 
 Upon a successful glue job run a crawler will be run and produce a data catalog
 for the dataset.

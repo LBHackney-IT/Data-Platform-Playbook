@@ -97,6 +97,7 @@ _If a variable is not needed you should delete the entire line in the module blo
 - **helper_module_key** (required): This will be `aws_s3_bucket_object.helpers.key`. It is the S3 object key for the helpers python module.
   This gives you access to all of the functions defined in the [helpers folder][helpers-folder-github]. You can add new files or functions to the folder and they will be available in your glue jobs.
 - **pydeequ_zip_key** (required): This will be `aws_s3_bucket_object.pydeequ.key`. It is the S3 object key for the PyDeequ python library, which is used for data quality testing in the Data Platform.
+- **spark_ui_output_storage_id** (required): This will be `module.spark_ui_output_storage.bucket_id`. It is the S3 bucket ID where Spark UI Logs will be stored in order to monitor and debug the job.
 - #### Script Name/ Location (required)
 
   One of the following variables must be populated: **script_name** OR **script_s3_object_key**.
