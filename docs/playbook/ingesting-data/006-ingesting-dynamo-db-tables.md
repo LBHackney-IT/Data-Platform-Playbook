@@ -168,6 +168,10 @@ Once you have been notified that your pull request has been merged, you can run 
 
 You can do this by navigating to [AWS glue workflows][aws_glue_workflow], selecting the workflow named `<department_name>-<dataset_name>`, clicking the "Actions" dropdown and then "Run".
 
+### Monitoring the ingestion
+
+Spark Web UI is used to monitior and debug the glue jobs. Every 30 seconds, AWS Glue flushes the Spark event logs to an S3 bucket titled Spark UI Bucket.
+
 [aws_glue_workflow]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=workflows
 [committing-changes]: ../getting-set-up/using-github#committing-your-changes-to-the-data-platform-project
 [aws_console_ssm]: https://eu-west-2.console.aws.amazon.com/systems-manager/parameters/?region=eu-west-2&tab=Table

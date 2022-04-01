@@ -205,6 +205,7 @@ Before continuing with this section, ensure that you have deleted any data that 
 
 When you are ready to deploy your Glue job (and Crawler) to the Data Platform project, you can continue with the below steps. 
 Your Glue job will copy all the tables from your source database to S3 which will then be crawled and populated in a Glue Catalog Database where the tables can be queried.
+Spark Web UI is used to monitior and debug the glue jobs. Every 30 seconds, AWS Glue flushes the Spark event logs to an S3 bucket titled Spark UI Bucket.
 
 You will be using the existing [Glue job module][deploy-glue-job-and-crawler] to deploy your ingestion Glue job and Crawler.
 - **The steps below only serve as complementary guidance and should be followed along with the official documentation for the Glue job module linked above.**
