@@ -48,7 +48,7 @@ After completing this module, you should be able to do the following:
 - Deploy a Glue job using Terraform
 </details>
 
-## Why we are moving away from old ways of work, and working using a Data Platform
+## Why we are moving away from old ways of work, and a Data Platform
 Please visit and read : https://playbook.hackney.gov.uk/Data-Platform-Playbook/
 
 # What are the prerequisites for these training modules  
