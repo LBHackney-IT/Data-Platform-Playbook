@@ -2,7 +2,7 @@
 title: Module 0 - Getting started with Training
 description: "Training Module 0"
 layout: playbook_js
-tags: [playbook] [training]
+tags: [playbook,training]
 ---
 
 # Module 0: Context and setup
