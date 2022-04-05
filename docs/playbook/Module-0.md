@@ -82,7 +82,7 @@ Here are the details on these requirements by module.
 
 ## GitHub: Online repository for code where all Hackney codebase is stored
 
-Github is where the Data Platform repository is stored. In particular, it is where the Terraform scripts are, which is the code which controls and manages the Data Platform resources in AWS. We also store the code for the Playbook there
+Github is where the Data Platform repository is stored. In particular, it is where the Terraform scripts are, which is the code which controls and manages the Data Platform resources in AWS. We also store the code for the Playbook there.
 You can refer to this playbook entry for more information : https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/getting-set-up/using-github
 
 ### Benefits of using these tools 
