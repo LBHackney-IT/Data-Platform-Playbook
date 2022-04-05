@@ -35,7 +35,7 @@ After completing this module, you should be able to do the following:
 ### Module 2
 This module is intended for people who want to transform data within the Data Platform and make the result available for querying
 After completing this module, you should be able to do the following:
-- Load 1 or more Dataset from S3 into a coding environment, local and on AWS Glue
+- Load one or more datasets from S3 into a coding environment, local and on AWS Glue
 - Learn how to test your Data Transformation in the Local Notebooking Environment ( saves money and is much faster to debug )
 - Learn how to do transformations in Spark syntax (including Joins)
 - Add a Glue job within the AWS console
