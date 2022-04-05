@@ -127,6 +127,6 @@ AWS (Amazon Web Services) is a comprehensive cloud platform offering over 200 di
   - [Notebook Environment Setup](https://docs.google.com/document/d/1CFfneUahaBVw-yIzmbdBB1lDXM3d2biApz_-CqbpCCc)
 - Common Problems / FAQ
   - How can I tell if my Notebook Environment is working?
-    - When you open up the Jupyter Instance, open the template.ipnyb and try to run the first Cell. It should create a Spark instance, if it doesn’t something might be wrong. At that point it is best to ask somebody for some troubleshooting
+    - When you open up the Jupyter Instance, open the template.ipnyb and try to run the first Cell. It should create a Spark instance, if it doesn’t something might be wrong. At that point it is best to ask somebody for some troubleshooting.
 
 </details>
