@@ -55,7 +55,7 @@ Please visit and read : https://playbook.hackney.gov.uk/Data-Platform-Playbook/
 <details>
     <summary>Click to Expand</summary>
 
-##Introduction: Experience, skills, software and equipment
+## Introduction: Experience, skills, software and equipment
 
 To get the most out of these modules, you must be comfortable with the idea of coding. It is fine to be a beginner in Python and Terraform, but you should at least have a bit of experience with a programming language (such as SQL or formulas in Excel/Sheets). 
 
