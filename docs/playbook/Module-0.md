@@ -86,7 +86,7 @@ Github is where the Data Platform repository is stored. In particular, it is whe
 You can refer to this playbook entry for more information : https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/getting-set-up/using-github
 
 ### Benefits of using these tools 
-Using Github means we have version control on our code, we also have a way to verify code and making sure code is suitable before it is Live
+Using Github means we have version control on our code, we also have a way to verify code and making sure code is suitable before it is live.
 
 
 ## The notebook environment
