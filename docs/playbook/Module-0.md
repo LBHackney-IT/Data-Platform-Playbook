@@ -91,7 +91,7 @@ Using Github means we have version control on our code, we also have a way to ve
 
 ## The notebook environment
 
-Essentially a Jupyter server so that we can run Jupyter Notebooks. Jupyter notebooks are Python scripts which run in cells, which makes it easier to develop and try things out
+Essentially a Jupyter server so that we can run Jupyter Notebooks. Jupyter notebooks are Python scripts that run in cells, which makes it easier to develop and try things out.
 For the Data Platform, it will have the packages installed to be quite similar to AWS Glue.
 
 ### Benefits of using these tools
