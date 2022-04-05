@@ -22,18 +22,18 @@ After you complete the training, you will likely find that there is more you nee
 
 ### Module 1
 
-This module is intended for people who want to add/ingest data into the platform so they or others can use it in other tools (e.g. Qlik)
+This module is intended for people who want to add/ingest data into the platform so they or others can use it in other tools (e.g. Qlik).
 After completing this module, you should be able to do the following:
 
 - Ingest Google Sheets into the Data Platform
-- Write a simple terraform module
+- Write a simple Terraform module
 - Submit a pull request in Github
 - Navigate the AWS console
 - Run a job in AWS Glue
 - View data objects in AWS S3
 - Query data in AWS Athena
 ### Module 2
-This module is intended for people who want to transform data within the Data Platform and make the result available for querying
+This module is intended for people who want to transform data within the Data Platform and make the result available for querying.
 After completing this module, you should be able to do the following:
 - Load one or more datasets from S3 into a coding environment, local and on AWS Glue
 - Learn how to test your Data Transformation in the Local Notebooking Environment ( saves money and is much faster to debug )
@@ -42,16 +42,17 @@ After completing this module, you should be able to do the following:
 - Save the dataset after transformation into the refined zone
 
 ### Module 3
-This module is intended for people who want to schedule or automate data transformations
+This module is intended for people who want to schedule or automate data transformations.
 After completing this module, you should be able to do the following:
 - Deploy a Glue Job into the Data Platform Production environment, with scheduler to automate the process
-- Deploy a Glue job using Terraform
+- Deploy a Glue Job using Terraform
+
 </details>
 
-## Why we are moving away from old ways of work, and a Data Platform
-Please visit and read : https://playbook.hackney.gov.uk/Data-Platform-Playbook/
+## Why we are moving away from old ways of work, and are using a Data Platform
+Please read the [Playbook Documentation](https://playbook.hackney.gov.uk/Data-Platform-Playbook/)
 
-# What are the prerequisites for these training modules  
+## What are the prerequisites for these training modules  
 <details>
     <summary>Click to Expand</summary>
 
@@ -61,7 +62,7 @@ To get the most out of these modules, you must be comfortable with the idea of c
 
 You’ll also need accounts and permissions to access some platforms. In Module 2 you will use a local environment, so you’ll also need a Windows machine or a Mac and permissions to install software on it (though we have plans to develop the platform so that this is no longer the case).
 
-You may have to contact IT to install some prerequisite software if you do not have the permissions to do it yourself
+You may have to contact IT to install some prerequisite software if you do not have the permissions to do it yourself.
 
 ## Pre-requisites Table
 
@@ -75,43 +76,43 @@ Here are the details on these requirements by module.
 
 </details>
 
-# Tools that are used with the Data Platform
+## Tools that are used with the Data Platform
 
 <details>
     <summary>Click to Expand</summary>
 
-## GitHub: Online repository for code where all Hackney codebase is stored
+### GitHub: Online repository for code where all Hackney codebase is stored
 
 Github is where the Data Platform repository is stored. In particular, it is where the Terraform scripts are, which is the code which controls and manages the Data Platform resources in AWS. We also store the code for the Playbook there.
-You can refer to this playbook entry for more information : https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/getting-set-up/using-github
+You can refer to the [Getting Set Up with Github](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/getting-set-up/using-github) Playbook entry for more information.
 
-### Benefits of using these tools 
+### Benefits of using Github
 Using Github means we have version control on our code, we also have a way to verify code and making sure code is suitable before it is live.
 
 
-## The notebook environment
+### The notebook environment
 
 Essentially a Jupyter server so that we can run Jupyter Notebooks. Jupyter notebooks are Python scripts that run in cells, which makes it easier to develop and try things out.
 For the Data Platform, it will have the packages installed to be quite similar to AWS Glue.
 
-### Benefits of using these tools
+### Benefits of using a local notebook environment
 
 The notebooking tool uses your local resources to execute the code, meaning you don’t consume AWS resources, saving Hackney money.
 Feedback on errors is a lot quicker, and as a result is a lot easier to debug. This makes it more efficient for developing code.
-To set up the notebooking environment, click here [Link to other Playbook article Notebook Environment Setup - Google Docs ].
+To set up the notebooking environment, follow the instructions [here](https://docs.google.com/document/d/1QEgDFydQS34Ssmx26c0qUM9aZAZ36r1A9X5Dqe_7ub4)
 
-## Amazon Web Services (AWS)
+### Amazon Web Services (AWS)
 
 AWS (Amazon Web Services) is a comprehensive cloud platform offering over 200 different services including data storage, computing power, and tools Glue, Athena and Redshift which we use in the Data Platform. AWS is the council’s primary cloud supplier and the primary environment in which we are building the Data Platform.
 
 </details>
 
-# How to set up the tools
+## How to set up the tools
 
 <details>
     <summary>Click to Expand</summary>
 
-## Github 
+### Github 
 
 - [Instructions to set up](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/getting-set-up/using-github)
   - Github Playbook documentation 
@@ -119,14 +120,13 @@ AWS (Amazon Web Services) is a comprehensive cloud platform offering over 200 di
   - If you are not, make a request in the HackIT Dev Slack Channel
 - Common Problems / FAQ
   - I can’t find the Repo for the Data Platform
-    - Please visit https://github.com/LBHackney-IT/Data-Platform
+    - It can be found [here](https://github.com/LBHackney-IT/Data-Platform)  
 
-## Notebook Environment
+### Notebook Environment
 
-- Instructions to set up
-  - [Notebook Environment Setup](https://docs.google.com/document/d/1CFfneUahaBVw-yIzmbdBB1lDXM3d2biApz_-CqbpCCc)
+- [Instructions to set up](https://docs.google.com/document/d/1CFfneUahaBVw-yIzmbdBB1lDXM3d2biApz_-CqbpCCc)
 - Common Problems / FAQ
   - How can I tell if my Notebook Environment is working?
-    - When you open up the Jupyter Instance, open the template.ipnyb and try to run the first Cell. It should create a Spark instance, if it doesn’t something might be wrong. At that point it is best to ask somebody for some troubleshooting.
+    - When you open up the Jupyter Instance, open the ```template.ipnyb``` and try to run the first cell. It should create a Spark instance, if it doesn’t something might be wrong. At that point it is best to ask somebody for some troubleshooting.
 
 </details>

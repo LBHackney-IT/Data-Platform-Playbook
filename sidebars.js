@@ -25,6 +25,11 @@ module.exports = {
       items: [
         {
           type: "category",
+          label: "Training Modules",
+          items: getItems("playbook/training-modules"),
+        },
+        {
+          type: "category",
           label: "Getting set up on the platform",
           items: getItems("playbook/getting-set-up"),
         },
