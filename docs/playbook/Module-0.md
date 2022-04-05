@@ -96,9 +96,9 @@ For the Data Platform, it will have the packages installed to be quite similar t
 
 ### Benefits of using these tools
 
-The notebooking tool uses your local resources to execute the code, meaning you don’t consume AWS resources, saving Hackney money
-Feedback on errors is a lot quicker, and as a result is a lot easier to debug. This makes it more efficient for developing code
-To set up the notebooking environment, click here [Link to other Playbook article Notebook Environment Setup - Google Docs ]
+The notebooking tool uses your local resources to execute the code, meaning you don’t consume AWS resources, saving Hackney money.
+Feedback on errors is a lot quicker, and as a result is a lot easier to debug. This makes it more efficient for developing code.
+To set up the notebooking environment, click here [Link to other Playbook article Notebook Environment Setup - Google Docs ].
 
 ## Amazon Web Services (AWS)
 
