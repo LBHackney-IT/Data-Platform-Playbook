@@ -14,8 +14,6 @@ You will be able to find out which modules are best suited for your interests/go
 - Find out what you need as prerequisites for the modules
 
 ##  What is the goal of the Training as a whole
-<details>
-    <summary>Summary of what the purpose of this training is. Click to Expand </summary>
 
 The goal of the training is to understand the end-to-end journey of data in the platform and get to grips with the core elements and processes of the Data Platform, in a safe environment, using open data. Depending on what you want to do in the platform, you may not need to complete all the modules. However, the modules rely on each other and need to be completed in order. 
 After you complete the training, you will likely find that there is more you need to learn from the Playbook in order to use the Data Platform in your work (for example, performing other types of data transformation).
@@ -32,6 +30,7 @@ After completing this module, you should be able to do the following:
 - Run a job in AWS Glue
 - View data objects in AWS S3
 - Query data in AWS Athena
+- 
 ### Module 2
 This module is intended for people who want to transform data within the Data Platform and make the result available for querying.
 After completing this module, you should be able to do the following:
@@ -47,14 +46,10 @@ After completing this module, you should be able to do the following:
 - Deploy a Glue Job into the Data Platform Production environment, with scheduler to automate the process
 - Deploy a Glue Job using Terraform
 
-</details>
-
 ## Why we are moving away from old ways of work, and are using a Data Platform
 Please read the [Playbook Documentation](https://playbook.hackney.gov.uk/Data-Platform-Playbook/)
 
 ## What are the prerequisites for these training modules  
-<details>
-    <summary>Click to Expand</summary>
 
 ## Introduction: Experience, skills, software and equipment
 
@@ -74,12 +69,7 @@ Here are the details on these requirements by module.
 | Module 2 | X | X| X|
 | Module 3 | X | | X|
 
-</details>
-
 ## Tools that are used with the Data Platform
-
-<details>
-    <summary>Click to Expand</summary>
 
 ### GitHub: Online repository for code where all Hackney codebase is stored
 
@@ -88,7 +78,6 @@ You can refer to the [Getting Set Up with Github](https://playbook.hackney.gov.u
 
 ### Benefits of using Github
 Using Github means we have version control on our code, we also have a way to verify code and making sure code is suitable before it is live.
-
 
 ### The notebook environment
 
@@ -105,12 +94,7 @@ To set up the notebooking environment, follow the instructions [here](https://do
 
 AWS (Amazon Web Services) is a comprehensive cloud platform offering over 200 different services including data storage, computing power, and tools Glue, Athena and Redshift which we use in the Data Platform. AWS is the council’s primary cloud supplier and the primary environment in which we are building the Data Platform.
 
-</details>
-
 ## How to set up the tools
-
-<details>
-    <summary>Click to Expand</summary>
 
 ### Github 
 
@@ -129,4 +113,3 @@ AWS (Amazon Web Services) is a comprehensive cloud platform offering over 200 di
   - How can I tell if my Notebook Environment is working?
     - When you open up the Jupyter Instance, open the ```template.ipnyb``` and try to run the first cell. It should create a Spark instance, if it doesn’t something might be wrong. At that point it is best to ask somebody for some troubleshooting.
 
-</details>
