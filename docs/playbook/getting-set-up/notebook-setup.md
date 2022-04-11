@@ -15,7 +15,7 @@ We have some ready-made notebooks which will include scripts that will allow int
 
 **Why should you use the notebooking tool**
 
--  The notebooking tool uses your local resources to execute the code, meaning you don’t consume AWS resources and compute power, saving the council money
+-  The notebooking tool uses your local resources to execute the code, meaning you don’t consume AWS resources and compute power
 -  It also gives you the error messages immediately, and is a lot easier to debug as a result. Which makes it more efficient for developing code
 
 **Who is this tutorial for**
