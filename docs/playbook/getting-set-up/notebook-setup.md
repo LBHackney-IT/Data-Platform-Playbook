@@ -9,8 +9,9 @@ tags: [playbook, setup]
 
 **What is the notebooking tool**
 
-Essentially a Jupyter server so that we can run Jupyter Notebooks. Jupyter notebooks are python scripts which run in cells, which makes it easier to develop and try things out
-For the Data Platform, it will have the scripts necessary to be quite similar to AWS Glue
+Essentially a Jupyter server so that we can run Jupyter Notebooks. A Jupyter notebook is a web-based interactive development environment that runs Python code in a sequence of cells, which can be individually executed in the form of a notebook. This makes it easier to develop code and try things out on your own computer.
+
+We have some ready-made notebooks which will include scripts that will allow interaction with the Data Platform. The Python code will be similar to what will eventually be used within the Data Platform infrastructure, therefore Jupyter notebooks are great for prototyping.
 
 **Why should you use the notebooking tool**
 
