@@ -52,7 +52,7 @@ We suggest you install Git on its own. This is a very quick install and this wil
 **Docker Desktop**
 
 Docker is essentially a way of opening a virtual machine but for just one application.
-We use Docker Desktop just to open a Jupyter Server locally so we have an environment to code Python but with the environment that is very similar to the AWS Glue Environment
+We use Docker Desktop to open a Jupyter Server locally on our machine so we have an environment that allows us to work with Python as well as_PySpark_ (a Python interface to Apache Spark). This replicates what we will work with in AWS Glue.
 
 - **Benefits of using Docker Desktop**
 
