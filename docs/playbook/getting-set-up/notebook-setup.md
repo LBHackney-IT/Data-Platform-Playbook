@@ -107,46 +107,6 @@ You need to be given access to the Data Platform in order to access data.
 9. Enter `type nul > credentials`. 
    - This creates an empty credentials file in the aws-config folder, if this worked properly, you should see a credentials file with no type. 
 
-**Alternate Set Up Method using Batch Files**
-
-This alternative method can be quicker and easier if you know how to make .bat files
-
-1. Open `Notepad`
-
-
-2. Copy and Paste the code block below into `Notepad`
-
-```@echo off
-setlocal
-:PROMPT
-SET /P AREYOUSURE=This will Download and create the Data Platform Notebooking Environment, continue? (y/n)?
-IF /I "%AREYOUSURE%" NEQ "y" GOTO END
-
-git clone https://github.com/LBHackney-IT/Data-Platform.git
-cd Data-Platform
-(echo cd notebook & echo start "" "http://localhost:8888" & echo docker compose up notebook & echo pause) > StartNotebookEnvironment.bat
-(echo git pull & echo pause) > UpdateNotebookEnvironment.bat
-cd notebook
-type nul > .env
-cd aws-config
-type nul > credentials
-pause
-
-:END
-endlocal
-```
-3. Go to `File > Save As`
-
-
-4. Where it says `Save as type:` select `All Files`
-
-
-5. Save the file with any name you want but end the name with `.bat`
-    - This will make a .bat file with all the commands you need to create the Data Platform Notebooking Environment
-
-
-6. Run the .bat file you have just created
-
 **Authenticating the Data Platform Repository with AWS credentials.**
 
 1. Go to AWS by clicking this [Link.](https://hackney.awsapps.com/start#/)
