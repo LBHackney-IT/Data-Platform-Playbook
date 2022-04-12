@@ -67,7 +67,7 @@ We use Docker Desktop to open a Jupyter Server locally on our machine so we have
 
 **Data Platform Access**
 
-You need access to the Data Platform to run the code which will access the Data Platform's Data
+You need to be given access to the Data Platform in order to access data.
 
 - **How to check if you have access to the Data Platform**
 
