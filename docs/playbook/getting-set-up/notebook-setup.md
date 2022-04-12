@@ -69,7 +69,7 @@ We use Docker Desktop to open a Jupyter Server locally on our machine so we have
 
 You need access to the Data Platform to run the code which will access the Data Platform's Data
 
-- **How to Check if your Data Platform Access is ok**
+- **How to check if you have access to the Data Platform**
 
   - Click this [link](https://hackney.awsapps.com/start#/) to access Single Sign-on for AWS Services
   - Click `[AWS Account]` and check if you have any users with `DataPlatform` in its name
