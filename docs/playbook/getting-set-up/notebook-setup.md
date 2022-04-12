@@ -78,7 +78,7 @@ You need to be given access to the Data Platform in order to access data.
 ## Notebook set up
 
 **Setting up the Local Files**
-1. Navigate to where you want the Data Platform Folder to be stored in `Windows Explorer`
+1. Navigate to where you want the Data Platform folder to be stored in `Windows Explorer`
 
 
 2. Open the Terminal in that area by entering `cmd` in the address bar in Windows Explorer
