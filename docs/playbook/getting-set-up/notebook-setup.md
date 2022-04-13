@@ -9,7 +9,7 @@ tags: [playbook, setup]
 
 **What is the notebooking tool**
 
-Essentially a Jupyter server so that we can run Jupyter Notebooks. A Jupyter notebook is a web-based interactive development environment that runs Python code in a sequence of cells, which can be individually executed in the form of a notebook. This makes it easier to develop code and try things out on your own computer.
+A Jupyter notebook is a web-based interactive development environment that runs Python code in a sequence of cells, which can be individually executed in the form of a notebook. This makes it easier to develop code and try things out on your own computer.
 
 We have some ready-made notebooks which will include scripts that will allow interaction with the Data Platform. The Python code will be similar to what will eventually be used within the Data Platform infrastructure, therefore Jupyter notebooks are great for prototyping.
 
@@ -49,18 +49,18 @@ We suggest you install Git on its own. This is a very quick install and this wil
    - If it says ```git is an unknown command``` then you don't have git installed
 
 
-**Docker Desktop**
+**Docker**
 
 Docker is essentially a way of opening a virtual machine but for just one application.
 We use Docker Desktop to open a Jupyter Server locally on our machine so we have an environment that allows us to work with Python as well as_PySpark_ (a Python interface to Apache Spark). This replicates what we will work with in AWS Glue.
 
-- **Benefits of using Docker Desktop**
+- **Benefits of using Docker**
 
   - Means we don’t need to have a separate computer which will run our Jupyter Environment
   - Docker can be run on most operating systems
     
 
-- **Installing Docker Desktop**
+- **Installing Docker**
 
   - Install [Docker Desktop for Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows?msclkid=d06d5c4caeb011ec8b168b9f3d7e1e4e)
   - You also need the Linux Kernel Package found [Here](https://docs.microsoft.com/en-gb/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package)
