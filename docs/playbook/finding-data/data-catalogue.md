@@ -67,8 +67,25 @@ sink:
 
 Please see the official [Datahub Search Guide](https://datahubproject.io/docs/how/search)
 
-### Viewing metadata for a dataset
+### Viewing/editing metadata for a dataset
 
+On each dataset, there are three main tabs: **Schema**, **Documentation**, **Properties** 
+
+* **Schema**: This shows the schema of the table including the data types of each column. 
+  More details for each Field can be found in the `Description`, `Tags` and `Terms` columns.
+  
+  *If you are the owner of the dataset, you can edit these fields.* 
+  * To add a description to a field click on the ```+ Add Description``` button in the ```Description``` column: ![descriptions.png](../images/descriptions.png)
+  * A popup will then appear and the description can be added along with an additional text formatting: ![img.png](../images/adding_descriptions.png)
+
+* **Documentation**: This is a free text field where you can find general details of the dataset with supporting links.
+  *If you are the owner of the dataset, you can add documentation or edit the existing documentation.*
+  ![documentation](../images/dataset-documentation.png)
+  
+
+* **Properties**: This provides metadata on the dataset such as the number of records, where the data is stored, the Glue job that created it and more
+![properties](../images/dataset-properties.png)
+  
 ### Tagging
 
 ![tagging.gif](../images/tagging.gif)
@@ -79,10 +96,6 @@ Domains can be used to organise datasets into departments, access can then be pr
 Once you've created a Domain, you can use the search bar to find it. 
 Please see the official [Datahub Domains Guide](https://datahubproject.io/docs/domains) which explains how to configure domains
 
-### Adding/amending descriptions
-
-1. A description can be added to each field within a dataset by clicking on the ```+ Add Description``` button in the ```Description``` column for each field: ![descriptions.png](../images/descriptions.png)
-2. A popup will then appear and the description can be added along with an additional text formatting: ![img.png](../images/adding_descriptions.png)
 
 ### Adding/amending owners
 
