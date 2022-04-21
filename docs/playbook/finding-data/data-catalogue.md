@@ -81,5 +81,3 @@ Please see the official [Datahub Domains Guide](https://datahubproject.io/docs/d
 ### Adding/amending owners
 
 ![owners.gif](../images/adding_owners.gif)
-
-### Understanding column statistics
