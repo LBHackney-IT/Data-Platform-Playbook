@@ -51,6 +51,12 @@ sink:
 9. If ingestion has executed successfully, you should see it's state shown in green as Succeeded.
 10. A variety of things can cause an ingestion run to fail, if this happens please check [this guide](https://datahubproject.io/docs/ui-ingestion/#debugging-a-failed-ingestion-run) or contact the Data Platform team
 
+### Access to datasets
+
+1. Anyone that is authenticated via Google Auth can view datasets’ metadata in Datahub
+2. Only people that need to edit (owners) - are created as users within Datahub
+3. These users will be assigned to department groups via a [Datahub metadata policy](https://datahubproject.io/docs/policies) that will allow edit permissions only on the datasets in their domain
+
 ### Browsing datasets
 
 * Datasets can be found either by using the search or via the home screen
