@@ -22,7 +22,34 @@ However, a data catalogue _isn't_:
 
 ## How to use the data catalogue
 
-We are currently implementing an open source tool, DataHub, as our data catalogue. This article will be updated as the catalogue is developed and tested with users.
+### Ingesting datasets
+
+Datahub ingests datasets from Glue, the Glue connection is set up via a Datahub "recipe".
+A Datahub recipe is a yaml configuration file that instructs Datahub on where to pull data from. 
+Please see below for a guide on how to configure the Glue recipe, this will only need to be done once when Datahub is setup
+
+1. Navigate to the ```ingestion``` tab:![img.png](ingestion.png)
+2. Click ```Create new source```: ![img_3.png](create_new_source.png)
+3. Choose Glue
+4. Configure the recipe as follows (no need to change anything):
+```
+source:
+  type: glue
+  config:
+    aws_region: '${AWS_DEFAULT_REGION}'
+    aws_role: '${AWS_ROLE}'
+    extract_transforms: '${GLUE_EXTRACT_TRANSFORMS}'
+sink:
+  type: datahub-rest
+  config:
+    server: '${GMS_URL}'
+```
+5. Setup an execution schedule. We recommend once a day for Glue:![img_2.png](cron_schedule.png) To learn more about the CRON scheduling format, check out the [Wikipedia](https://en.wikipedia.org/wiki/Cron) overview.
+6. Click next and give the Ingestion Source a name of ```Glue```
+7. Once you're happy with your changes, simply click ```Done``` to save.
+8. Once you've created your Ingestion Source, you can run it by clicking ```Execute```. Shortly after, you should see the ```Last Status``` column of the ingestion source change from N/A to Running. This means that the request to execute ingestion has been successfully picked up by the DataHub ingestion executor.
+9. If ingestion has executed successfully, you should see it's state shown in green as Succeeded.
+10. A variety of things can cause an ingestion run to fail, if this happens please check [this guide](https://datahubproject.io/docs/ui-ingestion/#debugging-a-failed-ingestion-run) or contact the Data Platform team
 
 ### Browsing datasets
 
