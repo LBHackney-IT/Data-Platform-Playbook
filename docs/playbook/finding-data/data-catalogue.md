@@ -28,8 +28,8 @@ Datahub ingests datasets from Glue, the Glue connection is set up via a Datahub 
 A Datahub recipe is a yaml configuration file that instructs Datahub on where to pull data from. 
 Please see below for a guide on how to configure the Glue recipe, this will only need to be done once when Datahub is setup
 
-1. Navigate to the ```ingestion``` tab:![img.png](ingestion.png)
-2. Click ```Create new source```: ![img_3.png](create_new_source.png)
+1. Navigate to the ```ingestion``` tab:![img.png](../images/ingestion.png)
+2. Click ```Create new source```: ![img_3.png](../images/create_new_source.png)
 3. Choose Glue
 4. Configure the recipe as follows (no need to change anything):
 ```
@@ -44,7 +44,7 @@ sink:
   config:
     server: '${GMS_URL}'
 ```
-5. Setup an execution schedule. We recommend once a day for Glue:![img_2.png](cron_schedule.png) To learn more about the CRON scheduling format, check out the [Wikipedia](https://en.wikipedia.org/wiki/Cron) overview.
+5. Setup an execution schedule. We recommend once a day for Glue:![img_2.png](../images/cron_schedule.png) To learn more about the CRON scheduling format, check out the [Wikipedia](https://en.wikipedia.org/wiki/Cron) overview.
 6. Click next and give the Ingestion Source a name of ```Glue```
 7. Once you're happy with your changes, simply click ```Done``` to save.
 8. Once you've created your Ingestion Source, you can run it by clicking ```Execute```. Shortly after, you should see the ```Last Status``` column of the ingestion source change from N/A to Running. This means that the request to execute ingestion has been successfully picked up by the DataHub ingestion executor.
@@ -55,12 +55,24 @@ sink:
 
 ### Searching datasets
 
+Please see the official [Datahub Search Guide](https://datahubproject.io/docs/how/search)
+
 ### Viewing metadata for a dataset
 
 ### Tagging
 
+![img.gif](../images/tagging.gif)
+Please see the official [Datahub Tags Guide](https://datahubproject.io/docs/tags) for more detail
+
+### Domains
+Domains can be used to organise datasets into departments, access can then be provided to users for specific domains they are interested in. 
+Once you've created a Domain, you can use the search bar to find it
+Please see the official [Datahub Domains Guide](https://datahubproject.io/docs/domains) which explains how to configure domains
+
 ### Adding/amending descriptions
 
 ### Adding/amending owners
+
+![owners.gif](../images/adding_owners.gif)
 
 ### Understanding column statistics
