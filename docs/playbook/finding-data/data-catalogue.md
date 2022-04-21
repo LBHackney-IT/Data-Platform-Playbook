@@ -55,7 +55,7 @@ sink:
 
 * Datasets can be found either by using the search or via the home screen
 * Once a metadata ingestion recipe has been configured and executed, datasets should appear on the home screen:![datasets.png](../images/datasets.png)
-* Each datasets can then be navigated through: ![datasets_inner.png](../images/datasets_inner.png)
+* Each dataset can then be navigated through: ![datasets_inner.png](../images/datasets_inner.png)
 
 ### Searching datasets
 
@@ -70,10 +70,13 @@ Please see the official [Datahub Tags Guide](https://datahubproject.io/docs/tags
 
 ### Domains
 Domains can be used to organise datasets into departments, access can then be provided to users for specific domains they are interested in. 
-Once you've created a Domain, you can use the search bar to find it
+Once you've created a Domain, you can use the search bar to find it. 
 Please see the official [Datahub Domains Guide](https://datahubproject.io/docs/domains) which explains how to configure domains
 
 ### Adding/amending descriptions
+
+1. A description can be added to each field within a dataset by clicking on the ```+ Add Description``` button in the ```Description``` column for each field: ![descriptions.png](../images/descriptions.png)
+2. A popup will then appear and the description can be added along with an additional text formatting: ![img.png](../images/adding_descriptions.png)
 
 ### Adding/amending owners
 
