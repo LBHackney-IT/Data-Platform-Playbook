@@ -80,11 +80,11 @@ On each dataset, there are three main tabs: **Schema**, **Documentation**, **Pro
 
 * **Documentation**: This is a free text field where you can find general details of the dataset with supporting links.
   *If you are the owner of the dataset, you can add documentation or edit the existing documentation.*
-  ![documentation](../images/dataset-documentation.png)
+  ![documentation](../images/dataset_documentation.png)
   
 
 * **Properties**: This provides metadata on the dataset such as the number of records, where the data is stored, the Glue job that created it and more
-![properties](../images/dataset-properties.png)
+![properties](../images/dataset_properties.png)
   
 ### Tagging
 
