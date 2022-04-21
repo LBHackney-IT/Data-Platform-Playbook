@@ -44,7 +44,7 @@ sink:
   config:
     server: '${GMS_URL}'
 ```
-5. Setup an execution schedule. We recommend once a day for Glue:![img_2.png](../images/cron_schedule.png) To learn more about the CRON scheduling format, check out the [Wikipedia](https://en.wikipedia.org/wiki/Cron) overview.
+5. Configure an execution schedule. We recommend once a day for Glue:![img_2.png](../images/cron_schedule.png) To learn more about the CRON scheduling format, check out the [Wikipedia](https://en.wikipedia.org/wiki/Cron) overview.
 6. Click next and give the Ingestion Source a name of ```Glue```
 7. Once you're happy with your changes, simply click ```Done``` to save.
 8. Once you've created your Ingestion Source, you can run it by clicking ```Execute```. Shortly after, you should see the ```Last Status``` column of the ingestion source change from N/A to Running. This means that the request to execute ingestion has been successfully picked up by the DataHub ingestion executor.
@@ -52,6 +52,10 @@ sink:
 10. A variety of things can cause an ingestion run to fail, if this happens please check [this guide](https://datahubproject.io/docs/ui-ingestion/#debugging-a-failed-ingestion-run) or contact the Data Platform team
 
 ### Browsing datasets
+
+* Datasets can be found either by using the search or via the home screen
+* Once a metadata ingestion recipe has been configured and executed, datasets should appear on the home screen:![datasets.png](../images/datasets.png)
+* Each datasets can then be navigated through: ![datasets_inner.png](../images/datasets_inner.png)
 
 ### Searching datasets
 
@@ -61,7 +65,7 @@ Please see the official [Datahub Search Guide](https://datahubproject.io/docs/ho
 
 ### Tagging
 
-![img.gif](../images/tagging.gif)
+![tagging.gif](../images/tagging.gif)
 Please see the official [Datahub Tags Guide](https://datahubproject.io/docs/tags) for more detail
 
 ### Domains
