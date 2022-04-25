@@ -100,6 +100,8 @@ Apache Spark is an open source engine that is used to perform processing tasks q
 Terraform is our chosen Infrastucture as Code (IaC) tool. See the entry [here](https://playbook.hackney.gov.uk/API-Playbook/infrastructure) in the Hackney Council API Playbook for more detail.
  ### Trusted Zone
 Data in this zone is 'gold standard' data that is well documented and can be easily shared between different services within the council. It may be anonymised or aggregated to make it suitable for wide use.
+ ### Terraform
+Terraform is our chosen Infrastucture as Code (IaC) too. See the entry [here](https://playbook.hackney.gov.uk/API-Playbook/infrastructure) in the Hackney Council API Playbook for more detail.
  ### Zones
 The Platform has 4 [data zones](https://lbhackney-it.github.io/Data-Platform-Playbook/zones), as data moves from the landing to the trusted zone it will:Increase the Usability, Quality of the Data to the council, by improved structure and cleaning of data. Reduce in volume as unusable data is removed.
 
