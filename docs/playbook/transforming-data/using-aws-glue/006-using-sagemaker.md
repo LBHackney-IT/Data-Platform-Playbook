@@ -10,7 +10,7 @@ tags: [playbook]
 ## Prototyping glue jobs in a Jupyter notebook
 
 This guide explains how to connect to a notebook instance using AWS Sagemaker and also some tips for using the notebook.
-We use notebooks to protype transformation scripts before they are run and scheduled in AWS Glue.
+We use notebooks to prototype transformation scripts before they are run and scheduled in AWS Glue.
 
 ### To start up a notebook
 
@@ -49,7 +49,7 @@ To create your personal access token you can follow [this Github guide][create_a
 Once you have created it, you can store somewhere securely and keep re using for as long as the expiration period that you set up.
 1. Before commiting, you need to ensure all the outputs from any scripts you've edited have been cleared. This is to prevent any data being stored in Github. 
 To do so you need to open each script you've been working on, then click on "Edit" then "Clear all Outputs".
-1. To sdd changes to the commit, navigate to the  Github tab on the left panel.
+1. To add changes to the commit, navigate to the Github tab on the left panel.
 There you will see a list of changed files & untracked files.
 The changed files are any that you have changed since the last commit and the untracked files are files which have been added since the last commit.
 You can add any files you want to commit by hovering over the file and clicking on the plus sign.
