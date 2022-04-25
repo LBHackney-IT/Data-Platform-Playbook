@@ -47,16 +47,19 @@ If you want to keep the changes you have made to any scripts you must commit the
 These are needed when two factor authentication is enabled, which the Hackney Github organisation enforces.
 To create your personal access token you can follow [this Github guide][create_a_pat_code].
 Once you have created it, you can store somewhere securely and keep re using for as long as the expiration period that you set up.
-2. Before commiting, you need to ensure all the outputs from any scripts you've edited have been cleared. This is to prevent any data being stored in Github. 
+1. Before commiting, you need to ensure all the outputs from any scripts you've edited have been cleared. This is to prevent any data being stored in Github. 
 To do so you need to open each script you've been working on, then click on "Edit" then "Clear all Outputs".
-3. To sdd changes to the commit, navigate to the  Github tab on the left panel.
+1. To sdd changes to the commit, navigate to the  Github tab on the left panel.
 There you will see a list of changed files & untracked files.
 The changed files are any that you have changed since the last commit and the untracked files are files which have been added since the last commit.
 You can add any files you want to commit by hovering over the file and clicking on the plus sign.
 When you do this the file will move to the Staged section, this lists all the changes that will be commiting. 
-4. When you have added all the files you want to commit to staged you can write a Summary & Description then click "Commit".
-5. You will then be promted for your Github username & password.
+1. When you have added all the files you want to commit to staged you can write a Summary & Description then click "Commit". You will then be promted for your name and email address, fill these in using your Hackney email.
+1. The push your changes by clicking on the small cloud icon with an up arrow, as shown below.
+You'll be prompted to enter your github username and a password.  
 In the password box you should paste in the personal access token created in the first step.
+
+  ![jupyter_push_icon.png](../../images/jupyter_push_icon.png)
 
 ## Helpful resources
 
