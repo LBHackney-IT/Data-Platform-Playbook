@@ -30,7 +30,7 @@ There is a [github repository][notebooks_github] which will be preloaded into th
 This is where we store any notebooks script that we want to keep.
 If you want to keep the changes you have made to any scripts you must commit the changes to this repository otherwise you may loose your work.
 
-- You should work in the folder called "Data-Platform-Notebooks", click into the folder if you aren't already in there.
+- You should work in the folder "Data-Platform-Notebooks/notebooks", where all the notebooks are stored, click into this folder if you aren't already in there.
 
   ![notebook_folders.png](../../images/notebook_folders.png)
 
