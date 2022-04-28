@@ -21,6 +21,8 @@ We have created a `sandbox` department in the Data Platform, and an associated G
 ### 3. Creating two ingestion jobs in Terraform
 Your Google sheet is going to be ingested by a job running in AWS [Glue](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary#glue). You will write a bit of [Terraform](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary/#terraform) that will deploy this job automatically in the AWS environment. You are going to write this code directly in your web browser in GitHub here, adding to the existing `Terraform script 26-google-sheets-imports.tf`.
 
+![Terraform script](../images/edit_terraform_google_sheets.png)
+
 You could also write the job locally within your interactve development environment, but this would remove the ability to test the code due to the way the Data Platform infrastructure is currently set up. Therefore, editing via the GitHub web interface will be easier in this case. 
 
 You will need to create two modules within the Terraform script as we are ingesting two datasets from the Google spreadsheet:
@@ -53,9 +55,9 @@ Once you have received confirmation that two reviewers have approved your PR, go
 
 In everyday use you may not need the data to be immediately available, in which case steps 5-7 would be picked up by the scheduled daily jobs, provided a schedule is specified in the Terraform module. 
 
-Log in to AWS as the `Sandbox department` via the `AWS Management Console` for that role.
+Log in to AWS as the `DataPlatformSandboxStg` role via the `Management Console` for that role.
 
-
+![AWS console](../images/sandox-console.png)
 ### 5. Finding and running your jobs in the AWS console
 
 >:bulb: You can search for AWS tools like AWS Glue, Crawlers etc. using the toolbar. If you cannot find a job or crawler check the region is London in the top right of the screen.
@@ -66,8 +68,11 @@ Your jobs should now be available within Glue Studio. They will be named like [G
 >:warning: If you are waiting for code deployment to complete, then look for `stg Google Sheets Import Job - sandbox-daro-covid-locations` and `stg Google Sheets Import Job - sandbox-daro-covid-vaccinations` jobs instead.
 
 Once you have selected a Glue job, you can run it by clicking `Run job` 
-To monitor the progress of your Glue job run, click through to the Glue job and navigate to the `Runs` tab
+To monitor the progress of your Glue job run, click through to the Glue job and navigate to the `Runs` tab.
 
+It is sometimes helpful to check the specific output S3 bucket for a job to see if it has run; the parquet files will be partitioned by date.
+
+![s3 bucket](../images/s3_check_partitions.png)
 
 ### 6. Crawling the ingested data to make it available in the Glue catalogue. 
 `Crawling` is the mechanism used to populate the AWS Glue Data Catalog so that data is made visible in Athena by picking up the column names and data types. 
@@ -81,3 +86,5 @@ iii. Open the `Query editor`.
 iv. Make sure workgroup is `sandbox` and you are using the `sandbox-raw-zone` database. Run a simple query in Athena against your tables created or updated by the crawlers. You can generate a SQL preview query by selecting the three vertical dots by the table name and select `Preview Table` to see the top 10 lines. The dialect of SQL used in Athena is `Presto SQL`.
 
 v. You should now be able to repeat steps 6-9 for the job that *you* created as the code should now have been deployed into to main Data Platform repository.
+
+>:raised_hands: Congratulations! You have completed Module 01!
