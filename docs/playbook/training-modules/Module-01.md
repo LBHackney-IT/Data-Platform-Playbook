@@ -1,6 +1,6 @@
-# What we'll cover in Module 1
+# Module 1 - Ingesting data from Google Sheets
 
-In this module you will ingest two datasets into the Data Platform from a Google Sheet. This will involve creating an AWS [Glue](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary/#glue) job using [Terraform](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary/#terraform) as well as [GitHub](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary/#github) for making changes to the Data Platform code repository. Once your changes have been approved by the Data Platform team, you will then crawl the loaded data, to then be able to view and query it in [AWS Athena](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary#athena), a database-like web client.
+In this module you will ingest two datasets into the Data Platform from Google Sheets. This will involve creating an AWS [Glue](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary/#glue) job using [Terraform](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary/#terraform) as well as [GitHub](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary/#github) for making changes to the Data Platform code repository. Once your changes have been approved by the Data Platform team, you will then crawl the loaded data, to then be able to view and query it in [AWS Athena](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary#athena), a database-like web client.
 
 &nbsp;
 ## Step-by-step instructions
