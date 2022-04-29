@@ -2,28 +2,29 @@
 
 In this module you will ingest two datasets into the Data Platform from a Google Sheet. This will involve creating an AWS [Glue](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary/#glue) job using [Terraform](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary/#terraform) as well as [GitHub](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary/#github) for making changes to the Data Platform code repository. Once your changes have been approved by the Data Platform team, you will then crawl the loaded data, to then be able to view and query it in [AWS Athena](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary#athena), a database-like web client.
 
-
+&nbsp;
 ## Step-by-step instructions
 
 Please ensure that [Module 0](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/training-modules/Module-0) is completed before starting this module.
 
+&nbsp;
 ### 1. Preparing the Google Sheet for this exercise
 Make a copy of this Covid vaccination [data](https://docs.google.com/spreadsheets/d/1-ZNoQGu0LGlaKYDBWD8MUo8hqfcnE5YbgCXVz2MUxSw/edit#gid=2146898708) and name the Google Sheet as `covid_vaccination_data` in your own Google Drive. We are going to use the tabs *locations* and *vaccinations*.
 
-
+&nbsp;
 ### 2. Granting the Data Platform access to your new Google sheet
 We have created a `sandbox` department in the Data Platform, and an associated Google service account: `sandbox@dataplatform-stg.iam.gserviceaccount.com`
 - The Data Platform will use this account to connect to your Google sheet. 
 - Use the sharing settings of your sheet and grant “Viewer” permissions to this user.
 - [Detailed steps](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/ingesting-data/google-sheets-import#preparing-a-google-sheet-for-ingestion) are in the Playbook.
 
-
+&nbsp;
 ### 3. Creating two ingestion jobs in Terraform
-Your Google sheet is going to be ingested by a job running in AWS [Glue](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary#glue). You will write a bit of [Terraform](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary/#terraform) that will deploy this job automatically in the AWS environment. You are going to write this code directly in your web browser in GitHub here, adding to the existing `Terraform script 26-google-sheets-imports.tf`.
+Your Google sheet is going to be ingested by a job running in AWS [Glue](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary#glue). You will write a bit of [Terraform](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary/#terraform) that will deploy this job automatically in the AWS environment. You are going to write this code directly in your web browser in GitHub [here](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/26-google-sheets-imports.tf), adding to the existing `Terraform script 26-google-sheets-imports.tf`.
 
 ![Terraform script](../images/edit_terraform_google_sheets.png)
 
-You could also write the job locally within your interactve development environment, but this would remove the ability to test the code due to the way the Data Platform infrastructure is currently set up. Therefore, editing via the GitHub web interface will be easier in this case. 
+You could also write the job locally within your interactive development environment,but editing via the GitHub web interface will be easier in this case as you won't need to clone the repository.
 
 You will need to create two modules within the Terraform script as we are ingesting two datasets from the Google spreadsheet:
 - locations
@@ -41,11 +42,9 @@ iv. Prefix the dataset_name with your name e.g `joe_bloggs_covid_vaccinations`.
 
 v. No schedule is required as this is a one-off import, so this line does not need to be included within the module.
 
-
+&nbsp;
 ### 4. Getting your jobs deployed to the Data Platform
 The next step is to commit your changes to the [Data Platform GitHub repository](https://github.com/LBHackney-IT/Data-Platform). Follow the instructions [here](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/getting-set-up/using-github#committing-your-changes-to-the-data-platform-project) on how to do this.
-
-> :warning: Please note that if you do not have access to the AWS sandbox account then this step will fail.
 
 Create a [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) (PR) for the changes to the Terraform script that you have just made. **Two approvals** are required before your code can get merged into the *main* branch of the Data Platform repository. If you know the names of your reviewers, you can send them the URL of your PR to speed up the process. 
 
@@ -58,12 +57,13 @@ In everyday use you may not need the data to be immediately available, in which 
 Log in to AWS as the `DataPlatformSandboxStg` role via the `Management Console` for that role.
 
 ![AWS console](../images/sandox-console.png)
+&nbsp;
 ### 5. Finding and running your jobs in the AWS console
 
 >:bulb: You can search for AWS tools like AWS Glue, Crawlers etc. using the toolbar. If you cannot find a job or crawler check the region is London in the top right of the screen.
 
 
-Your jobs should now be available within Glue Studio. They will be named like [Google Sheets Import Job - department dataset name].
+Your jobs should now be available within [Glue Studio](https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/jobs). They will be named like `stg Google Sheets Import Job - department-dataset-yourname`.
 
 >:warning: If you are waiting for code deployment to complete, then look for `stg Google Sheets Import Job - sandbox-daro-covid-locations` and `stg Google Sheets Import Job - sandbox-daro-covid-vaccinations` jobs instead.
 
@@ -74,6 +74,7 @@ It is sometimes helpful to check the specific output S3 bucket for a job to see 
 
 ![s3 bucket](../images/s3_check_partitions.png)
 
+&nbsp;
 ### 6. Crawling the ingested data to make it available in the Glue catalogue. 
 `Crawling` is the mechanism used to populate the AWS Glue Data Catalog so that data is made visible in Athena by picking up the column names and data types. 
 
@@ -83,8 +84,9 @@ ii. Check the data in AWS Athena, the interface to view and query data from the 
 
 iii. Open the `Query editor`.
 
-iv. Make sure workgroup is `sandbox` and you are using the `sandbox-raw-zone` database. Run a simple query in Athena against your tables created or updated by the crawlers. You can generate a SQL preview query by selecting the three vertical dots by the table name and select `Preview Table` to see the top 10 lines. The dialect of SQL used in Athena is `Presto SQL`.
+iv. Make sure workgroup is `sandbox` and you are using the `sandbox-raw-zone` database. Run a simple query in Athena against your tables created or updated by the crawlers. You can generate a SQL preview query by selecting the three vertical dots by the table name and select `Preview Table` to see the top 10 lines. The dialect of SQL used in Athena is [Presto SQL](https://prestodb.io/docs/current/sql.html).
 
 v. You should now be able to repeat steps 6-9 for the job that *you* created as the code should now have been deployed into to main Data Platform repository.
 
+&nbsp;
 >:raised_hands: Congratulations! You have completed Module 01!
