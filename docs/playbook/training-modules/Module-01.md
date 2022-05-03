@@ -20,17 +20,17 @@ We have created a `sandbox` department in the Data Platform, and an associated G
 
 &nbsp;
 ### 3. Creating two ingestion jobs in Terraform
-Your Google sheet is going to be ingested by a job running in AWS [Glue](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary#glue). You will write a bit of [Terraform](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary/#terraform) that will deploy this job automatically in the AWS environment. You are going to write this code directly in your web browser in GitHub [here](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/26-google-sheets-imports.tf), adding to the existing `Terraform script 26-google-sheets-imports.tf`.
+Your Google sheet is going to be ingested by a job running in AWS [Glue](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary#glue). You will write a bit of [Terraform](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary/#terraform) that will deploy this job automatically in the AWS environment. You are going to write this code directly in your web browser in GitHub [here](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/26-google-sheets-imports.tf), adding to the existing terraform script `26-google-sheets-imports.tf`.
 
 ![Terraform script](../images/edit_terraform_google_sheets.png)
 
-You could also write the job locally within your interactive development environment,but editing via the GitHub web interface will be easier in this case as you won't need to clone the repository.
+You could also write the job locally within your interactive development environment, but editing via the GitHub web interface will be easier in this case as you won't need to clone the repository.
 
-You will need to create two modules within the Terraform script as we are ingesting two datasets from the Google spreadsheet:
+You will need to create two modules within the terraform script as we are ingesting two datasets from the Google spreadsheet:
 - locations
 - vaccinations
 
-i. Go to the Playbook to view [detailed steps](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/ingesting-data/google-sheets-import#setting-up-the-aws-glue-job) on how to create a Terraform module.
+i. Go to the Playbook to view [detailed steps](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/ingesting-data/google-sheets-import#setting-up-the-aws-glue-job) on how to create a terraform module.
 
 Additionally, please complete the following steps:
 
