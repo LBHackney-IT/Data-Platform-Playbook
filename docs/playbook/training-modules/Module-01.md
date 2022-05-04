@@ -54,7 +54,7 @@ Once you have received confirmation that two reviewers have approved your PR, go
 
 In everyday use you may not need the data to be immediately available, in which case steps 5-7 would be picked up by the scheduled daily jobs, provided a schedule is specified in the Terraform module. 
 
-Log in to AWS as the `DataPlatformSandboxStg` role via the `Management Console` for that role.
+Log in to [AWS][hackney_sso] as the `DataPlatformSandboxStg` role via the `Management Console` for that role.
 
 ![AWS console](../images/sandox-console.png)
 &nbsp;
@@ -70,7 +70,9 @@ Your jobs should now be available within [Glue Studio](https://eu-west-2.console
 Once you have selected a Glue job, you can run it by clicking `Run job` 
 To monitor the progress of your Glue job run, click through to the Glue job and navigate to the `Runs` tab.
 
-It is sometimes helpful to check the specific output S3 bucket for a job to see if it has run; the parquet files will be partitioned by date.
+It is sometimes helpful to check the specific output [S3][s3] bucket for a job to see if it has run; the parquet files will be partitioned by date.
+You can find the data by navigating to the location highlighted in the screenshot below but using your job name instead of `daro-covid-vaccinations`.
+You should see data for todays date under the job you have run.
 
 ![s3 bucket](../images/s3_check_partitions.png)
 
@@ -78,9 +80,9 @@ It is sometimes helpful to check the specific output S3 bucket for a job to see 
 ### 6. Crawling the ingested data to make it available in the Glue catalogue. 
 `Crawling` is the mechanism used to populate the AWS Glue Data Catalog so that data is made visible in Athena by picking up the column names and data types. 
 
-i. Once the Glue jobs have successfully run, go ahead and run the crawlers that were created as part of the import job. You can use the AWS search bar to locate the Crawlers page. To search for your Crawler, click on the search box and then select the `Name` filter and enter the name of your crawler, and click run.
+i. Once the Glue jobs have successfully run, go ahead and run the crawlers that were created as part of the import job. You can use the AWS search bar to locate the [Crawlers][glue_crawlers] page. To search for your Crawler, click on the search box and then select the `Name` filter and enter the name of your crawler, and click run.
 
-ii. Check the data in AWS Athena, the interface to view and query data from the Glue Catalogue.
+ii. Check the data in [AWS Athena][athena_query_editor], the interface to view and query data from the Glue Catalogue.
 
 iii. Open the `Query editor`.
 
@@ -90,3 +92,9 @@ v. You should now be able to repeat steps 6-9 for the job that *you* created as 
 
 &nbsp;
 >:raised_hands: Congratulations! You have completed Module 01!
+
+
+[hackney_sso]: https://hackney.awsapps.com/start#/
+[s3]: https://s3.console.aws.amazon.com/s3/home?region=eu-west-2
+[athena_query_editor]: https://eu-west-2.console.aws.amazon.com/athena/home?region=eu-west-2#/query-editor/
+[glue_crawlers]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#catalog:tab=crawlers
