@@ -126,7 +126,6 @@ This is what will handle the ingestion of the data from Google Sheets to the Dat
 
    - `module` - in the format `your_unique_module_name`, and unique to all other `module` names in this file (it is helpful to keep the same naming convention as your dataset/folder)
    - `glue_catalog_database_name` - Using `module.department_DEPARTMENT-NAME.raw_zone_catalog_database_name` (e.g. `module.department_parking.raw_zone_catalog_database_name`)
-   - `sheets_credentials_name` - Find the value for your department in [the table above](#department-specific-information). If this is blank for your department then you don't need to include this at all.
    - `google_sheets_document_id` - Your Google Sheets document ID - see the `Getting Google sheet detail` section above
    - `google_sheets_worksheet_name` - The name of the worksheet within your Google Sheet document - see the `Getting Google sheet detail` section above
    - `department` - `module.department_DEPARTMENT-NAME` (department name should appear as in [the table above](#department-specific-information), e.g. `module.department_housing_repairs`)
