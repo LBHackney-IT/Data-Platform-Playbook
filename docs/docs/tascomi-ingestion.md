@@ -13,6 +13,8 @@ This section describes how Tascomi Planning data gets ingested and refined in th
 - Refinement of the parsed data to recast all columns to the right data type
 - Creation of a full snapshot by applying the daily increment to the previous snapshot
 
+![Tascomi data ingestion process](../docs/images/tascomi-ingestion-pipeline.png)
+
 ## Details of individual steps
 
 ### Step 1 - Ingestion
