@@ -1,4 +1,12 @@
+---
+title: Module 1 - Ingesting data from Google Sheets
+description: "Training Module 1"
+layout: playbook_js
+tags: [training]
+---
+
 # Module 1 - Ingesting data from Google Sheets
+
 
 In this module you will ingest two datasets into the Data Platform from Google Sheets. This will involve creating an AWS [Glue](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary/#glue) job using [Terraform](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary/#terraform) as well as [GitHub](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary/#github) for making changes to the Data Platform code repository. Once your changes have been approved by the Data Platform team, you will then crawl the loaded data, to then be able to view and query it in [AWS Athena](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary#athena), a database-like web client.
 
@@ -22,7 +30,7 @@ We have created a `sandbox` department in the Data Platform, and an associated G
 ### 3. Creating two ingestion jobs in Terraform
 Your Google sheet is going to be ingested by a job running in AWS [Glue](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary#glue). You will write a bit of [Terraform](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary/#terraform) that will deploy this job automatically in the AWS environment. You are going to write this code directly in your web browser in GitHub [here](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/26-google-sheets-imports.tf), adding to the existing terraform script `26-google-sheets-imports.tf`.
 
-![Terraform script](../images/edit_terraform_google_sheets.png)
+![Terraform script](./images/edit_terraform_google_sheets.png)
 
 You could also write the job locally within your interactive development environment, but editing via the GitHub web interface will be easier in this case as you won't need to clone the repository.
 
@@ -56,7 +64,7 @@ In everyday use you may not need the data to be immediately available, in which 
 
 Log in to [AWS][hackney_sso] as the `DataPlatformSandboxStg` role via the `Management Console` for that role.
 
-![AWS console](../images/sandox-console.png)
+![AWS console](./images/sandox-console.png)
 &nbsp;
 ### 5. Finding and running your jobs in the AWS console
 
@@ -74,7 +82,7 @@ It is sometimes helpful to check the specific output [S3][s3] bucket for a job t
 You can find the data by navigating to the location highlighted in the screenshot below but using your job name instead of `daro-covid-vaccinations`.
 You should see data for todays date under the job you have run.
 
-![s3 bucket](../images/s3_check_partitions.png)
+![s3 bucket](./images/s3_check_partitions.png)
 
 &nbsp;
 ### 6. Crawling the ingested data to make it available in the Glue catalogue. 
