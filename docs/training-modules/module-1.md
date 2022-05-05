@@ -99,7 +99,7 @@ iv. Make sure workgroup is `sandbox` and you are using the `sandbox-raw-zone` da
 v. You should now be able to repeat steps 6-9 for the job that *you* created as the code should now have been deployed into to main Data Platform repository.
 
 &nbsp;
->:raised_hands: Congratulations! You have completed Module 01!
+>:raised_hands: Congratulations! You have completed Module 1!
 
 
 [hackney_sso]: https://hackney.awsapps.com/start#/
