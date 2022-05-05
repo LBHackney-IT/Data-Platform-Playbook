@@ -82,6 +82,42 @@ Here is an example that only keeps records where the import_date (a standard par
 
 For further reading around pushdown predicates and partitioned data in Glue jobs, AWS have some [documentation][aws-managing-partitions-docs] on their use in AWS Glue ETL's and a [blog post about working with partitioned data][aws-partitions-blog-post].
 
+## Monitoring a glue job run
+
+We recommend that you enable continuous logging on your glue jobs, you can read more about this in [AWS's documentation][aws-docs-continuous-logging].
+Enabling continuous logging will allow you to [view logs][aws-docs-viewing-logs] after your glue job has started. 
+
+### Continuous logging
+
+#### Enabling continuous logging
+
+To enable continous logging you need to check the "Continuous logging" box in the "Advanced properties" section of the job details.
+![continous looging checkbox](../../images/glue_studio_cont_log_checkbox.png)
+
+#### Viewing logs with continuous logging enabled
+
+To view the logs you can click on "All logs" under "Cloudwatch logs" in the run details, highlighted in the image below. 
+![glue job run details](../../images/glue_run_details.png)
+This will take you to the list of logs streams for that job run.
+There will be one for each executor of the job, including the driver, most of the time the driver logs will hold the most helpful information.
+The driver logs are in the stream postfixed by -driver, like in the screenshot below.
+![list of log streams for all logs](../../images/glue_all_log_streams.png)
+You can click on this log stream to see the logs. 
+
+### When a glue job errors
+
+Even without continuous logging you can still view the full error output after a glue job has failed.
+On the run details page it will only show a truncated version of the error message, often hiding the underlying error.
+
+To view the error logs click on "Error logs" under "Cloudwatch logs" in the run details, highlighted in the [image above](#viewing-logs-with-continuous-logging-enabled).
+This will take you to a list of logs streams for that job run.
+There will be one for each executor of the job, including the driver, most of the time the driver logs will hold the most helpful information.
+You can open up the logs for the driver by selecting the log stream which isn't postfixed by a second identifier.
+The driver log stream is highlighted in the sreenshot below.
+![list of log streams for errors](../../images/glue_error_log_streams.png)
+You may need to expand the log stream column size in order to see this.
+Click on the driver logs to see the full error output and stack trace.
+
 ## Receive email notifications when Glue jobs fail
 
 Each time a Glue job fails, an email notification with details of the error message is sent to the respective department, and their subscribed members.
@@ -115,3 +151,5 @@ Ensure the **PlatformDepartment** tag is correctly set in the _Advanced details_
 [pushdown-predicates]: #pre-filter-your-source-data-for-a-glue-job
 [aws-partitions-blog-post]: https://aws.amazon.com/blogs/big-data/work-with-partitioned-data-in-aws-glue/
 [aws-managing-partitions-docs]: https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-partitions.html
+[aws-docs-continuous-logging]: https://docs.aws.amazon.com/glue/latest/dg/monitor-continuous-logging.html
+[aws-docs-viewing-logs]: https://docs.aws.amazon.com/glue/latest/dg/monitor-continuous-logging-view.html
