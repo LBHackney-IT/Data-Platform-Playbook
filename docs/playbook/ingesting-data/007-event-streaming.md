@@ -12,7 +12,6 @@ To explain the setup needed when you want to ingest a new data type via event st
 ## Intended audience
 
 - Data Engineers
-- Data Analysts
 
 ## Prerequisites
 
