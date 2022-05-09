@@ -1,6 +1,6 @@
 ---
-title: Ingest XLXS files from G Drive
-description: "Ingest XLXS files from G Drive description"
+title: Ingest spreadsheet files from G Drive
+description: "Ingest spreadsheet files from G Drive description"
 layout: playbook_js
 tags: [playbook]
 ---
@@ -11,12 +11,18 @@ tags: [playbook]
 - You have been added to the 'LBHackney-IT' team, you can request this from Rashmi Shetty.
 - You have a Data Platform service account email address for your relevant domain or service area. A service account would look something like this: dataplatform-stg-service_area@dataplatform-stg.iam.gserviceaccount.com. If you don't know which service account you should use, you can request this from the Data Platform team.
 
+## Permitted spreadsheet file types
+
+- .xlsx
+- .csv
+
 ## Preparing the spreadsheet for ingestion
 
+- Check that your file is in the list of allowed file types for this process
 - Ensure that all columns in your file have headers. Columns without headers will be lost.
-- If your XLSX file is stored on your local device, [upload it to google drive](https://www.howtogeek.com/398570/how-to-import-an-excel-document-into-google-sheets/).
+- If your spreadsheet file is stored on your local device, [upload it to google drive](https://www.howtogeek.com/398570/how-to-import-an-excel-document-into-google-sheets/).
 - If the document is unnamed, name it
-- You now need to share this file with the service account you've been provided. One way to do this is to open the XLSX spreadsheet you would like to ingest from Google drive and view it as if it were a Google Sheet. Once you've opened the document, click `Share` in the top right corner of the sheet. If your XLSX file is very large and you're having trouble opening the file in Sheets, you can right-click the file listed in Drive and click `Share`.
+- You now need to share this file with the service account you've been provided. One way to do this is to open the spreadsheet you would like to ingest from Google drive and view it as if it were a Google Sheet. Once you've opened the document, click `Share` in the top right corner of the sheet. If your spreadsheet file is very large and you're having trouble opening the file in Sheets, you can right-click the file listed in Drive and click `Share`.
 - Paste in the service account email address you have been provided into the email box
 - Ensure the suggested email matches the service account email and select it
 - On the new window, choose from the dropdown on the right hand side and select `Viewer`
@@ -36,7 +42,7 @@ tags: [playbook]
 ## Setting up AWS Glue job
 
 - Open the [Data Platform Project](https://github.com/LBHackney-IT/data-platform) repository in Github. If you don't have the correct permissions, you'll get a '404' error (see [prerequisites](#prerequisites)).
-- Navigate to the main `terraform` directory, and open `27-xlsx-imports-from-g-drive.tf`
+- Navigate to the main `terraform` directory, and open `27-spreadsheet-imports-from-g-drive.tf`
 - Switch to 'edit mode' (using edit button on top right)
 - Copy one of the modules above, paste at the bottom of the file and update the following fields:
 
