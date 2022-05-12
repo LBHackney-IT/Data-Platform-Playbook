@@ -1,7 +1,7 @@
 ---
 title: "Qlik Integration"
 description: ""
-tags:
+tags: [tech-spike]
 layout: layout
 ---
 
