@@ -37,9 +37,6 @@ You will need the names of the tables that were created from completing Module 1
     * Familiarise yourself with the steps (variables, reading, transforming and writing data).
     * Duplicate the template, saving it in the sandbox folder, and rename it (you can append your name to the name of the file).
 
-NOT CLEAR WHERE TO FIND DATASET NAME AND DATABASE NAME
-RUN ALL CELLS UP TO "TRANSFORM DATA", then print out the schema 
-
 1. Prototype your own ETL (Extract Transform Load) job to transform the data in PySpark. 
    The [PySpark By Examples website][pyspark_by_example] is a handy resource to write your code. 
    
