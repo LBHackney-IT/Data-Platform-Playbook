@@ -1,7 +1,7 @@
 ---
 title: "Ingesting data from MSSQL database"
 description: "Investigate creating a reusable process for ingesting data from MS SQL and other types of databases"
-tags:
+tags: [tech-spike]
 layout: layout
 ---
 

@@ -13,8 +13,8 @@
     "format": "yarn prettier --write '**/*.{js,md}'"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.0.0-beta.6",
-    "@docusaurus/preset-classic": "^2.0.0-beta.6",
+    "@docusaurus/core": "^2.0.0-beta.20",
+    "@docusaurus/preset-classic": "^2.0.0-beta.20",
     "@mdx-js/react": "^1.6.21",
     "bootstrap": "^4.6.0",
     "clsx": "^1.1.1",

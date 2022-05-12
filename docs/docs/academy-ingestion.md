@@ -1,7 +1,7 @@
 ---
 title: "Ingesting Academy data onto the Data Platform"
 description: "Overview of how Academy data is ingested onto the Data Platform from MS SQL databases and distributed to Housing Benefits & Needs and Revenues Departments"
-tags:
+tags: [playbook]
 layout: layout
 ---
 
