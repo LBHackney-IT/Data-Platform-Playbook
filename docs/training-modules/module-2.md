@@ -70,7 +70,8 @@ If you need more detailed instructions at any point checkout [the guide to set u
     * Paste your code from the notebook into the template, ignoring the first cell (Cells can be merged in Jupyter by holding `Shift` and selecting the cells, then pressing `Shift+M` on your keyboard).
 
     * For the variables defined in the first cell of your notebook, you will use the `Job details` tab instead of writing them in the script.
-    The Job parameters panel can be found under `Advanced properties`.
+    You should define them in the **Job parameters** panel which can be found under `Advanced properties`. 
+      You should also update the S3 path in the **Script path** field to `s3://dataplatform-stg-glue-scripts/custom/`. 
 
     ![job parameters](./images/job_parameters.png)
 1. Run your job.
