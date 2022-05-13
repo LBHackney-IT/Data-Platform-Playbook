@@ -15,31 +15,32 @@ We use notebooks to prototype transformation scripts before they are run and sch
 ### To start up a notebook
 
 1. Login to AWS using the [Hackney SSO portal][hackney_sso].
-2. Navigate to the [Notebook Instances][sagemaker_console_nb] sections of the AWS Sagemaker console.
+2. Search "Amazon SageMaker" and then navigate to the [Notebook Instances][sagemaker_console_nb] under the **Notebook** section in the left-hand panel of the Amazon SageMaker console.
 3. Find the notebook appended by your department name, for example `sagemaker-notebook-parking`.
 If you can't see a notebook for your department then please contact the Data Platform team to request one.
-4. If the Status of the notebook is "InService", go on the step 5.
-If not, click "Start" under the Actions column. ![start_notebook.png](../../images/start_notebook.png)
-The notebook will then go to "Pending" status, if this is the first time the notebook has been used that day it will take around 10 minutes to start up.
-5. Once the Status of the notebook has changed to "InService", you have the option to either open [Jupyter][jupyter_nb_docs] or [JupyterLab][jupyter_lab_docs] using the links in the "Actions" column.
-If you are unfamiliar with these it might be worth starting with JupyterLab but you can try both to see which you prefer.
+4. If the Status of the notebook is `InService`, go on the step 5.
+If not, click `Start` under the **Actions** column. ![start_notebook.png](../../images/start_notebook.png)
+The notebook will then go to `Pending` status, if this is the first time the notebook has been used that day it will take around 10 minutes to start up.
+5. Once the Status of the notebook has changed to `InService`, click the [JupyterLab][jupyter_lab_docs] link in the **Actions** column to open up the notebook.
 
 ### Using a notebook
 
-There is a [github repository][notebooks_github] which will be preloaded into the notebook.
-This is where we store any notebooks script that we want to keep.
-If you want to keep the changes you have made to any scripts you must commit the changes to this repository otherwise you may loose your work.
+There is a [Github repository][notebooks_github] which will be preloaded into the notebook.
+This is where we store any notebooks scripts that we want to keep.
+If you want to keep the changes you have made to any scripts you must commit the changes to this repository otherwise you may lose your work.
 
-- You should work in the folder "Data-Platform-Notebooks/notebooks", where all the notebooks are stored, click into this folder if you aren't already in there.
+- You should work in the folder **"Data-Platform-Notebooks/notebooks"**, where all the notebooks are stored. 
+  Click into this folder if you aren't already in there.
 
   ![notebook_folders.png](../../images/notebook_folders.png)
 
-- Always start by pulling any latest changes from this repository. To do this, click on the Github icon on the left panel and then select the icon to pull latest changes, as shown below.
+- Always start by pulling any latest changes from this repository. 
+  To do this, click on the Github icon on the left panel and then select the icon to pull the latest changes, as shown below.
 
   ![git_pull_in_jupyter_lab.png](../../images/git_pull_in_jupyter_lab.png)
 
-- There are a few templates in the templates folder that you can copy and paste into your departments folder and then use as a starting point.
-- Commit your changes by following the next section when you have finished working, so you don't loose your work.
+- There are a few templates in the **templates** folder that you can copy and paste into your departments folder and then use as a starting point.
+- Commit your changes by following the next section when you have finished working, so you don't lose your work.
 
 ## Saving changes to the notebook scripts
 

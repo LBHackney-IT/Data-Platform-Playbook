@@ -25,21 +25,28 @@ PySpark is an interface that uses the Python programming language to access the 
 
 ## Prerequisites
 
-Please ensure that both [module 0][module_0] and [module 1][module_1] is completed before proceeding.
+Please ensure that both [Module 0][module_0] and [Module 1][module_1] is completed before proceeding.
+You will need the names of the tables that were created from completing Module 1.
 
 ## Step-by-step instructions
 
 ### 1. Developing the job script in a Jupyter notebook
 
 1. Launch the sandbox notebook following [this guide][sagemaker_article].
-1. Open the notebook template called "using-pyspark.ipynb".
+1. Open the notebook template called `using-pyspark.ipynb`.
     * Familiarise yourself with the steps (variables, reading, transforming and writing data).
-    * Duplicate the template, saving it in the sandbox folder, and rename it.
-1. Prototype your own ETL job to transform the data in PySpark. The [PySpark By Examples website][pyspark_by_example] is a handy resource to write your code. Please try the following things on your data: 
+    * Duplicate the template, saving it in the sandbox folder, and rename it (you can append your name to the name of the file).
+
+1. Prototype your own ETL (Extract Transform Load) job to transform the data in PySpark. 
+   The [PySpark By Examples website][pyspark_by_example] is a handy resource to write your code. 
+   
+   **Please try the following things on your data:** 
     * Load the Covid Locations dataset into the notebook.
+         * You will first need to set the variables in the first cell, see the "TODO" comments.
+         The datasets will be the same as the last step in Module 1 training.
     * Print out the schema and the first few rows of data to check it has imported correctly.
     * Change a column name: rename `location` to `country`.
-    * Load the Covid Vaccinations dataset into the notebook.
+    * Load the Covid Vaccinations dataset into the notebook - Repeat the 2 steps above. 
     * Cast a column to a different type e.g. a string date to date type.
     * Join the two tables to a single output using the `country` column.
 
@@ -54,26 +61,29 @@ If you need more detailed instructions at any point checkout [the guide to set u
 1. Login to AWS pre-production acccount via the [Hackney SSO][hackney_sso].
 1. Set up your new job in Glue Studio.
     * Go to [AWS Glue Studio][aws_glue_studio] and open the Template job, called "stg job_template".
-    * Familiarise yourself with the steps (reading, transforming and writing data) and note the differences compared to the Notebook template.
-    * Clone the job (from Actions) and rename it with your name and remove stg from the prefix, for example "jane doe template".
+    * Clone the job (from Actions) and rename it with your name and remove "stg" from the prefix, for example "jane doe template".
+    * Open the job and familiarise yourself with the steps (reading, transforming and writing data) and note the differences compared to the Notebook template.
 
     ![Cloning a glue job](./images/cloning_jobs.png)
 1. Write your job.
 
-    Paste your code from the notebook into the template. (Cells can be merged in Jupyter by holding shift and selecting the cells, then hitting shift+M).
+    * Paste your code from the notebook into the template, ignoring the first cell (Cells can be merged in Jupyter by holding `Shift` and selecting the cells, then pressing `Shift+M` on your keyboard).
 
-    For the variables defined at the top of the notebook, you will use the ‘Job details’ tab instead of writing them in the script.
-    The Job parameters panel can be found under Advanced properties.
+    * For the variables defined in the first cell of your notebook, you will use the `Job details` tab instead of writing them in the script.
+    You should define them in the **Job parameters** panel which can be found under `Advanced properties`. 
+      You should also update the S3 path in the **Script path** field to `s3://dataplatform-stg-glue-scripts/custom/`. 
 
     ![job parameters](./images/job_parameters.png)
 1. Run your job.
 1. Review the run result logs.
-See the [monitoring section][monitoring_jobs] of the using glue studio guide for an explanation on how to do this.
-1. Check the data wrote correctly into [S3][s3].
-To do this, follow the same steps in the [last section of module 1][module_1_step_6].
+See the [monitoring section][monitoring_jobs] of the using Glue Studio guide for an explanation on how to do this.
+1. Once your job status has changed from `Running` to `Succeeded` you should check the data wrote correctly into [S3][s3].
+To do this, follow the same steps in the [last section of Module 1][module_1_step_6].
 1. [Crawl][glue_crawlers] the results. (Using the crawler named “sandbox-refined-zone”).
 1. Check the data in [Athena][athena_query_editor] - ([playbook][querying_with_athena]).
-1. Remove the temporary resources that you created (glue job and S3 files) from the console.
+1. Remove the temporary resources that you created in the AWS Console:
+   - Glue job
+   - S3 files: check the S3 target location of your job for a reminder of where the data was written.
 
 >:tada: Congratulations! You have completed Module 2!
 

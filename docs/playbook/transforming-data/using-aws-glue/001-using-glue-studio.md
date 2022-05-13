@@ -96,7 +96,7 @@ To enable continous logging you need to check the "Continuous logging" box in th
 
 #### Viewing logs with continuous logging enabled
 
-To view the logs you can click on "All logs" under "Cloudwatch logs" in the run details, highlighted in the image below. 
+To view the logs, navigate to the `Runs` tab and click on "All logs" under "Cloudwatch logs" in the run details, highlighted in the image below. 
 ![glue job run details](../../images/glue_run_details.png)
 This will take you to the list of logs streams for that job run.
 There will be one for each executor of the job, including the driver, most of the time the driver logs will hold the most helpful information.

@@ -34,7 +34,7 @@ Your Google sheet is going to be ingested by a job running in AWS [Glue](https:/
 
 You could also write the job locally within your interactive development environment, but editing via the GitHub web interface will be easier in this case as you won't need to clone the repository.
 
-You will need to create two modules within the terraform script as we are ingesting two datasets from the Google spreadsheet:
+You will need to create two modules within the Terraform script as we are ingesting two datasets from the Google spreadsheet:
 - locations
 - vaccinations
 
@@ -60,7 +60,7 @@ Once you have received confirmation that two reviewers have approved your PR, go
 
 >:warning: There will be a 10-15 minute delay whilst the code deployment takes place. You can take a break or look at a ready-made job in the interim. To check the status of your deployment, navigate to the Actions tab in the Github web interface.
 
-In everyday use you may not need the data to be immediately available, in which case steps 5-7 would be picked up by the scheduled daily jobs, provided a schedule is specified in the Terraform module. 
+In everyday use you may not need the data to be immediately available, in which case steps 5-6 would be picked up by the scheduled daily jobs, provided a schedule is specified in the Terraform module. 
 
 Log in to [AWS][hackney_sso] as the `DataPlatformSandboxStg` role via the `Management Console` for that role.
 
@@ -88,15 +88,23 @@ You should see data for todays date under the job you have run.
 ### 6. Crawling the ingested data to make it available in the Glue catalogue. 
 `Crawling` is the mechanism used to populate the AWS Glue Data Catalog so that data is made visible in Athena by picking up the column names and data types. 
 
-i. Once the Glue jobs have successfully run, go ahead and run the crawlers that were created as part of the import job. You can use the AWS search bar to locate the [Crawlers][glue_crawlers] page. To search for your Crawler, click on the search box and then select the `Name` filter and enter the name of your crawler, and click run.
+- Once the Glue jobs have successfully run, go ahead and run the crawlers that were created as part of the import job. 
+You can use the AWS search bar to locate the [Crawlers][glue_crawlers] page. 
+To search for your Crawler, click on the search box and then select the `Name` filter and enter the name of your Crawler, and click `Run crawler`.
 
-ii. Check the data in [AWS Athena][athena_query_editor], the interface to view and query data from the Glue Catalogue.
+### 7. Viewing and querying the data in Athena
 
-iii. Open the `Query editor`.
+i. Check the data in [AWS Athena][athena_query_editor], the interface to view and query data from the Glue Catalogue.
 
-iv. Make sure workgroup is `sandbox` and you are using the `sandbox-raw-zone` database. Run a simple query in Athena against your tables created or updated by the crawlers. You can generate a SQL preview query by selecting the three vertical dots by the table name and select `Preview Table` to see the top 10 lines. The dialect of SQL used in Athena is [Presto SQL](https://prestodb.io/docs/current/sql.html).
+ii. Open the `Query editor`.
 
-v. You should now be able to repeat steps 6-9 for the job that *you* created as the code should now have been deployed into to main Data Platform repository.
+iii. Make sure workgroup is set to `sandbox` and you are using the `sandbox-raw-zone` database.
+ Run a simple query in Athena against your tables created or updated by the crawlers. 
+(**Make a note of the names of your tables as you will need them for Module 2**).
+You can generate a SQL preview query by selecting the three vertical dots by the table name and select `Preview Table` to see the top 10 lines. 
+The dialect of SQL used in Athena is [Presto SQL](https://prestodb.io/docs/current/sql.html).
+
+iv. You should now be able to repeat steps 5-7 for the job that *you* created as the code should now have been deployed into to main Data Platform repository.
 
 &nbsp;
 >:raised_hands: Congratulations! You have completed Module 1!
