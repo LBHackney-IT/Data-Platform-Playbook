@@ -129,13 +129,8 @@ _For more technical details on the overall process, see: [Database Ingestion doc
       "JDBC connection to Academy Production Insights LBHATestRBViews database to ingest Council Tax data"
       ```
 
-    - **jdbc_connection_subnet_id** (required): The subnet to deploy the connection to.
-    Set this to `local.subnet_ids_list[local.subnet_ids_random_index]`
-
-    - **database_availability_zone** (required): The availability zone to deploy the connection to.
-    Set this to `"eu-west-2a"`
-    
-    - **vpc_id** (required): Set this to `data.aws_vpc.network.id`
+    - **jdbc_connection_subnet** (required): The subnet to deploy the connection to.
+    Set this to `data.aws_subnet.network[local.instance_subnet_id]`
 
     - **identifier_prefix** (required): Set this to `local.short_identifier_prefix`
   
