@@ -13,7 +13,7 @@ In this module you will ingest two datasets into the Data Platform from Google S
 &nbsp;
 ## Step-by-step instructions
 
-Please ensure that [Module 0](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/training-modules/Module-0) is completed before starting this module.
+Please ensure that [Module 0](https://lbhackney-it.github.io/Data-Platform-Playbook/training-modules/module-0) is completed before starting this module.
 
 &nbsp;
 ### 1. Preparing the Google Sheet for this exercise
