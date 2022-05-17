@@ -13,7 +13,7 @@ In this module you will ingest two datasets into the Data Platform from Google S
 &nbsp;
 ## Step-by-step instructions
 
-Please ensure that [Module 0](https://lbhackney-it.github.io/Data-Platform-Playbook/training-modules/module-0) is completed before starting this module.
+Please ensure that [Module 0][module_0] is completed before starting this module.
 
 &nbsp;
 ### 1. Preparing the Google Sheet for this exercise
@@ -114,3 +114,4 @@ iv. You should now be able to repeat steps 5-7 for the job that *you* created as
 [s3]: https://s3.console.aws.amazon.com/s3/home?region=eu-west-2
 [athena_query_editor]: https://eu-west-2.console.aws.amazon.com/athena/home?region=eu-west-2#/query-editor/
 [glue_crawlers]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#catalog:tab=crawlers
+[module_0]: ./module-0.md
