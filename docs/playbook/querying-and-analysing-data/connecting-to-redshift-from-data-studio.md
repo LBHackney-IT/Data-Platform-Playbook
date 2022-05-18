@@ -39,26 +39,26 @@ Then, when adding a data source in [Google Data Studio][google_data_studio]
 
 ### Department specific credentials
 
-1. Log into the [AWS Console][aws_sso_link] for the DataPlatform-Staging account.
+1. Log into the [AWS Console][aws_sso_link] for the DataPlatform-Production account.
 
 1. Go to the AWS Secrets Manager secret for your department
 
-   - [Parking Credentials][parking_user_secret_staging]
-   - [Planning Credentials][planning_user_secret_staging]
-   - [Housing Repairs Credentials][housing_repairs_user_secret_staging]
+   - [Parking Credentials][parking_user_secret_production]
+   - [Planning Credentials][planning_user_secret_production]
+   - [Housing Repairs Credentials][housing_repairs_user_secret_production]
 
-   If you clicking the link above before logging into the DataPlatform-staging account you will be presented with an
+   If you clicking the link above before logging into the DataPlatform-production account you will be presented with an
    AWS login screen.
 
 1. Scroll down to the "Secret value" section and select "Retrieve secret value".
 
-[client_certificate]: https://dataplatform-stg-ssl-connection-resources.s3.eu-west-2.amazonaws.com/client_certificate.crt
-[client_private_key]: https://dataplatform-stg-ssl-connection-resources.s3.eu-west-2.amazonaws.com/client_private_key.key
+[client_certificate]: https://dataplatform-prod-ssl-connection-resources.s3.eu-west-2.amazonaws.com/client_certificate.crt
+[client_private_key]: https://dataplatform-prod-ssl-connection-resources.s3.eu-west-2.amazonaws.com/client_private_key.key
 [server_certificate]: https://s3.amazonaws.com/redshift-downloads/redshift-ca-bundle.crt
 [aws_sso_link]: https://hackney.awsapps.com/start/#/
-[parking_user_secret_staging]: https://eu-west-2.console.aws.amazon.com/secretsmanager/home?region=eu-west-2#!/secret?name=dataplatform-stg%2Fparking%2Fredshift-cluster-user20211116150110800200000001
-[planning_user_secret_staging]: https://eu-west-2.console.aws.amazon.com/secretsmanager/home?region=eu-west-2#!/secret?name=dataplatform-stg%2Fplanning%2Fredshift-cluster-user20211116150112018900000006
-[housing_repairs_user_secret_staging]: https://eu-west-2.console.aws.amazon.com/secretsmanager/home?region=eu-west-2#!/secret?name=dataplatform-stg%2Fhousing-repairs%2Fredshift-cluster-user20211116150111083800000002
+[parking_user_secret_production]: https://eu-west-2.console.aws.amazon.com/secretsmanager/home?region=eu-west-2#!/secret?name=dataplatform-prod%2Fparking%2Fredshift-cluster-user2021112314531694280000002d
+[planning_user_secret_production]: https://eu-west-2.console.aws.amazon.com/secretsmanager/home?region=eu-west-2#!/secret?name=dataplatform-prod%2Fplanning%2Fredshift-cluster-user2021112314531441430000002b
+[housing_repairs_user_secret_production]: https://eu-west-2.console.aws.amazon.com/secretsmanager/home?region=eu-west-2#!/secret?name=dataplatform-prod%2Fhousing-repairs%2Fredshift-cluster-user20211123145318429300000031
 [google_data_studio]: https://datastudio.google.com/u/0/datasources/create/
 [aws_athena]: https://eu-west-2.console.aws.amazon.com/athena/home?region=eu-west-2#query
 [data extract]: https://lbhackney-it.github.io/Data-Platform-Playbook/playbook/querying-and-analysing-data/create_a_data_extract_in_GDS/
