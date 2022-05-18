@@ -170,7 +170,7 @@ you will need to do the following before moving on to the next section:
     - Test your connection and ensure it works:
         - Select your connection and click `Test Connection`.
         - Assign the relevant department IAM role.
-          - **Note: If the data you are ingesting is not department specific, you should use the IAM role: `dataplatform-stg-glue-role`.**
+          - **Note: If the data you are ingesting is not department specific, you should use the IAM role: `dataplatform-prod-glue-role`.**
         - Lastly, click `Test Connection` (this can take up to a minute to complete).
  
 ### Create a Glue job and Crawler to ingest all database tables 

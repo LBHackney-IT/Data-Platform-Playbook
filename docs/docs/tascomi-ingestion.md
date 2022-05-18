@@ -66,25 +66,25 @@ The data created along the process (initial full load, increments and snapshots)
 The ready-for-use data is in the refined zone bucket with the prefix /planning/tascomi/snapshot. The corresponding tables in the Glue catalog are simply called applications, appeals, etc. To get the latest data, the query must refer to the snapshot_date latest partition, for example
 
 ```
-select * from "dataplatform-stg-tascomi-refined-zone"."applications" where snapshot_date = (select max(snapshot_date) from "dataplatform-stg-tascomi-refined-zone"."applications")
+select * from "dataplatform-prod-tascomi-refined-zone"."applications" where snapshot_date = (select max(snapshot_date) from "dataplatform-prod-tascomi-refined-zone"."applications")
 ```
 
 The refined increments are in the Refined zone Planning bucket, in the `increments` area. The tables are prefixed with `increment_`. To count the increment loaded on a specific day, you could use:
 
 ```
-select count(*) from "dataplatform-stg-tascomi-refined-zone"."increment_applications" where import_date = '20211208'
+select count(*) from "dataplatform-prod-tascomi-refined-zone"."increment_applications" where import_date = '20211208'
 ```
 
 The parsed increments are in the Raw zone Planning bucket, in the `parsed` area. The tables are not prefixed, and partitioned by `import_date` with. To count the increment loaded on a specific day, you could use:
 
 ```
-select count(*) from "dataplatform-stg-tascomi-raw-zone"."applications" where import_date = '20211208'
+select count(*) from "dataplatform-prod-tascomi-raw-zone"."applications" where import_date = '20211208'
 ```
 
 The raw data returned by the API is in the Raw zone Planning bucket, in the `api_response` area. The tables are prefixed with `api_response_`, and partitioned by `import_date` with. To count the increment loaded on a specific day, you could use:
 
 ```
-select count(*) from "dataplatform-stg-tascomi-raw-zone"."api_response_applications" where import_date = '20211208'
+select count(*) from "dataplatform-prod-tascomi-raw-zone"."api_response_applications" where import_date = '20211208'
 ```
 
 ## How to add a table to the pipeline
@@ -230,26 +230,26 @@ Say something wrong happened on 23/01/2022 and we are the 25th. You need to dele
 Do this in AWS CLI using:
 
 ```
-aws s3 rm s3://dataplatform-stg-refined-zone/planning/tascomi/snapshot --recursive --exclude '*' --include '*20220123*'
+aws s3 rm s3://dataplatform-prod-refined-zone/planning/tascomi/snapshot --recursive --exclude '*' --include '*20220123*'
 ```
 and then
 ```
-aws s3 rm s3://dataplatform-stg-refined-zone/planning/tascomi/snapshot --recursive --exclude '*' --include '*20220124*'
+aws s3 rm s3://dataplatform-prod-refined-zone/planning/tascomi/snapshot --recursive --exclude '*' --include '*20220124*'
 ```
 and then
 ```
-aws s3 rm s3://dataplatform-stg-refined-zone/planning/tascomi/snapshot --recursive --exclude '*' --include '*20220125*'
+aws s3 rm s3://dataplatform-prod-refined-zone/planning/tascomi/snapshot --recursive --exclude '*' --include '*20220125*'
 ```
 
 If you also want to delete the refined increments, you can go one level up: 
 ```
-aws s3 rm s3://dataplatform-stg-refined-zone/planning/tascomi/ --recursive --exclude '*' --include '*20220124*'
+aws s3 rm s3://dataplatform-prod-refined-zone/planning/tascomi/ --recursive --exclude '*' --include '*20220124*'
 ```
 etc.
 
 If you have AWS Vault configured with a profile called preprod, the command becomes: 
 ```
-aws-vault exec preprod -- aws glue reset-job-bookmark --job-name 'stg tascomi_create_daily_snapshot_planning' --run-id jr_e6d6c7e66b27ff27929b3f46555ecdcd9f9e068675eaafaf231f4d338d04db33
+aws-vault exec preprod -- aws glue reset-job-bookmark --job-name 'prod tascomi_create_daily_snapshot_planning' --run-id jr_e6d6c7e66b27ff27929b3f46555ecdcd9f9e068675eaafaf231f4d338d04db33
 ```
 Don't forget to run the refined snapshot crawler so the Glue catalogue sees the recent changes.
 
@@ -264,7 +264,7 @@ get-job-bookmark
 ```
 You'll find the job-name and the run-id of the last successful run in the 'jobs' section of the Glue console. An example of full command is:
 ```
-aws glue reset-job-bookmark --job-name 'stg tascomi_create_daily_snapshot_planning' --run-id jr_e6d6c7e66b27ff27929b3f46555ecdcd9f9e068675eaafaf231f4d338d04db33
+aws glue reset-job-bookmark --job-name 'prod tascomi_create_daily_snapshot_planning' --run-id jr_e6d6c7e66b27ff27929b3f46555ecdcd9f9e068675eaafaf231f4d338d04db33
 ```
 
 ### Extra steps needed depending on the scenario
