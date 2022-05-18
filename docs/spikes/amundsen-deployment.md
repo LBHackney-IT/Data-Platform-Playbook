@@ -1,7 +1,7 @@
 ---
 title: "Amundsen deployment"
 description: "Review amundsen as a potential solution for a data catalogue"
-tags:
+tags: [tech-spike]
 layout: layout
 ---
 

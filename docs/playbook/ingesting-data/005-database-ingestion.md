@@ -31,21 +31,21 @@ In the following sections you will set up a connection from the Data Platform to
 The database credentials are retrieved from AWS Secrets Manager.
 The credentials are used to allow the Data Platform to authenticate against the source database.
 
-- Contact a member of the Data Platform team to add the database credentials to Secrets Manager.
+- Contact an engineer from the Data Platform team to add the database credentials to AWS Secrets Manager.
     - You will need to request that a **secret** (with an appropriate description) is created following the naming convention below: 
       ```
       database-credentials/DATABASE_NAME-DATASET_NAME
       ``` 
-      e.g. `database-credentials/geolive-permits`
+      e.g. `database-credentials/geolive-permits` (**Remember this name as you will need it later**).
 
     - Request that the following key-value pairs be added to this secret:
-        - `database_name` = `"Name of your database"`
-        - `username` = `"Your database user username"`
-        - `password` = `"Your database user password"`
+        - `database_name` = `Name of your database`
+        - `username` = `Your database user username`
+        - `password` = `Your database user password`
     
 
-- Once the credentials have been added, you will be given a secret name which will be used to reference your stored credentials.
-Make a note of this as it will be needed in the [Set up the Glue JDBC Connection section](#set-up-the-glue-jdbc-connection) below.
+- You will be notified once the secret has been stored with the credentials. 
+Make a note of the **secret** name as it will be needed in the [Set up the Glue JDBC Connection section](#set-up-the-glue-jdbc-connection) below to reference your stored credentials in the JDBC Connection.
     
 ### Construct the JDBC URL
 
@@ -129,13 +129,8 @@ _For more technical details on the overall process, see: [Database Ingestion doc
       "JDBC connection to Academy Production Insights LBHATestRBViews database to ingest Council Tax data"
       ```
 
-    - **jdbc_connection_subnet_id** (required): The subnet to deploy the connection to.
-    Set this to `local.subnet_ids_list[local.subnet_ids_random_index]`
-
-    - **database_availability_zone** (required): The availability zone to deploy the connection to.
-    Set this to `"eu-west-2a"`
-    
-    - **vpc_id** (required): Set this to `data.aws_vpc.network.id`
+    - **jdbc_connection_subnet** (required): The subnet to deploy the connection to.
+    Set this to `data.aws_subnet.network[local.instance_subnet_id]`
 
     - **identifier_prefix** (required): Set this to `local.short_identifier_prefix`
   

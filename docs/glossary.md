@@ -96,6 +96,8 @@ It is an [object](#objects) based storage and we use it to store all of the data
 AWS Secrets Manager helps you protect secrets needed to access your applications, services, and IT resources. The service enables you to easily rotate, manage, and retrieve database credentials, API keys, and other secrets throughout their lifecycle. [Credentials Storage/Management ](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html)
  ### Spark
 Apache Spark is an open source engine that is used to perform processing tasks quickly on large datasets. There is support for code written in Scala, Java, Python and R.
+ ### Terraform
+Terraform is our chosen Infrastucture as Code (IaC) tool. See the entry [here](https://playbook.hackney.gov.uk/API-Playbook/infrastructure) in the Hackney Council API Playbook for more detail.
  ### Trusted Zone
 Data in this zone is 'gold standard' data that is well documented and can be easily shared between different services within the council. It may be anonymised or aggregated to make it suitable for wide use.
  ### Zones

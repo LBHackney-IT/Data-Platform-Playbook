@@ -57,7 +57,7 @@ Our vision for Hackney's data platform is to ‘build back better’ for the fut
 
 There are a series of processes data will go through as it moves through the platform, illustrated in the diagram below. The starting point of your journey will depend on whether the data you need is already in the platform or not, and whether it's in the format you need.
 
-![data lake diagram](./playbook/images/data-lake-diagram.png)
+![data lake diagram](playbook/images/data_lake_diagram.png)
 
 ### 1. **Ingesting data**
 

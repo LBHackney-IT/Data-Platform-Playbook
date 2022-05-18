@@ -120,39 +120,10 @@ The worker types are:
 
 ### Shutting down in evenings and weekends
 
-Due to the cost of keeping a development endpoint running continuously I would recommend deleting the endpoints at the end of the working day and recreating it at the beginning.
-To achieve this we could partially managed these resources in terraform but the creation and deletion of the dev endpoint would have to managed by a scheduled task.
-
-
-#### Managed in terraform, a module that can be used for each notebook instance
-
-1. A notebook instance ([example][notebook-terraform-code])
-2. A private/ public key pair. With the private key saved to SSM.
-3. An SSM parameter with a JSON object holding the configuration for the development endpoint. For example,
-```json
-{
-    "endpoint_name": "sagemaker-development-endpoint-parking",
-    "extra_python_libs_s3_path": "s3://dataplatform-glue-scripts/python-modules/data_platform_glue_job_helpers-1.0-py3-none-any.whl,s3://dataplatform-glue-scripts/python-modules/pydeequ-1.0.1.zip",
-    "extra_jars_s3_path": "s3://dataplatform-glue-scripts/jars/java-lib-1.0-SNAPSHOT-jar-with-dependencies.jar",
-    "public_keys": ["ssh-rsa AAAAAAHHHHSBDFJGWHIEWGHI example@hackney.gov.uk"],
-    "worker_type": "Standard",
-    "number_of_workers": "2",
-    "role_arn": "arn:aws:iam::482356789234:role/glue-role-parking"
-}
-```
-
-#### A task to run just before the beginning of the working day to create development endpoints
-
-This task would first find all the SSM parameters relating to glue development endpoint configurations. 
-Then it would create all of these development endpoints as per the configuration specified.
-
-
-#### A task to run at the end of the working day
-
-This task would both stop all notebook instances that are still running and then delete all development endpoints in the account.
-
-Note: If following this approach then the startup script for the notebok instamces would need to altered so that it found and connected to the development endpoint everytime it starts.
-Currently it caches whether it has previous checked the connection and then doesn't run again.
+Due to the cost of keeping a development endpoint running continuously, I would recommend deleting the endpoints and shutting down the notebooks at the end of the working day.
+Then recreating them when the notebook instance is started up again.
+It would take around 10 minutes when a notebook instance is started for the first time that day as it need to provision the devlopment endpoint.
+To achieve this we wouldn't manage the development endpoint in terraform, but would store it's configuration in the notebook startup script so it would be version controlled.
 
 
 

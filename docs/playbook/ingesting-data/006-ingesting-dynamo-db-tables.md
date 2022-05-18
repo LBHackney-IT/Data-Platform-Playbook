@@ -106,6 +106,7 @@ Copy the example terraform module below into the file.
     script_s3_object_key           = aws_s3_bucket_object.dynamodb_tables_ingest.key
     helper_module_key              = aws_s3_bucket_object.helpers.key
     pydeequ_zip_key                = aws_s3_bucket_object.pydeequ.key
+    spark_ui_output_storage_id     = module.spark_ui_output_storage.bucket_id
     number_of_workers_for_glue_job = local.number_of_workers_for_mtfh_ingestion
     glue_scripts_bucket_id         = module.glue_scripts.bucket_id
     glue_temp_bucket_id            = module.glue_temp_storage.bucket_id
@@ -166,13 +167,13 @@ If you want it to run on a schedule then please refer to the "Variables used for
 
 Once you have been notified that your pull request has been merged, you can run the ingestion manually from the AWS console or wait until the scheduled time (if you set one).
 
-You can do this by navigating to [AWS glue workflows][aws_glue_workflow], selecting the workflow named `<department_name>-<dataset_name>`, clicking the "Actions" dropdown and then "Run".
+To do this first navigate to [AWS glue jobs][aws_glue_jobs]. Then search for your job name, it will be prefixed by the environment (stg or prod) for example, if the job in this document was deployed to pre production it would be called "stg Ingest MTFH tables". Finally you can select the glue job and click "Run job".
 
 ### Monitoring the ingestion
 
 Spark Web UI is used to monitior and debug the glue jobs. Every 30 seconds, AWS Glue flushes the Spark event logs to an S3 bucket titled Spark UI Bucket.
 
-[aws_glue_workflow]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=workflows
+[aws_glue_jobs]: https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/jobs
 [committing-changes]: ../getting-set-up/using-github#committing-your-changes-to-the-data-platform-project
 [aws_console_ssm]: https://eu-west-2.console.aws.amazon.com/systems-manager/parameters/?region=eu-west-2&tab=Table
 [scheduling_glue_jobs]: ../transforming-data/using-aws-glue/002-deploy-glue-jobs.md#variables-used-for-scheduling-a-glue-job

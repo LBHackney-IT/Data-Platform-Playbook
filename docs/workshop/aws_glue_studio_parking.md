@@ -1,7 +1,7 @@
 ---
 title: "Glue Studio workshop with Parking Analysts"
 description: ""
-tags:
+tags: [workshops]
 layout: layout
 ---
 

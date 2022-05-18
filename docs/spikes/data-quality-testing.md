@@ -1,7 +1,7 @@
 ---
 title: "Data Quality Testing"
 description: "Testing data quality from Glue jobs"
-tags:
+tags: [tech-spike]
 layout: layout
 ---
 

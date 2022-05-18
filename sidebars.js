@@ -23,12 +23,7 @@ module.exports = {
       type: "category",
       label: "Playbook",
       items: [
-        {
-          type: "category",
-          label: "Training Modules",
-          items: getItems("playbook/training-modules"),
-        },
-        {
+      {
           type: "category",
           label: "Getting set up on the platform",
           items: getItems("playbook/getting-set-up"),
@@ -84,6 +79,11 @@ module.exports = {
           items: getItems("playbook/querying-and-analysing-data"),
         },
       ],
+    },
+    {
+      type: "category",
+      label: "Training Modules",
+      items: getItems("training-modules"),
     },
     {
       type: "category",
