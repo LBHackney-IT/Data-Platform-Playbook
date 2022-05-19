@@ -9,7 +9,7 @@ tags: [playbook]
 
 - You have a Github account, you can [create one][github_signup] yourself using your Hackney email.
 - You have been added to the 'LBHackney-IT' team, you can request this from Rashmi Shetty.
-- You have a Data Platform service account email address for your relevant domain or service area. A service account would look something like this: dataplatform-stg-service_area@dataplatform-stg.iam.gserviceaccount.com. If you don't know which service account you should use, you can request this from the Data Platform team.
+- You have a Data Platform service account email address for your relevant domain or service area. A service account would look something like this: dataplatform-prod-service_area@dataplatform-prod.iam.gserviceaccount.com. If you don't know which service account you should use, you can request this from the Data Platform team.
 
 ## Permitted spreadsheet file types
 

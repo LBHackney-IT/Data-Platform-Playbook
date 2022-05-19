@@ -165,7 +165,7 @@ you will need to do the following before moving on to the next section:
     - Test your connection and ensure it works:
         - Select your connection and click `Test Connection`.
         - Assign the relevant department IAM role.
-          - **Note: If the data you are ingesting is not department specific, you should use the IAM role: `dataplatform-stg-glue-role`.**
+          - **Note: If the data you are ingesting is not department specific, you should use the IAM role: `dataplatform-prod-glue-role`.**
         - Lastly, click `Test Connection` (this can take up to a minute to complete).
  
 ### Create a Glue job and Crawler to ingest all database tables 
@@ -182,7 +182,7 @@ If your data is **NOT** department specific, you will not be able to crawl the S
 #### Prototyping your Glue job
 
 You can prototype your Glue job and test ingesting a few tables by referring to and cloning an existing Glue job.
-You can search for the `"stg Revenue & Benefits and Council Tax Database Ingestion"` Glue job in the list of jobs in the [AWS Console][glue-jobs]
+You can search for the `"Academy Revenues & Benefits Housing Needs Database Ingestion"` Glue job in the list of jobs in the [AWS Console][glue-jobs]
 to use as an example. You can also refer to the [Using Glue Studio][using-glue-studio] guide for guidance on prototyping your Glue job.
 
 To prototype your script you will need to manually set/ update all the Glue Job parameters and Connections in the `Job Details` tab:

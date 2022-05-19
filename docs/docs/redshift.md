@@ -92,7 +92,7 @@ Example:
 CREATE EXTERNAL SCHEMA housing_repairs_raw_zone
     FROM DATA CATALOG
     DATABASE 'housing-repairs-raw-zone'
-    IAM_ROLE 'arn:aws:iam::000000000000:role/dataplatform-stg-redshift-role'
+    IAM_ROLE 'arn:aws:iam::000000000000:role/dataplatform-prod-redshift-role'
     CREATE EXTERNAL DATABASE IF NOT EXISTS;
 ```
 
