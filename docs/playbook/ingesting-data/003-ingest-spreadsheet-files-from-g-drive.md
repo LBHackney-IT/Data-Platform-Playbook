@@ -22,9 +22,13 @@ tags: [playbook]
 - Ensure that all columns in your file have headers. Columns without headers will be lost.
 - If your spreadsheet file is stored on your local device, [upload it to google drive](https://www.howtogeek.com/398570/how-to-import-an-excel-document-into-google-sheets/).
 - If the document is unnamed, name it
-- You now need to share this file with the service account you've been provided. One way to do this is to open the spreadsheet you would like to ingest from Google drive and view it as if it were a Google Sheet. Once you've opened the document, click `Share` in the top right corner of the sheet. If your spreadsheet file is very large and you're having trouble opening the file in Sheets, you can right-click the file listed in Drive and click `Share`.
-- Paste in the service account email address you have been provided into the email box
-- Ensure the suggested email matches the service account email and select it
+- You now need to share this file with the Production and Pre-production service accounts for your department.
+  You can find your department's Production and Pre-production service accounts emails in the **Department specific information section** [here][google-service-account-email].
+  - One way to do this is to open the spreadsheet you would like to ingest from Google Drive and view it as if it were a Google Sheet. 
+    Once you've opened the document, click `Share` in the top right corner of the sheet. 
+    If your spreadsheet file is very large, and you're having trouble opening the file in Sheets, you can right-click the file listed in Drive and click `Share`.
+- Paste in the service account email addresses into the email box
+- Ensure the suggested email matches the service account emails and select it
 - On the new window, choose from the dropdown on the right hand side and select `Viewer`
 - Uncheck the `Notify people` checkbox
 - Click `Share`
@@ -60,3 +64,4 @@ tags: [playbook]
 [aws_cron_expressions]: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions
 [github_signup]: https://github.com/signup
 [committing-changes]: ../getting-set-up/using-github#committing-your-changes-to-the-data-platform-project
+[google-service-account-email]: ./001-google-sheets-import.md/#department-specific-information
