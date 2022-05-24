@@ -46,14 +46,76 @@ tags: [playbook]
 - Switch to 'edit mode' (using edit button on top right)
 - Copy one of the modules above, paste at the bottom of the file and update the following fields:
 
-  - `module` = "your-unique-module-name" (it is helpful to keep the same naming convention as your dataset/folder)
-  - `google_sheets_document_id` = "Your document id - see the `Getting spreadsheet detail` section above"
-  - `glue_job_name` = "Name that will be displayed in the data platform"
-  - `department_folder_name` = "Name of the department this data belongs to"
-  - `output_folder_name` = "Name of the folder where this data will be exported to"
-  - `input_file_name` = "The name of the file you are ingesting from"
-  - `worksheets` = Each worksheet that needs to be ingested should be listed out in a map containing the header row number and the name of your worksheet - see the `Getting spreadsheet detail` section above. The worksheet name needs to match exactly (including any spaces or punctuation, but excluding any slashes `/`), so you may want to copy and paste the name directly from your worksheet. If you need to add more sheets, you can copy and paste this section and continue numbering (e.g. sheet3, sheet4 etc). Remove any worksheet sections you don't need.
+  -  Update the **module** name to something unique using the name convention: `"<department_name>_<dataset_name>"`
+     
+     For example: 
+     ```
+     "parking_pcn_permit_nlpg_llpg_matching_via_athena_20220516"
+     ```
+     *Note: Only use underscores (`_`) to separate words, do not use hyphens (`-`) or spaces* 
+     
+  - **department** (required): This will be `module.department_<YOUR_DEPARTMENT_NAME>`
+     For example:
 
+     ```
+     department = module.department_parking
+     ```
+
+     _Note: the department name must be all lowercase and separated by underscores
+     e.g. `module.department_housing_repairs`_
+
+  - **google_sheets_document_id** (required): Your document id - see the **Getting spreadsheet detail** section above
+    
+  - **glue_job_name** (required): Name that will be displayed in the data platform. 
+    Replace or append a suitable name at the end of `"${title(module.department_parking.name)}` such as the file name.
+    
+    For example:
+    ```
+    glue_job_name = "${title(module.department_parking.name)} PCN Permits VRM NLPG LLPG - 20220516" 
+    ```
+    
+  - **output_folder_name** (required): Name of the folder where this data will be exported to (this will also be the name of the table in the respective department's raw zone catalog database)
+    
+  - **input_file_name** (required): The name of the file you are ingesting from.
+    This should be the same as the file name in Google Drive.
+
+  - **worksheets** (required): 
+    
+    - *If the sheet you are ingesting is an **`.xlsx`** file type:*
+      - List out each worksheet that needs to be ingested in a map containing the `header_row_number`, and the `worksheet_name` - see the **Getting spreadsheet detail** section above (if unsure on how to set this, refer to a previous module block and use as an example). 
+      - The worksheet name needs to match exactly (including any spaces or punctuation, but excluding any slashes `/`), so you may want to copy and paste the name directly from your worksheet. 
+    If you need to add more sheets, you can copy and paste this section and continue numbering (e.g. `sheet1`, `sheet2` etc). 
+    Remove any worksheet sections you don't need.
+    
+      For example:
+      ```
+      worksheets = {
+        sheet1 : {
+          header_row_number = 1
+          worksheet_name    = "Sheet 1"
+        }
+        sheet2 : {
+          header_row_number = 1
+          worksheet_name    = "Sheet 2"
+        }
+      }
+      ```
+    
+    - *If the sheet you are ingesting is a **`.csv`** file type:*
+      - Set the `header_row_number` to `0` and `worksheet_name` to a unique value such as the date from the csv file name.
+  
+        For example, if the file name is:
+        `20220512 - PCN Permits VRM NLPG LLPG matching - Last 3 months - UTF-8.csv`
+        then it would look something like:
+        ```
+        worksheets = {
+          sheet1 : {
+            header_row_number = 0
+            worksheet_name    = "20220512"
+          }
+        }
+        ```
+  
 - Submit your changes by referring to the [Committing changes][committing-changes] section of the **Using Github** guide.
   - The Data Platform team needs to approve any changes to the code, so your change won't happen automatically.
 
