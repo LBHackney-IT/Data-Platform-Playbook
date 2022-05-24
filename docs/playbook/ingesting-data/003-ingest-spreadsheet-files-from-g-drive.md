@@ -33,11 +33,14 @@ tags: [playbook]
 
 ## Getting spreadsheet detail
 
-- You will need to obtain the document key from the url. The document id is the portion of the url between `https://docs.google.com/file/d/` and `/edit#gid=0`. See example below
+- You will need to obtain the document ID from the URL. 
+  You can view the document URL by right-clicking the file and selecting `Get link`. 
+  The document ID is the portion of the URL between `https://docs.google.com/file/d/` and `/edit#gid=0`. See example below
 
   ![spreadsheet id](../images/google_spreadsheet_id_example.png)
 
-- You will also need to obtain the worksheet name(s) that you wish to ingest. The worksheet name is located at the bottom left of the screen and unless it has been changed or other worksheets added, it will be called `Sheet1`
+- **For `.xlsx` files only** - You will also need to obtain the worksheet name(s) that you wish to ingest.
+  The worksheet name is located at the bottom left of the screen and unless it has been changed or other worksheets added, it will be called `Sheet1`
 
 ## Setting up AWS Glue job
 
