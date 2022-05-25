@@ -9,6 +9,7 @@ module.exports = {
   favicon: "img/favicon.png",
   organizationName: "lbhackney-it",
   projectName: "Data Platform Playbook",
+  trailingSlash: false,
   themeConfig: {
     prism: {
       additionalLanguages: ["csharp"],

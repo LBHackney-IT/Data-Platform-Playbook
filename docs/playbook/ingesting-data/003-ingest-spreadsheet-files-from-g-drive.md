@@ -69,12 +69,11 @@ tags: [playbook]
 
   - **google_sheets_document_id** (required): Your document id - see the **Getting spreadsheet detail** section above
     
-  - **glue_job_name** (required): Name that will be displayed in the data platform. 
-    Replace or append a suitable name at the end of `"${title(module.department_parking.name)}` such as the file name.
+  - **glue_job_name** (required): Name that will be displayed in the Data Platform Glue Studio Console prefixed by `"Spreadsheet Import Job"` followed by your department name.
     
     For example:
     ```
-    glue_job_name = "${title(module.department_parking.name)} PCN Permits VRM NLPG LLPG - 20220516" 
+    glue_job_name = "PCN Permits VRM NLPG LLPG - 20220516" 
     ```
     
   - **output_folder_name** (required): Name of the folder where this data will be exported to (this will also be the name of the table in the respective department's raw zone catalog database)
@@ -121,6 +120,7 @@ tags: [playbook]
   
 - Submit your changes by referring to the [Committing changes][committing-changes] section of the **Using Github** guide.
   - The Data Platform team needs to approve any changes to the code, so your change won't happen automatically.
+  - Once your code has been approved and deployed, your sheet will be available in your respective department's raw zone area (S3 and Athena - Glue Catalog Database) by 8am the following morning. 
 
 [aws_cron_expressions]: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions
 [github_signup]: https://github.com/signup
