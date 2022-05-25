@@ -70,6 +70,7 @@ tags: [playbook]
   - **google_sheets_document_id** (required): Your document id - see the **Getting spreadsheet detail** section above
     
   - **glue_job_name** (required): Name that will be displayed in the Data Platform Glue Studio Console prefixed by `"Spreadsheet Import Job"` followed by your department name.
+    _Note: Ensure this name is unique to other Glue job names by appending the date to the name._
     
     For example:
     ```
