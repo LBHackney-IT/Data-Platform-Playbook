@@ -93,7 +93,7 @@ Here is a summary of the key components that make up the Data Platform:
 
 - [Data Lake](https://playbook.hackney.gov.uk/Data-Platform-Playbook/glossary#data-lake) - a centralised repository to store data all in one place
 - Tooling - a set of tools and processes to transform and analyse data such as Glue and Sagemaker.
-- Playbook - holds documentation and metadata about the Data Platform's tools and processes, along with best practices.
+- [Playbook](https://playbook.hackney.gov.uk/Data-Platform-Playbook/) - holds documentation and metadata about the Data Platform's tools and processes, along with best practices.
 - [Data Warehouse](https://playbook.hackney.gov.uk/Data-Platform-Playbook/glossary#data-warehouse) - a store of ‘gold standard’ data ready for publication and analysis
 - [Data Catalogue](https://playbook.hackney.gov.uk/Data-Platform-Playbook/glossary#data-catalogue) - for data discovery
 
