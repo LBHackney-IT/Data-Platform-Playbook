@@ -26,7 +26,7 @@ tags: [playbook]
 - Sign in to the AWS Management Console and open the [Amazon S3 console][aws_s3_console].
 
 - In the Buckets list, select the landing zone bucket, at
-  [dataplatform-prod-landing-zone][aws_dataplatform_prod_landing_zone].
+  [dataplatform-stg-landing-zone][aws_dataplatform_stg_landing_zone].
   Navigate to your departments manual upload folder, see below for structure.
 
   ```
@@ -53,7 +53,7 @@ tags: [playbook]
   for the "Run status" to reach "Succeeded".
   This job will have created a S3 folder structure as shown below inside the [Raw zone][raw_zone]
   and an Apache Parquet file containing your CSV data inside of there.
-  You can check the output by navigating to S3 Bucket [dataplatform-prod-raw-zone][aws_dataplatform_prod_raw_zone],
+  You can check the output by navigating to S3 Bucket [dataplatform-stg-raw-zone][aws_dataplatform_stg_raw_zone],
   confirming the folder structure, and observing that Apache Parquet file(s) have been created.
 
   ```
@@ -97,5 +97,5 @@ Next we'll confirm the data has been ingested correctly by crawling the data wit
 [aws_athena_console]: https://eu-west-2.console.aws.amazon.com/athena/home?region=eu-west-2#query
 [aws_glue_jobs_console]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=jobs
 [aws_glue_crawler_console]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#catalog:tab=crawlers
-[aws_dataplatform_prod_landing_zone]: https://s3.console.aws.amazon.com/s3/buckets/dataplatform-prod-landing-zone?region=eu-west-2&tab=objects
-[aws_dataplatform_prod_raw_zone]: https://s3.console.aws.amazon.com/s3/buckets/dataplatform-prod-raw-zone?region=eu-west-2&tab=objects
+[aws_dataplatform_stg_landing_zone]: https://s3.console.aws.amazon.com/s3/buckets/dataplatform-stg-landing-zone?region=eu-west-2&tab=objects
+[aws_dataplatform_stg_raw_zone]: https://s3.console.aws.amazon.com/s3/buckets/dataplatform-stg-raw-zone?region=eu-west-2&tab=objects
