@@ -83,7 +83,18 @@ module.exports = {
     {
       type: "category",
       label: "Training Modules",
-      items: getItems("training-modules"),
+      items: [
+          {
+            type: "category",
+            label: "Main Modules",
+            items: getItems("training-modules"),
+          },
+        {
+          type: "category",
+          label: "Qlik Modules",
+          items: getItems("training-modules/Qlik"),
+        },
+      ]
     },
     {
       type: "category",
