@@ -20,7 +20,7 @@ Then, you will deploy the same job following the Data Platform standard process.
   * Your Glue job will be coded in Terraform. When deployed, Terraform will generate all the necessary infrastructure in the AWS environment (job, crawler, scheduler). This will replace the elements you’ve created manually in the AWS console in the second part of Module 2. This is ‘Infrastructure as Code’ (IaC) and brings a lot of advantages to the Data Platform:
     * Quality assurance: we use Terraform templates so all elements of infrastructure follow the same standards
     * Repeatability: your job can be recreated by a simple redeployment if anything goes wrong. It can also be replicated to another environment, for instance from Staging to Production
-  *Both the PySpark script and the job details in Terraform will become part of the Data Platform code base and saved in Github. This also brings advantages:
+  * Both the PySpark script and the job details in Terraform will become part of the Data Platform code base and saved in Github. This also brings advantages:
     * Safety: Your code cannot be accidentally lost and is version-controlled
     * Quality assurance: Your code will be reviewed by at least 2 engineers. Github will also perform automated checks which must pass before merging it into the repository
 
