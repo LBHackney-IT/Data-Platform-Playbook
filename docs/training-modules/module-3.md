@@ -33,7 +33,7 @@ Please ensure that both [Module 0][module_0], [Module 1][module_1] and [Module 2
 
 ## Step-by-step instructions
 
-### 2. Testing the transformation script in a AWS glue job
+### 1. Testing the transformation script in a AWS glue job
 
 You’ll take the following steps before productionising your job, to check it runs smoothly in the AWS glue environment (it should, because the notebook you've used in [Module 2][module_2] runs against glue).
 It will be an opportunity for you to try logging.
