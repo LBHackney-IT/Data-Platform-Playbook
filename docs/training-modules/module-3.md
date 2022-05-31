@@ -9,7 +9,7 @@ tags: [training]
 # Module 3 - Deploying a job in Glue
 
 
-In this module, you will turn the transformation script you cretaed in [module 2][module_2] into a Glue job and ‘productionize’ it. At the end of the module, you will have a Glue job (and Crawler) that is managed by the Data Platform infrastructure and code repository which you can use to carry out your tasks.
+In this module, you will turn the transformation script you created in [module 2][module_2] into a Glue job and ‘productionize’ it. At the end of the module, you will have a Glue job (and Crawler) that is managed by the Data Platform infrastructure and code repository which you can use to carry out your tasks.
 
 
 ## Overview
@@ -35,7 +35,7 @@ Please ensure that both [Module 0][module_0], [Module 1][module_1] and [Module 2
 
 ### 1. Testing the transformation script in a AWS glue job
 
-You’ll take the following steps before productionising your job, to check it runs smoothly in the AWS glue environment (it should, because the notebook you've used in [Module 2][module_2] runs against glue).
+You’ll take the following steps before productionising the script you wrote in Module 2, to check it runs smoothly in the AWS glue environment (it should, because the notebook environment you used in Sagemaker runs against glue).
 It will be an opportunity for you to try logging.
 As we’re just testing, we won’t write any Terraform and we won’t schedule the job. 
 We’ll also delete our job at the end.
@@ -49,7 +49,7 @@ If you need more detailed instructions at any point checkout [the guide to set u
 
     ![Cloning a glue job](./images/cloning_jobs.png)
 3. Write your job.
-
+    * In a different tab, open Sagemaker and navigate to the notebook you created in Module 2.
     * Paste your code from the notebook into the template, ignoring the first cell (Cells can be merged in Jupyter by holding `Shift` and selecting the cells, then pressing `Shift+M` on your keyboard).
 
     * For the variables defined in the first cell of your notebook, you will use the `Job details` tab instead of writing them in the script.
