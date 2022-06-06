@@ -14,7 +14,7 @@ In this module, you will turn the transformation script you created in [module 2
 
 ## Overview
 
-First, you will be carrying over your transformation script from Sagemaker into the Glue console, where it will become a Glue job. You'll test this job and check your data like in Module 1. 
+First, you will be carrying over your transformation script from Sagemaker into the Glue console, where it will become a Glue job. You'll test this job and check your data like you did in Module 1. 
 
 Then, you will deploy the same job following the Data Platform standard process. This involves two main changes:
   * Your Glue job will be coded in Terraform. When deployed, Terraform will generate all the necessary infrastructure in the AWS environment (job, crawler, scheduler). This will replace the elements you’ve created manually in the AWS console in the second part of Module 2. This is ‘Infrastructure as Code’ (IaC) and brings a lot of advantages to the Data Platform:
@@ -33,11 +33,11 @@ Please ensure that both [Module 0][module_0], [Module 1][module_1] and [Module 2
 
 ## Step-by-step instructions
 
-### 1. Testing the transformation script in a AWS glue job
+### 1. Testing the transformation script in the AWS glue console
 
 You’ll take the following steps before productionising the script you wrote in Module 2, to check it runs smoothly in the AWS glue environment (it should, because the notebook environment you used in Sagemaker runs against glue).
 It will be an opportunity for you to try logging.
-As we’re just testing, we won’t write any Terraform and we won’t schedule the job. 
+As we’re just testing, we won’t write any Terraform (we'll do this in the second half of this module) and we won’t schedule the job. 
 We’ll also delete our job at the end.
 If you need more detailed instructions at any point checkout [the guide to set up an ETL job][setting_up_etl_job].
 
@@ -64,12 +64,25 @@ See the [monitoring section][monitoring_jobs] of the using Glue Studio guide for
 To do this, follow the same steps in the [last section of Module 1][module_1_step_6].
 7. [Crawl][glue_crawlers] the results. (Using the crawler named “sandbox-refined-zone”).
 8. Check the data in [Athena][athena_query_editor] - ([playbook][querying_with_athena]).
-9. Remove the temporary resources that you created in the AWS Console:
-   - Glue job
-   - S3 files: check the S3 target location of your job for a reminder of where the data was written.
 
+Congratulations, you've tested that you script is working in Glue. You can move to the next part of Module 3.
 
+### 2. Deploying your job via Terraform
+In this second part of Module 3, you will ‘productionize’ the job you’ve tested in the previous part. To do this, you will write a Terraform module in the Data Platform GitHub repository and you'll deploy it. The entirety of this module will be carried out in the GitHub User Interface, but you could also work in your IDE if you prefer. 
 
+#### Overview of the steps: 
+
+* First, you’ll delete the data you've created in part 1 as they will get created again in this part.
+* Then, you will save your PySpark script at the relevant location of the DP repository. You already have the code ready.  
+* Then, you will write a Module in Terraform that encapsulates all the resources your Glue job requires.
+* You will then create a Pull Request and merge your code with the Pre-Production DP repository
+* At this point, Github will attempt to deploy your code, and your job will get created in AWS. 
+* You’ll be able to retrieve your Glue job in the AWS console, to run it, and check the results in Athena. 
+
+#### Detailed steps: 
+9. Delete the data generated in Module 2
+This is to avoid getting confused at the end of this Module, as you will be running the newly deployed job, generating the same data again. To delete your data, navigate to it in S3 (Refined zone bucket, Sandbox department) and permanently delete the full folder with your name. 
+Do NOT delete your data from the Raw zone, otherwise you would have to ingest it again by running the ingestion job created in Module 1!
 
 
 [module_0]: ./module-0.md
