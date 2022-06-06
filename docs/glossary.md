@@ -22,7 +22,7 @@ A container is essentially a virtual computer. Though there are specific technic
  ### Crawler
 A [crawler](https://docs.aws.amazon.com/glue/latest/dg/crawler-running.html) is a process that is designed to read through a collection of data and collage metadata about what is being held. It stores this information within the AWS Glue Data Catalog. This information covers, the structure of the data such as the columns, data types and partitions along with information about the individual files that hold the data such as their format and where they are stored within S3. We also use the metadata created by crawlers to populate the data catalogue.
  ### Data Catalogue
-This is a place to store documentation and metadata about the datasets within the data lake. It helps users discover what data exists, understand what the data mean, and find out who owns the data. We use a tool called DataHub to provide our data catalogue.
+This is a place to store documentation and metadata about the datasets within the data lake. It helps users discover what data exists, understand what the data mean, and find out who owns the data. We use a tool called [DataHub](https://datahubproject.io/docs/features) to provide our data catalogue.
  ### Data Dictionary
 This defines domain-driven design entities and their relationships to one another at a high level. For example, what attributes are related to a person (name, date of birth) and how a ‘person’ relates to a 'household', 'property', etc.)
  ### Data Lake
