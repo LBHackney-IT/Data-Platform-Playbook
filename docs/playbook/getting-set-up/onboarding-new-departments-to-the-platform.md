@@ -48,4 +48,4 @@ Before a department is able to use the data platform, its details must be config
 [ask_devops_slack]: https://hackit-lbh.slack.com/archives/C01FX9ERRSL
 [collaborative_inbox]: https://support.google.com/a/users/answer/10375787?hl=en#:~:text=Step%202%3A%20Turn%20on%20Collaborative%20Inbox%20features
 [google-groups-service-accounts]: https://console.cloud.google.com/projectselector2/iam-admin/serviceaccounts?supportedpurview=project
-[google-sheets-ingestion]: ../ingesting-data/001-google-sheets-import.md#department-specific-information
+[google-sheets-ingestion]: ../ingesting-data/002-google-sheets-import.md#department-specific-information
