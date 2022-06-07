@@ -1,6 +1,6 @@
 ---
 id: ingest-sql-flat-files
-title: "Ingest SQL flat files"
+title: "Ingest SQL flat files - ADR 006"
 description: ""
 tags: [adr]
 number: "6"

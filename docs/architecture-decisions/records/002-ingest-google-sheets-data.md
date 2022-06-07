@@ -1,6 +1,6 @@
 ---
 id: ingest-google-sheets-data
-title: "Ingest Google Sheets Data"
+title: "Ingest Google Sheets Data - ADR 002"
 description: ""
 tags: [adr]
 number: "2"

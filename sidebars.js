@@ -30,6 +30,11 @@ module.exports = {
         },
         {
           type: "category",
+          label: "Elements of the platform",
+          items: getItems("playbook/elements-of-the-platform"),
+        },
+        {
+          type: "category",
           label: "Finding data on the platform",
           items: getItems("playbook/finding-data"),
         },

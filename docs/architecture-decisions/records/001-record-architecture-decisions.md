@@ -1,6 +1,6 @@
 ---
 id: record-architecture-decisions
-title: "Record architecture decisions"
+title: "Record architecture decisions - ADR 001"
 description: ""
 tags: [adr]
 number: "1"

@@ -1,6 +1,6 @@
 ---
 id: using-datahub-as-a-data-catalogue
-title: "Using DataHub as a Data Catalogue"
+title: "Using DataHub as a Data Catalogue - ADR 011"
 description: ""
 tags: [adr]
 number: "11"
