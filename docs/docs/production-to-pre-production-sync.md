@@ -18,9 +18,3 @@ This section explains the process used to copy data from the data platform produ
 3. When a task is triggered by the schedule the custom scripts inside the docker container execute S3 sync commands which move a configurable period of data from the production S3 bucket to the equivalent pre-production S3 bucket
 4. The script then deletes any data in the pre-production bucket that is older than the configured period
 5. At the time of writing this configurable period is 90 days
-
-## Source Code
-
-Docker Image and scripts: [Link](https://github.com/LBHackney-IT/Data-Platform/tree/main/docker/production-to-pre-production)
-
-Terraform configuration: [Link](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/86-sync-production-to-pre-production.tf)

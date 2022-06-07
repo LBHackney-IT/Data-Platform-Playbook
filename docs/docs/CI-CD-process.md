@@ -40,7 +40,3 @@ In the near future there will be only 1 pipeline that completes the staging and 
 5. If the manual approval step is approved then a ```terraform apply``` is executed against the Production environment
 
 Step 4 could be left out, and the change would flow straight through to production however this is something that may not be wanted
-
-## Source Code
-
-Github pipelines: [Link](https://github.com/LBHackney-IT/Data-Platform/tree/main/.github/workflows)
