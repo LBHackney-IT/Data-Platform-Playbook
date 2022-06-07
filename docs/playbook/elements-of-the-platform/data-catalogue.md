@@ -25,6 +25,6 @@ However, a data catalogue _isn't_:
 The data catelogue is built using a tool called [DataHub](https://datahubproject.io/docs/features). 
 
 - DataHub catelogues our data based on event-sourced metadata. When new data is added, or existing data updated, an event will be registered by the DataHub API and the change being made to the data will be added to the catelogue 
-- DataHub also catelogues our data based on strongly-typed metadata models and relationships defined by Hackney, to allow for searches across multiple data sets
+- DataHub also catelogues our data based on relational models. These models use similar types of data (eg. names, dates of birth), as defined by Hackney, to identify where there is a relationship between different pieces of data
 
 More detailed information on how to use the Data Catalogue can be found here: [Using the Data Catalogue](../finding-data/data-catalogue.md)
