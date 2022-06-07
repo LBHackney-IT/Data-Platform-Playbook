@@ -1,6 +1,6 @@
 ---
 id: partition-strategy
-title: "Partition Strategy"
+title: "Partition Strategy - ADR 004"
 description: ""
 tags: [adr]
 number: "4"

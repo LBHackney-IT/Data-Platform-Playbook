@@ -1,6 +1,6 @@
 ---
 id: production-data-in-staging
-title: "Production Data in Staging"
+title: "Production Data in Staging - ADR 008"
 description: ""
 tags: [adr]
 number: "8"
@@ -32,7 +32,7 @@ complex and time-consuming based on the quantity and quality of the data being c
 
 Analysts/Engineers will use the Staging environment to build, modify and test new or existing ETL process.
 
-The Staging environment will contain copies of Production data.
+The Staging environment will contain copies of Production data. Documentation on how the data is copied to staging can be found here: [Production to pre-production sync](../../docs/production-to-pre-production-sync)
 
 ## Consequences
 

@@ -1,6 +1,6 @@
 ---
 id: using-pytest-for-verifying-pyspark-transformations
-title: "Using pytest for verifying PySpark transformations"
+title: "Using pytest for verifying PySpark transformations - ADR 010"
 description: ""
 tags: [adr]
 number: "10"
