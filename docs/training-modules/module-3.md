@@ -96,7 +96,7 @@ A module is a block of Terraform script that creates a set of related resources 
 * The job parameters (everything you defined manually in ‘job details’ in the Glue console)
 * A crawler to crawl the results of your job as soon as it has completed
   
-You’ll create your module in the existing file: [terraform/25-aws-glue-job-sandbox.tf][job module in repo - sandbox]. This link takes you to the main branch of the repository, but you should make sure you are in the branch you've created in the step below. To switch to a branch, yu 
+You’ll create your module in the existing file: [terraform/25-aws-glue-job-sandbox.tf][job module in repo - sandbox]. This link takes you to the main branch of the repository, but you should make sure you are in the branch you've created in the step below.
 
 To create your module, follow the steps from the [Playbook, Part 2][job module in playbook]. 
 Please *add your name* at the end of the module name and the job name.
@@ -122,7 +122,7 @@ You can run your job manually from Glue Studio. After it has completed, the job 
 16. Check the resulting data in Athena - the interface to view and query data from the Glue Catalogue.
 * Open the [Query editor][Athena query editor]
 * Make sure workgroup is “sandbox” and you’re using the “sandbox-raw-zone” database
-* Run a simple query in Athena against your tables (created/ updated) by the Crawlers. A simple way to do this is to select the 3 vertical dots by the table name and select “Preview Table” to see the top 10 lines. (The dialect of SQL used in Athena is Presto SQL)
+* Run a simple query in Athena against your tables (created/ updated) by the Crawlers. A simple way to do this is to select the 3 vertical dots by the table name and select “Preview Table” to see the top 10 lines. (The dialect of SQL used in Athena is [Presto SQL][Presto SQL])
 
 17. Delete the job prototype you've created manually in the console in the oart 1 of this module
 If the deployed job has worked successfully, you can safely delete the one you created manually earlier - your code is now in the DP codebase!  
@@ -155,3 +155,4 @@ Congratulations, you've completed this module and deployed a job in the data pla
 [glue studio]: https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/jobs
 [glue crawlers]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#catalog:tab=crawlers
 [Athena query editor]: https://eu-west-2.console.aws.amazon.com/athena/home?region=eu-west-2#/query-editor
+[Presto SQL]: https://prestodb.io/
