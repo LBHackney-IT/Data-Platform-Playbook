@@ -31,9 +31,9 @@ Then, you will deploy the same job following the Data Platform standard process.
 Please ensure that both [Module 0][module_0], [Module 1][module_1] and [Module 2][module_2] are completed before proceeding.
 
 
-## Part 1. Testing the transformation script in the AWS glue console
+## Part 1. Prototyping the job in the AWS glue console
 
-You’ll take the following steps before productionising the script you wrote in Module 2, to check it runs smoothly in the AWS glue environment (it should, because the notebook environment you used in Sagemaker runs against glue).
+You’ll take the following steps before productionising the script you wrote in Module 2, to check it runs smoothly as a job in the AWS glue environment (it should, because the notebook environment you used in Sagemaker runs against glue).
 It will be an opportunity for you to try logging.
 As we’re just testing, we won’t write any Terraform (we'll do this in the second half of this module) and we won’t schedule the job. 
 We’ll also delete our job at the end.
