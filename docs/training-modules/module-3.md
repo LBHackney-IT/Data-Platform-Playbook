@@ -127,7 +127,7 @@ You can run your job manually from Glue Studio. After it has completed, the job 
 17. Delete the job prototype you've created manually in the console in the oart 1 of this module
 If the deployed job has worked successfully, you can safely delete the one you created manually earlier - your code is now in the DP codebase!  
 
-
+Congratulations, you've completed this module and deployed a job in the data platform! 
 
 
 [module_0]: ./module-0.md
