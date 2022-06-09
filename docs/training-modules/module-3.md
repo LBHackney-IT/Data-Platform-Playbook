@@ -86,7 +86,47 @@ This is to avoid getting confused at the end of this Module, as you will be runn
 This step can be done in Github in the browser, or in your IDE (in this case make sure you have pulled the last version of the DP repository).
 Follow the steps from the [Using GitHub Playbook article][using github], part 1.
 Add your name at the end of the file name. An name example is *covid_vaccinations_arda.py*.
-When you validate your new file in GitHub, do not create a Pull Request straight away but just a new branch. You'll use the same branch in the next step and raise one PR at the end.
+When you validate your new file in GitHub, do not create a Pull Request straight away. Look at the name of the new branch you are creating (you can aben customise it). You'll use the same branch in the next step and raise one PR at the end.
+
+11. Define your job in a Terraform module
+A module is a block of Terraform script that creates a set of related resources in AWS. The DP team has created a module template for Glue jobs. An [example from the Playbook][job module in playbook] is reproduced below. As you can see, it includes:
+* The job name and department
+* The location of the pySpark script
+* The schedule of the job
+* The job parameters (everything you defined manually in ‘job details’ in the Glue console)
+* A crawler to crawl the results of your job as soon as it has completed
+  
+You’ll create your module in the existing file: [terraform/25-aws-glue-job-sandbox.tf][job module in repo - sandbox]. This link takes you to the main branch of the repository, but you should make sure you are in the branch you've created in the step below. To switch to a branch, yu 
+
+To create your module, follow the steps from the [Playbook, Part 2][job module in playbook]. 
+Please *add your name* at the end of the module name and the job name.
+Please *DON’T* add a schedule to your module, you’ll just run it manually later.
+*TIP*: the example above doesn’t contain all the mandatory fields… make sure you read the Playbook carefully so you don’t forget any! If you do, GitHub won't let you commit your work.
+
+12. Have your code reviewed
+Commit your code to your current branch. Then, open a Pull Request. It contains your new script and your new module.
+
+13. Deploy to the Data Platform
+When you have received 2 approvals from reviewers, go back to GitHub. You will now be able to merge your branch (the merge button is green). 
+
+The automated deployment will now start and take several minutes.
+To check how it is going, you can navigate to the [Actions tab][github actions] and monitor the progress of your code deployment. 
+A reason for deploy failure is when a resource declared in Terraform (for instance a pySpark script file) is missing from the AWS environment. If this is happening, make sure all the necessary resources have been deployed before re-trying to deploy yours.
+
+14. Check your new resources in the AWS console. 
+In the [Glue Studio page][glue studio], you should find your Glue job with the prefix “stg-” added. In the [Glue Crawlers][glue crawlers] page, you should find the associated crawler. You can easily link the details of these new resources to the statements you wrote in the Terraform module.
+
+15. Run the deployed job
+You can run your job manually from Glue Studio. After it has completed, the job will trigger the crawler so you don’t need to run it yourself. If you navigate to the Crawler page, you should see your crawler in the ‘running’ state.
+
+16. Check the resulting data in Athena - the interface to view and query data from the Glue Catalogue.
+* Open the [Query editor][Athena query editor]
+* Make sure workgroup is “sandbox” and you’re using the “sandbox-raw-zone” database
+* Run a simple query in Athena against your tables (created/ updated) by the Crawlers. A simple way to do this is to select the 3 vertical dots by the table name and select “Preview Table” to see the top 10 lines. (The dialect of SQL used in Athena is Presto SQL)
+
+17. Delete the job prototype you've created manually in the console in the oart 1 of this module
+If the deployed job has worked successfully, you can safely delete the one you created manually earlier - your code is now in the DP codebase!  
+
 
 
 
@@ -109,3 +149,9 @@ When you validate your new file in GitHub, do not create a Pull Request straight
 [glue_crawlers]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#catalog:tab=crawlers
 [refined_zone]: ../glossary.md#refined-zone
 [using github]: https://lbhackney-it.github.io/Data-Platform-Playbook/playbook/transforming-data/using-aws-glue/deploy-glue-jobs/#1-add-your-script-to-the-data-platform-project-using-the-github-ui
+[job module example]: https://lbhackney-it.github.io/Data-Platform-Playbook/playbook/transforming-data/using-aws-glue/deploy-glue-jobs/#example-module-block
+[job module in repo - sandbox]:https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/25-aws-glue-job-sandbox.tf
+[github actions]: https://github.com/LBHackney-IT/Data-Platform/actions
+[glue studio]: https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/jobs
+[glue crawlers]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#catalog:tab=crawlers
+[Athena query editor]: https://eu-west-2.console.aws.amazon.com/athena/home?region=eu-west-2#/query-editor
