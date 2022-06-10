@@ -9,7 +9,7 @@ This section describes how the Liberator dataset gets ingested into the data pla
 
 #### 1. SQL dump is uploaded into the platform
 
-The company who owns the datset (Farthest Gate) uploads a zipped SQL dump of the whole databse to S3 bucket in the data platform production AWS account at the path `s3://dataplatform-stg-liberator-data-storage/parking/`.
+The company who owns the dataset (Farthest Gate) uploads a zipped SQL dump of the whole database to S3 bucket in the data platform production AWS account at the path `s3://dataplatform-stg-liberator-data-storage/parking/`.
 The file needs to be named `liberator_dump_210604.zip` where the date stamp at the end is the current date.
 
 #### 2. RDS snapshot is created from the SQL dump
