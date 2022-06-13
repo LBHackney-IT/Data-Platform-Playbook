@@ -1,27 +1,28 @@
 ---
-title: Module 2 - Transforming data to refined zone
-description: "Training Module 2"
+title: Transforming data to refined zone using Sagemaker
+description: "Training module: Transforming data to the refined zone using Sagemaker"
 layout: playbook_js
 tags: [training]
 ---
 
-# Data Platform Training Module - Transforming data using PySpark & writing to the refined zone
-
+# Data Platform Training Module - Transforming data using PySpark and writing to the refined zone
 
 In this module you will manipulate the data that you loaded into the Data Platform raw zone in [module 1][module_1].
 You will save the result of your work into the [refined zone][refined_zone] of the data platform.
+
 The refined zone is for data that has been enhanced or enriched and is ‘ready’ for analysis. 
-You will be using [PySpark][about_pyspark] to create and test your script. You will create your code in a Jupyter Notebook environment running in AWS Sagemaker.
+
+You will be using [PySpark][about_pyspark] to create and test your script. You will create your code in a Jupyter Notebook environment running in Amazon SageMaker.
+
 Jupyter notebooks are a convenient way to test code locally as Glue Studio is not so straightforward for code development (despite what the name implies!). You can read more about Jupyter notebooks [here][about_jupyter].
 
-This module is all about prototyping within a sandbox environment and therefore we won’t be pushing any code to the Data Platform GitHub repository.
+This module is all about prototyping within a sandbox environment, and therefore we won’t be pushing any code to the Data Platform GitHub repository.
 
 ## Overview
 
 You’ll write a few lines of code in PySpark which will include reading data from S3, joining the two Covid datasets together and then writing the newly created dataset back to S3 in the refined zone. 
 
 PySpark is an interface that uses the Python programming language to access the Apache Spark cluster-computing framework; therefore the syntax will seem a bit different if you have used Python packages such as Pandas or NumPy before.
-
 
 ## Prerequisites
 
@@ -32,7 +33,8 @@ You will need the names of the tables that were created from completing the 'Ing
 
 ### 1. Developing the job script in a Jupyter notebook
 
-1. Launch the sandbox notebook following [this guide][sagemaker_article].
+1. Launch the sandbox notebook within Sagemaker by following [this guide][sagemaker_article].
+
 2. Open the notebook template called `using-pyspark.ipynb`.
    * Familiarise yourself with the steps (variables, reading, transforming and writing data).
    * Duplicate the template, saving it in the sandbox folder, and rename it (you can append your name to the name of the file).
@@ -51,13 +53,12 @@ You will need the names of the tables that were created from completing the 'Ing
     * Join the two tables to a single output using the `country` column.
 4. Write to the Refined zone
 When you are confident that your transformation is working, you can use the last cell of the notebook to actually write the data into the Data Platform (please note that a notebook will only ever write to the pre-production environment, never to the production environment as it is meant for prototyping).
-5. See the written data in S3
-If the previous step has worked, you should be able to see your newly created parquet files in the Refined zone S3 bucket / sandbox department. We won't try to visualise or query the data in this module.
-
+5. Find and view the data in the refined zone bucket within S3
+If the previous step has worked correctly, then you should be able to see your newly created parquet files in the refined zone S3 bucket within the sandbox department folder. We won't try to visualise or query the data in this module.
 
 >:tada: Congratulations! You have completed this module!
 
-In the [next module][module_3], you will turn your script into [AWS Glue][about_glue] job and deploy it into the data platform.
+In the [next module][module_3], you will turn your script into a [Glue][about_glue] job and deploy it into the Data Platform.
 
 
 [module_0]: ./module-0.md
