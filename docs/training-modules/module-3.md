@@ -1,4 +1,3 @@
-
 ---
 title: Deploying a job in AWS Glue
 description: "Training module: Deploying a job in AWS Glue"

@@ -6,14 +6,8 @@ tags: [training]
 ---
 
 # Introduction
-### What is the goal of this module?
 
-- In this module, you will learn about several tools you’ll need to interact with the Data platform infrastructure, and how to set them up.
-You will be able to find out which modules are best suited for your interests and/or goals
-- Find out what the prerequisites are before working through the training modules
-
-The goal of the training is to understand the end-to-end journey of data in the platform and build confidence with the core elements and processes of the Data Platform, in a safe environment, using open data. Depending on what you want to do in the platform, you may not need to complete all the modules. However, the modules rely on each other and need to be completed in order. 
-After you complete the training, you will likely find that there is more you need to learn from the Playbook in order to use the Data Platform in your work (for example, performing other types of data transformation).
+We have developed a number of training modules to help users understand the end-to-end journey of data in the platform. The training modules should also build confidence with the core elements and processes of the Data Platform by allowing users to practice within in a safe environment whilst using open data (non-sensitive). Depending on what you intend to do in the Data Platform, you may not need to complete all the modules.
 
 ### Training module: Ingesting data from Google Sheets
 
@@ -43,7 +37,7 @@ After completing this module, you should be able to do the following:
 - Add a Glue job within the AWS console to test the job in a staging environment
 - Write a Terraform module to deploy the Glue Job into the Data Platform production environment, with scheduler to automate the process
 
-## Why we are moving away from old ways of work, and are using a Data Platform
+## Why we are moving towards using a Data Platform
 Please read the [Playbook Documentation](https://playbook.hackney.gov.uk/Data-Platform-Playbook/)
 
 ## What are the pre-requisites for these training modules?
