@@ -75,7 +75,7 @@ To do this, follow the same steps in the [last section of Module 1][module_1_ste
 7. [Crawl][glue_crawlers] the results. (Using the crawler named “sandbox-refined-zone”).
 8. Check the data in [Athena][athena_query_editor] - ([playbook][querying_with_athena]).
 
-Congratulations, you've tested that your transformation is working in Glue. You can move to the next part of Module 3.
+Congratulations, you've tested that your transformation is working in Glue. You can move to the next part of this Module.
 
 ## 2. Part 2: Deploying your job via Terraform
 In this second part of Module 3, you will ‘productionize’ the job you’ve tested in the previous part. To do this, you will write a Terraform module in the Data Platform GitHub repository, and then deploy it. The entirety of this module will be carried out in the GitHub User Interface (GUI), but you could also work in your local development environment such as PyCharm or VSCode if you prefer. 
@@ -93,6 +93,8 @@ In this second part of Module 3, you will ‘productionize’ the job you’ve t
 9. Delete the data generated in Part 1 of this module.
 
 This is so that we can check that the job deployed through the Terraform that you are about to write, actually works. To delete your data, navigate to it in S3 (Refined zone bucket, Sandbox department) and permanently delete the two full folders with your name (there should be one folder for Locations and one for Vaccinations). *Do NOT* delete your data from the Raw zone, otherwise you would have to ingest it again by running the ingestion job created in *Ingesting data from Google Sheets!*
+
+![Deleting folders in S3](./images/delete_S3_folder.png)
 
 10. Create and add your PySpark script to the GitHub repository.
 
@@ -115,6 +117,8 @@ A module is a block of Terraform code that creates a set of related resources in
 * The schedule of the job
 * The job parameters (this is the same as what you defined manually in *Job details* in the Glue console)
 * A crawler to crawl the results of your job so that data is available to view in a tabular format in the Glue data catalogue (rather than as a set of parquet files in S3)
+
+![Module example](./images/job-module-example.png)
   
 You’ll create your module in the existing file: [terraform/25-aws-glue-job-sandbox.tf][job module in repo - sandbox]. This link takes you to the `main` branch of the repository, but you should make sure you switch to the branch you were using to develop the Pythin script in the previous step. 
 
@@ -134,6 +138,8 @@ Commit your code to your current working branch and then open a Pull Request. Th
 
 When you have received **two approvals** from reviewers, go back to GitHub. You will now be able to merge your branch (the merge button is green). 
 
+![Merge your branch](./images/merge-branch.png)
+
 The automated deployment will now start and make take up to an hour to complete.
 To check how it is going, you can navigate to the [Actions tab][github actions] and monitor the progress of your code deployment. 
 
@@ -151,7 +157,12 @@ You can now run your job manually from Glue Studio. After it has completed, the 
 
 * Open the [Query editor][Athena query editor]
 * Make sure workgroup is “sandbox” and you’re using the “sandbox-raw-zone” database
+
+![Sandbox workgroup in Athena](./images/athena-sandbox-workgroup.png)
+
 * Run a simple query in Athena against your tables (created/ updated) by the Crawlers. A simple way to do this is to select the 3 vertical dots by the table name and select “Preview Table” to see the top 10 lines. (The dialect of SQL used in Athena is [Presto SQL][Presto SQL])
+
+![Preview table in AThena](./images/athena-preview-table.png)
 
 17. Delete the job prototype you've created manually in the Glue console in the Part 1 of this training module.
 
