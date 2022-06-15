@@ -26,3 +26,6 @@ jobs:
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_dir: ./build
+        env:
+          app_id: ${{ secrets.ALGOLIA_APP_ID }}
+          api_key: ${{ secrets.ALGOLIA_API_KEY }}
