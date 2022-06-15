@@ -29,8 +29,8 @@ module.exports = {
       ],
     },
     algolia: {
-      appId: 'KNMFHOJ4X2',
-      apiKey: '4dc9b48c851c09d44e9cf356d5425867',
+      appId: '${{ secrets.ALGOLIA_APP_ID }}',
+      apiKey: '${{ secrets.ALGOLIA_API_KEY }}',
       indexName: 'hackney',
       placeholder: 'Search playbook'
     },
