@@ -102,10 +102,12 @@ _**Note**: If you have copied an existing module block then you won’t need to 
   This will be `module.<ZONE>_zone.bucket_id`.
   `<ZONE>` should be either `raw`, or `landing` depending on the S3 zone you are ingesting your data to.
   
-- **api_credentials_secret_name** (required): This will be the same name you set in the previous section. For example:
+- **api_credentials_secret_name** (required): This will be the same name you set in the previous section. 
+  For example:
   ```
   api_credentials_secret_name = "api-credentials/case-notes"
   ```
+  You will be able to retrieve these credentials in your code using the [AWS SDK][aws-sdk-boto3] for Secrets Manager.
   
 - **s3_target_bucket_kms_key_arn** (required): This will be `module.<ZONE>_zone.kms_key_arn`.
   `<ZONE>` should be either `raw`, or `landing` depending on the S3 zone you are ingesting your data to.
@@ -202,3 +204,4 @@ module "casenotes_data_api_ingestion" {
 [terraform-directory]: https://github.com/LBHackney-IT/Data-Platform/tree/main/terraform
 [aws_cron_expressions]: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions
 [cron-expression-generator]: https://www.freeformatter.com/cron-expression-generator-quartz.html
+[aws-sdk-boto3]: https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/secretsmanager.html
