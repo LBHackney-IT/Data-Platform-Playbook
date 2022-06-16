@@ -38,12 +38,12 @@ In this section, you'll be adding your script to the Data Platform repository so
 
 **Note: You will need to complete this step from your IDE (Integrated Development Environment) or ask an engineer for assistance as it involves creating a directory which currently can't be done in the Github website user interface.**
 
-1. Open "api-lambda-ingestion" in the [lambdas directory][lambdas-directory] in the Data Platform Project in GitHub.
+1. Open the [lambdas directory][lambdas-directory] in the Data Platform Project in GitHub.
 1. Create a new directory suffixed with `_api_ingestion`.
    - Set this to the name of the data/API you are ingesting.
      Ensure the name is **lowercase** with **words separated by underscores**.
      For example: `casenotes_data_api_ingestion`.
-   - Make a note of the name of the directory (without `_api_ingestion`, i.e. `casenotes_data`) as it will be needed for the [Set up API Ingestion Lambda Module](#set-up-api-ingestion-lambda-module) section below. 
+   - Make a note of the name of the directory as it will be needed for the [Set up API Ingestion Lambda Module](#set-up-api-ingestion-lambda-module) section below. 
 1. Create a new file in this directory called `main.py`, you can also add your tests to its own file: `test.py`
 1. Paste your code in the respective files. **Ensure the main execution function in your `main.py` file is called `lambda_handler`.**
 1. Seek assistance from an engineer to get the required packages for your Lambda installed.
@@ -57,7 +57,7 @@ If you need to update your Lambda script in the future, you must follow steps 4-
 ### Set up API Ingestion Lambda Module
 In this section, you will be writing the code, using a template format, that will deploy your Lambda function to the Data Platform Project (or update an existing one if you need to make changes to an existing Lambda function).
 
-**Note: The steps in this section refer specifically to Github user interface**. However, if you are familiar working with the Data Platform project from IDE, then you can also make the changes in your IDE and commit them to the Data Platform repository.
+**Note: The steps in this section refer specifically to Github user interface**. However, if you are familiar working with the Data Platform project from your IDE, then you can also make the changes in your IDE and commit them to the Data Platform repository.
 
 1. Open the [terraform directory][terraform-directory] in the Data Platform Project in GitHub.
 
@@ -86,30 +86,33 @@ _**Note**: If you have copied an existing module block then you won’t need to 
 
 - **lambda_artefact_storage_bucket** (required): This will be `module.lambda_artefact_storage.bucket_id`
 
-- **lambda_name** (required): Name of the Lambda function. This should be the same as the name set in step 2 of the [Add your script to the Data Platform repository](##add-you-script-to-the-data-platform-repository) section above. 
+- **lambda_name** (required): Name of the Lambda function. This should be the same as the name set in step 2 of the [Add your script to the Data Platform repository](##add-you-script-to-the-data-platform-repository) section above, **however with words separated by hyphens (`-`) instead, and all lowercase.** 
   (This will be used to find your Lambda script).
   
   For example:
   ```
-  lambda_name = "casenotes_data"
+  lambda_name = "casenotes-data-api-ingestion"
   ```
 - **secrets_manager_kms_key** (required): This will be `aws_kms_key.secrets_manager_key`
   
-- **s3_target_bucket_arn** (required): This will be `module.<ZONE>_zone.bucket_arn`
+- **s3_target_bucket_arn** (required): This will be `module.<ZONE>_zone.bucket_arn`.
+  `<ZONE>` should be either `raw`, or `landing` depending on the S3 zone you are ingesting your data to.
   
 - **s3_target_bucket_name** (required): The target S3 bucket to ingest the data to. 
   This will be `module.<ZONE>_zone.bucket_id`.
+  `<ZONE>` should be either `raw`, or `landing` depending on the S3 zone you are ingesting your data to.
   
 - **api_credentials_secret_name** (required): This will be the same name you set in the previous section. For example:
   ```
   api_credentials_secret_name = "api-credentials/case-notes"
   ```
   
-- **s3_target_bucket_kms_key_arn** (required): This will be `module.<ZONE>_zone.kms_key_arn`
+- **s3_target_bucket_kms_key_arn** (required): This will be `module.<ZONE>_zone.kms_key_arn`.
+  `<ZONE>` should be either `raw`, or `landing` depending on the S3 zone you are ingesting your data to.
 
 - **lambda_environment_variables** (required): An object containing key-value pairs of environment variables to be used in your Lambda code.
   
-  For example: An API ingestion Lambda which has its API credentials stored as a secret in AWS Secrets Manager called: `"api-credentials/case-notes"`, and writes to the landing zone in a directory called: `casenotes-data`, will have the following set as environment variables:
+  For example: An API ingestion Lambda which has its API credentials stored as a secret called: `"api-credentials/case-notes"` in AWS Secrets Manager, and writes to a directory called: `casenotes-data` in the landing zone, will have the following set as environment variables:
   ```
   lambda_environment_variables = {
     "SECRET_NAME" = "api-credentials/casenotes-data-key"
@@ -178,7 +181,7 @@ module "casenotes_data_api_ingestion" {
 
   identifier_prefix              = local.short_identifier_prefix
   lambda_artefact_storage_bucket = module.lambda_artefact_storage.bucket_id
-  lambda_name                    = "casenotes_data"
+  lambda_name                    = "casenotes-data-api-ingestion"
   secrets_manager_kms_key        = aws_kms_key.secrets_manager_key
   s3_target_bucket_arn           = module.landing_zone.bucket_arn
   s3_target_bucket_name          = module.landing_zone.bucket_id
