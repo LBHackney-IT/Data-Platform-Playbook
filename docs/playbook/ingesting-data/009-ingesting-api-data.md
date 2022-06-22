@@ -98,46 +98,56 @@ _**Note**: If you have copied an existing module block then you won’t need to 
 - **s3_target_bucket_arn** (required): This will be `module.<ZONE>_zone.bucket_arn`.
   `<ZONE>` should be either `raw`, or `landing` depending on the S3 zone you are ingesting your data to.
   
-- **s3_target_bucket_name** (required): The target S3 bucket to ingest the data to. 
+- **s3_target_bucket_name** (required): The target S3 bucket to ingest the data to (this is used to set the Lambda permissions, you will also need to set this as an environment variable in the **lambda_environment_variables** input variable below).
+  
   This will be `module.<ZONE>_zone.bucket_id`.
   `<ZONE>` should be either `raw`, or `landing` depending on the S3 zone you are ingesting your data to.
   
-- **api_credentials_secret_name** (required): This will be the same name you set in the previous section. 
+- **api_credentials_secret_name** (required): This will be the same name you set in the previous section (this is used to set the Lambda permissions, you will also need to set this as an environment variable in the **lambda_environment_variables** input variable below). 
+  
   For example:
   ```
   api_credentials_secret_name = "api-credentials/case-notes"
   ```
-  You will be able to retrieve these credentials in your code using the [AWS SDK][aws-sdk-boto3] for Secrets Manager.
+  You will be able to retrieve these credentials in your code from the Environment Variables you will set below using the [AWS SDK][aws-secrets-boto3] for Secrets Manager.
   
 - **s3_target_bucket_kms_key_arn** (required): This will be `module.<ZONE>_zone.kms_key_arn`.
   `<ZONE>` should be either `raw`, or `landing` depending on the S3 zone you are ingesting your data to.
 
 - **lambda_environment_variables** (required): An object containing key-value pairs of environment variables to be used in your Lambda code.
   
-  For example: An API ingestion Lambda which has its API credentials stored as a secret called: `"api-credentials/case-notes"` in AWS Secrets Manager, and writes to a directory called: `casenotes-data` in the landing zone, will have the following set as environment variables:
+  For example: An API ingestion Lambda which has its API credentials stored as a secret called: `"api-credentials/case-notes"` in AWS Secrets Manager, writes to a directory called: `casenotes-data` in the Landing zone, and then triggers a Glue job to move it from the Landing zone to the Raw zone, will have the following set as environment variables:
   ```
   lambda_environment_variables = {
     "SECRET_NAME" = "api-credentials/casenotes-data-key"
     "TARGET_S3_BUCKET_NAME" = module.landing_zone.bucket_id
     "OUTPUT_FOLDER" = "casenotes-data"
+    "GLUE_JOB_NAME" = module.copy_casenotes_data_landing_to_raw[0].job_name #Note: You would have to create this job
   }
   ```
-  _The `OUTPUT_FOLDER` above can be your department name followed by dataset name if ingesting to your department's raw zone area. For example: `"housing/casenotes-data"`._
+  _The `OUTPUT_FOLDER` above can be your department name followed by dataset name if ingesting to your **department's raw zone** area. For example: `"housing/casenotes-data"`._
   
   **Environment variables set here can be retrieved in your Lambda code.**
-  For example, to retrieve the above environment variables you would add the following to your Lambda code:
+  For example, to retrieve the above environment variables, you would add the following to your Lambda code:
   ```
   from os import getenv
   
-  #main_lambda_function():
+  def lambda_handler(event, lambda_context):
     load_dotenv()
     secret_name = getenv("SECRET_NAME")
     s3_bucket = getenv("TARGET_S3_BUCKET_NAME")
     output_folder_name = getenv("OUTPUT_FOLDER")
+    glue_job_name = getenv("GLUE_JOB_NAME")
   ```
 
 #### The following input variables are optional:
 _If an optional variable is not needed you should delete the entire line in the module block._
+
+- **glue_job_to_trigger** (optional): The Glue job to trigger once the ingestion has completed (this is used to set the Lambda permissions, you will also need to set this as an environment variable in the **lambda_environment_variables** input variable above).
+
+  For instance, you may want to perform some transformations on the data or move it to another area once it has been ingested into the specified S3 location.
+**You will have to write some code in your Lambda to trigger this Glue job using the name.
+See the [AWS Docs][aws-start-job-run-boto3] for guidance on how to do this.**
 
 - **ephemeral_storage** (optional): The amount of Ephemeral storage (`/tmp`) to allocate for the Lambda Function in MBs. 
   This input variable can be used to expand the total amount of Ephemeral storage available beyond the **default which is `512` (MBs).** 
@@ -188,11 +198,13 @@ module "casenotes_data_api_ingestion" {
   s3_target_bucket_arn           = module.landing_zone.bucket_arn
   s3_target_bucket_name          = module.landing_zone.bucket_id
   api_credentials_secret_name    = "api-credentials/casenotes-data-key"
+  glue_job_to_trigger            = module.copy_casenotes_data_landing_to_raw[0].job_name
   s3_target_bucket_kms_key_arn   = module.landing_zone.kms_key_arn
   lambda_environment_variables   = {
     "SECRET_NAME" = "api-credentials/casenotes-data-key"
     "TARGET_S3_BUCKET_NAME" = module.landing_zone.bucket_arn
     "OUTPUT_FOLDER" = "casenotes-data"
+    "GLUE_JOB_NAME" = module.copy_casenotes_data_landing_to_raw[0].job_name #Note: You would have to create this job
   }
 }
 ```
@@ -204,4 +216,6 @@ module "casenotes_data_api_ingestion" {
 [terraform-directory]: https://github.com/LBHackney-IT/Data-Platform/tree/main/terraform
 [aws_cron_expressions]: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions
 [cron-expression-generator]: https://www.freeformatter.com/cron-expression-generator-quartz.html
-[aws-sdk-boto3]: https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/secretsmanager.html
+[aws-secrets-boto3]: https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/secretsmanager.html
+[aws-start-job-run-boto3]: https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/glue.html#Glue.Client.start_job_run
+
