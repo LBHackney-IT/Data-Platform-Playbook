@@ -17,7 +17,7 @@ layout: layout
 1. Run python unit tests
    
 #### /terraform/core, /terraform/etl or /terraform/networking:
-1. ```terraform plan``` command is run against the staging environment
+1. A ```terraform plan``` command is run against the staging environment
 2. Terraform compliance then checks the outcome of the ```terraform plan``` to ensure it meets our requirements
 3. Finally, a ``tf lint`` is completed to ensure all necessary resources have tags associated
 
@@ -26,7 +26,7 @@ layout: layout
 
 ### Sonar
 
-SonarCloud is a cloud-based code quality and security service. Sonar supports scanning of multiple languages out of the box and the reports on four main metrics, Reliability, Security, Maintainability and a Security Hotspot Review
+SonarCloud is a cloud-based code quality and security service. Sonar supports scanning of multiple languages out of the box and then reports on four main metrics, Reliability, Security, Maintainability and a Security Hotspot Review
 
 #### Reliability
 Reliability is based on the total number of bugs in the repository or piece of code. A more in depth explanation of how the reliability metric is calculated can be found here: [SonarCloud Reliability](https://docs.sonarqube.org/latest/user-guide/metric-definitions/#header-6)          
@@ -36,7 +36,7 @@ Security is based on the total number of vulnerability issues in the repository 
 
 #### Maintainability
 Maintainability is based on the total number of code smells in the repository or piece of code. Code smells are pieces of code that do not cause bugs or any imediate issue however they are generally bad practice and lead to a build up of technical debt if not fixed
-A more in depth explanation of how the security metric is calculated can be found here: [SonarCloud Maintainability](https://docs.sonarqube.org/latest/user-guide/metric-definitions/#header-4)
+A more in depth explanation of how the maintainability metric is calculated can be found here: [SonarCloud Maintainability](https://docs.sonarqube.org/latest/user-guide/metric-definitions/#header-4)
 
 #### Security Hotspot Review
 The Security hotspot review is based on the total number of security hotspots in the repository or piece of code. Security hotspots are not always an issue or a security problem but they have been flagged by Sonar as a 
