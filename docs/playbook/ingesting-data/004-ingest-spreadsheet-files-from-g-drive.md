@@ -45,7 +45,7 @@ tags: [playbook]
 ## Setting up AWS Glue job
 
 - Open the [Data Platform Project](https://github.com/LBHackney-IT/data-platform) repository in Github. If you don't have the correct permissions, you'll get a '404' error (see [prerequisites](#prerequisites)).
-- Navigate to the main `terraform` directory, and open `27-spreadsheet-imports-from-g-drive.tf`
+- Navigate to the main `terraform` directory, and open `09-spreadsheet-imports-from-g-drive.tf`
 - Switch to 'edit mode' (using edit button on top right)
 - Copy one of the modules above, paste at the bottom of the file and update the following fields:
 
