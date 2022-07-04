@@ -59,11 +59,11 @@ In this section, you will be writing the code, using a template format, that wil
 
 **Note: The steps in this section refer specifically to Github user interface**. However, if you are familiar working with the Data Platform project from your IDE, then you can also make the changes in your IDE and commit them to the Data Platform repository.
 
-1. Open the [terraform directory][terraform-directory] in the Data Platform Project in GitHub.
+1. Open the [terraform/core directory][terraform-directory] in the Data Platform Project in GitHub.
 
     - If you don't have the correct permissions, you'll get a '404' error (see the [Getting Set Up documentation][getting-set-up]).
 
-1. Open `66-api-ingestion.tf`. 
+1. Open `38-api-ingestion.tf`. 
 
 
 1. Click `edit` or the **pencil icon** (:pencil2:) then copy the last module block and paste it at the bottom of the file.
@@ -213,7 +213,7 @@ module "casenotes_data_api_ingestion" {
 [getting-set-up]: ../getting-set-up/index.md
 [committing-changes]: ../getting-set-up/using-github#committing-your-changes-to-the-data-platform-project
 [lambdas-directory]: https://github.com/LBHackney-IT/Data-Platform/tree/main/lambdas
-[terraform-directory]: https://github.com/LBHackney-IT/Data-Platform/tree/main/terraform
+[terraform-directory]: https://github.com/LBHackney-IT/Data-Platform/tree/main/terraform/core
 [aws_cron_expressions]: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions
 [cron-expression-generator]: https://www.freeformatter.com/cron-expression-generator-quartz.html
 [aws-secrets-boto3]: https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/secretsmanager.html

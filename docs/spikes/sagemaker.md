@@ -133,5 +133,5 @@ The terraform module for the aforementioned notebook instance is on [this branch
 
 [startup-script]: https://github.com/LBHackney-IT/Data-Platform/blob/sagemaker/modules/sagemaker/scripts/notebook-start-up.sh
 [notebook-github-repo]: https://github.com/LBHackney-IT/Data-Platform-Notebooks
-[notebook-terraform-code]: https://github.com/LBHackney-IT/Data-Platform/blob/sagemaker/modules/sagemaker/11-notebook.tf
+[notebook-terraform-code]: https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/modules/sagemaker/11-notebook.tf
 [sagemaker-branch]: https://github.com/LBHackney-IT/Data-Platform/tree/sagemaker/modules/sagemaker

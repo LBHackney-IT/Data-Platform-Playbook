@@ -7,7 +7,7 @@ tags: [playbook]
 
 This section covers the technical overview of how external suppliers can import data into the data platform. This can be done using various file formats, e.g. .csv and SQL data dumps
 
-The terraform script [33-liberator-iam.tf](https://github.com/LBHackney-IT/Data-Platform/tree/main/terraform/33-liberator-iam.tf) provisions an AWS IAM User and associated policies. The policies will allow the external supplier to see an S3 specified by the policy and to upload a file into that bucket and see the file. In the example script, this bucket is `s3://dataplatform-prod-liberator-data-storage/parking/`
+The terraform script [33-liberator-iam.tf](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/core/19-liberator-iam.tf) provisions an AWS IAM User and associated policies. The policies will allow the external supplier to see an S3 specified by the policy and to upload a file into that bucket and see the file. In the example script, this bucket is `s3://dataplatform-prod-liberator-data-storage/parking/`
 
 The login details for the user can be used by the external provider by executing the following steps:
 

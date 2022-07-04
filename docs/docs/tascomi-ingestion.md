@@ -51,7 +51,7 @@ This process writes into the refined zone bucket, with the 'planning/tascomi/sna
 
 ## Full workflow and scheduling
 
-The full workflow is defined in the [glue-tascomi-data terraform script](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/24-aws-glue-tascomi-data.tf).
+The full workflow is defined in the [glue-tascomi-data terraform script](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-tascomi-data.tf).
 It defines a list of tables that needs updating everyday, and a list of static tables that are only updated weekly (these are the static tables like application types). The schedule is as follows:
 
 - 3am GMT: as many jobs as tables to update are triggered. Each job queries one API endpoint for latest updated records. That's 25 jobs on Sundays (including static tables), about half of that on other days.
@@ -144,7 +144,7 @@ To amend the catalogue semi-automatically you need to do the following (TODO: cr
 - Open the [Tascomi column dictionary Google Sheet](https://docs.google.com/spreadsheets/d/1ZZwWHSoudBgN9j0jV6ZrNZKgXYMOm7ObWTWLT3Xg8Rw/edit?usp=sharing), create a new tab for the new table and paste the content you copied in the previous step. Only keep 2 columns: field and type.
 - Launch FME desktop, open the Tascomi Dictionary workspace, refresh the feature types in the reader to see the new tab of the Google Sheet. Run the workspace for the new tab. You'll get fragments of json that you can copy and paste into the proper dictionary.
 
-### Add the table to the [Terraform script](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/24-aws-glue-tascomi-data.tf).
+### Add the table to the [Terraform script](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-tascomi-data.tf).
 Decide wether the new table should be ingested daily (in this case append it to the `tascomi_table_names` list) or weekly (in this case appen it to the `tascomi_static_tables` list).
 
 ### Add data quality tests in the relevant scripts

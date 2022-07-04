@@ -37,11 +37,11 @@ If you need to update your Glue job script in the future, you must follow steps 
 In this section, you will be writing the code, using a template format, that will deploy your Glue job (and crawler) to the Data Platform Project (or update an existing one if you need to make changes to an existing Glue job).
 You can view a complete example [here](#example-module-block).
 
-1. Open the [terraform directory][terraform-directory] in the Data Platform Project in GitHub.
+1. Open the [terraform/etl directory][terraform-etl-directory] in the Data Platform Project in GitHub.
 
    - If you don't have the correct permissions, you'll get a '404' error (see [prerequisites][prerequisites]).
 
-1. Open `25-aws-glue-jobs-<YOUR-DEPARTMENT-NAME>.tf`. e.g. `25-aws-glue-job-parking.tf`
+1. Open `25-aws-glue-jobs-<YOUR-DEPARTMENT-NAME>.tf`. e.g. `38-aws-glue-job-parking.tf`
 
    - _If this file does not exist, create a new terraform file for your department by clicking `Add file` then `Create new file`.
      The name of the new file should be:_
@@ -308,7 +308,8 @@ module "manually_uploaded_csv_data_to_raw_parking" {
 
 [aws_cron_expressions]: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions
 [prerequisites]: ../../ingesting-data/google-sheets-import#prerequisites
-[terraform-directory]: https://github.com/LBHackney-IT/Data-Platform/tree/main/terraform
+[terraform-etl-directory]: https://github.com/LBHackney-IT/Data-Platform/tree/main/terraform/etl
+[terraform-directory]: https://github.com/LBHackney-IT/Data-Platform/tree/main/terraform/core
 [jobs-directory]: https://github.com/LBHackney-IT/Data-Platform/tree/main/scripts/jobs
 [adding-script]: #1-add-your-script-to-the-data-platform-project-using-the-github-ui
 [using-glue-studio]: ./using-glue-studio
@@ -317,4 +318,4 @@ module "manually_uploaded_csv_data_to_raw_parking" {
 [helpers-folder-github]: https://github.com/LBHackney-IT/Data-Platform/tree/main/scripts/helpers
 [committing-changes]: ../../getting-set-up/using-github#committing-your-changes-to-the-data-platform-project
 [list-of-glue-job-arguments]: https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html
-[project-module-example]: https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/25-aws-glue-job-parking.tf#L31-L44
+[project-module-example]: https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/38-aws-glue-job-parking.tf#L31-L44

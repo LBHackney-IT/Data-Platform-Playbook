@@ -29,7 +29,7 @@ We have created a `sandbox` department in the Data Platform, and an associated G
 ### 3. Creating two ingestion jobs in Terraform
 Your Google sheet is going to be ingested by a job running in [AWS Glue](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary#glue). We often just refer to AWS Glue as 'Glue'.
 
-You will write a bit of [Terraform](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary/#terraform) that will deploy this job automatically in the AWS environment. You are going to write this code directly in your web browser in GitHub [here](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/26-google-sheets-imports.tf), adding to the existing terraform script `26-google-sheets-imports.tf`.
+You will write a bit of [Terraform](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary/#terraform) that will deploy this job automatically in the AWS environment. You are going to write this code directly in your web browser in GitHub [here](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/08-google-sheets-imports.tf), adding to the existing terraform script `26-google-sheets-imports.tf`.
 
 ![Terraform script](./images/edit_terraform_google_sheets.png)
 

@@ -154,7 +154,7 @@ Ensure the **PlatformDepartment** tag is correctly set in the _Advanced details_
 :::
 
 [google-groups]: https://groups.google.com/my-groups
-[data-platform]: https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/05-departments.tf
+[data-platform]: https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/core/05-departments.tf
 [aws-glue-studio]: https://docs.aws.amazon.com/glue/latest/ug/what-is-glue-studio.html
 [terraform]: https://www.terraform.io/
 [aws-glue-studio-documentation]: https://docs.aws.amazon.com/glue/latest/ug/edit-nodes-chapter.html

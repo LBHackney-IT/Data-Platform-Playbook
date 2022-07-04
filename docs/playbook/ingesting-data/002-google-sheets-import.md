@@ -120,7 +120,7 @@ Ingest data contained within a Google Sheet for use on the Data Platform, option
 This is what will handle the ingestion of the data from Google Sheets to the Data Platform.
 
 1. Open the [Data Platform Project](https://github.com/LBHackney-IT/data-platform). If you don't have the correct permissions, you'll get a '404' error (see [prerequisites](#prerequisites)).
-2. Navigate to the main `terraform` directory, and open `26-google-sheets-imports.tf`
+2. Navigate to the main `terraform/core` directory, and open `08-google-sheets-imports.tf`
 3. Switch to 'edit mode' (using edit button on top right)
 4. Copy one of the modules above, paste at the bottom of the file and update the following fields:
 

@@ -17,7 +17,7 @@ In this section, you will be adding the rds instance id to the environment varia
 - Search for `RDS` and select
 - Select `DB Instances` in the `Resources` section
 - Copy the `DB identifier` of the database you want to ingest
-- Navigate to [prod.tfvars](https://github.com/LBHackney-IT/Data-Platform/blob/main/config/terraform/prod.tfvars#L12) in the `config/terraform` directory and click the pencil icon to edit the file
+- Navigate to [prod.tfvars](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/config/prod.tfvars#L12) in the `config/terraform` directory and click the pencil icon to edit the file
 - Add the `Db Identifier` to the `rds_instance_ids` environment variable by pasting it to the end of the list as shown below. Ensure you do not remove existing instance ids and that each instance id is double-quoted and comma separated.
 
 ```

@@ -120,7 +120,7 @@ A module is a block of Terraform code that creates a set of related resources in
 
 ![Module example](./images/job-module-example.png)
   
-You’ll create your module in the existing file: [terraform/25-aws-glue-job-sandbox.tf][job module in repo - sandbox]. This link takes you to the `main` branch of the repository, but you should make sure you switch to the branch you were using to develop the Pythin script in the previous step. 
+You’ll create your module in the existing file: [terraform/core/40-aws-glue-job-sandbox.tf][job module in repo - sandbox]. This link takes you to the `main` branch of the repository, but you should make sure you switch to the branch you were using to develop the Pythin script in the previous step. 
 
 To create your module, follow the steps from the [Playbook, Part 2][job module in playbook]. 
 
@@ -191,7 +191,7 @@ If the deployed job has worked successfully, you can safely delete the one you c
 [refined_zone]: ../glossary.md#refined-zone
 [using github]: https://lbhackney-it.github.io/Data-Platform-Playbook/playbook/transforming-data/using-aws-glue/deploy-glue-jobs/#1-add-your-script-to-the-data-platform-project-using-the-github-ui
 [job module example]: https://lbhackney-it.github.io/Data-Platform-Playbook/playbook/transforming-data/using-aws-glue/deploy-glue-jobs/#example-module-block
-[job module in repo - sandbox]:https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/25-aws-glue-job-sandbox.tf
+[job module in repo - sandbox]:https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/40-aws-glue-job-sandbox.tf
 [github actions]: https://github.com/LBHackney-IT/Data-Platform/actions
 [glue studio]: https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/jobs
 [glue crawlers]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#catalog:tab=crawlers
