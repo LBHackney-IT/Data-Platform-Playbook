@@ -38,5 +38,5 @@ Once the pull request has been approved and merged, the new schema will be added
 [committing-changes]: ../getting-set-up/using-github#committing-your-changes-to-the-data-platform-project
 [getting_set_up]: ../getting-set-up/index.md
 [schemas_in_module]: https://github.com/LBHackney-IT/Data-Platform/tree/main/modules/kafka-schema-registry/schemas
-[list_of_topics]: https://github.com/LBHackney-IT/Data-Platform/blob/main/modules/kafka-event-streaming/60-connect.tf
+[list_of_topics]: https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/core/32-kafka-event-streaming.tf
 [tenure_api_schema]: https://github.com/LBHackney-IT/Data-Platform/blob/main/modules/kafka-schema-registry/schemas/tenure_api.json

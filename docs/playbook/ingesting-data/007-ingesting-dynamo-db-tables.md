@@ -79,7 +79,7 @@ Changing the first section to be the name of the data source, the second section
 ## Setting up the AWS Glue job
 
 1. Open the [Data Platform Project][data_platform_github]. If you don't have the correct permissions, you'll get a '404' error (see [getting set up][getting_set_up]).
-2. Navigate to the main `terraform` directory and add a new file named after the dataset you are ingesting, for example `30-mtfh-tables-ingestion.tf`. Click on "Add file" then "Create new file" to do this.
+2. Navigate to the main `terraform/core` directory and add a new file named after the dataset you are ingesting, for example `17-mtfh-tables-ingestion.tf`. Click on "Add file" then "Create new file" to do this.
 3. Load the role ARN saved in the [previous section](#saving-the-role-arn-in-the-data-platform-accounts) in to terraform.
   - Copy this example code block into the file.
     ```tf

@@ -76,7 +76,7 @@ It will have the same name as the value you set for the **name** input variable 
 _For more technical details on the overall process, see: [Database Ingestion documentation][database-ingestion]_
 
 
-1. Open the [terraform directory][terraform-directory] in the Data Platform Project in GitHub.
+1. Open the [terraform/core directory][terraform-directory] in the Data Platform Project in GitHub.
     - If you don't have the correct permissions, you'll get a '404' error (see [Getting Set Up on the Platform][getting-set-up]).
 
 **Note: If the data you're ingesting is for a specific department then it should be ingested into that department's `raw zone` S3 bucket, otherwise it should go into the `landing zone`** S3 bucket.
@@ -386,9 +386,9 @@ module "ingest_rev_bev_council_tax" {
 [jdbc-connection-properties]: https://docs.aws.amazon.com/glue/latest/dg/connection-defining.html
 [database-ingestion]: ../../spikes/mssql-ingestion.md
 [committing-changes]: ../getting-set-up/using-github#committing-your-changes-to-the-data-platform-project
-[terraform-directory]: https://github.com/LBHackney-IT/Data-Platform/tree/main/terraform
+[terraform-directory]: https://github.com/LBHackney-IT/Data-Platform/tree/main/terraform/core
 [getting-set-up]: ../getting-set-up/index.md
-[project-module-example]: https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/29-mssql-ingestion.tf
+[project-module-example]: https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/core/13-mssql-ingestion.tf
 [using-glue-studio]: ../transforming-data/using-aws-glue/001-using-glue-studio.md
 [deploy-glue-job-and-crawler]: ../transforming-data/using-aws-glue/002-deploy-glue-jobs.md
 [glue-jobs]: https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/jobs 
