@@ -101,7 +101,7 @@ _**Note**: If you have copied an existing module block then you won’t need to 
   lambda_handler = "main.handler"
   ```
 
-- **runtime_language** (required): Specifies the language the lambda is written in. This will be `Python3.8` or `nodejs14.x`, other variables will cause an error.
+- **runtime_language** (required): Specifies the language the lambda is written in. This will be `python3.8` or `nodejs14.x` in lower case, other values will cause an error.
 
 - **secrets_manager_kms_key** (required): This will be `aws_kms_key.secrets_manager_key`
   
