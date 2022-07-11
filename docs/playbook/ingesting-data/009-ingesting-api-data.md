@@ -93,6 +93,16 @@ _**Note**: If you have copied an existing module block then you won’t need to 
   ```
   lambda_name = "casenotes-data-api-ingestion"
   ```
+
+- **lambda_handler** (required): Name of the Lambda functions' handler function. This will usually be the name of the core file in the Data Platform repository (`main` for Python, `index` for JavaScript), followed by .handler
+
+  For example:
+  ```
+  lambda_handler = "main.handler"
+  ```
+
+- **runtime_language** (required): Specifies the language the lambda is written in. This will be `Python3.8` or `nodejs14.x`, other variables will cause an error.
+
 - **secrets_manager_kms_key** (required): This will be `aws_kms_key.secrets_manager_key`
   
 - **s3_target_bucket_arn** (required): This will be `module.<ZONE>_zone.bucket_arn`.
@@ -194,6 +204,8 @@ module "casenotes_data_api_ingestion" {
   identifier_prefix              = local.short_identifier_prefix
   lambda_artefact_storage_bucket = module.lambda_artefact_storage.bucket_id
   lambda_name                    = "casenotes-data-api-ingestion"
+  lambda_handler                 = "main.handler"
+  runtime_language               = "python3.8"
   secrets_manager_kms_key        = aws_kms_key.secrets_manager_key
   s3_target_bucket_arn           = module.landing_zone.bucket_arn
   s3_target_bucket_name          = module.landing_zone.bucket_id
@@ -205,7 +217,7 @@ module "casenotes_data_api_ingestion" {
     "TARGET_S3_BUCKET_NAME" = module.landing_zone.bucket_arn
     "OUTPUT_FOLDER" = "casenotes-data"
     "GLUE_JOB_NAME" = module.copy_casenotes_data_landing_to_raw[0].job_name #Note: You would have to create this job
-  }
+  } #Note: the environment variables may change depending on the lambda requirements
 }
 ```
 
