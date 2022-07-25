@@ -38,8 +38,9 @@ There are two ways to use GitHub:
   ![merge_pr.png](../images/merge_pr.png)
 9. Once you have merged the pull request you will be able to view the progress of the staging deployment by navigating to the [Actions][actions-tab] tab of the Github repository
  - 1. The workflow for the deployment will contain the following text under the workflow title: ```Data-Platform #xxx: Commit xxxx pushed by xxxxx```
-10. When the staging deployment has finished you should be able to see that the Data Platform pre-production environment has updated to reflect the changes you made in the code, and you can now perform some testing to ensure your change is working as expected
+10. When the staging section of the deployment has finished you should be able to see that the Data Platform pre-production/staging environment has updated to reflect the changes you made in the code, and you can now perform some testing to ensure your change is working as expected
 11. By this point you will have received a notification email to approve the deployment of your change to production:
+  ![img.png](../images/production-deployment.png)
  - 1. If you are happy with how your change is performing in pre-production then please follow the links in the email you have received to progress your change to production. 
  - 2. If the change did not work as expected in pre-production then please decline the deployment of your change to production and repeat the steps above in order to fix any issues you have found in pre-production
  - 3. If you did not receive an email regarding deployment of your change to production and you are ready to do so then please reach out the Data Platform team
