@@ -43,7 +43,7 @@ There are two ways to use GitHub:
   ![img.png](../images/production-deployment.png)
  - 1. If you are happy with how your change is performing in pre-production then please follow the links in the email you have received to progress your change to production. 
  - 2. If the change did not work as expected in pre-production then please decline the deployment of your change to production and repeat the steps above in order to fix any issues you have found in pre-production
- - 3. If you did not receive an email regarding deployment of your change to production and you are ready to do so then please reach out the Data Platform team
+ - 3. If you did not receive an email regarding deployment of your change to production and you are ready to do so then please reach out to the Data Platform team
 12. If you wish to explore the deployment process in more detail please see the [CD Process](../../docs/CD-process.md) section of the playbook
 
 
