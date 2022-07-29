@@ -28,6 +28,6 @@ Important points:
 
 ### Clean up of data older than 90 days:
 1. When the CI/CD pipeline runs in Github a custom Docker image is built and pushed to the Elastic Container Registry in the Data Platform Production environment.
-2. One Elastic Container Service for each zone is then created by Terraform in the form of Fargate tasks. These three tasks are configured by Terraform to run on a schedule. At the time of writing this schedule is once a day at 11pm.
+2. One Elastic Container Service for each zone is then created by Terraform in the form of Fargate tasks. These three tasks are configured by Terraform to run on a schedule. At the time of writing this schedule is once a week.
 4. The script then deletes any data in the pre-production bucket that is older than the configured period
 5. At the time of writing this configurable period is 90 days
