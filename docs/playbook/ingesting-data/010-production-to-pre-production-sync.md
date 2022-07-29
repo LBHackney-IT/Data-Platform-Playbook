@@ -22,7 +22,7 @@ This section explains the process used to copy data from the data platform produ
 
 Important points:
 * Only new or updated files are replicated to pre-production at the point they are added or modified in production
-* AWS quarantees 99.9% of files/data is replicated to pre-production within 15 minutes but in reality it is much quicker than this
+* AWS guarantees 99.9% of files/data is replicated to pre-production within 15 minutes but in reality it is much quicker than this
 * There is no deletion or overwriting of data in pre-production via this method
 * This sync process does not update the glue catalogs in pre-production it only syncs across the raw data files. To make the data visible through Athena the relevant Glue crawler will need to be triggered manually in pre-production
 
