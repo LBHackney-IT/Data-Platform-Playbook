@@ -106,7 +106,7 @@ tags: [playbook]
       ```
     
     - *If the sheet you are ingesting is a **`.csv`** file type:*
-      - Set the `header_row_number` to `0` and `worksheet_name` to the dataset name you with to ingest the data into.
+      - Set the `header_row_number` to `0` and `worksheet_name` to the name of dataset that the data relates to.
   
         For example, if the file name is:
         `Voucher Import.csv`
