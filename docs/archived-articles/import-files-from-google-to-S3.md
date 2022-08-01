@@ -42,8 +42,4 @@ tags: [playbook]
   - `file_name` = "The name of the file you are importing including the file extension and using underscores instead of spaces"
   - `service_area` = "The name of the service area folder you would like to store in e.g. `housing`, `social-care`" (if this folder doesn't already exist in S3 you can name it here and this script will create it)
 
-- Committing your changes: The Data Platform team needs to approve any changes to the code, so your change won't happen automatically. To submit your change:
-  - Provide a description to explain what you've changed
-  - Select the option to create a `new branch` for this commit (i.e. the code you've changed). You can just use the suggested name for your branch.
-  - Once you click 'Propose changes' you'll have the opportunity to add even more detail if needed before submitted for review.
-  - You'll receive an email to confirm that your changes have been approved.
+- Committing your changes: z

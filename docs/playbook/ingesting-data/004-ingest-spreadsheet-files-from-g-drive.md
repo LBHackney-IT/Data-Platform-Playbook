@@ -18,6 +18,7 @@ tags: [playbook]
 
 ## Preparing the spreadsheet for ingestion
 
+- Please follow this guide for each spreadsheet file you wish to ingest onto the platform
 - Check that your file is in the list of allowed file types for this process
 - Ensure that all columns in your file have headers. Columns without headers will be lost.
 - If your spreadsheet file is stored on your local device, [upload it to google drive](https://www.howtogeek.com/398570/how-to-import-an-excel-document-into-google-sheets/).
@@ -105,16 +106,16 @@ tags: [playbook]
       ```
     
     - *If the sheet you are ingesting is a **`.csv`** file type:*
-      - Set the `header_row_number` to `0` and `worksheet_name` to a unique value such as the date from the csv file name.
+      - Set the `header_row_number` to `0` and `worksheet_name` to the dataset name you with to ingest the data into.
   
         For example, if the file name is:
-        `20220512 - PCN Permits VRM NLPG LLPG matching - Last 3 months - UTF-8.csv`
+        `Voucher Import.csv`
         then it would look something like:
         ```
         worksheets = {
           sheet1 : {
             header_row_number = 0
-            worksheet_name    = "20220512"
+            worksheet_name    = "Visitor_Voucher_Forecast"
           }
         }
         ```
