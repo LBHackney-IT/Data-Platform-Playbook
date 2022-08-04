@@ -184,7 +184,7 @@ _If a variable is not needed you should delete the entire line in the module blo
 
   **If your Glue job was created using the `Visual` tab in Glue Studio, you won't need to set any other job parameters and can continue setting other input variables where necessary.**
 
-  - To retrieve the job parameters you set here, add this import statement to your script: `from helpers.helpers import get_glue_env_var`
+  - To retrieve the job parameters you set here, add this import statement to your script: `from scripts.helpers.helpers import get_glue_env_var`
 
     You can then get the value of your job parameters to use in your script like this:
 
