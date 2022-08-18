@@ -77,6 +77,14 @@ Alternatively, if you already have the project, pull the latest changes by runni
 Open the preferences > Project:Data_platform > Python Interpreter > Click on the setting icon > Add.
 
 In this screen, set the python interpreter to the version you’ve installed.
+
 ![pycharm_python_interpreter.png](../images/pycharm_python_interpreter.png)
 
+### Add extra Python libraries
+The following packages are necessary for unit tests. You can install them in the below window, or alternatively use `pip install`.
+- gspread
+- freezegun
+- pytest-mock
+
+![pycharm_additional_python_packages.png](../images/pycharm_additional_python_packages.png)
 
