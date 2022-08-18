@@ -88,3 +88,13 @@ The following packages are necessary for unit tests. You can install them in the
 
 ![pycharm_additional_python_packages.png](../images/pycharm_additional_python_packages.png)
 
+### Import the Glue library as an external library 
+Paste the full downloaded awsglue folder in `External Libraries > Python X.X > site-packages` as shown on the following screen.
+
+![pycharm_external_libraries.png](../images/pycharm_external_libraries.png)
+
+### Check your environment
+Open the file `scripts/jobs/levenshtein_address_matching.py`. 
+
+If you have installed all the dependencies, the imports at the top of this script should all be fine.
+If still have underlined imports, try to close and reopen PyCharm. If you still have problems, you can try to re-import the packages you installed via `pip install` within the DP environment, from the Python packages tab.
