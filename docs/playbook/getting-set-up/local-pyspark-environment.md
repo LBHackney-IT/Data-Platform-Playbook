@@ -97,4 +97,40 @@ Paste the full downloaded awsglue folder in `External Libraries > Python X.X > s
 Open the file `scripts/jobs/levenshtein_address_matching.py`. 
 
 If you have installed all the dependencies, the imports at the top of this script should all be fine.
-If still have underlined imports, try to close and reopen PyCharm. If you still have problems, you can try to re-import the packages you installed via `pip install` within the DP environment, from the Python packages tab.
+
+If you have underlined imports, try to close and reopen PyCharm. If you still have problems, you can try to re-import the packages you installed via `pip install` within the DP environment, from the Python packages tab.
+
+When the script looks fine, go the section 'Test the Levenshtein address matching script'
+
+# Instructions for Windows
+
+
+# Test the Levenshtein address matching script
+
+## Install prerequisites
+
+### Java
+Check if you have Java by running the command `java –version`. We want version 8.
+If you have the wrong version, uninstall it from the start menu.
+Install openjdk (version 8) form https://adoptopenjdk.net.
+In the installer, activate the option to `set JAVA_HOME`.
+After the install, the command `java –version` should return something.
+
+### Python
+Install python from Windows store: it will set the right environment variables.
+After the install, the command `python --version` should return something.
+
+NB: For some Windows OS, python installation from python.org also works fine. If you chose to install yourself, the Python command will be the normal `py` command.
+
+### Hadoop
+This is specific to windows and will help us with paths etc. Download the full project from https://github.com/steveloughran/winutils/blob/master/hadoop-3.0.0/bin/.
+Unzip and locate the *2 files* we need: 
+- winutils.exe 
+- hadoop.dll
+We will now place these files in different locations.
+1. Create a bin folder for `winutils.exe` and save it there, e.g. `C:\winutils\bin` or `C:\users\sballey\winutils\bin`.
+2. Create the environment variable `HADOOP_HOME` and set it to the path (omitting bin at the end), e.g. `C:\users\sballey\winutils`.
+![windows_hadoop_env_variable.png](../images/windows_hadoop_env_variable.png).
+3. Copy hadoop.dll in `C:\Windows\System32` (NB: you can try without this step – it is critical for some users but it looks like some others don’t need it. Everything we need should be in winutils.exe).
+4.
+
