@@ -54,12 +54,11 @@ in your command prompt. If you do not have it, then get it from https://git-scm.
 ### PyCharm
 Install the Community free version from https://www.jetbrains.com/pycharm/.
 
-pytest pypark &pydeequ packages: 
-
 ### Additional Python packages 
 For the Data Platform code to run, you need at least the packages boto3, pytest, pyspark and pydeequ. 
 You can install them now by typing in your command line:
-`python3 -m pip install --user  boto3 pytest pyspark pydeequ`
+`python3 -m pip install --user  boto3 pytest pyspark pydeequ`.
+
 Alternatively, these libraries can be installed inside PyCharm as shown below.
 
 ### Glue libraries
@@ -70,11 +69,13 @@ Unzip it and leave it there. We will move it in other step later.
 ## Create the Data Platform local environment using PyCharm
 
 ### Install the project in PyCharm
-Open PyCharm and clone the Data Platform project: https://github.com/LBHackney-IT/Data-Platform 
+Open PyCharm and clone the Data Platform project: https://github.com/LBHackney-IT/Data-Platform.
+
 Alternatively, if you already have the project, pull the latest changes by running `git pull` in the PyCharm terminal window.
 
 ### Set the Python interpreter for the project
-Open the preferences > Project:Data_platform > Python Interpreter > Click on the setting icon > Add
+Open the preferences > Project:Data_platform > Python Interpreter > Click on the setting icon > Add.
+
 In this screen, set the python interpreter to the version you’ve installed.
 
 
