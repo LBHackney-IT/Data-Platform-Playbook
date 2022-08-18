@@ -7,14 +7,14 @@ tags: [playbook, setup]
 
 # Introduction
 
-## Why develop PySpark scripts on your local machine**
+## Why develop PySpark scripts on your local machine?
 
 Prototyping your jobs on your local machine's IDE is the cheapest and quickest way to work. It has the following advantages:
 - Seamless process: The script you're writing and testing locally is exactly the script that will end up in the repository. You won't need to copy/paste and transform code from Sagemaker or Glue Studio into GitHub. 
 - Speed: you are able to test your script on a data sample and not the full data hosted in S3 pre-prod. Your local environment is also quicker to start than Glue.
 - Cost: you are not consuming any AWS resource and compute power while prototyping your job.
 
-## Who is this tutorial for**
+## Who is this tutorial for?
 
 People who need to prototype Glue jobs. If you just need to explore or analyse data on an ad-hoc basis, you should rather use a notebooking environment like Sagemaker.
 
@@ -62,6 +62,20 @@ You can install them now by typing in your command line:
 `python3 -m pip install --user  boto3 pytest pyspark pydeequ`
 Alternatively, these libraries can be installed inside PyCharm as shown below.
 
+### Glue libraries
+We need these libraries to simulate the Glue environment.
+Go to the project GitHub page: https://github.com/awslabs/aws-glue-libs and download the code (Code > Download zip). 
+Unzip it and leave it there. We will move it in other step later.
+
+## Create the Data Platform local environment using PyCharm
+
+### Install the project in PyCharm
+Open PyCharm and clone the Data Platform project: https://github.com/LBHackney-IT/Data-Platform 
+Alternatively, if you already have the project, pull the latest changes by running `git pull` in the PyCharm terminal window.
+
+### Set the Python interpreter for the project
+Open the preferences > Project:Data_platform > Python Interpreter > Click on the setting icon > Add
+In this screen, set the python interpreter to the version you’ve installed.
 
 
 
