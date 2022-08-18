@@ -7,7 +7,7 @@ tags: [playbook]
 
 ## Intro
 
-This guide will step you through how to connect to Redshift, in the Data Platform, from Google Data Studio. You will then be able to access the data stored in the platform from Data Studio.
+This guide will step you through how to connect to Redshift, on the Data Platform, from Google Data Studio. You will then be able to access the data stored on the platform from Data Studio.
 
 ## Prerequisites
 
@@ -56,9 +56,9 @@ Then, when adding a data source in [Google Data Studio][google_data_studio]
    If you click the link above before logging into the relevant Data Platform account you will be presented with an
    AWS login screen.
 
-   If your department is not listed above, you should be able to find the credentials by searching for 'YOUR DEPARTMENT/redshift' in Secrets Manager. 
+   If your department is not listed above but exists with the platform, you should be able to find the credentials by searching for 'YOUR DEPARTMENT/redshift' in Secrets Manager. 
 
-1. Scroll down to the "Secret value" section and select "Retrieve secret value".
+3. Scroll down to the "Secret value" section and select "Retrieve secret value".
 
 [client_certificate_stg]: https://dataplatform-stg-ssl-connection-resources.s3.eu-west-2.amazonaws.com/client_certificate.crt
 
