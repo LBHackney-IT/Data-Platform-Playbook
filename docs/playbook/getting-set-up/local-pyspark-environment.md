@@ -1,6 +1,6 @@
 ---
 title: Getting started with the local PySpark environment
-description: "Local PySpark Environment Setup"
+description: "Setting up a PySpark environment on a local machine and running Data Platform scripts."
 layout: playbook_js
 tags: [playbook, setup]
 ---
