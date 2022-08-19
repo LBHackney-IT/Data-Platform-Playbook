@@ -104,9 +104,6 @@ When the script looks fine, go the section 'Test the Levenshtein address matchin
 
 # Instructions for Windows
 
-
-# Test the Levenshtein address matching script
-
 ## Install prerequisites
 
 ### Java
@@ -135,7 +132,7 @@ We will now place these files in different locations.
 *NB: you can try without this step 3 – it is critical for some users (it was for a Hackney Lenovo Thinkpad running Windows 10) but it appears some others don’t need it. Everything you need should in theory be in winutils.exe.*
 
 ### Python libraries
-## General libraries
+#### General libraries
 For the data platform we need at least:
 - boto3 
 - pytest
@@ -163,11 +160,44 @@ If this one fails and complains about a legacy install, it’s because it should
 and then again
 `python -m pip install pyspark`
 
-NB: Alternatively, you can install Python libraries in PyCharm at project level. Go to `File>Settings>choose your project>Python interpreter`. You'll see all the libraries already there. Click the + button to install more.
-![pycharm_win_python_packages.png](../images/pycharm_win_python_packages.png)
+NB: Alternatively, you can install Python libraries later in PyCharm at project level.
 
-## Glue libraries
+#### Glue libraries
 We need these libraries to simulate the Glue environment. Download them as a zip from https://github.com/awslabs/aws-glue-libs. Unzip them anywhere, you will move them later.
- 
+
+## Create the Data Platform local environment using PyCharm
+
+### Install the project in PyCharm
+Open PyCharm and clone the Data Platform project: https://github.com/LBHackney-IT/Data-Platform.
+
+Alternatively, if you already have the project, pull the latest changes by running `git pull` in the PyCharm terminal window.
+
+### Set the Python interpreter for the project
+In `file > settings`, choose your project in the left panel and set the python interpreter to the version you’ve installed.
+Tick the ‘Inherit’ box but not the other box
+Close the settings window.
+
+### Import the glue libraries
+In the left panel, go to `external libraries - site packages` and paste the glue folder you’ve unzipped in the prerequisites step.
+
+### Check your environment
+At this point, if you open the env-context.py script, you shouldn’t see any library highlighted in red.
+If you open `file>settings`, you should see (after it loads) all the python libraries you’ve installed and are available for this project.
+Click the + button to install more.
+![pycharm_win_python_packages.PNG](../images/pycharm_win_python_packages.PNG)
+
+If you still have underlined imports, closing and reopening PyCharm may help, or even restarting your laptop.
+
+When your installatin is complete, try to run a script by following the next section!
+
+# Running a PySpark script (Mac and Windows)
+
+## Run the Levenshtein address matching
+This is the first script that was converted for the local PySpark environment and can be considered as a model for other scripts. 
+### Sample data
+You'll need some [sample data] (https://drive.google.com/file/d/1a18qvDoJPGavNjfLNvnrY_jOmVTTWhY7/view?usp=sharing) (downloadable by Hackney only): some source addresses to match, and some target addresses from the address gazetteer to match against. These 2 datasets are in Parquet format and should be saved with a folder structure mirroring S3.
 
 
+A simpe test script
+
+Running ubit tests
