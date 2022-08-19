@@ -250,7 +250,7 @@ Running the unit tests of the Data Platform project is another way to test your 
 ## Troubleshooting
 These are solutions to random problems related to the local environment.
 
-**Issue**: After a system upgrade, scripts wouldn’t run in PyCharm because python.exe was not found.
+### Issue: After a system upgrade, scripts wouldn’t run in PyCharm because python.exe was not found.
 
 **Environment**: Windows
 
@@ -258,3 +258,5 @@ These are solutions to random problems related to the local environment.
 Make sure aliases for Python are on but not for the Python App installer.
 
 ![windows_restoring_aliases_for_python](../images/windows_restoring_aliases_for_python.png)
+
+### Issue: After a system upgrade, scripts wouldn’t run in PyCharm because python.exe was not found.
