@@ -34,7 +34,7 @@ You don't need Data Platform access to use the local environment.
 
 ## Set up instructions for Mac
 
-### Install prerequisites
+### Install pre-requisites
 
 #### Java
 Spark needs Java. Check if you have Java installed by running 
@@ -106,7 +106,7 @@ When the script looks fine, go the section 'Test the Levenshtein address matchin
 
 ## Set up instructions for Windows
 
-### Install prerequisites
+### Install pre-requisites
 
 #### Java
 Check if you have Java by running the command `java –version`. We want version 8.
