@@ -131,7 +131,8 @@ We will now place these files in different locations.
 1. Create a bin folder for `winutils.exe` and save it there, e.g. `C:\winutils\bin` or `C:\users\sballey\winutils\bin`.
 2. Create the environment variable `HADOOP_HOME` and set it to the path (omitting bin at the end), e.g. `C:\users\sballey\winutils`.
 ![windows_hadoop_env_variable.png](../images/windows_hadoop_env_variable.png).
-3. Copy hadoop.dll in `C:\Windows\System32` (NB: you can try without this step – it is critical for some users but it looks like some others don’t need it. Everything you need should in theory be in winutils.exe).
+3. Copy hadoop.dll in `C:\Windows\System32`.  
+*NB: you can try without this step 3 – it is critical for some users (it was for a Hackney Lenovo Thinkpad running Windows 10) but it appears some others don’t need it. Everything you need should in theory be in winutils.exe.*
 
 ### Python libraries
 ## General libraries
