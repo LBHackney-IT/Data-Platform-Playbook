@@ -193,7 +193,7 @@ When your installatin is complete, try to run a script by following the next sec
 
 # Running a PySpark script (Mac and Windows)
 
-## Run the Levenshtein address matching
+## Running the Levenshtein address matching script
 This is the first script that was converted for the local PySpark environment and can be considered as a model for other scripts. 
 
 ### Get sample data
@@ -240,4 +240,5 @@ address_data_raw = spark.read.csv(
 address_data_raw.show()
 ```
 
-## Running init tests
+## Running unit tests
+Running the unit tests of the Data Platform project is another way to test your configuration.
