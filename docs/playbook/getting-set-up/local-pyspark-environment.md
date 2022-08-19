@@ -251,7 +251,6 @@ Running the unit tests of the Data Platform project is another way to test your 
 These are solutions to random problems related to the local environment.
 
 ### Issue: After a system upgrade, scripts wouldn’t run in PyCharm because python.exe was not found.
-
 **Environment**: Windows
 
 **Solution**: From the start menu, Launch ‘Manage Apps Execution aliases’
@@ -259,4 +258,8 @@ Make sure aliases for Python are on but not for the Python App installer.
 
 ![windows_restoring_aliases_for_python](../images/windows_restoring_aliases_for_python.png)
 
-### Issue: After a system upgrade, scripts wouldn’t run in PyCharm because python.exe was not found.
+### Issue: C-related errors when trying to run your first PyCharm script.
+**Environment**: Windows
+
+**Solution**: Download https://visualstudio.microsoft.com/visual-cpp-build-tools/ and install the 3 first tools
+
