@@ -243,5 +243,18 @@ address_data_raw.show()
 ```
 
 ### Running the unit tests
-Running the unit tests of the Data Platform project is another way to test your configuration. To do this, navigate and right-click on the scripts/test folder. It gives you the option to modify the run configuration of this folder. Rename this configuration to 'Run all tests' and make sure the settings are as below.
+Running the unit tests of the Data Platform project is another way to test your configuration. To do this, navigate and right-click on the scripts/test folder. It gives you the option to modify the Run Configuration of this folder. Rename this configuration to 'Run all tests' and make sure the settings are as below.
+
 ![pycharm_unit_tests_configuration](../images/pycharm_unit_tests_configuration.PNG)
+
+## Troubleshooting
+These are solutions to random problems related to the local environment.
+
+**Issue**: After a system upgrade, scripts wouldn’t run in PyCharm because python.exe was not found.
+
+**Environment**: Windows
+
+**Solution**: From the start menu, Launch ‘Manage Apps Execution aliases’
+Make sure aliases for Python are on but not for the Python App installer.
+
+![windows_restoring_aliases_for_python](../images/windows_restoring_aliases_for_python.png)
