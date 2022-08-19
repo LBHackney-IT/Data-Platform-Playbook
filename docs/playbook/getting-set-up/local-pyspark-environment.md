@@ -131,6 +131,42 @@ We will now place these files in different locations.
 1. Create a bin folder for `winutils.exe` and save it there, e.g. `C:\winutils\bin` or `C:\users\sballey\winutils\bin`.
 2. Create the environment variable `HADOOP_HOME` and set it to the path (omitting bin at the end), e.g. `C:\users\sballey\winutils`.
 ![windows_hadoop_env_variable.png](../images/windows_hadoop_env_variable.png).
-3. Copy hadoop.dll in `C:\Windows\System32` (NB: you can try without this step – it is critical for some users but it looks like some others don’t need it. Everything we need should be in winutils.exe).
-4.
+3. Copy hadoop.dll in `C:\Windows\System32` (NB: you can try without this step – it is critical for some users but it looks like some others don’t need it. Everything you need should in theory be in winutils.exe).
+
+### Python libraries
+## General libraries
+For the data platform we need at least:
+- boto3 
+- pytest
+- pyspark
+- pydeeq
+- gspread
+- freezegun
+- pytest-mock
+
+If you have installed Python through Windows store, you must use the command
+`python -m pip install …`.
+If not, the normal command is `py -m pip install ...`
+
+It is recommended to install these packages 1 by 1 separately to be sure you see the execution of each
+`python -m pip install boto3`
+`python -m pip install pydeequ`
+`python -m pip install pytest`
+ 
+The most problematic package is pySpark:
+`python -m pip install pyspark`
+
+If this one fails and complains about a legacy install, it’s because it should rather be in the form of a wheel file. In this case, run the command
+`python -m pip install wheel`
+
+and then again
+`python -m pip install pyspark`
+
+NB: Alternatively, you can install Python libraries in PyCharm at project level. Go to `File>Settings>choose your project>Python interpreter`. You'll see all the libraries already there. Click the + button to install more.
+![pycharm_win_python_packages.png](../images/pycharm_win_python_packages.png)
+
+## Glue libraries
+We need these libraries to simulate the Glue environment. Download them as a zip from https://github.com/awslabs/aws-glue-libs. Unzip them anywhere, you will move them later.
+ 
+
 
