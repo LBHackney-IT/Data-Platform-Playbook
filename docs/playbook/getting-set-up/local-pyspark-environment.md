@@ -240,5 +240,6 @@ address_data_raw = spark.read.csv(
 address_data_raw.show()
 ```
 
-## Running unit tests
-Running the unit tests of the Data Platform project is another way to test your configuration.
+## Running the unit tests
+Running the unit tests of the Data Platform project is another way to test your configuration. To do this, navigate and right-click on the scripts/test folder. It gives you the option to modify the run configuration of this folder. Rename this configuration to 'Run all tests' and make sure the settings are as below.
+![sample_data_address_matching_target](../images/sample_data_address_matching_target.PNG)
