@@ -205,7 +205,7 @@ Example folder structure for source addresses
 Example folder structure for target addresses
 ![sample_data_address_matching_target](../images/sample_data_address_matching_target.PNG)
 
-### Set up the script parameters
+### Set the script parameters
 Open the file `scripts/jobs/levenshtein_address_matching.py`. Check that the imports are fine. 
 If you run the script now, you will get an error message because we haven’t specified the parameters. 
 Do this from the Configuration window that you can open from the drop down list just right from the green Run arrow.
@@ -213,13 +213,31 @@ Do this from the Configuration window that you can open from the drop down list 
 ![pycharm_edit_levenshtein_config](../images/pycharm_edit_levenshtein_config.PNG)
 
 Here are the parameters values to add to the parameter text box:
-`
+```
 --mode=local 
 --addresses_data_path=”<your local path to>\dataplatform-stg-raw-zone\unrestricted\addresses_api\dbo.hackney_address” 
 --source_data_path=”<your local path to>\dataplatform-stg-refined-zone\housing-repairs\repairs-electrical-mechanical-fire\communal-lighting\with-cleaned-addresses” 
 --target_destination=”<your local path to>\output\levenshtein” --match_to_property_shell=forbid
-`
+```
 
-## A simpe test script
+You can now run the job, see its progress in the console, and find the result file in the output folder. 
 
-Running ubit tests
+## A minimal test script
+If you are blocked with the Levenshtein address matching script, here is a minimal script that you can save as `test.py` (do not commit to the DP repository!). This creates a Spark data frame and then another one from a csv file. It is useful to troubleshoot basic issues.
+
+Note for Windows users: the file paths inside the code need double backslash.
+
+```
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.master("local[*]").appName("LocalTest").getOrCreate()
+print(spark)
+
+address_data_raw = spark.createDataFrame(
+   [(2022, "06", "01"), (2022, "6", "01"), (2022, "07", "01")])
+address_data_raw.show()
+address_data_raw = spark.read.csv(
+   "<your local path \\ to a folder \\containing a csv file>")
+address_data_raw.show()
+```
+
+## Running init tests
