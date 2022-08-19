@@ -126,6 +126,7 @@ This is specific to windows and will help us with paths etc. Download the full p
 Unzip and locate the *2 files* we need: 
 - winutils.exe 
 - hadoop.dll
+
 We will now place these files in different locations.
 1. Create a bin folder for `winutils.exe` and save it there, e.g. `C:\winutils\bin` or `C:\users\sballey\winutils\bin`.
 2. Create the environment variable `HADOOP_HOME` and set it to the path (omitting bin at the end), e.g. `C:\users\sballey\winutils`.
