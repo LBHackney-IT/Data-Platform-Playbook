@@ -94,7 +94,7 @@ Paste the full downloaded awsglue folder in `External Libraries > Python X.X > s
 ![pycharm_external_libraries.png](../images/pycharm_external_libraries.png)
 
 ### Check your environment
-Open the file `scripts/jobs/levenshtein_address_matching.py`. 
+Open the file `scripts/jobs/env-context.py`. 
 
 If you have installed all the dependencies, the imports at the top of this script should all be fine.
 
@@ -181,7 +181,8 @@ Close the settings window.
 In the left panel, go to `external libraries - site packages` and paste the glue folder you’ve unzipped in the prerequisites step.
 
 ### Check your environment
-At this point, if you open the env-context.py script, you shouldn’t see any library highlighted in red.
+At this point, if you open the `scripts/jobs/env-context.py` script, you shouldn’t see any library highlighted in red.
+
 If you open `file>settings`, you should see (after it loads) all the python libraries you’ve installed and are available for this project.
 Click the + button to install more.
 ![pycharm_win_python_packages.PNG](../images/pycharm_win_python_packages.PNG)
@@ -194,10 +195,31 @@ When your installatin is complete, try to run a script by following the next sec
 
 ## Run the Levenshtein address matching
 This is the first script that was converted for the local PySpark environment and can be considered as a model for other scripts. 
-### Sample data
+
+### Get sample data
 You'll need some [sample data] (https://drive.google.com/file/d/1a18qvDoJPGavNjfLNvnrY_jOmVTTWhY7/view?usp=sharing) (downloadable by Hackney only): some source addresses to match, and some target addresses from the address gazetteer to match against. These 2 datasets are in Parquet format and should be saved with a folder structure mirroring S3.
 
+Example folder structure for source addresses
+![sample_data_address_matching_source](../images/sample_data_address_matching_source.PNG)
 
-A simpe test script
+Example folder structure for target addresses
+![sample_data_address_matching_target](../images/sample_data_address_matching_target.PNG)
+
+### Set up the script parameters
+Open the file `scripts/jobs/levenshtein_address_matching.py`. Check that the imports are fine. 
+If you run the script now, you will get an error message because we haven’t specified the parameters. 
+Do this from the Configuration window that you can open from the drop down list just right from the green Run arrow.
+
+![pycharm_edit_levenshtein_config](../images/pycharm_edit_levenshtein_config.PNG)
+
+Here are the parameters values:
+`
+--mode=local 
+--addresses_data_path=”<your local path to>\dataplatform-stg-raw-zone\unrestricted\addresses_api\dbo.hackney_address” 
+--source_data_path=”<your local path to>\dataplatform-stg-refined-zone\housing-repairs\repairs-electrical-mechanical-fire\communal-lighting\with-cleaned-addresses” 
+--target_destination=”<your local path to>\output\levenshtein” --match_to_property_shell=forbid
+`
+
+## A simpe test script
 
 Running ubit tests
