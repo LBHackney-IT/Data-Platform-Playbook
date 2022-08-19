@@ -209,10 +209,10 @@ Example folder structure for target addresses
 Open the file `scripts/jobs/levenshtein_address_matching.py`. Check that the imports are fine. 
 If you run the script now, you will get an error message because we haven’t specified the parameters. 
 Do this from the Configuration window that you can open from the drop down list just right from the green Run arrow.
-
+![pycharm_run_config](../images/pycharm_run_config.PNG)
 ![pycharm_edit_levenshtein_config](../images/pycharm_edit_levenshtein_config.PNG)
 
-Here are the parameters values:
+Here are the parameters values to add to the parameter text box:
 `
 --mode=local 
 --addresses_data_path=”<your local path to>\dataplatform-stg-raw-zone\unrestricted\addresses_api\dbo.hackney_address” 
