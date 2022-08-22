@@ -41,13 +41,13 @@ From here the ingestion is fully automated and closely follows the normal libera
 ingestion process detailed in [Liberator Ingestion Process](./liberator-ingestion.md)
 
 The difference between the normal liberator process and this one is that the date used to ingest from is taken from the `IMPORT_DATE_OVERIDE` environment
-variable that you input in section 2 instead of always assuming we are ingesting data for the current day
+variable that you input in step 2 instead of always assuming we are ingesting data for the current day
 
 This process triggers a backdated glue workflow that will transfer the data from the landing
 zone into the raw zone in the correct partition. This glue workflow is called `parking-liberator-backdated-data-workflow`
 
 When finished the backdated liberator data will be ingested into the raw zone 
-in the partition date that matches the `IMPORT_DATE_OVERIDE` environment variable that you input in section 2
+in the partition date that matches the `IMPORT_DATE_OVERIDE` environment variable that you input in step 2
 
 #### 4. Enable Cloudwatch s3 event trigger (optional)
 
