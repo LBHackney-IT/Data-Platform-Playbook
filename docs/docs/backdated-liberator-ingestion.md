@@ -7,13 +7,13 @@ tags: [playbook]
 
 This section describes how a previous days Liberator dataset can be ingested onto the data platform. 
 
-#### 1. Disable Cloudwatch s3 event trigger
+#### 1. Disable Cloudwatch s3 event trigger (optional)
 
 The company who owns the dataset (Farthest Gate) uploads a zipped SQL dump of the whole database to S3 bucket in the data platform production AWS account at the path `s3://dataplatform-prod-liberator-data-storage/parking/`.
 The file needs to be named `liberator_dump_210604.zip` where the date stamp at the end is the current date.
 
 If this file has not been uploaded then you will need to obtain it from Farthest Gate and upload manually. If this is the case then
-you will also need to disable to cloudwatch trigger before uploading
+you will also need to disable the cloudwatch trigger before uploading
 
 Open Cloudwatch and search for `liberator-to-rds-snapshot-event` and disable the trigger
 
@@ -48,4 +48,8 @@ zone into the raw zone in the correct partition. This glue workflow is called `p
 
 When finished the backdated liberator data will be ingested into the raw zone 
 in the partition date that matches the `IMPORT_DATE_OVERIDE` environment variable that you input in section 2
+
+#### 4. Enable Cloudwatch s3 event trigger (optional)
+
+Please enable the cloudwatch trigger that you disabled in step 1. This is very important otherwise the next days liberator ingestion will not happen
 
