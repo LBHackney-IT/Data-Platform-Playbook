@@ -11,32 +11,26 @@ The Platform has 4 data zones, as data moves from the landing to the trusted zon
 
 ## Landing Zone
 
-This is where data gets placed when it first arrives in the Data Platform.
-
-Data placed in this zone could contain sensitive information unsuitable for the platform.
+The _Landing Zone_ is used when we need to provide bucket level access to third parties to facilitate:
+- data being pushed to Data Platform, for example where a third party provides extracted data from a system.
+- when we want to provide data for collection by an external party.     
 
 :::info
 Data is not queryable directly from this zone.
 :::
 
-Only vetted AWS Glue jobs will be able to access this data, with their responsibility being to copy the non-sensitive data from the landing into the raw zone.
+## Raw Zone                                                                                                                                                                                    
+The _Raw Zone_ is for data that we have _pulled_ on to the Data Platform from a source, for example a database or API. 
 
-## Raw Zone
+It contains data as it was extracted from the source without any transformation applied so that a user can always refer back to the initial state of a dataset when it was brought onto Data Platform. 
 
-The data queryable within this zone is sanitised, and anonymised.
+## Refined Zone                                                                                                       
 
-The data queryable within this zone may not be in state which is easy to analyse or gain insights from.
-
-The structure of this data mirrors the original source system.
-
-## Refined Zone
-
-The data queryable within this zone is in a useful state for analysts to query, generate insights from and share with analysts in other areas of the council.
-
-When copying data from the raw zone to the refined zone, data manipulation such as denormalisation, de-duplicating, cleaning and merging may be required.
+The _Refined Zone_ holds data that has been transformed from its original state in the _Landing_ or _Raw Zones_. Data in this zone may be cleaned, standardised or otherwise augmented to make it more useful for analysts.
 
 ## Trusted Zone
 
-The data within this zone is insightful information consumable by wider Hackney Council employees.
+The _Trusted Zone_ holds our prepared datasets that have been transformed with appropraite business logic and aggregation for use by data analysts, business analysts and the wider council community.
 
-When copying data to the trusted zone, refined data may need to be copied, combined and presented in several forms, tailored to varying business needs.
+
+
