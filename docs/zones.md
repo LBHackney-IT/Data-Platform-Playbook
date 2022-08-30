@@ -19,7 +19,6 @@ The _Landing Zone_ is used when we need to provide bucket level access to third 
 
 Data is not queryable directly from this zone and it is controlled by the Data Platform team.
 
-
 ### Storage Formats
 Data in this zone should be stored in the *format it arrived*, be that csv, json, parquet, etc.
 
@@ -30,7 +29,7 @@ No transformations should be applied to the data in this zone.
 ## Raw Zone         
 
 ### Purpose
-The _Raw Zone_ is for data that we have _pulled_ on to the Data Platform from a source, for example a database or API. 
+The _Raw Zone_ is for data that we have _pulled_ on to the Data Platform from a source, for example a database or API. It also contains data that has been pulled from the _Landing Zone_, and if necessary segregated into different service area buckets (e.g. Academy data being split between Revenues and Benefits).
 
 It contains data as it was extracted from the source without any transformation applied so that a user can always refer back to the initial state of a dataset when it was brought onto Data Platform.
 
@@ -59,13 +58,13 @@ Tabular data in this zone should only be in *parquet* format.
 ### Transformations
 
 Data should, as a minimum, be partitioned following the four level date scheme: `'import_year', 'import_month', 'import_day', 'import_date'`
-Columns should have meaningful headers. Many other transformations may be applied, 
+Columns should have meaningful headers. Many other transformations may be applied. 
 
 ## Trusted Zone
 
 ### Purpose
 
-The _Trusted Zone_ holds our prepared datasets that have been transformed with appropraite business logic and aggregation.
+The _Trusted Zone_ holds our 'gold standard' datasets that have been transformed with appropriate business logic and aggregation. These datasets meet common standards and should be described in a way that non-subject matter experts can understand.
 
 The data in this zone may be provided with read access to data analysts, business analysts and the wider council community for creating data products and informing decision making. 
 
