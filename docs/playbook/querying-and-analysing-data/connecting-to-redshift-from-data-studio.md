@@ -60,14 +60,6 @@ Then, when adding a data source in [Google Data Studio][google_data_studio]
 
 3. Scroll down to the "Secret value" section and select "Retrieve secret value".
 
-[client_certificate_stg]: https://dataplatform-stg-ssl-connection-resources.s3.eu-west-2.amazonaws.com/client_certificate.crt
-
-[client_private_key_stg]: https://dataplatform-stg-ssl-connection-resources.s3.eu-west-2.amazonaws.com/client_private_key.key
-
-[client_certificate_prod]: https://dataplatform-prod-ssl-connection-resources.s3.eu-west-2.amazonaws.com/client_certificate.crt
-
-[client_private_key_prod]: https://dataplatform-prod-ssl-connection-resources.s3.eu-west-2.amazonaws.com/client_private_key.key
-
 [server_certificate]: https://s3.amazonaws.com/redshift-downloads/redshift-ca-bundle.crt
 
 [aws_sso_link]: https://hackney.awsapps.com/start/#/
