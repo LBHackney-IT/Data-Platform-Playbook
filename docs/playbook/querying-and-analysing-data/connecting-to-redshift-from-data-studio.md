@@ -15,37 +15,31 @@ This guide will step you through how to connect to Redshift, on the Data Platfor
 
 ## Steps
 
-First, download the resources you will need to authenticate for the environment which the data you want to access is stored:
+First, download the bundle certificate you will need to connect to the Redshift cluster here:
 
-| Production                                     | Pre-production                                |
-| ---------------------------------------------- | --------------------------------------------- |
-| [Client Certificate][client_certificate_prod]* | [Client Certificate][client_certificate_stg]* |
-| [Client Private Key][client_private_key_prod]  | [Client Private Key][client_private_key_stg]  |
-| [Server Certificate][server_certificate]       | [Server Certificate][server_certificate]      |
-
-*This will expire a year after you download it, after which you will have to download a new certificate.
+https://s3.amazonaws.com/redshift-downloads/amazon-trust-ca-bundle.crt
 
 Then, when adding a data source in [Google Data Studio][google_data_studio]
 
-1.  Select "PostgreSQL".
+1.  Select "Amazon Redshift".
 2.  If this is the first time you've made a connection, you may need to select "Authorise".
-3.  Select "Basic" set up to the left of 'Database authentication' (not JDBC URL).
+3.  Ensure "Basic" is selected to the left of 'Database authentication' (not JDBC URL).
 4.  Retrieve your credentials from AWS using the links below for [department specific credentials](#department-specific-credentials). Once on the AWS Secrets Manager page, scroll down to the "Secret Value" box and click "Retrieve secret value" to reveal the credentials (e.g. Database, Host Name or IP etc). Alternatively, use the credentials shared with you by the data platform team.
 5.  Copy and paste these credentials into the corresponding fields in Google Data Studio.
-7.  Tick the "Enable SSL" box, then the "Enable Client Authentication" box.
-8.  Upload the three files downloaded in the first step as follows:
+6.  Tick the "Enable SSL" box.
+7.  Upload the _amazon-trust-ca-bundle.crt_ file you previously downloaded:
 
-![image](https://user-images.githubusercontent.com/81427743/185632536-c9517c45-5f44-4fc7-be40-505e50d967f5.png)
+![gds-redshift-crt.png](../images/gds-redshift-crt.png)
 
 10.  Click "Authenticate".
-11.  To the right of the 'Database authentication' panel, you should see options for TABLES or CUSTOM QUERY; select CUSTOM QUERY and provide a PostgreSQL query for the data you want. (Note: The TABLES option will not list out the available tables even when your connection is successful.) An example could be
+11.  To the right of the 'Database authentication' panel, you should see options for TABLES or CUSTOM QUERY; select CUSTOM QUERY and provide a PostgreSQL query for the data you want. (Note: The TABLES option will not list out the available tables even when your connection is successful.) An example could be:
     ```sql
     SELECT * FROM liberator_refined_zone.denormalised_pcns where import_date = (
         SELECT max(import_date) from liberator_refined_zone.denormalised_pcns
-    ) limit 100000;
+    ) limit 100;
     ```
-    This query can only return a maximum of 100,000 rows as specified in [Googles Documentation](https://support.google.com/datastudio/answer/7288010?hl=en#zippy=%2Cin-this-article). It might be helpful to test your query in [AWS Athena][aws_athena] first to check there aren't too many rows.
-1.  Click "Add" (if adding data directly to a report) or "Connect" (if creating a new data source), this bit might take a little while. To improve the query performance you may also want to [create a data extract][data extract].
+    This query can only return a maximum of 150,000 rows as specified in [Googles Documentation](https://support.google.com/datastudio/answer/11377200#zippy=%2Cin-this-article). It might be helpful to test your query in [AWS Athena][aws_athena] first to check there aren't too many rows.
+12. Click "Add" (if adding data directly to a report) or "Connect" (if creating a new data source), this bit might take a little while. To improve the query performance you may also want to [create a data extract][data extract].
 
 ### Department specific credentials
 
