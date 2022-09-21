@@ -13,7 +13,7 @@ The Platform has 4 data zones, as data is moved from the landing or raw zones to
 
 ### Purpose
 
-The _Landing Zone_ is used when we need to provide bucket level access to third parties to facilitate:
+The _Landing Zone_ is used when we need to provide folder level access to third parties to facilitate:
 - data being pushed to Data Platform, for example where a third party provides extracted data from a system.
 - when we want to provide data for collection by an external party.   
 
