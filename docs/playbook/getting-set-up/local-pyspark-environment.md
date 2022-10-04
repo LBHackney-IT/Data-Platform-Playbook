@@ -216,7 +216,7 @@ Do this from the Configuration window that you can open from the drop down list 
 
 Here are the parameters values to add to the parameter text box:
 ```
---mode=local 
+--execution_mode=local
 --addresses_data_path=”<your local path to>\dataplatform-stg-raw-zone\unrestricted\addresses_api\dbo.hackney_address” 
 --source_data_path=”<your local path to>\dataplatform-stg-refined-zone\housing-repairs\repairs-electrical-mechanical-fire\communal-lighting\with-cleaned-addresses” 
 --target_destination=”<your local path to>\output\levenshtein” --match_to_property_shell=forbid
