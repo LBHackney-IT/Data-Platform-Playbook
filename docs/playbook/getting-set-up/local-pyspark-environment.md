@@ -221,6 +221,14 @@ Here are the parameters values to add to the parameter text box:
 --source_data_path=”<your local path to>\dataplatform-stg-refined-zone\housing-repairs\repairs-electrical-mechanical-fire\communal-lighting\with-cleaned-addresses” 
 --target_destination=”<your local path to>\output\levenshtein” --match_to_property_shell=forbid
 ```
+Note for Windows users: When copying the path, do not include c: in your path and all backslashes "\" need to be replaced with forward slashes  "/"
+
+```
+--execution_mode=local
+--addresses_data_path="<your local path to>/dataplatform-stg-raw-zone/unrestricted/addresses_api/dbo.hackney_address" 
+--source_data_path="<your local path to>/dataplatform-stg-refined-zone/housing-repairs/repairs-electrical-mechanical-fire/communal-lighting/with-cleaned-addresses" 
+--target_destination="<your local path to>/output/levenshtein" --match_to_property_shell=forbid
+```
 
 You can now run the job, see its progress in the console, and find the result file in the output folder. 
 
@@ -234,12 +242,16 @@ from pyspark.sql import SparkSession
 spark = SparkSession.builder.master("local[*]").appName("LocalTest").getOrCreate()
 print(spark)
 
-address_data_raw = spark.createDataFrame(
-   [(2022, "06", "01"), (2022, "6", "01"), (2022, "07", "01")])
-address_data_raw.show()
-address_data_raw = spark.read.csv(
-   "<your local path \\ to a folder \\containing a csv file>")
-address_data_raw.show()
+def main():
+    address_data_raw = spark.createDataFrame(
+       [(2022, "06", "01"), (2022, "6", "01"), (2022, "07", "01")])
+    address_data_raw.show()
+    address_data_raw = spark.read.csv(
+       "<your local path \\ to a folder \\containing a csv file>")
+    address_data_raw.show()
+
+if __name__ == '__main__':
+    main()
 ```
 
 ### Running the unit tests
