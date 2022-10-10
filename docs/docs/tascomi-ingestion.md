@@ -53,7 +53,7 @@ This process writes into the refined zone bucket, with the 'planning/tascomi/sna
 
 This steps takes latest snapshots of a few tables in the refined zone, simplifies them and joins them together to create a few tables in the trusted zone, ready for ingestion in Qlik and for use by Planning analysts. It is composed of 4 jobs: [applications to trusted](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi_applications_trusted.py), [locations to trusted](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi_locations_trusted.py), [subsidiary tables to trusted](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi_subsidiary_tables.py), [officers to trusted](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi_officers_trusted.py). These jobs always clear the target folder before writing, so the trusted zon only contains one partition corresponding to the latest date. 
 
-In this zone we use a [csv dataset of bank holidays and Hackney non-working days] (https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/hackney_bank_holiday.csv) to calculate time intervals used for performance reporting (e.g. in how many days an application reached the 'registered' state). 
+In this zone we use a [csv dataset of bank holidays and Hackney non-working days] (https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/hackney_bank_holiday.csv) to calculate time intervals used for performance reporting (e.g. in how many days an application reached the 'registered' state). The calculation method is in the helpers.
 
 ## Full workflow and scheduling
 
