@@ -10,7 +10,7 @@ status: "Proposed"
 
 ## Context
 
-For many services it is important to know wich ward, LSOA or NHS area a specific record relates to. To provide this information we need to perform spatial joins between
+For many services it is important to know which ward, LSOA or NHS area a specific record relates to. To provide this information we need to perform spatial joins between
 - the service area records, georeferenced by UPRNs or spatial coordinates 
 - and areas from reference spatial datasets held in the GIS database (Geolive)
 
@@ -24,4 +24,4 @@ We are using Shapely to decode geometries from our spatial database (encoded in 
 
 ## Consequences
 
-Using Geopandas in our jobs means we need to convert spark dataframes into pandas dataframes before processing them, and then back to Spark dataframes to write the data to S3. These conversions are probably less efficient than using Spark all the way. We can also suspect Sedona works faster with very big datasets. However, Geopandas has been staisfactory with our use cases so far.
+Using Geopandas in our jobs means we need to convert spark dataframes into pandas dataframes before processing them, and then back to Spark dataframes to write the data to S3. These conversions are probably less efficient than using Spark all the way. We can also suspect Sedona works faster with very big datasets. However, Geopandas has been satisfactory with our use cases so far.
