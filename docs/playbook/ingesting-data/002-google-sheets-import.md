@@ -120,14 +120,14 @@ Ingest data contained within a Google Sheet for use on the Data Platform, option
 This is what will handle the ingestion of the data from Google Sheets to the Data Platform.
 
 1. Open the [Data Platform Project](https://github.com/LBHackney-IT/data-platform). If you don't have the correct permissions, you'll get a '404' error (see [prerequisites](#prerequisites)).
-2. Navigate to the main `terraform/core` directory, and open `08-google-sheets-imports.tf`
+2. Navigate to the main `terraform/etl` directory, and open `08-google-sheets-imports.tf`
 3. Switch to 'edit mode' (using edit button on top right)
 4. Copy one of the modules above, paste at the bottom of the file and update the following fields:
 
    - `module` - in the format `your_unique_module_name`, and unique to all other `module` names in this file (it is helpful to keep the same naming convention as your dataset/folder)
    - `glue_catalog_database_name` - Using `module.department_DEPARTMENT-NAME.raw_zone_catalog_database_name` (e.g. `module.department_parking.raw_zone_catalog_database_name`)
    - `google_sheets_document_id` - Your Google Sheets document ID - see the `Getting Google sheet detail` section above
-   - `google_sheets_worksheet_name` - The name of the worksheet within your Google Sheet document - see the `Getting Google sheet detail` section above
+   - `google_sheets_worksheet_name` - The name of the worksheet within your Google Sheet document - see the `Getting Google sheet detail` section above. Please note the worksheet name must be unique within the Terraform file.
    - `department` - `module.department_DEPARTMENT-NAME` (department name should appear as in [the table above](#department-specific-information), e.g. `module.department_housing_repairs`)
    - `dataset_name` - The name of the dataset as you'd like it to appear within the data platform e.g. `housing-repair`
 
