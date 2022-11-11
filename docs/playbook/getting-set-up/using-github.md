@@ -28,11 +28,11 @@ There are two ways to use GitHub:
 
 ### Introduction about branches
 
-The Data Platform repository contains several branches, i.e. several versions of the code base. The current live branch is called main, this is the only branch which gets deployed into the AWS environment. You can see which branch you are looking at in the dropdown list above the code section. In the configuration below (default one), we're looking at the main branch. 
+The Data Platform repository contains several branches, i.e. several versions of the code base. The current live branch is called main, this is the only branch which gets deployed into the AWS environment. You can see which branch you are looking at in the dropdown list above the code section. In the screenshot below (default configuration), we're looking at the main branch. 
 
 ![Looking at the main branch](../images/being_on_the_main_branch.png)
 
-In this other case, we are looking at a secondary branch that has diverged a lot: 19 changes have been committed and aren't in main yet. And since it was created, 435 changes happened on main. 
+In the screenshot below, we are looking at a secondary branch that has diverged a lot: 19 changes have been committed and aren't in main yet. And since it was created, 435 changes have happened on main! 
 
 ![Looking at a secondary branch](../images/being_on_a_secondary_branch.png)
 
