@@ -26,6 +26,20 @@ There are two ways to use GitHub:
 
 ### Committing your changes to the Data Platform Project
 
+### Creating a branch to commit multiple changes
+
+If you are making changes to multiple files you may wish to create a branch and submit the changes at the same time. This can prevent conflicts later on when there are inter-dependencies in the files you are submitting  (eg one refers to the other). 
+
+1. Navigate to GitHub site and drop down the branches, type the name of your new branch and select `Create branch` 
+![Create Branch](https://user-images.githubusercontent.com/5946742/201316320-f90d2274-d258-48fa-865b-4e5456e5fb9e.PNG)
+2. Make the changes to existing files or add new files in the new branch you have created. When you `Propose changes` at the bottom of the document you will add them to branch you have created. 
+3. Once you have finished creating or editing files, navigate to the Pull Releases page and you will see `Compare and pull request`. Select this and submit your Pull Request with some commentary on the changes you are proposing. 
+![Create PR](https://user-images.githubusercontent.com/5946742/201317135-6ccb6b7c-b39f-4be8-be41-34c4091eda5b.PNG)
+
+The remaining process is the same as outlined from step 6 below. 
+
+### Committing one change
+
 1. Navigate to the `Commit new file` or `Commit changes` section at the bottom of the page.
 2. Provide a short sentence in the first field and then an optional description in the field below to explain what you've changed.
 3. Select the option to create a `new branch` for this commit (i.e. the code you've changed).
