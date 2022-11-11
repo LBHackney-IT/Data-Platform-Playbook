@@ -24,7 +24,34 @@ There are two ways to use GitHub:
 1. Using the GitHub web browser interface (simply at [github.com](https://github.com/)). This is the easiest to use and enables you to make simple changes through a user interface.
 2. Using the [GitHub app](https://desktop.github.com/). This is a more advanced tool which requires more configuration and coding.
 
-### Committing your changes to the Data Platform Project
+## Committing your changes to the Data Platform Project
+
+### Introduction about branches
+
+The Data Platform repository contains several branches, i.e. several versions of the code base. The current live branch is called main, this is the only branch which gets deployed into the AWS environment. You can see which branch you are looking at in the dropdown list above the code section. In the screenshot below (default configuration), we're looking at the main branch. 
+
+![Looking at the main branch](../images/being_on_the_main_branch.png)
+
+In the screenshot below, we are looking at a secondary branch that has diverged a lot: 19 changes have been committed and aren't in main yet. And since it was created, 435 changes have happened on main! 
+
+![Looking at a secondary branch](../images/being_on_a_secondary_branch.png)
+
+As a security measure, nobody is allowed to commit changes directly onto the main branch. Instead, changes are made on new branches that temporarily diverge from the main branch. These new branches get merged to the main branch via a process called `Pull Request (PR)` that involves some peer review of the code changes. This greatly reduces the risk of deploying faulty code to the Data Platform.
+Two approaches are detailed below to commit your changes: creating a new branch first (useful when you want to bundle several changes), or making your changes first and creating the branch on the fly at the time you 'save' (quicker if you are only editing or creating a single file).
+
+### Creating a branch to commit multiple changes
+
+If you are making changes to multiple files you may wish to create a branch and submit the changes at the same time. This can prevent conflicts later on when there are inter-dependencies in the files you are submitting  (eg one refers to the other). 
+
+1. Navigate to GitHub site and drop down the branches, type the name of your new branch and select `Create branch` 
+![Create Branch](https://user-images.githubusercontent.com/5946742/201316320-f90d2274-d258-48fa-865b-4e5456e5fb9e.PNG)
+2. Make the changes to existing files or add new files in the new branch you have created. When you `Propose changes` at the bottom of the document you will add them to branch you have created. 
+3. Once you have finished creating or editing files, navigate to the Pull Releases page and you will see `Compare and pull request`. Select this and submit your Pull Request with some commentary on the changes you are proposing. 
+![Create PR](https://user-images.githubusercontent.com/5946742/201317135-6ccb6b7c-b39f-4be8-be41-34c4091eda5b.PNG)
+
+The remaining process is the same as outlined from step 6 below. 
+
+### Committing one change
 
 1. Navigate to the `Commit new file` or `Commit changes` section at the bottom of the page.
 2. Provide a short sentence in the first field and then an optional description in the field below to explain what you've changed.
