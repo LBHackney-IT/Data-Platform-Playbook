@@ -263,3 +263,17 @@ Make sure aliases for Python are on but not for the Python App installer.
 
 **Solution**: Download https://visualstudio.microsoft.com/visual-cpp-build-tools/ and install the 3 first tools
 
+### Issue: Various PySpark functions can no longer be found**: Mac
+
+**Solution**: Uninstall PySpark and reinstall. The latest version should generally be ok, but if in doubt reinstall the version you were using previously.
+
+### Issue: Python packages cannot be imported**: Windows
+
+**Solution**: First of all open command prompt and enter `where python`. If there are mutiple paths then this means that there are multiple instances of Python installed which will be conflicting with each other. Identify the instance that you wish to use, and delete all traces of the version that is no longer required. You can verify this has been successful by running `where python` again and seeing how many paths are returned.
+
+This may solve the issue above, and you should now be able to import packages as intended, using your Python environment set up for the specific project you are working on.
+
+If the problem persists, then the next step is to try editing the Configuration for your local development environment by setting additional [environment variables](https://www.jetbrains.com/help/pycharm/run-debug-configuration.html#:~:text=Script%20path/Module,Environment%20variables) as in the screenshot below. This will instruct your PyCharm Python environment on where to look for Python.
+
+![Environment variables in PyCharm configuration](../images/pycharm_env_variables.png)
+
