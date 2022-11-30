@@ -13,16 +13,15 @@ The following diagram describes the process steps that make up the pipeline for 
 
 ![Alloy data ingestion process](../docs/images/alloy_pipeline.png)
 
-- A Glue job that checks for existing data and requests either:
-  - an initial extract of the full data set
-  - an extract of records that have changed since the last extraction
-- The returned data is then saved to the _raw zone_ as csv
-- This data is then converted to parquet format and saved to s3
-- Once this data is crawled, a second Glue job is triggered that creates a daily snapshot of the data, either:
-  - the full initial extract
-  - the updated records applied to the previous snapshot, similar to an UPSERT
-- This job then also checks for a column header dictionary and where present applies the new headers
-- This data is then crawled and made available in the _refined zone_
+- An initial Glue job triggered on a schedule
+  - requests the export described in AQS (Alloy query syntax) from the API
+  - extracts the csv tables from the returned zip file and saves them to the raw zone in S3
+  - applies only a necessary amount of transformation to save a copy of the data as parquet files also to s3
+- On job completion, a crawler updates tables in the Glue Catalog with the new parquet files
+- A second Glue job then creates Dynamic Frames for all unprocessed parquet files for each table in the raw zone
+  - this job then checks for a column name dictionary in S3 then applies a mapping if one is found
+  - the transformed data is then exported to the refined zone and saved to s3
+- This data is then crawled and made available in the _refined zone_ Catalog
 
 ## Retrieving a data extract from the Alloy API
 
@@ -30,28 +29,47 @@ The following diagram describes the process steps that make up the pipeline for 
 
 Each query creates a new job for that dataset that runs independently of any other queries.  
 
-The script first checks whether an existing dataset for the query exists on platform, and where one does updates the query to retrieve only new or updated records. The default behaviour is to request all records. 
+A request is sent to the API and once the export is complete the data is downloaded and extracted as a zip file containing csvs that are saved in S3. These csvs then read from the S3 bucket to a spark data frame. Minimal transformation is applied to allow for conversion to parquet format and import datetime columns are added to allow for partitioning of the data. 
 
-A request is then sent to the API and once the export is complete the data is downloaded and extracted as a csv in S3. This csv is then read from the S3 bucket to a spark data frame. Minimal transformation is applied to allow for conversion to parquet format and import datetime columns are added to allow for partitioning of the data. 
+## Creating the refined tables
 
-## Creating the daily snapshot
+[*The second Glue job*](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/env_services/alloy_raw_to_refined.py) looks for tables in the _env-services-raw-zone_ Glue Catalog database with a given prefix of the form "parent table name_".
 
-[*The second Glue job*](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/env_services/alloy_create_snapshot.py) takes the returned data from the _raw zone_ and  appends it to previous extracts replacing any records that have been updated since the last load.
+It then iterates over each of the sub-tables to process any parquet files in the raw zone since the last run (identified using the job bookmarking feature). 
 
-Additionally, the job checks for the presence of a column naming file in the _raw zone_ bucket with the following key:
-
-> env-services/alloy/mapping-files/table_name.json
-
-This takes the form:
+As part of the refining process, the job checks for a json dictionary stored in s3 under the raw bucket with a key formed like this:
 
 
->{
->"old_name1": "new_name1",
->"old_name2": "new_name2",
+> env-services/alloy/mapping-files/parent table name_table_name.json
+
+The json is of the form:
+
+
+>{<br>
+>    "old_name1": "new_name1",<br>
+>    "old_name2": "new_name2",<br>
 >...
 >}
 
 If a key is not present in the table no action will be taken, and similarly if there is no key for a column that is present in the table it remains unchanged. 
+
+Column names are cleaned to conform to requirements for parquet formatted files. Refined date columns are added. Then the resultant DynamicFrames are written to the _Refined Zone_. 
+
+## Pipeline creation in Terraform
+
+[The Terraform](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/25-alloy-etl-env-services.tf) will create a complete pipeline and triggers for each AQS json file added to the [aqs directory in the Data-Platform repository](https://github.com/LBHackney-IT/Data-Platform/tree/main/scripts/jobs/env_services/aqs).
+
+The naming of these files dictates the names for the resources in AWS. Adding an AQS query in a file called "Parent Table.json" will create:
+- A Glue trigger:
+  - Alloy API Export Job Trigger **Parent Table**
+- 2 Glue jobs:
+  - alloy_api_export_**Parent Table**_env_services
+  - **Parent Table**_alloy_daily_raw_to_refined_env_services
+- 2 Crawlers
+  - Alloy Export Crawler **Parent Table**
+  - Alloy Refined Crawler **Parent Table**
+
+Removing files from this location will result in the related resources also being destroyed. 
  
 
 
