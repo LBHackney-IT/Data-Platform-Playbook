@@ -5,7 +5,7 @@ layout: playbook_js
 tags: [playbook]
 ---
 
-This article describes the Alloy data ingestion process.
+# This article describes the Alloy data ingestion process.
 
 ## Overview of process
 
@@ -15,9 +15,9 @@ The following diagram describes the process steps that make up the pipeline for 
 
 - An initial Glue job triggered on a schedule
   - requests the export described in AQS (Alloy query syntax) from the API
-  - extracts the csv tables from the returned zip file and saves them to the raw zone in S3
+  - extracts the csv tables from the returned zip file and saves them to the _raw zone_ in S3
   - applies only a necessary amount of transformation to save a copy of the data as parquet files also to s3
-- On job completion, a crawler updates tables in the Glue Catalog with the new parquet files
+- On job completion, a crawler updates tables in the env-services-raw Glue Catalog with the new parquet files
 - A second Glue job then creates Dynamic Frames for all unprocessed parquet files for each table in the raw zone
   - this job then checks for a column name dictionary in S3 then applies a mapping if one is found
   - the transformed data is then exported to the refined zone and saved to s3
@@ -25,17 +25,17 @@ The following diagram describes the process steps that make up the pipeline for 
 
 ## Retrieving a data extract from the Alloy API
 
-[*This Glue job*](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/env_services/alloy_api_ingestion.py) sends queries to the Alloy API that request an extract of datasets described in [Alloy Query Syntax (AQS)](https://help.alloyapp.io/alloy-query-syntax/alloy-query-syntax.html) and uploaded to [this folder in the Data Platform GitHub repository](https://github.com/LBHackney-IT/Data-Platform/tree/main/scripts/jobs/env_services/aqs).
+  [*This Glue job*](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/env_services/alloy_api_ingestion.py) sends queries to the Alloy API that request an extract of datasets described in [Alloy Query Syntax (AQS)](https://help.alloyapp.io/alloy-query-syntax/alloy-query-syntax.html). These queries are stored in json format and uploadeded to [this directory in the Data Platform GitHub repository](https://github.com/LBHackney-IT/Data-Platform/tree/main/scripts/jobs/env_services/aqs).
 
 Each query creates a new job for that dataset that runs independently of any other queries.  
 
-A request is sent to the API and once the export is complete the data is downloaded and extracted as a zip file containing csvs that are saved in S3. These csvs then read from the S3 bucket to a spark data frame. Minimal transformation is applied to allow for conversion to parquet format and import datetime columns are added to allow for partitioning of the data. 
+A request is sent to the API and once the export is complete the data is downloaded and extracted as a zip file containing csvs that are saved in S3. These csvs then read from the S3 bucket to a spark data frame. Minimal transformation is applied to allow for conversion to parquet format and import datetime columns are added. 
 
 ## Creating the refined tables
 
 [*The second Glue job*](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/env_services/alloy_raw_to_refined.py) looks for tables in the _env-services-raw-zone_ Glue Catalog database with a given prefix of the form "parent table name_".
 
-It then iterates over each of the sub-tables to process any parquet files in the raw zone since the last run (identified using the job bookmarking feature). 
+It then iterates over each of the sub-tables to process any parquet files in the raw zone that have been created since the last run (identified using the [job bookmarking feature](https://docs.aws.amazon.com/glue/latest/dg/monitor-continuations.html)). 
 
 As part of the refining process, the job checks for a json dictionary stored in s3 under the raw bucket with a key formed like this:
 
@@ -69,7 +69,7 @@ The naming of these files dictates the names for the resources in AWS. Adding an
   - Alloy Export Crawler **Parent Table**
   - Alloy Refined Crawler **Parent Table**
 
-Removing files from this location will result in the related resources also being destroyed. 
+Removing files from this location will result in the related AWS resources also being destroyed when the Terraform in applied. 
  
 
 
