@@ -49,17 +49,23 @@ This [process](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/j
 
 This process writes into the refined zone bucket, with the 'planning/tascomi/snapshot' prefix. The data is partitioned by `snapshot_date`.
 
+### Step 5 - Creation of latest tables in the Trusted zone
+
+This steps takes latest snapshots of a few tables in the refined zone, simplifies them and joins them together to create a few tables in the trusted zone, ready for ingestion in Qlik and for use by Planning analysts. It is composed of 4 jobs: [applications to trusted](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi_applications_trusted.py), [locations to trusted](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi_locations_trusted.py), [subsidiary tables to trusted](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi_subsidiary_tables.py), [officers to trusted](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi_officers_trusted.py). These jobs always clear the target folder before writing, so the trusted zone only contains one partition corresponding to the latest date. 
+
+In this zone we use a [csv dataset of bank holidays and Hackney non-working days] (https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/hackney_bank_holiday.csv) to calculate time intervals used for performance reporting (e.g. in how many days an application reached the 'registered' state). The calculation method is in the helpers.
+
 ## Full workflow and scheduling
 
 The full workflow is defined in the [glue-tascomi-data terraform script](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-tascomi-data.tf).
 It defines a list of tables that needs updating everyday, and a list of static tables that are only updated weekly (these are the static tables like application types). The schedule is as follows:
 
-- 3am GMT: as many jobs as tables to update are triggered. Each job queries one API endpoint for latest updated records. That's 25 jobs on Sundays (including static tables), about half of that on other days.
-- 4am GMT: a crawler crawls the API results bucket
+- 2am GMT: as many jobs as tables to update are triggered. Each job queries one API endpoint for latest updated records. That's 25 jobs on Sundays (including static tables), about half of that on other days.
+- 4am GMT: a crawler crawls the API responses bucket
   - the previous crawler triggers the **parsing** job and the crawling of its results
-  - the previous crawler triggers the **recasting** job and the crawling of its results
-  - the previous crawler triggers the **daily snapshot creation** job and the crawling of its results
-- 5am GMT: the API results bucket gets crawled again - this is in case the ingestion had not finished at 4am when the first crawling happened, and some tables were missed. The same sequence as above will repeat, each job being triggered by the crawler of the previous job. However, each job will usually finish early, as it is bookmarked and won't usually find any new data to process.
+  - the crawler of the parsing job triggers the **recasting** job and the crawling of its results
+  - the crawler of the recasting job triggers the **daily snapshot creation** job and the crawling of its results
+  - the crawler of the snapshot creation job triggers the **applications to trusted** job which in turn triggers the other jobs of the trusted zone.
 
 ## Structure of the S3 buckets and Glue tables
 
