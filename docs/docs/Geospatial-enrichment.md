@@ -6,9 +6,11 @@ tags: [playbook]
 ---
 
 This section describes how to enrich data with geographies such as wards and LSOAs. 
-Use this as a pre-processing step that will enable analysts to carry out spatial analysis or make choropleth maps from data held in the DP.
+Use this as a pre-processing step that will enable analysts to aggregate or make choropleth maps from data held in the DP. In the example below (Qlik), the 2 maps on the left were created with enriched data whereas the map on the right was created with the non enriched version.
 
-This process relies on a PySpark script that performs spatial joins between: 
+![Street cleaning jobs mapped with or without spatial enrichment](../docs/images/Alloy jobs with and without spatial enrichment.png)
+
+The spatial enrichment process relies on a PySpark script that performs spatial joins between: 
 - input tables having some geometry information, 
 - and geography tables such as wards, LSOAs or estates. These are spatial layers coming from Geolive, the corporate spatial database. 
 
