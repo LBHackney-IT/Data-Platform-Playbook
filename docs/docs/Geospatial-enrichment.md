@@ -5,17 +5,17 @@ layout: playbook_js
 tags: [playbook]
 ---
 
-This section describes how to enrich data with geographies from the GIS database such as wards and LSOA. 
+This section describes how to enrich data with geographies such as wards and LSOAs. 
 Use this as a pre-processing step that will enable analysts to carry out spatial analysis or make choropleth maps from data held in the DP.
 
-This process relies on pyspark script that performs spatial joins between: 
+This process relies on a PySpark script that performs spatial joins between: 
 - input tables having some geometry information, 
 - and geography tables such as wards, LSOAs or estates. These are spatial layers coming from Geolive, the corporate spatial database. 
 
 The script outputs tables that have extra columns stating in which ward/LSOA/estate the record is located.
 This script uses Geopandas as explained in the [ADR about spatial data processing in the Data Platform] (https://playbook.hackney.gov.uk/Data-Platform-Playbook/architecture-decisions/records/spatial-data-processing).
 
-##Requirements for input tables
+#Requirements for input tables
 
 The tables to enrich must contain geometry information that enables to geocode each record as a point *(todo: support input tables with line or polygon geometries)*. This geometry can be represented in several ways:
 1. Two coords columns, either lat lon or easting/northings. The column names are not important
@@ -26,7 +26,7 @@ The tables to enrich must contain geometry information that enables to geocode e
 
 In cases 1 and 2, you need to know the coordinate reference system of the geometry information. Typically, it will be ‘EPSG:4326’ for lat/lon and ‘EPSG:27700’ (the code for British national grid) for easting and northing.
 
-##How to set up an enrichment job
+#How to set up an enrichment job
 
 [The spatial enrichment PySpark script] (https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/unrestricted/spatial_enrichment.py) is ready to use, without mofifications, in any new Terraform job module. All the geospatial enrichment job modules should be placed in the [aws_glue_spatial Terraform script] (https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-spatial.tf). Each job is specific to a department (for data access reasons) and can enrich one or more tables in one go. It will typically write into a subfolder of this department's refined zone, called 'spatially_enriched'. This location is set in the `--target_location` parameter, and can then get crawled if you set the `crawler_details` section. How you schedule the job is your choice. Note that the additional python modules (rtree, geopandas) needed for the spatial joins MUST be set as a job parameter called `additional-python-modules`.
 
