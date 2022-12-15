@@ -17,7 +17,7 @@ The spatial enrichment process relies on a PySpark script that performs spatial 
 The script outputs tables that have extra columns stating in which ward/LSOA/estate the record is located.
 This script uses Geopandas as explained in the [ADR about spatial data processing in the Data Platform] (https://playbook.hackney.gov.uk/Data-Platform-Playbook/architecture-decisions/records/spatial-data-processing).
 
-#Requirements for input tables
+# Requirements for input tables
 
 The tables to enrich must contain geometry information that enables to geocode each record as a point *(to do: support input tables with line or polygon geometries)*. This geometry can be represented in several ways:
 1. Two coords columns, either lat lon or easting/northings. The column names are not important
@@ -28,7 +28,7 @@ The tables to enrich must contain geometry information that enables to geocode e
 
 In cases 1 and 2, you need to know the coordinate reference system of the geometry information. Typically, it will be ‘EPSG:4326’ for lat/lon and ‘EPSG:27700’ (the code for British national grid) for easting and northing.
 
-#Where to set up an enrichment job
+# Where to set up an enrichment job
 
 [The spatial enrichment PySpark script] (https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/unrestricted/spatial_enrichment.py) is ready to use, without mofifications, in any new Terraform job module. All the geospatial enrichment job modules should be placed in the [aws_glue_spatial Terraform script] (https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-spatial.tf). Each job is specific to a department (for data access reasons) and can enrich one or more tables in one go. It will typically write into a subfolder of this department's refined zone, called 'spatially_enriched'. This location is set in the `--target_location` parameter, and can then get crawled if you set the `crawler_details` section. How you schedule the job is your choice. Note that the additional python modules (rtree, geopandas) needed for the spatial joins MUST be set as a job parameter called `additional-python-modules`.
 
@@ -63,10 +63,10 @@ module "env_services_geospatial_enrichment" {
   }
 }
 ```
-#Two dictionaries used to parameterise the job
+# Two dictionaries used to parameterise the job
 The most important job parameters are paths to 2 dictionaries that should be committed in the repository. 
 
-##Dictionary of geography tables (doesn't need to change)
+## Dictionary of geography tables (doesn't need to change)
 The geography tables dictionary (`geography_tables_dict_path` parameter) tells Glue where to fetch the geography tables, what their relevant columns are, and how they should be labelled in enriched tables. These are quite standard settings and, unless you have very specific requirements for the output table, the same dictionary could be used for all enrichment jobs. The dictionary doesn't force you to use all these geographies, but it makes them available for Glue. In the other dictionary (next subsection), you'll be able to set which geographies to use for each input table to enrich. Speak to the GIS team if you need a new geography that hasn't been used before, they will amend this dictionary. Here is the dictionnary as it was when the first enrichment job was created:
 
 ```
@@ -84,7 +84,7 @@ The geography tables dictionary (`geography_tables_dict_path` parameter) tells G
 }]
 ```
 
-##Dictionary of tables to enrich (create a new one for each enrichment job)
+## Dictionary of tables to enrich (create a new one for each enrichment job)
 The tables to enrich dictionary (`tables_to_enrich_dict_path` parameter) tells Glue where to fetch the input tables in the department bucket, how to manage their geometries (format, CRS, column names), and with which geographies to enrich them. Here is the beginning of the dictionnary used to enrich environmental services data.
 ![Dictionary of tables to enrich for environment services](../docs/images/env-services spatial enrichment dictionary.png)
 
