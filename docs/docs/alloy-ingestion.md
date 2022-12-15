@@ -45,9 +45,9 @@ As part of the refining process, the job checks for a json dictionary stored in 
 The json is of the form:
 
 
->{<br>
->    "old_name1": "new_name1",<br>
->    "old_name2": "new_name2",<br>
+>{<br />
+>    "old_name1": "new_name1",<br />
+>    "old_name2": "new_name2",<br />
 >...
 >}
 
