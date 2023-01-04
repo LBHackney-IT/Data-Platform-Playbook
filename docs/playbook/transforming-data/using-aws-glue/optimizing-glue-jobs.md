@@ -15,3 +15,15 @@ As shown on the picture below, the typical job first loads some data from S3 usi
 `df.get_latest_partition_optimized`.
 
 ![Typical steps when loading and processing data from S3](../../images/loading-processing-steps.png)
+
+There are opportunities to filter data at both stages: before creating the dataframe and afterwards. Options are described below.
+
+## Filtering data before creating the dataframe
+In this section we’ll explore job bookmarks and pushdown predicates.
+
+## Job bookmarks
+### How it works
+Job Bookmark is a Glue feature that operates at file level. It completely ignores partitions. 
+With Bookmark on, the Glue job will only load files that have changed or have been created in the source bucket/folder since the last successful run. It will result in a smaller dataframe.
+
+![Loading and processing data from S3 using Glue job bookmarks](../../images/loading-processing-steps-with-bookmarks.png)
