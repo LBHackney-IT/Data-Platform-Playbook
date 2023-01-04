@@ -76,3 +76,7 @@ How to create the pushdown predicate in a script? Using the DP helpers, there ar
 
 These 2 approaches and their pros/cons are described below.
 
+### Pushdown predicate based on the current date + a few days buffer
+This methos loads the current day's partition + the n previous ones.
+
+![Loading and processing data from S3 using a pushdown predicate with a 1 day buffer](../../images/loading-processing-steps-with-pushdown-predicate-buffer.png)
