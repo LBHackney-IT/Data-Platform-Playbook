@@ -45,7 +45,10 @@ Bookmarks are not very convenient for a test job that is meant to process severa
 ### How to use it in a job
 Enabling bookmarks requires 2 steps.
 1. In the job parameters or in Terraform: Use the standard job parameter `bookmark=enable` (It is disabled by default in Glue console and in our Job terraform module).
-2. In the job script: for incremental data sources that need bookmarking, set the `transformation_ctx` to a unique string value when creating the data frame. For data sources that don't change and need to be processed each time, don't set a `transformation_ctx` and the bookmark won't apply.
+
+![Enabling job bookmarks in Terraform](../../images/enabling-bookmark-in-terraform.png)
+
+3. In the job script: for incremental data sources that need bookmarking, set the `transformation_ctx` to a unique string value when creating the data frame. For data sources that don't change and need to be processed each time, don't set a `transformation_ctx` and the bookmark won't apply.
 
 ![Setting the transformation_ctx for job bookmarks](../../images/setting-transformation-ctx-for-job-bookmarks.png)
 
