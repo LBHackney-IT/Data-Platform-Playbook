@@ -27,3 +27,28 @@ Job Bookmark is a Glue feature that operates at file level. It completely ignore
 With Bookmark on, the Glue job will only load files that have changed or have been created in the source bucket/folder since the last successful run. It will result in a smaller dataframe.
 
 ![Loading and processing data from S3 using Glue job bookmarks](../../images/loading-processing-steps-with-bookmarks.png)
+
+### Pros
+- Glue built-in feature.
+- Rewind, reset, disable the bookmark in the Glue console without touching the script.
+- The bookmark does not rely on crawlers, partitions or catalogue.
+- Fine grained filtering: if a new file comes in the middle of the day while others have been processed a few hours earlier, you can run your job and only process the new one. You cannot do that if filtering at partition level.
+
+### Cons
+- If an old file changes in the source bucket, it will be processed, whatever partition it is in. To prevent this, additional precautions may be taken (extra filtering using SQL or pushdown predicate).
+- Job bookmarks are not very transparent. It is difficult to know what was the last file processed. 
+- Users may not know how, or not have permissions to, reset or rewind the bookmark (it used to be only accessible in the legacy pages). 
+
+### Scenarios when not to use it
+Bookmarks are not very convenient for a test job that is meant to process several times the same data. Not great if you have several data sources with different filtering requirements: you can choose to use the bookmark or not for each source (using the transformation_ctx in the loading block), but you cannot rewind or reset the bookmark for only one source.
+
+### How to use it in a job
+Enabling bookmarks requires 2 steps.
+1. Use the standard job parameter bookmark=enable (It is disabled by default in Glue console and in our Job terraform module).
+2. For incremental data sources that need bookmarking, set the transformation_ctx when creating the data frame. For data sources that don't change and need to be processed each time, don't set a transformation_ctx and the bookmark won't apply.
+
+### External doc
+https://docs.aws.amazon.com/glue/latest/dg/monitor-continuations.html
+https://medium.com/analytics-vidhya/implementing-glue-etl-job-with-job-bookmarks-b76a8ba38dc8
+Datasets with different update cycles: https://aws.amazon.com/blogs/big-data/process-data-with-varying-data-ingestion-frequencies-using-aws-glue-job-bookmarks/
+
