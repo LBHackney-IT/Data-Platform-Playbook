@@ -80,3 +80,39 @@ These 2 approaches and their pros/cons are described below.
 This methos loads the current day's partition + the n previous ones.
 
 ![Loading and processing data from S3 using a pushdown predicate with a 1 day buffer](../../images/loading-processing-steps-with-pushdown-predicate-buffer.png)
+
+#### Pros
+This approach gives you a security buffer when you're not sure which is the latest non-empty partition. For instance, if a job runs every day except from the weekend, a 2 days buffer will ensure you always load some data, even on a Monday morning. A 1 day buffer is also useful if you’re not sure if the source data is produced before or after midnight.
+
+#### Cons
+- This method can be expensive (i.e. load more data than needed) if you want a large buffer.
+- You can miss data if there is a longer gap than expected in the catalogue
+
+#### Scenarios when not to use it
+This is not suitable if the data source comes very irregularly, because you may not know which size of buffer to use.
+
+#### How to use it in a job
+1. Import the helper function called `create_pushdown_predicate`.
+2. Call the `create_pushdown_predicate()` method in the `push_down_predicate` option of the `createDataFrame` block. Pass the name of the partition column as the first argument and the number of days before the current date as the second argument. For instance, to load the data written in the last 7 days, write:
+
+![Write a pushdown predicate with a 7 days buffer](../../images/write-pushdown-predicate-with-7-days-buffer.png)
+
+*Warning*: a buffer size of 0 means that you’re loading the full dataset.
+
+3. Later in your script, you can use `get_latest_partitions()` on the resulting dataframe to only keep one day's worth of data.
+
+### Pushdown predicate based on the lasted partition from the Glue catalogue
+With this method, a helper queries the Glue catalogue with boto3 to get the latest partition value as a string, i.e. 20221005 (this string can also be returned). It then creates a pushdown predicate to load only this partition.
+
+![Loading and processing data from S3 using a pushdown predicate fetching the latest date value from the Glue catalogue](../../images/loading-processing-steps-with-pushdown-predicate-boto3.png)
+
+#### Pros
+- This approach never loads more than one day’s worth of data, so it is cheap.
+- It works even if you have no idea when source data was last produced
+- You don't need a GetLatestPartitions query after loading your dataframe
+
+#### Cons
+This approach relies on the Glue catalogue being up-to-date and not containing empty partitions. If data is deleted, we want the corresponding partition to be removed from the catalogue. If crawlers are used to update the catalogue, they must be set up with the non-standard option as below::
+
+![Crawler option to delete empty partitions](../../images/crawler-option-to-delete-empty-partitions.png)
+
