@@ -148,8 +148,8 @@ Can be very expensive if you have loaded many partitions in your dataframe.
 
 2. Call the method after having loaded the data into a dataframe. It requires a Spark dataframe, not a Glue Dynamic Frame, so you must convert your dynamic frame if necessary.
 
-![Using get_latest_snapshot after loading the data](../../images/Using_get_latest_snapshot_after_loading_data.png)
+![Using get_latest_snapshot after loading the data](../../images/using_get_latest_snapshot_after_loading_data.png)
 
-## Using a combined approach for filtering data
-Most jobs use both filtering before and after loading data into the dataframe.
+## Conclusion
+We've covered different approaches to make sure the job only processes the data it needs. Many jobs use both filtering before and after loading data into the dataframe. Normally, using a pushdown predicate based on the lasted partition from the Glue catalogue can be used on its own and doesn't require firther filtering. Also remember that working from the Trusted zone is he best way to only get the latest data, without needing to filter out older partitions.  
 
