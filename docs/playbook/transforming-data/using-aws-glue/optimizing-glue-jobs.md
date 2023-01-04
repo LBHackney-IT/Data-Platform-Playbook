@@ -48,11 +48,11 @@ Enabling bookmarks requires 2 steps.
 
 ![Enabling job bookmarks in Terraform](../../images/enabling-bookmark-in-terraform.png)
 
-3. In the job script: for incremental data sources that need bookmarking, set the `transformation_ctx` to a unique string value when creating the data frame. For data sources that don't change and need to be processed each time, don't set a `transformation_ctx` and the bookmark won't apply.
+2. In the job script: for incremental data sources that need bookmarking, set the `transformation_ctx` to a unique string value when creating the data frame. For data sources that don't change and need to be processed each time, don't set a `transformation_ctx` and the bookmark won't apply.
 
 ![Setting the transformation_ctx for job bookmarks](../../images/setting-transformation-ctx-for-job-bookmarks.png)
 
-### External doc
+### External doc about job bookmarks
 https://docs.aws.amazon.com/glue/latest/dg/monitor-continuations.html
 https://medium.com/analytics-vidhya/implementing-glue-etl-job-with-job-bookmarks-b76a8ba38dc8
 Datasets with different update cycles: https://aws.amazon.com/blogs/big-data/process-data-with-varying-data-ingestion-frequencies-using-aws-glue-job-bookmarks/
