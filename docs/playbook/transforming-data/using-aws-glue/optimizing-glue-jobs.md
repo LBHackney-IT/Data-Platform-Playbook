@@ -116,3 +116,40 @@ This approach relies on the Glue catalogue being up-to-date and not containing e
 
 ![Crawler option to delete empty partitions](../../images/crawler-option-to-delete-empty-partitions.png)
 
+#### Scenarios when not to use it
+This is not suitable if the catalogue contains deprecated partitions.
+
+#### How to use it in a job
+1. Import the DP helper method `create_pushdown_predicate_for_latest_available_partition`
+2. Call the method in the `push_down_predicate` option of the `createDataFrame` block (the example below uses the `execution_context` to create the data frame but the same can be achieved using `create_dynamic_frame.from_catalogue`)
+
+![Write a pushdown predicate based on the latest partition from the Glue catalogue](../../images/write-pushdown-predicate-based-on-the-latest-partition-from-glue-catalogue.png)
+
+### External documentation about pushdown predicates
+https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-partitions.html
+https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/helpers/helpers.py
+
+## Filtering data after creating the dataframe
+After you have loaded data into a dataframe, you can use a pySpark query that only keeps the latest day from all the loaded data. 
+This will work whatever approach you have used to create the dataframe. It does not rely on the Glue catalogue and on registered partitions, but only on the loaded data content. This method has been used in nearly every job in the early Data Platform.
+
+### Pros
+Certitude you only are processing one day’s worth of data
+
+### Cons
+Can be very expensive if you have loaded many partitions in your dataframe.
+
+### How to use it in a job
+1. Import the helper function. Several versions of the helper exist:
+- `get_latest_partitions` is the initial version, it uses a `where()` clause and the standard columns `import_year`, `import_month` and `inport_day`.
+- `get_latest_partitions_optimized` is a quicker version using `filter()` instead of `where()`
+- `get_latest_snapshot_optimized` is the same function as above but uses the partition name `snapshot_date` instead of `import_date`.
+- `get_latest_rows_by_date` is the version to use if the partition name is not standard `import_date` or `snapshot_date`. This function lets you pass the partition name as a parameter.
+
+2. Call the method after having loaded the data into a dataframe. It requires a Spark dataframe, not a Glue Dynamic Frame, so you must convert your dynamic frame if necessary.
+
+![Using get_latest_snapshot after loading the data](../../images/Using_get_latest_snapshot_after_loading_data.png)
+
+## Using a combined approach for filtering data
+Most jobs use both filtering before and after loading data into the dataframe.
+
