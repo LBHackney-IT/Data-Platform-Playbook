@@ -8,7 +8,7 @@ tags: [playbook]
 This section describes how to enrich data with geographies such as wards and LSOAs. 
 Use this as a pre-processing step that will enable analysts to aggregate or make choropleth maps from data held in the DP. In the example below (Qlik), the 2 maps on the left were created with enriched data whereas the map on the right was created with the non enriched version.
 
-![Street cleaning jobs mapped with or without spatial enrichment](../docs/images/Alloy jobs with and without spatial enrichment.png)
+![Street cleaning jobs mapped with or without spatial enrichment](../images/alloy-jobs-with-and-without-spatial-enrichment.png)
 
 The spatial enrichment process relies on a PySpark script that performs spatial joins between: 
 - input tables having some geometry information, 
@@ -86,7 +86,7 @@ The geography tables dictionary (`geography_tables_dict_path` parameter) tells G
 
 ## Dictionary of tables to enrich (create a new one for each enrichment job)
 The tables to enrich dictionary (`tables_to_enrich_dict_path` parameter) tells Glue where to fetch the input tables in the department bucket, how to manage their geometries (format, CRS, column names), and with which geographies to enrich them. Here is the beginning of the dictionnary used to enrich environmental services data.
-![Dictionary of tables to enrich for environment services](../docs/images/env-services spatial enrichment dictionary.png)
+![Dictionary of tables to enrich for environment services](../images/env-services-spatial-enrichment-dictionary.png)
 
 
 
@@ -101,6 +101,5 @@ resource "aws_s3_bucket_object" "env_services_spatial_enrichment_dictionary" {
   source_hash = filemd5("../../scripts/jobs/env_services/spatial-enrichment-dictionary.json")
 }
 ```
-
 
 
