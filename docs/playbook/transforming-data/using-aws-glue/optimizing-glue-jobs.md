@@ -57,3 +57,22 @@ https://docs.aws.amazon.com/glue/latest/dg/monitor-continuations.html
 https://medium.com/analytics-vidhya/implementing-glue-etl-job-with-job-bookmarks-b76a8ba38dc8
 Datasets with different update cycles: https://aws.amazon.com/blogs/big-data/process-data-with-varying-data-ingestion-frequencies-using-aws-glue-job-bookmarks/
 
+## Pushdown predicates
+When using a pushdown predicate, Glue will only load partitions (S3 folders) meeting the predicate. 
+This example assumes import_date is a partition key: 
+
+```
+df = glueContext.create_dynamic_frame.from_catalog(
+            name_space=database_name,
+            table_name=table_name,
+            push_down_predicate = "import_date=='20221001'")
+```
+
+This statement results in a smaller dataframe.
+
+How to create the pushdown predicate in a script? Using the DP helpers, there are 2 ways to set the date dynamically:
+- Using the current date and adding a few days buffer before this date (i.e. loading everything in the last n days)
+- Using the latest partition date by checking the Glue catalogue (i.e. loading the latest written data, whatever its age is)
+
+These 2 approaches and their pros/cons are described below.
+
