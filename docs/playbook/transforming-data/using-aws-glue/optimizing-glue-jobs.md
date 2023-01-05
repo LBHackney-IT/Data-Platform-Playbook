@@ -151,5 +151,5 @@ Can be very expensive if you have loaded many partitions in your dataframe.
 ![Using get_latest_snapshot after loading the data](../../images/using_get_latest_snapshot_after_loading_data.png)
 
 ## Conclusion
-We've covered different approaches to make sure the job only processes the data it needs. Many jobs use both filtering before and after loading data into the dataframe. Normally, using a pushdown predicate based on the lasted partition from the Glue catalogue can be used on its own and doesn't require firther filtering. Also remember that working from the Trusted zone is he best way to only get the latest data, without needing to filter out older partitions.  
+We've covered different approaches to make sure the job only processes the data it needs. Many jobs use both filtering before and after loading data into the dataframe. Normally, using a pushdown predicate based on the lasted partition from the Glue catalogue can be used on its own and doesn't require further filtering. Also remember that working from the Trusted zone is he best way to only get the latest data, without needing to filter out older partitions!  
 
