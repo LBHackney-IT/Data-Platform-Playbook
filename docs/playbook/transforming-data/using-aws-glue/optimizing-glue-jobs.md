@@ -26,7 +26,10 @@ In this section we’ll explore job bookmarks and pushdown predicates.
 Job Bookmark is a Glue feature that operates at file level. It completely ignores partitions. 
 With Bookmark on, the Glue job will only load files that have changed or have been created in the source bucket/folder since the last successful run. It will result in a smaller dataframe.
 
-![Loading and processing data from S3 using Glue job bookmarks](../../images/loading-processing-steps-with-bookmarks.png)
+| ![Loading and processing data from S3 using Glue job bookmarks](../../images/loading-processing-steps-with-bookmarks.png) | 
+|:--:| 
+| *In this example, since the last job run, one additional file has been created on the 4/10/2022 and 2 on the 5/10/2022. These 3 files are in different partitions but the bookmarks ignores this fact. The 3 files will get loaded into the same dataframe and processed in the next job run.* |
+
 
 ### Pros
 - Glue built-in feature.
@@ -79,7 +82,9 @@ These 2 approaches and their pros/cons are described below.
 ### Pushdown predicate based on the current date + a few days buffer
 This methos loads the current day's partition + the n previous ones.
 
-![Loading and processing data from S3 using a pushdown predicate with a 1 day buffer](../../images/loading-processing-steps-with-pushdown-predicate-buffer.png)
+| ![Loading and processing data from S3 using a pushdown predicate with a 1 day buffer](../../images/loading-processing-steps-with-pushdown-predicate-buffer.png) |
+|:--:| 
+| *In this example, we have 3 partitions for 3 different import_dates. The job runs on the 5/10/2022. Because of the pushdown predicate wih buffer, it will load and process data from the same day's partition, + 1 previous day.* |
 
 #### Pros
 This approach gives you a security buffer when you're not sure which is the latest non-empty partition. For instance, if a job runs every day except from the weekend, a 2 days buffer will ensure you always load some data, even on a Monday morning. A 1 day buffer is also useful if you’re not sure if the source data is produced before or after midnight.
@@ -101,10 +106,12 @@ This is not suitable if the data source comes very irregularly, because you may 
 
 3. Later in your script, you can use `get_latest_partitions()` on the resulting dataframe to only keep one day's worth of data.
 
-### Pushdown predicate based on the lasted partition from the Glue catalogue
-With this method, a helper queries the Glue catalogue with boto3 to get the latest partition value as a string, i.e. 20221005 (this string can also be returned). It then creates a pushdown predicate to load only this partition.
+### Pushdown predicate based on the last date partition from the Glue catalogue
+With this method, a helper queries the Glue catalogue with boto3 to get the latest partition value as a string, i.e. '20221005' (this string can also be returned). It then creates a pushdown predicate to load only this partition.
 
-![Loading and processing data from S3 using a pushdown predicate fetching the latest date value from the Glue catalogue](../../images/loading-processing-steps-with-pushdown-predicate-boto3.png)
+| ![Loading and processing data from S3 using a pushdown predicate fetching the latest date value from the Glue catalogue](../../images/loading-processing-steps-with-pushdown-predicate-boto3.png) |
+|:--:|
+| *In this example, we have 3 partitions for 3, 4, and 5/10/2022. The job runs on the 7/10/2022. Because of the pushdown predicate with latest partition date, it will identify that the latest partition was on the 5/10/2022. It will load and process this partition only.* |
 
 #### Pros
 - This approach never loads more than one day’s worth of data, so it is cheap.
