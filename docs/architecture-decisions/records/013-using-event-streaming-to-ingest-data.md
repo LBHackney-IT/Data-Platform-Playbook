@@ -11,7 +11,7 @@ status: "Accepted"
 ## Context
 
 The Data Platform team are interested in ingesting data from a variate of Hackney APIs. We will need to access this data
-without connecting directly to the production databases see [ADR 012](/architecture-decisions/records/do-not-connect-to-production-data)
+without connecting directly to the production databases see [ADR 012](/architecture-decisions/records/012-do-not-connect-to-production-databases)
 
 We have therefore explored different options for transferring the data into the Data Platform.
 
