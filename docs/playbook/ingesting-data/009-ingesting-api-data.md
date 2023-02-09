@@ -256,4 +256,4 @@ module "<NAME_OF_THE_INGESTION>_ingestion_lambda_alarm" {
 }
 ``` 
 
-Once the alert module update has been deployed any errors thrown by the lambda function will trigger an alert to be send to the central Google Space monitored by Data Platform team.
+Once the alert module update has been deployed any errors thrown by the lambda function will trigger an alert to be sent to the central Google Space monitored by Data Platform team.
