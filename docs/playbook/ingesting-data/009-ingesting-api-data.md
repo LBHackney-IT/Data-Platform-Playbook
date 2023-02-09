@@ -223,7 +223,7 @@ module "casenotes_data_api_ingestion" {
 
 Lambda alerts module can be updated to include your Lambda function in the common alerts setup.
 
-**Please note** the Lambda's log group must exist on production account for the module deployment to succeed. Log group will be creared automatically as soon as the Lambda outputs something to the Cloudwatch logs for the first time.
+**Please note** the Lambda's log group must exist on production account for the module deployment to succeed. Log group will be created automatically as soon as the Lambda outputs something to the Cloudwatch logs for the first time.
 
 To setup automated alarms please add a new module to the [41-lambda-failure-alarms.tf](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/core/42-lambda-alarms-handler.tf) file by copying one of the existing modules and updating the values as described below. Here's a sample module:
 ```
