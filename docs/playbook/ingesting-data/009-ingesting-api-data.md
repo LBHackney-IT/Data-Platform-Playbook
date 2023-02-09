@@ -219,3 +219,41 @@ module "casenotes_data_api_ingestion" {
 [aws-secrets-boto3]: https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/secretsmanager.html
 [aws-start-job-run-boto3]: https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/glue.html#Glue.Client.start_job_run
 
+### Setting up automated alerting for your Lambda
+
+Lambda alerts module can be updated to include your Lambda function in the common alerts setup.
+
+**Please note** the Lambda's log group must exist on production account for the module deployment to succeed. Log group will be created automatically as soon as the Lambda outputs something to the Cloudwatch logs for the first time.
+
+To setup automated alarms please add a new module to the [41-lambda-failure-alarms.tf](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/core/42-lambda-alarms-handler.tf) file by copying one of the existing modules and updating the values as described below. Here's a sample module:
+```
+module "ringgo_sftp_ingestion_lambda_alarm" {
+    count               = local.is_production_environment ? 1 : 0
+    source              = "../modules/lambda-alarms-and-monitoring"
+    tags                = module.tags.values
+    identifier_prefix   = local.short_identifier_prefix
+    lambda_name         = "${local.short_identifier_prefix}sftp-to-s3"
+    project             = var.project
+    environment         = var.environment
+    alarms_handler_lambda_name = module.lambda_alarms_handler[0].lambda_name
+    alarms_handler_lambda_arn = module.lambda_alarms_handler[0].lambda_arn
+}
+```
+
+```
+Please update the values inside <> as follows:
+
+module "<NAME_OF_THE_INGESTION>_ingestion_lambda_alarm" {
+    count               = local.is_production_environment ? 1 : 0
+    source              = "<PATH_TO_THE_LAMBDA_MODULE>"
+    tags                = module.tags.values
+    identifier_prefix   = local.short_identifier_prefix
+    lambda_name         = "${local.short_identifier_prefix}<NAME_OF_THE_DEPLOYED_LAMBDA>"
+    project             = var.project
+    environment         = var.environment
+    alarms_handler_lambda_name = module.lambda_alarms_handler[0].lambda_name
+    alarms_handler_lambda_arn = module.lambda_alarms_handler[0].lambda_arn
+}
+``` 
+
+Once the alert module update has been deployed any errors thrown by the lambda function will trigger an alert to be sent to the central Google Space monitored by Data Platform team.
