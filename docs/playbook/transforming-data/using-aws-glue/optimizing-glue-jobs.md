@@ -153,6 +153,9 @@ With this method, a helper queries the Glue catalogue with boto3 to get the all 
 
 ![Crawler option to delete empty partitions](../../images/crawler-option-to-delete-empty-partitions.png)
 
+#### Scenarios when not to use it
+This is not suitable if the catalogue contains deprecated partitions. Not suitable if data is being written more than once a day and you do want to load a full day.
+
 #### How to use it in a job
 1. Import the DP helper method `create_pushdown_predicate_for_latest_written_partition`
 2. Call the method in the `push_down_predicate` option of the `createDataFrame` block (the example below uses the `execution_context` to create the data frame but the same can be achieved using `create_dynamic_frame.from_catalogue`)
