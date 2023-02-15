@@ -75,9 +75,10 @@ This statement results in a smaller dataframe.
 
 How to create the pushdown predicate in a script? Using the DP helpers, there are 2 ways to set the date dynamically:
 - Using the current date and adding a few days buffer before this date (i.e. loading everything in the last n days)
-- Using the latest partition date by checking the Glue catalogue (i.e. loading the latest written data, whatever its age is)
+- Using the max partition date by checking the Glue catalogue (i.e. loading the data with the max value for partition date, whatever its age is)
+- Using the latest written partition by checking creation timestamps in the Glue catalogue (i.e. loading the latest written data, whatever its age is)
 
-These 2 approaches and their pros/cons are described below.
+These 3 approaches and their pros/cons are described below.
 
 ### Pushdown predicate based on the current date + a few days buffer
 This methos loads the current day's partition + the n previous ones.
@@ -106,12 +107,12 @@ This is not suitable if the data source comes very irregularly, because you may 
 
 3. Later in your script, you can use `get_latest_partitions()` on the resulting dataframe to only keep one day's worth of data.
 
-### Pushdown predicate based on the last date partition from the Glue catalogue
-With this method, a helper queries the Glue catalogue with boto3 to get the latest partition value as a string, i.e. '20221005' (this string can also be returned). It then creates a pushdown predicate to load only this partition.
+### Pushdown predicate based on the max value of date partition registered in the Glue catalogue
+With this method, a helper queries the Glue catalogue with boto3 to get the max partition value as a string, i.e. '20221005' (this string can also be returned). It then creates a pushdown predicate to load only this partition.
 
-| ![Loading and processing data from S3 using a pushdown predicate fetching the latest date value from the Glue catalogue](../../images/loading-processing-steps-with-pushdown-predicate-boto3.png) |
+| ![Loading and processing data from S3 using a pushdown predicate fetching the max partition date value from the Glue catalogue](../../images/loading-processing-steps-with-pushdown-predicate-on-max-date.png) |
 |:--:|
-| *In this example, we have 3 partitions for 3, 4, and 5/10/2022. The job runs on the 7/10/2022. Because of the pushdown predicate with latest partition date, it will identify that the latest partition was on the 5/10/2022. It will load and process this partition only.* |
+| *In this example, we have 3 partitions for 3, 4, and 5/10/2022. The job runs on the 7/10/2022. The max import_date partition in the cataloque is '20221005'. The pushdown predicate will be based on this and the job will load and process this partition only.* |
 
 #### Pros
 - This approach never loads more than one day’s worth of data, so it is cheap.
@@ -119,18 +120,47 @@ With this method, a helper queries the Glue catalogue with boto3 to get the late
 - You don't need a GetLatestPartitions query after loading your dataframe
 
 #### Cons
-This approach relies on the Glue catalogue being up-to-date and not containing empty partitions. If data is deleted, we want the corresponding partition to be removed from the catalogue. If crawlers are used to update the catalogue, they must be set up with the non-standard option as below::
+- This approach assumes you have a date partitions with values in 'yyyymmdd' format, and that you know the name of the partition key.
+- This approach relies on the Glue catalogue being up-to-date and not containing empty partitions. If data is deleted, we want the corresponding partition to be removed from the catalogue. If crawlers are used to update the catalogue, they must be set up with the non-standard option as below::
 
 ![Crawler option to delete empty partitions](../../images/crawler-option-to-delete-empty-partitions.png)
 
 #### Scenarios when not to use it
-This is not suitable if the catalogue contains deprecated partitions.
+This is not suitable if the catalogue contains deprecated partitions. Not suitable if you don't have a date partition. For instance, it won't support data with only import_year, import_month and import_day.
 
 #### How to use it in a job
-1. Import the DP helper method `create_pushdown_predicate_for_latest_available_partition`
+1. Import the DP helper method `create_pushdown_predicate_for_max_date_partition_value`
 2. Call the method in the `push_down_predicate` option of the `createDataFrame` block (the example below uses the `execution_context` to create the data frame but the same can be achieved using `create_dynamic_frame.from_catalogue`)
 
-![Write a pushdown predicate based on the latest partition from the Glue catalogue](../../images/write-pushdown-predicate-based-on-the-latest-partition-from-glue-catalogue.png)
+![Write a pushdown predicate based on the max partition date from the Glue catalogue](../../images/how-to-use-pushdown-predicate-on-max-date.png)
+
+### Pushdown predicate based on the latest written partition registered in the Glue catalogue
+With this method, a helper queries the Glue catalogue with boto3 to get the all the partitions creation timestamps. It then selected the latest one, get the partitions key-value pairs, and create a pushdown predicate with these.
+
+| ![Loading and processing data from S3 using a pushdown predicate fetching the latest written partition from the Glue catalogue](../../images/loading-processing-steps-with-pushdown-predicate-on-latest-written.png) |
+|:--:|
+| *In this example, we have 3 partitions for 3, 4, and 5/10/2022 but they don't have a date partition, only year/month/date. The job runs on the 7/10/2022. The helper will check the creation timestamps of partitons in the Glue catalogue. It will identify that the partition written on 05/10/2022 is the most recent one and that its partition values are 2022, 10 and 5. The pushdown predicate will be created based on these 3 values and the job will load and process this partition only.* |
+
+#### Pros
+- This approach never loads more than one day’s worth of data, so it is cheap.
+- It works even if you have no idea when source data was last produced
+- You don't need a GetLatestPartitions query after loading your dataframe
+- You don't need to know the partition keys and they don't need to have one in 'yyyymmdd' format 
+
+#### Cons
+- If the partitions are more granular than a day (i.e. several a day) or less granular, you won't get exactly one day of data
+- Like the previous one, this approach relies on the Glue catalogue being up-to-date and not containing empty partitions. If data is deleted, we want the corresponding partition to be removed from the catalogue. If crawlers are used to update the catalogue, they must be set up with the non-standard option as below:
+
+![Crawler option to delete empty partitions](../../images/crawler-option-to-delete-empty-partitions.png)
+
+#### Scenarios when not to use it
+This is not suitable if the catalogue contains deprecated partitions. Not suitable if data is being written more than once a day and you do want to load a full day.
+
+#### How to use it in a job
+1. Import the DP helper method `create_pushdown_predicate_for_latest_written_partition`
+2. Call the method in the `push_down_predicate` option of the `createDataFrame` block (the example below uses the `execution_context` to create the data frame but the same can be achieved using `create_dynamic_frame.from_catalogue`)
+
+![Write a pushdown predicate based on the latest written partition from the Glue catalogue](../../images/how-to-use-pushdown-predicate-on-latest-written-partition.png)
 
 ### External documentation about pushdown predicates
 https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-partitions.html
