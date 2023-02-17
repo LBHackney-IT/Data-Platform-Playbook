@@ -193,7 +193,7 @@ Example:
 ```sql
 GRANT ROLE housing_ro to username;
 ```
-Please note if username is an email address the username must be wrapped in double quotes.
+Please note if the username is an email address it must be wrapped in double quotes.
 
 ### Storing the credentials of the created user in a parameters store
 
