@@ -54,6 +54,39 @@ Example:
 CREATE USER housing_repairs WITH PASSWORD 'th1s1sANEx&mpl3';
 ```
 
+If you are creating new users to be used with roled based access control please use user's Hackney email address as their username. When creating email based usernames the username in the SQL command must be wrapped in double quotes. 
+
+### Generating strong password
+New password can be generated using the [1Password online password generator](https://1password.com/password-generator). These are the recommended settings:
+1. Password type: Random Password
+2. Length: 30
+3. Tick both 'Numbers' and 'Symbols' checkboxes
+
+### Sharing the password with the user
+
+Once the user has been created the initial password needs to be shared with them securely and they must also be asked to change it.
+
+To share the created password with the user please follow these steps:
+1. Add the password to your private vault in 1Password
+2. Click on the share icon on the toolbar
+3. Set the 'Link expires after' value to '7 days'
+4. Set the 'Available to' value to 'Only some people'
+5. Tick the 'Can be viewed only 1 time per person' box
+6. Type user's Hackney email address to the 'Email addresses for the people to share this with:' field
+7. Click on 'Get link to share'
+8. Use the 'Copy' option in the popup to get the shareable link and email it to the user's Hackney email address
+
+Once the link has been shared user can follow these steps to receive the password:
+1. Open the link in the email from 1Password
+2. Verify your email address by filling in the details on the page and click 'Send code'
+3. Wait for the code to arrive and paste it to the 'Verification code' field
+4. Copy the provided password from the page. Please note the password can be retrieved only once
+5. Use the provided password to connect to Redshift from your BI tool and use the SQL command below to change it. Please see the ["Generating strong password"](#Generating-strong-password) section for advice on how to generate strong password
+
+```sql
+ALTER USER {username} password '{new-password}'; 
+```
+
 ## External Schema
 
 Redshift Spectrum is able to access data in S3 that has been cataloged via AWS Glue by creating an external
@@ -139,6 +172,28 @@ GRANT SELECT
 	ON ALL TABLES IN SCHEMA housing_repairs_raw_zone
     TO housing_repairs;
 ```
+
+## Role based access control (RBAC)
+
+### Roles management
+
+Redshift roles are managed using Terraform configuration. Configuration can be used to create new roles, give roles access to external schemas and also to setup role grants to allow roles to inherit permissions from other roles.
+
+Please see the [Terraform configuration](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/42-redshift.tf) for details.
+
+### Users permission to roles
+
+Redshift users can be granted access to roles by running the following command:
+
+```sql
+GRANT ROLE {role-name} To {user-name};
+```
+
+Example:
+```sql
+GRANT ROLE housing_ro to username;
+```
+Please note if the username is an email address it must be wrapped in double quotes.
 
 ### Storing the credentials of the created user in a parameters store
 
