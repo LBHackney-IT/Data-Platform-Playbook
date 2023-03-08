@@ -8,7 +8,7 @@ tags: [playbook]
 ## Introduction
 This is a guide for ingesting data from an API using [AWS Lambda](https://aws.amazon.com/lambda/), into the Data Platform
 
-This guide does not cover how to write a Python script to call data from an API. Example script used for Vonage here [link to your script]. 
+This guide does not cover how to write a Python script to call data from an API. Example script used for Vonage [here](https://github.com/LBHackney-IT/Data-Platform/blob/main/lambdas/vonage_api_ingestion/main.py )
 
 Here are the major sections to this guide
 * Writing the code for the Data Platform
@@ -289,6 +289,7 @@ module "something_api_ingestion" {
   s3_target_bucket_name          = local.s3_target_bucket_name
   api_credentials_secret_name    = "something-secret-key"
   s3_target_bucket_kms_key_arn   = module.landing_zone.kms_key_arn
+  lambda_memory_size 			 = 1024 # You probably want this to be fairly large
   lambda_environment_variables = {
     "SECRET_NAME"           = "secret-name"
     "TARGET_S3_BUCKET_NAME" = local.s3_target_bucket_name
@@ -314,8 +315,8 @@ Once you have made changes to the Terraform and pushed the changes to Github, if
 
 You can manually trigger the Lambda in the [AWS Console](https://eu-west-2.console.aws.amazon.com/lambda/home?region=eu-west-2#/functions). If it runs with no issues, then it is ready to move into Prod. That is unlikely however, so here are some common issues
 
-* If the Lambda reaches its max amount of memory, it will just break. You can increase the amount of memory by going to Configuration > General Configuration > Edit > Memory. 
-* If the Lambda reaches 15 minutes it will timeout. If possible, change the Python script to just get one days worth of Data.
+* If the Lambda reaches its max amount of memory, it will just break. You can increase the amount of memory by going to Configuration > General Configuration > Edit > Memory. And in Terraform the "lambda_memory_size" value will change the memory
+* If the Lambda reaches 15 minutes it will timeout. If possible, change the Python script to just get less days of data. 
 * If it cannot find a package you are using in the Python Script, check your requirements.txt or Piplock files
 
 Once it is in Production, it will automatically run every day. You now have data in the Landing Zone!
