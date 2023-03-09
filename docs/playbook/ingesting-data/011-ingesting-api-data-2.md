@@ -39,11 +39,10 @@ You can use whatever you want to make the Python Script. However to have it run 
 ### Basic Rules
 
 1. The Python Script needs to be able to determine, on its own, which date range to pull data from
-2. All of the functions need to be contained within the script itself
-3. The Lambda will run the "Lambda_handler" function. This means in place of `__MAIN__()` you will have `def lambda_handler(event, lambda_context):`. Then to run this script, you just have a `lambda_handler("","")` line
-4. If you have variables which you want the Terraform or Glue job to handle, you can pass them through as environment variables instead. `os.environ["TARGET_S3_BUCKET_NAME"] = "landing-zone"`  for example will set the environment variable `TARGET_S3_BUCKET_NAME` to `landing-zone`. `s3_bucket = getenv("TARGET_S3_BUCKET_NAME")` Will then be the code to get the environment variable as a variable in your script
-5. Have no secrets (e.g. API keys) hard coded into the script
-6. Try to use as little external packages as possible, Pandas is around 50mb after you install all of the dependancies. Very expensive
+2. The Lambda will run the "Lambda_handler" function. This means in place of `__MAIN__()` you will have `def lambda_handler(event, lambda_context):`. Then to run this script, you just have a `lambda_handler("","")` line
+3. If you have variables which you want the Terraform or Glue job to handle, you can pass them through as environment variables instead. `os.environ["TARGET_S3_BUCKET_NAME"] = "landing-zone"`  for example will set the environment variable `TARGET_S3_BUCKET_NAME` to `landing-zone`. `s3_bucket = getenv("TARGET_S3_BUCKET_NAME")` Will then be the code to get the environment variable as a variable in your script
+4. Have no secrets (e.g. API keys) hard coded into the script
+5. Try to use as little external packages as possible, Pandas is around 50mb after you install all of the dependancies. Very expensive
 
 ### Some tips
 
@@ -186,14 +185,11 @@ Here I will supply and explain two functions which will help you put files into 
 ```
 from datetime import date
 
-def single_digit_to_zero_prefixed_string(value):
-    return str(value) if value > 9 else '0' + str(value)
-
 def output_to_landing_zone(s3_bucket, data, output_folder,filename):
 		todays_date = date.today()
 
-		day = single_digit_to_zero_prefixed_string(todays_date.day)
-		month = single_digit_to_zero_prefixed_string(todays_date.month)
+		day = todays_date.day.zfill(2)
+		month = todays_date.month.zfill(2)
 		year = str(todays_date.year)
 
 		return s3_client.put_object(
