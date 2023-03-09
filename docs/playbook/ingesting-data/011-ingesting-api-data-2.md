@@ -24,7 +24,7 @@ Here are the major sections to this guide
 
 ## Pre-requisites
 
-* You need to have a department ready for the Data, by the time you reach the First Time Ingestion. You can find out how to onboard a department [Here]
+* You need to have a department ready for the Data, by the time you reach the First Time Ingestion. You can find out how to onboard a department [Here](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/getting-set-up/onboarding-new-departments-to-the-platform)
 * Have the secrets/api_key stored in both Production and Pre-Production environments, with the naming convention of "/[Department Name]/[secret name]". So for example, /customer-services/vonage
 * *
 
