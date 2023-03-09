@@ -26,7 +26,6 @@ Here are the major sections to this guide
 
 * You need to have a department ready for the Data, by the time you reach the First Time Ingestion. You can find out how to onboard a department [Here](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/getting-set-up/onboarding-new-departments-to-the-platform)
 * Have the secrets/api_key stored in both Production and Pre-Production environments, with the naming convention of "/[Department Name]/[secret name]". So for example, /customer-services/vonage
-* *
 
 ## Writing the Code for the Data Platform
 You can use whatever you want to make the Python Script. However to have it run in the Data Platform, there are a few rules to keep in mind if you intend for this script to be used in AWS Lambda.
@@ -216,7 +215,7 @@ Once you get the code, try running the code using Pre-Prod credentials to output
 
 ## Generating a Piplock and Requirements.txt File
 
-For your Python script to work, you will most likely need to download extra packages to use, packages which are not native to Python
+For your Python script to work, you will most likely need to download extra packages to use, packages which are not built in to Python
 
 To do this, we will create a requirements.txt file, and from the requirements.txt file, we will generate a Piplock file. This Piplock file is what tells the Terraform (Which creates Lambdas) which external packages to give to the environment which will run your Python Script
 1. Install Pipreqs
@@ -261,7 +260,7 @@ The best practise way is to clone the project into your IDE, create the files in
 
 Now that we have a script which will interact with S3 and will put data in, we need to automate this process and "productionise" it. While Lambda is normally what automates short duration Python Scripts, in the Data Platform, we build Lambdas using Terraform.
 
-This next method can be done on the Github website OR in your IDE if you want to push the branch and then merge into main
+This next method can be done in your IDE if you want to push the branch and then merge into main
 
 1. Navigate, in the Data Platform to `Terraform > Core > 38.api-ingestion.tf`
 2. Copy the Template API Ingestion Terraform module and paste it at the bottom of the 
