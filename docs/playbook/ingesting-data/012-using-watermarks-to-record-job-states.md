@@ -5,53 +5,47 @@ layout: playbook_js
 tags: [playbook]
 ---
 # Using Watermarks to Record AWS Glue Job States Between Runs
-A common pattern for ingesting data to the data platform is to do an initial full load of any existing data, then incrementally load any change (delta).
+A common pattern for ingesting data to the data analytics platform is to do an initial full load of any existing data, then incrementally load any change (delta).
 
-Watermarks allow us to capture a check point or state from any previous run, extract the incremental data since that check point and update this check point ready for the next run. Common attributes for these check points may be a _last_modified_ field or a _id_ you know to be sequential in nature. 
+Watermarks allow us to capture a check point or state from any previous execution, extract the incremental data since that check point and update this check point ready for the next run. Common attributes for these check points may be a _last_modified_ field or an _id_ you know to be sequential in nature. 
 
 The data platform provides a DynamoDB table (_glue-watermarks_) to record these state logs and a python Watermarks class with methods to help interact with it.
 
 ## Example usage
-First you need to import the Watermarks class. You can do this using the folling statement along with other imports you may be including in your script.
+First you need to import the Watermarks class. You can do this using the following statement along with other imports you may be including in your script.
 ```python
 from scripts.helpers.watermarks import Watermarks
 ```
 
-You then need to create a Watermarks object  to interact with underlying DynamoDB table. We do this by passing the table name argument, usually *glue-watermarks*.
+You then need to create a watermarks object to interact with underlying DynamoDB table. We do this by passing the table name argument, usually *glue-watermarks*.
 ```python
-watermarks = Watermarks("glue-watermarks") 
+watermarks = Watermarks(table_name="glue-watermarks") 
 ```
+Now create a watermark item using the _create_watermark_item_ method with the job name and id derived from the job and some arbitrary watermark data.
 
-Let's suppose we have a Glue job that extracts the data from a table that includes a _last_modified_ field that allows us to know when an item was last changed. Each time the Glue job is run it records the maximum value for this _last_modified_ field and writes this to the _glue_watermarks_ table. We can retrieve 
-watermark items for a given job using the _get_watermark()_ method, by default this will return the most recent watermark item.
 ```python
+###The getResolvedOptions method allows us to access the job name and run id from within the Glue job
+from awsglue.utils import getResolvedOptions
 args = getResolvedOptions(sys.argv)
 job_run_id = args["JOB_RUN_ID"]
-job_name = args["JOB_NAME"] #the name of the current job
+job_name = args["JOB_NAME"]
 
-watermark_from_previous_run = watermarks.get_watermark(job_name)
+last_processed_data = "2023-03-16 15:45:00"
+watermark_item = watermarks.create_watermark_item(job_id=job_name, run_id=job_run_id, latest_data=last_processed_data)
 ```
-We can then use this value to filter the table for new and updated records
+This method supports multiple keyword arguments so as well as the latest_data, we might also want to record the number of rows that were processed 
 ```python
-df_increment = df.filter(
-    df.last_modified > watermark_from_previous_run["watermarks"]["last_modified"]
-)
+rows_count = 808
+watermark_item = watermarks.create_watermark_item(job_id=job_name, run_id=job_run_id, latest_data=last_processed_data, rows_collected=rows_count)
 ```
-Having loaded and transformed the new records we want to update the watermark for the job with the _last_modified_ value.
+We can now add this watermark to the _glue-watermarks_ table 
 ```python
-max_modified_date = df_increment.agg({"last_modified": "max"}).collect()[0][0]
-watermark = watermarks.create_watermark_item(
-    job_name, job_run_id, last_modified=max_modified_date
-)
+watermarks.add_watermark(watermark_item)
 ```
-It may, for example, also be useful to know how many rows were included in the most recent increment. The _create_watermark_item()_ method supports multiple keyword arguments that can used to record different state attributes from a job run.
+The last_processed_data value can now be retrieved for use in a subsequent execution of the Glue job like so
 ```python
-increment_row_count = df_increment.count()
-watermark = watermarks.create_watermark_item(
-    job_name, job_run_id, last_modified=max_modified_date, rows_extracted=increment_row_count
-)
+most_recent_run_id = watermarks.get_most_recent_run_id(job_id=job_name)
+watermark = watermarks.get_watermark(job_id=job_name, run_id=most_recent_run_id)
+last_processed_date = watermark["watermarks"]["last_processed_date"]
 ```
-Once a watermark item is created with the attributes we want to record from the job we need to update the _glue-watermarks_ table with this new item. We do this using the _add_watermark()_ method:
-```python
-watermarks.add_watermark(watermark)
-```
+
