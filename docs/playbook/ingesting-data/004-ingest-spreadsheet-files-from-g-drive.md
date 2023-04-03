@@ -78,13 +78,13 @@ tags: [playbook]
     glue_job_name = "PCN Permits VRM NLPG LLPG - 20220516" 
     ```
     
-  - **output_folder_name** (required): Name of the folder where this data will be exported to (this will also be the name of the table in the respective department's raw zone catalog database)
+  - **output_folder_name** (required): Name of the folder where this data will be exported to.
     
   - **input_file_name** (required): The name of the file you are ingesting from.
     This should be the same as the file name in Google Drive.
 
   - **worksheets** (required): 
-    
+   The name of the worksheet(s) to import. It will also be the name(s) of the resulting table(s) in the Glue catalogue.
     - *If the sheet you are ingesting is an **`.xlsx`** file type:*
       - List out each worksheet that needs to be ingested in a map containing the `header_row_number`, and the `worksheet_name` - see the **Getting spreadsheet detail** section above (if unsure on how to set this, refer to a previous module block and use as an example). 
       - The worksheet name needs to match exactly (including any spaces or punctuation, but excluding any slashes `/`), so you may want to copy and paste the name directly from your worksheet. 
@@ -106,7 +106,7 @@ tags: [playbook]
       ```
     
     - *If the sheet you are ingesting is a **`.csv`** file type:*
-      - Set the `header_row_number` to `0` and `worksheet_name` to the name of dataset that the data relates to.
+      - Set the `header_row_number` to `0` and `worksheet_name` to the name of dataset that the data relates to. Remember this will also be the name of the table in the Glue catalogue.
   
         For example, if the file name is:
         `Voucher Import.csv`
