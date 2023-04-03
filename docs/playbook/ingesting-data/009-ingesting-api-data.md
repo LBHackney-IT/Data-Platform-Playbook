@@ -9,10 +9,17 @@ tags: [playbook]
 - You have a Python script to be used in the Lambda
 - You have a Github account, you can [create one][github_signup] yourself using your Hackney email.
 - You have been added to the 'LBHackney-IT' team, you can request this from Rashmi Shetty.
+- You need to have a department ready for the Data, by the time you reach the First Time Ingestion. You can find out how to onboard a department [Here](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/getting-set-up/onboarding-new-departments-to-the-platform)
 
 ## Overview
 This guide walks you through the process of setting up the infrastructure to deploy an AWS Lambda function to be used to ingest data from an API.
 It assumes you already have a script that will make the API calls to retrieve the required data.
+
+## Contents
+- Add the API credentials to the Data Platform project
+- Add your script to the Data Platform repository
+- Set up API Ingestion Lambda Module
+- Commit your changes and create a Pull Request for review by the Data Platform team
 
 
 ### Add the API credentials to the Data Platform project

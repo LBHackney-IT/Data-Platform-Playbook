@@ -4,11 +4,14 @@ description: "Recommendations to write an API ingestion script for a Lambda in t
 layout: playbook_js
 tags: [playbook]
 ---
-# Tips on writing an API Ingestion script for AWS Lambda
+# Tips on formatting a Python script
+
+## Prerequisites
+* Have the secrets/api_key stored in both Production and Pre-Production environments, with the naming convention of "/[Department Name]/[secret name]". So for example, /customer-services/vonage
 
 ## Introduction
 
-This is an article on tips to write and format your Python script, to be used in Lambda for the Data Platform
+This is an article on tips to write, format your Python script, to be used in Lambda for the Data Platform. 
 
 ## Writing the Code for the Data Platform
 You can use whatever you want to make the Python Script. However to have it run in the Data Platform, there are a few rules to keep in mind if you intend for this script to be used in AWS Lambda.
@@ -22,7 +25,6 @@ You can use whatever you want to make the Python Script. However to have it run 
 ### Basic Rules
 
 1. The Python Script needs to be able to determine, on its own, which date range to pull data from
-	* Could be via Watermarks or 
 2. The Lambda will run the "Lambda_handler" function. This means in place of `__MAIN__()` you will have `def lambda_handler(event, lambda_context):`. Then to run this script, you just have a `lambda_handler("","")` line
 3. If you have variables which you want the Terraform or Glue job to handle, you can pass them through as environment variables instead. `os.environ["TARGET_S3_BUCKET_NAME"] = "landing-zone"`  for example will set the environment variable `TARGET_S3_BUCKET_NAME` to `landing-zone`. `s3_bucket = getenv("TARGET_S3_BUCKET_NAME")` Will then be the code to get the environment variable as a variable in your script
 4. Have no secrets (e.g. API keys) hard coded into the script

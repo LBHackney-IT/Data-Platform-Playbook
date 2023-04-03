@@ -11,13 +11,6 @@ This is a guide for ingesting data from an API using [AWS Lambda](https://aws.am
 This guide does not cover how to write a Python script to call data from an API. Example script used for Vonage [here](https://github.com/LBHackney-IT/Data-Platform/blob/main/lambdas/vonage_api_ingestion/main.py )
 
 Here are the major sections to this guide
-* Writing the code for the Data Platform
-  * Desired Output
-  * Basic Rules
-  * Some Tips
-* Integrating S3
-* Generating a Piplock and Requirements.txt File
-* Update the Data Platform with our Script
 * Setting up Terraform to automate it
 * Moving it all into Prod
 
