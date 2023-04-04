@@ -4,7 +4,7 @@ description: "Recommendations to write an API ingestion script for a Lambda in t
 layout: playbook_js
 tags: [playbook]
 ---
-# Tips on formatting a Python script
+# Tips on writing an API Ingestion script for AWS Lambda
 
 ## Prerequisites
 * Have the secrets/api_key stored in both Production and Pre-Production environments, with the naming convention of "/[Department Name]/[secret name]". So for example, /customer-services/vonage
@@ -189,7 +189,7 @@ def output_to_landing_zone(s3_bucket, data, output_folder,filename):
 
 So if you wanted to put a json file into the "**Sandbox**" bucket, and within that bucket, you want the data to be within the "**CRM**" folder, you would call the function with
 
-```output_to_landing_zone(s3_bucket, {the json data}, "**CRM**", "**Sandbox**"). ```
+```output_to_landing_zone(s3_bucket, <the json data>, "**CRM**", "**Sandbox**"). ```
 
 It will then proceed to put the Data into the Data Platform. It will use today as the import day and create the correct folder structure for it to work. Note that the import_date is in YYYYMMDD format not YYYY-MM-DD
 

@@ -6,8 +6,8 @@ tags: [playbook]
 ---
 
 ## Prerequisites 
-- You have a Python script to be used in the Lambda
-- You have a Github account, you can [create one][github_signup] yourself using your Hackney email.
+- You have a Python script to be used in the Lambda. If you want tips on how to write a Python script for this purpose, check out [this article](tips-on-how-to-write-an-API-Lambda-script)
+- You have a GitHub account, you can [create one][github_signup] yourself using your Hackney email.
 - You have been added to the 'LBHackney-IT' team, you can request this from Rashmi Shetty.
 - You need to have a department ready for the Data, by the time you reach the First Time Ingestion. You can find out how to onboard a department [Here](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/getting-set-up/onboarding-new-departments-to-the-platform)
 
@@ -29,9 +29,9 @@ You will then be able to retrieve and use credentials in your Lambda function sc
 - Contact an engineer from the Data Platform team to add the API credentials to AWS Secrets Manager.
     - You will need to request that a **secret** (with an appropriate description) is created following the naming convention below:
       ```
-      api-credentials/DATASET_NAME
+      /<department name>/<DATASET_NAME>
       ```
-      **Remember this name as you will need it later**. For example: `api-credentials/casenotes-data-key` 
+      **Remember this name as you will need it later**. For example: `/customer-services/casenotes-data-key` 
 
     - Request that the necessary API credentials be added to this secret in key-value pairs. For example:
         - `api_key` = `RandomKey`
@@ -43,18 +43,18 @@ You will then be able to retrieve and use credentials in your Lambda function sc
 ### Add your script to the Data Platform repository
 In this section, you'll be adding your script to the Data Platform repository so that it can be used in the Lambda function to ingest the API data.
 
-**Note: You will need to complete this step from your IDE (Integrated Development Environment) or ask an engineer for assistance as it involves creating a directory which currently can't be done in the Github website user interface.**
+**Note: You will need to complete this step from your IDE (Integrated Development Environment) or ask an engineer for assistance as it involves creating a directory which currently can't be done in the GitHub website user interface.**
 
 1. Open the [lambdas directory][lambdas-directory] in the Data Platform Project in GitHub.
-1. Create a new directory suffixed with `_api_ingestion`.
+2. Create a new directory suffixed with `_api_ingestion`.
    - Set this to the name of the data/API you are ingesting.
      Ensure the name is **lowercase** with **words separated by underscores**.
      For example: `casenotes_data_api_ingestion`.
    - Make a note of the name of the directory as it will be needed for the [Set up API Ingestion Lambda Module](#set-up-api-ingestion-lambda-module) section below. 
-1. Create a new file in this directory called `main.py`, you can also add your tests to its own file: `test.py`
-1. Paste your code in the respective files. **Ensure the main execution function in your `main.py` file is called `lambda_handler`.**
-1. Seek assistance from an engineer to get the required packages for your Lambda installed.
-1. Submit your changes by referring to the [Committing changes][committing-changes] section of the **Using Github** guide.
+3. Create a new file in this directory called `main.py`, you can also add your tests to its own file: `test.py`
+4. Paste your code in the respective files. **Ensure the main execution function in your `main.py` file is called `lambda_handler`.**
+5. Seek assistance from an engineer to get the required packages for your Lambda installed.
+6. Submit your changes by referring to the [Committing changes][committing-changes] section of the **Using GitHub** guide.
    The Data Platform team needs to approve any changes to the code, so your change won't happen automatically.
 
 :::important Updating your Lambda script
@@ -64,19 +64,19 @@ If you need to update your Lambda script in the future, you must follow steps 4-
 ### Set up API Ingestion Lambda Module
 In this section, you will be writing the code, using a template format, that will deploy your Lambda function to the Data Platform Project (or update an existing one if you need to make changes to an existing Lambda function).
 
-**Note: The steps in this section refer specifically to Github user interface**. However, if you are familiar working with the Data Platform project from your IDE, then you can also make the changes in your IDE and commit them to the Data Platform repository.
+**Note: The steps in this section refer specifically to GitHub user interface**. However, if you are familiar working with the Data Platform project from your IDE, then you can also make the changes in your IDE and commit them to the Data Platform repository.
 
 1. Open the [terraform/core directory][terraform-directory] in the Data Platform Project in GitHub.
 
     - If you don't have the correct permissions, you'll get a '404' error (see the [Getting Set Up documentation][getting-set-up]).
 
-1. Open `38-api-ingestion.tf`. 
+2. Open `38-api-ingestion.tf`. 
 
 
-1. Click `edit` or the **pencil icon** (:pencil2:) then copy the last module block and paste it at the bottom of the file.
+3. Click `edit` or the **pencil icon** (:pencil2:) then copy the last module block and paste it at the bottom of the file.
    An example of what a module block looks like can be seen in the [Example Module Block](#example-module-block) section below.
 
-1. Update the `module` name using the name convention `<api_data_name>_api_ingestion`, for example: `"casenotes_data_api_ingestion"`.
+4. Update the `module` name using the name convention `<api_data_name>_api_ingestion`, for example: `"casenotes_data_api_ingestion"`.
     - The module name must be all **lowercase** with **words separated by underscores**.
       Ensure the name is unique to all other module names in this file.
 
@@ -84,6 +84,12 @@ In this section, you will be writing the code, using a template format, that wil
 
 _**Note**: If you have copied an existing module block then you won’t need to change the **source**, **tags**, **identifier_prefix**, **lambda_artefact_storage_bucket** and, **secrets_manager_kms_key** input variables._
 `<ZONE>` refers to either: `raw`, or `landing` S3 zones.
+- **count** (required): `count` determines where the Terraform will deploy the Lambda using Logic.
+  * `local.is_live_environment` includes Production and Pre-Production
+  * `local.is_production_environment` includes Production
+  * `1:0` means for environments that satisfy the previous conditions, make ONE lambda, otherwise for other environments, make 0.
+  * `count = local.is_live_environment && !local.is_production_environment ? 1 : 0` then means `if (Prod & Pre-prod) && (Not Prod), deploy 1, otherwise deploy 0` Meaning it will only deploy 1 into pre-prod
+
 
 - **source** (required): This will be `"../modules/api-ingestion-lambda"`. (This is the path to where the api ingestion Lambda module is saved within the repository).
 
@@ -163,8 +169,8 @@ See the [AWS Docs][aws-start-job-run-boto3] for guidance on how to do this.**
   ```
   ephemeral_storage = 6144
   ```
-- **lambda_timeout** (optional): The amount of time in seconds before the Lambda will timeout/ stop running.
-  **The default value is set to `900` (seconds) which is 15 mins**. This is the **maximum** execution time for an AWS Lambda function.
+- **lambda_timeout** (optional): The amount of time in seconds before the Lambda will time out/ stop running.
+  **The default value is set to `900` (seconds) which is 15 minutes**. This is the **maximum** execution time for an AWS Lambda function.
   
 - **lambda_memory_size** (optional): The amount of memory in MBs your Lambda Function can use at runtime.
   **The default value is `256`.**
@@ -174,7 +180,7 @@ See the [AWS Docs][aws-start-job-run-boto3] for guidance on how to do this.**
   ```
   
 - **lambda_execution_cron_schedule** (optional): Schedule to run the Lambda function specified using Cron expressions (see [AWS Cron Expression documentation][aws_cron_expressions]).
-    **The default schedule is 6am everyday**.
+    **The default schedule is 6am every day**.
     - For example, if you wanted your API ingestion Lambda run at 08:30am every day, your Cron expression would look like:
 
       ```
@@ -187,34 +193,52 @@ When you are done setting the input variables for this module, you can move onto
 
 ### Commit your changes and create a Pull Request for review by the Data Platform team
 You can now submit your changes for review by the Data Platform team.
-- See [Committing changes][committing-changes] section of the **Using Github** guide.
+- See [Committing changes][committing-changes] section of the **Using GitHub** guide.
   The Data Platform team needs to approve any changes to the code that you make, so your change won't happen automatically.
   Once your changes have been approved and deployed, the job will run at the next scheduled time (if scheduled).
 
 ### Example Module Block
 
 ```
-module "casenotes_data_api_ingestion" {
-  source = "../modules/api-ingestion-lambda"
-  tags   = module.tags.values
+module "something_api_ingestion" {
+  count                     = local.is_live_environment && !local.is_production_environment ? 1 : 0
+  source                    = "../modules/api-ingestion-lambda"
+  tags                      = module.tags.values
+  is_production_environment = local.is_production_environment
+  is_live_environment       = local.is_live_environment
 
   identifier_prefix              = local.short_identifier_prefix
   lambda_artefact_storage_bucket = module.lambda_artefact_storage.bucket_id
-  lambda_name                    = "casenotes-data-api-ingestion"
+  lambda_name                    = "something_api_ingestion"
+  lambda_handler                 = "main.lambda_handler"
+  runtime_language               = "python3.8"
   secrets_manager_kms_key        = aws_kms_key.secrets_manager_key
   s3_target_bucket_arn           = module.landing_zone.bucket_arn
-  s3_target_bucket_name          = module.landing_zone.bucket_id
-  api_credentials_secret_name    = "api-credentials/casenotes-data-key"
-  glue_job_to_trigger            = module.copy_casenotes_data_landing_to_raw[0].job_name
+  s3_target_bucket_name          = local.s3_target_bucket_name
+  api_credentials_secret_name    = "something-secret-key"
   s3_target_bucket_kms_key_arn   = module.landing_zone.kms_key_arn
-  lambda_environment_variables   = {
-    "SECRET_NAME" = "api-credentials/casenotes-data-key"
-    "TARGET_S3_BUCKET_NAME" = module.landing_zone.bucket_arn
-    "OUTPUT_FOLDER" = "casenotes-data"
-    "GLUE_JOB_NAME" = module.copy_casenotes_data_landing_to_raw[0].job_name #Note: You would have to create this job
+  lambda_memory_size 			 = 1024 # You probably want this to be fairly large
+  lambda_environment_variables = {
+    "SECRET_NAME"           = "secret-name"
+    "TARGET_S3_BUCKET_NAME" = local.s3_target_bucket_name
+    "other environment variables, make a new line each" = "Value of these variables"
   }
 }
 ```
+
+Edit the values in the Terraform Module we just pasted to match your script.
+
+## Check that it works in Pre-Production
+
+Once you have made changes to the Terraform and pushed the changes to GitHub, if there are no problems with your branch, the Lambda function will appear in Pre-Prod.
+
+You can manually trigger the Lambda in the [AWS Console](https://eu-west-2.console.aws.amazon.com/lambda/home?region=eu-west-2#/functions). If it runs with no issues, then it is ready to move into Prod. That is unlikely however, so here are some common issues
+
+* If the Lambda reaches its max amount of memory, it will just break. You can increase the amount of memory by going to Configuration > General Configuration > Edit > Memory. And in Terraform the "lambda_memory_size" value will change the memory
+* If the Lambda reaches 15 minutes it will time out. If possible, change the Python script to just get less days of data. 
+* If it cannot find a package you are using in the Python Script, check your requirements.txt or Piplock files
+
+Once it is in Production, it will automatically run every day. You now have data in the Landing Zone!
 
 [github_signup]: https://github.com/signup
 [getting-set-up]: ../getting-set-up/index.md
