@@ -27,7 +27,7 @@ To run the Lambda manually the following test body can be used in the Lambda con
 }
 ```
 
-`DateToImport` value determines which file is fetched from the SFTP server. The files are named in `data_warehouse_-YYYY-MM-DD.csv` format, so that can be used to identify the correct files.
+`DateToImport` value determines which file is fetched from the SFTP server. The files are named in `data_warehouse_-YYYY-MM-DD.csv` format, so that can be used to identify the correct file.
 
 Please note that files are uploaded to the server each afternoon and they contain data for previous day, so the files are lacking behind by a day.
 
