@@ -252,7 +252,7 @@ _If a variable is not needed you should delete the entire line in the module blo
     ```
     "s3://${module.<S3_BUCKET_ZONE>_zone_bucket_id}/<YOUR_DEPARTMENT_NAME>/<FOLDER_NAME>/"
     ```
-  - _table_prefix_ (Optional): The table prefix used for catalog tables that are created in the specified Glue database (**database_name** variable set above) in **Athena**,
+  - _table_prefix_: The table prefix used for catalog tables that are created in the specified Glue database (**database_name** variable set above) in **Athena**,
     after crawling the **s3_target_location** e.g. `"housing_repairs_"`
   - _configuration_ (Optional): By default, the `TableGroupingPolicy` will be set to `CombineCompatibleSchemas`
 
