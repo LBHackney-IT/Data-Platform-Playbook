@@ -298,6 +298,7 @@ The following **input variables** and **job parameters** need to be set:
   
         - _s3_target_location_ (required): This should be the same as **`"--s3_ingestion_bucket_target"`** set above
         - _configuration_ (required): Set the `TableLevelConfiguration` to 1 plus the number of directory levels in **`"--s3_ingestion_bucket_target"`**
+        - _table_prefix_ (required): Set this to value of your choice or if the table prefix is not required set it to `null`
         
         For example: The value for `TableLevelConfiguration` with an **s3_ingestion_bucket_target** of `"s3://${module.raw_zone.bucket_id}/academy/"` will be `3` 
 
@@ -313,6 +314,7 @@ The following **input variables** and **job parameters** need to be set:
                     TableLevelConfiguration = 3
                 }
             })
+        table_prefix      = null
         }
         ```
 
@@ -379,6 +381,7 @@ module "ingest_rev_bev_council_tax" {
         TableLevelConfiguration = 3
       }
     })
+    table_prefix      = null
   }
 }
 ```
