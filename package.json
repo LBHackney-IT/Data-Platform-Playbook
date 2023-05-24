@@ -41,8 +41,6 @@
   },
   "resolutions": {
     "trim": "^0.0.3",
-    "scss-tokenizer": "^0.4.3",
-    "got": "^11.8.5",
-    "node-sass": "^7.0.0"
+    "got": "^11.8.5"
   }
 }
