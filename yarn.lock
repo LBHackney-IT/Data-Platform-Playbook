@@ -3779,12 +3779,11 @@ dns-packet@^5.2.2:
   dependencies:
     "@leichtgewicht/ip-codec" "^2.0.1"
 
-docusaurus-plugin-sass@^0.1.11:
-  version "0.1.15"
-  resolved "https://registry.yarnpkg.com/docusaurus-plugin-sass/-/docusaurus-plugin-sass-0.1.15.tgz#133e88cb9aa4329b4d1564728b4e9c7a232f8d73"
-  integrity sha512-i3/7qqS1dAm+5gt3ccIyyLkX7NMc5xhG9TG2Jc3C3M7wRnmtPRxRTMl5zEdRS9glrdS0n8LSJMHb/UaCe8DVrg==
+docusaurus-plugin-sass@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/docusaurus-plugin-sass/-/docusaurus-plugin-sass-0.2.3.tgz#5b61f7e560d236cfc1531ed497ac32fc166fc5e2"
+  integrity sha512-FbaE06K8NF8SPUYTwiG+83/jkXrwHJ/Afjqz3SUIGon6QvFwSSoKOcoxGQmUBnjTOk+deUONDx8jNWsegFJcBQ==
   dependencies:
-    node-sass "^6.0.0"
     sass-loader "^10.1.1"
 
 dom-converter@^0.2.0:
@@ -5999,7 +5998,7 @@ node-releases@^2.0.8:
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.11.tgz#59d7cef999d13f908e43b5a70001cf3129542f0f"
   integrity sha512-+M0PwXeU80kRohZ3aT4J/OnR+l9/KD2nVLNNoRgFtnf+umQVFdGBAO2N8+nCnEi0xlh/Wk3zOGC+vNNx+uM79Q==
 
-node-sass@^6.0.0, node-sass@^7.0.0:
+node-sass@^7.0.0:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-7.0.3.tgz#7620bcd5559c2bf125c4fbb9087ba75cd2df2ab2"
   integrity sha512-8MIlsY/4dXUkJDYht9pIWBhMil3uHmE8b/AdJPjmFn1nBx9X9BASzfzmsCy0uCCb8eqI3SYYzVPDswWqSx7gjw==
