@@ -28,6 +28,7 @@ Open Cloudwatch and search for `liberator-to-rds-snapshot-event` and disable the
 * Expand the `Networking` tab
     * VPC: Select the one VPC available
     * Subnets: Select all subnets available one by one
+    * Security group: select `Use an existing security group` then select `liberator-to-rds-snapshot` from the drop down
     * Public IP: `Turned off`
 * Expand the `Container overrides` section:
     * Expand the `liberator-to-rds-snapshot` section:
