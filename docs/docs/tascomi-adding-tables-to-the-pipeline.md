@@ -36,7 +36,7 @@ This guide will fulfill this basic requirement. However other scenarios could ar
 
  In such cases, involving static tables, the existing ingestion pipeline should absorb those changes and it will be the job of data analysts to expose data linked to new attributes or lookups.
 
- Because changes to static tables occur infrequently, attributes added to static tables are ingested on a weekly basis, although ingestion could be manually triggered any time if needed. Analysts' data dashboards that rely upon such attributes should be designed with additions able to be incorporated later, being mindful of how such additions might have side effects, say with certain aggregates that are performed.
+ Because changes to static tables occur infrequently, attributes added to static tables are ingested on a weekly basis, although ingestion could be manually triggered any time if needed. Analysts' data dashboards that rely upon such attributes should allow for additions incorporated later, mindful of how these additions might have side effects, say with how aggregates that are performed.
 
 #### 2. Discovering changes made to Tascomi API by the vendor
 
@@ -46,10 +46,12 @@ Indeed, it is conceivable that the main Tascomi `Application` table might be ext
 
 But if the main `Application` table were to change then the following guide will be of little immediate use since the existing Tascomi data pipeline would need to be re-worked and tested first. In such an event you would need to seek advise from the Data Platform team.
 
-```:::info:::
-ⓘ INFO  
-Details of a toolkit in development, comprising AWS Glue & Athena scripts, including an Athena SQL script to be used later in Pre-production, will be added here later. This will allow the currently ingested table resources, with their API columns embedded within a single JSON column in the database, to be compared with the current API documentation so that schema changes can be detected before proceeding further.
-```
+[//]: :::info  
+
+> **ⓘ INFO**  
+> Details of a toolkit in development, comprising AWS Glue & Athena scripts, including an Athena SQL script to be used later in Pre-production, will be added here later. This will allow the currently ingested table resources with their API columns embedded within a single JSON column in the database, to be compared with the current API documentation so that schema changes can be detected before proceeding further.
+
+[//]: :::
 
 ---
 
@@ -100,11 +102,12 @@ There will be an opportunity to [test this later](#test-your-code-changes-in-pre
 
 Although we have opportunities to fix anomalies for individual tables, as soon as such anomalies are detected it is wise to pause to discover if any existing resources are affected as per the [alternative scenarios](#alternative-scenarios) above.
 
-```:::warning:::
-⚠ WARNING  
-Please be aware, at the time of writing, of two existing tables [asset_constraints] and
-[pre_applications] that were deliberately left out of the column-type conversion dictionary due to other pipelines depending upon them in their unconverted state. This warning will be removed from the documentation when the issue finally resolved. 
-```
+[//]: :::warning
+
+>**⚠ WARNING**  
+>Please be aware, at the time of writing, of two existing tables `asset_constraints` and `pre_applications` that were deliberately left out of the column-type conversion dictionary due to other pipelines depending upon them in their unconverted state. This warning will be removed from the documentation when the issue finally resolved.
+
+[//]: :::
 
 ### Add the new tables to the [Terraform script](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-tascomi-data.tf)
 
@@ -116,10 +119,12 @@ However, you will test your assumptions later in Pre-Production, so it is not ne
 
 ### Add the basic data quality tests in the relevant scripts
 
-```:::note:::
-ⓘ NOTE  
-This section will be simplified later when it is no longer necessary to make changes to the following scripts other than in exceptional situations.
-```
+[//]: :::note:::
+
+> **ⓘ NOTE**  
+> This section will be simplified later when it is no longer necessary to make changes to the following scripts other than in exceptional situations.
+
+[//]: :::
 
 [Quality testing with PyDeequ](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/transforming-data/guides-to-testing-in-the-platform/data-quality-testing-guide) is parameterized inside each relevant script.
 
