@@ -5,6 +5,10 @@ layout: playbook_js
 tags: [playbook]
 ---
 
+<!---
+This markdown has Docusaurus :::features::: that will need uncommenting and enabling later...
+--->
+
 # How to add Tascomi tables to the Data Platform
 
 This playbook guide aims to describe in simpler terms, how the Tascomi Planning data ingestion and refinement processes can be extended to include new table resources. The original full description of the ingestion can be found ► [here](https://playbook.hackney.gov.uk/Data-Platform-Playbook/docs/tascomi-ingestion).
@@ -46,12 +50,10 @@ Indeed, it is conceivable that the main Tascomi `Application` table might be ext
 
 But if the main `Application` table were to change then the following guide will be of little immediate use since the existing Tascomi data pipeline would need to be re-worked and tested first. In such an event you would need to seek advise from the Data Platform team.
 
-[//]: :::info  
-
+<!---:::info--->  
 > **ⓘ INFO**  
 > Details of a toolkit in development, comprising AWS Glue & Athena scripts, including an Athena SQL script to be used later in Pre-production, will be added here later. This will allow the currently ingested table resources with their API columns embedded within a single JSON column in the database, to be compared with the current API documentation so that schema changes can be detected before proceeding further.
-
-[//]: :::
+<!---:::--->  
 
 ---
 
@@ -100,7 +102,7 @@ This JSON dictionary supports the 'recast increment' step that converts column s
 
 There will be an opportunity to [test this later](#test-your-code-changes-in-pre-production) in Pre-Production
 
-Although we have opportunities to fix anomalies for individual tables, as soon as such anomalies are detected it is wise to pause to discover if any existing resources are affected as per the [alternative scenarios](#alternative-scenarios) above.
+Although we have opportunities to fix API anomalies for individual tables as they are discovered, you may need to pause and discover if any existing pipeline resources will be affected by API changes as per the [alternative scenarios](#alternative-scenarios) above.
 
 [//]: :::warning
 
@@ -149,6 +151,10 @@ dq_params = {'<table-name>': {'unique': ['id']}
 Here in this example, for the job to complete successfully, in the table called `increment_<table-name>`, just needs the `'id'` column to be unique.
 
 ## Test your code changes in Pre-Production
+
+This section will guide you through manually running AWS Glue scripts in Pre-production for just the new tables you want to add to make sure each stage ETL process will work and we can check the results using Amazon Athena.
+
+
 
 > [**Insert a detailed explanation with screen shots**]
 
