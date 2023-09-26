@@ -104,12 +104,10 @@ There will be an opportunity to [test this later](#test-your-code-changes-in-pre
 
 Although we have opportunities to fix API anomalies for individual tables as they are discovered, you may need to pause and discover if any existing pipeline resources will be affected by API changes as per the [alternative scenarios](#alternative-scenarios) above.
 
-[//]: :::warning
-
+<!---:::warning--->  
 >**⚠ WARNING**  
 >Please be aware, at the time of writing, of two existing tables `asset_constraints` and `pre_applications` that were deliberately left out of the column-type conversion dictionary due to other pipelines depending upon them in their unconverted state. This warning will be removed from the documentation when the issue finally resolved.
-
-[//]: :::
+<!---:::--->  
 
 ### Add the new tables to the [Terraform script](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-tascomi-data.tf)
 
@@ -121,12 +119,10 @@ However, you will test your assumptions later in Pre-Production, so it is not ne
 
 ### Add the basic data quality tests in the relevant scripts
 
-[//]: :::note:::
-
+<!---:::note--->  
 > **ⓘ NOTE**  
 > This section will be simplified later when it is no longer necessary to make changes to the following scripts other than in exceptional situations.
-
-[//]: :::
+<!---:::--->  
 
 [Quality testing with PyDeequ](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/transforming-data/guides-to-testing-in-the-platform/data-quality-testing-guide) is parameterized inside each relevant script.
 
@@ -154,9 +150,9 @@ Here in this example, for the job to complete successfully, in the table called 
 
 This section will guide you through manually running AWS Glue scripts in Pre-production for just the new tables you want to add to make sure each stage ETL process will work and we can check the results using Amazon Athena.
 
-
-
+<!---TO DO--->  
 > [**Insert a detailed explanation with screen shots**]
+<!---TO DO--->  
 
 ## Deploy the code changes into Production
 
