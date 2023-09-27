@@ -11,7 +11,7 @@ This markdown has Docusaurus :::features::: that will need uncommenting and enab
 
 # How to add Tascomi tables to the Data Platform
 
-This playbook guide aims to describe in simpler terms, how the Tascomi Planning data ingestion and refinement processes can be extended to include new table resources. The original full description of the ingestion can be found ► [here](https://playbook.hackney.gov.uk/Data-Platform-Playbook/docs/tascomi-ingestion).
+This playbook guide aims to describe in simple terms, how the Tascomi Planning data ingestion and refinement processes can be extended to include new table resources. The original full description of the ingestion can be found ► [here](https://playbook.hackney.gov.uk/Data-Platform-Playbook/docs/tascomi-ingestion).
 
 This guide will lead you through updating and testing the Tascomi Glue jobs in Pre-production so that it will not be necessary to test the [Tascomi API](https://hackney-planning.tascomi.com/rest/v1/documentation.html?public_key=dd95bcd473f46a4325a4021d54500c7d#available-resources) endpoints using a local Jupyter installation.
 
@@ -19,47 +19,48 @@ This guide makes it unnecessary to add tables to the [column type dictionary](ht
 
 ## Who this playbook guide is intended for
 
-You will be a data analysts or engineer with access to the Data Platform via the AWS `Management console`, so that your [AWS Start page](https://d-936715b9ec.awsapps.com/start#/), expanded below the `AWS Account` box, includes the following:
+**Given** you are a data analysts or engineer with access to the Data Platform via the AWS `Management console`,  
+**and** your [AWS Start page](https://d-936715b9ec.awsapps.com/start#/) expands below the `AWS Account` box to show the following:
 
 - `DataPlatformPlanningProd` listed under `DataPlatform-Production`
 - `AWSPowerUserAccess` listed under `DataPlatform-Pre-Production`
 
 This guide assumes a basic understanding of AWS Glue and Amazon Athena and how to use them. In additional have a  basic understanding of how Git and Github work, eg. how to create a new branch and subsequently merge it with the main trunk of development. In practice, analysts will in any case need to reach out to members, or other members, of the Data Platform team for code review and assistance in deploying the changes and rolling back faults in production.
 
-### The primary scenario
+### The scenario
 
-This assumes the Tascomi API table resources needed and identified by Planning data users are not currently unavailable from the `dataplatform-prod-Tascomi-refined-zone` of the Production Data Platform and need to be added to the data pipeline as soon as possible.
+A data user has identified Tascomi API table resources needed by Planning, which are not currently unavailable from the `dataplatform-prod-Tascomi-refined-zone` of the Production Data Platform, and therefore must be added to the Tascomi data pipeline.
 
-This guide will fulfill this basic requirement. However other scenarios could arise, which although appear similar, will actually require alternative remedies as follows:
+This guide will take you through the process of adding those new table resources. However other scenarios might arise, which although based on a need for Tascomi data resources by data users, might actually require some alternative remedy as follows:
 
-### Alternative scenarios
+### Alternative scenarios considered
 
-#### 1. Discovering new attributes added by the vendor, added to the static tables
+#### a) Discovering new data attributes were added by the vendor, added to the static tables
 
- It is generally rare for vendors to frequently change REST API schemas that their customers rely upon. Far more likely with Tascomi though, are additions to attributes or coded-lookups required by changes to Planning procedures or legislation and implemented in the Tascomi software.
+ It is generally rare for vendors to frequently change REST API schemas that their customers rely upon. Far more likely with Tascomi though, are additions to attributes or coded-lookups, possibly required by changes to Planning procedures or legislation and implemented in the Tascomi software by the vendor.
 
- In such cases, involving static tables, the existing ingestion pipeline should absorb those changes and it will be the job of data analysts to expose data linked to new attributes or lookups.
+ In such cases, involving static tables, the existing ingestion pipeline should automatically absorb those changes and it will be the job of data analysts to expose data linked to new attributes or lookups, in their own applications or pipelines. Indeed, they should be mindful of how any such additions in future might have side effects, eg. consider how aggregates are performed by their applications.
 
- Because changes to static tables occur infrequently, attributes added to static tables are ingested on a weekly basis, although ingestion could be manually triggered any time if needed. Analysts' data dashboards that rely upon such attributes should allow for additions incorporated later, mindful of how these additions might have side effects, say with how aggregates that are performed.
+ Because changes to static tables occur infrequently, any attributes added to static tables will be ingested on a weekly basis. But on discovery if this is needed sooner, ingestion could be manually triggered any time.
 
-#### 2. Discovering changes made to Tascomi API by the vendor
+#### b) Discovering changes made to Tascomi API by the vendor
 
-Although it ought to be rare for the Tascomi vendor to change it's REST API schema, there are however, weaknesses in the Tascomi data model that could force such changes in future.
+Although it ought to be rare for the Tascomi vendor to change it's REST API schema, there remain however, weaknesses in the Tascomi data model that could force such changes in future.
 
 Indeed, it is conceivable that the main Tascomi `Application` table might be extended further with new columns. This is a high risk future requirement due to this table's insufficient normalization by the vendor, such that the `Application` table has grown to a colossal 752 columns. Alternatively, columns might have been logically grouped and migrated to separate tables, instead of being left in this unwieldy current form.
 
-But if the main `Application` table were to change then the following guide will be of little immediate use since the existing Tascomi data pipeline would need to be re-worked and tested first. In such an event you would need to seek advise from the Data Platform team.
+But if the main `Application` table were to change then the following guide will be of little immediate use since the existing Tascomi data pipeline would need to be re-engineered and tested first. In such an event you would need to seek advise from the Data Platform team.
 
 <!---:::info--->  
-> **ⓘ INFO**  
-> Details of a toolkit in development, comprising AWS Glue & Athena scripts, including an Athena SQL script to be used later in Pre-production, will be added here later. This will allow the currently ingested table resources with their API columns embedded within a single JSON column in the database, to be compared with the current API documentation so that schema changes can be detected before proceeding further.
+>**`ⓘ` INFO**  
+>Details of a toolkit in development, comprising AWS Glue & Athena scripts, including an Athena SQL script to be used later in Pre-production, will be added here later. This will allow the currently ingested table resources with their API columns embedded within a single JSON column in the database, to be compared with the current API documentation so that schema changes can be discovered before proceeding further.
 <!---:::--->  
 
 ---
 
-## The primary scenario in detail
+## The scenario in detail
 
-Consider your service request factored into the following ticket template. Each of the following sections may be transcribed to a new Jira ticket...
+Consider your service request factored into the following ticket template. Each of the following sections may be transcribed to a new [***numbered Jira ticket***](#the-scenario-in-detail)...
 
 ### User story
 
@@ -91,37 +92,43 @@ Consider your service request factored into the following ticket template. Each 
 
 ## How to proceed with your code changes
 
-### Create and check out a new branch in the [Data-Platform](https://github.com/LBHackney-IT/Data-Platform) Github repository for your code changes
+### Creating and checking out a new Git branch for your code changes
 
-All the changes outlined below will be committed to this branch as we go along.
-The name of the branch should refer to the Jira ticket reference generated above. For example `DPP-999 Add Tascomi table resources` This will assist the Data Platform team in tracking the changes you are about to make.
+**Given** you have a `Github` account  
+**and** have been added to the [LBHackney-IT/Data-Platform](https://github.com/LBHackney-IT/Data-Platform) repository  
+**and** have set yourself up to use Git on your computer, preferably using a code editor eg. [Visual Code Studio](https://code.visualstudio.com/download).  
+**When** you create and check out a new-named Git branch...
 
-### Check the tables to be added against the [column-type dictionary](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi-column-type-dictionary.json)
+The name of the branch should refer to the [***Jira ticket number***](#the-scenario-in-detail) generated above. For example `"DPP-426 Add Tascomi table resources"`, with `DPP-426` substituted by the [***ticket number***](#the-scenario-in-detail), which will assist the Data Platform team in tracking the changes you are about to make.
+
+**Then** all the changes outlined below should be committed to this branch as we go along.
+
+### Checking the tables to be added against entries in the [column-type dictionary](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi-column-type-dictionary.json)
 
 This JSON dictionary supports the 'recast increment' step that converts column strings, those not defined as text, into their correct data types. New table resources, before they can be fully added to the ingestion pipeline, must have all their columns checked against this dictionary.
 
-There will be an opportunity to [test this later](#test-your-code-changes-in-pre-production) in Pre-Production
+There will be an opportunity to [test this later](#testing-your-code-changes-in-pre-production) in Pre-Production
 
-Although we have opportunities to fix API anomalies for individual tables as they are discovered, you may need to pause and discover if any existing pipeline resources will be affected by API changes as per the [alternative scenarios](#alternative-scenarios) above.
+Although we have opportunities to fix API anomalies for individual tables as they are discovered, because that might imply the vendor had changed it's API specification in other ways, you might want to pause and discover if any existing pipeline resources have been affected by API changes as per the [alternative scenarios considered](#alternative-scenarios-considered) above.
 
 <!---:::warning--->  
->**⚠ WARNING**  
->Please be aware, at the time of writing, of two existing tables `asset_constraints` and `pre_applications` that were deliberately left out of the column-type conversion dictionary due to other pipelines depending upon them in their unconverted state. This warning will be removed from the documentation when the issue finally resolved.
+>**`⚠` WARNING**  
+>Please be aware, at the time of writing, of two existing tables `asset_constraints` and `pre_applications` that were deliberately left out of the column-type conversion dictionary due to other pipelines depending upon them in their unconverted state. The plan is to remove this warning from the documentation only when the issue is finally resolved.
 <!---:::--->  
 
-### Add the new tables to the [Terraform script](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-tascomi-data.tf)
+### Adding the new tables to the [Terraform script](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-tascomi-data.tf)
 
 You will need to decide whether new tables should be ingested daily by appending them to the `tascomi_table_names` list, or ingested weekly by appending them to the `tascomi_static_tables` list.  
 
 Studying what these tables represent and examining their relationship to each other via embedded `_id` columns, may help you decide which list each new table should be in. You may also refer to the [Tascomi API schema diagram](../docs/images/tascomi-API-schema.png) for help.
 
-However, you will test your assumptions later in Pre-Production, so it is not necessary to decide correctly from the outset.
+However, you will test your assumptions later in Pre-Production, so it is not necessary to decide correctly from the outset. So if you are really not sure about where some tables belong, just add them to the `tascomi_table_names` list for bow and we can move them to the to the `tascomi_static_tables` later if needed.
 
 ### Add the basic data quality tests in the relevant scripts
 
 <!---:::note--->  
-> **ⓘ NOTE**  
-> This section will be simplified later when it is no longer necessary to make changes to the following scripts other than in exceptional situations.
+>**`ⓘ` NOTE**  
+>This section will be simplified later when it is no longer necessary to make changes to the following scripts other than in exceptional situations.
 <!---:::--->  
 
 [Quality testing with PyDeequ](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/transforming-data/guides-to-testing-in-the-platform/data-quality-testing-guide) is parameterized inside each relevant script.
@@ -146,13 +153,103 @@ dq_params = {'<table-name>': {'unique': ['id']}
 
 Here in this example, for the job to complete successfully, in the table called `increment_<table-name>`, just needs the `'id'` column to be unique.
 
-## Test your code changes in Pre-Production
+---
 
-This section will guide you through manually running AWS Glue scripts in Pre-production for just the new tables you want to add to make sure each stage ETL process will work and we can check the results using Amazon Athena.
+## Testing your code changes in Pre-Production
 
+This section will guide you through manually running AWS Glue scripts in Pre-production for just the new tables you want to add to make sure each stage ETL process will work and we can check the results using Amazon Athena. Before you proceed make sure you are already logged into the AWS `Management console` via `AWSPowerUserAccess` listed under `DataPlatform-Pre-Production`.
+
+**Given** you have navigated to `AWS Glue` via the console menu,  
+**and** from the menu selected [`ETL jobs`](https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/jobs),  
+**When** in the search field under `Your Jobs` where it says *Filter jobs*, you type: ***stg tascomi***,  
+**Then** you should see listed under `Job name` below, all the current Glue ETL jobs belonging to the current Tascomi data ingestion pipeline.
+
+If you do not see the following ingestion jobs listed, which should have been generated in Pre-Production by Terraform Continuous Integration, then please consult the Data Platform team:
+
+1. `stg tascomi_api_ingestion`
+2. `stg tascomi_parse_tables_increments`
+3. `stg tascomi_recast_tables_increments`
+4. `stg tascomi_create_daily_snapshot`
+
+All being well, use the following sections to test your code changes, step by step.
+
+### 1. Testing the Tascomi API Ingestion
+
+You must test your new table resources, one at a time, to ensure the Tascomi API does what we expect. In the sections further, on involving the subsequent jobs, you will be able to test all your tables at once, so the testing process will speed up as you go along.
+
+#### 1.1 Clone the API ingestion job
+
+This section covers cloning a job in detailed steps. Sections beyond this that involve cloning other jobs will not repeat this level of detail since the process is practically the same and you probably will remember how you did it the first time around, although you can always refer back here if you need to.
+
+**`🖱` Step 1.1.1**  
+>**Given** the ingestion jobs are shown as below...
+![screenshot-1-1-1](../docs/images/tascomi-adding-tables-screenshot-1-1-1.png)  
+**When** you check `☑` against `stg tascomi_api_ingestion`  
+**and** select `Clone Job` from the `Actions` menu  
+**Then** you should immediately be taken to `Glue Studio`.
+
+**`🖱` Step 1.1.2**  
+>**Given** the cloned API ingestion job is shown in `Glue Studio` as below...  
+![screenshot-1-1-2](../docs/images/tascomi-adding-tables-screenshot-1-1-2.png)  
+**When** you change `🖊` the job name from `stg tascomi_api_ingestion-copy` to  
+`stg tascomi_api_ingestion-TEST-DPP-426` with `DPP-426` substituted by the [***ticket number***](#the-scenario-in-detail)  
+**and** click `Save` over on the right  
+**Then** you may edit the script name under `Job details`.
+
+**`🖱` Step 1.1.3**  
+>**Given** the `Job details` of the cloned job is shown in `Glue Studio` as below...  
+![screenshot-1-1-3](../docs/images/tascomi-adding-tables-screenshot-1-1-3.png)  
+**When** you expand `Advanced Properties` below `Job details`  
+**and** change the script name from `tascomi_api_ingestion.py` to  
+`tascomi_api_ingestion-DPP-426.py` with `DPP-426` substituted by the [***ticket number***](#the-scenario-in-detail)  
+**and** click `Save` over on the right  
+**Then** you may add the `Resource` parameter to this job.
+
+**`🖱` Step 1.1.4**  
+>**Given** the `Advanced Properties` is expanded below the `Job details` of the cloned job in `Glue Studio` as shown below  
+**and** the script name was changed to `tascomi_api_ingestion-DPP-426.py` with `DPP-426` substituted by the [***ticket number***](#the-scenario-in-detail)...  
+![screenshot-1-1-4](../docs/images/tascomi-adding-tables-screenshot-1-1-4.png)  
+**When** you scroll down `Advanced Properties` to `Job parameters`  
+**and** add a new `Resource` entry
+**and** click `Save` over on the right  
+**Then** you may begin testing each new API resource using this now fully cloned job.
+
+#### 1.2 Test each new API resource using the cloned job
 <!---TO DO--->  
-> [**Insert a detailed explanation with screen shots**]
+>[**Insert a detailed steps with screen shots**]
 <!---TO DO--->  
+
+### 2. Testing the Tascomi Parse table increments job
+
+Unlike the previous section, in this section and sections involving the subsequent jobs, you will be able to test all your tables at once, so the testing process will speed from this point onward.
+
+#### 2.1 Clone the Tascomi Parse Tables Increments job
+<!---TO DO--->  
+>[**Insert abridged steps without need for screen shots**]
+<!---TO DO--->  
+
+#### 2.2 Edit the Tascomi Parse Tables Increments job to reflect your code changes
+<!---:::note--->  
+>**`ⓘ` NOTE**  
+>In the next development iteration, Section 2.2 will be only be required for testing changes to this script for handling exceptional situations.
+<!---:::--->  
+
+#### 2.3 Test the Tascomi Parse Tables Increments job
+<!---TO DO--->  
+>[**Insert a detailed steps with screen shots**]
+<!---TO DO--->  
+
+### 3. Testing the Tascomi Recast table increments job
+<!---TO DO--->  
+>[**Insert abridged sections and steps without too much need for screen shots**]
+<!---TO DO--->  
+
+### 4. Testing the Tascomi Create_daily_snapshot job
+<!---TO DO--->  
+>[**Insert abridged sections and steps without too much need for screen shots**]
+<!---TO DO--->  
+
+---
 
 ## Deploy the code changes into Production
 
@@ -162,4 +259,4 @@ Unit tests will run automatically when you push the changes. At the moment, test
 
 ### Have your changes deployed with help from the Data Platform Team
 
-At this time of writing, a tool is being developed to assist the Data Platform team in speedily rolling back faults that made it into production. In the meantime you will require assistance from team members with higher access privileges to manually perform fault rollback tasks which could take several hours depending on the nature of the fault. Therefore it is important to organize stand-by cover beforehand to ensure a member of the team is available to rollback data in production if needed. On previous occasions this has required some out-of-hours work to ensure the work was carried out before the scheduled overnight processes could run normally.
+At this time of writing, a tool is in our development backlog for assisting the Data Platform team in speedily rolling back faults that made it into production. In the meantime you will require assistance from team members with higher access privileges to manually perform fault rollback tasks which could take several hours depending on the nature of the fault. Therefore it is important to organize stand-by cover beforehand to ensure a member of the team is available to rollback data in production if needed. On previous occasions this has required some out-of-hours work to ensure the work was carried out before the scheduled overnight processes could run normally.
