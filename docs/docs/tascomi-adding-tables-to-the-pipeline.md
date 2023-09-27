@@ -181,43 +181,51 @@ You must test your new table resources, one at a time, to ensure the Tascomi API
 
 This section covers cloning a job in detailed steps. Sections beyond this that involve cloning other jobs will not repeat this level of detail since the process is practically the same and you probably will remember how you did it the first time around, although you can always refer back here if you need to.
 
-**`🖱` Step 1.1.1**  
+**`🖱` Step 1.1.1** finding the right script to clone
 >**Given** the ingestion jobs are shown as below...
 ![screenshot-1-1-1](../docs/images/tascomi-adding-tables-screenshot-1-1-1.png)  
 **When** you check `☑` against `stg tascomi_api_ingestion`  
 **and** select `Clone Job` from the `Actions` menu  
 **Then** you should immediately be taken to `Glue Studio`.
 
-**`🖱` Step 1.1.2**  
+**`🖱` Step 1.1.2** in Glue Studio
 >**Given** the cloned API ingestion job is shown in `Glue Studio` as below...  
 ![screenshot-1-1-2](../docs/images/tascomi-adding-tables-screenshot-1-1-2.png)  
 **When** you change `🖊` the job name from `stg tascomi_api_ingestion-copy` to  
 `stg tascomi_api_ingestion-TEST-DPP-426` with `DPP-426` substituted by the [***ticket number***](#the-scenario-in-detail)  
 **and** click `Save` over on the right  
-**Then** you may edit the script name under `Job details`.
+**Then** you may proceed to test your API resource tables.
 
-**`🖱` Step 1.1.3**  
->**Given** the `Job details` of the cloned job is shown in `Glue Studio` as below...  
-![screenshot-1-1-3](../docs/images/tascomi-adding-tables-screenshot-1-1-3.png)  
-**When** you expand `Advanced Properties` below `Job details`  
-**and** change the script name from `tascomi_api_ingestion.py` to  
-`tascomi_api_ingestion-DPP-426.py` with `DPP-426` substituted by the [***ticket number***](#the-scenario-in-detail)  
-**and** click `Save` over on the right  
-**Then** you may add the `Resource` parameter to this job.
+#### 1.2 Test each new API resource using the cloned job until done
 
-**`🖱` Step 1.1.4**  
+You may repeat all steps 1.2.1, 1.2.2 and 1.2.3, for each table on at a time.  
+
+Alternatively you may repeat step 1.2.1 each table, then run 1.2.2 just once to crawl all the table outputs, then proceed to 1.2.3 and query each tables in quick succession.  
+
+**`🖱` Step 1.2.1** configure and run your next new API resource table to be testing
 >**Given** the `Advanced Properties` is expanded below the `Job details` of the cloned job in `Glue Studio` as shown below  
-**and** the script name was changed to `tascomi_api_ingestion-DPP-426.py` with `DPP-426` substituted by the [***ticket number***](#the-scenario-in-detail)...  
-![screenshot-1-1-4](../docs/images/tascomi-adding-tables-screenshot-1-1-4.png)  
+![screenshot-1-2-1](../docs/images/tascomi-adding-tables-screenshot-1-2-1.png)  
 **When** you scroll down `Advanced Properties` to `Job parameters`  
-**and** add a new `Resource` entry
-**and** click `Save` over on the right  
-**Then** you may begin testing each new API resource using this now fully cloned job.
+**and** add or update the `Resource` entry with the name of your first new API resource table
+**and** click `Save` then `Run` over on the right  
+**Then** API data will be created in the raw zone
+**and** you may now crawl the data new API data to update the `Data catalogue`
 
-#### 1.2 Test each new API resource using the cloned job
-<!---TO DO--->  
->[**Insert a detailed steps with screen shots**]
-<!---TO DO--->  
+**`🖱` Step 1.2.2** crawl the data new API data to update the `Data catalogue`
+>**Given** as shown below  
+![screenshot-1-2-2](../docs/images/tascomi-adding-tables-screenshot-1-2-2.png)  
+**When** you ...  
+**and** click `xxx` over on the right  
+**Then** the  `Data catalogue` will be updated with the new table 
+**and** you may query the data using Amazon Athena
+
+**`🖱` Step 1.2.3** query the data using Amazon Athena
+>**Given** as shown below  
+![screenshot-1-2-3](../docs/images/tascomi-adding-tables-screenshot-1-2-3.png)  
+**When** you ...  
+**and** click `xxx` over on the right  
+**Then** the output will show...  
+**and** you may proceed to test your next new API resource table.
 
 ### 2. Testing the Tascomi Parse table increment job
 
@@ -225,16 +233,35 @@ Unlike the previous section, in this section and sections involving the subseque
 
 #### 2.1 Clone the Tascomi Parse table increment job
 <!---TO DO--->  
->[**Insert abridged steps without need for screen shots**]
+>[**Insert abridged earlier steps without need for screenshots similar to previous**]
 <!---TO DO--->  
 
 #### 2.2 Edit the cloned Tascomi Parse table increment job to introduce your code changes
 <!---:::note--->  
 >**`ⓘ` NOTE**  
->In the next development iteration, Section 2.2 will be only be required for testing changes to this script for handling exceptional situations.
+>In the next development iteration, Section 2.2 will be only be required for testing changes to this script for handling exceptional situations. Which means section 2.1.3 becomes redundant. 
 <!---:::--->  
+**`🖱` Step 2.2.1**  make a test script
+>**Given** the `Job details` of the cloned job is shown in `Glue Studio` as below...  
+![screenshot-2-2-1](../docs/images/tascomi-adding-tables-screenshot-2-2-1.png)  
+**When** you expand `Advanced Properties` below `Job details`  
+**and** change the script name from `tascomi_parse_tables_increments.py` to  
+`tascomi_parse_tables_increments-DPP-426.py` with `DPP-426` substituted by the [***ticket number***](#the-scenario-in-detail)  
+**and** click `Save` over on the right  
+**Then** you may now edit the test script that was just created.
+
+**`🖱` Step 2.2.2** edit test script
 
 #### 2.3 Test your new tables with the cloned Tascomi Parse table increment job
+
+**`🖱` Step 2.3.1**  
+>**Given** the `Advanced Properties` is expanded below the `Job details` of the cloned job in `Glue Studio` as shown below  
+**and** the script name was changed to `tascomi_parse_tables_increments-DPP-426.py` with `DPP-426` substituted by the [***ticket number***](#the-scenario-in-detail)...  
+![screenshot-2-3-1](../docs/images/tascomi-adding-tables-screenshot-2-3-1.png)  
+**When** you scroll down `Advanced Properties` to `Job parameters`  
+**and** add a new `Resources` entry  
+**and** click `Save` over on the right  
+**Then** you may begin testing each new API resource using this now fully cloned job.
 <!---TO DO--->  
 >[**Insert a detailed steps with screen shots**]
 <!---TO DO--->  
