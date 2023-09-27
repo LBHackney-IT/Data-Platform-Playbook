@@ -219,32 +219,32 @@ This section covers cloning a job in detailed steps. Sections beyond this that i
 >[**Insert a detailed steps with screen shots**]
 <!---TO DO--->  
 
-### 2. Testing the Tascomi Parse table increments job
+### 2. Testing the Tascomi Parse table increment job
 
 Unlike the previous section, in this section and sections involving the subsequent jobs, you will be able to test all your tables at once, so the testing process will speed from this point onward.
 
-#### 2.1 Clone the Tascomi Parse Tables Increments job
+#### 2.1 Clone the Tascomi Parse table increment job
 <!---TO DO--->  
 >[**Insert abridged steps without need for screen shots**]
 <!---TO DO--->  
 
-#### 2.2 Edit the Tascomi Parse Tables Increments job to reflect your code changes
+#### 2.2 Edit the cloned Tascomi Parse table increment job to introduce your code changes
 <!---:::note--->  
 >**`ⓘ` NOTE**  
 >In the next development iteration, Section 2.2 will be only be required for testing changes to this script for handling exceptional situations.
 <!---:::--->  
 
-#### 2.3 Test the Tascomi Parse Tables Increments job
+#### 2.3 Test your new tables with the cloned Tascomi Parse table increment job
 <!---TO DO--->  
 >[**Insert a detailed steps with screen shots**]
 <!---TO DO--->  
 
-### 3. Testing the Tascomi Recast table increments job
+### 3. Testing the Tascomi Recast table increment job
 <!---TO DO--->  
 >[**Insert abridged sections and steps without too much need for screen shots**]
 <!---TO DO--->  
 
-### 4. Testing the Tascomi Create_daily_snapshot job
+### 4. Testing the Tascomi Create daily snapshot job
 <!---TO DO--->  
 >[**Insert abridged sections and steps without too much need for screen shots**]
 <!---TO DO--->  
