@@ -251,9 +251,9 @@ If you are not confident but you have many new resources to add, then you might 
 
 **`🖱` Step 1.2.3** find the new table using Amazon Athena
 >**Given** you navigated to `Amazon Athena` via the ☷ Services menu  
->**~and** over on the top right, my **Workgroup** has `planning` selected  
->**~and** on left under **Data**, my **Data source** has `AwsDataCatalogue` selected  
->**~and** below that, my **Database** has `dataplatform-stg-tascomi-raw-zone` selected, as shown below...  
+>**~and** over on the top right, **Workgroup** has `planning` selected  
+>**~and** on left under **Data**, **Data source** has `AwsDataCatalogue` selected  
+>**~and** below that, **Database** has `dataplatform-stg-tascomi-raw-zone` selected, as shown below...  
 ![screenshot-1-2-3](../docs/images/tascomi-adding-tables-screenshot-1-2-3.png)  
 **When** you expand **Tables** and scroll down the list below,  
 **Then** you should find the table `api_response_<table-name>` where `<table-name>` is the name of the next API resource you are hoping to see  
