@@ -288,7 +288,7 @@ limit 10;
 **`🖱`** ***Did that work for you?***  
 >**But** when these steps do not *behave* as described, if you suspect the fault with the Tascomi API, or you encounter some other problem preventing you from proceeding, and you are unable to resolve these issues by yourself, please then seek help from the Data Platform team.
 
-All being well, you may either proceed to the next section.
+All being well, you may proceed to the next section.
 
 <!---:::note--->  
 >**`ⓘ` SIDE NOTE**  
