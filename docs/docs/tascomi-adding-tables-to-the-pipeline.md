@@ -103,7 +103,7 @@ Consider your service request factored into the following ticket template. Each 
 **When** you *create* and *check out* a new ***Git*** *branch*  
 **~and** the name of *your new branch* refers to the [***Jira ticket number***](#the-scenario-in-detail) generated above. For example `"DPP-426 Add Tascomi table resources"`, with `DPP-426` substituted by the [***ticket number***](#the-scenario-in-detail),  
 **Then** your *branch name* will assist the ***Data Platform team*** in tracking your changes  
-**~and** all changes as outlined below, should be committed to *your branch* as you go along ►►►
+**~and** you may proceed to commit all your changes, as outlined below, via *your own branch*.
 
 ### Checking the tables to be added against entries in the column-type dictionary
 
@@ -134,7 +134,7 @@ However, you will test your assumptions later in Pre-Production, so it is not ne
 >
 >But at the very least, the lessons learned and subsequent suggested improvements, taken from this API ingestion pipeline, a development that was done early on in the history of the Data Platform while we were still learning, should be made actionable for all future API integrations coupled to data ingestion pipelines.
 >
->Case in point, the following section concerning the implementation of [PyDeequ](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/transforming-data/guides-to-testing-in-the-platform/data-quality-testing-guide) should greatly be simplified, or consigned to an appendix, because code changes should be deemed unnecessary other than in exceptional situations, given that every API resource should already be accounted for within the code; API resources do not require further provisioning when introduced to the pipeline because the code required is already present even though not yet implemented.
+>Case in point, the following section concerning the implementation of [PyDeequ](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/transforming-data/guides-to-testing-in-the-platform/data-quality-testing-guide) should greatly be simplified, or consigned to an appendix, because code changes should be deemed unnecessary other than in exceptional situations, given that every API resource should already be accounted for within the code; API resources should not require further provisioning when introduced to the pipeline because the code required should already present even though not yet implemented via the job resource parameters contained in the [Terraform script](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-tascomi-data.tf).
 <!---:::--->  
 
 ### Add the basic data quality tests in of the relevant scripts
@@ -185,8 +185,8 @@ This section will guide you through running `AWS Glue` scripts manually in Pre-p
 All being well, use the following sections to test your code changes, step by step.
 
 <!---:::note--->  
->**`ⓘ` NOTE**  
->These sections might be greatly simplified later when it becomes unnecessary to run crawlers because the Data Catalog is updated directly by the ingestion jobs. Indeed, it might be simplified even further, for example, by combining **(2) the parse-job** with **(3) the recast-job**. It can be envisioned, running combined jobs with data-frames still held in memory; held situ instead of re-scanning the same S3 data over-and-over and writing to S3 more times than actually needed.
+>**`ⓘ` SIDE NOTE**  
+>These sections might be greatly simplified later when it becomes unnecessary to run crawlers because the Data Catalog is updated directly by the ingestion jobs. Indeed, it might be simplified even further, for example, by combining **(2) the parse-job** with **(3) the recast-job**. Thus, it can be envisioned, running combined jobs with data-frames still held in memory; held in situ instead of re-scanning the same S3 data over-and-over and writing to S3 more times than actually needed.
 <!---:::--->
 
 ### 1. Testing the Tascomi API Ingestion
@@ -216,13 +216,13 @@ This section covers cloning a job in detailed steps. Sections beyond this that a
 
 There are alternative ways to proceed. You should either:  
 
-**a)** Simply, repeat all **steps 1.2.1 to 1.2.3** for each and every new API resource.
+**a)** Simply, repeat all **steps 1.2.1 to 1.2.4** for each and every new API resource.
 
-**b)** Or more quickly, repeat **step 1.2.1** each and every new resource, then run **step 1.2.2** just once to crawl all the table outputs, then proceed to **step 1.2.3** to query each API resource table in quick succession.  
+**b)** Or more quickly, repeat **step 1.2.1** each and every new resource, then run **step 1.2.2** just once to crawl all the table outputs, then proceed with **step 1.2.3** and **step 1.2.4** to check each table's results in quick succession.  
 
 If you are not confident but you have many new resources to add, then you might proceed along option **(a)** for your first API resource, then proceed along option **(b)** to more quickly process the remainder of your API resources.
 
-**`🖱` Step 1.2.1** configure each new resource for API testing 
+**`🖱` Step 1.2.1** configure and run each new resource for API testing 
 >**Given** your cloned job is open in `Glue Studio`  
 **~and** you have expanded `Advanced Properties` at the bottom of the `Job details` tab  
 **~and** have scrolled down to `Job parameters` as shown below...  
@@ -237,7 +237,7 @@ If you are not confident but you have many new resources to add, then you might 
 **~and** you may proceed to crawl this new data for the target database `dataplatform-stg-tascomi-raw-zone` for the `AwsDataCatalogue`.
 
 **`🖱` Step 1.2.2** crawl the new API data for the Data Catalog
->**Given** you navigated to `AWS Glue` via the console menu  
+>**Given** you navigated to `AWS Glue` via via the ☷ Services menu  
 **~and** from the left menu expanded the `Data Catalog` sub-menu  
 **~and** have selected [`Crawlers`](https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#/v2/data-catalog/crawlers),  
 **When** in the search field under `View and manage all available crawlers.` where it says *Filter crawlers*, you type: ***tascomi-api*** and hit enter  
@@ -249,16 +249,53 @@ If you are not confident but you have many new resources to add, then you might 
 **~and** the `AwsDataCatalogue` should be updated with the new `api_response_<table-name>` table and data in the `dataplatform-stg-tascomi-raw-zone` database  
 **~and** you may proceed to query the data using `Amazon Athena`.
 
-**`🖱` Step 1.2.3** query the data using Amazon Athena
->**Given** as shown below  
+**`🖱` Step 1.2.3** find the new table using Amazon Athena
+>**Given** you navigated to `Amazon Athena` via the ☷ Services menu  
+>**~and** over on the top right, my **Workgroup** has `planning` selected  
+>**~and** on left under **Data**, my **Data source** has `AwsDataCatalogue` selected  
+>**~and** below that, my **Database** has `dataplatform-stg-tascomi-raw-zone` selected, as shown below...  
 ![screenshot-1-2-3](../docs/images/tascomi-adding-tables-screenshot-1-2-3.png)  
-**When** you ...  
-**~and** click `xxx` over on the right  
-**Then** the output will show...  
-**~and** you may proceed to test your next new API resource table.
+**When** you expand **Tables** and scroll down the list below,  
+**Then** you should find the table `api_response_<table-name>` where `<table-name>` is the name of the next API resource you are hoping to see  
+**~and** expanding that table you should see it's column names and types, as shown above  
+**~and** and you may proceed to test the data in that table by running a query.
 
+**`🖱` Step 1.2.4** query the new data using Amazon Athena
+>**Given** with `Amazon Athena` you found `api_response_<table-name>` where `<table-name>` is the name of the next API resource you want to query,  
+**When** you ***copy-and-paste*** the following **SQL code** into the query editor  
+**~and** replace `<table-name>` with the resource you want to query, as shown above,
+
+```sql
+WITH
+generation AS (
+    SELECT MAX(import_date) AS last_import_date
+        FROM "dataplatform-stg-tascomi-raw-zone"."api_response_<table-name>"
+)
+SELECT g.*, a.* 
+    FROM "dataplatform-stg-tascomi-raw-zone"."api_response_<table-name>" a
+INNER JOIN generation g
+ON a.import_date = g.last_import_date
+ORDER BY a.import_datetime DESC 
+limit 10;
+```
+
+>**~and** click `Run` underneath on the left,  
+**Then** the **Query result** should show `last_import_date` as ***today's date*** (when you did **step 2.1.1**)  
+**~and** you should see a column, headed by the **resource name**, containing ***a JSON data string*** which holds ***the API response***  
+**~and** you may proceed to [test your next new API resource table](#12-test-each-new-api-resource-using-the-cloned-job-until-done)  
+**~and** when all the new tables are done you may proceed to [test the increment jobs](#2-testing-the-tascomi-parse-table-increment-job).
+  
 **`🖱`** ***Did that work for you?***  
 >**But** when these steps do not *behave* as described, if you suspect the fault with the Tascomi API, or you encounter some other problem preventing you from proceeding, and you are unable to resolve these issues by yourself, please then seek help from the Data Platform team.
+
+All being well, you may either proceed to the next section.
+
+<!---:::note--->  
+>**`ⓘ` SIDE NOTE**  
+>Already envisioned, is a simpler, less complex approach for ingesting the API responses whereby the data is not required to land in separate tables, such that a single uniform `api_responses` table structure would suffice, with data captured into a single JSON column of the same name `api_response`, instead of changing the name each time. The resource name on the other hand, would be captured in a separate S3-partition column called `resource` for optimizing data-scanning performance by subsequent jobs. The parquet files themselves already hold the resource name in the `import_api_url_requested` column, however, it will help to capture that in a separate `api_resource` column.
+>
+>As envisioned, the testing of the output would be simplified by this approach since it would run the same Athena test query every time, so no further test queries would need to be written.
+<!---:::--->
 
 ### 2. Testing the Tascomi Parse table increment job
 
