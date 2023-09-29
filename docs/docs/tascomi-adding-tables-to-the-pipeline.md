@@ -19,19 +19,22 @@ This guide makes it unnecessary to add tables to the [column type dictionary](ht
 
 ## Who this playbook guide is intended for
 
-**Given** you are a data analysts or engineer with access to the Data Platform via the AWS `Management console`,  
-**and** your [AWS Start page](https://d-936715b9ec.awsapps.com/start#/) expands below the `AWS Account` box to show the following:
+>**Given** you are a data analyst or engineer with access granted to the ***Data Platform***  
+**~and** your [AWS Start page](https://d-936715b9ec.awsapps.com/start#/) expands below the `AWS Account` box to show:
 
 - `DataPlatformPlanningProd` listed under `DataPlatform-Production`
 - `AWSPowerUserAccess` listed under `DataPlatform-Pre-Production`
 
-This guide assumes a basic understanding of AWS Glue and Amazon Athena and how to use them. In additional have a  basic understanding of how Git and Github work, eg. how to create a new branch and subsequently merge it with the main trunk of development. In practice, analysts will in any case need to reach out to members, or other members, of the Data Platform team for code review and assistance in deploying the changes and rolling back faults in production.
+>**When** you enter via the AWS `Management console`  
+**Then** you should have access to `AWS Glue` and `Athena` via the **☷ Services** menu
+
+This guide assumes a basic understanding of `AWS Glue` and `Amazon Athena` and how to use them. In additional have a  basic understanding of how ***Git*** and ***Github*** work, eg. how to create a new branch and subsequently merge it with the main trunk of development. In practice, analysts will in any case need to reach out to members, or other members, of the Data Platform team for code review and assistance in deploying the changes and rolling back faults in production.
 
 ### The scenario
 
-A data user has identified Tascomi API table resources needed by Planning, which are not currently unavailable from the `dataplatform-prod-Tascomi-refined-zone` of the Production Data Platform, and therefore must be added to the Tascomi data pipeline.
+A data user has identified ***Tascomi API resources*** needed by **Planning**, which are not currently unavailable as tables in the `dataplatform-prod-Tascomi-refined-zone` of the ***Production Data Platform***, and therefore must be added to the ***Tascomi data pipeline***.
 
-This guide will take you through the process of adding those new table resources. However other scenarios might arise, which although based on a need for Tascomi data resources by data users, might actually require some alternative remedy as follows:
+This guide will take you through the process of adding new table resources. However other scenarios might arise, which although based on similar needs for Tascomi data resources by data users, might actually require alternative remedies, as follows:
 
 ### Alternative scenarios considered
 
@@ -75,11 +78,11 @@ Consider your service request factored into the following ticket template. Each 
 ### User acceptance behaviors
 
 > **Given** I can log into my Hackney Council Google account  
-> **and** I can access to the Data Platform via the AWS `Management console` link via [DataPlatformPlanningProd]
+> **~and** I can access to the Data Platform via the AWS `Management console` link via [DataPlatformPlanningProd]
  and I am currently using `Amazon Athena`  
 > **When** I select [dataplatform-stg-Tascomi-refined-zone] listed below `Database`  
-> **and** I explore the list of tables below that  
-> **and** expand the table names to see their columns listed  
+> **~and** I explore the list of tables below that  
+> **~and** expand the table names to see their columns listed  
 > **Then** I should find [Tascomi] tables and column names with their respective equivalent data types from [[Tascomi API resources](https://hackney-planning.tascomi.com/rest/v1/documentation.html?public_key=dd95bcd473f46a4325a4021d54500c7d#available-resources)].
 
 ### Delivery
@@ -94,18 +97,17 @@ Consider your service request factored into the following ticket template. Each 
 
 ### Creating and checking out a new Git branch for your code changes
 
-**Given** you have a `Github` account  
-**and** have been added to the [LBHackney-IT/Data-Platform](https://github.com/LBHackney-IT/Data-Platform) repository  
-**and** have set yourself up to use Git on your computer, preferably using a code editor eg. [Visual Code Studio](https://code.visualstudio.com/download).  
-**When** you create and check out a new-named Git branch...
+>**Given** you have a ***Github*** account  
+**~and** have been added to the [LBHackney-IT/Data-Platform](https://github.com/LBHackney-IT/Data-Platform) repository  
+**~and** have set yourself up to use ***Git*** on your computer, preferably using a code editor eg. [Visual Code Studio](https://code.visualstudio.com/download),  
+**When** you *create* and *check out* a new ***Git*** *branch*  
+**~and** the name of *your new branch* refers to the [***Jira ticket number***](#the-scenario-in-detail) generated above. For example `"DPP-426 Add Tascomi table resources"`, with `DPP-426` substituted by the [***ticket number***](#the-scenario-in-detail),  
+**Then** your *branch name* will assist the ***Data Platform team*** in tracking your changes  
+**~and** all changes as outlined below, should be committed to *your branch* as you go along ►►►
 
-The name of the branch should refer to the [***Jira ticket number***](#the-scenario-in-detail) generated above. For example `"DPP-426 Add Tascomi table resources"`, with `DPP-426` substituted by the [***ticket number***](#the-scenario-in-detail), which will assist the Data Platform team in tracking the changes you are about to make.
+### Checking the tables to be added against entries in the column-type dictionary
 
-**Then** all the changes outlined below should be committed to this branch as we go along.
-
-### Checking the tables to be added against entries in the [column-type dictionary](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi-column-type-dictionary.json)
-
-This JSON dictionary supports the 'recast increment' step that converts column strings, those not defined as text, into their correct data types. New table resources, before they can be fully added to the ingestion pipeline, must have all their columns checked against this dictionary.
+This [JSON dictionary](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi-column-type-dictionary.json) supports the **'recast increment'** steps that convert column strings, those not defined as text by the ***Tascomi API***, into their correct data types for the ***Data Platform***. New resource tables, before they can be fully added to the ingestion pipeline, must have all their columns checked against this dictionary.
 
 There will be an opportunity to [test this later](#testing-your-code-changes-in-pre-production) in Pre-Production
 
@@ -122,14 +124,20 @@ You will need to decide whether new tables should be ingested daily by appending
 
 Studying what these tables represent and examining their relationship to each other via embedded `_id` columns, may help you decide which list each new table should be in. You may also refer to the [Tascomi API schema diagram](../docs/images/tascomi-API-schema.png) for help.
 
-However, you will test your assumptions later in Pre-Production, so it is not necessary to decide correctly from the outset. So if you are really not sure about where some tables belong, just add them to the `tascomi_table_names` list for bow and we can move them to the to the `tascomi_static_tables` later if needed.
-
-### Add the basic data quality tests in the relevant scripts
+However, you will test your assumptions later in Pre-Production, so it is not necessary to decide correctly from the outset. So if you are really not sure about where some tables belong, just add them to the `tascomi_table_names` list for now and you will still be able to move them to the to the `tascomi_static_tables` later, as required.
 
 <!---:::note--->  
->**`ⓘ` NOTE**  
->This section will be simplified later when it is no longer necessary to make changes to the following scripts other than in exceptional situations.
+>**`ⓘ` SIDE NOTE**  
+>Our goal should always be to cut waste as much as possible, remove unnecessary complexity from our data pipelines and simplify overall processes. Doing that not only helps us reduce our platform running costs, it reduces the total cost of ownership (TCO) as provisioning procedures are also simplified.
+>
+>With that in mind and notwithstanding radical upgrades the vendor might make to it's ***Tascomi API*** in future, the objective set for the next iteration of this playbook guide is to ensure the only code changes actually required would be to the [Terraform script](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-tascomi-data.tf).
+>
+>But at the very least, the lessons learned and subsequent suggested improvements, taken from this API ingestion pipeline, a development that was done early on in the history of the Data Platform while we were still learning, should be made actionable for all future API integrations coupled to data ingestion pipelines.
+>
+>Case in point, the following section concerning the implementation of [PyDeequ](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/transforming-data/guides-to-testing-in-the-platform/data-quality-testing-guide) should greatly be simplified, or consigned to an appendix, because code changes should be deemed unnecessary other than in exceptional situations, given that every API resource should already be accounted for within the code; API resources do not require further provisioning when introduced to the pipeline because the code required is already present even though not yet implemented.
 <!---:::--->  
+
+### Add the basic data quality tests in of the relevant scripts
 
 [Quality testing with PyDeequ](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/transforming-data/guides-to-testing-in-the-platform/data-quality-testing-guide) is parameterized inside each relevant script.
 
@@ -157,14 +165,17 @@ Here in this example, for the job to complete successfully, in the table called 
 
 ## Testing your code changes in Pre-Production
 
-This section will guide you through manually running AWS Glue scripts in Pre-production for just the new tables you want to add to make sure each stage ETL process will work and we can check the results using Amazon Athena. Before you proceed make sure you are already logged into the AWS `Management console` via `AWSPowerUserAccess` listed under `DataPlatform-Pre-Production`.
+This section will guide you through running `AWS Glue` scripts manually in Pre-production for the new tables you want to add to ensure each stage ETL process actually works and we can check the results later using `Amazon Athena`.
 
-**Given** you have navigated to `AWS Glue` via the console menu,  
-**and** from the menu selected [`ETL jobs`](https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/jobs),  
+**`🖱`** ***When you are ready we can begin...***  
+>**Given** you logged into the AWS `Management console` via the `AWSPowerUserAccess` link  under `DataPlatform-Pre-Production`  
+**~and** have navigated to `AWS Glue` via the **☷ Services** menu  
+**~and** from the left menu have selected [`ETL jobs`](https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/jobs),  
 **When** in the search field under `Your Jobs` where it says *Filter jobs*, you type: ***stg tascomi***,  
-**Then** you should see listed under `Job name` below, all the current Glue ETL jobs belonging to the current Tascomi data ingestion pipeline.
+**Then** you should see listed below `Job name`, all the current Glue ETL jobs belonging to the current Tascomi data ingestion pipeline, as shown down in [**step 1.1.1**](#11-clone-the-api-ingestion-job)  
 
-If you do not see the following ingestion jobs listed, which should have been generated in Pre-Production by Terraform Continuous Integration, then please consult the Data Platform team:
+**`🖱`** ***Did that work for you?***  
+>**But** if in your own console, you do not see the following listed ingestion jobs, which should have been generated in **Pre-Production** by ***Terraform Continuous Integration***, then please consult the Data Platform team:
 
 1. `stg tascomi_api_ingestion`
 2. `stg tascomi_parse_tables_increments`
@@ -173,19 +184,24 @@ If you do not see the following ingestion jobs listed, which should have been ge
 
 All being well, use the following sections to test your code changes, step by step.
 
+<!---:::note--->  
+>**`ⓘ` NOTE**  
+>These sections might be greatly simplified later when it becomes unnecessary to run crawlers because the Data Catalog is updated directly by the ingestion jobs. Indeed, it might be simplified even further, for example, by combining **(2) the parse-job** with **(3) the recast-job**. It can be envisioned, running combined jobs with data-frames still held in memory; held situ instead of re-scanning the same S3 data over-and-over and writing to S3 more times than actually needed.
+<!---:::--->
+
 ### 1. Testing the Tascomi API Ingestion
 
 You must test your new table resources, one at a time, to ensure the Tascomi API does what we expect. In the sections further, on involving the subsequent jobs, you will be able to test all your tables at once, so the testing process will speed up as you go along.
 
 #### 1.1 Clone the API ingestion job
 
-This section covers cloning a job in detailed steps. Sections beyond this that involve cloning other jobs will not repeat this level of detail since the process is practically the same and you probably will remember how you did it the first time around, although you can always refer back here if you need to.
+This section covers cloning a job in detailed steps. Sections beyond this that also involve cloning other jobs will not repeat this level of detail since the process is practically the same and you probably will remember how you did it the first time around. You can always refer back here if you need to.
 
-**`🖱` Step 1.1.1** finding the right script to clone
+**`🖱` Step 1.1.1** find the script to clone
 >**Given** the ingestion jobs are shown as below...
 ![screenshot-1-1-1](../docs/images/tascomi-adding-tables-screenshot-1-1-1.png)  
 **When** you check `☑` against `stg tascomi_api_ingestion`  
-**and** select `Clone Job` from the `Actions` menu  
+**~and** select `Clone Job` from the `Actions` menu  
 **Then** you should immediately be taken to `Glue Studio`.
 
 **`🖱` Step 1.1.2** in Glue Studio
@@ -193,39 +209,56 @@ This section covers cloning a job in detailed steps. Sections beyond this that i
 ![screenshot-1-1-2](../docs/images/tascomi-adding-tables-screenshot-1-1-2.png)  
 **When** you change `🖊` the job name from `stg tascomi_api_ingestion-copy` to  
 `stg tascomi_api_ingestion-TEST-DPP-426` with `DPP-426` substituted by the [***ticket number***](#the-scenario-in-detail)  
-**and** click `Save` over on the right  
+**~and** click `Save` over on the right  
 **Then** you may proceed to test your API resource tables.
 
 #### 1.2 Test each new API resource using the cloned job until done
 
-You may repeat all steps 1.2.1, 1.2.2 and 1.2.3, for each table on at a time.  
+There are alternative ways to proceed. You should either:  
 
-Alternatively you may repeat step 1.2.1 each table, then run 1.2.2 just once to crawl all the table outputs, then proceed to 1.2.3 and query each tables in quick succession.  
+**a)** Simply, repeat all **steps 1.2.1 to 1.2.3** for each and every new API resource.
 
-**`🖱` Step 1.2.1** configure and run your next new API resource table to be testing
->**Given** the `Advanced Properties` is expanded below the `Job details` of the cloned job in `Glue Studio` as shown below  
+**b)** Or more quickly, repeat **step 1.2.1** each and every new resource, then run **step 1.2.2** just once to crawl all the table outputs, then proceed to **step 1.2.3** to query each API resource table in quick succession.  
+
+If you are not confident but you have many new resources to add, then you might proceed along option **(a)** for your first API resource, then proceed along option **(b)** to more quickly process the remainder of your API resources.
+
+**`🖱` Step 1.2.1** configure each new resource for API testing 
+>**Given** your cloned job is open in `Glue Studio`  
+**~and** you have expanded `Advanced Properties` at the bottom of the `Job details` tab  
+**~and** have scrolled down to `Job parameters` as shown below...  
 ![screenshot-1-2-1](../docs/images/tascomi-adding-tables-screenshot-1-2-1.png)  
-**When** you scroll down `Advanced Properties` to `Job parameters`  
-**and** add or update the `Resource` entry with the name of your first new API resource table
-**and** click `Save` then `Run` over on the right  
-**Then** API data will be created in the raw zone
-**and** you may now crawl the data new API data to update the `Data catalogue`
+**When** you add or update the `--resource` ***Key*** with the corresponding ***Value*** set to name of your next API resource  
+**~and** click `Save` then `Run` over on the right  
+**Then** you should immediately see this message telling you your job has started...  
+![screenshot-1-2-1-then](../docs/images/tascomi-adding-tables-screenshot-1-2-1-then.png)  
+**~and** clicking on ***Run details*** should take you to the `Runs` tab  
+**~and** you should see the ***Run status*** of your job which after a few minutes should say ***✓ Succeeded***  
+**~and** your new API data should be added in the S3 bucket `dataplatform-stg-raw-zone` in the path `planning/tascomi/api-responses/` (as also shown above)  
+**~and** you may proceed to crawl this new data for the target database `dataplatform-stg-tascomi-raw-zone` for the `AwsDataCatalogue`.
 
-**`🖱` Step 1.2.2** crawl the data new API data to update the `Data catalogue`
->**Given** as shown below  
-![screenshot-1-2-2](../docs/images/tascomi-adding-tables-screenshot-1-2-2.png)  
-**When** you ...  
-**and** click `xxx` over on the right  
-**Then** the  `Data catalogue` will be updated with the new table 
-**and** you may query the data using Amazon Athena
+**`🖱` Step 1.2.2** crawl the new API data for the Data Catalog
+>**Given** you navigated to `AWS Glue` via the console menu  
+**~and** from the left menu expanded the `Data Catalog` sub-menu  
+**~and** have selected [`Crawlers`](https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#/v2/data-catalog/crawlers),  
+**When** in the search field under `View and manage all available crawlers.` where it says *Filter crawlers*, you type: ***tascomi-api*** and hit enter  
+**~and** you check `☑` against `tascomi_api_response-crawler`  
+**~and** click `Run` over on the right,  
+**Then** you should immediately see the ***✓ Crawler successfully starting*** message, as shown below...
+![screenshot-1-2-2-when](../docs/images/tascomi-adding-tables-screenshot-1-2-2-when.png)  
+**~and** after a few minutes, you should observe the ***State*** of the crawler `tascomi_api_response-crawler` change from **⟳Running** to **✓Succeeded**  
+**~and** the `AwsDataCatalogue` should be updated with the new `api_response_<table-name>` table and data in the `dataplatform-stg-tascomi-raw-zone` database  
+**~and** you may proceed to query the data using `Amazon Athena`.
 
 **`🖱` Step 1.2.3** query the data using Amazon Athena
 >**Given** as shown below  
 ![screenshot-1-2-3](../docs/images/tascomi-adding-tables-screenshot-1-2-3.png)  
 **When** you ...  
-**and** click `xxx` over on the right  
+**~and** click `xxx` over on the right  
 **Then** the output will show...  
-**and** you may proceed to test your next new API resource table.
+**~and** you may proceed to test your next new API resource table.
+
+**`🖱`** ***Did that work for you?***  
+>**But** when these steps do not *behave* as described, if you suspect the fault with the Tascomi API, or you encounter some other problem preventing you from proceeding, and you are unable to resolve these issues by yourself, please then seek help from the Data Platform team.
 
 ### 2. Testing the Tascomi Parse table increment job
 
@@ -245,9 +278,9 @@ Unlike the previous section, in this section and sections involving the subseque
 >**Given** the `Job details` of the cloned job is shown in `Glue Studio` as below...  
 ![screenshot-2-2-1](../docs/images/tascomi-adding-tables-screenshot-2-2-1.png)  
 **When** you expand `Advanced Properties` below `Job details`  
-**and** change the script name from `tascomi_parse_tables_increments.py` to  
+**~and** change the script name from `tascomi_parse_tables_increments.py` to  
 `tascomi_parse_tables_increments-DPP-426.py` with `DPP-426` substituted by the [***ticket number***](#the-scenario-in-detail)  
-**and** click `Save` over on the right  
+**~and** click `Save` over on the right  
 **Then** you may now edit the test script that was just created.
 
 **`🖱` Step 2.2.2** edit test script
@@ -256,11 +289,11 @@ Unlike the previous section, in this section and sections involving the subseque
 
 **`🖱` Step 2.3.1**  
 >**Given** the `Advanced Properties` is expanded below the `Job details` of the cloned job in `Glue Studio` as shown below  
-**and** the script name was changed to `tascomi_parse_tables_increments-DPP-426.py` with `DPP-426` substituted by the [***ticket number***](#the-scenario-in-detail)...  
+**~and** the script name was changed to `tascomi_parse_tables_increments-DPP-426.py` with `DPP-426` substituted by the [***ticket number***](#the-scenario-in-detail)...  
 ![screenshot-2-3-1](../docs/images/tascomi-adding-tables-screenshot-2-3-1.png)  
 **When** you scroll down `Advanced Properties` to `Job parameters`  
-**and** add a new `Resources` entry  
-**and** click `Save` over on the right  
+**~and** add a new `Resources` entry  
+**~and** click `Save` over on the right  
 **Then** you may begin testing each new API resource using this now fully cloned job.
 <!---TO DO--->  
 >[**Insert a detailed steps with screen shots**]
