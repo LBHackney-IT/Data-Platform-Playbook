@@ -6,7 +6,7 @@ tags: [playbook]
 ---
 
 <!---
-This markdown has Docusaurus :::features::: that will need uncommenting and enabling later...
+This markdown has Docusaurus :::features::: that will need uncommenting and enabling later. Alternatively, **`ⓘ` SIDE NOTE** features may be linked-and-moved out of the main document altogether into separate markdown files maintained in a ../side-notes sub folder.
 --->
 
 # How to add Tascomi tables to the Data Platform
@@ -31,7 +31,7 @@ This guide is written in the BDD (Behavior Driven Design) narrative style of ***
 >
 >So regardless of who was originally responsible for ***the design***, applying BDD empowers us to take ownership so that it becomes ***our design***.
 >
->Applicable at every level of our design, BDD is intended to help us identify critical improvements to our product and lead us quickly toward the next product iteration which will help us draw down value more quickly.
+>Applicable at every level, from design to development to production to deployment, BDD testing is meant to help us identify the critical refinements needed to improve our product and cut waste, thereby leading us quickly toward the next product iteration and help us draw down value more quickly.
 <!---:::--->  
 
 Here, the immediate user is **[the analyst]** being asked to operate an essential and therefore well-defined production-line task for the **Data Platform**, with the BBD narrative expressed in the [2nd person grammar](https://www.grammarly.com/blog/first-second-and-third-person).
