@@ -53,3 +53,21 @@ For our helper functions, we have these seasonality settings automatically diale
 - Quarters - 4
 
 These are very common values for seasonality cycles, which will require at least 2 years of Data
+
+### Pre-requisites
+
+- Data aggregated into a Date + Metric format.
+	- For example, the “Count” of records each week, means you need to make a Dataframe of “Count of Records” by week
+- Pandas Dataframe Format
+
+### Glue Job Prequisites
+
+At the moment, you need to load all the dependancies of the helper scripts into AWS Glue.
+
+You can put this into the "Job Parameters" field in AWS Glue to do that
+
+```
+--additional-python-modules | statsmodels==0.14.0, prophet
+```
+
+This can be found in Job Details -> Scroll to the bottom -> Advanced Properties -> Job Parameters
