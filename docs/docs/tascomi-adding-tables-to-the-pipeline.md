@@ -523,7 +523,8 @@ limit 10;
 ### 3. Testing the Tascomi Recast table increment job
 <!---TO DO--->  
 >[**Insert abridged sections and steps without too much need for screen shots**]
-<!---TO DO--->  
+<!---TO DO--->
+#### 3.etc
 
 ---
 
@@ -531,6 +532,7 @@ limit 10;
 <!---TO DO--->  
 >[**Insert abridged sections and steps without too much need for screen shots**]
 <!---TO DO--->  
+#### 4.etc
 
 ---
 
