@@ -1,6 +1,6 @@
 ---
 title: Using Watermarks to Record AWS GLue Job States Between Runs
-description: 
+description: "Empty String"
 layout: playbook_js
 tags: [playbook]
 ---
