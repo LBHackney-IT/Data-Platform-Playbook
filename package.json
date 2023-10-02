@@ -13,12 +13,12 @@
     "format": "yarn prettier --write '**/*.{js,md}'"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.0.0-beta.20",
-    "@docusaurus/preset-classic": "^2.0.0-beta.20",
+    "@docusaurus/core": "^2.4.1",
+    "@docusaurus/preset-classic": "^2.4.1",
     "@mdx-js/react": "^1.6.21",
     "bootstrap": "^4.6.0",
     "clsx": "^1.1.1",
-    "docusaurus-plugin-sass": "^0.1.11",
+    "docusaurus-plugin-sass": "^0.2.3",
     "prettier": "^2.4.1",
     "react": "^16.8.4",
     "react-bootstrap": "^1.5.2",
@@ -38,5 +38,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "resolutions": {
+    "trim": "^0.0.3",
+    "got": "^11.8.5"
   }
 }

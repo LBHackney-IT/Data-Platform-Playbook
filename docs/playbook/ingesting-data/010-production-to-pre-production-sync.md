@@ -12,7 +12,8 @@ This section explains the process used to copy data from the data platform produ
 ### Production to pre-production sync:
 ![S3-replication](../../docs/images/s3-replication.png)
 ### Clean up of data older than 90 days:
-![Production to pre production sync architecture](../../docs/images/prod-to-pre-prod-sync-architecture.png)
+
+![Pre production data cleanup architecture](../../docs/images/pre-prod-data-clean-up-architecture.png)
 
 ## Process
 
@@ -27,7 +28,7 @@ Important points:
 * This sync process does not update the glue catalogs in pre-production it only syncs across the raw data files. To make the data visible through Athena the relevant Glue crawler will need to be triggered manually in pre-production
 
 ### Clean up of data older than 90 days:
-1. When the CI/CD pipeline runs in Github a custom Docker image is built and pushed to the Elastic Container Registry in the Data Platform Production environment.
-2. One Elastic Container Service for each zone is then created by Terraform in the form of Fargate tasks. These three tasks are configured by Terraform to run on a schedule. At the time of writing this schedule is once a week.
+1. When the CI/CD pipeline runs in Github a custom Docker image is built and pushed to the Elastic Container Registry in the Data Platform Pre-Production environment.
+2. One Elastic Container Service for Raw, Refined and Trusted zone is then created by Terraform in the form of Fargate tasks. These three tasks are configured by Terraform to run on a schedule. At the time of writing this schedule is once a week.
 4. The script then deletes any data in the pre-production bucket that is older than the configured period
 5. At the time of writing this configurable period is 90 days
