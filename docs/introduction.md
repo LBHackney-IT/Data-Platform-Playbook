@@ -84,7 +84,7 @@ These transformations can be scripted in Spark SQL or PySpark (dialects of SQL a
 
 ### 3. **Analysing data**
 
-There are various ways to analyse data data from the platform:
+There are various ways to analyse data from the platform:
 
 - Querying your data using SQL in [AWS Athena](https://aws.amazon.com/athena)
 - Connecting your data to a Business Intelligence tool (e.g. Qlik, Google Data Studio, Tableau) using [AWS Redshift](https://aws.amazon.com/redshift/)
