@@ -131,7 +131,7 @@ But if the main `Application` table were to change then the following procedural
 ### Create and check out a new Git branch for your code changes
 
 >**Given** you have a ***Github*** account  
-**~and** have been added to the [LBHackney-IT/Data-Platform](https://github.com/LBHackney-IT/Data-Platform) repository  
+**~and** were added to the [LBHackney-IT/Data-Platform](https://github.com/LBHackney-IT/Data-Platform) repository  
 **~and** have set yourself up to use ***Git*** on your computer, preferably using a code editor eg. [Visual Code Studio](https://code.visualstudio.com/download),  
 **~and** have cloned the [LBHackney-IT/Data-Platform](https://github.com/LBHackney-IT/Data-Platform) repository on your computer  
 **When** you *create* and *check out* a new ***Git*** *branch*  
@@ -429,8 +429,11 @@ To test our code changes we must add them to the current `tascomi_parse_tables_i
 
 **`🖱` Step 2.2.1**  make a test script
 >**Given** the `Job details` of the cloned job is shown in `Glue Studio` as below...  
-pling[screenshot-2-2-1](../docs/images/tascomi-adding-tables-screenshot-2-2-1.png)  
-**When** you expand `Advanced Properties` below `Job details`  
+
+[screenshot-2-2-1]
+<!---![screenshot-2-2-1](../docs/images/tascomi-adding-tables-screenshot-2-2-1.png)  --->
+
+>**When** you expand `Advanced Properties` below `Job details`  
 **~and** change the script name from `tascomi_parse_tables_increments.py` to  
 `tascomi_parse_tables_increments-DPP-426.py` with `DPP-426` substituted by the [***ticket number***](#the-grand-scenario)  
 **~and** click `Save` over on the right  
@@ -447,9 +450,12 @@ pling[screenshot-2-2-1](../docs/images/tascomi-adding-tables-screenshot-2-2-1.pn
 **~and** you return to the screen where you have `Glue Studio` open  
 **~and** you click on the `Script` tab at the top to reveal the original code  
 **~and** you select the original code, delete it, then paste in your new code from your computer's clipboard, as shown below...  
-pling[screenshot-2-2-2-when](../docs/images/tascomi-adding-tables-screenshot-2-2-2-when.png)  
-**~and** click `Save` over on the right  
-**Then** the test script will be be updated in the path `s3://..../tascomi_parse_tables_increments-DPP-426.py`with `DPP-426` substituted by the [***ticket number***](#the-grand-scenario)  
+
+[screenshot-2-2-2-when]
+<!---![screenshot-2-2-2-when](../docs/images/tascomi-adding-tables-screenshot-2-2-2-when.png)  --->
+
+>**~and** click `Save` over on the right  
+>**Then** the test script will be be updated in the path `s3://..../tascomi_parse_tables_increments-DPP-426.py`with `DPP-426` substituted by the [***ticket number***](#the-grand-scenario)  
 **~and** you may proceed to test your new tables with the cloned Tascomi Parse table increment test job.
 
 #### 2.3 Test your new tables with the cloned Tascomi Parse table increment job
@@ -457,8 +463,11 @@ pling[screenshot-2-2-2-when](../docs/images/tascomi-adding-tables-screenshot-2-2
 **`🖱` Step 2.3.1** produce all the new parsed data tables all at once
 >**Given** the `Advanced Properties` is expanded below the `Job details` of the cloned job in `Glue Studio` as shown below  
 **~and** the script name was changed to `tascomi_parse_tables_increments-DPP-426.py` with `DPP-426` substituted by the [***ticket number***](#the-grand-scenario)...  
-pling[screenshot-2-3-1](../docs/images/tascomi-adding-tables-screenshot-2-3-1.png)  
-**When** you add or update the `--resource` ***Key*** with the corresponding ***Value*** set to names of your API resources, each  separated by a comma  
+
+[screenshot-2-3-1]
+<!---![screenshot-2-3-1](../docs/images/tascomi-adding-tables-screenshot-2-3-1.png)  --->
+
+>**When** you add or update the `--resource` ***Key*** with the corresponding ***Value*** set to names of your API resources, each  separated by a comma  
 **~and** click `Save` then `Run` over on the right  
 **Then** you should immediately see a message banner telling you your job has started  
 **~and** clicking on ***Run details***  on the message banner should take you to the `Runs` tab  
