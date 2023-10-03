@@ -24,20 +24,9 @@ The task does the following:
 - Starts off the process to create a database snapshot from this database
 
 #### 3. Getting the data from the RDS snapshot into the landing zone as parquet files
+A Cloudwatch Event Rule waits for the Snapshot to be created (RDS-EVENT-0042). This then invokes the lambda (`*-LAMBDA-1-NAME-GOES-HERE`) which finds the latest snapshot and starts an RDS export task that writes the snapshot to S3 (`s3://*-dp-rds-export-storage`) in parquet format.
 
-An event is published to an SNS topic (`*-rds-snapshot-to-s3`) on the creation of the snapshot.
-An SQS queue (`*-rds-snapshot-to-s3`) subscribes to this topic and a lambda function (`-*rds-snapshot-to-s3`) reads from that SQS queue.
-
-The lambda function first finds the latest snapshot.
-If it is still creating then it puts a message back into the queue with a 15 minute delay.
-If it has finished creating, it starts an RDS export task that writes the snapshot to S3 (`s3://*-dp-rds-export-storage`) in parquet format.
-
-It then puts a message into another queue (`*-s3-to-s3-copier`) with a 15 minute delay.
-
-Another lambda function (`*-s3-to-s3-copier`) reads from the copier queue.
-This lambda first checks if the export task has finished.
-If not it puts another message back into the queue with a 15 minute delay.
-If it has finished, it will copy all the files into the landing zone, with the standard date partitions added to the objects keys and any extra partitions added by the RDS export task are removed.
+A Cloudwatch Event Rule waits for the Snapshot export to complete (RDS-EVENT-0161). When this event occurs it invokes the lambda  (`*-LAMBDA-NAME-GOES-HERE`) that will copy all the files into the landing zone, with the standard date partitions added to the objects keys and any extra partitions added by the RDS export task are removed.
 
 The lambda function will then start the glue parking liberator workflow (`*parking-liberator-data-workflow`), which copies the data into the raw zone and runs a number of transformation jobs scheduled into the workflow.
 
