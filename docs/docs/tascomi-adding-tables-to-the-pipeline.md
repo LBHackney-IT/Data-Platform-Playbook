@@ -135,7 +135,7 @@ But if the main `Application` table were to change then the following procedural
 **~and** have set yourself up to use ***Git*** on your computer, preferably using a code editor eg. [Visual Code Studio](https://code.visualstudio.com/download),  
 **~and** have cloned the [LBHackney-IT/Data-Platform](https://github.com/LBHackney-IT/Data-Platform) repository on your computer  
 **When** you *create* and *check out* a new ***Git*** *branch*  
-**~and** the name of *your new branch* refers to the [***Jira ticket number***](#the-grand-scenario) generated above. For example "DPP-426" substituting your [***ticket number***](#the-grand-scenario),  
+**~and** the name of *your new branch* refers to the [***Jira ticket number***](#the-grand-scenario) generated above. For example "DPP-426" substituting your own [***ticket number***](#the-grand-scenario),  
 **Then** your *branch name* will assist the ***Data Platform team*** in tracking your changes  
 **~and** you may proceed to commit all your changes, as outlined below, via *your own branch*.
 
@@ -160,7 +160,7 @@ You will need to decide whether new tables should be ingested *daily* by appendi
 
 >**When** you have your code editor open on your computer  
 **~and** have your cloned `Data-Platform` ***Git*** repository open on your computer  
-**~and** have checked out your ***Git*** development branch, eg. "DPP-426" substituting your [***ticket number***](#the-grand-scenario) generated above  
+**~and** have checked out your ***Git*** development branch, eg. "DPP-426" substituting your own [***ticket number***](#the-grand-scenario) generated above  
 **~and** have the [`24-aws-glue-tascomi-data.tf`](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-tascomi-data.tf) ***terraform script*** open on your computer screen,  
 >**When** you make the following [required changes to your terraform script](#required-terraform-script-changes)  
 **~and** *save, commit and synch* your code with the remote `Data-Platform` ***GitHub*** repository
@@ -191,7 +191,7 @@ However, you will be able to test your assumptions later in **Pre-Production** w
 
 >**When** you have your code editor open on your computer  
 **~and** have your cloned `Data-Platform` ***Git*** repository open on your computer  
-**~and** have checked out your ***Git*** development branch, eg. "DPP-426" substituting your [***ticket number***](#the-grand-scenario)  
+**~and** have checked out your ***Git*** development branch, eg. "DPP-426" substituting your own [***ticket number***](#the-grand-scenario)  
 **~and** have the `Data-Platform/scripts/jobs/planning/<tascomi-code>.py` ***python code*** open on your computer screen,  
 >**When** you make the [required changes to your code](#required-code-changes)  
 **~and** *save, commit and synch* your code with the remote `Data-Platform` ***GitHub*** repository
@@ -289,7 +289,7 @@ This section covers cloning a job in detailed steps. Sections beyond this that a
 >**Given** your cloned API ingestion job is now shown in `Glue Studio` as below...  
 ![screenshot-1-1-2](../docs/images/tascomi-adding-tables-screenshot-1-1-2.png)  
 **When** you change `🖊` the job name from `stg tascomi_api_ingestion-copy` to  
-`stg tascomi_api_ingestion-TEST-DPP-426` (replacing `DPP-426` with your [***ticket number***](#the-grand-scenario))  
+`stg tascomi_api_ingestion-TEST-DPP-426` (replacing `DPP-426` with your own [***ticket number***](#the-grand-scenario))  
 **~and** click `Save` over on the right  
 **Then** you may proceed to test your API resource tables.
 
@@ -379,7 +379,7 @@ limit 10;
 **`🖱`** ***Did that work for you?***  
 >**But** when these steps do not *behave* as described, if you suspect the fault with the Tascomi API, or you encounter some other problem preventing you from proceeding, and you are unable to resolve these issues by yourself, please then seek help from the Data Platform team.
 
-All being well, you may proceed to the next section.
+All being well, you may proceed to the next section 2.
 
 <!---:::note--->
 >**`ⓘ` SIDE NOTE**  
@@ -410,7 +410,7 @@ Also, going forward, there will be less screenshot images because you as you inc
 **`🖱` Step 2.1.2** in Glue Studio
 >**Given** your cloned job `stg tascomi_parse_tables_increments-copy` is shown in `Glue Studio` (like you saw in [**step 1.1.2**](#11-clone-the-api-ingestion-job)),  
 **When** you change `🖊` the job name from `stg tascomi_parse_tables_increments-copy` to  
-`stg tascomi_parse_tables_increments_planning-TEST-DPP-426.py` (replacing `DPP-426` with your [***ticket number***](#the-grand-scenario))  
+`stg tascomi_parse_tables_increments_planning-TEST-DPP-426.py` (replacing `DPP-426` with your own [***ticket number***](#the-grand-scenario))  
 **~and** click `Save` over on the right  
 **Then** you may proceed to edit your cloned job.
 
@@ -431,11 +431,11 @@ To test our code changes we must add them to the current `tascomi_parse_tables_i
 >**Given** the `Job details` tab of the cloned job is shown in `Glue Studio`  
 >**When** you expand `Advanced Properties` below `Job details`  
 **~and** change the script name from `tascomi_parse_tables_increments_planning.py` to  
-`tascomi_parse_tables_increments-DPP-426.py` (replacing `DPP-426` with your [***ticket number***](#the-grand-scenario))  
+`tascomi_parse_tables_increments-DPP-426.py` (replacing `DPP-426` with your own [***ticket number***](#the-grand-scenario))  
 **~and** confirm the `Script Path` set to `s3://dataplatform-stg-glue-scripts/scripts/planning/`
 **~and** click `Save` over on the right, as shown below...  
 ![screenshot-2-2-1-when](../docs/images/tascomi-adding-tables-screenshot-2-2-1-when.png)  
-**Then** your test script `tascomi_parse_tables_increments-DPP-426.py` (replacing `DPP-426` with your [***ticket number***](#the-grand-scenario)) will automatically be created in the specified `Script Path`, as a copy of the original `tascomi_parse_tables_increments.py`  
+**Then** your test script `tascomi_parse_tables_increments-DPP-426.py` (replacing `DPP-426` with your own [***ticket number***](#the-grand-scenario)) will automatically be created in the specified `Script Path`, as a copy of the original `tascomi_parse_tables_increments.py`  
 **~and** you may now proceed to edit your test script.
 
 <!---:::note--->
@@ -444,9 +444,9 @@ Also shown in the **Step 2.2.1** screenshot: You can click on `View` next to the
 <!---:::--->
 
 **`🖱` Step 2.2.2** edit your test script
->**Given** in `Glue Studio` you changed the script name to `tascomi_parse_tables_increments-DPP-426.py` (replacing `DPP-426` with your [***ticket number***](#the-grand-scenario)) and clicked `Save`with `Glue Studio` still open on your screen as shown in **step 2.2.1**  
+>**Given** in `Glue Studio` you changed the script name to `tascomi_parse_tables_increments-DPP-426.py` (replacing `DPP-426` with your own [***ticket number***](#the-grand-scenario)) and clicked `Save`with `Glue Studio` still open on your screen as shown in **step 2.2.1**  
 **~and** meanwhile on another screen, you have your code editor open  
-**~and** have the `Data-Platform` Git repository open on your development branch eg. "DPP-426" (replacing `DPP-426` with your [***ticket number***](#the-grand-scenario))  
+**~and** have the `Data-Platform` Git repository open on your development branch eg. "DPP-426" (replacing `DPP-426` with your own [***ticket number***](#the-grand-scenario))  
 **~and** [your updated Python code](#required-code-changes) `Data-Platform/scripts/jobs/planning/tascomi_parse_tables_increments.py` is open as shown below...  
 ![screenshot-2-2-2-given](../docs/images/tascomi-adding-tables-screenshot-2-2-2-given.png)  
 **When** you select your entire Python code and copy it into your computer's clipboard  
@@ -455,14 +455,14 @@ Also shown in the **Step 2.2.1** screenshot: You can click on `View` next to the
 **~and** you select the original code, delete it, then paste in your new code from your computer's clipboard,  
 >**~and** click `Save` over on the right, as shown below...  
 ![screenshot-2-2-2-when](../docs/images/tascomi-adding-tables-screenshot-2-2-2-when.png)  
->**Then** then that will become your updated test script in the path `s3://dataplatform-stg-glue-scripts/scripts/planning/tascomi_parse_tables_increments-DPP-426.py` (replacing `DPP-426` with your [***ticket number***](#the-grand-scenario))  
+>**Then** then that will become your updated test script in the path `s3://dataplatform-stg-glue-scripts/scripts/planning/tascomi_parse_tables_increments-DPP-426.py` (replacing `DPP-426` with your own [***ticket number***](#the-grand-scenario))  
 **~and** you may proceed to test your new tables with the cloned Tascomi Parse table increment test job.
 
 #### 2.3 Test your new tables with the cloned Tascomi Parse table increment job
 
 **`🖱` Step 2.3.1** produce all your new parsed data tables all at once
 >**Given** the `Advanced Properties` is expanded below the `Job details` of the cloned job in `Glue Studio`  
-**~and** the script name was previously changed to `tascomi_parse_tables_increments-DPP-426.py` (replacing `DPP-426` with your [***ticket number***](#the-grand-scenario))  
+**~and** the script name was previously changed to `tascomi_parse_tables_increments-DPP-426.py` (replacing `DPP-426` with your own [***ticket number***](#the-grand-scenario))  
 **~and** you have scrolled down to `Job parameters` as shown below...  
 ![screenshot-2-3-1](../docs/images/tascomi-adding-tables-screenshot-2-3-1.png)  
 >**When** you add or update the ***Key*** `--table_list` with the corresponding ***Value*** set to all of your own API resource names, separated by commas, like the example below...  
@@ -532,6 +532,16 @@ limit 10;
 >
 >In practice it's only worth checking a single example in **Step 2.3.4**. Then, so long as all the new tables and columns appeared at ***Step 2.3.3*** then you really have nothing to worry about.
 <!---:::--->
+
+**`🖱`** ***Did that work for you?***  
+>**But** when these steps do not *behave* as described, and you are unable to resolve these issues by yourself, please then seek help from the Data Platform team.
+
+All being well, you may proceed to section 3.
+
+>**`ⓘ` SIDE NOTE**  
+>**Cutting out production-line waste...**  
+>  
+>Envisioned for a later iteration, a simpler, less complex approach would eliminate the need for **Step 2.2** in almost every scenario because all of the [PyDeequ](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/transforming-data/guides-to-testing-in-the-platform/data-quality-testing-guide) configuration would be written already for the entirety of the Tascomi API resources.
 
 ---
 
