@@ -135,7 +135,7 @@ But if the main `Application` table were to change then the following procedural
 **~and** have set yourself up to use ***Git*** on your computer, preferably using a code editor eg. [Visual Code Studio](https://code.visualstudio.com/download),  
 **~and** have cloned the [LBHackney-IT/Data-Platform](https://github.com/LBHackney-IT/Data-Platform) repository on your computer  
 **When** you *create* and *check out* a new ***Git*** *branch*  
-**~and** the name of *your new branch* refers to the [***Jira ticket number***](#the-grand-scenario) generated above. For example "DPP-426" substituting the [***ticket number***](#the-grand-scenario),  
+**~and** the name of *your new branch* refers to the [***Jira ticket number***](#the-grand-scenario) generated above. For example "DPP-426" substituting your [***ticket number***](#the-grand-scenario),  
 **Then** your *branch name* will assist the ***Data Platform team*** in tracking your changes  
 **~and** you may proceed to commit all your changes, as outlined below, via *your own branch*.
 
@@ -160,7 +160,7 @@ You will need to decide whether new tables should be ingested *daily* by appendi
 
 >**When** you have your code editor open on your computer  
 **~and** have your cloned `Data-Platform` ***Git*** repository open on your computer  
-**~and** have checked out your ***Git*** development branch, eg. "DPP-426" substituting the [***ticket number***](#the-grand-scenario) generated above  
+**~and** have checked out your ***Git*** development branch, eg. "DPP-426" substituting your [***ticket number***](#the-grand-scenario) generated above  
 **~and** have the [`24-aws-glue-tascomi-data.tf`](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-tascomi-data.tf) ***terraform script*** open on your computer screen,  
 >**When** you make the following [required changes to your terraform script](#required-terraform-script-changes)  
 **~and** *save, commit and synch* your code with the remote `Data-Platform` ***GitHub*** repository
@@ -191,7 +191,7 @@ However, you will be able to test your assumptions later in **Pre-Production** w
 
 >**When** you have your code editor open on your computer  
 **~and** have your cloned `Data-Platform` ***Git*** repository open on your computer  
-**~and** have checked out your ***Git*** development branch, eg. "DPP-426" substituting the [***ticket number***](#the-grand-scenario)  
+**~and** have checked out your ***Git*** development branch, eg. "DPP-426" substituting your [***ticket number***](#the-grand-scenario)  
 **~and** have the `Data-Platform/scripts/jobs/planning/<tascomi-code>.py` ***python code*** open on your computer screen,  
 >**When** you make the [required changes to your code](#required-code-changes)  
 **~and** *save, commit and synch* your code with the remote `Data-Platform` ***GitHub*** repository
@@ -199,25 +199,25 @@ However, you will be able to test your assumptions later in **Pre-Production** w
 
 #### Required code changes
 
-The parsing script [`tascomi_parse_tables_increments.py`](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi_parse_tables_increments.py) has tests implemented and is relevant to this task. For your new tables to be quality-checked each day, you will need to open this script and add lines in th `dq_params =` section of code for each new API resource, represented by `<table-name>`, that you want added as follows:
+The parsing script [`tascomi_parse_tables_increments.py`](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi_parse_tables_increments.py) has tests implemented and is relevant to this task. For your new tables to be quality-checked each day, you will need to open this script and add lines in th `dq_params =` section of code for each new API resource, represented by `<resource-name>`, that you want added as follows:
 
 ```python
-dq_params = {'<table-name>': {'unique': ['id', 'import_date'], 'complete': 'id'}
+dq_params = {'<resource-name>': {'unique': ['id', 'import_date'], 'complete': 'id'}
              }
 ```
 
-In this example, for the job to complete successfully, the table called `api_response_<table-name>`, with `table-name` representing the API resource added to the script, the combination of `'id'` and `'import_date'` must be unique, and the `'id'` field must contain data, ie., `'complete'`.
+In this example, for the job to complete successfully, the table called `api_response_<resource-name>`, with `<resource-name>` representing the API resource added to the script, the combination of `'id'` and `'import_date'` must be unique, and the `'id'` field must contain data, ie., `'complete'`.
 
-In a very few exceptional cases, because only a single instance of a `'complete'` test is permitted per `<table-name>`, you may decide to change the `'id'` on the right for another column from the table instead.
+In a very few exceptional cases, because only a single instance of a `'complete'` test is permitted per `<resource-name>`, you may decide to change the `'id'` on the right for another column from the table instead.
 
 Similar such tests are relevant to the daily snapshots script [`tascomi_create_daily_snapshot.py`](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/planning/tascomi_create_daily_snapshot.py) as follows:
 
 ```python
-dq_params = {'<table-name>': {'unique': ['id']}
+dq_params = {'<resource-name>': {'unique': ['id']}
              }
 ```
 
-In this example, for the job to complete successfully, the table called `increment_<table-name>` just needs the `'id'` column to be unique.
+In this example, for the job to complete successfully, the table called `increment_<resource-name>` just needs the `'id'` column to be unique.
 
 ---
 
@@ -289,7 +289,7 @@ This section covers cloning a job in detailed steps. Sections beyond this that a
 >**Given** your cloned API ingestion job is now shown in `Glue Studio` as below...  
 ![screenshot-1-1-2](../docs/images/tascomi-adding-tables-screenshot-1-1-2.png)  
 **When** you change `🖊` the job name from `stg tascomi_api_ingestion-copy` to  
-`stg tascomi_api_ingestion-TEST-DPP-426` with `DPP-426` substituted by the [***ticket number***](#the-grand-scenario)  
+`stg tascomi_api_ingestion-TEST-DPP-426` (replacing `DPP-426` with your [***ticket number***](#the-grand-scenario))  
 **~and** click `Save` over on the right  
 **Then** you may proceed to test your API resource tables.
 
@@ -313,13 +313,13 @@ If you are not confident but you have many new resources to add, then you might 
 **~and** you have expanded `Advanced Properties` at the bottom of the `Job details` tab  
 **~and** have scrolled down to `Job parameters` as shown below...  
 ![screenshot-1-2-1](../docs/images/tascomi-adding-tables-screenshot-1-2-1.png)  
-**When** you add or update the `--resource` ***Key*** with the corresponding ***Value*** set to name of your next API resource  
+**When** you add or update the ***Key*** `--resource` with the corresponding ***Value*** set to name of your next API resource  
 **~and** click `Save` then `Run` over on the right  
 **Then** you should immediately see this message telling you your job has started...  
 ![screenshot-1-2-1-then](../docs/images/tascomi-adding-tables-screenshot-1-2-1-then.png)  
 **~and** clicking on ***Run details*** should take you to the `Runs` tab  
 **~and** you should see the ***Run status*** of your job which after a few minutes should say ***✓ Succeeded***  
-**~and** your new API data should be added in the S3 bucket `dataplatform-stg-raw-zone` in the path `planning/tascomi/api-responses/` (as also shown above)  
+**~and** your new API data should be added to the S3 bucket `--s3_bucket_target` = `dataplatform-stg-raw-zone` in the path `s3_prefix` = planning/tascomi/api-responses/` (also shown above)  
 **~and** you may proceed to crawl your new data for the target database `dataplatform-stg-tascomi-raw-zone` for the `AwsDataCatalogue`.
 
 **`🖱` Step 1.2.2** crawl the new API data for the Data Catalog
@@ -332,7 +332,7 @@ If you are not confident but you have many new resources to add, then you might 
 **Then** you should immediately see the ***✓ Crawler successfully starting*** message, as shown below...
 ![screenshot-1-2-2-when](../docs/images/tascomi-adding-tables-screenshot-1-2-2-when.png)  
 **~and** after a few minutes, you should observe the ***State*** of the crawler `tascomi_api_response-crawler` change from **⟳Running** to **✓Succeeded**  
-**~and** the `AwsDataCatalogue` should be updated with the new `api_response_<table-name>` table and data in the `dataplatform-stg-tascomi-raw-zone` database  
+**~and** the `AwsDataCatalogue` should be updated with the new `api_response_<resource-name>` table and data in the `dataplatform-stg-tascomi-raw-zone` database  
 **~and** you may proceed to query the data using `Amazon Athena`.
 
 **`🖱` Step 1.2.3** find the new table using Amazon Athena
@@ -342,23 +342,23 @@ If you are not confident but you have many new resources to add, then you might 
 >**~and** below that, **Database** has `dataplatform-stg-tascomi-raw-zone` selected, as shown below...  
 ![screenshot-1-2-3](../docs/images/tascomi-adding-tables-screenshot-1-2-3.png)  
 **When** you expand **Tables** and scroll down the list below,  
-**Then** you should find the table `api_response_<table-name>` where `<table-name>` is the name of the next API resource you are hoping to see  
+**Then** you should find the table `api_response_<resource-name>` where `<resource-name>` is the name of the next API resource you are hoping to see  
 **~and** expanding that table you should see it's column names and types, as shown above  
 **~and** and you may proceed to test the data in that table by running a query.
 
 **`🖱` Step 1.2.4** query the new data using Amazon Athena
->**Given** with `Amazon Athena` you found `api_response_<table-name>` where `<table-name>` is the name of the next API resource you want to query,  
+>**Given** in `Amazon Athena` you found the table `api_response_<resource-name>` where `<resource-name>` is the name of the next API resource you want to query,  
 **When** you ***copy-and-paste*** the following **SQL code** into the query editor  
-**~and** replace `<table-name>` with the resource you want to query, as shown above,
+**~and** replace `<resource-name>` with the next resource you want to query, as show in **step 1.2.3**,
 
 ```sql
 WITH
 generation AS (
     SELECT MAX(import_date) AS last_import_date
-        FROM "dataplatform-stg-tascomi-raw-zone"."api_response_<table-name>"
+        FROM "dataplatform-stg-tascomi-raw-zone"."api_response_<resource-name>"
 )
 SELECT g.*, a.* 
-    FROM "dataplatform-stg-tascomi-raw-zone"."api_response_<table-name>" a
+    FROM "dataplatform-stg-tascomi-raw-zone"."api_response_<resource-name>" a
 INNER JOIN generation g
 ON a.import_date = g.last_import_date
 ORDER BY a.import_datetime DESC 
@@ -408,13 +408,13 @@ Also, going forward, there will be less screenshot images because you as you inc
 **Then** you should immediately be taken to `Glue Studio`.
 
 **`🖱` Step 2.1.2** in Glue Studio
->**Given** your cloned job `stg tascomi_parse_tables_increments-copy` is shown in `Glue Studio` (like you saw previously in [**step 1.1.2**](#11-clone-the-api-ingestion-job)),  
+>**Given** your cloned job `stg tascomi_parse_tables_increments-copy` is shown in `Glue Studio` (like you saw in [**step 1.1.2**](#11-clone-the-api-ingestion-job)),  
 **When** you change `🖊` the job name from `stg tascomi_parse_tables_increments-copy` to  
-`stg tascomi_parse_tables_increments-TEST-DPP-426` with `DPP-426` substituted by the [***ticket number***](#the-grand-scenario)  
+`stg tascomi_parse_tables_increments_planning-TEST-DPP-426.py` (replacing `DPP-426` with your [***ticket number***](#the-grand-scenario))  
 **~and** click `Save` over on the right  
 **Then** you may proceed to edit your cloned job.
 
-#### 2.2 Edit the cloned Tascomi Parse table increment job to introduce your code changes
+#### 2.2 Edit your cloned Tascomi Parse table increment job to introduce your code changes
 
 To test our code changes we must add them to the current `tascomi_parse_tables_increments.py` but first we must clone and rename it, separating it from the original script deployed in both **Production** and **Pre-production** environments.
 
@@ -427,100 +427,104 @@ To test our code changes we must add them to the current `tascomi_parse_tables_i
 >But for the time being it is essential you continue to do this always. Sorry!
 <!---:::--->
 
-**`🖱` Step 2.2.1**  make a test script
->**Given** the `Job details` of the cloned job is shown in `Glue Studio` as below...  
-
-[screenshot-2-2-1]
-<!---![screenshot-2-2-1](../docs/images/tascomi-adding-tables-screenshot-2-2-1.png)  --->
-
+**`🖱` Step 2.2.1**  create your test script
+>**Given** the `Job details` tab of the cloned job is shown in `Glue Studio`  
 >**When** you expand `Advanced Properties` below `Job details`  
-**~and** change the script name from `tascomi_parse_tables_increments.py` to  
-`tascomi_parse_tables_increments-DPP-426.py` with `DPP-426` substituted by the [***ticket number***](#the-grand-scenario)  
-**~and** click `Save` over on the right  
-**Then** the test script will automatically be created in the path `s3://..../tascomi_parse_tables_increments-DPP-426.py`with `DPP-426` substituted by the [***ticket number***](#the-grand-scenario)  
-**~and** you may now proceed to edit that test script.
+**~and** change the script name from `tascomi_parse_tables_increments_planning.py` to  
+`tascomi_parse_tables_increments-DPP-426.py` (replacing `DPP-426` with your [***ticket number***](#the-grand-scenario))  
+**~and** confirm the `Script Path` set to `s3://dataplatform-stg-glue-scripts/scripts/planning/`
+**~and** click `Save` over on the right, as shown below...  
+![screenshot-2-2-1-when](../docs/images/tascomi-adding-tables-screenshot-2-2-1-when.png)  
+**Then** your test script `tascomi_parse_tables_increments-DPP-426.py` (replacing `DPP-426` with your [***ticket number***](#the-grand-scenario)) will automatically be created in the specified `Script Path`, as a copy of the original `tascomi_parse_tables_increments.py`  
+**~and** you may now proceed to edit your test script.
 
-**`🖱` Step 2.2.2** edit the test script
->**Given** previously in `Glue Studio` you changed the script name to `tascomi_parse_tables_increments-DPP-426.py` with `DPP-426` substituted by the [***ticket number***](#the-grand-scenario) before clicking `Save`, and still have that open on your screen as shown in the previous **step 2.2.1**  
+<!---:::note--->
+>**`ⓘ` TIP**  
+Also shown in the **Step 2.2.1** screenshot: You can click on `View` next to the path entry under `Script path` to open a new browser tab for `Amazon S3` with the contents of the `planning/` folder. When you click on the `Last modified ▲` heading, the entries get sorted with your newest test script at the top. When you check `☑` against your script you can `Download` it to your computer to inspect it with your code editor.
+<!---:::--->
+
+**`🖱` Step 2.2.2** edit your test script
+>**Given** in `Glue Studio` you changed the script name to `tascomi_parse_tables_increments-DPP-426.py` (replacing `DPP-426` with your [***ticket number***](#the-grand-scenario)) and clicked `Save`with `Glue Studio` still open on your screen as shown in **step 2.2.1**  
 **~and** meanwhile on another screen, you have your code editor open  
-**~and** have the `Data-Platform` Git repository open on your development branch eg. "DPP-426" substituting the [***ticket number***](#the-grand-scenario)  
+**~and** have the `Data-Platform` Git repository open on your development branch eg. "DPP-426" (replacing `DPP-426` with your [***ticket number***](#the-grand-scenario))  
 **~and** [your updated Python code](#required-code-changes) `Data-Platform/scripts/jobs/planning/tascomi_parse_tables_increments.py` is open as shown below...  
 ![screenshot-2-2-2-given](../docs/images/tascomi-adding-tables-screenshot-2-2-2-given.png)  
 **When** you select your entire Python code and copy it into your computer's clipboard  
 **~and** you return to the screen where you have `Glue Studio` open  
 **~and** you click on the `Script` tab at the top to reveal the original code  
-**~and** you select the original code, delete it, then paste in your new code from your computer's clipboard, as shown below...  
-
-[screenshot-2-2-2-when]
-<!---![screenshot-2-2-2-when](../docs/images/tascomi-adding-tables-screenshot-2-2-2-when.png)  --->
-
->**~and** click `Save` over on the right  
->**Then** the test script will be be updated in the path `s3://..../tascomi_parse_tables_increments-DPP-426.py`with `DPP-426` substituted by the [***ticket number***](#the-grand-scenario)  
+**~and** you select the original code, delete it, then paste in your new code from your computer's clipboard,  
+>**~and** click `Save` over on the right, as shown below...  
+![screenshot-2-2-2-when](../docs/images/tascomi-adding-tables-screenshot-2-2-2-when.png)  
+>**Then** then that will become your updated test script in the path `s3://dataplatform-stg-glue-scripts/scripts/planning/tascomi_parse_tables_increments-DPP-426.py` (replacing `DPP-426` with your [***ticket number***](#the-grand-scenario))  
 **~and** you may proceed to test your new tables with the cloned Tascomi Parse table increment test job.
 
 #### 2.3 Test your new tables with the cloned Tascomi Parse table increment job
 
-**`🖱` Step 2.3.1** produce all the new parsed data tables all at once
->**Given** the `Advanced Properties` is expanded below the `Job details` of the cloned job in `Glue Studio` as shown below  
-**~and** the script name was changed to `tascomi_parse_tables_increments-DPP-426.py` with `DPP-426` substituted by the [***ticket number***](#the-grand-scenario)...  
+**`🖱` Step 2.3.1** produce all your new parsed data tables all at once
+>**Given** the `Advanced Properties` is expanded below the `Job details` of the cloned job in `Glue Studio`  
+**~and** the script name was previously changed to `tascomi_parse_tables_increments-DPP-426.py` (replacing `DPP-426` with your [***ticket number***](#the-grand-scenario))  
+**~and** you have scrolled down to `Job parameters` as shown below...  
+![screenshot-2-3-1](../docs/images/tascomi-adding-tables-screenshot-2-3-1.png)  
+>**When** you add or update the ***Key*** `--table_list` with the corresponding ***Value*** set to all of your own API resource names, separated by commas, like the example below...  
 
-[screenshot-2-3-1]
-<!---![screenshot-2-3-1](../docs/images/tascomi-adding-tables-screenshot-2-3-1.png)  --->
+```csv
+enforcement_breaches,enforcement_outcomes,enforcement_actions_taken,enforcement_breach_details
+```
 
->**When** you add or update the `--resource` ***Key*** with the corresponding ***Value*** set to names of your API resources, each  separated by a comma  
-**~and** click `Save` then `Run` over on the right  
-**Then** you should immediately see a message banner telling you your job has started  
+>**~and** you click `Save` then `Run` over on the right  
+>**Then** you should immediately see the message banner (shown above) telling you your job has started  
 **~and** clicking on ***Run details***  on the message banner should take you to the `Runs` tab  
 **~and** you should see the ***Run status*** of your job which after a few minutes should say ***✓ Succeeded***  
-**~and** your new parsed data should be added in the S3 bucket `dataplatform-stg-raw-zone` in the path `planning/tascomi/parse_increments????????/` (as also shown above)  
-**~and** you may proceed to crawl your new data for the target database `dataplatform-stg-tascomi-raw-zone` for the `AwsDataCatalogue`.
+**~and** your new parsed data should be added to the S3 bucket path `--s3_bucket_target` = `s3://dataplatform-stg-raw-zone/planning/tascomi/parsed/` (also shown above)  
+**~and** you may proceed to crawl your new data for the target database `--source_catalog_database` = `dataplatform-stg-tascomi-raw-zone` in the `AwsDataCatalogue`.
 
-**`🖱` Step 2.3.2** crawl the newly parsed data for the Data Catalog
+**`🖱` Step 2.3.2** crawl your newly parsed data for the Data Catalog
 >**Given** you navigated to `AWS Glue` via the ☷ Services menu  
 **~and** from the left menu expanded the `Data Catalog` sub-menu  
 **~and** have selected [`Crawlers`](https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#/v2/data-catalog/crawlers),  
-**When** in the search field under `View and manage all available crawlers.` where it says *Filter crawlers*, you type: ***tascomi-parse?????*** and hit enter  
-**~and** you check `☑` against `tascomi_parse?????-crawler`  
+**When** in the search field under `View and manage all available crawlers.` where it says *Filter crawlers*, you type: ***tascomi-parse*** and hit enter  
+**~and** you check `☑` against `tascomi-parse-tables-increments-planning`  
 **~and** click `Run` over on the right,  
 **Then** you should immediately see the ***✓ Crawler successfully starting*** message  
-**~and** after a few minutes, you should observe the ***State*** of the crawler `tascomi_parse?????-crawler` change from **⟳Running** to **✓Succeeded**  
-**~and** the `AwsDataCatalogue` should be updated with the new `increments?????_<table-name>` table and data in the `dataplatform-stg-tascomi-raw-zone` database  
+**~and** after a few minutes, you should observe the ***State*** of the crawler `tascomi-parse-tables-increments-planning` change from **⟳Running** to **✓Succeeded**  
+**~and** the `AwsDataCatalogue` should be updated with all your new parsed `<resource-name>` tables and data in the `dataplatform-stg-tascomi-raw-zone` database  
 **~and** you may proceed to query the data using `Amazon Athena`.
 
-**`🖱` Step 2.3.3** find the new tables using Amazon Athena
+**`🖱` Step 2.3.3** find your new tables using Amazon Athena
 >**Given** you navigated to `Amazon Athena` via the ☷ Services menu  
 >**~and** over on the top right, **Workgroup** has `planning` selected  
 >**~and** on left under **Data**, **Data source** has `AwsDataCatalogue` selected  
 >**~and** below that, **Database** has `dataplatform-stg-tascomi-raw-zone` selected  
 **When** you expand **Tables** and scroll down the list below,  
-**Then** you should find various tables `increments?????_<table-name>` with `<table-name>` showing ***all*** the new resources you are hoping to see  
-**~and** expanding each of those tables you should see, for each and every one, their column names and types  
+**Then** you should find all the parsed `<resource-name>` tables, among which should be your own new parsed tables  
+**~and** expanding each of your own tables you should see, for each and every one, their column names and types  
 **~and** and you may proceed to test the data in those tables by running queries.
 
-**`🖱` Step 2.3.4** query the new data using Amazon Athena
->**Given** with `Amazon Athena` you found the particular `increments_<table-name>` you were looking for, with `<table-name>` being names of the next parsed increment tables you want to query,  
+**`🖱` Step 2.3.4** query your new data using Amazon Athena
+>**Given** in `Amazon Athena` you found your own new parsed`<resource-name>` tables
+**and** have selected the next table you want to query,  
 **When** you ***copy-and-paste*** the following **SQL code** into the query editor  
-**~and** replace `<table-name>` accordingly...
+**~and** replace `<resource-name>` with the table you want to query (similar to screenshot in **step 1.2.3** and like you did in **step 1.2.4**)
 
 ```sql
 WITH
 generation AS (
     SELECT MAX(import_date) AS last_import_date
-        FROM "dataplatform-stg-tascomi-raw-zone"."increment??????_<table-name>"
+        FROM "dataplatform-stg-tascomi-raw-zone"."<resource-name>"
 )
-SELECT g.*, a.* 
-    FROM "dataplatform-stg-tascomi-raw-zone"."increment??????_<table-name>" a
+SELECT g.*, a.*
+    FROM "dataplatform-stg-tascomi-raw-zone"."<resource-name>" a
 INNER JOIN generation g
 ON a.import_date = g.last_import_date
-ORDER BY a.import_datetime DESC 
+ORDER BY a.import_datetime DESC
 limit 10;
 ```
 
 >**~and** click `Run` underneath on the left,  
 **Then** the **Query result** should show `last_import_date` = ***today's date***  or the `import_datetime`when you recently did **step 2.1.1**  
-**~and** you should see the expanded columns of your new table  
+**~and** you should see the now parsed columns, of type *string*, for your new table  
 **~and** you may proceed to test next table  
-**~and** when all the new tables are done you may proceed to [test the recast jobs](#3-testing-the-tascomi-recast-table-increment-job).
+**~and** when all the new tables are done you may proceed to [test your recast job](#3-testing-the-tascomi-recast-table-increment-job).
 
 <!---:::note--->
 >**`ⓘ` NOTE**  
