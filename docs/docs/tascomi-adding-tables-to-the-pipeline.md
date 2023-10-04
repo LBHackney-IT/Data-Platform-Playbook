@@ -180,6 +180,9 @@ However, you will be able to test your assumptions later in **Pre-Production** w
 >
 >Notwithstanding radical vendor upgrades to ***Tascomi API*** in future, the next iteration of this playbook guide should be focussed on the deployment, with code changes ***only*** made to the [Terraform script](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-tascomi-data.tf) and taking focus away from the Python development by making those code changes unnecessary. Making this a simple task for analysts to undertake and meeting the reasonable expectations of service managers preferring that adding resources to the Data Platform is a simple request and easy to deliver.
 >
+>Further, having refocussed our attention on the ***platform engineering*** we ought to look more closely at optimizing the **Terraform** for future product iterations. For example, the **Parse** and **Recast** jobs handle multi-table parameters which is very convenient for testing and saves us a lot of time. However, scheduling them to run that way in **Production** isn't necessary optimal and in fact it is suspected that it is not. Not least, because as the number of tables grows then then we lose control of the compute cost. But if those jobs can run with multi-table parameters then of course they can also run with just a single table parameter, and so the responsibility of processing multiple tables individually would be delegated back to the Terraform scripting, which in fact already happens for the **API resource** *response* processing.
+This is the kind of ***platform engineering*** hypothesis we ought to be testing refactoring and optimizing most of the time so that we can both reduce our running costs while making our production pipelines more scalable.
+>
 >But we should at least make sure the lessons learned and suggested improvements are made actionable for all future such API-integrated data ingestion pipelines. Indeed anything we can take away from this development, done early on in the history of the Data Platform, indeed done while we were still learning, is of great value to future development of the Data Platform.
 >
 >Case in view, the following section concerning the ***implementation*** (which is not about the code design) of the [PyDeequ](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/transforming-data/guides-to-testing-in-the-platform/data-quality-testing-guide) quality tests should greatly be simplified, or consigned to an appendix because code changes are deemed unnecessary other than in exceptional situations, given that every API resource quality test was determinable and could have been applied from the outset.
@@ -418,15 +421,6 @@ Also, going forward, there will be less screenshot images because you as you inc
 
 To test our code changes we must add them to the current `tascomi_parse_tables_increments.py` but first we must clone and rename it, separating it from the original script deployed in both **Production** and **Pre-production** environments.
 
-<!---:::note--->
->**`ⓘ` SIDE NOTE**  
->**The agile manifesto states ["Working software over comprehensive documentation"](https://www.sourceallies.com/2013/05/agile-manifesto-working-software-over-comprehensive-documentation/)**
->
->Envisioned for the next development iteration, we want the code fixed forever, to have every potential API resource featured in it, so that **Section 2.2** can be removed to an appendix where it should only be needed for introducing and testing ***very exceptional*** code changes.  
->
->But for the time being it is essential you continue to do this always. Sorry!
-<!---:::--->
-
 **`🖱` Step 2.2.1**  create your test script
 >**Given** the `Job details` tab of the cloned job is shown in `Glue Studio`  
 >**When** you expand `Advanced Properties` below `Job details`  
@@ -445,7 +439,7 @@ Also shown in the **Step 2.2.1** screenshot: You can click on `View` next to the
 
 **`🖱` Step 2.2.2** edit your test script
 >**Given** in `Glue Studio` you changed the script name to `tascomi_parse_tables_increments-DPP-426.py` (replacing `DPP-426` with your own [***ticket number***](#the-grand-scenario)) and clicked `Save`with `Glue Studio` still open on your screen as shown in **step 2.2.1**  
-**~and** meanwhile on another screen, you have your code editor open  
+**~and** meanwhile on another screen (or window), you have your code editor open  
 **~and** have the `Data-Platform` Git repository open on your development branch eg. "DPP-426" (replacing `DPP-426` with your own [***ticket number***](#the-grand-scenario))  
 **~and** [your updated Python code](#required-code-changes) `Data-Platform/scripts/jobs/planning/tascomi_parse_tables_increments.py` is open as shown below...  
 ![screenshot-2-2-2-given](../docs/images/tascomi-adding-tables-screenshot-2-2-2-given.png)  
@@ -476,7 +470,7 @@ enforcement_breaches,enforcement_outcomes,enforcement_actions_taken,enforcement_
 **~and** clicking on ***Run details***  on the message banner should take you to the `Runs` tab  
 **~and** you should see the ***Run status*** of your job which after a few minutes should say ***✓ Succeeded***  
 **~and** your new parsed data should be added to the S3 bucket path `--s3_bucket_target` = `s3://dataplatform-stg-raw-zone/planning/tascomi/parsed/` (also shown above)  
-**~and** you may proceed to crawl your new data for the target database `--source_catalog_database` = `dataplatform-stg-tascomi-raw-zone` in the `AwsDataCatalogue`.
+**~and** you may proceed to crawl your new data for the target database.
 
 **`🖱` Step 2.3.2** crawl your newly parsed data for the Data Catalog
 >**Given** you navigated to `AWS Glue` via the ☷ Services menu  
@@ -488,7 +482,7 @@ enforcement_breaches,enforcement_outcomes,enforcement_actions_taken,enforcement_
 **Then** you should immediately see the ***✓ Crawler successfully starting*** message  
 **~and** after a few minutes, you should observe the ***State*** of the crawler `tascomi-parse-tables-increments-planning` change from **⟳Running** to **✓Succeeded**  
 **~and** the `AwsDataCatalogue` should be updated with all your new parsed `<resource-name>` tables and data in the `dataplatform-stg-tascomi-raw-zone` database  
-**~and** you may proceed to query the data using `Amazon Athena`.
+**~and** you may proceed to query your new data using `Amazon Athena`.
 
 **`🖱` Step 2.3.3** find your new tables using Amazon Athena
 >**Given** you navigated to `Amazon Athena` via the ☷ Services menu  
@@ -498,13 +492,13 @@ enforcement_breaches,enforcement_outcomes,enforcement_actions_taken,enforcement_
 **When** you expand **Tables** and scroll down the list below,  
 **Then** you should find all the parsed `<resource-name>` tables, among which should be your own new parsed tables  
 **~and** expanding each of your own tables you should see, for each and every one, their column names and types  
-**~and** and you may proceed to test the data in those tables by running queries.
+**~and** and you may proceed to test the data in your tables by running queries.
 
 **`🖱` Step 2.3.4** query your new data using Amazon Athena
 >**Given** in `Amazon Athena` you found your own new parsed`<resource-name>` tables
 **and** have selected the next table you want to query,  
 **When** you ***copy-and-paste*** the following **SQL code** into the query editor  
-**~and** replace `<resource-name>` with the table you want to query (similar to screenshot in **step 1.2.3** and like you did in **step 1.2.4**)
+**~and** replace `<resource-name>` with the table you want to query (similar to screenshot in **step 1.2.3** and like you did in **step 1.2.4**)...
 
 ```sql
 WITH
@@ -524,11 +518,11 @@ limit 10;
 **Then** the **Query result** should show `last_import_date` = ***today's date***  or the `import_datetime`when you recently did **step 2.1.1**  
 **~and** you should see the now parsed columns, of type *string*, for your new table  
 **~and** you may proceed to test next table  
-**~and** when all the new tables are done you may proceed to [test your recast job](#3-testing-the-tascomi-recast-table-increment-job).
+**~and** **~and** when you see all your new tables showing correct results, you may proceed to [test your recast job](#3-testing-the-tascomi-recast-table-increment-job).
 
 <!---:::note--->
 >**`ⓘ` NOTE**  
->You may quickly skip past **Step 2.3.4**, waiting until **Step 4.3.4** on the presumption that if the data shows up right at at the end then logically everything should have worked in between without needing to test all of it.
+>You may quickly skip through **Step 2.3.4**, waiting until **Step 4.3.4** on the presumption that if the data shows up right at at the end then logically everything should have worked in between without needing to test all of it.
 >
 >In practice it's only worth checking a single example in **Step 2.3.4**. Then, so long as all the new tables and columns appeared at ***Step 2.3.3*** then you really have nothing to worry about.
 <!---:::--->
@@ -539,17 +533,115 @@ limit 10;
 All being well, you may proceed to section 3.
 
 >**`ⓘ` SIDE NOTE**  
->**Cutting out production-line waste...**  
+>**The agile manifesto states ["Working software over comprehensive documentation"](https://www.sourceallies.com/2013/05/agile-manifesto-working-software-over-comprehensive-documentation/)**
+>
+>This is akin to cutting out manufacturing or production-line waste by designing a better product...  
 >  
->Envisioned for a later iteration, a simpler, less complex approach would eliminate the need for **Step 2.2** in almost every scenario because all of the [PyDeequ](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/transforming-data/guides-to-testing-in-the-platform/data-quality-testing-guide) configuration would be written already for the entirety of the Tascomi API resources.
+>Envisioned for a later iteration, a simpler, less complex approach would eliminate the need for **Step 2.2** in all but the most exceptional scenarios because all of the [PyDeequ](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/transforming-data/guides-to-testing-in-the-platform/data-quality-testing-guide) configuration would be written already for the entirety of the Tascomi API resources.  
+>
+>But for the time being it is essential you continue to do this always. Sorry!
+<!---:::--->
 
 ---
 
 ### 3. Testing the Tascomi Recast table increment job
-<!---TO DO--->
->[**Insert abridged sections and steps without too much need for screen shots**]
-<!---TO DO--->
-#### 3.etc
+
+The steps in 3.1 follow the same pattern as 2.1, which may help you get through this process fairly quickly...
+
+**`🖱` Step 3.1.1** find the script to clone
+>**Given** you navigated to `AWS Glue`'s [`ETL jobs`](https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/jobs)  
+**~and** below `Your Jobs` you typed: ***stg tascomi*** to find the Tascomi data ingestion pipeline jobs (like you saw in [**step 1.1.1**](#11-clone-the-api-ingestion-job)),  
+**When** you check `☑` against `stg tascomi_recast_tables_increments`  
+**~and** select `Clone Job` from the `Actions` menu  
+**Then** you should immediately be taken to `Glue Studio`.
+
+**`🖱` Step 3.1.2** in Glue Studio
+>**Given** your cloned job `stg tascomi_recast_tables_increments-copy` is shown in `Glue Studio` (like you saw in [**step 1.1.2**](#11-clone-the-api-ingestion-job)),  
+**When** you change `🖊` the job name from `stg tascomi_recast_tables_increments-copy` to  
+`stg tascomi_recast_tables_increments-TEST-DPP-426` (replacing `DPP-426` with your own [***ticket number***](#the-grand-scenario))  
+**~and** click `Save` over on the right  
+**Then** you may proceed to edit your cloned job.
+
+#### 3.2 Test your new tables with the cloned Tascomi Recast table increment job
+
+Unlike section 2 there is no need to edit the Python script, so here in section 3, you effectively skip over that step. So arriving at 3.2, this is very similar to 2.3...  
+
+**`🖱` Step 3.2.1** produce your new recast refined increments data tables all at once
+>**Given** the `Advanced Properties` is expanded below the `Job details` of the cloned job in `Glue Studio`  
+**~and** you have scrolled down to `Job parameters`  
+>**When** you add or update the ***Key*** `--table_list` with the corresponding ***Value*** set to all of your own API resource names, separated by commas  
+>**~and** you click `Save` then `Run` over on the right  
+>**Then** you should immediately see the message banner telling you your job has started  
+**~and** clicking on ***Run details*** on the message banner should take you to the `Runs` tab  
+**~and** you should see the ***Run status*** of your job which after a few minutes should say ***✓ Succeeded***  
+**~and** your new recast refined increments data should be added to the S3 bucket path `--s3_bucket_target` = `s3://dataplatform-stg-refined-zone/planning/tascomi/increment/`
+**~and** you may proceed to crawl your new data for the target database.
+
+**`🖱` Step 3.2.2** crawl your newly recast refined increments data for the Data Catalog
+>**Given** you navigated to `AWS Glue` via the ☷ Services menu  
+**~and** from the left menu expanded the `Data Catalog` sub-menu  
+**~and** have selected [`Crawlers`](https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#/v2/data-catalog/crawlers),  
+**When** in the search field under `View and manage all available crawlers.` where it says *Filter crawlers*, you type: ***tascomi-recast*** and hit enter  
+**~and** you check `☑` against `tascomi-recast-tables-increments-planning`  
+**~and** click `Run` over on the right,  
+**Then** you should immediately see the ***✓ Crawler successfully starting*** message  
+**~and** after a few minutes, you should observe the ***State*** of the crawler `tascomi-recast-tables-increments-planning` change from **⟳Running** to **✓Succeeded**  
+**~and** the `AwsDataCatalogue` should be updated with all your new recast `increment_<resource-name>` tables and data in the `dataplatform-stg-tascomi-refined-zone` database  
+**~and** you may proceed to query your new data using `Amazon Athena`.
+
+**`🖱` Step 3.2.3** find your new recast refined increments tables using Amazon Athena
+>**Given** you navigated to `Amazon Athena` via the ☷ Services menu  
+>**~and** over on the top right, **Workgroup** has `planning` selected  
+>**~and** on left under **Data**, **Data source** has `AwsDataCatalogue` selected  
+>**~and** below that, **Database** has `dataplatform-stg-tascomi-refined-zone` selected  
+**When** you expand **Tables** and scroll down the list below,  
+**Then** you should find all the recast `increment_<resource-name>` tables, among which should be your own new recast tables  
+**~and** expanding each of your tables you should see, for each and every one, it's column names and types  
+**~and** and you may proceed to test your data in those tables by running queries.
+
+**`🖱` Step 3.2.4** query your new data using Amazon Athena
+>**Given** in `Amazon Athena` you found your new recast `increment_<resource-name>` tables
+**and** have selected your next table you want to query,  
+**When** you ***copy-and-paste*** the following **SQL code** into the query editor  
+**~and** replace `<resource-name>` with the resource name of the table you want to query...
+
+```sql
+WITH
+generation AS (
+    SELECT MAX(import_date) AS last_import_date
+        FROM "dataplatform-stg-tascomi-refined-zone"."increment_<resource-name>"
+)
+SELECT g.*, a.*
+    FROM "dataplatform-stg-tascomi-refined-zone"."increment_<resource-name>" a
+INNER JOIN generation g
+ON a.import_date = g.last_import_date
+ORDER BY a.import_datetime DESC
+limit 10;
+```
+
+>**~and** click `Run` underneath on the left,  
+**Then** the **Query result** should show `last_import_date` = ***today's date***  or the `import_datetime` (the date and time when you did **step 3.1.1**)  
+**~and** you should see the recast columns, with the types corresponding to the types specified in the Tascomi API documentation  
+**~and** you may proceed to test next table  
+**~and** when you see all your new tables showing correct results, you may proceed to [test your daily snapshot job](#4-testing-the-tascomi-create-daily-snapshot-job).
+
+<!---:::note--->
+>**`ⓘ` NOTE**  
+>You may quickly skip through **Step 3.2.4**, waiting until **Step 4.3.4** on the presumption that if the data shows up right at at the end then logically everything should have worked in between without needing to test all of it.
+>
+>In practice it's only worth checking a single example in **Step 3.2.4**. Then, so long as all the new tables and columns appeared at ***Step 3.2.3*** then you really have nothing to worry about.
+<!---:::--->
+
+**`🖱`** ***Did that work for you?***  
+>**But** when these steps do not *behave* as described, and you are unable to resolve these issues by yourself, please then seek help from the Data Platform team.
+
+All being well, you may proceed to section 4.
+
+>**`ⓘ` SIDE NOTE**  
+>**Cutting even more production-line waste by designing better product...**  
+>  
+>Envisioned for a later iteration, a simpler, less complex approach would eliminate the need for separate **Steps 2** and **Steps 3** jobs, combining them into a single "***parse and recast"*** job, thus eliminating much redundant writing and scanning of intermediate staging data.
+<!---:::--->
 
 ---
 
