@@ -214,23 +214,28 @@ This section will guide you through running `AWS Glue` scripts manually in Pre-p
 >**Given** you logged into the AWS `Management console` via the `AWSPowerUserAccess` link  under `DataPlatform-Pre-Production`  
  **~and** navigated to `AWS Glue` via the **☷ Services** menu  
  **~and** from the left menu selected [`ETL jobs`](https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/jobs),  
->**When** in the search field below `Your Jobs` (where it says *Filter jobs*) you type: ***stg tascomi***,  
->**Then** you should see listed below `Job name`, all the Glue ETL jobs belonging to the Tascomi data ingestion pipeline, as also shown down in [**step 1.1.1**](#11-clone-the-api-ingestion-job)  
-
-**`🖱`** ***Did that work for you?***  
->**But** if in your own console, you do not see the following listed ingestion jobs, which should have been generated in **Pre-Production** by ***Terraform Continuous Integration***, then please immediately consult the Data Platform team:
-
-1. `stg tascomi_api_ingestion`
-2. `stg tascomi_parse_tables_increments`
-3. `stg tascomi_recast_tables_increments`
-4. `stg tascomi_create_daily_snapshot`
+>**When** in the search field below `Your Jobs` (where it says *Filter jobs*) you type: ***`stg tascomi`***,  
+>**Then** you should see listed below `Job name`, all of the following Glue ETL jobs belonging to the Tascomi data ingestion pipeline...
+>
+>1. `stg tascomi_api_ingestion`
+>2. `stg tascomi_parse_tables_increments`
+>3. `stg tascomi_recast_tables_increments`
+>4. `stg tascomi_create_daily_snapshot`
+>
+>(This is also shown in [**step 1.1.1**](#11-clone-the-api-ingestion-job))
 
 <!---:::note--->
 >**`ⓘ` NOTE**  
 > The prefix `stg` is used everywhere in **Pre-Production** as opposed to `prod` used everywhere in **Production**.
 <!---:::--->
 
+**`🖱`** ***Did that work for you?***  
+>**But** if in your own console, you do not see the ***`stg tascomi`*** jobs listed ingestion jobs, which should have been generated in **Pre-Production** by the ***Terraform Continuous Integration***, then please immediately consult the Data Platform team.
+
 All being well, use the following sections to test your code changes, step by step.
+
+>**How might improvements to the data pipeline product contribute to a more efficient and less wasteful production-line process?**  
+>Check out the full discussion here ► [`ⓘ` SIDE NOTE appendix](#how-might-improvements-to-the-data-pipeline-product-contribute-to-a-more-efficient-and-less-wasteful-production-line-process).  
 
 ---
 
@@ -238,16 +243,13 @@ All being well, use the following sections to test your code changes, step by st
 
 You must test your new table resources, one at a time, to ensure the Tascomi API does what we expect. In the sections further, on involving the subsequent jobs, you will be able to test all your tables at once, so the testing process will speed up as you go along.
 
->**How might improvements to the data pipeline product contribute to a more efficient and less wasteful production-line process?**  
->Check out the full discussion here ► [`ⓘ` SIDE NOTE appendix](#how-might-improvements-to-the-data-pipeline-product-contribute-to-a-more-efficient-and-less-wasteful-production-line-process).  
-
 #### 1.1 Clone the API ingestion job
 
 This section covers cloning a job in detailed steps. Sections beyond this that also involve cloning other jobs will not repeat this level of detail since the process is practically the same and you probably will remember how you did it the first time around. You can always refer back here if you need to.
 
 **`🖱` Step 1.1.1** find the script to clone
 >**Given** you navigated to `AWS Glue`'s [`ETL jobs`](https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/jobs)  
- **~and** below `Your Jobs` you typed: ***stg tascomi*** to find the Tascomi data ingestion pipeline jobs, as shown below...
+ **~and** below `Your Jobs` you typed ***`stg tascomi`*** to find the Tascomi data ingestion pipeline jobs, as shown below...
 ![screenshot-1-1-1](../docs/images/tascomi-adding-tables-screenshot-1-1-1.png)  
 >**When** you check `☑` against `stg tascomi_api_ingestion`  
  **~and** select `Clone Job` from the `Actions` menu  
@@ -294,7 +296,7 @@ If you are not confident but you have many new resources to add, then you might 
 >**Given** you navigated to `AWS Glue` via the ☷ Services menu  
  **~and** from the left menu expanded the `Data Catalog` sub-menu  
  **~and** have selected [`Crawlers`](https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#/v2/data-catalog/crawlers),  
->**When** in the search field under `View and manage all available crawlers.` where it says *Filter crawlers*, you type: ***tascomi-api*** and hit enter  
+>**When** in the search field under `View and manage all available crawlers.` where it says *Filter crawlers*, you type: ***`tascomi-api`*** and hit enter  
  **~and** you check `☑` against `tascomi_api_response-crawler`  
  **~and** click `Run` over on the right,  
 >**Then** you should immediately see the ***✓ Crawler successfully starting*** message, as shown below...
@@ -349,7 +351,7 @@ limit 10;
 
 All being well, you may proceed to the next section 2.
 
->**Given the benefit of hindsight how might an improvement of API response ingestion code simplify our production-line testing procedure?**  
+>**Given the benefit of hindsight, how might improving the API response ingestion code simplify our production-line testing procedure?**  
 >Check out the full discussion here ► [`ⓘ` SIDE NOTE appendix](#with-the-benefit-of-hindsight).  
 
 ---
@@ -435,7 +437,7 @@ enforcement_breaches,enforcement_outcomes,enforcement_actions_taken,enforcement_
 >**Given** you navigated to `AWS Glue` via the ☷ Services menu  
  **~and** from the left menu expanded the `Data Catalog` sub-menu  
  **~and** have selected [`Crawlers`](https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#/v2/data-catalog/crawlers),  
->**When** in the search field under `View and manage all available crawlers.` where it says *Filter crawlers*, you type: ***tascomi-parse*** and hit enter  
+>**When** in the search field under `View and manage all available crawlers.` where it says *Filter crawlers*, you type: ***`tascomi-parse`*** and hit enter  
  **~and** you check `☑` against `tascomi-parse-tables-increments-planning`  
  **~and** click `Run` over on the right,  
 >**Then** you should immediately see the ***✓ Crawler successfully starting*** message  
@@ -488,15 +490,8 @@ In practice it's only worth checking a single example in **Step 2.3.4**. Then, s
 
 All being well, you may proceed to section 3.
 
->**`ⓘ` SIDE NOTE**  
->**The agile manifesto states ["Working software over comprehensive documentation"](https://www.sourceallies.com/2013/05/agile-manifesto-working-software-over-comprehensive-documentation/)**
->
->This is akin to cutting out manufacturing or production-line waste by designing a better product...  
->  
->Envisioned for a later iteration, a simpler, less complex approach would eliminate the need for **Step 2.2** in all but the most exceptional scenarios because all of the [PyDeequ](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/transforming-data/guides-to-testing-in-the-platform/data-quality-testing-guide) configuration would be written already for the entirety of the Tascomi API resources.  
->
->But for the time being it is essential you continue to do this always. Sorry!
-<!---:::--->
+>**Why do we need such comprehensive document that involves writing and moving code around?**  
+>Check out the full discussion here ► [`ⓘ` SIDE NOTE appendix](#why-do-we-need-such-comprehensive-documentation-that-involves-writing-and-moving-code-around).  
 
 ---
 
@@ -537,7 +532,7 @@ Unlike section 2 there is no need to edit the Python script, so here in section 
 >**Given** you navigated to `AWS Glue` via the ☷ Services menu  
  **~and** from the left menu expanded the `Data Catalog` sub-menu  
  **~and** have selected [`Crawlers`](https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#/v2/data-catalog/crawlers),  
->**When** in the search field under `View and manage all available crawlers.` where it says *Filter crawlers*, you type: ***tascomi-recast*** and hit enter  
+>**When** in the search field under `View and manage all available crawlers.` where it says *Filter crawlers*, you type: ***`tascomi-recast`*** and hit enter  
  **~and** you check `☑` against `tascomi-recast-tables-increments-planning`  
  **~and** click `Run` over on the right,  
 >**Then** you should immediately see the ***✓ Crawler successfully starting*** message  
@@ -590,11 +585,8 @@ In practice it's only worth checking a single example in **Step 3.2.4**. Then, s
 
 All being well, you may proceed to section 4.
 
->**`ⓘ` SIDE NOTE**  
->**Cutting even more production-line waste by designing better product...**  
->  
->Envisioned for a later iteration, a simpler, less complex approach would eliminate the need for separate **Steps 2** and **Steps 3** jobs, combining them into a single "***parse and recast"*** job, thus eliminating much redundant writing and scanning of intermediate staging data.
-<!---:::--->
+>**How might we cut "production-line waste" by designing better product?**  
+>Check out the discussion here ► [`ⓘ` SIDE NOTE appendix](#cutting-production-line-waste-by-designing-better-product).  
 
 ---
 
@@ -663,7 +655,7 @@ Before you can add your [required code changes](#required-code-changes) to the c
 >**Given** you navigated to `AWS Glue` via the ☷ Services menu  
  **~and** from the left menu expanded the `Data Catalog` sub-menu  
  **~and** have selected [`Crawlers`](https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#/v2/data-catalog/crawlers),  
->**When** in the search field under `View and manage all available crawlers.` where it says *Filter crawlers*, you type: ***tascomi-create*** and hit enter  
+>**When** in the search field under `View and manage all available crawlers.` where it says *Filter crawlers*, you type: ***`tascomi-create`*** and hit enter  
  **~and** you check `☑` against `tascomi-create-daily-snapshot-planning`  
  **~and** click `Run` over on the right,  
 >**Then** you should immediately see the ***✓ Crawler successfully starting*** message  
@@ -805,16 +797,38 @@ The procedures in this guide are written in the BDD (Behavior Driven Design) nar
 >
 >1) Getting rid of **crawlers** whereby the Data Catalog would be updated directly within the ingestion jobs. As well as reducing our running costs this would remove 4 steps from the production-line procedures above.  
 >
->2) Combining **the parse-job** with **the recast-job**. As well as reducing our running costs and execution times, this would remove 2 code changes and 4 steps from the production-line procedures above.
+>2) Combining **the parse-job** with **the recast-job** to reduce our running costs and execution times. This would remove 2 code changes and 4 steps from the production-line procedures above and eliminate a lot of testing. [This is expanded below](#cutting-production-line-waste-by-designing-better-product).
 >
 >3) Refactoring the **API response job** would remove the need to write SQL tests for new table outputs every time new API resources were added to the pipeline. [This is expanded below](#with-the-benefit-of-hindsight).
 
 ---
 
+### Cutting production-line waste by designing better product  
+>  
+>Envisioned as future possible iteration of the Tascomi data pipeline, a simpler, less complex design would eliminate the need for separate **Steps 2** and **Steps 3** jobs, combining them into a single step "***parse and recast"*** job.
+>
+>Much S3 date-writing and date-scanning is needed to support intermediate data staging in the data pipeline. This extends the overall execution time and attracts unnecessary running costs. So the goal is to make that intermediate staging redundant.
+
+---
+
 ### With the benefit of hindsight
 >  
->Envisionable, is a simpler, less complex approach for ingesting the API responses whereby the data is not required to land in separate tables, such that a single uniform `api_responses` table structure would suffice, with data captured into a single JSON column of the same name `api_response`, instead of changing the name each time.
+>Envisioned, is a simpler, less complex approach for ingesting the API responses whereby the data is not required to land in separate tables, such that a single uniform `api_responses` table structure would suffice, with data captured into a single JSON column of the same name `api_response`, instead of changing the name each time.
 >
 >The resource name on the other hand, would be captured in a separate S3-partition column called `resource` for optimizing data-scanning performance by subsequent jobs. The parquet files themselves already hold the resource name in the `import_api_url_requested` column, however, it will help to capture that in a separate `api_resource` column.
 >
 >As envisioned, the testing of the API response output would greatly be simplified by this approach since it would run the same Athena test query every time, so no further test queries would need to be written.
+
+---
+
+### Why do we need such comprehensive documentation that involves writing and moving code around?
+>
+>Short answer: we don't. Or at least we shouldn't!
+>
+>The agile manifesto states ["Working software over comprehensive documentation"](https://www.sourceallies.com/2013/05/agile-manifesto-working-software-over-comprehensive-documentation/) and is akin to cutting out manufacturing or production-line waste by designing a better product.  
+>  
+>So envisioned for a later iteration, a simpler, less complex approach would eliminate the need for **Step 2.2** in all but the most exceptional scenarios because all of the [PyDeequ](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/transforming-data/guides-to-testing-in-the-platform/data-quality-testing-guide) configuration would already be written for the entirety of the Tascomi API resources.  
+>
+>But for the time being it is essential you continue to do **Step 2.2** always. Sorry!
+
+---
