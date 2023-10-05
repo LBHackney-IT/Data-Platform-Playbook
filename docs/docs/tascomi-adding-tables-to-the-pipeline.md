@@ -9,7 +9,7 @@ tags: [playbook]
 This markdown has Docusaurus :::features::: that will need uncommenting and enabling later. The larger **`ⓘ` SIDE NOTE** features have been moved to the appendices at the end of this document.
 --->
 
-# How to add Tascomi tables to the Data Platform
+<!---# How to add Tascomi tables to the Data Platform--->
 
 ## Introduction
 
