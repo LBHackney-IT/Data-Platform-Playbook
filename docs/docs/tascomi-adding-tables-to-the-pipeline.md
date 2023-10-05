@@ -52,19 +52,19 @@ Either way, this guide assumes a basic understanding of `AWS Glue` and `Amazon A
 
 ### The grand scenario
 
-A data user identified some ***Tascomi API resources*** needed for **Planning** but could not find the corresponding tables in the `dataplatform-prod-Tascomi-refined-zone` of the ***Production Data Platform***. The missing data resources must be added to the ***Tascomi data pipeline*** before the  data user can find those tables and subsequently produce the insight that **Planning** need.
+A data user [(persona identified later)](#user-story) discovered some ***Tascomi API resources*** needed for **Planning** but could not find the corresponding tables in the `dataplatform-prod-Tascomi-refined-zone` of the ***Production Data Platform***. The missing data resources must be added to the ***Tascomi data pipeline*** so the data user can find those tables and subsequently produce the insight needed by **Planning**.
 
-This service request may be factored into the following ticket template. Each of the following sections may be transcribed to a new [***numbered Jira ticket***](#the-grand-scenario)...
+This scenario may arrive as a customer service request and may be factored into a ticket template to form a [***numbered Jira ticket***](#the-grand-scenario)...
 
 #### User story
 
->**As a** [Data Analyst]  
+>**As a** [data analyst working for Planning]  
 >**I want** tables from [Tascomi] added to the Data Platform for exploration and analysis  
 >**So that** I can better understand and continue to find answers to my questions about [Tascomi] data and further develop the data and insights that [Planning] needs.
 
 #### Agency
 
->**[the data analyst or engineer] will** seek to understand [the data analyst]'s need for new tables and implement the required changes to [Tascomi] data ingestion.
+>**[the engineer/analyst] will** seek to understand [[the user]](#user-story)'s need for new tables and implement the required changes to [Tascomi] data ingestion.
 
 #### User acceptance behaviors
 
@@ -78,9 +78,16 @@ This service request may be factored into the following ticket template. Each of
 
 #### Delivery
 
->**[the data analyst or engineer] will** test the required changes first in Pre-Production to foresee and fix faults before going to in Production.  
->**[the data analyst or engineer] will** communicate with the Data Platform Team to ensure the required changes are deployed correctly into Production and ensure unforeseen faults can be rolled back swiftly to minimize the impact on the exiting pipelines and minimize potential disruption for [the data users].  
->**[the data analyst or engineer] will** communicate with [the data analyst] to ensure these acceptance behaviors are met.
+>**[the engineer/analyst] will** test the required changes first in Pre-Production to foresee and fix faults before going to in Production.  
+>**[the engineer/analyst] will** communicate with the Data Platform Team to ensure the required changes are deployed correctly into Production and ensure unforeseen faults can be rolled back swiftly to minimize the impact on the exiting pipelines and minimize potential disruption to [other data users].  
+>**[the engineer/analyst] will** communicate with [[the user]](#user-story) to ensure these acceptance behaviors are met.
+
+<!---:::note--->
+>**`ⓘ` NOTE**  
+>The overall scope of the playbook guide is limited by the user acceptance behaviors written above.
+>
+>Other scenarios might require different or additional user acceptance behaviors to be defined, for example, where the user, here identified as a [data analyst working for Planning], might only have access to the Data Platform via an external BI tool. If that were the case then this ticket might form part of a wider epic involving the BI tool.  
+<!---:::--->
 
 ### Alternative scenarios considered
 
