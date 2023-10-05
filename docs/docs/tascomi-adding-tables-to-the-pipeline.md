@@ -64,7 +64,7 @@ This scenario may arrive as a customer service request and may be factored into 
 
 #### Agency
 
->**[the engineer/analyst] will** seek to understand [[the user]](#user-story)'s need for new tables and implement the required changes to [Tascomi] data ingestion.
+>**[the engineer/analyst] will** discover [[the user]](#user-story)'s need for new tables and implement the required changes to [Tascomi] data ingestion.
 
 #### User acceptance behaviors
 
@@ -82,12 +82,7 @@ This scenario may arrive as a customer service request and may be factored into 
 >**[the engineer/analyst] will** communicate with the Data Platform Team to ensure the required changes are deployed correctly into Production and ensure unforeseen faults can be rolled back swiftly to minimize the impact on the exiting pipelines and minimize potential disruption to [other data users].  
 >**[the engineer/analyst] will** communicate with [[the user]](#user-story) to ensure these acceptance behaviors are met.
 
-<!---:::note--->
->**`ⓘ` NOTE**  
->The overall scope of the playbook guide is limited by the user acceptance behaviors written above.
->
->Other scenarios might require different or additional user acceptance behaviors to be defined, for example, where the user, here identified as a [data analyst working for Planning], might only have access to the Data Platform via an external BI tool. If that were the case then this ticket might form part of a wider epic involving the BI tool.  
-<!---:::--->
+How does the scope of the playbook guide depend on [user acceptance behaviors](#user-acceptance-behaviors)? See the explanation here ► [`ⓘ` SIDE NOTE appendix](#how-does-the-scope-of-the-playbook-guide-depend-on-user-acceptance-behaviors).
 
 ### Alternative scenarios considered
 
@@ -739,7 +734,7 @@ At time of writing, a tool was in the development backlog which would assist the
 
 ---
 
-### ***"Given-When-Then"***
+### "Given-When-Then"
 
 The procedures in this guide are written in the BDD (Behavior Driven Design) narrative style of ***Given-When-Then***.
 
@@ -753,7 +748,15 @@ The procedures in this guide are written in the BDD (Behavior Driven Design) nar
 >
 >The BDD narrative, relates to **[the document user]** in the [2nd person grammar](https://www.grammarly.com/blog/first-second-and-third-person), assuming they have been asked to operate an essential and therefore well-defined production-line task for the **Data Platform**.
 >
->But where the BDD narrative relates the ***customer or the end-user***, it does so with a ***user story*** and ***acceptance behavior*** written in the [1st person grammar](https://www.grammarly.com/blog/first-second-and-third-person); essentially how we might write the components of a ***Jira ticket***. Involving the ***customer or end-user*** helps us appreciate the drawn-down value and helps us prioritize our tasks or tickets.
+>But where the BDD narrative relates the ***customer or the end-user***, it does so with a [***user story***](#user-story) and [***user acceptance behaviors***](#user-acceptance-behaviors) written in the [1st person grammar](https://www.grammarly.com/blog/first-second-and-third-person); essentially how we might write the components of a ***Jira ticket***. Involving the ***customer or end-user*** helps us appreciate the drawn-down value and helps us prioritize our tasks or tickets.
+
+---
+
+### How does the scope of the playbook guide depend on user acceptance behaviors?
+
+>The scope of the playbook guide is based upon the [overall scenario](#the-grand-scenario). Somewhere in that grand scenario we need to know "what done looks like" so we can close the ticket and move on.  Defining the [user acceptance behaviors](#user-acceptance-behaviors) ultimately allows to do that.
+>
+>Other scenarios might require different or additional user acceptance behaviors, for example, where the user, identified as a [data analyst working for Planning], might only have access to the Data Platform via external BI tools. If that were the case then either the scope would need to encompass that, or the ticket might form part of some wider "epic" involving access via BI tools described in separate playbook guides.
 
 ---
 
