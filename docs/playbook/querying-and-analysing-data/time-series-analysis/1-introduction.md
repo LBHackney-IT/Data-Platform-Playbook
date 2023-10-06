@@ -11,7 +11,7 @@ tags: [playbook]
 
 A time series is a sequence of data points indexed in time order. It is most commonly a sequence of discrete-time data taken at successive equally spaced points in time.
 
-A Time series forecast is when you use a predictive model to predict future events. It’s based on the idea that patterns and trends in data can be identified over time, and these patterns can be used to forecast future data points.
+A time series forecast is when you use a predictive model to predict future events. It’s based on the idea that patterns and trends in data can be identified over time, and these patterns can be used to forecast future data points.
 
 ### What are Time Series helpers and what are we aiming to achieve
 
