@@ -39,7 +39,7 @@ You should NOT use these helpers if
 
 Here are some general tips and best practises for forecasting
 
-- Have as much Data as possible, and at minimum, at least 2 years of Data
+- Have as much data as possible, and at minimum, at least 2 years of data
 - Don't forecast too far ahead. The further you forecast, the less likely it will be correct. You don't really want to be predicting 2 years ahead with 2 years of Data.
 
 ### What is seasonality
