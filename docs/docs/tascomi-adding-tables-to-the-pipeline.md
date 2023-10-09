@@ -782,17 +782,7 @@ The procedures in this guide are written in the BDD (Behavior Driven Design) nar
 >
 >**Is there a better *platform engineering* solution?**
 >
->It is possible to upgrade our  **Data-Platform Github repository** solution in future, given alternative Git branching strategies have been available for a while now. For example [**GitLab Flow**](https://www.youtube.com/watch?v=ZJuUz5jWb44) is a simple variation of the original decade-old **Git Flow**. Despite its name, **GitLab Flow** can be implemented on **GitHub**.  
->
->In principle, **GitLab Flow** allows code pushed to the ***main branch*** to subsequently be pushed ***first*** to a separate **Pre-Production** **environment branch** where it is deployed into the **Pre-Production Data Platform environment** for testing. That means we can test our code directly from our code editors without ever needing to *copy-and-paste* it into the AWS console. That also means we can keep the **Pre-Production Data Platform environment** clean from the many spurious copies of test code written on the fly by users logged into the AWS console.
->
->Then later when our code is releasable to our users, it can be pushed ***second*** to the **Production** **environment branch** where it is deployed into the **Production Data Platform environment**. Which is different to our current system of deployment directly from the ***main branch*** simultaneously into **both Data Platform environments**.
->
->Among other benefits, this should allow us to name our jobs and databases consistently across both environments, so never needing to re-point SQL scripts to tables with the different `prod` and `stg` labels which we should abandon altogether. The same SQL scripts henceforth will work unchanged in both **Pre-Production** and **Production**.
->
->More thought needs to go into this, for example would we might want to maintain the **Landing Zone** code in its own environment branch with a corresponding **Data Platform landing environment** feeding data identically to the **Pre-Production** and **Production** environments. At the moment, **Raw Zone** data is copied from **Production** to **Pre-Production** which causes problems with crawling processes giving different results, and that too can be avoided.
->
->But perhaps the greatest benefit though, would be not needing to develop long and complex production-line procedures for involving the AWS Console to test our products, as exemplified by the the Playbook guide above.
+>Other Git branching strategies might be considered in future that would allow code testing directly from our code editors without needing to *copy-and-paste* code into a staging area via the AWS console.
 
 ---
 
