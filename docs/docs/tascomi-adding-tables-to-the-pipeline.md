@@ -64,7 +64,8 @@ This scenario may arrive as a customer service request and may be factored into 
 
 #### Agency
 
->**[the engineer/analyst] will** discover [[the user]](#user-story)'s need for new tables and implement the required changes to [Tascomi] data ingestion.
+>**[the engineer/analyst] will** discover [[the user]](#user-story)'s need for new tables and implement the required changes to [Tascomi] data ingestion.  
+>**The Data Platform Team will** review what [the engineer/analyst] will implement for the Data Platform.
 
 #### User acceptance behaviors
 
@@ -78,9 +79,10 @@ This scenario may arrive as a customer service request and may be factored into 
 
 #### Delivery
 
->**[the engineer/analyst] will** test the required changes first in Pre-Production to foresee and fix faults before going to in Production.  
->**[the engineer/analyst] will** communicate with the Data Platform Team to ensure the required changes are deployed correctly into Production and ensure unforeseen faults can be rolled back swiftly to minimize the impact on the exiting pipelines and minimize potential disruption to [other data users].  
->**[the engineer/analyst] will** communicate with [[the user]](#user-story) to ensure these acceptance behaviors are met.
+>**[the engineer/analyst] will** test the required changes first in Pre-Production to fix faults and foresee potential problems before deployment into Production.  
+>**The Data Platform Team will** review the changes implemented by the [the engineer/analyst] and deploy the changes into Production.  
+>**[the engineer/analyst] and The Data Platform Team will** communicate to ensure the required changes are deployed successfully into Production and ensure unforeseen faults can be rolled back swiftly to minimize the impact on the exiting pipelines and minimize potential disruption to [other data users].  
+>**[the engineer/analyst] and [[the user]](#user-story) will** communicate to ensure the acceptance behaviors are met.
 
 How does the scope of the playbook guide depend on [user acceptance behaviors](#user-acceptance-behaviors)? See the explanation here ► [`ⓘ` SIDE NOTE appendix](#how-does-the-scope-of-the-playbook-guide-depend-on-user-acceptance-behaviors).
 
