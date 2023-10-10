@@ -52,7 +52,11 @@ Either way, this guide assumes a basic understanding of `AWS Glue` and `Amazon A
 
 ### The grand scenario
 
-A data user [(persona identified later)](#user-story) discovered some ***Tascomi API resources*** needed for **Planning** but could not find the corresponding tables in the `dataplatform-prod-Tascomi-refined-zone` of the ***Production Data Platform***. The missing data resources must be added to the ***Tascomi data pipeline*** so the data user can find those tables and subsequently produce the insight needed by **Planning**.
+A data user [(persona to be identified)](#user-story) discovered some ***Tascomi API resources*** needed for **Planning** but could not find the corresponding tables in the `dataplatform-prod-Tascomi-refined-zone` of the ***Production Data Platform***.
+
+The reason for the data user not finding the tables in the ***Production Data Platform*** was unconnected with the data governance controls of the Data Platform and it can be established that the data user has permission to access the required missing data resources going forward.
+
+The missing data resources must be added to the ***Tascomi data pipeline*** so the data user can find those tables and subsequently produce the insight needed by **Planning**.
 
 This scenario may arrive as a customer service request and may be factored into a ticket template to form a [***numbered Jira ticket***](#the-grand-scenario)...
 
@@ -756,9 +760,9 @@ The procedures in this guide are written in the BDD (Behavior Driven Design) nar
 
 ### How does the scope of the playbook guide depend on user acceptance behaviors?
 
->The scope of the playbook guide is based upon the [overall scenario](#the-grand-scenario). Somewhere in that grand scenario we need to know "what done looks like" so we can close the ticket and move on.  Defining the [user acceptance behaviors](#user-acceptance-behaviors) ultimately allows to do that.
+>The scope of the playbook guide is based upon the [overall scenario](#the-grand-scenario). Somewhere in that grand scenario we need to know "what done looks like" so we can close the ticket and move on.  Defining the [user acceptance behaviors](#user-acceptance-behaviors) ultimately allows use to do that.
 >
->Other scenarios might require different or additional user acceptance behaviors, for example, where the user, identified as a [data analyst working for Planning], might only have access to the Data Platform via external BI tools. If that were the case then either the scope would need to encompass that, or the ticket might form part of some wider "epic" involving access via BI tools described in separate playbook guides.
+>Other scenarios might require different or additional user acceptance behaviors, for example, where the user, identified as a [data analyst working for Planning], might only have access to the Data Platform via external BI tools. If that were the case then either the scope would need to encompass that, or the ticket might form part of some wider "epic", possibly involving upgraded permissions or access via BI tools, described in separate playbook guides.
 
 ---
 
