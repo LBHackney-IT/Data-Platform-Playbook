@@ -161,9 +161,71 @@ You will need to decide whether new tables should be ingested *daily* by appendi
 
 #### Required Terraform script changes
 
-Studying what each Tascomi API resource or table does and by examining the relationships between tables, via embedded `_id` columns, you may be able to decide which list, `tascomi_table_names` or `tascomi_static_tables`, each new table belongs to. You can also refer to the [Tascomi API schema diagram](../docs/images/tascomi-API-schema.png) for help.
+With the [`24-aws-glue-tascomi-data.tf`](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-tascomi-data.tf) ***terraform script*** open in your code editor and in front of you, you should see a couple of local assignment statements, like these below:-
 
-However, you will be able to test your assumptions later in **Pre-Production** when you will have the opportunity to query and analyze how the data changes over time, so it is not necessary to decide from the outset. But if you are really not sure about where some tables belong, then simply add them to the `tascomi_table_names` list for now and you can move them to `tascomi_static_tables` later on if required.
+```terraform
+  tascomi_table_names = [
+    "appeals",
+    "applications",
+    "asset_constraints",
+    "communications",
+    "contacts",
+    "documents",
+    "dtf_locations",
+    "emails",
+    "enforcements",
+    "fee_payments",
+    "fees",
+    "public_comments",
+    "users",
+    "committee_application_map",
+    "user_teams",
+    "user_team_map",
+    "pre_applications",
+    "enforcement_breaches",
+    "enforcement_outcomes",
+    "enforcement_actions_taken",
+    "enforcement_breach_details"
+  ]
+
+  tascomi_static_tables = [
+    "appeal_decision",
+    "appeal_status",
+    "appeal_types",
+    "application_types",
+    "breach_types",
+    "committees",
+    "communication_templates",
+    "communication_types",
+    "contact_types",
+    "decision_levels",
+    "decision_types",
+    "document_types",
+    "fee_types",
+    "ps_development_codes",
+    "public_consultations",
+    "pre_application_categories",
+    "nature_of_enquiries",
+    "enquiry_outcome",
+    "enquiry_stage",
+    "wards",
+    "appeal_formats",
+    "enforcement_outcome_types",
+    "enforcement_protocols",
+    "priority_statuses",
+    "complaint_sources",
+    "file_closure_reasons",
+    "enforcement_case_statuses"
+]
+```
+
+You will need to decide which of these lists, `tascomi_table_names` or `tascomi_static_tables`, your new table resources should be added to, in the Terraform code.
+
+[You will be able to test any assumptions later in **Pre-Production** testing](#assess-the-changes-you-made-to-the-terraform-script) when you will have the opportunity to analyze your new data and determine how often each new table is actually updated. So it is not absolutely necessary to decide right now.
+
+If you are unsure where your new tables belong, then simply add them to the `tascomi_table_names` list for now, then later, you can move them to `tascomi_static_tables` before [finally deploying your code](#deploy-the-code-changes-into-production).
+
+On the other hand, you may be certain what each Tascomi API resource or table does, say if you have been shown the Tascomi system by its users and can understand the data in its original context. You might want to examine the relationships between tables, via embedded `_id` columns or go check out the [Tascomi API schema diagram](../docs/images/tascomi-API-schema.png).
 
 >**Does it really need to be more complicated than just doing the Terraform?**  
 >Check out the full discussion here ► [`ⓘ` SIDE NOTE appendix](#does-it-really-need-to-be-more-complicated-than-just-doing-the-terraform).  
@@ -700,7 +762,9 @@ limit 10;
  **~and** you may proceed to test next table  
  **~and** when you see all your new tables showing correct results, then your testing is done and may proceed to [final deployment](#deploy-the-code-changes-into-production).
 
-If in the previous stages, you quickly skipped through **Step 2.3.4** and **Step 3.2.4** then it especially important to check now, each and every new snapshot table with **Step 4.3.4** you added, to ensure everything has worked along the way.
+If in the previous stages, you quickly skipped through **Step 2.3.4** and **Step 3.2.4** then it especially important to check now, each and every new snapshot table with **Step 4.3.4** you added, to ensure everything has worked along the way. 
+
+You will want to examine these SQL query outputs later while [assessing your Terraform script changes](#assess-the-changes-you-made-to-the-terraform-script).
 
 **`🖱`** ***Did that work for you?***  
 >**But** when these steps do not *behave* as described, and you are unable to resolve these issues by yourself, please then seek help from the Data Platform team.
@@ -710,6 +774,16 @@ All being well, you may proceed to deployment.
 ---
 
 ## Deploy the code changes into Production
+
+### Assess the changes you made to the [Terraform script](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-tascomi-data.tf)
+
+When querying your new ***refined tables*** in the previous **Step 4.2.4** you should study each of the table outputs to determine:  
+>
+>a) Was there a relatively small number of rows produced?  
+>
+>b) Are those rows changed infrequently, if at all?
+
+Where you can answer ***YES*** those tables should be added to the `tascomi_static_tables` list. Where ***NO***, because tables are regularly appended to, or are frequently updated, then those tables should be added to the `tascomi_table_names` list. So now, you can go back and check [the changes you made to the Terraform script](#required-terraform-script-changes).
 
 ### Commit your code changes in the new branch and open a pull request
 
@@ -768,15 +842,13 @@ The procedures in this guide are written in the BDD (Behavior Driven Design) nar
 
 ### Does it really need to be more complicated than just doing the Terraform?
 
->Our goal should always be to cut waste and remove unnecessary complexity from our data pipelines. Doing so, not only helps reduce our platform running costs, it reduces the total cost of ownership (TCO) as provisioning procedures are also simplified. With that goal in mind, we want our pipeline maintenance as much as possible, to be handled at the ***platform engineering*** level.
+>We should always try to cut waste and remove unnecessary complexity from our data pipelines, to reduce our platform running costs and reduce the total cost of ownership (TCO) by simplifying our procedures. We want our pipeline maintenance to run smoothly at the ***platform engineering*** level.
 >
->Notwithstanding radical vendor upgrades to ***Tascomi API*** in future, the next iteration of this playbook guide should be focussed on the deployment, with code changes ***only*** made to the [Terraform script](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-tascomi-data.tf) and taking focus away from the Python development by making those code changes unnecessary. Making this a simple task for analysts to undertake and meeting the reasonable expectations of service managers preferring that adding resources to the Data Platform is a simple request and easy to deliver.
+>Notwithstanding radical vendor upgrades to ***Tascomi API*** in future, the next iteration of this playbook guide should focus on actual deployment and away from Python development. Making this a simple task for analysts to undertake.
 >
->Further, having refocussed our attention on the ***platform engineering*** we ought to look more closely at optimizing the **Terraform** for future product iterations. For example, the **Parse** and **Recast** jobs handle multi-table parameters which is very convenient for testing and saves us a lot of time. However, scheduling them to run that way in **Production** isn't necessary optimal and in fact it is suspected that it is not. Not least, because as the number of tables grows then then we lose control of the compute running cost.
+>Then, with renewed attention upon the [Terraform scripting](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-tascomi-data.tf), we can look seriously at optimizing the running of those multi-table parameterized jobs. Should they also run one table at a time, as happens with the **API resource** *response* processing? That is just the kind of ***platform engineering*** hypothesis we ought to be testing, whether it might reduce our running costs, or limits our per-job compute resource need in order to make the overall production pipeline more scalable.
 >
->But if those jobs can run with multi-table parameters then of course they can also run with just a single table parameter, and so the responsibility of processing multiple tables individually would be delegated back to the Terraform scripting, which in fact already happens for the **API resource** *response* processing. This is the kind of ***platform engineering*** hypothesis we ought to be testing refactoring and optimizing most of the time so that we can both reduce our running costs while making our production pipelines more scalable.
->
->But we should at least make sure the lessons learned and suggested improvements are made actionable for all future such API-integrated data ingestion pipelines. Indeed anything we can learn from this development, done early on in the history of the Data Platform while we were still learning, is of great value to future development of the Data Platform.
+>The lessons learned and improvements suggested here, should be made actionable for all future such API-integrated data ingestion pipelines. Indeed, anything we can learn from this development, done early on in the history of the Data Platform while we were still learning, should contribute to the future development of the Data Platform.
 
 ---
 
@@ -806,7 +878,7 @@ The procedures in this guide are written in the BDD (Behavior Driven Design) nar
 >  
 >Envisioned as future possible iteration of the Tascomi data pipeline, a simpler, less complex design would eliminate the need for separate **Steps 2** and **Steps 3** jobs, combining them into a single step "***parse and recast"*** job.
 >
->Much S3 date-writing and date-scanning is needed to support intermediate data staging in the data pipeline. This extends the overall execution time and attracts unnecessary running costs. So the goal is to make that intermediate staging redundant.
+>Much S3 date-writing and date-scanning is needed to support intermediate data staging in the data pipeline. This extends the overall execution time and attracts unnecessary running costs. So the goal is to make such intermediate staging redundant.
 
 ---
 
