@@ -119,6 +119,16 @@ But if the main `Application` table were to change then the following procedural
 
 ---
 
+## Discovery
+
+So, you were given a list a of Tascomi API resources and told to add them to the Data Platform. But is that list actually complete? The larger tables may point to many small yet important static tables. So better assume the list you were given may not be 100% complete and it might be possible that an important static table was left out. It would cost you a lot of time if a missing table was discovered afterwards and you had to go back and follow the same procedure all over again!
+
+You may or may not, be certain what each Tascomi API resource or table does. You may or may not, have been shown the Tascomi system by its users and so can understand the data in its original context. Either way you might want to examine the relationships between tables, via the foreign `_id` key columns or go check out the [Tascomi API schema diagram](../docs/images/tascomi-API-schema.png).
+
+You may discover, what appear to be, linked tables without a corresponding API resource. But you won't need to worry about them. They are just endpoint locators for the Tascomi software interface.
+
+---
+
 ## How to proceed with your code changes
 
 ### Create and check out a new Git branch for your code changes
@@ -146,89 +156,6 @@ But whenever API anomalies are discovered it is wise to stop and [consider alter
 >
 >Please be aware, at the time of writing, of two existing tables `asset_constraints` and `pre_applications` that were ***deliberately*** left out of the column-type conversion dictionary due to other pipelines depending upon them in their unconverted state. The plan is to remove this warning from the documentation only when the issue is finally resolved.
 <!---:::--->
-
-### Add the new tables to the [Terraform script](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-tascomi-data.tf)
-
-You will need to decide whether new tables should be ingested *daily* by appending them to the `tascomi_table_names` list, or ingested *weekly* by appending them to the `tascomi_static_tables` list.  
-
->**When** you have your code editor open on your computer  
- **~and** have your cloned `Data-Platform` ***Git*** repository open on your computer  
- **~and** have checked out your ***Git*** development branch, eg. "DPP-426" substituting your own [***ticket number***](#the-grand-scenario) generated above  
- **~and** have the [`24-aws-glue-tascomi-data.tf`](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-tascomi-data.tf) ***terraform script*** open on your computer screen,  
->**When** you make the following [required changes to your terraform script](#required-terraform-script-changes)  
- **~and** *save, commit and synch* your code with the remote `Data-Platform` ***GitHub*** repository
->**Then** you may proceed.
-
-#### Required Terraform script changes
-
-With the [`24-aws-glue-tascomi-data.tf`](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-tascomi-data.tf) ***terraform script*** open in your code editor and in front of you, you should see a couple of local assignment statements, like these below:-
-
-```terraform
-  tascomi_table_names = [
-    "appeals",
-    "applications",
-    "asset_constraints",
-    "communications",
-    "contacts",
-    "documents",
-    "dtf_locations",
-    "emails",
-    "enforcements",
-    "fee_payments",
-    "fees",
-    "public_comments",
-    "users",
-    "committee_application_map",
-    "user_teams",
-    "user_team_map",
-    "pre_applications",
-    "enforcement_breaches",
-    "enforcement_outcomes",
-    "enforcement_actions_taken",
-    "enforcement_breach_details"
-  ]
-
-  tascomi_static_tables = [
-    "appeal_decision",
-    "appeal_status",
-    "appeal_types",
-    "application_types",
-    "breach_types",
-    "committees",
-    "communication_templates",
-    "communication_types",
-    "contact_types",
-    "decision_levels",
-    "decision_types",
-    "document_types",
-    "fee_types",
-    "ps_development_codes",
-    "public_consultations",
-    "pre_application_categories",
-    "nature_of_enquiries",
-    "enquiry_outcome",
-    "enquiry_stage",
-    "wards",
-    "appeal_formats",
-    "enforcement_outcome_types",
-    "enforcement_protocols",
-    "priority_statuses",
-    "complaint_sources",
-    "file_closure_reasons",
-    "enforcement_case_statuses"
-]
-```
-
-You will need to decide which of these lists, `tascomi_table_names` or `tascomi_static_tables`, your new table resources should be added to, in the Terraform code.
-
-[You will be able to test any assumptions later in **Pre-Production** testing](#assess-the-changes-you-made-to-the-terraform-script) when you will have the opportunity to analyze your new data and determine how often each new table is actually updated. So it is not absolutely necessary to decide right now.
-
-If you are unsure where your new tables belong, then simply add them to the `tascomi_table_names` list for now, then later, you can move them to `tascomi_static_tables` before [finally deploying your code](#deploy-the-code-changes-into-production).
-
-On the other hand, you may be certain what each Tascomi API resource or table does, say if you have been shown the Tascomi system by its users and can understand the data in its original context. You might want to examine the relationships between tables, via embedded `_id` columns or go check out the [Tascomi API schema diagram](../docs/images/tascomi-API-schema.png).
-
->**Does it really need to be more complicated than just doing the Terraform?**  
->Check out the full discussion here ► [`ⓘ` SIDE NOTE appendix](#does-it-really-need-to-be-more-complicated-than-just-doing-the-terraform).  
 
 ### Add basic data quality tests to the relevant scripts
 
@@ -702,7 +629,7 @@ Before you can add your [required code changes](#required-code-changes) to the c
 
 #### 4.3 Test your new tables with the cloned Tascomi refined daily snapshot job
 
-**`🖱` Step 4.2.1** produce your new refined daily snapshot tables all at once
+**`🖱` Step 4.3.1** produce your new refined daily snapshot tables all at once
 >**Given** the `Advanced Properties` is expanded below the `Job details` of the cloned job in `Glue Studio`  
  **~and** the script is named `tascomi_create_daily_snapshot-DPP-426.py` (replacing `DPP-426` with your own [***ticket number***](#the-grand-scenario)) and it was previously updated with your code changes  
  **~and** you have scrolled down to `Job parameters`  
@@ -714,7 +641,7 @@ Before you can add your [required code changes](#required-code-changes) to the c
  **~and** your new refined daily snapshot data should be added to the S3 bucket path `--s3_bucket_target` = `s3://dataplatform-stg-refined-zone/planning/tascomi/snapshot/`
  **~and** you may proceed to crawl your new data for the target database.
 
-**`🖱` Step 4.2.2** crawl your new refined daily snapshot data for the Data Catalog
+**`🖱` Step 4.3.2** crawl your new refined daily snapshot data for the Data Catalog
 >**Given** you navigated to `AWS Glue` via the ☷ Services menu  
  **~and** from the left menu expanded the `Data Catalog` sub-menu  
  **~and** have selected [`Crawlers`](https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#/v2/data-catalog/crawlers),  
@@ -726,7 +653,7 @@ Before you can add your [required code changes](#required-code-changes) to the c
  **~and** the `AwsDataCatalogue` should be updated with all your new daily snapshot `<resource-name>` tables and data in the `dataplatform-stg-tascomi-refined-zone` database  
  **~and** you may proceed to query your new data using `Amazon Athena`.
 
-**`🖱` Step 4.2.3** find your new refined daily snapshot tables using Amazon Athena
+**`🖱` Step 4.3.3** find your new refined daily snapshot tables using Amazon Athena
 >**Given** you navigated to `Amazon Athena` via the ☷ Services menu  
  **~and** over on the top right, **Workgroup** has `planning` selected  
  **~and** on left under **Data**, **Data source** has `AwsDataCatalogue` selected  
@@ -736,7 +663,7 @@ Before you can add your [required code changes](#required-code-changes) to the c
  **~and** expanding each of your tables you should see, for each and every one, the column names and types plus the extra `snapshot_...` columns added at the end  
  **~and** and you may proceed to test your data in those tables by running queries.
 
-**`🖱` Step 4.2.4** query your new snapshot data using Amazon Athena
+**`🖱` Step 4.3.4** query your new snapshot data using Amazon Athena
 >**Given** in `Amazon Athena` you found your new snapshot `<resource-name>` tables
 **and** have selected your next table you want to query,  
 >**When** you ***copy-and-paste*** the following **SQL code** into the query editor  
@@ -762,9 +689,9 @@ limit 10;
  **~and** you may proceed to test next table  
  **~and** when you see all your new tables showing correct results, then your testing is done and may proceed to [final deployment](#deploy-the-code-changes-into-production).
 
-If in the previous stages, you quickly skipped through **Step 2.3.4** and **Step 3.2.4** then it especially important to check now, each and every new snapshot table with **Step 4.3.4** you added, to ensure everything has worked along the way. 
+If in the previous stages, you quickly skipped through **Step 2.3.4** and **Step 3.2.4** then it especially important to check now, each and every new snapshot table with **Step 4.3.4** you added, to ensure everything has worked along the way.
 
-You will want to examine these SQL query outputs later while [assessing your Terraform script changes](#assess-the-changes-you-made-to-the-terraform-script).
+You will want to examine these SQL query outputs later while [assessing your Terraform script changes](#add-the-new-tables-to-the-terraform-script).
 
 **`🖱`** ***Did that work for you?***  
 >**But** when these steps do not *behave* as described, and you are unable to resolve these issues by yourself, please then seek help from the Data Platform team.
@@ -775,17 +702,96 @@ All being well, you may proceed to deployment.
 
 ## Deploy the code changes into Production
 
-### Assess the changes you made to the [Terraform script](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-tascomi-data.tf)
+### Add the new tables to the [Terraform script](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-tascomi-data.tf)
 
-When querying your new ***refined tables*** in the previous **Step 4.2.4** you should study each of the table outputs to determine:  
+>**When** you have your code editor open on your computer  
+ **~and** have your cloned `Data-Platform` ***Git*** repository open on your computer  
+ **~and** have checked out your ***Git*** development branch, eg. "DPP-426" substituting your own [***ticket number***](#the-grand-scenario) generated above  
+ **~and** have the [`24-aws-glue-tascomi-data.tf`](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-tascomi-data.tf) ***terraform script*** open in your code editor,  
+>**When** you make the required changes to your terraform script, as guided below  
+ **~and** *save, commit and synch* your code with the remote `Data-Platform` ***GitHub*** repository  
+>**Then** you may proceed.
+
+So, with the [`24-aws-glue-tascomi-data.tf`](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-tascomi-data.tf) ***terraform script*** open in your code editor, there in front of you on your screen, you should see a couple of local assignment statements, like these below:-
+
+```terraform
+  tascomi_table_names = [
+    "appeals",
+    "applications",
+    "asset_constraints",
+    "communications",
+    "contacts",
+    "documents",
+    "dtf_locations",
+    "emails",
+    "enforcements",
+    "fee_payments",
+    "fees",
+    "public_comments",
+    "users",
+    "committee_application_map",
+    "user_teams",
+    "user_team_map",
+    "pre_applications",
+    "enforcement_breaches",
+    "enforcement_outcomes",
+    "enforcement_actions_taken",
+    "enforcement_breach_details"
+  ]
+
+  tascomi_static_tables = [
+    "appeal_decision",
+    "appeal_status",
+    "appeal_types",
+    "application_types",
+    "breach_types",
+    "committees",
+    "communication_templates",
+    "communication_types",
+    "contact_types",
+    "decision_levels",
+    "decision_types",
+    "document_types",
+    "fee_types",
+    "ps_development_codes",
+    "public_consultations",
+    "pre_application_categories",
+    "nature_of_enquiries",
+    "enquiry_outcome",
+    "enquiry_stage",
+    "wards",
+    "appeal_formats",
+    "enforcement_outcome_types",
+    "enforcement_protocols",
+    "priority_statuses",
+    "complaint_sources",
+    "file_closure_reasons",
+    "enforcement_case_statuses"
+]
+```
+
+You will need to decide whether your new tables should be ingested *daily* by appending them to the `tascomi_table_names` list, or be ingested *weekly* by appending them to the `tascomi_static_tables` list.  
+
+When querying your new ***refined tables*** in the previous **Step 4.3.4** you should study the table outputs in each case, to determine:  
 >
->a) Was there a relatively small number of rows produced?  
+>* Was there a relatively small number of rows produced?  
 >
->b) Are those rows changed infrequently, if at all?
+>* Are those rows infrequently changed, if at all?
 
-Where you can answer ***YES*** those tables should be added to the `tascomi_static_tables` list. Where ***NO***, because tables are regularly appended to, or are frequently updated, then those tables should be added to the `tascomi_table_names` list. So now, you can go back and check [the changes you made to the Terraform script](#required-terraform-script-changes).
+Where you can answer ***YES*** to certain tables then you should add their resource names to the `tascomi_static_tables` list for *weekly* ingestion. Otherwise, given...
+>
+>* tables are large with rows frequently added
+>
+>* or, regardless of the table size, rows appear frequently updated
 
-### Commit your code changes in the new branch and open a pull request
+...then those tables should have their resource names added to the `tascomi_table_names` list for *daily* ingestion.
+
+When you are happy with your outcomes, you should go ahead and make your code changes to the Terraform script.
+
+>**Does it really need to be more complicated than just doing the Terraform?**  
+>Check out the full discussion here ► [`ⓘ` SIDE NOTE appendix](#does-it-really-need-to-be-more-complicated-than-just-doing-the-terraform).  
+
+### Commit all your code changes in the new branch and open a pull request
 
 Ask a member of the Data Platform team to review the changes in your branch.
 
@@ -836,7 +842,7 @@ The procedures in this guide are written in the BDD (Behavior Driven Design) nar
 
 >The scope of the playbook guide is based upon the [overall scenario](#the-grand-scenario). Somewhere in that grand scenario we need to know "what done looks like" so we can close the ticket and move on.  Defining the [user acceptance behaviors](#user-acceptance-behaviors) ultimately allows use to do that.
 >
->Other scenarios might require different or additional user acceptance behaviors, for example, where the user, identified as a [data analyst working for Planning], might only have access to the Data Platform via external BI tools. If that were the case then either the scope would need to encompass that, or the ticket might form part of some wider "epic", possibly involving upgraded permissions or access via BI tools, described in separate playbook guides.
+>Other scenarios might require different or additional ***user acceptance behaviors***, for example, where the user, identified as a [data analyst working for Planning], might only have access to the Data Platform via external BI tools. If that were the case then either the scope would need to encompass that, or the ticket might form part of some wider "epic", possibly involving upgraded permissions or access via BI tools, described in separate playbook guides.
 
 ---
 
