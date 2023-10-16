@@ -44,7 +44,6 @@ Optional Arguements:
 For example, if you have monthly data, it is quite common to want to check for yearly seasonality, simply doing the following will give you a forecast
 
 ```
-forecast = forecast_ets(df,26,"W")
+forecast = forecast_ets(df,start_date,end_date,"M")
 ```
-
-This gives you the next 26 weeks, with weekly seasonlity taken into account, where we use 52 as the cycle
+ETS Forecast using seasonality set to 12 for months in a year
