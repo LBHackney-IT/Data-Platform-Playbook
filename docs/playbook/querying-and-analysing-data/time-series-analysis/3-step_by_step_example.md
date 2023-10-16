@@ -11,7 +11,7 @@ tags: [playbook]
 
 This guide is for people who are very new to the Data Platform and want to do some forecasting. Can be used alone or conjunction with the other bits of documentation
 
-Using Public Data which is stored on the Platform
+Using public data which is stored on the Platform
 
 ## Prerequisites
 
@@ -20,7 +20,7 @@ Using Public Data which is stored on the Platform
 
 ## 1. Set up
 
-First lets set up our test Glue Job. There is already one in the AWS Glue Jobs list for us to copy
+First let's set up our test Glue Job. There is already one in the AWS Glue Jobs list for us to copy
 
 ```
 Time Series Forecasting StepByStep
@@ -32,7 +32,7 @@ This script will load some public data about Bike Rentals
 
 ## Viewing the Data using Print in AWS Glue
 
-Most people will have no idea what this data looks like, so lets print the data and see. The print statements are already there to show some of the data and to show its information. So just Run the script
+Most people will have no idea what this data looks like, so let's print the data and see. The print statements are already there to show some of the data and to show its information. So just Run the script
 
 Once the script runs, look at the Output Logs at the bottom of the run, and select the log
 
@@ -60,7 +60,7 @@ This shows us all the columns, how many values we have and their types. We have 
 
 1. The number of Bicycle Hires is not an int or float, but an object.
 2. There are multiple columns
-3. The Date is in a seperate column rather than in the Index
+3. The Date is in a separate column rather than in the Index
 
 ## Adding the Helper Functions to our Glue Job
 
@@ -69,7 +69,7 @@ You can import the helper functions by putting this line of code underneath your
 ```
 from scripts.helpers.time_series_helpers import "Your Function"
 ```
-For what we want to do in this script, lets use these functions
+For what we want to do in this script, let's use these functions
 
 - reshape_time_series_data: Most Time series functions use a 1 dimensional dataframe with the Date in the Index
 - forecast_ets: The exponential smoothing ETS method. Requires a start and end date
@@ -82,7 +82,7 @@ For what we want to do in this script, lets use these functions
 
 Next, we want to add the libraries needed into our Glue environment
 
-Follow this guide on how to do so: [Link](https://github.com/LBHackney-IT/Data-Platform-Playbook/blob/f8682cb6ff53af1049dc40a9c67dd51aedc5ac6e/docs/playbook/querying-and-analysing-data/time-series-analysis/1-introduction.md#glue-job-prequisites)
+Follow this guide on how to do so: [Link](https://github.com/LBHackney-IT/Data-Platform-Playbook/blob/f8682cb6ff53af1049dc40a9c67dd51aedc5ac6e/docs/playbook/querying-and-analysing-data/time-series-analysis/1-introduction.md#glue-job-prerequisites)
 
 Now save and run the Glue Script again. There should be no errors, and now you have some functions to use
 
@@ -98,7 +98,7 @@ Since this guide is not about cleaning data, we have applied this cleaning step 
 
 First let's get this data into the desired shape for Time Series Analysis which means having just one metric and the date in the index
 
-``` reshape_time_series_data ``` is the helper to use here, its arguements are
+``` reshape_time_series_data ``` is the helper to use here, its arguments are
 - The Dataframe
 - The name of the Date Column so it can move the date into the index. In this case its ```"Day"```
 - The list of columns to include, so for this case its ``` ["Number of Bicycle Hires"] ```
@@ -124,7 +124,7 @@ We then need the start date and end date. ``` get_start_end_date ``` is what we 
 
 ## Putting the reshaped data into a Function
 
-Now lets use the ```forecast_ets``` function to get our forecast
+Now let's use the ```forecast_ets``` function to get our forecast
 
 - The dataset as a SERIES. This is important because the reshape function calls the single variable Y. So if your dataframe is called ```reshaped_dataset``` you will need to put ```reshaped_dataset.y```
 - Start date
@@ -141,4 +141,4 @@ This will return a dataframe with our forecast mean results.
 
 For other functions simply follow the documentation for their respective helper instead of using the forecast_ets helpers
 
-and thats all we need. Just a few lines of code to copy and you get some forecasting. Now you need to figure out what you want to do with this forecast, but that won't be covered here
+and that's all we need. Just a few lines of code to copy and you get some forecasting. Now you need to figure out what you want to do with this forecast, but that won't be covered here
