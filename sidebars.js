@@ -81,7 +81,18 @@ module.exports = {
         {
           type: "category",
           label: "Querying and analysing data",
-          items: getItems("playbook/querying-and-analysing-data"),
+          items: [
+                {
+                  type: "category",
+                  label: "Time Series Analysis",
+                  items: [
+                    ...getItems(
+                      "playbook/querying-and-analysing-data/time-series-analysis"
+                  ),
+                  ],
+                },
+                ...getItems("playbook/querying-and-analysing-data"),
+          ],
         },
       ],
     },
