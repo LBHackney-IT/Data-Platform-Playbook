@@ -25,9 +25,9 @@ The task does the following:
 - Starts off the process to create a database snapshot from this database
 
 #### 3. Getting the data from the RDS snapshot into the landing zone as parquet files
-A Cloudwatch Event Rule waits for the Snapshot to be created (RDS-EVENT-0042). This then invokes the lambda (`*-LAMBDA-1-NAME-GOES-HERE`) which finds the latest snapshot and starts an RDS export task that writes the snapshot to S3 (`s3://*-dp-rds-export-storage`) in parquet format.
+A Cloudwatch Event Rule waits for the Snapshot to be created (RDS-EVENT-0042). This then invokes the lambda (`*-export-rds-snapshot-to-s3`) which finds the latest snapshot and starts an RDS export task that writes the snapshot to S3 (`s3://*-dp-rds-export-storage/<snapshot_identifier>/*`) in parquet format.
 
-A Cloudwatch Event Rule waits for the Snapshot export to complete (RDS-EVENT-0161). When this event occurs it invokes the lambda  (`*-LAMBDA-NAME-GOES-HERE`) that will copy all the files into the landing zone, with the standard date partitions added to the objects keys and any extra partitions added by the RDS export task are removed.
+A Cloudwatch Event Rule waits for the Snapshot export to complete (RDS-EVENT-0161). When this event occurs it invokes the lambda  (`*-rds-export-s3-to-s3-copier`) that will copy all the files into the landing zone, with the standard date partitions added to the objects keys and any extra partitions added by the RDS export task are removed.
 
 The lambda function will then start the glue parking liberator workflow (`*parking-liberator-data-workflow`), which copies the data into the raw zone and runs a number of transformation jobs scheduled into the workflow.
 
