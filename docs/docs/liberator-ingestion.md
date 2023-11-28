@@ -4,6 +4,7 @@ description: "Description of the ingestion process for Liberator data"
 layout: playbook_js
 tags: [playbook]
 ---
+![Liberator data ingestion process](../docs/images/liberator_ingestion.png)
 
 This section describes how the Liberator dataset gets ingested into the data platform. 
 
