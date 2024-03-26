@@ -21,7 +21,7 @@ body:
          Enter a brief description of how this problem or issue is affecting producers, consumers or platform engineers
          - _**Producers** are users who create datasets on platform. For example, Parking users are producers when they create workflows and jobs_
          - _**Consumers** are users who access data from platform. For example, when Parking users are querying data from GDS they are consumers_
-         - _**Platform Engineers** are the engineers who are working in the Data Analytics Platform project_"
+         - _**Platform Engineers** are the engineers who are working in the Data Analytics Platform project_
 - type: textarea
     id: proposed-task
     attributes:
