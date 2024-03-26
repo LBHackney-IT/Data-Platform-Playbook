@@ -14,8 +14,8 @@ body:
     label: "## 🌵What is the problem or issue we're trying to address?"
     description: Enter a brief description of the problem or issue you're trying to address with this pitch
     placeholder: Enter your firebreak idea or pitch title
-    validations:
-        required: true
+  validations:
+      required: true
 - type: textarea
   attributes:
     label: "## 🎯How is this affecting producers, consumers or platform engineers?"
