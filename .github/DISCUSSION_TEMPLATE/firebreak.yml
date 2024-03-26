@@ -4,7 +4,11 @@ body:
 - type: markdown
   attributes:
     value: |
-     This category is for discussing ideas for firebreaks. Firebreaks are a time for the team to work on something that is not on the roadmap. This could be a new idea, a new feature, a new project, or anything else that you think would be valuable to work on.
+     This category is for collecting pitches and ideas for work the team can collaborate and swarm around to help reset the team ways of working and improve the project's velocity.
+     Examples of this might be:
+     - fixing long standing bugs
+     - improving the codebase or clearing technical debt
+     - exploring new functionality or tooling in an MVP form
 - type: input
     id: firebreak-idea
     attributes:
