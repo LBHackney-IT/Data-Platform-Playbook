@@ -1,0 +1,23 @@
+title: "🔥<Your firebreak idea or pitch title>"
+labels: [Discussion, Firebreak]
+body:
+- type: markdown
+  attributes:
+    value: |
+     This category is for discussing ideas for firebreaks. Firebreaks are a time for the team to work on something that is not on the roadmap. This could be a new idea, a new feature, a new project, or anything else that you think would be valuable to work on.
+- type: input
+    id: firebreak-idea
+    attributes:
+        label: 🌵What is the problem or issue we're trying to address?
+        description: Enter a brief description of the problem or issue you're trying to address with this pitch
+        placeholder: Enter your firebreak idea or pitch title
+        required: true
+- type: textarea
+    id: affected-users
+    attributes:
+        label: 🎯How is this affecting producers, consumers or platform engineers?
+        description: |
+         Enter a brief description of how this problem or issue is affecting producers, consumers or platform engineers
+        "- _**Producers** are users who create datasets on platform. For example, Parking users are producers when they create workflows and jobs_
+        - _**Consumers** are users who access data from platform. For example, when Parking users are querying data from GDS they are consumers_
+        - _**Platform Engineers** are the engineers who are working in the Data Analytics Platform project_"
