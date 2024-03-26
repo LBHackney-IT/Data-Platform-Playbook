@@ -1,46 +1,46 @@
 title: "🔥<Your firebreak idea or pitch title>"
 labels: [Discussion, Firebreak]
 body:
-- type: markdown
-  attributes:
-    value: |
-     This category is for collecting pitches and ideas for work the team can collaborate and swarm around to help reset the team ways of working and improve the project's velocity.
-     Examples of this might be:
-     - fixing long standing bugs
-     - improving the codebase or clearing technical debt
-     - exploring new functionality or tooling in an MVP form
-- type: textarea
-  attributes:
-    label: "## 🌵What is the problem or issue we're trying to address?"
-    description: Enter a brief description of the problem or issue you're trying to address with this pitch
-    placeholder: Enter your firebreak idea or pitch title
-  validations:
+  - type: markdown
+    attributes:
+      value: |
+        This category is for collecting pitches and ideas for work the team can collaborate and swarm around to help reset the team ways of working and improve the project's velocity.
+        Examples of this might be:
+        - fixing long standing bugs
+        - improving the codebase or clearing technical debt
+        - exploring new functionality or tooling in an MVP form
+  - type: textarea
+    attributes:
+      label: "🌵What is the problem or issue we're trying to address?"
+      description: Enter a brief description of the problem or issue you're trying to address with this pitch
+      placeholder: Enter your firebreak idea or pitch title
+    validations:
       required: true
-- type: textarea
-  attributes:
-    label: "## 🎯How is this affecting producers, consumers or platform engineers?"
-    description: |
-     Enter a brief description of how this problem or issue is affecting producers, consumers or platform engineers
-     - _**Producers** are users who create datasets on platform. For example, Parking users are producers when they create workflows and jobs_
-     - _**Consumers** are users who access data from platform. For example, when Parking users are querying data from GDS they are consumers_
-     - _**Platform Engineers** are the engineers who are working in the Data Analytics Platform project_
-- type: textarea
-  attributes:
-    label: "## 📝What is the proposed task?"
-    description: Enter a brief description of the proposed task
-- type: textarea
-  attributes:
-    label: "##🤔How might this work be carried out?"
-    description: Enter a brief description of how this work might be carried out
-- type: textarea
-  attributes:
-    label: "## ⌛How urgent is this work?"
-    description: Enter a brief description of how urgent this work is
-- type: textarea
-  attributes:
-    label: "## 💪How much effort do you think this will take?"
-    description: Enter a brief description of how much effort you think this will take
-- type: textarea
-  attributes:
-    label: "## 🛠️What skills are needed?"
-    description: Enter a brief description of what skills are needed
+  - type: textarea
+    attributes:
+      label: "🎯How is this affecting producers, consumers or platform engineers?"
+      description: |
+        Enter a brief description of how this problem or issue is affecting producers, consumers or platform engineers
+        - _**Producers** are users who create datasets on platform. For example, Parking users are producers when they create workflows and jobs_
+        - _**Consumers** are users who access data from platform. For example, when Parking users are querying data from GDS they are consumers_
+        - _**Platform Engineers** are the engineers who are working in the Data Analytics Platform project_
+  - type: textarea
+    attributes:
+      label: "📝What is the proposed task?"
+      description: Enter a brief description of the proposed task
+  - type: textarea
+    attributes:
+      label: "🤔How might this work be carried out?"
+      description: Enter a brief description of how this work might be carried out
+  - type: textarea
+    attributes:
+      label: "⌛How urgent is this work?"
+      description: Enter a brief description of how urgent this work is
+  - type: textarea
+    attributes:
+      label: "💪How much effort do you think this will take?"
+      description: Enter a brief description of how much effort you think this will take
+  - type: textarea
+    attributes:
+      label: "🛠️What skills are needed?"
+      description: Enter a brief description of what skills are needed
