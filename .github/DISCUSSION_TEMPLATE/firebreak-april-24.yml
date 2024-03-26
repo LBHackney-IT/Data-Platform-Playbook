@@ -9,7 +9,7 @@ body:
      - fixing long standing bugs
      - improving the codebase or clearing technical debt
      - exploring new functionality or tooling in an MVP form
-- type: input
+- type: textarea
   attributes:
     label: "## 🌵What is the problem or issue we're trying to address?"
     description: Enter a brief description of the problem or issue you're trying to address with this pitch
