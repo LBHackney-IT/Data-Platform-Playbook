@@ -10,44 +10,37 @@ body:
      - improving the codebase or clearing technical debt
      - exploring new functionality or tooling in an MVP form
 - type: input
-    id: firebreak-idea
-    attributes:
-        label: 🌵What is the problem or issue we're trying to address?
-        description: Enter a brief description of the problem or issue you're trying to address with this pitch
-        placeholder: Enter your firebreak idea or pitch title
-        validations:
-            required: true
+  attributes:
+    label: 🌵What is the problem or issue we're trying to address?
+    description: Enter a brief description of the problem or issue you're trying to address with this pitch
+    placeholder: Enter your firebreak idea or pitch title
+    validations:
+        required: true
 - type: textarea
-    id: affected-users
-    attributes:
-        label: 🎯How is this affecting producers, consumers or platform engineers?
-        description: |
-         Enter a brief description of how this problem or issue is affecting producers, consumers or platform engineers
-         - _**Producers** are users who create datasets on platform. For example, Parking users are producers when they create workflows and jobs_
-         - _**Consumers** are users who access data from platform. For example, when Parking users are querying data from GDS they are consumers_
-         - _**Platform Engineers** are the engineers who are working in the Data Analytics Platform project_
+  attributes:
+    label: 🎯How is this affecting producers, consumers or platform engineers?
+    description: |
+     Enter a brief description of how this problem or issue is affecting producers, consumers or platform engineers
+     - _**Producers** are users who create datasets on platform. For example, Parking users are producers when they create workflows and jobs_
+     - _**Consumers** are users who access data from platform. For example, when Parking users are querying data from GDS they are consumers_
+     - _**Platform Engineers** are the engineers who are working in the Data Analytics Platform project_
 - type: textarea
-    id: proposed-task
-    attributes:
-        label: 📝What is the proposed task?
-        description: Enter a brief description of the proposed task
+  attributes:
+    label: 📝What is the proposed task?
+    description: Enter a brief description of the proposed task
 - type: textarea
-    id: how-to-complete
-    attributes:
-        label: 🤔How might this work be carried out?
-        description: Enter a brief description of how this work might be carried out
+  attributes:
+    label: 🤔How might this work be carried out?
+    description: Enter a brief description of how this work might be carried out
 - type: textarea
-    id: how-urgent
-    attributes:
-        label: ⌛How urgent is this work?
-        description: Enter a brief description of how urgent this work is
+  attributes:
+    label: ⌛How urgent is this work?
+    description: Enter a brief description of how urgent this work is
 - type: textarea
-    id: how-much-effort
-    attributes:
-        label: 💪How much effort do you think this will take?
-        description: Enter a brief description of how much effort you think this will take
+  attributes:
+    label: 💪How much effort do you think this will take?
+    description: Enter a brief description of how much effort you think this will take
 - type: textarea
-    id: what-skills
-    attributes:
-        label: 🛠️What skills are needed?
-        description: Enter a brief description of what skills are needed
+  attributes:
+    label: 🛠️What skills are needed?
+    description: Enter a brief description of what skills are needed
