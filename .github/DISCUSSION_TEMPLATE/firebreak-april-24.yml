@@ -44,3 +44,7 @@ body:
     attributes:
       label: "🛠️What skills are needed?"
       description: Enter a brief description of what skills are needed
+  - type: textarea
+    attributes:
+      label: "📃Additional Info:"
+      description: "Any additional information or references you think might be useful"
