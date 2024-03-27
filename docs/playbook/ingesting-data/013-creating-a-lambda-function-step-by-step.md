@@ -35,6 +35,8 @@ On the Data Analytics Platform, we typically use [AWS Lambda](https://docs.aws.a
 * Making an _API call_ and writing the response to the landing zone, including a crawler execution
 * _Reading_ in data from a _Google Sheet_
 * _Moving data_ from one zone to another zone, with a simple refinement
+* _Event-driven_ processing, for example once new data arrives in S3, a Lambda is triggered to perform a task immediately
+* Near _Real-time processing_ for example, when a new person is added to a permissions group, a Lambda is triggered to grant this permission
 
 If your process involves reading in very large datasets, applying complex algorithms using Spark or and undertaking data transformations with multiple datasets, then this might be better suited to a different approach such as AWS Glue. 
 
