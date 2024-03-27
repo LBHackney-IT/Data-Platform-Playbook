@@ -73,14 +73,14 @@ _Developing your own Lambda function_
 
 2. Ensure that you have the required roles and policies [set up](#requesting-the-correct-permissions-set). If these are new roles and / or policies then they will likely be set up on a Terraform script by the DAP team. If you are using an existing role then you can create an empty Terraform file in the `Terraform > ETL` folder. Name the file in the same format as existing files by adding a prefix with the next numerical value e.g. `53-aws-lambda-my-amazing-ingestion.tf`
 
-<img src="../images/new-terraform-file.png" width="50%"/>
+<img height="50%" src="https://github.com/LBHackney-IT/Data-Platform-Playbook/blob/02419d20a9f8d213f9399f519137b8754f9c829c/docs/playbook/images/new-terraform-file.png"/>
 
 3. Once you are ready to start developing your Lambda function you will need to navigate to the `lambdas folder` in your [local environment](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/getting-set-up/local-pyspark-environment). 
 
 
 4. Create a new folder and give it a name that describes what it is doing e.g. `my-amazing-api-ingestion-for-housing`
 
-<img src="../images/new-lambda-folder.png" width="50%"/>
+<img height="50%" src="https://github.com/LBHackney-IT/Data-Platform-Playbook/blob/02419d20a9f8d213f9399f519137b8754f9c829c/docs/playbook/images/new-lambda-folder.png"/>
 
 
 5. Create a new empty Python file called `main.py`.
