@@ -44,13 +44,13 @@ If your process involves reading in very large datasets, applying complex algori
 
 You will need to provide the DAP team with the following information so that the correct roles and policies can be set up for your Lambda. At the time of writing it is advisable to set up a short meeting with the DAP team to discuss your requirements : 
 
-1. [ ] The department or service area that the process is for e.g. _Housing_
-2. [ ] Where data will be ingested / read from e.g. _an external API; housing-zone-raw database_
-3. [ ] Where data needs to be written to e.g. _landing zone, refined zone_
-4. [ ] The kind of actions that needed e.g. writing data to _S3 _s3:PutObject__
-5. [ ] Whether _logging_ is to be enabled
-6. [ ] Whether secrets needs to be accessed from _AWS Secret Manager_ (and what the secrets are called)
-7. [ ] Any other services needed for your Lambda task e.g. _AWS Glue Crawler_ _StartCrawler_ action
+1. The department or service area that the process is for e.g. _Housing_
+2. Where data will be ingested / read from e.g. _an external API; housing-zone-raw database_
+3. Where data needs to be written to e.g. _landing zone, refined zone_
+4. The kind of actions that needed e.g. writing data to S3 _s3:PutObject_
+5. Whether _logging_ is to be enabled
+6. Whether secrets needs to be accessed from _AWS Secret Manager_ (and what the secrets are called)
+7. Any other services needed for your Lambda task e.g. _AWS Glue Crawler_ _StartCrawler_ action
 
 ### Python packages and Lambda layers
 
@@ -73,15 +73,14 @@ _Developing your own Lambda function_
 
 2. Ensure that you have the required roles and policies [set up](#requesting-the-correct-permissions-set). If these are new roles and / or policies then they will likely be set up on a Terraform script by the DAP team. If you are using an existing role then you can create an empty Terraform file in the `Terraform > ETL` folder. Name the file in the same format as existing files by adding a prefix with the next numerical value e.g. `53-aws-lambda-my-amazing-ingestion.tf`
 
-![](../images/new-terraform-file.png)
+<img src="../images/new-terraform-file.png" width="50%"/>
 
 3. Once you are ready to start developing your Lambda function you will need to navigate to the `lambdas folder` in your [local environment](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/getting-set-up/local-pyspark-environment). 
 
 
 4. Create a new folder and give it a name that describes what it is doing e.g. `my-amazing-api-ingestion-for-housing`
 
-
-![](../images/new-lambda-folder.png)
+<img src="../images/new-lambda-folder.png" width="50%"/>
 
 
 5. Create a new empty Python file called `main.py`.
