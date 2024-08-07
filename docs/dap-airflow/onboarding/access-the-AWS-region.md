@@ -15,14 +15,14 @@ tags: [onboarding]
    **[📚DAP⇨flow AWS Console access](https://playbook.hackney.gov.uk/Data-Platform-Playbook/dap-airflow/onboarding/access-the-AWS-Management-Console)** 
 
 2. **Locate the Region Selector:**   
-   At the top of the console, find the region selector. It's the arrow symbol (▼) located second from the right.
+   At the top of the console, find the region selector. It's the arrow symbol "**▼**" located second from the right.
 
    ![Fig 2](../images/access-the-AWS-region-two.png)
 
 3. **Select Your Region:**   
-   Click on the arrow to open the region menu. From the list, choose “Europe (London) eu-west-2.”
+   Click on the arrow to open the region menu. From the list, choose "**Europe (London) eu-west-2.**"
 
     ![Fig 3 & 4](../images/access-the-AWS-region-three-four.png)
 
 4. **Verify the Selected Region:**   
-   After selecting, you should see “London▼” displayed at the top of the console, confirming that you have successfully changed the region.
+   After selecting, you should see "**London▼**" displayed at the top of the console, confirming that you have successfully changed the region.

@@ -12,15 +12,15 @@ tags: [onboarding]
    Start by logging into your Hackney Council Google account.
 
 2. **Open the AWS access portal:**   
-   In your web browser, navigate to the [AWS access portal](https://d-936715b9ec.awsapps.com/start\#/).
+   In your web browser, navigate to the **[AWS access portal](https://d-936715b9ec.awsapps.com/start\#/)**.
 
 3. **Expand the AWS accounts:**   
-   If were granted access to the Hackney Council AWS Console then you should be able to locate and fully expand the "DataPlatform-Pre-Production" section under “AWS accounts”.
+   If were granted access to the Hackney Council AWS Console then you should be able to locate and fully expand the "**DataPlatform-Pre-Production**" section under “**AWS accounts**”.
 
     ![Fig 3 & 4](../images/access-the-AWS-Management-Console-three-four.png)
 
 4. **Locate Your service role:**   
-   Below "DataPlatform-Pre-Production," find `[my service role]` listed.
+   Below "**DataPlatform-Pre-Production**", find `[my service role]` listed.
 
 5. **Access the AWS Management Console:**   
    Click on `[my service role]` to access the Data Platform AWS Management Console.  

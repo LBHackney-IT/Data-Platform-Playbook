@@ -23,7 +23,7 @@ tags: [onboarding]
     - membership of the **☎️ DAP⇨flow Hotline** Google Chat Space.
 
 5. **You’ll receive a welcome email:**  
-    Check for an email from the **DAP Platform Team** welcoming you to the DAP. This email will present you with the following information needed while using the DAP service:  
+    Check for an email from the **DAP Platform Team** welcoming you to the DAP. This email will present you with the following information needed while using the **DAP⇨flow** service and following the **📚Onboarding** documentation:  
     - `[my service]` name confirming my workgroup
     - `[my service role]` needed to access the AWS Console
     - Database Information:
