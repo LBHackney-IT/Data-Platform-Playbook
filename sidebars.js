@@ -119,6 +119,19 @@ module.exports = {
     },
     {
       type: "category",
+      label: "DAP⇨flow",
+      items: [
+        "dap-airflow/introduction",
+        {
+          type: "category",
+          label: "📚Onboarding",
+          /* items: getItems("dap-airflow/onboarding"), */
+          items: ["dap-airflow/onboarding/begin", "dap-airflow/onboarding/access-the-AWS-Management-Console"],
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "Architecture Decision",
       items: [
         "architecture-decisions/index",
@@ -144,5 +157,7 @@ module.exports = {
       id: "roles",
       label: "Roles",
     },
+/*
+*/
   ],
 };
