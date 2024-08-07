@@ -1,7 +1,7 @@
 ---
 id: access-the-AWS-Management-Console
 title:  AWS Console access
-description: "The process of authorizing data analysts and engineers to begin using the DAP Airflow integration."
+description: "Onboarding data analysts and engineers to DAP⇨flow, the Data Analytics Platform Airflow integration."
 layout: playbook_js
 tags: [onboarding]
 ---
@@ -25,8 +25,7 @@ tags: [onboarding]
 5. **Access the AWS Management Console:**   
    Click on `[my service role]` to access the Data Platform AWS Management Console.  
    * You may need to accept cookies and respond to service messages.  
-   * You may see errors caused by the region not set correctly.   
-     This will show you how to fix that ►[DPF-146 DOCUMENTATION 1.2 Access the Data Platform region](https://docs.google.com/document/d/1G3jXAX1zqVzpZUJxyOiLITT4RXN6E-U9bLHt4McdGHc/edit?usp=sharing)
+   * You may see errors caused by the region not set correctly.  
 
+     This will show you how to fix that ► **[📚DAP⇨flow AWS region](https://playbook.hackney.gov.uk/Data-Platform-Playbook/dap-airflow/onboarding/access-the-AWS-region)** 
     ![Fig 5](../images/access-the-AWS-Management-Console-five.png)
-    

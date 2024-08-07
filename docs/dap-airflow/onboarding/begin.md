@@ -1,7 +1,7 @@
 ---
 id: begin
 title: Before you begin
-description: "The process of authorizing data analysts and engineers to begin using the DAP Airflow integration."
+description: "Onboarding data analysts and engineers to DAP⇨flow, the Data Analytics Platform Airflow integration."
 layout: playbook_js
 tags: [onboarding]
 ---
@@ -31,7 +31,7 @@ tags: [onboarding]
         - `[my service database]` confirms where your data came from.
 
 6. **Email Links:**  
-    The email will provide you with essential links to get you started:
+    The email will provide you with essential links to get you started ►
 
     - **[☎️ DAP⇨flow Hotline](https://chat.google.com/room/AAAAZYTZYPE/w4EMQuK-9QA/w4EMQuK-9QA?cls=10)**  
         This is where you will interact with the DAP Platform Team when encounter blockers or need to chase a request while performing a task.  

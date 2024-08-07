@@ -126,7 +126,11 @@ module.exports = {
           type: "category",
           label: "📚Onboarding",
           /* items: getItems("dap-airflow/onboarding"), */
-          items: ["dap-airflow/onboarding/begin", "dap-airflow/onboarding/access-the-AWS-Management-Console"],
+          items: [
+            "dap-airflow/onboarding/begin", 
+            "dap-airflow/onboarding/access-the-AWS-Management-Console", 
+            "dap-airflow/onboarding/access-the-AWS-region",
+          ],
         },
       ],
     },

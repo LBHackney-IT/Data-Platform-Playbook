@@ -1,7 +1,7 @@
 ---
 id: introduction
 title: Introduction
-description: "A guide for data analysts and engineers, for developing and deploying Airflow DAGs, running data pipelines in the Data Analytics Platform (DAP)."
+description: "The DAP⇨flow guide for data analysts and engineers, for developing and deploying Airflow DAGs, running data pipelines in the Data Analytics Platform (DAP)."
 layout: playbook_js
 tags: [dap-airflow]
 ---
