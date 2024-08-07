@@ -130,6 +130,7 @@ module.exports = {
             "dap-airflow/onboarding/begin", 
             "dap-airflow/onboarding/access-the-AWS-Management-Console", 
             "dap-airflow/onboarding/access-the-AWS-region",
+            "dap-airflow/onboarding/access-my-Amazon-Athena-database",
           ],
         },
       ],
