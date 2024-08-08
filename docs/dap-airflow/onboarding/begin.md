@@ -20,7 +20,7 @@ tags: [onboarding]
 4. **Access granted:**  
     Once your name is added, you will be granted  
     - appropriate access to the [Hackney Council AWS Console](https://d-936715b9ec.awsapps.com/start/#/?tab=accounts).
-    - membership of the **☎️ DAP⇨flow Hotline** Google Chat Space.
+    - membership of the **☎️DAP⇨flow Hotline** Google Chat Space.
 
 5. **You’ll receive a welcome email:**  
     Check for an email from the **DAP Platform Team** welcoming you to the DAP. This email will present you with the following information needed while using the **DAP⇨flow** service and using the **📚Onboarding** documentation:  
@@ -33,9 +33,9 @@ tags: [onboarding]
 6. **Email Links:**  
     The email will provide you with essential links to get you started ►
 
-    - **[☎️ DAP⇨flow Hotline](https://chat.google.com/room/AAAAZYTZYPE/w4EMQuK-9QA/w4EMQuK-9QA?cls=10)**  
+    - **[☎️DAP⇨flow Hotline](https://chat.google.com/room/AAAAZYTZYPE/w4EMQuK-9QA/w4EMQuK-9QA?cls=10)**  
         This is where you will interact with the DAP Platform Team when encounter blockers or need to chase a request while performing a task.  
 
-    - **[📚DAP⇨flow Playbook documentation](https://playbook.hackney.gov.uk/Data-Platform-Playbook/dap-airflow/introduction)**  
-        You will find the full list of **DAP⇨flow Onboarding** documentation here. Whatever your experience or ability, you should be able to jump in and get going at the appropriate place in your onboarding experience.
+    - **[DAP⇨flow📚Onboarding](https://playbook.hackney.gov.uk/Data-Platform-Playbook/dap-airflow/introduction)**  
+        You will find the full list of **📚Onboarding** documentation here. Whatever your experience or ability, you should be able to jump in and get going at the appropriate place in your onboarding experience.
 
