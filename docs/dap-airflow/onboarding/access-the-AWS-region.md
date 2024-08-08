@@ -12,7 +12,7 @@ tags: [onboarding]
    In your web browser, log in to your AWS account to access the AWS Management Console.  
    
    * First time AWS Users should start here ►  
-   **[DAP⇨flow📚AWS Console access](https://playbook.hackney.gov.uk/Data-Platform-Playbook/dap-airflow/onboarding/access-the-AWS-Management-Console)** 
+   **[DAP⇨flow📚AWS Console access](../onboarding/access-the-AWS-Management-Console)** 
 
 2. **Locate the Region Selector:**   
    At the top of the console, find the region selector. It's the arrow symbol "**▼**" located second from the right.

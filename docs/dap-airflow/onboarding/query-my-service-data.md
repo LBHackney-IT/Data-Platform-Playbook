@@ -11,11 +11,21 @@ tags: [onboarding]
 1. **Access Amazon Athena:**   
    In your web browser, log in to your AWS account, navigate to the AWS Management Console, and open Amazon Athena.
 
+   * Users new to Amazon Athena can start here **►**  
+   **[DAP⇨flow📚Amazon Athena](../onboarding/access-my-Amazon-Athena-database)** 
+
 2. **Select your workgroup:**  
    Ensure you have selected `[my service]` from the list box next to “Workgroup”.  
      
 3. **Explore your database:**   
-   Ensure you have selected `[my service raw zone]` from the list box under the "**Database**" section on the left side of the Athena interface, can expand the list tables and view the columns within each table.
+   * Ensure you selected `[my service raw zone]` from the list box under the "**Database**" section on the left side of the Athena interface. 
+   * Ensure you can expand the lists under "**► Tables**" and "**► Views** and can expand those further to reveal their column names and data types, as follows:
+
+      - "**▼ Tables**"  
+      **[📚My service data history](../onboarding/access-my-service-data-history)** 
+
+      - "**▼ Views**"  
+      **[📚My current service data](../onboarding/access-my-current-service-data)** 
 
 4. **Familiarize yourself with SQL queries:**   
    You will need to understand the concepts and basic requirements of writing SQL queries. This includes knowing how to select columns, filter data, join tables, etc.  

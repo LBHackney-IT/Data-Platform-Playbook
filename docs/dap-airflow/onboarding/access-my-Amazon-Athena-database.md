@@ -12,7 +12,7 @@ tags: [onboarding]
    In your web browser, log in to your AWS account to access the AWS Management Console.  
    
    * First time AWS users should start here ►  
-   **[DAP⇨flow📚AWS Console access](https://playbook.hackney.gov.uk/Data-Platform-Playbook/dap-airflow/onboarding/access-the-AWS-Management-Console)** 
+   **[DAP⇨flow📚AWS Console access](../onboarding/access-the-AWS-Management-Console)** 
 
 2. **Familiarize Yourself with the console:**   
    Take a moment to get comfortable with the layout and options available in the AWS console interface.

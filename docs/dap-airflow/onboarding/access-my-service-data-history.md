@@ -12,7 +12,7 @@ tags: [onboarding]
    In your web browser, log in to your AWS account, navigate to the AWS Management Console, and open Amazon Athena. 
    
    * Users new to Amazon Athena should start here ►  
-   **[DAP⇨flow📚Amazon Athena](https://playbook.hackney.gov.uk/Data-Platform-Playbook/dap-airflow/onboarding/access-my-Amazon-Athena-database)** 
+   **[DAP⇨flow📚Amazon Athena](../onboarding/access-my-Amazon-Athena-database)** 
 
 2. **Selecting and understanding your database:**   
    Ensure that you have selected `[my service raw zone]` from the list box under the "**Database**" section on the left side of the Athena interface.

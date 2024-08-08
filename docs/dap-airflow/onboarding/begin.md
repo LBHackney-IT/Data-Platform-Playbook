@@ -36,6 +36,6 @@ tags: [onboarding]
     - **[☎️DAP⇨flow Hotline](https://chat.google.com/room/AAAAZYTZYPE/w4EMQuK-9QA/w4EMQuK-9QA?cls=10)**  
         This is where you will interact with the DAP Platform Team when encounter blockers or need to chase a request while performing a task.  
 
-    - **[DAP⇨flow📚Onboarding](https://playbook.hackney.gov.uk/Data-Platform-Playbook/dap-airflow/introduction)**  
+    - **[DAP⇨flow📚Onboarding](../introduction)**  
         You will find the full list of **📚Onboarding** documentation here. Whatever your experience or ability, you should be able to jump in and get going at the appropriate place in your onboarding experience.
 
