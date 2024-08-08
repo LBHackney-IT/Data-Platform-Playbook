@@ -17,6 +17,8 @@ tags: [onboarding]
 2. **Selecting and understanding your database:**   
    Ensure that you have selected `[my service raw zone]` from the list box under the "**Database**" section on the left side of the Athena interface.
 
+    ![Fig 2 & 3](../images/access-my-service-data-history-two-three.png)
+
    * Athena’s databases are actually catalogs of the data stored in the AWS S3 storage buckets and folders, which we collectively call a **data lake.** From the top level, data lakes are divided by zone, then by service, then by service database. 
 
    * The service database folders are represented by **databases** in Athena which which are labeled in the reverse “***service*\-*database*\-*zone” format***. The zone suffix labeling has the following meaning:  
@@ -26,14 +28,12 @@ tags: [onboarding]
 
    * You can find more information on how Amazon S3 may be used to organize data ►[**here**](https://docs.aws.amazon.com/AmazonS3/latest/userguide/organizing-objects.html)
 
-    ![Fig 2 & 3](../images/access-my-service-data-history-two-three.png)
-
 3. **Explore the tables in your database:**   
    Beneath the "**Database**" section on the left of the Athena interface, expand the "**► Tables**" section to find the list of tables available from `[my service raw zone]` database.
 
-   * This is how Athena presents tables from the S3 data lake. Elsewhere, in S3’s folder structure, tables are represented by folders below the service database folder.
+   * This is how Athena presents tables from the S3 data lake. In S3’s folder structure, tables are represented by folders below the service database folder.
 
-   * In this implementation, the table names here are all suffixed with “**\_history**” to remind us that each table may contain several daily generations of data going back in time.  
+   * In this implementation, the table names were all suffixed with “**\_history**” to remind us that each table contains several daily generations of data traveling back in time.  
 
 4. **Expand each table:**   
    Click on each table name to expand it and observe the complete list of columns for that table.
@@ -52,13 +52,9 @@ tags: [onboarding]
 
       ![Fig 6](../images/access-my-service-data-history-six.png)
 
-      * We prefer not to overburden Data Analysts with data partitioning overheads when developing their transformation queries.
+   It helps to become familiar with the fundamental differences between a traditional database and a data lake that records the entire history of our data.
 
-      * Document 1.4.2 takes care of that ► [DPF-185 DOCUMENTATION 1.4.2 Access my current service data from Amazon Athena](https://docs.google.com/document/d/183-wviy16D1AGEO4UuoSxnjz8rNsuNvD5tP1PLRJF0M/edit?usp=sharing) 
-
-      But it helps to be aware of the fundamental differences between a traditional database and a data lake that records the entire history of our data.
-
-   * Because tables are ingested or otherwise transformed daily (the most common frequency), each table folder, in the S3 data lake, must be subdivided by **generation**, so that the underlying technology of the data platform can quickly access the only current data needed for its transformation. 
+   * Because tables are ingested or otherwise transformed daily (the most common frequency), each table folder, in the S3 data lake, must be subdivided by it's **generation**, so the underlying technology of the data platform can quickly access either current data, or specified previous data, needed for transformations. 
 
    * Generations are organized hierarchically using S3 folders represented by the following partition column strings:   
       * ***Year*** eg. “**import\_year**” eg. ‘2024’ (the current year)  
@@ -69,3 +65,6 @@ tags: [onboarding]
       We might see alternatives to "**import\_**…" column prefixes such as “**transform\_**…” or “**generation\_**…”, or observe combinations of generation the prefixes, to indicate data imported and transformed at different times.
 
    * We can also have other non-generational partition types, for example, we might want to subdivide the data after it is ingested in some other useful way, eg. by currency or historicity to facilitate data governance management and optimize our data pipelines even further. 
+
+   However, so that Data Analysts are not overwhelmed by such data partitioning, and will not always be required to include generational sub-queries when developing their transformations, a solution was developed, which is documented here ►  
+   **[DAP⇨flow📚My current service data](../onboarding/access-my-current-service-data)** 
