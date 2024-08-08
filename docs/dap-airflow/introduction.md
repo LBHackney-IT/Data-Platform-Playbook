@@ -10,7 +10,7 @@ tags: [dap-airflow]
 
 <br/><br/>
 
-![DAP⇨flow](../dap-airflow/images/DAPairFLOW.png)  
+![DAP⇨flow](../dap-airflow/images/DAPairflowFLOW.png)  
 
 <br/>
 
