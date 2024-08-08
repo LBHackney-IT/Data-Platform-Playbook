@@ -133,6 +133,7 @@ module.exports = {
             "dap-airflow/onboarding/access-my-Amazon-Athena-database",
             "dap-airflow/onboarding/access-my-service-data-history",
             "dap-airflow/onboarding/access-my-current-service-data",
+            "dap-airflow/onboarding/query-my-service-data",
           ],
         },
       ],
