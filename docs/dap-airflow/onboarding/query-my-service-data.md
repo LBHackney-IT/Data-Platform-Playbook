@@ -5,8 +5,8 @@ description: "Onboarding data analysts and engineers to DAP⇨flow, the Data Ana
 layout: playbook_js
 tags: [onboarding]
 ---
-
 # How will I query and analyze my service data with Amazon Athena?
+![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 
 ### 1. Access Amazon Athena
 **`🖱`** In your web browser, log in to your AWS account, navigate to the AWS Management Console, and open Amazon Athena. 
@@ -43,14 +43,20 @@ tags: [onboarding]
 **`🖱`** You can copy results to the clipboard.  
 
 **`🖱`**  You can download the results into a CSV file.  
+<br> 
+</br>  
 
-## **We ♡ your feedback!**
-
-:::tip UX ![DAP⇨flow](../images/DAPairflowFLOWbanner.png)  
-
-   Link ► [**here**](#).
-
+---
+## ***"We* ♡ *your feedback!"***
+![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
+:::tip UX
+👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / query-my-service-data**](https://docs.google.com/forms/d/e/1FAIpQLSfCAYaKcZDJPzdhVZGno2R7Xzb36UzYU1FdC0W0YcOLXlLGag/viewform?usp=pp_url&entry.339550210=query-my-service-data)  
+- Your feedback enables us to improve **DAP⇨flow** and our Data Analytics Platform service.  
+- We encourage all our users to be generous with their time, in giving us their recollections and honest opinions about our service.  
+- We especially encourage our new users to give feedback at the end of every **📚Onboarding** task because the quality of the onboarding experience really matters.  
+☝ **Please use this link to help us understand your user experience!**
 :::
+
 
 #### UX Criteria
 :::info ABILITY
@@ -61,14 +67,16 @@ tags: [onboarding]
 :::
 
 :::note BEHAVIOR
-**Given** in my web browser, I have accessed Amazon Athena  
+**Measures** the behavior of **Amazon Athena** showing `[my service raw zone]` when working SQL queries are run.
+
+**Given** in my web browser, I have accessed **Amazon Athena**  
 **~and** I have selected `[my service]` workgroup  
 **~and** Amazon Athena shows `[my service raw zone]` with `[my service database]` equivalent tables and columns  
 **~and** I am familiar with the concepts and basic requirements of writing an Amazon Athena SQL query  
-**When** I run SQL queries containing those columns from those tables  
+**When** I run my SQL query containing given those tables and columns  
 **Then** I should be able to find answers to my questions about `[my service]` data  
 **~and** I can copy results to the clipboard  
 **~and** I can download the results into a CSV file
 
-(**~ 2 to 5**)
+**Scale** of 2 to 5 **~and** flow features.  
 :::

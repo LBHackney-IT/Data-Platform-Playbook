@@ -7,6 +7,7 @@ tags: [onboarding]
 ---
 
 #  How will I access the AWS Management Console?
+![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 
 ### 1. Log into your Hackney Council Google Account
 **`🖱`** Start by logging into your Hackney Council Google account.
@@ -29,4 +30,37 @@ tags: [onboarding]
 
       👉 To fix the AWS region, **check here ►** **[DAP⇨flow📚AWS region](../onboarding/access-the-AWS-region)** 
 
-**`Fig. 5`** ![Fig. 5](../images/access-the-AWS-Management-Console-five.png)
+**`Fig. 5`** ![Fig. 5](../images/access-the-AWS-Management-Console-five.png)  
+
+<br> 
+</br>  
+
+---
+
+## ***"We* ♡ *your feedback!"***
+![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
+:::tip UX
+👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / access-the-AWS-Management-Console**](https://docs.google.com/forms/d/e/1FAIpQLSfCAYaKcZDJPzdhVZGno2R7Xzb36UzYU1FdC0W0YcOLXlLGag/viewform?usp=pp_url&entry.339550210=access-the-AWS-Management-Console)  
+- Your feedback enables us to improve **DAP⇨flow** and our Data Analytics Platform service.  
+- We encourage all our users to be generous with their time, in giving us their recollections and honest opinions about our service.  
+- We especially encourage our new users to give feedback at the end of every **📚Onboarding** task because the quality of the onboarding experience really matters.  
+☝ **Please use this link to help us understand your user experience!**
+:::
+
+#### UX Criteria
+:::info ABILITY
+* Hackney **Google Workspace** user 
+:::
+
+:::note BEHAVIOR
+**Measures** the **AWS Management Console** behavior:  
+
+**Given** in my web browser, I am logged into my **Hackney Council Google account**  
+**~and** I was granted access to the **Hackney Council AWS Console**  
+**When** I open the [**AWS access portal**](https://d-936715b9ec.awsapps.com/start\#/)  
+**~and** fully expand the **DataPlatform-Pre-Production** under **AWS Accounts**  
+**Then** below **DataPlatform-Pre-Production**, I should see `[my service role]` listed  
+**~and** clicking on it should give me access to the **AWS Management Console**.  
+
+**Scale** of 2 to 3 **~and** flow features.
+:::
