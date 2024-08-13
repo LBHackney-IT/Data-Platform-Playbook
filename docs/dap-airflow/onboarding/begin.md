@@ -54,7 +54,7 @@ You will be directed and encouraged to use the following **DAP⇨flow** resource
 ---
 ## ***"We* ♡ *your feedback!"***
 ![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
-:::tip UX
+:::tip UX  
 👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / begin**](https://docs.google.com/forms/d/e/1FAIpQLSfCAYaKcZDJPzdhVZGno2R7Xzb36UzYU1FdC0W0YcOLXlLGag/viewform?usp=pp_url&entry.339550210=begin)  
 - Your feedback enables us to improve **DAP⇨flow** and our Data Analytics Platform service.  
 - We encourage all our users to be generous with their time, in giving us their recollections and honest opinions about our service.  
@@ -63,12 +63,12 @@ You will be directed and encouraged to use the following **DAP⇨flow** resource
 :::
 
 #### UX Criteria
-:::info ABILITY
+:::info ABILITY  
 * Hackney **Google Workspace** user 
 * `[my service]` Data Analyst
 :::
 
-:::note BEHAVIOR
+:::note BEHAVIOR  
 **Measures** the **DAP Platform Team** behavior:  
 
 **Given** `[my service]` was already set up as a [**DAP department**](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/getting-set-up/onboarding-new-departments-to-the-platform)  
