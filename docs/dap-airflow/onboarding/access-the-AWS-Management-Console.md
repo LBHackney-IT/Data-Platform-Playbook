@@ -39,7 +39,7 @@ tags: [onboarding]
 
 ## ***"We* ♡ *your feedback!"***
 ![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
-:::tip UX
+:::tip UX  
 👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / access-the-AWS-Management-Console**](https://docs.google.com/forms/d/e/1FAIpQLSfCAYaKcZDJPzdhVZGno2R7Xzb36UzYU1FdC0W0YcOLXlLGag/viewform?usp=pp_url&entry.339550210=access-the-AWS-Management-Console)  
 - Your feedback enables us to improve **DAP⇨flow** and our Data Analytics Platform service.  
 - We encourage all our users to be generous with their time, in giving us their recollections and honest opinions about our service.  
@@ -48,11 +48,11 @@ tags: [onboarding]
 :::
 
 #### UX Criteria
-:::info ABILITY
+:::info ABILITY  
 * Hackney **Google Workspace** user 
 :::
 
-:::note BEHAVIOR
+:::note BEHAVIOR  
 **Measures** the **AWS Management Console** behavior:  
 
 **Given** in my web browser, I am logged into my **Hackney Council Google account**  
