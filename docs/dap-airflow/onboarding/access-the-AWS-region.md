@@ -36,20 +36,20 @@ You will need to check the region you are in, usually the first time you access 
 
 ## ***"We* ♡ *your feedback!"***
 ![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
-:::tip UX
+:::tip UX  
 👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / access-the-AWS-region**](https://docs.google.com/forms/d/e/1FAIpQLSfCAYaKcZDJPzdhVZGno2R7Xzb36UzYU1FdC0W0YcOLXlLGag/viewform?usp=pp_url&entry.339550210=access-the-AWS-region)  
 - Your feedback enables us to improve **DAP⇨flow** and our Data Analytics Platform service.  
 - We encourage all our users to be generous with their time, in giving us their recollections and honest opinions about our service.  
 - We especially encourage our new users to give feedback at the end of every **📚Onboarding** task because the quality of the onboarding experience really matters.  
-☝ **Please use this link to help us understand your user experience!**
+☝ **Please use this link to help us understand your user experience!**  
 :::
 
 #### UX Criteria
-:::info ABILITY
-* Hackney **Google Workspace** user 
+:::info ABILITY  
+* Hackney **Google Workspace** user  
 :::
 
-:::note BEHAVIOR
+:::note BEHAVIOR  
 **Measures** the **AWS Management Console** behavior:  
 
 **Given** I have accessed the **AWS Management Console**  
@@ -57,5 +57,5 @@ You will need to check the region you are in, usually the first time you access 
 **~and** select “**Europe (London) eu-west-2**” from the menu  
 **Then** “**London ▼**” should appear at the top of the console as my region.  
 
-**Scale** of 2 to 3 **~and** flow features.
+**Scale** of 2 to 3 **~and** flow features.  
 :::
