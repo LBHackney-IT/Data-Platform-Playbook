@@ -42,4 +42,38 @@ tags: [onboarding]
 
 **`Fig. 6`** ![Fig. 6](../images/access-my-current-service-data-six.png)  
 
-* Later on when we come to query these views we will observe data fetched from the single most current **generation** of data, as we study the output from those partition columns, in particular, “**import\_date**”.  
+* Later on when we come to query these views we will observe data fetched from the single most current **generation** of data, as we study the output from those partition columns, in particular, “**import\_date**”.
+
+
+---
+## ***"We* ♡ *your feedback!"***
+![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
+:::tip UX  
+👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / access-my-Amazon-Athena-database**](https://docs.google.com/forms/d/e/1FAIpQLSfCAYaKcZDJPzdhVZGno2R7Xzb36UzYU1FdC0W0YcOLXlLGag/viewform?usp=pp_url&entry.339550210=access-my-Amazon-Athena-database)  
+- Your feedback enables us to improve **DAP⇨flow** and our Data Analytics Platform service.  
+- We encourage all our users to be generous with their time, in giving us their recollections and honest opinions about our service.  
+- We especially encourage our new users to give feedback at the end of every **📚Onboarding** task because the quality of the onboarding experience really matters.  
+☝ **Please use this link to help us understand your user experience!**  
+
+:::
+
+#### UX Criteria
+:::info ABILITY  
+* Hackney **AWS Management Console** user  
+* `[my service]` Data Analyst
+* `[my service database]` user
+
+:::
+
+:::note BEHAVIOR  
+**Measures** the behavior of **Amazon Athena** when exploring `[my service raw zone]` database views and columns.  
+
+**Given** I have selected `[my service raw zone]` database in the  Amazon Athena interface  
+**When** I explore the list below “**Views**”  
+**~and** expand each view name to list its columns  
+**Then** I should find view names exactly equivalent to tables from `[my service database]`  
+**~and** find equivalent column names with their respective equivalent data types  
+**~and** I should observe every view has columns added, eg. “import_date”, based on the partition schema of each underlying table.  
+
+**Scale** of 3 **~and** flow features.  
+:::
