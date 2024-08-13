@@ -66,3 +66,36 @@ It helps to become familiar with the fundamental differences between a tradition
 * We may observe other non-generational partition types, for example, we might want to subdivide the data after it is ingested in some other useful way, eg. by currency or historicity to facilitate data governance management and optimize our data pipelines even further. 
 
 👉 So that Data Analysts are not overwhelmed by data partitioning, and can avoid using generational sub-queries in their transformations, a solution was developed which is **documented here ►** **[DAP⇨flow📚My current service data](../onboarding/access-my-current-service-data)** 
+
+---
+## ***"We* ♡ *your feedback!"***
+![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
+:::tip UX  
+👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / access-my-service-data-history**](https://docs.google.com/forms/d/e/1FAIpQLSfCAYaKcZDJPzdhVZGno2R7Xzb36UzYU1FdC0W0YcOLXlLGag/viewform?usp=pp_url&entry.339550210=access-my-service-data-history)  
+- Your feedback enables us to improve **DAP⇨flow** and our Data Analytics Platform service.  
+- We encourage all our users to be generous with their time, in giving us their recollections and honest opinions about our service.  
+- We especially encourage our new users to give feedback at the end of every **📚Onboarding** task because the quality of the onboarding experience really matters.  
+☝ **Please use this link to help us understand your user experience!**  
+
+:::
+
+#### UX Criteria
+:::info ABILITY  
+* Hackney **AWS Management Console** user  
+* `[my service]` Data Analyst
+* `[my service database]` user
+
+:::
+
+:::note BEHAVIOR  
+**Measures** the behavior of **Amazon Athena** when exploring `[my service raw zone]` database tables and columns.  
+
+**Given** I have selected `[my service raw zone]` database in the Amazon Athena interface  
+**When** I explore the list below “**Tables**”  
+**~and** expand each table name to list its columns  
+**Then** I should find table names equivalent to tables from `[my service database]` with the suffix “**_history**” added  
+**~and** find equivalent column names with their respective equivalent data types  
+**~and** I should observe every table has partition columns added, eg. “import_date”.  
+
+**Scale** of 3 **~and** flow features.  
+:::
