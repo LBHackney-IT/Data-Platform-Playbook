@@ -44,12 +44,12 @@ tags: [onboarding]
 - Your feedback enables us to improve **DAP⇨flow** and our Data Analytics Platform service.  
 - We encourage all our users to be generous with their time, in giving us their recollections and honest opinions about our service.  
 - We especially encourage our new users to give feedback at the end of every **📚Onboarding** task because the quality of the onboarding experience really matters.  
-☝ **Please use this link to help us understand your user experience!**
+☝ **Please use this link to help us understand your user experience!**  
 :::
 
 #### UX Criteria
 :::info ABILITY  
-* Hackney **Google Workspace** user 
+* Hackney **Google Workspace** user  
 :::
 
 :::note BEHAVIOR  
@@ -62,5 +62,5 @@ tags: [onboarding]
 **Then** below **DataPlatform-Pre-Production**, I should see `[my service role]` listed  
 **~and** clicking on it should give me access to the **AWS Management Console**.  
 
-**Scale** of 2 to 3 **~and** flow features.
+**Scale** of 2 to 3 **~and** flow features.  
 :::
