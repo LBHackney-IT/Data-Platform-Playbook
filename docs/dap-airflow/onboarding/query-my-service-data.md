@@ -49,7 +49,7 @@ tags: [onboarding]
 ---
 ## ***"We* ♡ *your feedback!"***
 ![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
-:::tip UX
+:::tip UX  
 👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / query-my-service-data**](https://docs.google.com/forms/d/e/1FAIpQLSfCAYaKcZDJPzdhVZGno2R7Xzb36UzYU1FdC0W0YcOLXlLGag/viewform?usp=pp_url&entry.339550210=query-my-service-data)  
 - Your feedback enables us to improve **DAP⇨flow** and our Data Analytics Platform service.  
 - We encourage all our users to be generous with their time, in giving us their recollections and honest opinions about our service.  
@@ -59,14 +59,14 @@ tags: [onboarding]
 
 
 #### UX Criteria
-:::info ABILITY
+:::info ABILITY  
 * Hackney **AWS Management Console** user  
 * **Amazon Athena** user  
 * `[my service]` Data Analyst
 * `[my service database]` user
 :::
 
-:::note BEHAVIOR
+:::note BEHAVIOR  
 **Measures** the behavior of **Amazon Athena** showing `[my service raw zone]` when working SQL queries are run.
 
 **Given** in my web browser, I have accessed **Amazon Athena**  
