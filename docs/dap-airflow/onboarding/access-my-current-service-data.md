@@ -66,7 +66,7 @@ tags: [onboarding]
 :::
 
 :::note BEHAVIOR  
-**Measures** the behavior of **Amazon Athena** when exploring `[my service raw zone]` database views and columns.  
+**Measures** the behavior of **Amazon Athena** while the user explores `[my service raw zone]` database views and columns.  
 
 **Given** I have selected `[my service raw zone]` database in the  Amazon Athena interface  
 **When** I explore the list below “**Views**”  
