@@ -38,7 +38,35 @@ You can either:
 * Start completely from scratch by building up your query as you go along;  
 
 * Or,  use a query template such as the example ***Fig. 5,*** ***a simple two-table transform,*** copying and pasting it into the query editor at the star.  
-      
+
+`Fig. 5`
+```sql
+-- Query will use table names from [my service database]...
+SELECT 
+    p.import_date AS original_import_date, -- added to my query
+    p.<parent key>, 
+    p.<col1>,
+    p.<col2>,
+	.
+	.
+    p.<etc.>,
+    c.<child key>, 
+    c.<col1>,
+    c.<col2>,
+	.
+	.
+    c.<etc.>
+FROM 
+    <parent table> p
+LEFT JOIN 
+    <child table> c
+ON 
+    c.<parent key> = p.<parent key>
+ORDER BY
+    p.<parent key>,
+    c.<child key>
+limit 100;
+```      
 ### 6. Customize your query:  
 If using the ***Fig. 5*** template:  
 
@@ -96,7 +124,7 @@ Check you are in the correct `[my service]` workgroup before clicking on the thr
 ## ***"We* ♡ *your feedback!"***
 ![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 :::tip UX  
-👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / query-my-service-data**](https://docs.google.com/forms/d/e/1FAIpQLSdqeNyWIPMNBHEr-YSyxnXQ4ggTwJPkffMYgFaJ4hGEhIL6LA/viewform?usp=pp_url&entry.339550210=prototype-simple-transforms)  
+👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / prototype-simple-transforms**](https://docs.google.com/forms/d/e/1FAIpQLSdqeNyWIPMNBHEr-YSyxnXQ4ggTwJPkffMYgFaJ4hGEhIL6LA/viewform?usp=pp_url&entry.339550210=prototype-simple-transforms)  
 - Your feedback enables us to improve **DAP⇨flow** and our Data Analytics Platform service.  
 - We encourage all our users to be generous with their time, in giving us their recollections and honest opinions about our service.  
 - We especially encourage our new users to give feedback at the end of every **📚Onboarding** task because the quality of the onboarding experience really matters.  
