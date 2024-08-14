@@ -67,7 +67,7 @@ tags: [onboarding]
 :::
 
 :::note BEHAVIOR  
-**Measures** the behavior of **Amazon Athena** showing `[my service raw zone]` when working SQL queries are run.
+**Measures** the behavior of **Amazon Athena** showing `[my service raw zone]` when the user runs a working SQL query.
 
 **Given** in my web browser, I have accessed **Amazon Athena**  
 **~and** I have selected `[my service]` workgroup  
