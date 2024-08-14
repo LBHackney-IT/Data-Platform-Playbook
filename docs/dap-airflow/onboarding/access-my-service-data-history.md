@@ -88,7 +88,7 @@ It helps to become familiar with the fundamental differences between a tradition
 :::
 
 :::note BEHAVIOR  
-**Measures** the behavior of **Amazon Athena** when exploring `[my service raw zone]` database tables and columns.  
+**Measures** the behavior of **Amazon Athena** while the user explores `[my service raw zone]` database tables and columns.  
 
 **Given** I have selected `[my service raw zone]` database in the Amazon Athena interface  
 **When** I explore the list below “**Tables**”  
