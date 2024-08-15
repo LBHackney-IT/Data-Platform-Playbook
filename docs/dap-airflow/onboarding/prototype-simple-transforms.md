@@ -37,9 +37,9 @@ You can either:
 
 * Start completely from scratch by building up your query as you go along;  
 
-* Or,  use a query template such as the example ***Fig. 5,*** ***a simple two-table transform,*** copying and pasting it into the query editor at the star.  
+* Or,  use a query template, eg. `Fig. 5` to start with, by copying and pasting it into the query editor.
 
-`Fig. 5`
+**`Fig. 5: A simple two-table transform`**
 ```sql
 -- Query will use table names from [my service database]...
 SELECT 
@@ -68,11 +68,15 @@ ORDER BY
 limit 100;
 ```      
 ### 6. Customize your query  
-If using the ***Fig. 5*** template:  
+While using the `Fig. 5` template:  
 
 * You will need to replace  `<parent table>` and  `<child table>` placeholders with actual names listed under “Views” on the left-hand side of the interface. The Athena editor allows you to insert names directly into the text by simply clicking on the three dots **⋮**  to the right of the name, over on the left-hand side, then selecting “insert into editor”.
 
+**`Fig. 6a`** ![Fig. 6a](../images/prototype-simple-transforms-six-a.png)
+
 * You will need to replace the  `<parent key>` and  `<child key>` placeholders with corresponding key column names from `[my example]`
+
+**`Fig. 6b`** ![Fig. 6b](../images/prototype-simple-transforms-six-b.png)
 
 * Similarly include all the columns you need. So in the example, replace `<col1>`, `<col2>`, etc., with actual column names. Expanding the view name, over on the left side, will show the full list of columns you can use.
 
@@ -92,15 +96,17 @@ If using the ***Fig. 5*** template:
    * import\_month  
    * import\_day  
    
-   The example ***Fig. 5*** template showed the column import\_date renamed as original\_import\_date to avoid that problem.  
+   The `Fig. 5` template example showed the column import\_date renamed as original\_import\_date to avoid that problem.  
 
    It isn't necessary to output this column in your query but it is good practice to add original\_import\_date to inform the users of your transform products about which generation the data came from.  
 
-   However, because the DAP Airflow deployment adds its own transform generation date to the output when Airflow ingestions trigger transforms immediately afterward, it follows that the ingestion and transform dates will be the same date. For that reason alone, you might not want to use original\_import\_date in your transform in production. But if the pipeline trigger logic might cause these dates to diverge, then you should consider leaving it in.
+	However, because the DAP Airflow deployment adds its own transform generation date to the output when Airflow ingestions trigger transforms immediately afterward, it follows that the ingestion and transform dates will be the same date. For that reason alone, you might not want to use original\_import\_date in your transform in production. But if the pipeline trigger logic might cause these dates to diverge, then you should consider leaving it in.
 
 * It is recommended to order the output by `<parent key>` then `<child key>`.
 
 * Adding a `limit` clause at the end of your query when testing SQL queries in the Athena console normally prevents long-running queries when testing. You will routinely remove the `limit` clause later when your transform goes into production.
+
+**`Fig. 7`** ![Fig. 7](../images/prototype-simple-transforms-seven.png)
 
 ### 7. Run your query  
 After customizing the SQL code, click “Run” located underneath the code window on the left side in the Athena interface.
@@ -114,8 +120,14 @@ Athena will fetch the first 100 rows of data, or however many rows your SQL limi
 
 * If your query is based on a \<parent table\> left-joined to the `<child table>` it is possible for the `<child key>` and its associated child columns to output NULLs in the place of values, alongside the `<parent key>` and parent column values. It is worth paying attention to ensure such behavior is the same way as when querying \[my service database\] previously.  
 
+**`Fig. 8`** ![Fig. 8](../images/prototype-simple-transforms-eight.png)
+
 ### 9. Save your query 
 Check you are in the correct `[my service]` workgroup before clicking on the three dots **⋮** to the right of your Query tab, then select “Save as”. When the dialogue pops up, enter the name of your transform query eg. `[my transform].sql` and write a description before clicking the “Save query” button.
+
+**`Fig. 9a`** ![Fig. 9a](../images/prototype-simple-transforms-nine-a.png)  
+
+**`Fig. 9b`** ![Fig. 9b](../images/prototype-simple-transforms-nine-b.png)
 
 <br> 
 </br>  
