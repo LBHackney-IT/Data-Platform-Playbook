@@ -5,7 +5,7 @@ description: "Onboarding data analysts and engineers to DAP⇨flow, the Data Ana
 layout: playbook_js
 tags: [onboarding]
 ---
-# How can I use Amazon Athena to prototype a simple two-table data transformation?
+# How can I use Amazon Athena to prototype a simple table-join data transformation?
 ![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 
 ### 1. Access Amazon Athena
@@ -67,7 +67,7 @@ ORDER BY
     c.<child key>
 limit 100;
 ```      
-### 6. Customize your query:  
+### 6. Customize your query  
 If using the ***Fig. 5*** template:  
 
 * You will need to replace  `<parent table>` and  `<child table>` placeholders with actual names listed under “Views” on the left-hand side of the interface. The Athena editor allows you to insert names directly into the text by simply clicking on the three dots **⋮**  to the right of the name, over on the left-hand side, then selecting “insert into editor”.
@@ -105,7 +105,7 @@ If using the ***Fig. 5*** template:
 ### 7. Run your query  
 After customizing the SQL code, click “Run” located underneath the code window on the left side in the Athena interface.
 
-### 8. Review the results:  
+### 8. Review the results  
 Athena will fetch the first 100 rows of data, or however many rows your SQL limit clause says:  
 
 * If you included it, the first column original\_import\_data will inform us when the underlying data was ingested from `[my service database]`. If you do not see today’s date then you’ll immediately know that the data ingestion had failed sometime after the date shown, and you should contact the DAP Team to find out what the problem is. But so long as you have data of any given generation you can still test your transform query.  
@@ -114,7 +114,7 @@ Athena will fetch the first 100 rows of data, or however many rows your SQL limi
 
 * If your query is based on a \<parent table\> left-joined to the `<child table>` it is possible for the `<child key>` and its associated child columns to output NULLs in the place of values, alongside the `<parent key>` and parent column values. It is worth paying attention to ensure such behavior is the same way as when querying \[my service database\] previously.  
 
-### 9. Save your query: 
+### 9. Save your query 
 Check you are in the correct `[my service]` workgroup before clicking on the three dots **⋮** to the right of your Query tab, then select “Save as”. When the dialogue pops up, enter the name of your transform query eg. `[my transform].sql` and write a description before clicking the “Save query” button.
 
 <br> 
@@ -137,6 +137,7 @@ Check you are in the correct `[my service]` workgroup before clicking on the thr
 * Hackney **AWS Management Console** user  
 * **Amazon Athena** beginner  
 * `[my service]` Data Analyst
+* `[my service database]` user
 :::
 
 :::note BEHAVIOR  
