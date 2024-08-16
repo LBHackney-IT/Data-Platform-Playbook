@@ -134,6 +134,7 @@ module.exports = {
             "dap-airflow/onboarding/access-my-current-service-data",
             "dap-airflow/onboarding/access-my-service-data-history",
             "dap-airflow/onboarding/query-my-service-data",
+            "dap-airflow/onboarding/prototype-simple-transforms",
           ],
         },
       ],
