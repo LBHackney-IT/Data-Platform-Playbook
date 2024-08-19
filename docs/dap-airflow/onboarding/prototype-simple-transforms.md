@@ -131,7 +131,7 @@ When, for example, using the **`Fig. 5`** template:
 **`🖱`** After customizing the SQL code, click “Run” located underneath the code window on the left side in the Athena interface.
 
 ### 8. Review the results  
-**`👁`** ***Amazon Athena*** should fetch the first 100 rows of data, or however many rows your SQL limit clause says:  
+**`👁`** ***Amazon Athena*** should fetch however many rows your SQL `[limit]` clause is set to (eg. `limit 100;` in **`Fig. 5`**).  
 
 * If you included it, the first column `original_import_data` will inform us when the underlying data was ingested from `[my service database]`. If you do not see today’s date then you’ll immediately know that the data ingestion had failed sometime after the date shown, and you should contact the DAP Team to find out what the problem is. But so long as you have data of any given generation you can still test your transform query.  
 
