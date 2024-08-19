@@ -9,10 +9,10 @@ tags: [dap-airflow]
 # Introduction
 ![DAP⇨flow](../dap-airflow/images/DAPairflowFLOW.png)  
 ## What is **DAP⇨flow**? 
-**DAP⇨flow** is integation of ***Apache Airflow*** with ***Amazon Athena*** built upon Hackney's ***Data Analytics Platform***. 
+**DAP⇨flow** is an integation of ***Apache Airflow*** with ***Amazon Athena*** built upon Hackney's ***Data Analytics Platform***. 
 #### It allows Data Analysts, in the simplest way possible, to develop and run data pipelines using their own service's data and create data products for their service and service users.
 
-Building data pipeline used to be harder and more complex and time consuming. Data Analysts after prototyping their SQL queries using ***Amazon Athena*** were required to migrate Athena's SQL code to Spark SQL, a different SQL dialect, then embed their code within an ***Amazon Glue*** job. They also had to negotiate the difficulty of querying across multiple generations of the same data stored in the ***Amazon S3*** Data lake. That meant they could not simply take a legacy SQL query and run it in ***Amazon Athena*** or create an ***Amazon Glue*** product from it.
+Building data pipelines used to be harder and more complex and time consuming. Data Analysts after prototyping their SQL queries using ***Amazon Athena*** were required to migrate Athena's SQL code to Spark SQL, a different SQL dialect, then embed their code within an ***Amazon Glue*** job. They also had to negotiate querying across multiple generations of the same data stored in the ***Amazon S3*** Data lake. That meant they could not simply take a legacy SQL query and run it in ***Amazon Athena*** or create an ***Amazon Glue*** product directly from it.
 
 #### How **DAP⇨flow** solves these problems
 * Firstly, Data Analysts no longer need to use the more complex ***Amazon Glue*** because data pipelines built using ***Apache Airflow*** can use ***Amazon Athena*** to generate the data transformation products using the same prototype SQL code.  
@@ -37,7 +37,7 @@ Thereafter, Data Analysts do not need to read every documents in the order they 
 Data Analysts are encouraged to think about what they need to do before deciding which document to read next. For example, if they have a ***legacy SQL query*** that they want to migrate to **DAP⇨flow**, they might jump straight to [**📚Prototype legacy transforms**](../dap-airflow/onboarding/prototype-legacy-transforms).
 
 #### ***"We* ♡ *your feedback!"***
-Your continuous feedback enables us to improve **DAP⇨flow** and our ***Data Analytics Platform*** service. Survey links are provided at the end of each document.
+Your continuous feedback enables us to improve **DAP⇨flow** and our ***Data Analytics Platform*** service. Survey links are provided at the end of each onboarding document.
 
 #### Here below, is the full list of topics currently on offer...
 
