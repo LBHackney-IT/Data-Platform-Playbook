@@ -7,7 +7,7 @@ tags: [dap-airflow]
 ---
 
 # Introduction
-![DAP⇨flow](../dap-airflow/images/DAPairflowFLOW.png)  
+![DAP⇨flow](../dap-airflow/images/DAPairflowFLOWwide.png)  
 ## What is **DAP⇨flow**? 
 **DAP⇨flow** is an integation of ***Apache Airflow*** with ***Amazon Athena*** built upon Hackney's ***Data Analytics Platform***. 
 #### It allows Data Analysts, in the simplest way possible, to develop and run data pipelines using their own service's data and create data products for their service and service users.
@@ -92,6 +92,9 @@ If you haven’t done so already, get yourself a GitHub account. This document w
 
 ### Merging branches
 #### How do i complete the merge of my development branch into the main trunk of **DAP⇨flow**'s `[dap-airflow]` repository?
+
+### Airflow
+#### How will I access my data transformations using Airflow on the web?
 
 ### Adding tables to the raw-zone
 #### How do i add a new table ingestion to my service's raw-zone database?
