@@ -119,6 +119,29 @@ module.exports = {
     },
     {
       type: "category",
+      label: "DAP⇨flow",
+      items: [
+        "dap-airflow/introduction",
+        {
+          type: "category",
+          label: "📚Onboarding",
+          /* items: getItems("dap-airflow/onboarding"), */
+          items: [
+            "dap-airflow/onboarding/begin", 
+            "dap-airflow/onboarding/access-the-AWS-Management-Console", 
+            "dap-airflow/onboarding/access-the-AWS-region",
+            "dap-airflow/onboarding/access-my-Amazon-Athena-database",
+            "dap-airflow/onboarding/access-my-current-service-data",
+            "dap-airflow/onboarding/access-my-service-data-history",
+            "dap-airflow/onboarding/query-my-service-data",
+            "dap-airflow/onboarding/prototype-simple-transforms",
+            "dap-airflow/onboarding/prototype-legacy-transforms",
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "Architecture Decision",
       items: [
         "architecture-decisions/index",
@@ -144,5 +167,7 @@ module.exports = {
       id: "roles",
       label: "Roles",
     },
+/*
+*/
   ],
 };
