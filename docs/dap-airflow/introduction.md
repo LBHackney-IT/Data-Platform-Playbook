@@ -72,10 +72,8 @@ Further documents will be added as they are developed. [**Jump to the end**](#to
 
 ## Topics arriving here soon...
 
-### Setting up Github
-#### How do I set up my Github access for **DAP⇨flow**?
-[DPF-185 DOCUMENTATION / 4.0 Set up Github access for DAP Airflow](https://docs.google.com/document/d/1gEjFshKJYYV5w9IbM1Rj0u2tj\_BwSWpOLGV8aGwId1A/edit?usp=drive\_link)  
-If you haven’t done so already, get yourself a GitHub account. This document will tell you how to get set up for automating and deploying your DAP Airflow transforms.
+### [GitHub access](../dap-airflow/onboarding/github-access)
+#### How do I set up my GitHub access to **DAP⇨flow**?
 
 ### Github branching
 #### How do I add a new development branch to **DAP⇨flow**'s `[dap-airflow]` repository?

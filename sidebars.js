@@ -136,6 +136,7 @@ module.exports = {
             "dap-airflow/onboarding/query-my-service-data",
             "dap-airflow/onboarding/prototype-simple-transforms",
             "dap-airflow/onboarding/prototype-legacy-transforms",
+            "dap-airflow/onboarding/github-access",
           ],
         },
       ],
