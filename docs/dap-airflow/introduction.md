@@ -70,10 +70,10 @@ Further documents will be added as they are developed. [**Jump to the end**](#to
 ### [Prototype legacy transforms](../dap-airflow/onboarding/prototype-legacy-transforms)
 #### How do I use Amazon Athena to prototype a data transformation from a `[legacy SQL query]`?
 
-## Topics arriving here soon...
-
 ### [GitHub access](../dap-airflow/onboarding/github-access)
 #### How do I set up my GitHub access to **DAP⇨flow**?
+
+## Topics arriving here soon...
 
 ### Github branching
 #### How do I add a new development branch to **DAP⇨flow**'s `[dap-airflow]` repository?
