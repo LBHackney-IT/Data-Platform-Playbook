@@ -73,10 +73,10 @@ Further documents will be added as they are developed. [**Jump to the end**](#to
 ### [GitHub access](../dap-airflow/onboarding/github-access)
 #### How do I set up my GitHub access to **DAP⇨flow**?
 
-## Topics arriving here soon...
-
 ### [GitHub branching](../dap-airflow/onboarding/github-branch)
 #### How do I add a new development branch to the **DAP⇨flow** repository?
+
+## Topics arriving here soon...
 
 ### Committing transforms 
 #### How do I commit my working transform query to the **DAP⇨flow** repository?
