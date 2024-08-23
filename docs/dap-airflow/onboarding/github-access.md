@@ -6,23 +6,23 @@ layout: playbook_js
 tags: [onboarding]
 ---
 
-# How do I set up my GitHub to access DAP⇨flow's repository?
+# How do I set up my ***GitHub*** to access DAP⇨flow's repository?
 ![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 
 ### 1. So you're a DAP⇨flow user, and you're ready to go?
  
 👉 Check you did everything **here ►** **[DAP⇨flow📚Before you begin](../onboarding/begin)** 
 
-👉 Have introduced yourself? **Here ►** [**☎️DAP⇨flow Hotline**](https://chat.google.com/room/AAAAZYTZYPE/w4EMQuK-9QA/w4EMQuK-9QA?cls=10)  
+👉 Have you introduced yourself? **Here ►** [**☎️DAP⇨flow Hotline**](https://chat.google.com/room/AAAAZYTZYPE/w4EMQuK-9QA/w4EMQuK-9QA?cls=10)  
     
    
-### 2. You'll need a GitHub Account
+### 2. You'll need a ***GitHub*** Account
 
-👉 When creating your GitHub account you must use your ***Hackney email address***. **Go here ►** [**github.com**](https://github.com/) 
+👉 When creating your ***GitHub*** account you must use your ***Hackney email address***. **Go here ►** [**github.com**](https://github.com/) 
 
 ### 3. Set Up Two-Factor Authentication
 
-👉 Follow the steps to configure two-factor authentication for your GitHub account **here ►** [**GitHub 2-factor authentication for added security**](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication)
+👉 Follow the steps to configure two-factor authentication for your ***GitHub*** account **here ►** [**GitHub 2-factor authentication for added security**](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication)
 
 ### 4. Request Access to the `dap-airflow` repo
 
@@ -39,7 +39,7 @@ The **DAP Platform Team** will 👉
 
 * Check your access to the [**`dap-airflow`** private repository](https://github.com/LBHackney-IT/dap-airflow).
 
-* Inform you about your GitHub project folder `[my service dags]` and point you to the `README.md` there.
+* Inform you about your ***GitHub*** project folder `[my service dags]` and point you to the `README.md` there.
 
 * Tell you your `dap-airflow` access is now configured while directing you back to the **📚Onboarding** documentation to learn about [what you should do next](../introduction#github-branching).
 
@@ -64,7 +64,7 @@ The **DAP Platform Team** will 👉
 :::info ABILITY  
 * Hackney **Google Workspace** user 
 * `[my service]` Data Analyst
-* **Github** beginner
+* ***GitHub*** beginner
 :::
 
 :::note BEHAVIOR  
@@ -72,15 +72,15 @@ The **DAP Platform Team** will 👉
 
 **Given** I am member of the [**☎️DAP⇨flow Hotline**](https://chat.google.com/room/AAAAZYTZYPE?cls=7) Google Chat Space
 
-**When** I create my **GitHub** account at [github.com](https://github.com/) using my Hackney email address  
-**~and** I set up 2 factor authentication for my **GitHub** account  
+**When** I create my ***GitHub*** account at [github.com](https://github.com/) using my Hackney email address  
+**~and** I set up 2 factor authentication for my ***GitHub*** account  
 **~and** I request access to the `dap-airflow` private repository via the [☎️DAP⇨flow Hotline](https://chat.google.com/room/AAAAZYTZYPE?cls=7)
 
 
 **Then** the **DAP Platform Team** will acknowledge my request via a reply-thread on the [☎️DAP⇨flow Hotline](https://chat.google.com/room/AAAAZYTZYPE?cls=7)   
-**~and** ensure I am granted membership of [London Borough of Hackney](https://github.com/LBHackney-IT) organization on GitHub  
+**~and** ensure I am granted membership of [London Borough of Hackney](https://github.com/LBHackney-IT) organization on ***GitHub***  
 **~and** ensure I can subsequently access the [`dap-airflow`](https://github.com/LBHackney-IT/dap-airflow) private repository  
-**~and** confirm `[my service dags]` GitHub project folder with link to the `README.md` there  
+**~and** confirm `[my service dags]` ***GitHub*** project folder with link to the `README.md` there  
 **~and** tell me my `dap-airflow` access is now configured while directing me back to the [**📚Onboarding** documentation](../introduction#github-branching). 
 
 **Scale** of 5 **~and** flow features.

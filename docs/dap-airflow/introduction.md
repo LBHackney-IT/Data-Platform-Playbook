@@ -75,20 +75,18 @@ Further documents will be added as they are developed. [**Jump to the end**](#to
 
 ## Topics arriving here soon...
 
-### Github branching
-#### How do I add a new development branch to **DAP⇨flow**'s `[dap-airflow]` repository?
-[DPF-185 DOCUMENTATION / 4.1 Add a new development branch to the DAP Airflow repository ](https://docs.google.com/document/d/1g6s14JK-9LBM8HT-F6-T-rGq7TxnWHD37FJi04Fh41Q/edit?usp=drive\_link)
-
+### [GitHub branching](../dap-airflow/onboarding/github-branch)
+#### How do I add a new development branch to the **DAP⇨flow** repository?
 
 ### Committing transforms 
-#### How do I commit my working transform query to **DAP⇨flow**'s `[dap-airflow]` repository?
+#### How do I commit my working transform query to the **DAP⇨flow** repository?
 [DPF-185 DOCUMENTATION / 4.2  Commit a working transform query to the DAP Airflow repository](https://docs.google.com/document/d/18TL2ep1laWzHU9MW-XvC\_N1S-gJx9SmPh9M2DC9XNQ4/edit?usp=drive\_link)
 
 ### Raising pull requests
-#### How do I raise a Pull Request to merge my development branch into the main trunk of **DAP⇨flow**'s `[dap-airflow]` repository?
+#### How do I raise a Pull Request to merge my development branch into the main trunk of the **DAP⇨flow** repository?
 [DPF-146 DOCUMENTATION 4.3 Raise a Pull Request to merge the development branch into the main trunk of the DAP Airflow repository](https://docs.google.com/document/d/1LJjJobb2FVLoadUNCl3R7w9FedTFo8IJWHne-Zw9l-M/edit?usp=drive\_link)
 
-### Merging branches
+### Merging branches 
 #### How do i complete the merge of my development branch into the main trunk of **DAP⇨flow**'s `[dap-airflow]` repository?
 
 ### Airflow
