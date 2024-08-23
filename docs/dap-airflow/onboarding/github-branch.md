@@ -25,11 +25,11 @@ tags: [onboarding]
 
 **`🖱`** Below that, click on the "**![][branch]`main`**" branch dropdown button menu.
 
-**`🖮`** Type a new branch name, for example, **`[my branch]`**.
+**`🖮`** Type your new branch name **`[my branch]`** as your working branch for development.
 
 **`🖱`** Below that on the dropdown menu, click on "Create branch **![][branch]`[my branch]`** from **`main`.**"
 
-### 4. Verify the new branch
+### 4. Verify your new branch
 **`👁`** After creating the branch, "![][branch]`[my branch]`” should replace "![][branch]`main`" as your working branch for development.
 
 **`Fig. 4`** ![Fig. 4](../images/github-branch-four.png)
@@ -60,19 +60,20 @@ tags: [onboarding]
 
 **Given** in my web browser, I am logged on to my ***GitHub*** account using my ***Hackney email address*** with two-factor authentication  
 **~and** I am granted membership of **[London Borough of Hackney](https://github.com/LBHackney-IT) organization** on ***GitHub*** incorperating the [dap-airflow](https://github.com/LBHackney-IT/dap-airflow) private repository     
+**~and** I have decided what to call **`[my branch]`** as my working branch for development  
 **~and** I am member of the [**☎️DAP⇨flow Hotline**](https://chat.google.com/room/AAAAZYTZYPE?cls=7) Google Chat Space  
 
 **When** I access the [dap-airflow](https://github.com/LBHackney-IT/dap-airflow) repository  
 **~and** I select the "**Code**" tab at the top of the repository page  
 **~and** below that, I click on the "**![][branch]`main`**" branch dropdown button menu   
-**~and** type a new branch name, eg. **`[my branch]`**,  
+**~and** type my new branch name **`[my branch]`**  
 **~and** click "Create branch **![][branch]`[my branch]`** from **`main`**" below that on the dropdown menu  
 
 **Then** "**![][branch]`[my branch]`**” should replace "**![][branch]`main`**" as my working branch for development  
 **~and** ***GitHub*** will alert me via email if there are errors or warnings  
 **~and** I will have information that I can pass to the **DAP Platform Team** via the **[☎️DAP⇨flow Hotline](https://chat.google.com/room/AAAAZYTZYPE?cls=7)** if I encounter errors or need assistance.  
 
-**Scale** of 6 to 8 **~and** flow features.
+**Scale** of 6 to 9 **~and** flow features.
 :::
 
 [branch]: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAAXNSR0IArs4c6QAAAU9JREFUOE+tk79Pg1AQx99bHPwf+k8URxJ2VngdtaTGMEDC4iqv0s2FxA4tjUl1fbzJiXSiOiKhy+s/wayDCWfbCKG/UBNveMPdffK9u3eH0bcRQmTbtl+EEJemaT6U/nrccZxr3/fvGGOvaz9eP+Px2JrNZveyLA+FEFYQBBt/3brdLrRareFyubQAwOacDzdJk8nEjaKIappG4zimo9FoDzZNExRFoZxzumJoGIb9KknX9XOE0CMAuJzz211lTdNuMMZ9hNBFGIZPVdlloq7rgDE+Y4y9HehZAoBkpVgJbpX3LzAhRDDGtsSLonhXVfWz1+udlIE9ZQAIJEm6StO0gtvtNprP5zRJkuc8z6vAHmwYBppOp6d1WUII6nQ6H7tz+HXPu+Cfpt0I//TPR+HFYuF6nte4YUfhLMuswWDQuNuNZa+vqkwor+YQUPd9AUZ2tBDCa9wvAAAAAElFTkSuQmCC>
