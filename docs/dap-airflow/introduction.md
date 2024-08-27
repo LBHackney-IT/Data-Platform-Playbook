@@ -12,19 +12,22 @@ tags: [dap-airflow]
 **DAP⇨flow** is an integation of ***Apache Airflow*** with ***Amazon Athena*** built upon Hackney's ***Data Analytics Platform***. 
 #### It allows Data Analysts, in the simplest way possible, to develop and run data pipelines using their own service's data and create data products for their service and service users.
 
-Building data pipelines used to be harder and more complex and time consuming. Data Analysts after prototyping their SQL queries using ***Amazon Athena*** were required to migrate Athena's SQL code to Spark SQL, a different SQL dialect, then embed their code within an ***Amazon Glue*** job. They also had to negotiate querying across multiple generations of the same data stored in the ***Amazon S3*** Data lake. That meant they could not simply take a legacy SQL query and run it in ***Amazon Athena*** or create an ***Amazon Glue*** product directly from it.
+Building data pipelines used to be harder and more complex and time consuming. Data Analysts after prototyping their SQL queries using ***Amazon Athena*** were required to convert Athena SQL code to Spark SQL, a different SQL dialect, then embed their code within an ***Amazon Glue*** job which they had be deployed using ***Terraform***.  
+
+They also had to negotiate querying across multiple generations of the same data stored in the ***Amazon S3*** Data lake. That meant they could not simply take a legacy SQL query and run it in ***Amazon Athena*** or create an ***Amazon Glue*** product directly from it.
 
 #### How **DAP⇨flow** solves these problems
-* Firstly, Data Analysts no longer need to use the more complex ***Amazon Glue*** because data pipelines built using ***Apache Airflow*** can use ***Amazon Athena*** to generate the data transformation products using the same prototype SQL code.  
+* Firstly, Data Analysts no longer need to convert and re-test their prototype SQL transforms to run in a seperate and more complex ***Amazon Glue*** run-time environment. Instead, ***Apache Airflow*** uses ***Amazon Athena*** to automate and generate data transform products using the original, already tested and working, prototype SQL code.  
 
-    **This cuts development time by more than half while Data Analysts no longer need to context-switch between the two SQL dialects.**
+    **That cuts development time by more than half while Data Analysts no longer need to context-switch between the two SQL dialects.**
 
-* Secondly, Data Analysts no longer need to adapt their SQL queries to ***Amazon S3***'s Data Lake partitioning architecture, because ***Apache Airflow*** is used to generate views of the underlying table data which presents Data Analysts with only current ingested service data, in readiness for prototyping and also later on when the automated transforms are run by Airflow.
+* Secondly, Data Analysts no longer must adapt their SQL queries to ***Amazon S3***'s Data Lake partitioning architecture, because ***Apache Airflow*** is configured to generate views of the underlying table data to present Data Analysts with current-only ingested service data, both in readiness for prototyping and testing, and for when the working transforms are subsequently deployed, being automated and run by Airflow.
 
-    **This further cuts development time while Data Analysts can very easily take the legacy SQL code from their service database system and run it directly on *Amazon Athena* with few changes.**
+    **That further cuts development time while Data Analysts can very easily take the legacy SQL code from their service database system and run it directly on *Amazon Athena* with few changes.**
 
-    Data Analysts can also migrate their existing Athena SQL prototypes, previously adapted for the ***Amazon S3***'s Data Lake partitioning architecture, because the table history is still available to them, although the table names will now be suffixed "**_history**".
+    Data Analysts can also migrate their existing Athena SQL prototypes, previously adapted for the ***Amazon S3***'s Data Lake partitioning architecture, because the same table history is available to them, although the table names will now be suffixed "**_history**", which is more intuitive for new users.
 
+* Lastly, Data Analysts no longer need to use ***Terraform*** for deploying their data pipeline jobs because ***Apache Airflow*** simply takes care of that as soon as they commit their transform queries to **DAP⇨flow**'s ***GitHub*** repository.
 
 ## 📚Onboarding
 
@@ -76,11 +79,10 @@ Further documents will be added as they are developed. [**Jump to the end**](#to
 ### [GitHub branching](../dap-airflow/onboarding/github-branch)
 #### How do I add a new development branch to the **DAP⇨flow** repository?
 
-## Topics arriving here soon...
+### [Committing transforms](../dap-airflow/onboarding/github-commit-transform)
+#### How do I commit my working transform to the **DAP⇨flow** repository?
 
-### Committing transforms 
-#### How do I commit my working transform query to the **DAP⇨flow** repository?
-[DPF-185 DOCUMENTATION / 4.2  Commit a working transform query to the DAP Airflow repository](https://docs.google.com/document/d/18TL2ep1laWzHU9MW-XvC\_N1S-gJx9SmPh9M2DC9XNQ4/edit?usp=drive\_link)
+## Topics arriving here soon...
 
 ### Raising pull requests
 #### How do I raise a Pull Request to merge my development branch into the main trunk of the **DAP⇨flow** repository?

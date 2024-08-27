@@ -59,7 +59,7 @@ tags: [onboarding]
 **Measures** the ***GitHub*** behavior:  
 
 **Given** in my web browser, I am logged on to my ***GitHub*** account using my ***Hackney email address*** with two-factor authentication  
-**~and** I am granted membership of **[London Borough of Hackney](https://github.com/LBHackney-IT) organization** on ***GitHub*** incorperating the [dap-airflow](https://github.com/LBHackney-IT/dap-airflow) private repository     
+**~and** I am granted membership of **[London Borough of Hackney](https://github.com/LBHackney-IT) organization** on ***GitHub*** incorporating the [dap-airflow](https://github.com/LBHackney-IT/dap-airflow) private repository     
 **~and** I have decided what to call **`[my branch]`** as my working branch for development  
 **~and** I am member of the [**☎️DAP⇨flow Hotline**](https://chat.google.com/room/AAAAZYTZYPE?cls=7) Google Chat Space  
 
