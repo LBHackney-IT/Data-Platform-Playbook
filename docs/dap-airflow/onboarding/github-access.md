@@ -35,11 +35,11 @@ The **DAP Platform Team** will 👉
 
 * Acknowledge your request and continue to update your status via a reply-thread on the [☎️DAP⇨flow Hotline](https://chat.google.com/room/AAAAZYTZYPE?cls=7).
 
-* If you don't have membership already, [ensure you get invited](https://docs.github.com/en/enterprise-cloud@latest/organizations/managing-membership-in-your-organization/inviting-users-to-join-your-organization) to the [London Borough of Hackney](https://github.com/LBHackney-IT) organization on GitHub.
+* If you don't have membership already, [ensure you get invited](https://docs.github.com/en/enterprise-cloud@latest/organizations/managing-membership-in-your-organization/inviting-users-to-join-your-organization) to the [**London Borough of Hackney**](https://github.com/LBHackney-IT) organization on GitHub.
 
 * Check your access to the [**`dap-airflow`** private repository](https://github.com/LBHackney-IT/dap-airflow).
 
-* Inform you about your ***GitHub*** project folder `[my service dags]` and point you to the `README.md` there.
+* Inform you about your `[service dags]` ***GitHub*** project folder and point you to the `README.md` there.
 
 * Tell you your `dap-airflow` access is now configured while directing you back to the **📚Onboarding** documentation to learn about [what you should do next](../introduction#github-branching).
 
@@ -63,7 +63,7 @@ The **DAP Platform Team** will 👉
 #### UX Criteria
 :::info ABILITY  
 * Hackney **Google Workspace** user 
-* `[my service]` Data Analyst
+* Hackney `[service]` Data Analyst
 * ***GitHub*** beginner
 :::
 
@@ -78,9 +78,9 @@ The **DAP Platform Team** will 👉
 
 
 **Then** the **DAP Platform Team** will acknowledge my request via a reply-thread on the [☎️DAP⇨flow Hotline](https://chat.google.com/room/AAAAZYTZYPE?cls=7)   
-**~and** ensure I am granted membership of [London Borough of Hackney](https://github.com/LBHackney-IT) organization on ***GitHub***  
+**~and** ensure I am granted membership of [**London Borough of Hackney**](https://github.com/LBHackney-IT) organization on ***GitHub***  
 **~and** ensure I can subsequently access the [`dap-airflow`](https://github.com/LBHackney-IT/dap-airflow) private repository  
-**~and** confirm `[my service dags]` ***GitHub*** project folder with link to the `README.md` there  
+**~and** confirm my `[service dags]` ***GitHub*** project folder with link to the `README.md` there  
 **~and** tell me my `dap-airflow` access is now configured while directing me back to the [**📚Onboarding** documentation](../introduction#github-branching). 
 
 **Scale** of 5 **~and** flow features.

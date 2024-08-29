@@ -47,55 +47,55 @@ Your continuous feedback enables us to improve **DAP⇨flow** and our ***Data An
 Further documents will be added as they are developed. [**Jump to the end**](#topics-arriving-here-soon) to discover what is coming next!
 
 ### [Before you begin](../dap-airflow/onboarding/begin)
-#### What must happen before I can begin DAP⇨flow?
+#### What must happen before I can begin **DAP⇨flow**?
 
 ### [AWS Console access](../dap-airflow/onboarding/access-the-AWS-Management-Console)
-#### How will I access the AWS Management Console?
+#### How will I access the ***AWS Management Console***?
 
 ### [AWS region](../dap-airflow/onboarding/access-the-AWS-region)
-#### How will I ensure I am in the correct AWS region?
+#### How will I ensure I am in the correct **AWS region**?
 
 ### [Amazon Athena](../dap-airflow/onboarding/access-my-Amazon-Athena-database)
-#### How will I access my database from Amazon Athena?
+#### How will I use ***Amazon Athena*** to access my database?
 
 ### [My current service data](../dap-airflow/onboarding/access-my-current-service-data)
-#### How will I access my current service data from Amazon Athena?
+#### How will I access my current service data from ***Amazon Athena***?
 
 ### [My service data history](../dap-airflow/onboarding/access-my-service-data-history)
-#### How will I access my service data history from Amazon Athena?
+#### How will I access my service data history from ***Amazon Athena***?
 
 ### [Query my service data](../dap-airflow/onboarding/query-my-service-data)
-#### How will I query and analyze my service data with Amazon Athena?
+#### How will I query and analyze my service data with ***Amazon Athena***?
 
 ### [Prototype simple transforms](../dap-airflow/onboarding/prototype-simple-transforms)
-#### How can I use Amazon Athena to prototype a simple table-join data transformation?
+#### How can I use ***Amazon Athena*** to prototype a simple table-join data transformation?
 
 ### [Prototype legacy transforms](../dap-airflow/onboarding/prototype-legacy-transforms)
-#### How do I use Amazon Athena to prototype a data transformation from a `[legacy SQL query]`?
+#### How do I use ***Amazon Athena*** to prototype a data transformation from my `[legacy SQL query]`?
 
 ### [GitHub access](../dap-airflow/onboarding/github-access)
-#### How do I set up my GitHub access to **DAP⇨flow**?
+#### How do I set up my ***GitHub*** access to **DAP⇨flow**?
 
 ### [GitHub branching](../dap-airflow/onboarding/github-branch)
-#### How do I add a new development branch to the **DAP⇨flow** repository?
+#### How do I create `[transform branch]` as my new working branch of **DAP⇨flow**'s repository?
 
 ### [Committing transforms](../dap-airflow/onboarding/github-commit-transform)
-#### How do I commit my working transform to the **DAP⇨flow** repository?
+#### How do I commit my working `[transform SQL]` to **DAP⇨flow**'s repository?
 
 ## Topics arriving here soon...
 
 ### Raising pull requests
-#### How do I raise a Pull Request to merge my development branch into the main trunk of the **DAP⇨flow** repository?
+#### How do I raise a Pull Request to merge my `[transform branch]` into the main trunk of the **DAP⇨flow** repository?
 [DPF-146 DOCUMENTATION 4.3 Raise a Pull Request to merge the development branch into the main trunk of the DAP Airflow repository](https://docs.google.com/document/d/1LJjJobb2FVLoadUNCl3R7w9FedTFo8IJWHne-Zw9l-M/edit?usp=drive\_link)
 
 ### Merging branches 
-#### How do i complete the merge of my development branch into the main trunk of **DAP⇨flow**'s `[dap-airflow]` repository?
+#### How do i complete the merge of `[transform branch]` into the main trunk of **DAP⇨flow**'s repository?
 
 ### Airflow
-#### How will I access my data transformations using Airflow on the web?
+#### How will I access my data transforms using ***Airflow*** on the web?
 
 ### Adding tables to the raw-zone
-#### How do i add a new table ingestion to my service's raw-zone database?
+#### How do i add a new table ingestion to my `[service raw-zone]` database?
 
 ## Topics suggested for the later...
 
@@ -105,9 +105,9 @@ Further documents will be added as they are developed. [**Jump to the end**](#to
 
 #### External access to **DAP⇨flow** products
 
-#### Removing tables from the raw-zone
+#### Removing tables from my `[service raw-zone]` database
 
-#### Removing products from the refined-zone
+#### Removing products from the `[service refined-zone]` database
 
 <br/>
 

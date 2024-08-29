@@ -6,7 +6,7 @@ layout: playbook_js
 tags: [onboarding]
 ---
 
-# How do I add a new development branch to **DAP⇨flow**'s `[dap-airflow]` repository?
+# How do I create `[transform branch]` as my new working branch of **DAP⇨flow**'s `[dap-airflow]` repository?
 ![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 
 ### 1. Log into your ***GitHub*** account
@@ -17,7 +17,7 @@ tags: [onboarding]
 ### 2. Access the repository
 **`🖱`** When you are ready to begin, open the **[`dap-airflow`](https://github.com/LBHackney-IT/dap-airflow)** repository in your web browser.
 
-### 3. Create a new branch
+### 3. Create `[transform branch]` as your new working branch
 
 **`🖱`** Select the "**Code**" tab at the top of the repository page
 
@@ -25,12 +25,12 @@ tags: [onboarding]
 
 **`🖱`** Below that, click on the "**![][branch]`main`**" branch dropdown button menu.
 
-**`🖮`** Type your new branch name **`[my branch]`** as your working branch for development.
+**`🖮`** Type **`[transform branch]`** as the name as your new working branch.
 
-**`🖱`** Below that on the dropdown menu, click on "Create branch **![][branch]`[my branch]`** from **`main`.**"
+**`🖱`** Below that on the dropdown menu, click on "Create branch **![][branch]`[transform branch]`** from **`main`.**"
 
-### 4. Verify your new branch
-**`👁`** After creating the branch, "![][branch]`[my branch]`” should replace "![][branch]`main`" as your working branch for development.
+### 4. Verify `[transform branch]` is now your working branch
+**`👁`** Check your "![][branch]`[trannsform branch]`” has replaced "![][branch]`main`" as your working branch.
 
 **`Fig. 4`** ![Fig. 4](../images/github-branch-four.png)
 
@@ -51,25 +51,25 @@ tags: [onboarding]
 #### UX Criteria
 :::info ABILITY  
 * Hackney **Google Workspace** user 
-* `[my service]` Data Analyst
+* Hackney `[service]` Data Analyst
 * ***GitHub*** beginner  
 :::
 
 :::note BEHAVIOR  
-**Measures** the ***GitHub*** behavior:  
+**Measures** the ***GitHub*** and `dap-airflow` repository behavior:  
 
 **Given** in my web browser, I am logged on to my ***GitHub*** account using my ***Hackney email address*** with two-factor authentication  
-**~and** I am granted membership of **[London Borough of Hackney](https://github.com/LBHackney-IT) organization** on ***GitHub*** incorporating the [dap-airflow](https://github.com/LBHackney-IT/dap-airflow) private repository     
-**~and** I have decided what to call **`[my branch]`** as my working branch for development  
+**~and** I am granted membership of **[London Borough of Hackney](https://github.com/LBHackney-IT) organization** on ***GitHub*** incorporating the [`dap-airflow`](https://github.com/LBHackney-IT/dap-airflow) private repository     
+**~and** **`[transform branch]`** will be the name of my new working branch  
 **~and** I am member of the [**☎️DAP⇨flow Hotline**](https://chat.google.com/room/AAAAZYTZYPE?cls=7) Google Chat Space  
 
-**When** I access the [dap-airflow](https://github.com/LBHackney-IT/dap-airflow) repository  
+**When** I access the [`dap-airflow`](https://github.com/LBHackney-IT/dap-airflow) repository  
 **~and** I select the "**Code**" tab at the top of the repository page  
 **~and** below that, I click on the "**![][branch]`main`**" branch dropdown button menu   
-**~and** type my new branch name **`[my branch]`**  
-**~and** click "Create branch **![][branch]`[my branch]`** from **`main`**" below that on the dropdown menu  
+**~and** I type **`[transform branch]`**  
+**~and** click "Create branch **![][branch]`[transform branch]`** from **`main`**" below that on the dropdown menu  
 
-**Then** "**![][branch]`[my branch]`**” should replace "**![][branch]`main`**" as my working branch for development  
+**Then** "**![][branch]`[transform branch]`**” should replace "**![][branch]`main`**" as my working branch  
 **~and** ***GitHub*** will alert me via email if there are errors or warnings  
 **~and** I will have information that I can pass to the **DAP Platform Team** via the **[☎️DAP⇨flow Hotline](https://chat.google.com/room/AAAAZYTZYPE?cls=7)** if I encounter errors or need assistance.  
 

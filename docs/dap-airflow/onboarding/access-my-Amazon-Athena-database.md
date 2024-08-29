@@ -6,29 +6,32 @@ layout: playbook_js
 tags: [onboarding]
 ---
 
-# How will I access my database from Amazon Athena?
+# How will I use ***Amazon Athena*** to access my database?
 
-### 1. Access the AWS Management Console
-**`🖱`** In your web browser, log in to your AWS account to access the AWS Management Console.  
+### 1. Access the ***AWS Management Console***
+**`🖱`** In your web browser, log in to your AWS account to access the ***AWS Management Console***.  
    
 👉 First time AWS Users should **start here ►** **[DAP⇨flow📚AWS Console access](../onboarding/access-the-AWS-Management-Console)** 
 
-### 2. Familiarize Yourself with the console
-**`🖱`** Take a moment to get comfortable with the layout and check out options available in the AWS console interface.
+### 2. Familiarize yourself with the console
+**`👁`** Take a moment to get comfortable with the layout and check out options available in the ***AWS Management Console*** interface.
 
 **`Fig. 2 & 3`** ![Fig. 2 & 3](../images/access-my-Amazon-Athena-database-two-three.png)
 
-### 3. Open Amazon Athena
-**`🖱`** Locate and open Amazon Athena from the services menu.
+### 3. Open ***Amazon Athena***
+**`🖱`** Locate and open ***Amazon Athena*** from the services menu.
 
-### 4. Select the Workgroup
-**`🖱`** On the Athena interface, look to the top right corner next to "**Workgroup**". Then from the list box, select `[my service]`.
+### 4. Select your `[service workgroup]`
+**`👁`** Look to the top right corner of the ***Amazon Athena*** interface, next to "**Workgroup**".  
+
+**`🖱`** From the list box there, click on **`▼`** to select your `[service workgroup]`.
 
 **`Fig. 4 & 5`** ![Fig. 4 & 5](../images/access-my-Amazon-Athena-database-four-five.png)
 
-### 5. Select the Database
-**`🖱`** On the left side of the Athena interface, under the "**Database**" section, find the list box and check you have `[my service raw zone]`.
+### 5. Select your `[service raw zone]` database
+**`👁`** On the left side of the ***Amazon Athena*** interface, below the "**Database**" section, find the list box and check you can already see your `[service raw zone]` database.  
 
+**`🖱`** If you don't see it there, then simply click on **`▼`** to select your `[service raw zone]` database from the list box.
 
 ---
 ## ***"We* ♡ *your feedback!"***
@@ -44,21 +47,23 @@ tags: [onboarding]
 
 #### UX Criteria
 :::info ABILITY  
-* Hackney **AWS Management Console** user  
-* `[my service]` Data Analyst
+* **AWS Management Console** user  
+* Hackney `[service]` Data Analyst
 
 :::
 
 :::note BEHAVIOR  
-**Measures** the behavior of **Amazon Athena** when first run and configured by the user
+**Measures** the behavior of **Amazon Athena** when first run and configured by the user:
 
-**Given** in my web browser, I have access to the Data Platform AWS Management Console  
+**Given** in my web browser, I have access to the ***AWS Management Console***  
 **~and** I have familiarized myself with the console interface  
-**When**  I open Amazon Athena via the console menu system, by clicking on “**Athena**” where it appears  
-**~and** I click through any splash screen that might appear, eg. “Explore the Query Editor”  
-**Then** I will be presented with the Amazon Athena interface  
-**~and** up at the right next to “**Workgroup**”, I should be offered `[my service]` from the list box  
-**~and** over on the left under “**Database**” I should be offered `[my service raw zone]` from the list box.  
+
+**When** I open ***Amazon Athena*** via the console menu system, by clicking on “**Athena**” whereever it appears  
+**~and** I click through any splash screen that might appear, eg. “**Explore the Query Editor**”  
+
+**Then** I will be presented with the **Amazon Athena** interface  
+**~and** up at the right next to “**Workgroup**”, I should be offered my `[service workgroup]` from the list box  
+**~and** over on the left under “**Database**” I should be offered my `[service raw zone]` from the list box.  
 
 **Scale** of 3 to 4 **~and** flow features.  
 :::

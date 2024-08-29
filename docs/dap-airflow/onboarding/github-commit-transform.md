@@ -6,19 +6,19 @@ layout: playbook_js
 tags: [onboarding]
 ---
 
-# How do I commit my working transform query to **DAP⇨flow**'s `[dap-airflow]` repository?
+# How do I commit my working `[transform SQL]` query to **DAP⇨flow**'s `[dap-airflow]` repository?
 ![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 
-### 1. Access ***Amazon Athena*** and workgroup
+### 1. Access ***Amazon Athena*** with your `[service workgroup]`
 
-**`🖱`** In your web browser, log in to your AWS account, navigate to the AWS Management Console, and open Amazon Athena. 
+**`🖱`** In your web browser, log in to your AWS account, navigate to the ***AWS Management Console***, and open ***Amazon Athena***. 
 
 **`🖱`** Ensure you have selected your `[service workgroup]` from the list box next to “**Workgroup**”.  
 
-### 2. Prepare and make ready your SQL query
+### 2. Prepare and make ready your `[transform SQL]` query
 **`🖱`** Ensure you have already created, tested and saved your `[transform SQL]` as a working, fully functional Athena SQL query. 
 
-👉 If you want reminding how to do any of that, see **here** or **here ►**  
+👉 If you want reminding of how to do any of that, see **here** or **here ►**  
 * **[DAP⇨flow📚Prototype simple transforms](../dap-airflow/onboarding/prototype-simple-transforms)**  
 * **[DAP⇨flow📚Prototype legacy transforms](../dap-airflow/onboarding/prototype-legacy-transforms)**
 
@@ -26,9 +26,9 @@ tags: [onboarding]
  
 ### 3. Access the `dap-airflow` repository in ***GitHub***
 
-**`🖱`** Use another tab in your web browser to log into your ***GitHub*** account using your ***Hackney email address*** with two-factor authentication.
+**`🖱`** Use another tab in your web browser to log into your ***GitHub*** account using your *Hackney email address* with two-factor authentication.
  
-👉 Users without a ***GitHub*** account or existing ***GitHub*** users without membership of the **[London Borough of Hackney](https://github.com/LBHackney-IT) organization,** should **start here ►** **[DAP⇨flow📚GitHub access](../onboarding/github-access)** 
+👉 Users without a ***GitHub*** account or existing ***GitHub*** users without membership of the **[London Borough of Hackney](https://github.com/LBHackney-IT) organization,** should check back at **the start ►** **[DAP⇨flow📚GitHub access](../onboarding/github-access)** 
 
 **`🖱`** Open the **[`dap-airflow`](https://github.com/LBHackney-IT/dap-airflow)** repository in your web browser.
 
@@ -37,9 +37,9 @@ tags: [onboarding]
 **`🖱`** Ensure you have created your ![][branch]`[transform branch]` and have it selected.  
 **`Fig. 4`** ![Fig. 4a](../images/github-commit-transform-four-a.png)
 
-👉  For how to create a branch, **see here ►** **[DAP⇨flow📚GitHub branching](../onboarding/github-branch)**  
+👉  For how to create your `[transform branch]`, **see here ►** **[DAP⇨flow📚GitHub branching](../onboarding/github-branch)**  
     
-**`🖱`** In the DAP Airflow repository, navigate to your `dap-airflow/airflow/dags/` **`[service dags]/transformations`** service sub-folder. You can use ***GitHub***’s left-hand navigation pane as follows:  
+**`🖱`** In the `[dap-airflow]` repository, navigate to your `dap-airflow/airflow/dags/` **`[service dags]/transformations`** service sub-folder. You can use ***GitHub***’s left-hand navigation pane as follows:  
 * Click on the **`airflow`** folder  
 * Inside the `airflow` folder, click on the **`dags`** folder  
 * Inside the `dags` folder, click on your **`[service dags]`** folder  
@@ -59,17 +59,17 @@ tags: [onboarding]
 
 ### 6. Copy your `[transform SQL]` code from ***Amazon Athena***
 **`🖱`** Switch back to the ***Amazon Athena*** tab in your web browser, with your `[transform SQL]` still in the query editor.  
-**`🖱`** Select the entire code of `[transform SQL]` open in the Athena query editor.  
+**`🖱`** Select your entire `[transform SQL]` code in the Athena query editor.  
 **`Fig. 6`** ![Fig. 6](../images/github-commit-transform-six.png)  
 **`🖱`** Use the right-click menu to "*Copy*" the selected code to your computer’s clipboard.  
 
 ### 7. Paste your `[transform SQL]` code into ***GitHub***
 **`🖱`** Switch back to the ***GitHub*** tab in your web browser, with `[transform].sql` currently empty in the code editor.  
-**`🖱`** In the editor window beneath where it says “**Edit**”, use the right-click menu to "*Paste*" the entire `[transform SQL]` code from your computer’s clipboard.  
+**`🖱`** In the ***GitHub*** editor window beneath where it says “**Edit**”, use the right-click menu to "*Paste*" your entire `[transform SQL]` code, from the computer’s clipboard, into your `[transform].sql` file.  
 **`Fig. 7 & 8`** ![Fig. 7 & 8](../images/github-commit-transform-seven-eight.png)  
 
 ### 8. Review and adjust your `[transform SQL]` code
-**`🖱`** Scroll to the bottom of the editor window.  
+**`🖱`** Scroll to the bottom of the ***GitHub*** editor window.  
 **`👁 🖱`** Check for and remove any `limit` clause (e.g., `limit 100`), leaving just the final **`;`** semi-colon at the very end.  
 
 ### 9. Commit your `[transform].sql` file  
@@ -100,7 +100,7 @@ tags: [onboarding]
 #### UX Criteria
 :::info ABILITY  
 * Hackney **Google Workspace** user 
-* `[my service]` Data Analyst
+* Hackney `[service]` Data Analyst
 * ***Amazon Athena*** user  
 * ***GitHub*** user  
 :::
@@ -122,8 +122,8 @@ tags: [onboarding]
 **~and** I navigate to my `dap-airflow/airflow/dags/` **`[service dags]/transformations`** service subfolder  
 **~and** at the top right region of the page, click the "**Add file**" button and select "**Create new file**"  
 **~and** in the box following the **`transformations/`** subfolder, I enter my `[transform].sql`  
-**~and** back in the ***Amazon Athena*** web browser tab, I select the entire code of my `[transform SQL]` in the Athena query editor before *copying* it into my computer’s clipboard   
-**~and** back in the ***GitHub*** web browser tab, in the editor window, beneath where it says “**Edit**”, I *paste* the entire code of my  `[transform SQL]` from my computer’s clipboard   
+**~and** back in the ***Amazon Athena*** web browser tab, I select my entire `[transform SQL]` code in the Athena query editor before *copying* it into the computer’s clipboard   
+**~and** back in the ***GitHub*** web browser tab, in the editor window, beneath where it says “**Edit**”, I *paste* my `[transform SQL]` code, from the computer’s clipboard, into my `[transform].sql` file   
  **~and** I scroll to the bottom of the editor window to check and remove any `limit` clause (eg. `limit 100`), leaving just the `;` semi-colon at the very end  
 **~and** I click the "**Commit changes**" button to open up a dialogue box  
 **~and** I enter a short commit message, Eg. `Add ... [transform].sql`   
