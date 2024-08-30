@@ -81,10 +81,9 @@ tags: [onboarding]
 **`🖱`** Select the option “**Commit directly to the `[transform branch]`**”.  
 **`🖱`** Click the "**Commit changes**" button.  
 
-### 10. Verify the Commit  
-**`👁`**You should see a message confirming your `[transform].sql` was successfully committed directly to your `[transform branch]`.
+**`👁`** You should see a message confirming your `[transform].sql` was successfully committed directly to your `[transform branch]`.
 
-### 11. Making subsequent changes to `[transform].sql`
+### 10. Making subsequent changes to `[transform].sql`
 Whether you are just fault-fixing or you want to add new SQL code features to your `[transform SQL]`:
 
 **`🖱`** In the ***GitHub*** editor window beneath where it says “**Edit**”, you can edit your `[transform].sql` file directly.    
