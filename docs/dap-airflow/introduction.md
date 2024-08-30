@@ -82,11 +82,10 @@ Further documents will be added as they are developed. [**Jump to the end**](#to
 ### [Committing transforms](../dap-airflow/onboarding/github-commit-transform)
 #### How do I commit my working `[transform SQL]` to **DAP⇨flow**'s repository?
 
-## Topics arriving here soon...
+### [GitHub pull requests](../dap-airflow/onboarding/github-pull-request)
+#### How do I raise a *"pull request"* to merge my `[transform branch]` into the `main` trunk of the **DAP⇨flow** repository?
 
-### Raising pull requests
-#### How do I *"pull request"* my `[transform branch]` back into the `main` trunk of the **DAP⇨flow** repository?
-[DPF-146 DOCUMENTATION 4.3 Raise a Pull Request to merge the development branch into the main trunk of the DAP Airflow repository](https://docs.google.com/document/d/1LJjJobb2FVLoadUNCl3R7w9FedTFo8IJWHne-Zw9l-M/edit?usp=drive\_link)
+## Topics arriving here soon...
 
 ### Merging branches 
 #### How do i complete the merge of `[transform branch]` into the main trunk of **DAP⇨flow**'s repository?
