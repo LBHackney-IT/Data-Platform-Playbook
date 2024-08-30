@@ -14,7 +14,7 @@ tags: [onboarding]
  
 👉 Users without a ***GitHub*** account or existing ***GitHub*** users without membership of the **[London Borough of Hackney](https://github.com/LBHackney-IT) organization,** should **start here ►** **[DAP⇨flow📚GitHub access](../onboarding/github-access)** 
 
-### 2. Access the repository
+### 2. Access the `dap-airflow` repository
 **`🖱`** When you are ready to begin, open the **[`dap-airflow`](https://github.com/LBHackney-IT/dap-airflow)** repository in your web browser.
 
 ### 3. Create `[transform branch]` as your new working branch

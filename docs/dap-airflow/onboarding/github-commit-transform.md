@@ -35,9 +35,9 @@ tags: [onboarding]
 ### 4. Open your `[service dags]/transformations` subfolder on a your `[transform branch]`
 
 **`🖱`** Ensure you have created your ![][branch]`[transform branch]` and have it selected.  
-**`Fig. 4`** ![Fig. 4a](../images/github-commit-transform-four-a.png)
+**`Fig. 4a`** ![Fig. 4a](../images/github-commit-transform-four-a.png)
 
-👉  For how to create your `[transform branch]`, **see here ►** **[DAP⇨flow📚GitHub branching](../onboarding/github-branch)**  
+👉 For how to create your `[transform branch]`, **see here ►** **[DAP⇨flow📚GitHub branching](../onboarding/github-branch)**  
     
 **`🖱`** In the `[dap-airflow]` repository, navigate to your `dap-airflow/airflow/dags/` **`[service dags]/transformations`** service sub-folder. You can use ***GitHub***’s left-hand navigation pane as follows:  
 * Click on the **`airflow`** folder  
@@ -68,9 +68,10 @@ tags: [onboarding]
 **`🖱`** In the ***GitHub*** editor window beneath where it says “**Edit**”, use the right-click menu to "*Paste*" your entire `[transform SQL]` code, from the computer’s clipboard, into your `[transform].sql` file.  
 **`Fig. 7 & 8`** ![Fig. 7 & 8](../images/github-commit-transform-seven-eight.png)  
 
-### 8. Review and adjust your `[transform SQL]` code
-**`🖱`** Scroll to the bottom of the ***GitHub*** editor window.  
-**`👁 🖱`** Check for and remove any `limit` clause (e.g., `limit 100`), leaving just the final **`;`** semi-colon at the very end.  
+### 8. Review and adjust your `[transform SQL]` code  
+**`🖱`** Scroll to the bottom of the ***GitHub*** editor window to remove any `limit` clause (e.g., `limit 100`), leaving just the final **`;`** semi-colon at the very end.  
+
+**`👁`** If you spot problems in your code you have an opportunity to fix them now, or fix them later.  
 
 ### 9. Commit your `[transform].sql` file  
 **`🖱`** Click the "**Commit changes**" button to open a dialogue box.  
@@ -82,6 +83,19 @@ tags: [onboarding]
 
 ### 10. Verify the Commit  
 **`👁`**You should see a message confirming your `[transform].sql` was successfully committed directly to your `[transform branch]`.
+
+### 11. Making subsequent changes to `[transform].sql`
+Whether you are just fault-fixing or you want to add new SQL code features to your `[transform SQL]`:
+
+**`🖱`** In the ***GitHub*** editor window beneath where it says “**Edit**”, you can edit your `[transform].sql` file directly.    
+
+**`🖱`** Alternatively, you can use the right-click menu to "*Paste*" a new version of your `[transform SQL]` code, from the computer’s clipboard, into your `[transform].sql` file.  
+
+💡 But unlike regular code editors, ***GitHub*** will not allow you to simply *"Save"* consecutive changes to your code then come back later to finally *commit* your `[transform].sql` with the rest of your `[transform branch]`. Using ***GitHub***'s *web console* in this way absolutely requires you to re-*commit* your `[transform branch]` each and every time you edit or change your files. If you closed your web browser before *committing*, you would lose the edits you did using ***GitHub***'s editor since the previous *commit*. 
+
+👉 After editing `[transform].sql` each time, simply **repeat from ► [step 9](#9-commit-your-transformsql-file)**.  
+
+👉 You may *commit* as often as you need to, until finally, you raise a *pull request*, **here ►** **[DAP⇨flow📚GitHub pull request](../onboarding/github-pull-request)**   
 
 <br> 
 </br>  
@@ -131,9 +145,10 @@ tags: [onboarding]
 **~and** I select the option “**Commit directly to my `[transform branch]`**  
 **~and** I click the "**Commit changes**" button  
 
-**Then** I should see a message telling me, my `[transform].sql` was successfully committed directly to my `[transform branch]`.
+**Then** I should see a message telling me, my `[transform].sql` was successfully *committed* directly to my `[transform branch]`  
+**~and** I will be permitted to make further edits to my `[transform].sql` followed by *commits* to my to my `[transform branch]`, as often as I need to, until I raise a *pull request* for my `[transform branch]`.
 
-**Scale** of 11 to 19 **~and** flow features.
+**Scale** of 12 to 20 **~and** flow features.
 :::
 
 [branch]: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAAXNSR0IArs4c6QAAAU9JREFUOE+tk79Pg1AQx99bHPwf+k8URxJ2VngdtaTGMEDC4iqv0s2FxA4tjUl1fbzJiXSiOiKhy+s/wayDCWfbCKG/UBNveMPdffK9u3eH0bcRQmTbtl+EEJemaT6U/nrccZxr3/fvGGOvaz9eP+Px2JrNZveyLA+FEFYQBBt/3brdLrRareFyubQAwOacDzdJk8nEjaKIappG4zimo9FoDzZNExRFoZxzumJoGIb9KknX9XOE0CMAuJzz211lTdNuMMZ9hNBFGIZPVdlloq7rgDE+Y4y9HehZAoBkpVgJbpX3LzAhRDDGtsSLonhXVfWz1+udlIE9ZQAIJEm6StO0gtvtNprP5zRJkuc8z6vAHmwYBppOp6d1WUII6nQ6H7tz+HXPu+Cfpt0I//TPR+HFYuF6nte4YUfhLMuswWDQuNuNZa+vqkwor+YQUPd9AUZ2tBDCa9wvAAAAAElFTkSuQmCC>
