@@ -85,7 +85,7 @@ Further documents will be added as they are developed. [**Jump to the end**](#to
 ## Topics arriving here soon...
 
 ### Raising pull requests
-#### How do I raise a Pull Request to merge my `[transform branch]` into the main trunk of the **DAP⇨flow** repository?
+#### How do I *"pull request"* my `[transform branch]` back into the `main` trunk of the **DAP⇨flow** repository?
 [DPF-146 DOCUMENTATION 4.3 Raise a Pull Request to merge the development branch into the main trunk of the DAP Airflow repository](https://docs.google.com/document/d/1LJjJobb2FVLoadUNCl3R7w9FedTFo8IJWHne-Zw9l-M/edit?usp=drive\_link)
 
 ### Merging branches 

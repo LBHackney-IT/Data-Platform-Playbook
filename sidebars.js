@@ -139,6 +139,7 @@ module.exports = {
             "dap-airflow/onboarding/github-access",
             "dap-airflow/onboarding/github-branch",
             "dap-airflow/onboarding/github-commit-transform",
+            "dap-airflow/onboarding/github-pull-request",
           ],
         },
       ],
