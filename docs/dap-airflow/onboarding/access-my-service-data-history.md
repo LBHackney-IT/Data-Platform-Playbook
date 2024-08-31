@@ -8,12 +8,12 @@ tags: [onboarding]
 
 # How will I access my `[service]`'s data history from ***Amazon Athena***?
 
-### 1. Access ***Amazon Athena***
+## 1. Access ***Amazon Athena***
 **`🖱`** In your web browser, log in to your AWS account, navigate to the ***AWS Management Console***, and open ***Amazon Athena***. 
    
 👉 First time ***Amazon Athena*** users should **start here ►** **[DAP⇨flow📚Amazon Athena](../onboarding/access-my-Amazon-Athena-database)** 
 
-### 2. Understanding your `[service raw zone]` database
+## 2. Understanding your `[service raw zone]` database
 **`🖱`** Ensure you have selected your `[service raw zone]` from the list box under the "**Database**" section on the left side of the Athena interface.
 
 **`Fig. 2 & 3`** ![Fig. 2 & 3](../images/access-my-service-data-history-two-three.png)
@@ -27,26 +27,26 @@ tags: [onboarding]
 
 👉 For more information on how Amazon S3 organizes data, see ►[**here**](https://docs.aws.amazon.com/AmazonS3/latest/userguide/organizing-objects.html)
 
-### 3. Explore the tables in your database
+## 3. Explore the tables in your database
 **`🖱`** Beneath the "**Database**" section on the left of the Athena interface, expand the "**`►` Tables**" section to find the list of tables available from your `[service raw zone]` database.
 
 * This is how Athena presents tables from the S3 data lake. In S3’s folder structure, tables are represented by folders below the service database folder.
 
 * In this implementation, the table names were all suffixed `..._history` to remind us that each table contains several daily generations of data stretching back in time.  
 
-### 4. Expanding each table
+## 4. Expanding each table
 **`🖱`** Click on each table name to expand it and observe the complete list of columns for that table.
 
 **`Fig. 4 & 5`** ![Fig. 4 & 5](../images/access-my-service-data-history-four-five.png)
 
-### 5. Verifying the views and columns
+## 5. Verifying the views and columns
 **`👁`** Compare each table and its columns with the equivalent table and columns from your `[service database]` to observe how their names and data types match up with their counterparts.
 
 * Occasionally the automatic data type translation will yield unexpected results. Always check columns to ensure there will never be any data lost. For example, if integer precision is lost.
 
 * Be especially aware of *date* translations. Dates are sometimes transmitted in specialized formats, possibly numerical or possibly textual. If we’re unlucky these might need some coded reconciliation afterwards to make them both readable and useful in computations, especially when used in comparison, or used to join *date* columns from tables elsewhere.
 
-### 6. Observing the partition columns
+## 6. Observing the partition columns
 **`🖱`** Scroll to the bottom of the column list to find the partition scheme. This will comprise three, or four, or more partition columns shown with the partition data type alongside eg. **`string (Partitioned)`**.
 
 **`Fig. 6`** ![Fig. 6](../images/access-my-service-data-history-six.png)  
@@ -72,15 +72,17 @@ It helps to become familiar with the fundamental differences between a tradition
 ## ***"We* ♡ *your feedback!"***
 ![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 :::tip UX  
-👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / access-my-service-data-history**](https://docs.google.com/forms/d/e/1FAIpQLSdqeNyWIPMNBHEr-YSyxnXQ4ggTwJPkffMYgFaJ4hGEhIL6LA/viewform?usp=pp_url&entry.339550210=access-my-service-data-history)  
+### 👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / access-my-service-data-history**](https://docs.google.com/forms/d/e/1FAIpQLSdqeNyWIPMNBHEr-YSyxnXQ4ggTwJPkffMYgFaJ4hGEhIL6LA/viewform?usp=pp_url&entry.339550210=access-my-service-data-history)  
+
 - Your feedback enables us to improve **DAP⇨flow** and our Data Analytics Platform service.  
 - We encourage all our users to be generous with their time, in giving us their recollections and honest opinions about our service.  
 - We especially encourage our new users to give feedback at the end of every **📚Onboarding** task because the quality of the onboarding experience really matters.  
-☝ **Please use this link to help us understand your user experience!**  
+
+   ☝ **Please use this link to help us understand your user experience!**  
 
 :::
 
-#### UX Criteria
+## 📚`UX` Criteria
 :::info ABILITY  
 * **AWS Management Console** user  
 * Hackney `[service]` Data Analyst
@@ -89,6 +91,7 @@ It helps to become familiar with the fundamental differences between a tradition
 :::
 
 :::note BEHAVIOR  
+### How will I access my `[service]`'s data history from ***Amazon Athena***?
 **Measures** the behavior of **Amazon Athena** while users explore their `[service raw zone]` database tables and columns:  
 
 **Given** I selected my `[service raw zone]` database in the ***Amazon Athena*** interface  

@@ -142,6 +142,7 @@ module.exports = {
             "dap-airflow/onboarding/github-pull-request",
           ],
         },
+        "dap-airflow/ux",
       ],
     },
     {

@@ -8,34 +8,34 @@ tags: [onboarding]
 # How do I use ***Amazon Athena*** to prototype a data transformation from my `[legacy SQL query]`?
 ![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 
-### 1. Access ***Amazon Athena***
+## 1. Access ***Amazon Athena***
 **`🖱`** In your web browser, log in to your AWS account, navigate to the ***AWS Management Console***, and open ***Amazon Athena***. 
    
 👉 First time ***Amazon Athena*** users should **start here ►** **[DAP⇨flow📚Amazon Athena](../onboarding/access-my-Amazon-Athena-database)** 
 
-### 2. Select your `[service workgroup]`
+## 2. Select your `[service workgroup]`
 **`🖱`** Ensure you have selected your `[service workgroup]` from the list box next to “**Workgroup**”.  
      
-### 3. Select your `[service raw zone]` database  
+## 3. Select your `[service raw zone]` database  
 **`🖱`** Ensure you select your `[service raw zone]` from the list box under the "**Database**" section on the left side of the Athena interface.  
 
 **`👁`** You should observe your `[service database]` equivalent tables and columns with their respective data types listed below "**`▼` Views**".  
 
-### 4.Prepare your `[transform SQL]` query
+## 4.Prepare your `[transform SQL]` query
 **`🖱`** *Copy-and-paste* your `[legacy SQL query]` lifted from your `[service database]` into ***Amazon Athena***'s query editor to become your new `[transform SQL]` code.  
 
 You should take this opportunity to tidy up and format your SQL code, making it easier to read, maintain, and spot errors.  
 
 👉 You'll find considerations for SQL development discussed **►[💡here](../onboarding/prototype-simple-transforms#considerations-when-adopting-amazon-athena-for-your-future-sql-development)**.
 
-### 5. Verify table and column availability  
+## 5. Verify table and column availability  
 **`🖱`** Over on the left of the Athena interface, expand the list under “**`▼` Views**” to verify your `[service raw zone]` includes your `[service database]` equivalent tables and columns matching those in your `[transform SQL]`.
 
 **`Fig. 5a`** ![Fig. 5a](../images/prototype-legacy-transforms-five-a.png)  
 
 **`Fig. 5b`** ![Fig. 5b](../images/prototype-legacy-transforms-five-b.png)  
 
-### 6. Ensure your `[transform SQL]` is compatible with ***Amazon Athena***  
+## 6. Ensure your `[transform SQL]` is compatible with ***Amazon Athena***  
 **`👁`** Review your `[transform SQL]` code to ensure all column functions and expressions are compatible with ***Amazon Athena***, aiming to produce the same column output as the original `[legacy SQL query]`. 
 
 Often the easy way to test your SQL code compatibility is to simply try running it (as per **Step 7**). It might succeed, or fail with errors that should inform you about what you need to change.
@@ -50,17 +50,17 @@ Often the easy way to test your SQL code compatibility is to simply try running 
 
 - Your original `[service database]` database name will not be used by **DAP⇨flow**, so you will need to swap it out with your `[service raw zone]`.
  
-### 7. Run your `[transform SQL]` query
+## 7. Run your `[transform SQL]` query
 **`🖱`** After customizing the SQL code, click “**Run**” or “**Run again**” located underneath the code window on the left side in the ***Amazon Athena*** interface.  
 
 **`Fig. 7`** ![Fig. 7](../images/prototype-legacy-transforms-seven.png)
 
-### 8. Review the results  
+## 8. Review the results  
 **`👁`** ***Amazon Athena*** should fetch the same results as your `[legacy SQL query]` would have, when run by your original `[service database]`. If it is possible to make a direct comparison with the legacy system output then that should help you have confidence in the results of your prototype SQL.  
 
 **`Fig. 8`** ![Fig. 8](../images/prototype-legacy-transforms-eight.png)
 
-### 9. Save your query as `[transform].sql`
+## 9. Save your query as `[transform].sql`
 **`🖱`** Check you are in your correct `[service workgroup]` before clicking on the three dots **⋮** to the right of your Query tab, and clicking “**Save as**”.  
 
 **`Fig. 9a`** ![Fig. 9a](../images/prototype-legacy-transforms-nine-a.png)  
@@ -76,15 +76,17 @@ Often the easy way to test your SQL code compatibility is to simply try running 
 ## ***"We* ♡ *your feedback!"***
 ![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 :::tip UX  
-👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / prototype-legacy-transforms**](https://docs.google.com/forms/d/e/1FAIpQLSdqeNyWIPMNBHEr-YSyxnXQ4ggTwJPkffMYgFaJ4hGEhIL6LA/viewform?usp=pp_url&entry.339550210=prototype-legacy-transforms)  
+### 👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / prototype-legacy-transforms**](https://docs.google.com/forms/d/e/1FAIpQLSdqeNyWIPMNBHEr-YSyxnXQ4ggTwJPkffMYgFaJ4hGEhIL6LA/viewform?usp=pp_url&entry.339550210=prototype-legacy-transforms)  
+
 - Your feedback enables us to improve **DAP⇨flow** and our Data Analytics Platform service.  
 - We encourage all our users to be generous with their time, in giving us their recollections and honest opinions about our service.  
 - We especially encourage our new users to give feedback at the end of every **📚Onboarding** task because the quality of the onboarding experience really matters.  
-☝ **Please use this link to help us understand your user experience!**
+
+    ☝ **Please use this link to help us understand your user experience!**
 :::
 
 
-#### UX Criteria
+## 📚`UX` Criteria
 :::info ABILITY  
 * **AWS Management Console** user  
 * **Amazon Athena** beginner  
@@ -93,6 +95,7 @@ Often the easy way to test your SQL code compatibility is to simply try running 
 :::
 
 :::note BEHAVIOR  
+### How do I use ***Amazon Athena*** to prototype a data transformation from my `[legacy SQL query]`?
 **Measures** the behavior of ***Amazon Athena*** while users convert there `[legacy SQL query]` into transforms:
 
 **Given** in my web browser, I have accessed ***Amazon Athena***  

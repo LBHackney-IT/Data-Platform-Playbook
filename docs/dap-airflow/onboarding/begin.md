@@ -9,28 +9,28 @@ tags: [onboarding]
 # What must happen before I can begin DAP⇨flow?
 ![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 
-### 1. Is your `[service]`’s data now available on the Data Analytics Platform (DAP)?
+## 1. Is your `[service]`’s data now available on the Data Analytics Platform (DAP)?
 Your `[service]` manager or the **DAP Platform Team** will have told you about this.
 
-### 2. Are you using your **Hackney Council** Google Account?
+## 2. Are you using your **Hackney Council** Google Account?
 You’ll always need to be logged into your **Hackney Council** Google account via your web browser when following the **DAP⇨flow** onboarding tasks.
 
-### 3. Your manager must add you to the DAP Access Google Group
+## 3. Your manager must add you to the DAP Access Google Group
 Ask your `[service]` manager to add your name to the [DAP Access Google Group](https://support.google.com/groups/answer/2465464?hl=en), aka your `[service workgroup]`. Your manager may need to contact the **DAP Platform Team** if this is their first time adding someone to the group.
 
-### 4. Access granted!
+## 4. Access granted!
 Once your name is added, you will be granted  
 - appropriate access to the [Hackney Council AWS Console](https://d-936715b9ec.awsapps.com/start/#/?tab=accounts).
 - membership of the **☎️DAP⇨flow Hotline** Google Chat Space.
 
-### 5. You’ll receive an email, welcoming you to **DAP⇨flow**
+## 5. You’ll receive an email, welcoming you to **DAP⇨flow**
 Check for an email from the **DAP Platform Team** welcoming you to the DAP. This email will present you with the following information needed to begin using the **DAP⇨flow** and while following the **📚Onboarding** documentation:  
 - Your `[service workgroup]` confirming your workgroup in ***Amazon Athena*** and other places
 - Your `[service role]` needed to access the ***AWS Management Console***
 - Your `[service raw zone]` as the database where you will find your ingested data
 - Your `[service database]` confirming where your data actually came from
 
-### 6. Check out the links in your email
+## 6. Check out the links in your email
 You will be directed and encouraged to use the following **DAP⇨flow** resources linked in the email:
 
 👉  [**☎️DAP⇨flow Hotline**](https://chat.google.com/room/AAAAZYTZYPE/w4EMQuK-9QA/w4EMQuK-9QA?cls=10)  
@@ -55,20 +55,23 @@ You will be directed and encouraged to use the following **DAP⇨flow** resource
 ## ***"We* ♡ *your feedback!"***
 ![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 :::tip UX  
-👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / begin**](https://docs.google.com/forms/d/e/1FAIpQLSdqeNyWIPMNBHEr-YSyxnXQ4ggTwJPkffMYgFaJ4hGEhIL6LA/viewform?usp=pp_url&entry.339550210=begin)  
+### 👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / begin**](https://docs.google.com/forms/d/e/1FAIpQLSdqeNyWIPMNBHEr-YSyxnXQ4ggTwJPkffMYgFaJ4hGEhIL6LA/viewform?usp=pp_url&entry.339550210=begin)  
+
 - Your feedback enables us to improve **DAP⇨flow** and our Data Analytics Platform service.  
 - We encourage all our users to be generous with their time, in giving us their recollections and honest opinions about our service.  
 - We especially encourage our new users to give feedback at the end of every **📚Onboarding** task because the quality of the onboarding experience really matters.  
-☝ **Please use this link to help us understand your user experience!**
+
+    ☝ **Please use this link to help us understand your user experience!**
 :::
 
-#### UX Criteria
+## 📚`UX` Criteria
 :::info ABILITY  
 * Hackney **Google Workspace** user 
 * Hackney `[service]` Data Analyst
 :::
 
 :::note BEHAVIOR  
+### What must happen before I can begin DAP⇨flow?
 **Measures** the **DAP Platform Team** behavior and the agency of the `[service]` manager:  
 
 **Given** my `[service]` was already set up as a [**DAP department**](https://playbook.hackney.gov.uk/Data-Platform-Playbook/playbook/getting-set-up/onboarding-new-departments-to-the-platform)  

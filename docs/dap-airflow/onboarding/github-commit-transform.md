@@ -9,13 +9,13 @@ tags: [onboarding]
 # How do I commit my working `[transform SQL]` query to **DAP⇨flow**'s `[dap-airflow]` repository?
 ![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 
-### 1. Access ***Amazon Athena*** with your `[service workgroup]`
+## 1. Access ***Amazon Athena*** with your `[service workgroup]`
 
 **`🖱`** In your web browser, log in to your AWS account, navigate to the ***AWS Management Console***, and open ***Amazon Athena***. 
 
 **`🖱`** Ensure you have selected your `[service workgroup]` from the list box next to “**Workgroup**”.  
 
-### 2. Prepare and make ready your `[transform SQL]` query
+## 2. Prepare and make ready your `[transform SQL]` query
 **`🖱`** Ensure you have already created, tested and saved your `[transform SQL]` as a working, fully functional Athena SQL query. 
 
 👉 If you want reminding of how to do any of that, see **here** or **here ►**  
@@ -24,7 +24,7 @@ tags: [onboarding]
 
 **`🖱`**  Open your `[transform SQL]` in the ***Amazon Athena*** query editor and keep it open in a web browser tab.
  
-### 3. Access the `dap-airflow` repository in ***GitHub***
+## 3. Access the `dap-airflow` repository in ***GitHub***
 
 **`🖱`** Use another tab in your web browser to log into your ***GitHub*** account using your *Hackney email address* with two-factor authentication.
  
@@ -32,7 +32,7 @@ tags: [onboarding]
 
 **`🖱`** Open the **[`dap-airflow`](https://github.com/LBHackney-IT/dap-airflow)** repository in your web browser.
 
-### 4. Open your `[service dags]/transformations` subfolder on a your `[transform branch]`
+## 4. Open your `[service dags]/transformations` subfolder on a your `[transform branch]`
 
 **`🖱`** Ensure you have created your ![][branch]`[transform branch]` and have it selected.  
 **`Fig. 4a`** ![Fig. 4a](../images/github-commit-transform-four-a.png)
@@ -47,7 +47,7 @@ tags: [onboarding]
 
 **`Fig. 4b & 5a`** ![Fig. 4b & 5a](../images/github-commit-transform-four-b-five-a.png)
 
-### 5. Create your new `[transform].sql` file in ***GitHub***
+## 5. Create your new `[transform].sql` file in ***GitHub***
 
 **`🖱`** At the top right region of the page, click the "**Add file**" button and select "**Create new file**"  
 
@@ -57,23 +57,23 @@ tags: [onboarding]
 
 **`🖱`** Keep this ***Github*** code editor and it's web browser tab open for later on.
 
-### 6. Copy your `[transform SQL]` code from ***Amazon Athena***
+## 6. Copy your `[transform SQL]` code from ***Amazon Athena***
 **`🖱`** Switch back to the ***Amazon Athena*** tab in your web browser, with your `[transform SQL]` still in the query editor.  
 **`🖱`** Select your entire `[transform SQL]` code in the Athena query editor.  
 **`Fig. 6`** ![Fig. 6](../images/github-commit-transform-six.png)  
 **`🖱`** Use the right-click menu to "*Copy*" the selected code to your computer’s clipboard.  
 
-### 7. Paste your `[transform SQL]` code into ***GitHub***
+## 7. Paste your `[transform SQL]` code into ***GitHub***
 **`🖱`** Switch back to the ***GitHub*** tab in your web browser, with `[transform].sql` currently empty in the code editor.  
 **`🖱`** In the ***GitHub*** editor window beneath where it says “**Edit**”, use the right-click menu to "*Paste*" your entire `[transform SQL]` code, from the computer’s clipboard, into your `[transform].sql` file.  
 **`Fig. 7 & 8`** ![Fig. 7 & 8](../images/github-commit-transform-seven-eight.png)  
 
-### 8. Review and adjust your `[transform SQL]` code  
+## 8. Review and adjust your `[transform SQL]` code  
 **`🖱`** Scroll to the bottom of the ***GitHub*** editor window to remove any `limit` clause (e.g., `limit 100`), leaving just the final **`;`** semi-colon at the very end.  
 
 **`👁`** If you spot problems in your code you have an opportunity to fix them now, or fix them later.  
 
-### 9. Commit your `[transform].sql` file  
+## 9. Commit your `[transform].sql` file  
 **`🖱`** Click the "**Commit changes**" button to open a dialogue box.  
 **`Fig. 9`** ![Fig. 9](../images/github-commit-transform-nine.png)  
 **`🖮`** Enter a short commit message, Eg. `Add ... [transform].sql`.  
@@ -83,7 +83,7 @@ tags: [onboarding]
 
 **`👁`** You should see a message confirming your `[transform].sql` was successfully committed directly to your `[transform branch]`.
 
-### 10. Making subsequent changes to `[transform].sql`
+## 10. Making subsequent changes to `[transform].sql`
 Whether you are just fault-fixing or you want to add new SQL code features to your `[transform SQL]`:
 
 **`🖱`** In the ***GitHub*** editor window beneath where it says “**Edit**”, you can edit your `[transform].sql` file directly.    
@@ -103,14 +103,16 @@ Whether you are just fault-fixing or you want to add new SQL code features to yo
 ## ***"We* ♡ *your feedback!"***
 ![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 :::tip UX  
-👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / github-commit-transform**](https://docs.google.com/forms/d/e/1FAIpQLSdqeNyWIPMNBHEr-YSyxnXQ4ggTwJPkffMYgFaJ4hGEhIL6LA/viewform?usp=pp_url&entry.339550210=github-commit-transform)  
+### 👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / github-commit-transform**](https://docs.google.com/forms/d/e/1FAIpQLSdqeNyWIPMNBHEr-YSyxnXQ4ggTwJPkffMYgFaJ4hGEhIL6LA/viewform?usp=pp_url&entry.339550210=github-commit-transform)  
+
 - Your feedback enables us to improve **DAP⇨flow** and our Data Analytics Platform service.  
 - We encourage all our users to be generous with their time, in giving us their recollections and honest opinions about our service.  
 - We especially encourage our new users to give feedback at the end of every **📚Onboarding** task because the quality of the onboarding experience really matters.  
-☝ **Please use this link to help us understand your user experience!**
+
+    ☝ **Please use this link to help us understand your user experience!**
 :::
 
-#### UX Criteria
+## 📚`UX` Criteria  
 :::info ABILITY  
 * Hackney **Google Workspace** user 
 * Hackney `[service]` Data Analyst
@@ -119,6 +121,7 @@ Whether you are just fault-fixing or you want to add new SQL code features to yo
 :::
 
 :::note BEHAVIOR  
+### How do I commit my working `[transform SQL]` query to **DAP⇨flow**'s `[dap-airflow]` repository?
 **Measures** the behavior of ***GitHub*** and ***Amazon Athena***.  
 
 **Given** in my web browser, I have logged into my AWS account  

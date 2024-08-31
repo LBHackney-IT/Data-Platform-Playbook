@@ -10,15 +10,15 @@ tags: [onboarding]
 
 ![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 
-### 1. Log into your ***GitHub*** account
+## 1. Log into your ***GitHub*** account
 **`🖱`** Open your web browser and log into your ***GitHub*** account using your ***Hackney email address*** with two-factor authentication.
 
 👉 Users without a ***GitHub*** account or existing ***GitHub*** users without membership of the **[London Borough of Hackney](https://github.com/LBHackney-IT) organization,** should **start here ►** **[DAP⇨flow📚GitHub access](../onboarding/github-access)** 
 
-### 2. Access the `dap-airflow` repository
+## 2. Access the `dap-airflow` repository
 **`🖱`** When you are ready, open the **[`dap-airflow`](https://github.com/LBHackney-IT/dap-airflow)** repository in your web browser.
 
-### 3. Switch to your working `[transform branch]`
+## 3. Switch to your working `[transform branch]`
 
 👉  If you haven't yet created your `[transform branch]` then **see here** how to do that **►** **[DAP⇨flow📚GitHub branching](../onboarding/github-branch)**  
 
@@ -31,42 +31,11 @@ tags: [onboarding]
 **`Fig. 3b`** ![Fig. 3b](../images/github-pull-request-three-b.png)  
 **`👁`** Your **![][branch]`[transform branch]`** should reappear next to the `▼`dropdown button.  
 
-👉  If you've yet to commit your `[transform SQL]` to your `[transform branch]` then check back **here ►[DAP⇨flow📚Committing transforms](../onboarding/github-commit-transform)** 
+👉  If you've yet to *commit* your `[transform SQL]` to your `[transform branch]` then check back **here ► [DAP⇨flow📚Committing transforms](../onboarding/github-commit-transform)** 
 
-:::tip But how will I know?
+👉  If you don't remember if you *committed* your `[transform SQL]` to your `[transform branch]` then check **here ► [📚Appendix](#so-how-will-you-know-if-you-did-or-you-didnt)**
 
-Let's assume you set up your `[transform branch]` earlier but then you got distracted so, now, you are not certain if you actually *committed* your `[transform SQL]` to a `[transform].sql` file. 
-
-#### So, how will you know if you did or you didn't?
-
-Those that have ***GitHub*** integrated with their editors eg. ***Visual Studio Code*** can quickly pull up a *Git Graph* to simply find out. But what if you only have ***GitHub***'s web interface available, because you are on a Chromebook or you don't have a local copy of the repository?
-
-**Then here's a neat trick for you!**  
-(You must be [logged into your ***GitHub*** account](#1-log-into-your-github-account) for this)
-
-**`🖱`** Use the following link to open a separate new tab in your web browser:   
-**[`https://github.com/LBHackney-IT/dap-airflow/activity?ref=[transform branch]`](https://github.com/LBHackney-IT/dap-airflow/activity?ref=transform%20branch)**
-
-**`🖮`** Then replace all the text immediately after `ref=` with the name of your `[transform branch]` before hitting *Enter*.  
-![Fig. 3-tip-a](../images/github-pull-request-three-tip-a.png)  
-
-**`👁`** Then below, ***GitHub*** should appear with your **![][branch]`[transform branch]`** showing.  
-![Fig. 3-tip-b](../images/github-pull-request-three-tip-b.png)  
-**`👁`** If, below that, you get the message "**No activity matched your search**" then you can be certain you never actually *committed* a `[transform].sql` file.  
-
-👉  If you did not *commit* your `[transform SQL]` to your `[transform branch]` then check back **here ►[DAP⇨flow📚Committing transforms](../onboarding/github-commit-transform)**  
-
-**`👁`** Otherwise, you should see a list of one-or-more *commits* to your `[transform branch]`.
-
-**`🖱`** But if you are not sure about those, then you can click on `…` after each *commit message* and select "**Compare changes**"  
-![Fig. 3-tip-c](../images/github-pull-request-three-tip-c.png)  
-**`👁`** Then, on the next screen you will be presented with a list of changes that should remind you what you actually did!
-
-👉  If you are not sure you have properly *committed* your `[transform SQL]` to your `[transform branch]` then you should retrace your steps **here ►[DAP⇨flow📚Committing transforms](../onboarding/github-commit-transform)**  
-
-:::
-
-### 4. Create your *pull request*
+## 4. Create your *pull request*
 **`🖱`** Select the "**Pull requests**" tab at the top of the repository page.  
 **`Fig. 4a`** ![Fig. 4a](../images/github-pull-request-four-a.png)  
 **`🖱`** Click the "**New pull request**" button on the right.  
@@ -78,13 +47,21 @@ Those that have ***GitHub*** integrated with their editors eg. ***Visual Studio 
 **`🖱`** Click the "**Create pull request**" button.  
 **`Fig. 4c`** ![Fig. 4c](../images/github-pull-request-four-c.png)  
 
-### 5. Add the details to your *pull request*
+## 5. Add the details to your *pull request*
 **`🖮`** Enter a title for your *pull request*.  
 **`🖮`** Add a description explaining the changes you have made.
 
 **`Fig. 5 & 6`** ![Fig. 5 & 6](../images/github-pull-request-five-six.png)  
 
-### 6. Submit your *pull request*  
+/**
+ * Submits a pull request to merge the user's `[transform branch]` into the `main` trunk of the `dap-airflow` repository.
+ * 
+ * This step completes the pull request process by:
+ * - Clicking the "Create pull request" button to submit the pull request
+ * - Sending the user an email to confirm the pull request
+ * - Sending an email to the DAP Platform Team to notify them of the pull request
+ */
+## 6. Submit your *pull request*  
 **`🖱`** Click the "**Create pull request**" button below the description on the right.
 
 ***GitHub*** should begin the process of pulling your **`[transform branch]`** into the `main` trunk or the `dap-airflow` repository:  
@@ -98,14 +75,16 @@ Those that have ***GitHub*** integrated with their editors eg. ***Visual Studio 
 ## ***"We* ♡ *your feedback!"***
 ![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 :::tip UX  
-👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / github-pull-request**](https://docs.google.com/forms/d/e/1FAIpQLSdqeNyWIPMNBHEr-YSyxnXQ4ggTwJPkffMYgFaJ4hGEhIL6LA/viewform?usp=pp_url&entry.339550210=github-pull-request)  
+### 👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / github-pull-request**](https://docs.google.com/forms/d/e/1FAIpQLSdqeNyWIPMNBHEr-YSyxnXQ4ggTwJPkffMYgFaJ4hGEhIL6LA/viewform?usp=pp_url&entry.339550210=github-pull-request)  
+
 - Your feedback enables us to improve **DAP⇨flow** and our Data Analytics Platform service.  
 - We encourage all our users to be generous with their time, in giving us their recollections and honest opinions about our service.  
 - We especially encourage our new users to give feedback at the end of every **📚Onboarding** task because the quality of the onboarding experience really matters.  
-☝ **Please use this link to help us understand your user experience!**
+
+    ☝ **Please use this link to help us understand your user experience!**
 :::
 
-#### UX Criteria
+## 📚`UX` criteria
 :::info ABILITY  
 * Hackney **Google Workspace** user 
 * Hackney `[service]` Data Analyst
@@ -113,6 +92,7 @@ Those that have ***GitHub*** integrated with their editors eg. ***Visual Studio 
 :::
 
 :::note BEHAVIOR  
+### How do I raise a *"pull request"* to merge my `[transform branch]` back into the `main` trunk of **DAP⇨flow**'s `[dap-airflow]` repository?
 **Measures** the ***GitHub*** and `dap-airflow` repository behavior:  
 
 **Given** in my web browser, I am logged on to my ***GitHub*** account using my ***Hackney email address*** with two-factor authentication  
@@ -140,4 +120,40 @@ Those that have ***GitHub*** integrated with their editors eg. ***Visual Studio 
 **Scale** of 13 to 16 **~and** flow features.
 :::
 
+## 📚Appendix
+
+:::tip How will I know?
+
+Let's assume you set up your `[transform branch]` earlier but then you got distracted so, now, you are not certain if you actually *committed* your `[transform SQL]` to a `[transform].sql` file. 
+
+### So, how will you know if you did or you didn't?
+
+Those that have ***GitHub*** integrated with their editors eg. ***Visual Studio Code*** can quickly pull up a *Git Graph* to simply find out. But what if you only have ***GitHub***'s web interface available, because you are on a Chromebook or you don't have a local copy of the repository?
+
+#### Here's a neat trick you can use!
+You must be [logged into your ***GitHub*** account](#1-log-into-your-github-account) for this to work...
+
+**`🖱`** Use the following link to open a separate new tab in your web browser:   
+**[`https://github.com/LBHackney-IT/dap-airflow/activity?ref=[transform branch]`](https://github.com/LBHackney-IT/dap-airflow/activity?ref=transform%20branch)**
+
+**`🖮`** Then replace all the text immediately after `ref=` with the name of your `[transform branch]` before hitting *Enter*.  
+![Fig. 3-tip-a](../images/github-pull-request-three-tip-a.png)  
+
+**`👁`** Then below, ***GitHub*** should appear with your **![][branch]`[transform branch]`** showing.  
+![Fig. 3-tip-b](../images/github-pull-request-three-tip-b.png)  
+**`👁`** If, below that, you get the message "**No activity matched your search**" then you can be certain you never actually *committed* a `[transform].sql` file.  
+
+👉  If you did not *commit* your `[transform SQL]` to your `[transform branch]` then check back **here ►[DAP⇨flow📚Committing transforms](../onboarding/github-commit-transform)**  
+
+**`👁`** Otherwise, you should see a list of one-or-more *commits* to your `[transform branch]`.
+
+**`🖱`** But if you are not sure about those, then you can click on `…` after each *commit message* and select "**Compare changes**"  
+![Fig. 3-tip-c](../images/github-pull-request-three-tip-c.png)  
+**`👁`** Then, on the next screen you will be presented with a list of changes that should remind you what you actually did!
+
+👉  If you are not sure you have properly *committed* your `[transform SQL]` to your `[transform branch]` then you should retrace your steps **here ►[DAP⇨flow📚Committing transforms](../onboarding/github-commit-transform)**  
+
+:::
+
 [branch]: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAAXNSR0IArs4c6QAAAU9JREFUOE+tk79Pg1AQx99bHPwf+k8URxJ2VngdtaTGMEDC4iqv0s2FxA4tjUl1fbzJiXSiOiKhy+s/wayDCWfbCKG/UBNveMPdffK9u3eH0bcRQmTbtl+EEJemaT6U/nrccZxr3/fvGGOvaz9eP+Px2JrNZveyLA+FEFYQBBt/3brdLrRareFyubQAwOacDzdJk8nEjaKIappG4zimo9FoDzZNExRFoZxzumJoGIb9KknX9XOE0CMAuJzz211lTdNuMMZ9hNBFGIZPVdlloq7rgDE+Y4y9HehZAoBkpVgJbpX3LzAhRDDGtsSLonhXVfWz1+udlIE9ZQAIJEm6StO0gtvtNprP5zRJkuc8z6vAHmwYBppOp6d1WUII6nQ6H7tz+HXPu+Cfpt0I//TPR+HFYuF6nte4YUfhLMuswWDQuNuNZa+vqkwor+YQUPd9AUZ2tBDCa9wvAAAAAElFTkSuQmCC>
+
