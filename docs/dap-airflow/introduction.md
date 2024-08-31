@@ -16,7 +16,7 @@ Building data pipelines used to be harder and more complex and time consuming.
 
 Data Analysts, after prototyping their SQL queries using ***Amazon Athena*** were required to convert *Athena SQL* code to *Spark SQL*, a different SQL dialect, then embed their code within an ***Amazon Glue*** job which they had to deploy using ***Terraform***.  
 
-Data Analysts were forced to query across multiple generations of the same data stored in the ***Amazon S3*** Data lake when al they actually wanted was their current data. That meant they could not simply take a legacy SQL query and run it in ***Amazon Athena*** or create an ***Amazon Glue*** product directly from it.
+Data Analysts were forced to query across multiple generations of the same data stored in the ***Amazon S3*** Data lake when all they actually wanted was just their current data. That meant they could not simply take legacy SQL queries and run them directly in ***Amazon Athena***.
 
 #### How **DAP⇨flow** solves these problems
 * Firstly, Data Analysts no longer need to convert and re-test their prototype SQL transforms to run in the separate and more complex ***Amazon Glue*** run-time environment. 
@@ -41,9 +41,9 @@ Data Analysts were forced to query across multiple generations of the same data 
 
 Anyone new to **DAP⇨flow** will need read [**📚Before you begin**](../dap-airflow/onboarding/begin).
 
-Thereafter, Data Analysts do not need to read every documents in the order they are listed below, especially if they are already familiar with the ***AWS Management Console*** and have used ***Amazon Athena*** before.
+Thereafter, Data Analysts do not need to read every document in the order they are listed below, especially if they are already familiar with the ***AWS Management Console*** and have used ***Amazon Athena*** before.
 
-Data Analysts are encouraged to think about what they need to do before deciding which document to read next. For example, if they have a ***legacy SQL query*** that they want to migrate to **DAP⇨flow**, they might jump straight to [**📚Prototype legacy transforms**](../dap-airflow/onboarding/prototype-legacy-transforms).
+Data Analysts are encouraged to think about what they need to do before deciding which document to read next. For example, if they have a ***legacy SQL query*** that they want to migrate to **DAP⇨flow**, they could jump straight to [**📚Prototype legacy transforms**](../dap-airflow/onboarding/prototype-legacy-transforms).
 
 #### ***"We* ♡ *your feedback!"***
 Your continuous feedback enables us to improve **DAP⇨flow** and our ***Data Analytics Platform*** service. Survey links are provided at the end of each onboarding document.
