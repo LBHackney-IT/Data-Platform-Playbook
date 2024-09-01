@@ -53,14 +53,6 @@ tags: [onboarding]
 
 **`Fig. 5 & 6`** ![Fig. 5 & 6](../images/github-pull-request-five-six.png)  
 
-/**
- * Submits a pull request to merge the user's `[transform branch]` into the `main` trunk of the `dap-airflow` repository.
- * 
- * This step completes the pull request process by:
- * - Clicking the "Create pull request" button to submit the pull request
- * - Sending the user an email to confirm the pull request
- * - Sending an email to the DAP Platform Team to notify them of the pull request
- */
 ## 6. Submit your *pull request*  
 **`🖱`** Click the "**Create pull request**" button below the description on the right.
 
