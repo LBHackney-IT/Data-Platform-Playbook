@@ -7,6 +7,7 @@ tags: [onboarding]
 ---
 
 # How will I access my `[service]`'s current data from ***Amazon Athena***?
+![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 
 ## 1. Access ***Amazon Athena***
 **`🖱`** In your web browser, log in to your AWS account, navigate to the ***AWS Management Console***, and open ***Amazon Athena***. 

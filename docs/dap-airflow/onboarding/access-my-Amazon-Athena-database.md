@@ -7,6 +7,7 @@ tags: [onboarding]
 ---
 
 # How will I use ***Amazon Athena*** to access my database?
+![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 
 ## 1. Access the ***AWS Management Console***
 **`🖱`** In your web browser, log in to your AWS account to access the ***AWS Management Console***.  

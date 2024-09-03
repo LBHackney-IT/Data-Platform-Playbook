@@ -6,7 +6,7 @@ layout: playbook_js
 tags: [onboarding]
 ---
 
-# How do I commit my working `[transform SQL]` query to **DAP⇨flow**'s `[dap-airflow]` repository?
+# How do I commit my working `[transform SQL]` query to **DAP⇨flow**'s `dap-airflow` repository?
 ![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 
 ## 1. Access ***Amazon Athena*** with your `[service workgroup]`
@@ -39,7 +39,7 @@ tags: [onboarding]
 
 👉 For how to create your `[transform branch]`, **see here ►** **[DAP⇨flow📚GitHub branching](../onboarding/github-branch)**  
     
-**`🖱`** In the `[dap-airflow]` repository, navigate to your `dap-airflow/airflow/dags/` **`[service dags]/transformations`** service sub-folder. You can use ***GitHub***’s left-hand navigation pane as follows:  
+**`🖱`** In the `dap-airflow` repository, navigate to your `dap-airflow/airflow/dags/` **`[service dags]/transformations`** service sub-folder. You can use ***GitHub***’s left-hand navigation pane as follows:  
 * Click on the **`airflow`** folder  
 * Inside the `airflow` folder, click on the **`dags`** folder  
 * Inside the `dags` folder, click on your **`[service dags]`** folder  
@@ -121,7 +121,7 @@ Whether you are just fault-fixing or you want to add new SQL code features to yo
 :::
 
 :::note BEHAVIOR  
-### How do I commit my working `[transform SQL]` query to **DAP⇨flow**'s `[dap-airflow]` repository?
+### How do I commit my working `[transform SQL]` query to **DAP⇨flow**'s `dap-airflow` repository?
 **Measures** the behavior of ***GitHub*** and ***Amazon Athena***.  
 
 **Given** in my web browser, I have logged into my AWS account  

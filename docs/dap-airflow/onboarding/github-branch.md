@@ -6,7 +6,7 @@ layout: playbook_js
 tags: [onboarding]
 ---
 
-# How do I create `[transform branch]` as my new working branch of **DAP⇨flow**'s `[dap-airflow]` repository?
+# How do I create `[transform branch]` as my new working branch of **DAP⇨flow**'s `dap-airflow` repository?
 ![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 
 ## 1. Log into your ***GitHub*** account
@@ -58,7 +58,7 @@ tags: [onboarding]
 :::
 
 :::note BEHAVIOR  
-### How do I create `[transform branch]` as my new working branch of **DAP⇨flow**'s `[dap-airflow]` repository?
+### How do I create `[transform branch]` as my new working branch of **DAP⇨flow**'s `dap-airflow` repository?
 **Measures** the ***GitHub*** and `dap-airflow` repository behavior:  
 
 **Given** in my web browser, I am logged on to my ***GitHub*** account using my ***Hackney email address*** with two-factor authentication  
