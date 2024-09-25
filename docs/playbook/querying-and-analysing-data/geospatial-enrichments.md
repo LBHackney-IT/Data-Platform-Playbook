@@ -15,7 +15,7 @@ The spatial enrichment process relies on a PySpark script that performs spatial 
 - and geography tables such as wards, LSOAs or estates. These are spatial layers coming from Geolive, the corporate spatial database. 
 
 The script outputs tables that have extra columns stating in which ward/LSOA/estate the record is located.
-This script uses Geopandas as explained in the [ADR about spatial data processing in the Data Platform] (https://playbook.hackney.gov.uk/Data-Platform-Playbook/architecture-decisions/records/spatial-data-processing).
+This script uses Geopandas as explained in the [ADR about spatial data processing in the Data Platform](https://playbook.hackney.gov.uk/Data-Platform-Playbook/architecture-decisions/records/spatial-data-processing).
 
 # Requirements for input tables
 
@@ -30,7 +30,7 @@ In cases 1 and 2, you need to know the coordinate reference system of the geomet
 
 # Where to set up an enrichment job
 
-[The spatial enrichment PySpark script] (https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/unrestricted/spatial_enrichment.py) is ready to use, without mofifications, in any new Terraform job module. All the geospatial enrichment job modules should be placed in the [aws_glue_spatial Terraform script] (https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-spatial.tf). Each job is specific to a department (for data access reasons) and can enrich one or more tables in one go. It will typically write into a subfolder of this department's refined zone, called 'spatially_enriched'. This location is set in the `--target_location` parameter, and can then get crawled if you set the `crawler_details` section. How you schedule the job is your choice. Note that the additional python modules (rtree, geopandas) needed for the spatial joins MUST be set as a job parameter called `additional-python-modules`.
+[The spatial enrichment PySpark script](https://github.com/LBHackney-IT/Data-Platform/blob/main/scripts/jobs/unrestricted/spatial_enrichment.py) is ready to use, without mofifications, in any new Terraform job module. All the geospatial enrichment job modules should be placed in the [aws_glue_spatial Terraform script](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/24-aws-glue-spatial.tf). Each job is specific to a department (for data access reasons) and can enrich one or more tables in one go. It will typically write into a subfolder of this department's refined zone, called 'spatially_enriched'. This location is set in the `--target_location` parameter, and can then get crawled if you set the `crawler_details` section. How you schedule the job is your choice. Note that the additional python modules (rtree, geopandas) needed for the spatial joins MUST be set as a job parameter called `additional-python-modules`.
 
 This is an example of an enrichment job for Environmental Services.
 
