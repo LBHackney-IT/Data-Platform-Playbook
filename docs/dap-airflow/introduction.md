@@ -52,7 +52,10 @@ Your continuous feedback enables us to improve **DAP⇨flow** and our ***Data An
 And more topics will be added as they are ready. [**Skip to the end**](#coming-soon) to discover what's coming next!
 
 ### [Before you begin](../dap-airflow/onboarding/begin)
-#### What must happen before I can begin **DAP⇨flow**?
+#### How do I get onboard **DAP⇨flow**?
+
+### [Welcome!](../dap-airflow/onboarding/welcome)
+#### Hello **DAP⇨flow**! What do I need to know?
 
 ### [AWS Console access](../dap-airflow/onboarding/access-the-AWS-Management-Console)
 #### How will I access the ***AWS Management Console***?
