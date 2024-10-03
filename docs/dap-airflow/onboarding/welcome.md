@@ -48,13 +48,16 @@ tags: [onboarding]
 **~and** open the folder with the same *actual name* of my `[service access group]`  
 **~and** there open the document called "welcome"   
 
-**Then** that "welcome" document will give me the list of information I need to begin using **DAP⇨flow** while following the **📚Onboarding** documentation:  
-- `[service access group]`
-- `[service workgroup]`
-- `[service role]`
-- `[service raw zone]`
+**Then** that "welcome" document will give me the following list of service information I need to begin using **DAP⇨flow** with the **Hackney Council AWS Console** and **LBHackney-IT/dap-airflow GitHub repository** while following the **📚Onboarding** documentation:  
+- `[service]`  
+- `[service access group]`  
+- `[service workgroup]`  
+- `[service role]`  
+- `[service raw zone]`  
+- `[service refined zone]`  
+- `[service trusted zone]`  
 - `[service database]`  
-**~and** enable me to find the resources i need while using the AWS Console
+- `[service dags]`  
 
-**Scale** of 3 to 6 **~and** flow features.
+**Scale** of 2 to 5 **~and** flow features.
 :::

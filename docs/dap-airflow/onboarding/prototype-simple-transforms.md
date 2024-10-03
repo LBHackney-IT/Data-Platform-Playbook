@@ -129,7 +129,7 @@ When, for example, using the **`Fig. 5`** `[SQL template]`:
 **`Fig. 7`** ![Fig. 7](../images/prototype-simple-transforms-seven.png)
 
 ## 8. Review the results  
-**`👁`** ***Amazon Athena*** should fetch a number of rows based on your set `[limit]` (eg. `limit 100;` as in the **`Fig. 5`** `[SQL template]`).  
+**`👁`** ***Amazon Athena*** should fetch a number of rows based on your set `limit` (eg. `limit 100;` as in the **`Fig. 5`** `[SQL template]`).  
 
 * If you included it, the first column `original_import_data` will inform us when the underlying data was ingested from your `[service database]`. If you do not see today’s date then you’ll immediately know that the data ingestion had failed sometime after the date shown, and you should contact the DAP Team to find out what the problem is. But so long as you have data of any given generation you can still test your transform query.  
 
@@ -178,17 +178,17 @@ When, for example, using the **`Fig. 5`** `[SQL template]`:
 
 **Given** in my web browser, I have accessed ***Amazon Athena***  
 **~and** I have selected my `[service workgroup]`    
-**~and** I have my `[example]` data transformation I want to implement using my `[SQL template]` involving two related tables ingested from my`[service database]` that I want joined to produce a combined output  
-**~and** my `[example]` has a `<parent table>` containing a unique `<parent key>` which is a foreign key in a `<child table>` which also with its own unique `<child key>`  
+**~and** I have my `[example data transformation]` I want to implement using my `[SQL template]` involving two related tables ingested from my`[service database]` that I want joined to produce a combined output  
+**~and** my `[example data transformation]` has a `<parent table>` containing a unique `<parent key>` which is a foreign key in a `<child table>` which also with its own unique `<child key>`  
 **~and** ***Amazon Athena*** shows my `[service raw zone]` with my `[service database]` equivalent tables and columns which includes the `<parent table>` and `<child table>`  
 **~and** the *optional* first column output from my `[SQL template]` named `original_import_date` is based on the `import_date` of the `<parent table>`  
 **~and** my `[SQL template]` was designed to fetch the first `<limit>` rows of data in the order `<parent key>`+`<child key>`  
 **~and** I am familiar with the concepts and basic requirements of writing an ***Amazon Athena*** SQL query  
 
 **When** I copy-and-paste my `[SQL template]` into the query editor  
-**~and** I replace the  `<parent table>` and  `<child table>` placeholders with corresponding table names from my `[example]`  
-**~and** replace the  `<parent key>` and  `<child key>` placeholders with corresponding key column names from my `[example]`  
-**~and** include `<col1>, <col2>,..<etc.>` using column names from my `[example]` together with *optional* `[SQL template]` columns that I want fetched  
+**~and** I replace the  `<parent table>` and  `<child table>` placeholders with corresponding table names from my `[example data transformation]`  
+**~and** replace the  `<parent key>` and  `<child key>` placeholders with corresponding key column names from my `[example data transformation]`  
+**~and** include `<col1>, <col2>,..<etc.>` using column names from my `[example data transformation]` together with *optional* `[SQL template]` columns that I want fetched  
 **~and** I click “**Run**” underneath the code window on the left-hand side
 
 **Then** ***Amazon Athena*** should fetch the first `<limit>` rows of data sorted in `<parent key>`+`<child key>` order  
