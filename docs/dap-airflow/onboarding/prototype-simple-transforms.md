@@ -15,7 +15,11 @@ tags: [onboarding]
 
 ## 2. Select your `[service workgroup]`
 **`🖱`** Ensure you have selected your `[service workgroup]` from the list box next to “**Workgroup**”.  
-     
+
+:::info REMINDER
+👉  Your **Service Terms`[]`** are defined in the ***welcome*** document stored in your [**`[service access group]`** ***Google Drive subfolder***](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link).
+:::
+
 ## 3. Exploring your `[service raw zone]` database
 **`🖱`** Ensure you have selected your `[service raw zone]` from the list box under "**Database**" on the left side of the Athena interface.  
 

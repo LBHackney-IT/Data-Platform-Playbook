@@ -19,6 +19,10 @@ tags: [onboarding]
 
 **`Fig. 2 & 3`** ![Fig. 2 & 3](../images/access-my-service-data-history-two-three.png)
 
+:::info REMINDER
+👉  Your **Service Terms`[]`** are defined in the ***welcome*** document stored in your [**`[service access group]`** ***Google Drive subfolder***](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link).
+:::
+
 💡 Athena’s databases are actually catalogs of the data stored in the ***AWS S3*** storage buckets and folders, which we collectively call a **data lake.** From the top level, data lakes are divided by zone, then by service, then by service database. 
 
 💡 The service database folders are represented by **databases** in Athena that are labeled in the reverse *`service-database-zone`* format. The *zone suffix* labeling has the following meaning:  

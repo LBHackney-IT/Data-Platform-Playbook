@@ -15,6 +15,10 @@ tags: [onboarding]
 
 **`🖱`** Ensure you have selected your `[service workgroup]` from the list box next to “**Workgroup**”.  
 
+:::info REMINDER
+👉  Your **Service Terms`[]`** are defined in the ***welcome*** document stored in your [**`[service access group]`** ***Google Drive subfolder***](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link).
+:::
+
 ## 2. Prepare and make ready your `[transform SQL]` query
 **`🖱`** Ensure you have already created, tested and saved your `[transform SQL]` as a working, fully functional Athena SQL query. 
 

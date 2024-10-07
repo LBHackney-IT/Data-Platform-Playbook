@@ -17,6 +17,10 @@ tags: [onboarding]
 ## 2. Select your `[service raw zone]` database
 **`🖱`** Ensure that you have selected your `[service raw zone]` from the list box under the "**Database**" section on the left side of the Athena interface.
 
+:::info REMINDER
+👉  Your **Service Terms`[]`** are defined in the ***welcome*** document stored in your [**`[service access group]`** ***Google Drive subfolder***](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link).
+:::
+
 ## 3. Explore the views in your database
 **`🖱`** Beneath the "**Database**" section on the left of the Athena interface and below the "**`▼` Tables**” section (collapsed when clicking **`▼`**→“**`►` Tables**”), expand the “**`►` Views**" section (clicking **`►`**→“**`▼` Views**”) to find a list of views based on tables available from your `[service raw zone]` database.
 

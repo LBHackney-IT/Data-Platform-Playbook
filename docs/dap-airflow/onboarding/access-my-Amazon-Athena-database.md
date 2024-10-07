@@ -29,6 +29,10 @@ tags: [onboarding]
 
 **`Fig. 4 & 5`** ![Fig. 4 & 5](../images/access-my-Amazon-Athena-database-four-five.png)
 
+:::info REMINDER
+👉  Your **Service Terms`[]`** are defined in the ***welcome*** document stored in your [**`[service access group]`** ***Google Drive subfolder***](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link).
+:::
+
 ## 5. Select your `[service raw zone]` database
 **`👁`** On the left side of the ***Amazon Athena*** interface, below the "**Database**" section, find the list box and check you can already see your `[service raw zone]` database.  
 
