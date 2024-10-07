@@ -76,7 +76,7 @@ The **Service Terms`[]`** defined include:
 **~and** open the subfolder bearing the name of my `[service access group]`  
 **~and** there, open the document called "***welcome***"   
 
-**Then** that "***welcome***" document will define the **Service Terms`[]`** I need while using the [**DAP⇨flow📚Onboarding**](../introduction#📚Onboarding) documentation, ensuring I am directed to all the right places when using the **Hackney Council AWS Console** and the **LBHackney-IT/dap-airflow** *GitHub repository*.  
+**Then** that "***welcome***" document will define the **Service Terms`[]`** I need while using the [**DAP⇨flow📚Onboarding**](../introduction#📚Onboarding) documentation, ensuring I am directed to all the right places when using the **Hackney Council AWS Console** and the **LBHackney-IT/dap-airflow** *GitHub repository*  
 **~and** those definitions will include:  
 - `[service]`  
 - `[service access group]`  
