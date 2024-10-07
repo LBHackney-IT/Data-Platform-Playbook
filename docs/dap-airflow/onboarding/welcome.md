@@ -9,8 +9,39 @@ tags: [onboarding]
 # Welcome to DAP⇨flow!
 ![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 
-## 1. Have you been added to your `[service access group]`([*Google Group*](https://groups.google.com/all-groups?q=saml-aws-data-platform-collaborator))? 
+## 1. Have you been added to your [`[service access group]` *Google Group*](https://groups.google.com/all-groups?q=saml-aws-data-platform-collaborator)? 
+Check here if you are not certain about that:
 
+👉  [**DAP⇨flow📚Begin here**](../onboarding/begin)  
+
+If you're certain you've been added and you know your `[service access group]` name then please proceed.
+
+## 2. Open your `[service access group]`([*Google Drive folder*](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link))
+
+👉  Open the [**DAP⇨flow📚Onboarding** *Google Drive folder*](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link) in your web browser.  
+👉  Next, open the subfolder bearing the name of your `[service access group]`.  
+👉  In there, you will find a document called "***welcome***". Please open it!  
+
+**`Fig. 2`** ![Fig. 4](../images/welcome-two.png)
+
+The following **REMINDER** box appears throughout the [**DAP⇨flow📚Onboarding**](../introduction#📚Onboarding) documentation to remind you where to find the ***welcome*** document in case you want to be reminded of your `[service]` terms:
+:::info REMINDER
+👉  Your **Service Terms`[]`** are defined in the ***welcome*** document stored in your [**`[service access group]`** ***Google Drive subfolder***](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link).
+:::
+
+## 3. Review your **Service Terms`[]`**
+Your Service's "***welcome***" document provides you with the necessary translations for the **Service Terms`[]`** used throughout the [**DAP⇨flow📚Onboarding**](../introduction#📚Onboarding) documentation, ensuring you are directed to the appropriate places while using the **Hackney Council AWS Console** or the **LBHackney-IT/dap-airflow** *GitHub repository*.
+
+The **Service Terms`[]`** defined include:  
+- `[service]`  
+- `[service access group]`  
+- `[service workgroup]`  
+- `[service role]`  
+- `[service raw zone]`  
+- `[service refined zone]`  
+- `[service trusted zone]`  
+- `[service database]`  
+- `[service dags]`  
 
 
 <br> 
@@ -20,7 +51,7 @@ tags: [onboarding]
 ## ***"We* ♡ *your feedback!"***
 ![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 :::tip UX  
-### 👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / begin**](https://docs.google.com/forms/d/e/1FAIpQLSdqeNyWIPMNBHEr-YSyxnXQ4ggTwJPkffMYgFaJ4hGEhIL6LA/viewform?usp=pp_url&entry.339550210=begin)  
+### 👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / welcome**](https://docs.google.com/forms/d/e/1FAIpQLSdqeNyWIPMNBHEr-YSyxnXQ4ggTwJPkffMYgFaJ4hGEhIL6LA/viewform?usp=pp_url&entry.339550210=welcome)  
 
 - Your feedback enables us to improve **DAP⇨flow** and our Data Analytics Platform service.  
 - We encourage all our users to be generous with their time, in giving us their recollections and honest opinions about our service.  
@@ -37,18 +68,16 @@ tags: [onboarding]
 
 :::note BEHAVIOR  
 ### Welcome to DAP⇨flow!
-**Measures** the **DAP Platform** behavior:  
+**Measures** the **DAP⇨flow📚Onboarding** documentation behavior:  
 
 **Given** my name was added to the my [`[service access group]`](https://groups.google.com/all-groups?q=saml-aws-data-platform-collaborator)  
-**~and** I received an email confirming that and the *actual name* of that group  
-**~and** I was granted membership of [**☎️DAP⇨flow Hotline**](https://chat.google.com/room/AAAAZYTZYPE/w4EMQuK-9QA/w4EMQuK-9QA?cls=10) *Google Chat Space*  
-**~and** I was granted access to the [**Hackney Council AWS Console**](https://d-936715b9ec.awsapps.com/start/\#/?tab=accounts)  
 
-**When** I follow this ► [link](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link)  
-**~and** open the folder with the same *actual name* of my `[service access group]`  
-**~and** there open the document called "welcome"   
+**When** I open the [**DAP⇨flow📚Onboarding** *Google Drive folder*](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link) in my web browser  
+**~and** open the subfolder bearing the name of my `[service access group]`  
+**~and** there, open the document called "***welcome***"   
 
-**Then** that "welcome" document will give me the following list of service information I need to begin using **DAP⇨flow** with the **Hackney Council AWS Console** and **LBHackney-IT/dap-airflow GitHub repository** while following the **📚Onboarding** documentation:  
+**Then** that "***welcome***" document will define the **Service Terms`[]`** I need while using the [**DAP⇨flow📚Onboarding**](../introduction#📚Onboarding) documentation, ensuring I am directed to all the right places when using the **Hackney Council AWS Console** and the **LBHackney-IT/dap-airflow** *GitHub repository*.  
+**~and** those definitions will include:  
 - `[service]`  
 - `[service access group]`  
 - `[service workgroup]`  
@@ -59,5 +88,5 @@ tags: [onboarding]
 - `[service database]`  
 - `[service dags]`  
 
-**Scale** of 2 to 5 **~and** flow features.
+**Scale** of 3 **~and** flow features.
 :::

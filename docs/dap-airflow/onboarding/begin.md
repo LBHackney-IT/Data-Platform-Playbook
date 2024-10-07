@@ -15,7 +15,7 @@ You’ll always need to be logged into your **Hackney Council** Google account v
 ## 2. Is your `[service]`’s data now available on the Data Analytics Platform (DAP)?
 If your `[service]` manager or the **DAP Platform Team** have not already informed you about this, please visit the [**📊Data Analyst Community**](https://chat.google.com/room/AAAAKdvhyKA?cls=7) *Google Chat Space* to ask the question there. Someone from the team should be able to help you, and if your `[service]`’s data isn't available right now, this might be planned for near future.
 
-## 3. You must be added to your `[service access group]`([*Google Group*](https://groups.google.com/all-groups?q=saml-aws-data-platform-collaborator)) 
+## 3. You must be added to your `[service access group]`'s [*Google Group*](https://groups.google.com/all-groups?q=saml-aws-data-platform-collaborator) 
 Depending on your circumstance there are various ways that could happen:  
 
 - If your `[service]` manager (or representative) also manages your [`[service access group]`](https://groups.google.com/all-groups?q=saml-aws-data-platform-collaborator) then you can ask them to [add you](https://support.google.com/groups/answer/2465464?hl=en). That is the quick and easy way.
@@ -38,17 +38,17 @@ Please allow a couple of hours for the permissions to propagate across Hackney's
 
 👉  Access to the [**☎️DAP⇨flow Hotline**](https://chat.google.com/room/AAAAZYTZYPE/w4EMQuK-9QA/w4EMQuK-9QA?cls=10) *Google Chat Space* 
 
-All members of `[service access group]`s with access to **DAP⇨flow** are now automatically members of this *Google Chat Space*. This is where you will interact with the **DAP Platform Team** when you need help, encounter a problem or need to chase a request while performing a task.  
+All members of the `[service access group]` with access to **DAP⇨flow** are now automatically members of this *Google Chat Space*. This is where you will interact with the **DAP Platform Team** when you need help, encounter a problem or need to chase a request while performing a task.  
 
 ## 5. Welcome!
 
 Please take some time to go and introduce yourself on the [**☎️DAP⇨flow Hotline**](https://chat.google.com/room/AAAAZYTZYPE/w4EMQuK-9QA/w4EMQuK-9QA?cls=10)!
 
-You will need some basic information, tailored to your `[service]`'s implementation, to get you started on your DAP⇨flow journey and to enable effective use of the [**DAP⇨flow📚Onboarding**](../introduction#📚Onboarding) playbook. 
+To get you started on your **DAP⇨flow** journey and enable effective use of the [**DAP⇨flow📚Onboarding**](../introduction#📚Onboarding) documentation, you will need certain information in the form of terms that have been defined for your `[service]`'s implementation. The next onboarding article will guide you to that: 
 
 👉  [**DAP⇨flow📚Welcome**](../onboarding/welcome)  
 
-This next onboarding article will show you where to find the information you need for that. Please make a note of your `[service access group]` named in that email because you will be needing it to access that information. 
+Please note your `[service access group]` named in the email because you will need that correctly access the information you will need. 
 
 <br> 
 </br>  
