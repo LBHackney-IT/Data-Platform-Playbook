@@ -16,7 +16,7 @@ Check here if you are not certain about that:
 
 If you're certain you've been added and you know your `[service access group]` name then please proceed.
 
-## 2. Open your `[service access group]`([*Google Drive folder*](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link))
+## 2. Open your `[service access group]` [*Google Drive subfolder*](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link)
 
 👉  Open the [**DAP⇨flow📚Onboarding** *Google Drive folder*](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link) in your web browser.  
 👉  Next, open the subfolder bearing the name of your `[service access group]`.  
@@ -24,7 +24,7 @@ If you're certain you've been added and you know your `[service access group]` n
 
 **`Fig. 2`** ![Fig. 4](../images/welcome-two.png)
 
-The following **REMINDER** box appears throughout the [**DAP⇨flow📚Onboarding**](../introduction#📚Onboarding) documentation to remind you where to find the ***welcome*** document in case you want to be reminded of your `[service]` terms:
+The following **REMINDER** box appears throughout the [**DAP⇨flow📚Onboarding**](../introduction#📚Onboarding) documentation to remind you where to find the ***welcome*** document in case you want to be reminded of your **Service Terms`[]`**:
 :::info REMINDER
 👉  Your **Service Terms`[]`** are defined in the ***welcome*** document stored in your [**`[service access group]`** ***Google Drive subfolder***](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link).
 :::

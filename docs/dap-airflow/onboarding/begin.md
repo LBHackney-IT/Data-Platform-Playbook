@@ -28,27 +28,27 @@ Depending on your circumstance there are various ways that could happen:
 
 **`Fig. 4`** ![Fig. 4](../images/begin-four.png)
 
-You should receive an email, similar to ***fig.4*** above, which will confirm the *actual name* of the group you were added to. So henceforth in the 📚Onboarding articles, wherever you read `[service access group]` you should interpret that to be the group named in that email. 
+You should receive an email, similar to ***fig.4*** above, which will confirm the *actual name* of the *Google Group* you were added to. So henceforth in the 📚Onboarding articles, wherever you read `[service access group]` you should interpret that to be the *Google Group* named in that email. 
 
 You will then be be granted:  
 
 👉  Access to the [Hackney Council AWS Console](https://d-936715b9ec.awsapps.com/start/#/?tab=accounts) 
 
-Please allow a couple of hours for the permissions to propagate across Hackney's AWS platform before chasing **DAP Platform Team** if that hasn't happened.
+Please allow a couple of hours for the *access permission* to propagate to [**Hackney Council AWS Console**](https://d-936715b9ec.awsapps.com/start/\#/?tab=accounts)
 
 👉  Access to the [**☎️DAP⇨flow Hotline**](https://chat.google.com/room/AAAAZYTZYPE/w4EMQuK-9QA/w4EMQuK-9QA?cls=10) *Google Chat Space* 
 
-All members of the `[service access group]` with access to **DAP⇨flow** are now automatically members of this *Google Chat Space*. This is where you will interact with the **DAP Platform Team** when you need help, encounter a problem or need to chase a request while performing a task.  
+All members of the `[service access group]` with access to **DAP⇨flow** are now automatically members of this *Google Chat Space*. This is where you will interact with the **DAP Platform Team** when you need help, encounter a problem or need to chase a request while performing some task.  
 
 ## 5. Welcome!
 
 Please take some time to go and introduce yourself on the [**☎️DAP⇨flow Hotline**](https://chat.google.com/room/AAAAZYTZYPE/w4EMQuK-9QA/w4EMQuK-9QA?cls=10)!
 
-To get you started on your **DAP⇨flow** journey and enable effective use of the [**DAP⇨flow📚Onboarding**](../introduction#📚Onboarding) documentation, you will need certain information in the form of terms that have been defined for your `[service]`'s implementation. The next onboarding article will guide you to that: 
+To get you started on your **DAP⇨flow** journey and enable effective use of the [**DAP⇨flow📚Onboarding**](../introduction#📚Onboarding) documentation, you will need certain information in the form of **Service Terms`[]`** defined for your `[service]`'s implementation. The next onboarding article will guide you through that: 
 
 👉  [**DAP⇨flow📚Welcome**](../onboarding/welcome)  
 
-Please note your `[service access group]` named in the email because you will need that correctly access the information you will need. 
+Please note your `[service access group]` named in the email because you will need that correctly access information you will need. 
 
 <br> 
 </br>  
