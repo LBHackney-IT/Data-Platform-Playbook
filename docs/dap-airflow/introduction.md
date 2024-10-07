@@ -55,7 +55,7 @@ And more topics will be added as they are ready. [**Skip to the end**](#coming-s
 #### How do I get onboard **DAP⇨flow**?
 
 ### [Welcome!](../dap-airflow/onboarding/welcome)
-#### Hello **DAP⇨flow**! What do I need to know?
+#### What are my **Service Terms`[]`**?
 
 ### [AWS Console access](../dap-airflow/onboarding/access-the-AWS-Management-Console)
 #### How will I access the ***AWS Management Console***?
@@ -108,7 +108,9 @@ The following guides are due for completion.
 ## 📚Suggested for later...
 The following guides are on our backlog.
 
-#### Migrating old Athena prototype SQL to the new **DAP⇨flow**
+#### Migrating old prototype Athena SQL to the new **DAP⇨flow**
+
+#### Migrating old production Spark SQL to the new **DAP⇨flow**
 
 #### Refined-zone views
 
