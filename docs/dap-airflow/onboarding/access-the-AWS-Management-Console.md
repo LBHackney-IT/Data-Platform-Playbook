@@ -23,7 +23,9 @@ tags: [onboarding]
 ## 4. Locate Your service role
 **`🖱`** Below "**DataPlatform-Pre-Production**", find your `[service role]` listed.  
 
-👉 If you do not know your `[service role]`, **please check here** to ensure you were properly set up to use the ***AWS Management Console*** ►** **[DAP⇨flow📚Before you begin](../onboarding/begin)** 
+:::info REMINDER
+👉  Your **Service Terms`[]`** are defined in the ***welcome*** document stored in your [**`[service access group]`** ***Google Drive subfolder***](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link).
+:::
 
 ## 5. Access the ***AWS Management Console***
 **`🖱`** Click on your `[service role]` to access the Data Platform AWS Management Console.  

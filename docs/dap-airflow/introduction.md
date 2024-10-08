@@ -9,16 +9,25 @@ tags: [dap-airflow]
 # 📚Introduction
 ![DAP⇨flow](../dap-airflow/images/DAPairflowFLOWwide.png)  
 ## What is **DAP⇨flow**? 
-**DAP⇨flow** is an integation of ***Apache Airflow*** with ***Amazon Athena*** built upon Hackney's ***Data Analytics Platform***. 
-#### It allows Data Analysts, in the simplest way possible, to develop and run data pipelines using their own service's data and create data products for their service and service users.
+**DAP⇨flow** is an integration of ***Apache Airflow*** with ***Amazon Athena*** built upon Hackney's ***Data Analytics Platform***. 
+### **DAP⇨flow** allows Data Analysts, in the simplest way possible, to develop and run data pipelines using their own service's data and create data products for their service and service users.
 
-Building data pipelines used to be harder and more complex and time consuming. 
+#### Building data pipelines used to be harder and more complex and time consuming. 
 
 Data Analysts, after prototyping their SQL queries using ***Amazon Athena*** were required to convert *Athena SQL* code to *Spark SQL*, a different SQL dialect, then embed their code within an ***Amazon Glue*** job which they had to deploy using ***Terraform***.  
 
 Data Analysts were forced to query across multiple generations of the same data stored in the ***Amazon S3*** Data lake when all they actually wanted was just their current data. That meant they could not simply take legacy SQL queries and run them directly in ***Amazon Athena***.
 
-#### How **DAP⇨flow** solves these problems
+- ##### PREVIOUSLY: Too hard + too complex = too time consuming...  
+![Fig. 1](./images/introduction-one.png)
+
+- ##### FIREBREAK: Deciding what we wanted to change...  
+![Fig. 2](./images/introduction-two.png)
+
+- ##### OUTCOME: DAP re-imagined using *Airflow* = **DAP⇨flow**...  
+![Fig. 3](./images/introduction-three.png)
+
+#### How **DAP⇨flow** solved our problems
 * Firstly, Data Analysts no longer need to convert and re-test their prototype SQL transforms to run in the separate and more complex ***Amazon Glue*** run-time environment. 
 
     Instead, ***Apache Airflow*** can use exactly the same ***Amazon Athena*** to transform data in production with the outputs going directly into data products. So that Data Analysts' prototype SQL transform queries, that they spent time on testing until they were working, can simply be reused instead of being discarded.  
@@ -39,7 +48,7 @@ Data Analysts were forced to query across multiple generations of the same data 
 
 #### A series onboarding documents is available here, to help Data Analysts get started with **DAP⇨flow**
 
-Anyone new to **DAP⇨flow** will need read [**📚Before you begin**](../dap-airflow/onboarding/begin).
+Anyone new to **DAP⇨flow** will start with [**📚Before you begin**](../dap-airflow/onboarding/begin) followed by [**📚Welcome!**](../dap-airflow/onboarding/welcome).
 
 Thereafter, Data Analysts do not need to read every document in the order they are listed below, especially if they are already familiar with the ***AWS Management Console*** and have used ***Amazon Athena*** before.
 
@@ -52,7 +61,10 @@ Your continuous feedback enables us to improve **DAP⇨flow** and our ***Data An
 And more topics will be added as they are ready. [**Skip to the end**](#coming-soon) to discover what's coming next!
 
 ### [Before you begin](../dap-airflow/onboarding/begin)
-#### What must happen before I can begin **DAP⇨flow**?
+#### How do I get onboard **DAP⇨flow**?
+
+### [Welcome!](../dap-airflow/onboarding/welcome)
+#### What are my **Service Terms`[]`**?
 
 ### [AWS Console access](../dap-airflow/onboarding/access-the-AWS-Management-Console)
 #### How will I access the ***AWS Management Console***?
@@ -105,7 +117,9 @@ The following guides are due for completion.
 ## 📚Suggested for later...
 The following guides are on our backlog.
 
-#### Migrating old Athena prototype SQL to the new **DAP⇨flow**
+#### Migrating old prototype Athena SQL to the new **DAP⇨flow**
+
+#### Migrating old production Spark SQL to the new **DAP⇨flow**
 
 #### Refined-zone views
 

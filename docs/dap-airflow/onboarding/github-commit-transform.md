@@ -6,7 +6,7 @@ layout: playbook_js
 tags: [onboarding]
 ---
 
-# How do I commit my working `[transform SQL]` query to **DAP⇨flow**'s `[dap-airflow]` repository?
+# How do I commit my working `[transform SQL]` query to **DAP⇨flow**'s `dap-airflow` repository?
 ![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 
 ## 1. Access ***Amazon Athena*** with your `[service workgroup]`
@@ -14,6 +14,10 @@ tags: [onboarding]
 **`🖱`** In your web browser, log in to your AWS account, navigate to the ***AWS Management Console***, and open ***Amazon Athena***. 
 
 **`🖱`** Ensure you have selected your `[service workgroup]` from the list box next to “**Workgroup**”.  
+
+:::info REMINDER
+👉  Your **Service Terms`[]`** are defined in the ***welcome*** document stored in your [**`[service access group]`** ***Google Drive subfolder***](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link).
+:::
 
 ## 2. Prepare and make ready your `[transform SQL]` query
 **`🖱`** Ensure you have already created, tested and saved your `[transform SQL]` as a working, fully functional Athena SQL query. 
@@ -39,7 +43,7 @@ tags: [onboarding]
 
 👉 For how to create your `[transform branch]`, **see here ►** **[DAP⇨flow📚GitHub branching](../onboarding/github-branch)**  
     
-**`🖱`** In the `[dap-airflow]` repository, navigate to your `dap-airflow/airflow/dags/` **`[service dags]/transformations`** service sub-folder. You can use ***GitHub***’s left-hand navigation pane as follows:  
+**`🖱`** In the `dap-airflow` repository, navigate to your `dap-airflow/airflow/dags/` **`[service dags]/transformations`** service sub-folder. You can use ***GitHub***’s left-hand navigation pane as follows:  
 * Click on the **`airflow`** folder  
 * Inside the `airflow` folder, click on the **`dags`** folder  
 * Inside the `dags` folder, click on your **`[service dags]`** folder  
@@ -121,7 +125,7 @@ Whether you are just fault-fixing or you want to add new SQL code features to yo
 :::
 
 :::note BEHAVIOR  
-### How do I commit my working `[transform SQL]` query to **DAP⇨flow**'s `[dap-airflow]` repository?
+### How do I commit my working `[transform SQL]` query to **DAP⇨flow**'s `dap-airflow` repository?
 **Measures** the behavior of ***GitHub*** and ***Amazon Athena***.  
 
 **Given** in my web browser, I have logged into my AWS account  

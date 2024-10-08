@@ -7,6 +7,7 @@ tags: [onboarding]
 ---
 
 # How will I access my `[service]`'s data history from ***Amazon Athena***?
+![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 
 ## 1. Access ***Amazon Athena***
 **`🖱`** In your web browser, log in to your AWS account, navigate to the ***AWS Management Console***, and open ***Amazon Athena***. 
@@ -17,6 +18,10 @@ tags: [onboarding]
 **`🖱`** Ensure you have selected your `[service raw zone]` from the list box under the "**Database**" section on the left side of the Athena interface.
 
 **`Fig. 2 & 3`** ![Fig. 2 & 3](../images/access-my-service-data-history-two-three.png)
+
+:::info REMINDER
+👉  Your **Service Terms`[]`** are defined in the ***welcome*** document stored in your [**`[service access group]`** ***Google Drive subfolder***](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link).
+:::
 
 💡 Athena’s databases are actually catalogs of the data stored in the ***AWS S3*** storage buckets and folders, which we collectively call a **data lake.** From the top level, data lakes are divided by zone, then by service, then by service database. 
 

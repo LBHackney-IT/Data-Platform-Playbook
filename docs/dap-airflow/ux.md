@@ -15,6 +15,9 @@ The links below will take you directly to the **📚`UX` criteria** within each 
 ### [Before you begin](../dap-airflow/onboarding/begin#ux-criteria)
 What must happen before I can begin **DAP⇨flow**?
 
+### [Welcome!](../dap-airflow/onboarding/welcome#ux-criteria)
+What are my **Service Terms`[]`**?
+
 ### [AWS Console access](../dap-airflow/onboarding/access-the-AWS-Management-Console#ux-criteria)
 How will I access the ***AWS Management Console***?
 

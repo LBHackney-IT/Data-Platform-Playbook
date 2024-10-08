@@ -7,6 +7,7 @@ tags: [onboarding]
 ---
 
 # How will I use ***Amazon Athena*** to access my database?
+![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 
 ## 1. Access the ***AWS Management Console***
 **`🖱`** In your web browser, log in to your AWS account to access the ***AWS Management Console***.  
@@ -27,6 +28,10 @@ tags: [onboarding]
 **`🖱`** From the list box there, click on **`▼`** to select your `[service workgroup]`.
 
 **`Fig. 4 & 5`** ![Fig. 4 & 5](../images/access-my-Amazon-Athena-database-four-five.png)
+
+:::info REMINDER
+👉  Your **Service Terms`[]`** are defined in the ***welcome*** document stored in your [**`[service access group]`** ***Google Drive subfolder***](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link).
+:::
 
 ## 5. Select your `[service raw zone]` database
 **`👁`** On the left side of the ***Amazon Athena*** interface, below the "**Database**" section, find the list box and check you can already see your `[service raw zone]` database.  

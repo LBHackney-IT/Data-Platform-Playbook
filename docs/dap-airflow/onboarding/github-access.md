@@ -38,7 +38,11 @@ The **DAP Platform Team** will 👉
 
 * Check your access to the [**`dap-airflow`** private repository](https://github.com/LBHackney-IT/dap-airflow).
 
-* Inform you about your `[service dags]` ***GitHub*** project folder and point you to the `README.md` there.
+* Confirm your `[service dags]` ***GitHub*** project folder and point you to the `README.md` there.
+
+:::info REMINDER
+👉  Your **Service Terms`[]`** are defined in the ***welcome*** document stored in your [**`[service access group]`** ***Google Drive subfolder***](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link).
+:::
 
 * Tell you your `dap-airflow` access is now configured while directing you back to the **📚Onboarding** documentation to learn about [what you should do next](../introduction#github-branching).
 
