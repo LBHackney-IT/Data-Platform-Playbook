@@ -38,31 +38,27 @@ You can use whatever you want to make the Python Script. However to have it run 
 	 - `lambda_handler(event, lambda_context):` which acts as your main(), and interacts with the functions cell
 	 - A cell with lambda_handler("","") and environment variable setters to trigger above. This will not be copied into your .py script when it comes down to making it in the Data Platform but it's what will help trigger your Lambda Handler event
 
-<details><summary>Example Jupyter Script Format</summary>
-<p>
+<details>
+	<summary>Example Jupyter Script Format</summary>
+	```
+	import os
+	```
+	```
+	def print_text(text_string):
+		print(text_string)
+	```
+	```
+	def lambda_handler(event, lambda_context):
+		load_dotenv() # load environment variables
+		string_to_print = getenv("STRING_TO_PRINT")
+		print_text(string_to_print)
 
-
-```
-import os
-```
-```
-def print_text(text_string):
-	print(text_string)
-```
-```
-def lambda_handler(event, lambda_context):
-	load_dotenv() # load environment variables
-	string_to_print = getenv("STRING_TO_PRINT")
-	print_text(string_to_print)
-
-```
-```
-import os
-os.environ["STRING_TO_PRINT"] = "Bacon" # Variable to be passed via Terraform
-lambda_handler("","")
-```
-
-</p>
+	```
+	```
+	import os
+	os.environ["STRING_TO_PRINT"] = "Bacon" # Variable to be passed via Terraform
+	lambda_handler("","")
+	```
 </details>
 
 Once you have your script able to output data from the API locally, we need to modify the script to output to S3.
@@ -82,23 +78,24 @@ Once you have authenticated Boto3. Lets use some AWS functionality
 
 ### Obtaining Secrets from the Secrets Manager
 
-<details><summary>Code to get Secrets from S3</summary>
-<p>
+<details>
+	<summary>Code to get Secrets from S3</summary>
+	<p>
 
 
-```
-secrets_manager_client = boto3.client('secretsmanager')
+	```
+	secrets_manager_client = boto3.client('secretsmanager')
 
-secret_name = getenv("SECRET_NAME")
+	secret_name = getenv("SECRET_NAME")
 
-secret_manager_response = secrets_manager_client.get_secret_value(SecretId=secret_name)
-api_credentials = json.loads(secret_manager_response['SecretString'])
+	secret_manager_response = secrets_manager_client.get_secret_value(SecretId=secret_name)
+	api_credentials = json.loads(secret_manager_response['SecretString'])
 
-api_key = api_credentials.get("api_key")
-secret = api_credentials.get("secret")
-```
+	api_key = api_credentials.get("api_key")
+	secret = api_credentials.get("secret")
+	```
 
-</p>
+	</p>
 </details>
 
 1. Create a secrets manager client with boto3
@@ -113,50 +110,52 @@ secret = api_credentials.get("secret")
 
 You may want to read what files that you have in an S3 Bucket, maybe to determine what data you already have, or maybe to actually read one
 
-<details><summary>Code to List folders</summary>
-<p>
+<details>
+	<summary>Code to List folders</summary>
+	<p>
 
-```
-s3_client = boto3.client('s3')
+	```
+	s3_client = boto3.client('s3')
 
-def list_subfolders_in_directory(s3_client,bucket,directory):
-		response = s3_client.list_objects_v2(
-				Bucket=bucket,
-				Prefix=directory,
-				Delimiter="/")
+	def list_subfolders_in_directory(s3_client,bucket,directory):
+			response = s3_client.list_objects_v2(
+					Bucket=bucket,
+					Prefix=directory,
+					Delimiter="/")
 
-		subfolders = response.get('CommonPrefixes')
-		return subfolders
-```
+			subfolders = response.get('CommonPrefixes')
+			return subfolders
+	```
 
 
-</p>
+	</p>
 </details>
 
 Returns a list of folders at a specific path.
 
-<details><summary>Code to List Files</summary>
-<p>
+<details>
+	<summary>Code to List Files</summary>
+	<p>
 
-```
-s3_client = boto3.client('s3')
-bucket = "Bucket name"
-directory = "Path to where you want to list the files, ending with /"
+	```
+	s3_client = boto3.client('s3')
+	bucket = "Bucket name"
+	directory = "Path to where you want to list the files, ending with /"
 
-def list_s3_files_in_folder_using_client(s3_client,bucket,directory):
+	def list_s3_files_in_folder_using_client(s3_client,bucket,directory):
 
-    response = s3_client.list_objects_v2(Bucket=bucket, Prefix=directory)
-    files = response.get("Contents")
+	    response = s3_client.list_objects_v2(Bucket=bucket, Prefix=directory)
+	    files = response.get("Contents")
 
-    for file in files:
-        file['Key'] = re.sub(string=file['Key'],
-                       pattern=f"{directory}/".format(),
-                       repl="")
-    # returns a list of dictionaries with file metadata
-    return files
-```
+	    for file in files:
+	        file['Key'] = re.sub(string=file['Key'],
+	                       pattern=f"{directory}/".format(),
+	                       repl="")
+	    # returns a list of dictionaries with file metadata
+	    return files
+	```
 
-</p>
+	</p>
 </details>
 
 Returns a list of files at a specific path.
@@ -165,26 +164,27 @@ Returns a list of files at a specific path.
 
 Here I will supply and explain two functions which will help you put files into S3
 
-<details><summary>Output to Landing zone with Formatting</summary>
-<p>
+<details>
+	<summary>Output to Landing zone with Formatting</summary>
+	<p>
 
-```
-from datetime import date
+	```
+	from datetime import date
 
-def output_to_landing_zone(s3_bucket, data, output_folder,filename):
-		todays_date = date.today()
+	def output_to_landing_zone(s3_bucket, data, output_folder,filename):
+			todays_date = date.today()
 
-		day = todays_date.day.zfill(2)
-		month = todays_date.month.zfill(2)
-		year = str(todays_date.year)
+			day = todays_date.day.zfill(2)
+			month = todays_date.month.zfill(2)
+			year = str(todays_date.year)
 
-		return s3_client.put_object(
-				Bucket=s3_bucket,
-				Body=str(data),
-				Key=f"{output_folder}/import_year={year}/import_month={month}/import_day={day}/import_date={todays_date}/{filename}.json")
-```
+			return s3_client.put_object(
+					Bucket=s3_bucket,
+					Body=str(data),
+					Key=f"{output_folder}/import_year={year}/import_month={month}/import_day={day}/import_date={todays_date}/{filename}.json")
+	```
 
-</p>
+	</p>
 </details>
 
 So if you wanted to put a json file into the "**Sandbox**" bucket, and within that bucket, you want the data to be within the "**CRM**" folder, you would call the function with

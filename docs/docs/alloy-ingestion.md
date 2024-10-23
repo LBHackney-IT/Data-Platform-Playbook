@@ -44,12 +44,13 @@ As part of the refining process, the job checks for a json dictionary stored in 
 
 The json is of the form:
 
-
->{<br />
->    "old_name1": "new_name1",<br />
->    "old_name2": "new_name2",<br />
->...
->}
+```json
+{
+    "old_name1": "new_name1",
+    "old_name2": "new_name2",
+    ...
+}
+```
 
 If a key is not present in the table no action will be taken, and similarly if there is no key for a column that is present in the table it remains unchanged. 
 
