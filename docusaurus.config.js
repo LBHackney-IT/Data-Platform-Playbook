@@ -37,7 +37,7 @@ module.exports = {
     footer: {
       style: "dark",
       links: [],
-      copyright: `Made by HackIT.`,
+      copyright: `Made by Hackney's Data Analytics Platform Team.`,
     },
   },
   presets: [
@@ -50,11 +50,9 @@ module.exports = {
           editUrl: "https://github.com/LBHackney-IT/data-platform-playbook/edit/master/",
         },
         theme: {
-          customCss: [require.resolve("./src/docs.scss")],
+          customCss: './src/css/custom.css',
         },
       },
     ],
-  ],
-  clientModules: [require.resolve("./src/docs.js")],
-  plugins: ["docusaurus-plugin-sass"],
+  ]
 };

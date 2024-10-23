@@ -38,11 +38,11 @@ Note: The instructions below assume an S3 Data Source and Target Location.
    **Data source and data target (amongst other operations) must be set to be able to save the job. You can also apply _Transformations_ specific to your job via the Visual tab. See the [AWS Glue Studio Documentation][aws-glue-studio-documentation]**.
 1. To complete the set up you need to select the **Job details** tab.
 1. Complete the _Name_ and optional _Description_ fields. You may use this job as a template for repeat use, so a generic name to use as a template might be useful to begin with.
-1. Select **dataplatform-{environment}-glue-role** where environment is either 'stg' or 'prod'; as the _IAM Role_ for the job.
+1. Select **dataplatform-[environment]-glue-role** where environment is either 'stg' or 'prod'; as the _IAM Role_ for the job.
 1. The remaining standard fields default values are usually fine to use. The programming language Glue Studio creates can be Scala or Python.
 1. In _Advanced properties_ check the _Script filename_ refers to the task being carried out.
-1. Set the _Script path_ to the central scripts S3 bucket: `s3://dataplatform-{environment}-glue-scripts/custom/` where environment is either 'stg' or 'prod' - you can create new folders or specify existing folders in the S3 bucket like this: `s3://dataplatform-{environment}-glue-scripts/custom/YOUR_FOLDER_NAME/`.
-1. Set the _Temporary path_ to the central temp storage S3 bucket: `s3://dataplatform-{environment}-glue-temp-storage/` where environment is either 'stg' or 'prod'.
+1. Set the _Script path_ to the central scripts S3 bucket: `s3://dataplatform-[environment]-glue-scripts/custom/` where environment is either 'stg' or 'prod' - you can create new folders or specify existing folders in the S3 bucket like this: `s3://dataplatform-[environment]-glue-scripts/custom/YOUR_FOLDER_NAME/`.
+1. Set the _Temporary path_ to the central temp storage S3 bucket: `s3://dataplatform-[environment]-glue-temp-storage/` where environment is either 'stg' or 'prod'.
 1. In _Security configuration_ select the appropriate security configuration for your target bucket location (for example for the Raw Zone, use **glue-job-security-configuration-to-raw**).
 1. Ensure the _Server-side encryption_ option is **not checked**, so that it uses the buckets default encryption configuration.
 1. In the _Tags_ section, add the key `PlatformDepartment` and set the value as the name of your department.

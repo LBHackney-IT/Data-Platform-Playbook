@@ -5,9 +5,9 @@ tags: [tech-spike]
 layout: layout
 ---
 
-# Spike: {{ title }}
+# Spike: [TITLE]
 
-### SUB-TITLE
+### [SUB-TITLE]
 
 ## Objective
 
@@ -17,14 +17,14 @@ layout: layout
 
 ### Postgres:
 
-####Limitation
+#### Limitation
 
-####Suggestion
+#### Suggestion
 
 ### Elasticsearch:
 
-####Limitation
+#### Limitation
 
-####Suggestion
+#### Suggestion
 
-##Helpful Resources/Documentation
+## Helpful Resources/Documentation
