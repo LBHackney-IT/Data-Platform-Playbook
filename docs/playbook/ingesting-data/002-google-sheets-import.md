@@ -12,101 +12,41 @@ Ingest data contained within a Google Sheet for use on the Data Platform, option
 
 - Data Analyst
 
-## Preparing a Google sheet for ingestion
+### Preparing a Google Sheet for Ingestion
 
-1. Open the Google sheet you would like to ingest
-2. Ensure that all columns have headers. Columns without headers will be lost
-3. If the document is unnamed, name it
-4. Remove the `restricted` tag on your sheet
-5. Click `Share` in the top right corner of the sheet with the two service email addresses with  `Viewer ` access provided in the table below
-7. On the new window, choose from the dropdown on the right hand side and select `Viewer`, Uncheck the `Notify people` checkbox
-9.  Click `Share`, You will be asked to confirm sharing outside the organisation, click `share anyway`.
-10. Then edit the  `YAML` file (see the URL and instruction in below sections)  If your department does not have a YAML file, Please let DAP team know to do the configure for you.
-11. Your Google sheet is now ready to ingest
+To ensure a Google Sheet is ready for ingestion, follow these steps:
 
-### Departmental service email addresses and YAML files
+1. **Open the Google Sheet** you want to ingest.
+2. **Ensure all columns have headers** – Columns without headers will be ignored.
+3. **Name the document** if it is currently unnamed.
+4. **Remove any `restricted` sharing settings** on the sheet.
+5. **Share the sheet** with the appropriate service account emails:
+   - Click `Share` in the top right corner.
+   - Enter the two service email addresses (found in the table below) and set their access to `Viewer`.
+   - Uncheck the `Notify people` box.
+   - Click `Share`. If prompted to confirm sharing outside your organisation, click `Share anyway`.
+6. **Edit the YAML file** as described below. If your department does not have a YAML file, contact the DAP team for configuration assistance.
+7. **Your Google Sheet is now ready for ingestion.**
 
-<table>
-  <thead>
-    <tr>
-      <th>Department</th>
-      <th>Staging Service account email</th>
-      <th>Production Service account email</th>
-      <th>YAML file URL</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>parking</td>
-      <td>parking@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>parking@dataplatform-prod0.iam.gserviceaccount.com</td>
-      <td>https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/parking/google_sheet_ingestion_config/parking.yaml</td>
-    </tr>
-    <tr>
-      <td>housing_repairs</td>
-      <td>housing-repairs@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>housing-repairs@dataplatform-prod0.iam.gserviceaccount.com</td>
-    </tr>
-    <tr>
-      <td>data_and_insight</td>
-      <td>data-and-insight@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>data-and-insight@dataplatform-prod0.iam.gserviceaccount.com</td>
-      <td>https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/data_and_insight/google_sheet_ingestion_config/data_and_insight.yaml</td>
-    </tr>
-    <tr>
-      <td>finance</td>
-      <td>finance@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>finance@dataplatform-prod0.iam.gserviceaccount.com</td>
-    </tr>
-    <tr>
-      <td>env_enforcement</td>
-      <td>env-enforcement@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>env-enforcement@dataplatform-prod0.iam.gserviceaccount.com</td>
-    </tr>
-    <tr>
-      <td>planning</td>
-      <td>planning@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>planning@dataplatform-prod0.iam.gserviceaccount.com</td>
-    </tr>
-    <tr>
-      <td>unrestricted</td>
-      <td>unrestricted@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>unrestricted@dataplatform-prod0.iam.gserviceaccount.com</td>
-    </tr>
-    <tr>
-      <td>sandbox</td>
-      <td>sandbox@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>sandbox@dataplatform-prod0.iam.gserviceaccount.com</td>
-    </tr>
-    <tr>
-      <td>benefits_and_housing_needs</td>
-      <td>benefits-housing-needs@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>benefits-housing-needs@dataplatform-prod0.iam.gserviceaccount.com</td>
-    </tr>
-    <tr>
-      <td>revenues</td>
-      <td>revenues@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>revenues@dataplatform-prod0.iam.gserviceaccount.com</td>
-    </tr>
-    <tr>
-      <td>environmental_services</td>
-      <td>environmental-services@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>environmental-services@dataplatform-prod0.iam.gserviceaccount.com</td>
-    </tr>
-    <tr>
-      <td>housing</td>
-      <td>housing@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>housing@dataplatform-prod0.iam.gserviceaccount.com</td>
-      <td>https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/housing/google_sheet_ingestion_config/housing.yaml</td>
-    </tr>
-    <tr>
-      <td>child-fam-services</td>
-      <td>child-fam-services@dataplatform-prod0.iam.gserviceaccount.com</td>
-      <td>child-fam-services@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/child_fam_services/google_sheet_ingestion_config/child_fam_services.yaml</td>
-    </tr>
-  </tbody>
-</table>
+---
+### Departmental Service Email Addresses and YAML Files
+
+| Department | Staging Service Account Email | Production Service Account Email | YAML File URL |
+|------------|------------------------------|----------------------------------|---------------|
+| Parking | parking@dataplatform-stg.iam.gserviceaccount.com | parking@dataplatform-prod0.iam.gserviceaccount.com | [Link](https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/parking/google_sheet_ingestion_config/parking.yaml) |
+| Housing Repairs | housing-repairs@dataplatform-stg.iam.gserviceaccount.com | housing-repairs@dataplatform-prod0.iam.gserviceaccount.com | |
+| Data & Insight | data-and-insight@dataplatform-stg.iam.gserviceaccount.com | data-and-insight@dataplatform-prod0.iam.gserviceaccount.com | [Link](https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/data_and_insight/google_sheet_ingestion_config/data_and_insight.yaml) |
+| Finance | finance@dataplatform-stg.iam.gserviceaccount.com | finance@dataplatform-prod0.iam.gserviceaccount.com | |
+| Environmental Enforcement | env-enforcement@dataplatform-stg.iam.gserviceaccount.com | env-enforcement@dataplatform-prod0.iam.gserviceaccount.com | |
+| Planning | planning@dataplatform-stg.iam.gserviceaccount.com | planning@dataplatform-prod0.iam.gserviceaccount.com | |
+| Unrestricted | unrestricted@dataplatform-stg.iam.gserviceaccount.com | unrestricted@dataplatform-prod0.iam.gserviceaccount.com | |
+| Sandbox | sandbox@dataplatform-stg.iam.gserviceaccount.com | sandbox@dataplatform-prod0.iam.gserviceaccount.com | |
+| Benefits & Housing Needs | benefits-housing-needs@dataplatform-stg.iam.gserviceaccount.com | benefits-housing-needs@dataplatform-prod0.iam.gserviceaccount.com | |
+| Revenues | revenues@dataplatform-stg.iam.gserviceaccount.com | revenues@dataplatform-prod0.iam.gserviceaccount.com | |
+| Environmental Services | environmental-services@dataplatform-stg.iam.gserviceaccount.com | environmental-services@dataplatform-prod0.iam.gserviceaccount.com | |
+| Housing | housing@dataplatform-stg.iam.gserviceaccount.com | housing@dataplatform-prod0.iam.gserviceaccount.com | [Link](https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/housing/google_sheet_ingestion_config/housing.yaml) |
+| Child & Family Services | child-fam-services@dataplatform-prod0.iam.gserviceaccount.com | child-fam-services@dataplatform-stg.iam.gserviceaccount.com | [Link](https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/child_fam_services/google_sheet_ingestion_config/child_fam_services.yaml) |
+
 
 
 ### How to Edit the YAML File
