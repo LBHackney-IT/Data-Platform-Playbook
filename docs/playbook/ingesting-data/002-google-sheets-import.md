@@ -19,7 +19,7 @@ To ensure a Google Sheet is ready for ingestion, follow these steps:
 1. **Open the Google Sheet** you want to ingest.
 2. **Ensure all columns have headers** – Columns without headers will be ignored.
 3. **Name the document** if it is currently unnamed.
-4. **Remove any `restricted` sharing settings** on the sheet.
+4. **Remove `restricted` tag** on the sheet.
 5. **Share the sheet** with the appropriate service account emails:
    - Click `Share` in the top right corner.
    - Enter the two service email addresses (found in the table below) and set their access to `Viewer`.
