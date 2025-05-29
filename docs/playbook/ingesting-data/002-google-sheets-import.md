@@ -12,142 +12,68 @@ Ingest data contained within a Google Sheet for use on the Data Platform, option
 
 - Data Analyst
 
-## Prerequisites
+### Preparing a Google Sheet for Ingestion
 
-- You have a Github account - you can [create one][github_signup] yourself using your Hackney email
-- You have been added to the 'LBHackney-IT' team - you can request this from Rashmi Shetty
-- You have a service account email address, such as one listed in the table below:
+To ensure a Google Sheet is ready for ingestion, follow these steps:
 
-### Department specific information
+1. **Open the Google Sheet** you want to ingest.
+2. **Ensure all columns have headers** – Columns without headers will be ignored.
+3. **Name the document** if it is currently unnamed.
+4. **Remove `restricted` tag** on the sheet.
+5. **Share the sheet** with the appropriate service account emails:
+   - Click `Share` in the top right corner.
+   - Enter the two service email addresses (found in the table below) and set their access to `Viewer`.
+   - Uncheck the `Notify people` box.
+   - Click `Share`. If prompted to confirm sharing outside your organisation, click `Share anyway`.
+6. **Edit the YAML file** as described below. If your department does not have a YAML file, contact the DAP team for configuration assistance.
+7. **Your Google Sheet is now ready for ingestion.**
 
-<table>
-  <thead>
-    <tr>
-      <th>Department</th>
-      <th>Pre-Production Service account email</th>
-      <th>Production Service account email</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>parking</td>
-      <td>parking@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>parking@dataplatform-prod0.iam.gserviceaccount.com</td>
-    </tr>
-    <tr>
-      <td>housing_repairs</td>
-      <td>housing-repairs@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>housing-repairs@dataplatform-prod0.iam.gserviceaccount.com</td>
-    </tr>
-    <tr>
-      <td>data_and_insight</td>
-      <td>data-and-insight@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>data-and-insight@dataplatform-prod0.iam.gserviceaccount.com</td>
-    </tr>
-    <tr>
-      <td>finance</td>
-      <td>finance@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>finance@dataplatform-prod0.iam.gserviceaccount.com</td>
-    </tr>
-    <tr>
-      <td>env_enforcement</td>
-      <td>env-enforcement@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>env-enforcement@dataplatform-prod0.iam.gserviceaccount.com</td>
-    </tr>
-    <tr>
-      <td>planning</td>
-      <td>planning@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>planning@dataplatform-prod0.iam.gserviceaccount.com</td>
-    </tr>
-    <tr>
-      <td>unrestricted</td>
-      <td>unrestricted@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>unrestricted@dataplatform-prod0.iam.gserviceaccount.com</td>
-    </tr>
-    <tr>
-      <td>sandbox</td>
-      <td>sandbox@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>sandbox@dataplatform-prod0.iam.gserviceaccount.com</td>
-    </tr>
-    <tr>
-      <td>benefits_and_housing_needs</td>
-      <td>benefits-housing-needs@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>benefits-housing-needs@dataplatform-prod0.iam.gserviceaccount.com</td>
-    </tr>
-    <tr>
-      <td>revenues</td>
-      <td>revenues@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>revenues@dataplatform-prod0.iam.gserviceaccount.com</td>
-    </tr>
-    <tr>
-      <td>environmental_services</td>
-      <td>environmental-services@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>environmental-services@dataplatform-prod0.iam.gserviceaccount.com</td>
-    </tr>
-    <tr>
-      <td>housing</td>
-      <td>housing@dataplatform-stg.iam.gserviceaccount.com</td>
-      <td>housing@dataplatform-prod0.iam.gserviceaccount.com</td>
-    </tr>
-  </tbody>
-</table>
+---
+### Departmental Service Email Addresses and YAML Files
 
-## Preparing a Google sheet for ingestion
+| Department | Staging Service Account Email | Production Service Account Email | YAML File URL |
+|------------|------------------------------|----------------------------------|---------------|
+| Parking | parking@dataplatform-stg.iam.gserviceaccount.com | parking@dataplatform-prod0.iam.gserviceaccount.com | [Link](https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/parking/google_sheet_ingestion_config/parking.yaml) |
+| Housing Repairs | housing-repairs@dataplatform-stg.iam.gserviceaccount.com | housing-repairs@dataplatform-prod0.iam.gserviceaccount.com | |
+| Data & Insight | data-and-insight@dataplatform-stg.iam.gserviceaccount.com | data-and-insight@dataplatform-prod0.iam.gserviceaccount.com | [Link](https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/data_and_insight/google_sheet_ingestion_config/data_and_insight.yaml) |
+| Finance | finance@dataplatform-stg.iam.gserviceaccount.com | finance@dataplatform-prod0.iam.gserviceaccount.com | |
+| Environmental Enforcement | env-enforcement@dataplatform-stg.iam.gserviceaccount.com | env-enforcement@dataplatform-prod0.iam.gserviceaccount.com | |
+| Planning | planning@dataplatform-stg.iam.gserviceaccount.com | planning@dataplatform-prod0.iam.gserviceaccount.com | |
+| Unrestricted | unrestricted@dataplatform-stg.iam.gserviceaccount.com | unrestricted@dataplatform-prod0.iam.gserviceaccount.com | |
+| Sandbox | sandbox@dataplatform-stg.iam.gserviceaccount.com | sandbox@dataplatform-prod0.iam.gserviceaccount.com | |
+| Benefits & Housing Needs | benefits-housing-needs@dataplatform-stg.iam.gserviceaccount.com | benefits-housing-needs@dataplatform-prod0.iam.gserviceaccount.com | |
+| Revenues | revenues@dataplatform-stg.iam.gserviceaccount.com | revenues@dataplatform-prod0.iam.gserviceaccount.com | |
+| Environmental Services | environmental-services@dataplatform-stg.iam.gserviceaccount.com | environmental-services@dataplatform-prod0.iam.gserviceaccount.com | |
+| Housing | housing@dataplatform-stg.iam.gserviceaccount.com | housing@dataplatform-prod0.iam.gserviceaccount.com | [Link](https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/housing/google_sheet_ingestion_config/housing.yaml) |
+| Child & Family Services | child-fam-services@dataplatform-prod0.iam.gserviceaccount.com | child-fam-services@dataplatform-stg.iam.gserviceaccount.com | [Link](https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/child_fam_services/google_sheet_ingestion_config/child_fam_services.yaml) |
 
-1. Open the Google sheet you would like to ingest
-2. Ensure that all columns have headers. Columns without headers will be lost
-3. Click `Share` in the top right corner of the sheet
-4. If the document is unnamed, name it
-5. Paste in the service account email address you have been provided into the email box
-6. Ensure the suggested email matches the service account email and select it
-7. On the new window, choose from the dropdown on the right hand side and select `Viewer`
-8. Uncheck the `Notify people` checkbox
-9. Click `Share`
-10. You will be asked to confirm sharing outside the organisation, click `share anyway`
-11. Your Google sheet is now ready to ingest
 
-## Getting Google sheet detail
 
-- You will need to obtain the document key from the url. The document id is the portion of the url between `https://docs.google.com/spreadsheets/d/` and `/edit#gid=0`. See example below
+### How to Edit the YAML File
 
-  ![Google sheet id](../images/google_spreadsheet_id_example.png)
+To configure data ingestion for a new sheet, follow these steps using **parking** as an example. This process ensures that the sheet is correctly mapped in the YAML file.
 
-- You will also need to obtain the worksheet name that you wish to ingest. The worksheet name is located at the bottom left of the screen and unless it has been changed or other worksheets added, it will be called `Sheet1`
-- To ingest multiple worksheets from the same Google sheet, repeat the instructions in the below section for each worksheet
+#### Steps:
+1. **Locate the YAML file**
+   - Open the relevant YAML file (e.g., `parking.yaml`).
 
-## Setting up the AWS Glue job
+2. **Append the following configuration**
+   - Scroll to the end of the file.
+   - Copy and paste the following details, replacing values where necessary:
 
-This is what will handle the ingestion of the data from Google Sheets to the Data Platform.
+   ```yaml
+   - department: parking
+     spreadsheet_title: nas_live_manual_updates_data_load
+     sheet_name: nas_live_manual_updates_data_load
+     sheet_id: 1Xf8nBhIW6wyvNOU7JOWSCJwZvsx65T9ZWYSct9vj9Gw
+     target_table: nas_live_manual_updates_data_load
+     pause_flag:
+   ```
 
-1. Open the [Data Platform Project](https://github.com/LBHackney-IT/data-platform). If you don't have the correct permissions, you'll get a '404' error (see [prerequisites](#prerequisites)).
-2. Navigate to the main `terraform/etl` directory, and open `08-google-sheets-imports.tf`
-3. Switch to 'edit mode' (using edit button on top right)
-4. Copy one of the modules above, paste at the bottom of the file and update the following fields:
-
-   - `module` - in the format `your_unique_module_name`, and unique to all other `module` names in this file (it is helpful to keep the same naming convention as your dataset/folder)
-   - `glue_catalog_database_name` - Using `module.department_DEPARTMENT-NAME.raw_zone_catalog_database_name` (e.g. `module.department_parking.raw_zone_catalog_database_name`)
-   - `google_sheets_document_id` - Your Google Sheets document ID - see the `Getting Google sheet detail` section above
-   - `google_sheets_worksheet_name` - The name of the worksheet within your Google Sheet document - see the `Getting Google sheet detail` section above. Please note the worksheet name must be unique within the Terraform file.
-   - `department` - `module.department_DEPARTMENT-NAME` (department name should appear as in [the table above](#department-specific-information), e.g. `module.department_housing_repairs`)
-   - `dataset_name` - The name of the dataset as you'd like it to appear within the data platform e.g. `housing-repair`
-
-   - **Optional: stop your Google Sheet from ingesting automatically** - The ingest job will run every weekday at 11pm if `enable_glue_trigger` is not specified (i.e. there's no line for this in your module) or it's set to `true`. If this is set to `false` then your job will not run automatically on a schedule, and will have to be run manually within AWS. See the section [Running the ingestion manually](#running-the-ingestion-manually) for instructions on how to do this.
-
-   - **Optional: update the time schedule for the Google Sheet ingestion** - If a value for `google_sheet_import_schedule` is not provided, the ingestion will run at 11pm on weekdays.
-     - To override and set a new time schedule, add a new row to the respective module with the new cron time: e.g. `google_sheet_import_schedule = "cron(0 23 ? * 1-5 *)"`
-     - To create a new Cron expression follow the guidance provided by the [AWS Cron Expression documentation][aws_cron_expressions].
-
-5. Submit your changes, by referring to the [Committing changes][committing-changes] section of the **Using Github** guide.
-   - The Data Platform team needs to approve any changes to the code that you make, so your change won't happen automatically.
-     Once your changes have been approved, the job will run at the next scheduled time.
-
-### Running the ingestion manually
-
-Once you have been notified that your pull request has been merged, you can run the ingestion manually from the AWS console or wait until the scheduled time (if you set one).
-
-You can do this by navigating to [AWS glue workflows][aws_glue_workflow], selecting the workflow named `<department_name>-<dataset_name>`, clicking the "Actions" dropdown and then "Run".
-
-[aws_cron_expressions]: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions
-[github_signup]: https://github.com/signup
-[aws_glue_workflow]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=workflows
-[committing-changes]: ../getting-set-up/using-github#committing-your-changes-to-the-data-platform-project
+3. **Modify the parameters**
+   - **`department`**: Define the department to which the data belongs.
+   - **`spreadsheet_title`**: (Optional) A human-readable name for easy identification.
+   - **`sheet_name`**: Specify the name of the sheet in the Google Spreadsheet.
+   - **`sheet_id`**: Enter the unique Google Spreadsheet identifier.
+   - **`target_table`**: Define the table name in the raw zone database (The table name in the raw zone database will be same as target_table specified here and it's not mandatory to add department name in the table name).
+   - **`pause_flag`**: Leave blank for scheduled ingestion or set to `True` to pause.
