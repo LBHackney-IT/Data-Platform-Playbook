@@ -75,5 +75,5 @@ To configure data ingestion for a new sheet, follow these steps using **parking*
    - **`spreadsheet_title`**: (Optional) A human-readable name for easy identification.
    - **`sheet_name`**: Specify the name of the sheet in the Google Spreadsheet.
    - **`sheet_id`**: Enter the unique Google Spreadsheet identifier.
-   - **`target_table`**: Define the table name in the raw zone database (The table name in the raw zone database will be same as target_table specified here).
+   - **`target_table`**: Define the table name in the raw zone database (The table name in the raw zone database will be same as target_table specified here and it's not mandatory to add department name in the table name).
    - **`pause_flag`**: Leave blank for scheduled ingestion or set to `True` to pause.
