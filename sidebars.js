@@ -145,7 +145,7 @@ module.exports = {
         },
         {
           type: "category",
-          label: "📚Parking",
+          label: "📚Parking onboarding",
           /* items: getItems("dap-airflow/parking"), */
           items: [
             "dap-airflow/parking/begin", 
