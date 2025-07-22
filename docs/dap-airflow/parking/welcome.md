@@ -80,6 +80,7 @@ The **Service Terms`[]`** defined include:
 **~and** those definitions will include:  
 - `[service]`  
 - `[service access group]`  
+- `[service hotline]`  
 - `[service workgroup]`  
 - `[service role]`  
 - `[service raw zone]`  
