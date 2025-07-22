@@ -35,6 +35,7 @@ Your Service's "***welcome***" document provides you with the necessary translat
 The **Service Terms`[]`** defined include:  
 - `[service]`  
 - `[service access group]`  
+- `[service hotline]`  
 - `[service workgroup]`  
 - `[service role]`  
 - `[service raw zone]`  
