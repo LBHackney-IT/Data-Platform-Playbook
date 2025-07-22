@@ -36,13 +36,13 @@ You will then be be granted:
 
 Please allow a couple of hours for the *access permission* to propagate to [**Hackney Council AWS Console**](https://d-936715b9ec.awsapps.com/start/\#/?tab=accounts)
 
-👉  Access to the [**☎️DAP⇨flow Hotline**](https://chat.google.com/room/AAAAZYTZYPE/w4EMQuK-9QA/w4EMQuK-9QA?cls=10) *Google Chat Space* 
+👉  Access to your `[service **☎️DAP⇨flow** Hotline]` *Google Chat Space* 
 
 All members of the `[service access group]` with access to **DAP⇨flow** are now automatically members of this *Google Chat Space*. This is where you will interact with the **DAP Platform Team** when you need help, encounter a problem or need to chase a request while performing some task.  
 
 ## 5. Welcome!
 
-Please take some time to go and introduce yourself on the [**☎️DAP⇨flow Hotline**](https://chat.google.com/room/AAAAZYTZYPE/w4EMQuK-9QA/w4EMQuK-9QA?cls=10)!
+Please take some time to go and introduce yourself on your `[service **☎️DAP⇨flow** Hotline]`!
 
 To get you started on your **DAP⇨flow** journey and enable effective use of the [**DAP⇨flow📚Onboarding**](../introduction#📚Onboarding) documentation, you will need certain information in the form of **Service Terms`[]`** defined for your `[service]`'s implementation. The next onboarding article will guide you through that: 
 
@@ -82,9 +82,9 @@ Please note your `[service access group]` named in the email because you will ne
 **When** my `[service]`manager (or representative) adds my name to the [`[service access group]`](https://groups.google.com/all-groups?q=saml-aws-data-platform-collaborator)  
 **~or** my `[service]`manager authorizes the **DAP Platform Team** to add my name to the [`[service access group]`](https://groups.google.com/all-groups?q=saml-aws-data-platform-collaborator) as requested 
 
-**Then** I will recieve an email confirming the actual name of the `[service access group]` I was added to  
+**Then** I will receive an email confirming I was added to the `[service access group]`  
 **~and** I will be granted access to the [**Hackney Council AWS Console**](https://d-936715b9ec.awsapps.com/start/\#/?tab=accounts)  
-**~and** I will be granted membership of [**☎️DAP⇨flow Hotline**](https://chat.google.com/room/AAAAZYTZYPE/w4EMQuK-9QA/w4EMQuK-9QA?cls=10) *Google Chat Space*    
+**~and** I will be granted membership of our `[service **☎️DAP⇨flow** Hotline]` *Google Chat Space*    
 **~and** I can be [welcomed to **DAP⇨flow**](../onboarding/welcome)   
 
 **Scale** of 4 to 5 **~and** / **~or** flow features.
