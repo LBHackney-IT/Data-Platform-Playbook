@@ -68,7 +68,6 @@ tags: [onboarding]
 **Given** in my web browser, I am logged on to my ***GitHub*** account using my ***Hackney email address*** with two-factor authentication  
 **~and** I am granted membership of **[London Borough of Hackney](https://github.com/LBHackney-IT) organization** on ***GitHub*** incorporating the [`dap-airflow`](https://github.com/LBHackney-IT/dap-airflow) private repository     
 **~and** **`[transform branch]`** will be the name of my new working branch  
-**~and** I am member of the [**☎️DAP⇨flow Hotline**](https://chat.google.com/room/AAAAZYTZYPE?cls=7) Google Chat Space  
 
 **When** I access the [`dap-airflow`](https://github.com/LBHackney-IT/dap-airflow) repository  
 **~and** I select the "**Code**" tab at the top of the repository page  
@@ -77,10 +76,8 @@ tags: [onboarding]
 **~and** click "Create branch **![][branch]`[transform branch]`** from **`main`**" below that on the dropdown menu  
 
 **Then** "**![][branch]`[transform branch]`**” should replace "**![][branch]`main`**" as my working branch  
-**~and** ***GitHub*** will alert me via email if there are errors or warnings  
-**~and** I will have information that I can pass to the **DAP Platform Team** via the **[☎️DAP⇨flow Hotline](https://chat.google.com/room/AAAAZYTZYPE?cls=7)** if I encounter errors or need assistance.  
 
-**Scale** of 6 to 9 **~and** flow features.
+**Scale** of 4 to 6 **~and** flow features.
 :::
 
 [branch]: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAAXNSR0IArs4c6QAAAU9JREFUOE+tk79Pg1AQx99bHPwf+k8URxJ2VngdtaTGMEDC4iqv0s2FxA4tjUl1fbzJiXSiOiKhy+s/wayDCWfbCKG/UBNveMPdffK9u3eH0bcRQmTbtl+EEJemaT6U/nrccZxr3/fvGGOvaz9eP+Px2JrNZveyLA+FEFYQBBt/3brdLrRareFyubQAwOacDzdJk8nEjaKIappG4zimo9FoDzZNExRFoZxzumJoGIb9KknX9XOE0CMAuJzz211lTdNuMMZ9hNBFGIZPVdlloq7rgDE+Y4y9HehZAoBkpVgJbpX3LzAhRDDGtsSLonhXVfWz1+udlIE9ZQAIJEm6StO0gtvtNprP5zRJkuc8z6vAHmwYBppOp6d1WUII6nQ6H7tz+HXPu+Cfpt0I//TPR+HFYuF6nte4YUfhLMuswWDQuNuNZa+vqkwor+YQUPd9AUZ2tBDCa9wvAAAAAElFTkSuQmCC>

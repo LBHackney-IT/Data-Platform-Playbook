@@ -59,7 +59,7 @@ Each of these guides will be updated with Park-specific changes. When done, we o
 | [Query my service data](../dap-airflow/parking/query-my-service-data#ux-criteria)             | How will I query and analyze my `[service]`'s data with ***Amazon Athena***?                  | 2 to 5 |
 | [Prototype simple transforms](../dap-airflow/parking/prototype-simple-transforms#ux-criteria) | How can I use ***Amazon Athena*** to prototype a simple table-join data transformation?       | 7 to 14 |
 | [GitHub access](../dap-airflow/parking/github-access#ux-criteria)                             | How do I set up my ***GitHub*** access for **DAP⇨flow**?                                      | 5 |
-| [GitHub branching](../dap-airflow/parking/github-branch#ux-criteria)                          | How do I create `[transform branch]` as my new working branch of **DAP⇨flow**'s repository?   | 6 to 9 |
+| [GitHub branching](../dap-airflow/parking/github-branch#ux-criteria)                          | How do I create `[transform branch]` as my new working branch of **DAP⇨flow**'s repository?   | 4 to 6 |
 | [Committing transforms](../dap-airflow/parking/github-commit-transform#ux-criteria)           | How do I commit my working `[transform SQL]` to **DAP⇨flow**'s repository?                    | 12 to 20 |
 | [GitHub pull requests](../dap-airflow/parking/github-pull-request#ux-criteria)                | How do I raise a *"pull request"* to merge my `[transform branch]` into the `main` trunk of the **DAP⇨flow** repository? | 13 to 16 |
 

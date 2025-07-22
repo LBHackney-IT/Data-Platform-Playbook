@@ -9,11 +9,11 @@ tags: [onboarding]
 # How do I set up my ***GitHub*** access for **DAP⇨flow**?
 ![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
 
-## 1. So you're a DAP⇨flow user, and you're ready to go?
+## 1. So you're a new DAP⇨flow user, and you're ready to go?
  
 👉 Check you did everything **here ►** **[DAP⇨flow📚Before you begin](../onboarding/begin)** 
 
-👉 Have you introduced yourself? **Here ►** [**☎️DAP⇨flow Hotline**](https://chat.google.com/room/AAAAZYTZYPE/w4EMQuK-9QA/w4EMQuK-9QA?cls=10)  
+👉 Have you introduced yourself on your **☎️DAP⇨flow** `[service hotline]` *Google Chat Space*?  
       
 ## 2. You'll need a ***GitHub*** Account
 
@@ -25,14 +25,14 @@ tags: [onboarding]
 
 ## 4. Request Access to the `dap-airflow` repo
 
-👉 Use the [**☎️DAP⇨flow Hotline**](https://chat.google.com/room/AAAAZYTZYPE?cls=7)  Google Chat Space to request collaborator access to **DAP⇨flow**'s private repository called `dap-airflow`.
+👉 Use your **☎️DAP⇨flow** `[service hotline]` *Google Chat Space* to request collaborator access to **DAP⇨flow**'s private repository called `dap-airflow`.
 
 **`Fig. 4`** ![Fig. 4](../images/github-access-four.png)
 
 ## 5. Access request granted
 The **DAP Platform Team** will 👉
 
-* Acknowledge your request and continue to update your status via a reply-thread on the [☎️DAP⇨flow Hotline](https://chat.google.com/room/AAAAZYTZYPE?cls=7).
+* Acknowledge your request and continue to update your status via a reply-thread on your **☎️DAP⇨flow** `[service hotline]`.
 
 * If you don't have membership already, [ensure you get invited](https://docs.github.com/en/enterprise-cloud@latest/organizations/managing-membership-in-your-organization/inviting-users-to-join-your-organization) to the [**London Borough of Hackney**](https://github.com/LBHackney-IT) organization on GitHub.
 
@@ -77,14 +77,14 @@ The **DAP Platform Team** will 👉
 ### How do I set up my ***GitHub*** access for **DAP⇨flow**?
 **Measures** the **DAP Platform Team** behavior:  
 
-**Given** I am member of the [**☎️DAP⇨flow Hotline**](https://chat.google.com/room/AAAAZYTZYPE?cls=7) Google Chat Space
+**Given** I am member of our **☎️DAP⇨flow** `[service hotline]` *Google Chat Space*
 
 **When** I create my ***GitHub*** account at [github.com](https://github.com/) using my Hackney email address  
 **~and** I set up 2 factor authentication for my ***GitHub*** account  
-**~and** I request access to the `dap-airflow` private repository via the [☎️DAP⇨flow Hotline](https://chat.google.com/room/AAAAZYTZYPE?cls=7)
+**~and** I request access to the `dap-airflow` private repository via our **☎️DAP⇨flow** `[service hotline]`
 
 
-**Then** the **DAP Platform Team** will acknowledge my request via a reply-thread on the [☎️DAP⇨flow Hotline](https://chat.google.com/room/AAAAZYTZYPE?cls=7)   
+**Then** the **DAP Platform Team** will acknowledge my request via a reply-thread on our **☎️DAP⇨flow** `[service hotline]`   
 **~and** ensure I am granted membership of [**London Borough of Hackney**](https://github.com/LBHackney-IT) organization on ***GitHub***  
 **~and** ensure I can subsequently access the [`dap-airflow`](https://github.com/LBHackney-IT/dap-airflow) private repository  
 **~and** confirm my `[service dags]` ***GitHub*** project folder with link to the `README.md` there  
