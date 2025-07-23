@@ -78,7 +78,7 @@ ORDER BY
 limit 100;
 ```      
 
-👉 You'll find considerations for SQL development discussed **here ► [📚Appendix](#considerations-when-adopting-amazon-athena-for-your-future-sql-development)**
+👉 You'll find considerations for SQL development discussed **here ► [📚Appendix ► Considerations](#appendix)**
 
 ## 6. Customizing a template query  
 When, for example, using the **`Fig. 5`** `[SQL template]`:  
@@ -206,7 +206,7 @@ When, for example, using the **`Fig. 5`** `[SQL template]`:
 
 ## 📚Appendix
 
-:::tip Considerations
+<details><summary>Considerations</summary>
 
 ### Considerations when adopting ***Amazon Athena*** for your future SQL development
 
@@ -220,5 +220,4 @@ When, for example, using the **`Fig. 5`** `[SQL template]`:
 
 * Always consider using CTEs in place of subqueries to help debugging and readability. ***Amazon Athena*** permits VALUES table constructors in CTEs allowing replacement of very lengthy WHERE-CASE filters with the more efficient JOIN-CTE filters.
 
-:::
-
+</details>
