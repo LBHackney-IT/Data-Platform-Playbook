@@ -38,26 +38,33 @@ Counting the number of extra steps needed to complete a task is a process mappin
 | [My service data history](../dap-airflow/onboarding/access-my-service-data-history#ux-criteria)  | How will I access my `[service]`'s data history from ***Amazon Athena***?                      | 3 |
 | [Query my service data](../dap-airflow/onboarding/query-my-service-data#ux-criteria)             | How will I query and analyze my `[service]`'s data with ***Amazon Athena***?                   | 2 to 5 |
 | [Prototype simple transforms](../dap-airflow/onboarding/prototype-simple-transforms#ux-criteria) | How can I use ***Amazon Athena*** to prototype a simple table-join data transformation?        | 7 to 14 |
+| [Prototype legacy transforms](../dap-airflow/onboarding/prototype-legacy-transforms#ux-criteria) | How can I use ***Amazon Athena*** to prototype a legacy transformation?                        | 4 to 8 |
 | [GitHub access](../dap-airflow/onboarding/github-access#ux-criteria)                             | How do I set up my ***GitHub*** access for **DAP⇨flow**?                                       | 5 |
 | [GitHub branching](../dap-airflow/onboarding/github-branch#ux-criteria)                          | How do I create `[transform branch]` as my new working branch of **DAP⇨flow**'s repository?    | 6 to 9 |
 | [Committing transforms](../dap-airflow/onboarding/github-commit-transform#ux-criteria)           | How do I commit my working `[transform SQL]` to **DAP⇨flow**'s repository?                     | 12 to 20 |
 | [GitHub pull requests](../dap-airflow/onboarding/github-pull-request#ux-criteria)                | How do I raise a *"pull request"* to merge my `[transform branch]` into the `main` trunk of the **DAP⇨flow** repository? | 13 to 16 |
 
-## 📚Parking onboarding
+## Migration onboarding
 
-Each of these guides will be updated with Park-specific changes. When done, we only need to consider the UX for the guides below that are different to the guides above.
+The following guides were updated in parallel to those above, intended for existing **Data Platform** users who are migrating to **DAP⇨flow** with their existing database features left intact.  
 
-| **📚** | **Guide** | &nbsp; **⇨ &nbsp; +** &nbsp; &nbsp; &nbsp; |
+:::info MIGRATION
+When the documentation for these guides is finally completed, we will only need to consider the UX for the guides that are different to the guides above, and where guides are substantially the same they will be removed with the side-bar menu pointing back to the original. In some cases we will just enhance the original guide to accommodate both new and migrated **DAP⇨flow** users.
+:::
+
+| ![DAP⇨flow](../dap-airflow/images/migration-small.png) | **Guide** | &nbsp; **⇨ &nbsp; +** &nbsp; &nbsp; &nbsp; |
 | --- | --- | :---: |
 | [Before you begin](../dap-airflow/parking/begin#ux-criteria)                                  | What must happen before I can begin **DAP⇨flow**?                                             | 4 to 5 |
 | [Welcome!](../dap-airflow/parking/welcome#ux-criteria)                                        | What are my **Service Terms`[]`**?                                                            | 3 |
 | [AWS Console access](../dap-airflow/parking/access-the-AWS-Management-Console#ux-criteria)    | How will I access the ***AWS Management Console***?                                           | 2 to 3 |
 | [AWS region](../dap-airflow/parking/access-the-AWS-region#ux-criteria)                        | How will I ensure I am in the correct **AWS region**?                                         | 2 to 3 |
 | [Amazon Athena](../dap-airflow/parking/access-my-Amazon-Athena-database#ux-criteria)          | How will I use ***Amazon Athena*** to access my database?                                     | 3 to 4 |
-| [My current service data](../dap-airflow/parking/access-my-current-service-data#ux-criteria)  | How will I access my `[service]`'s current data from ***Amazon Athena***?                     | 3 |
 | [My service data history](../dap-airflow/parking/access-my-service-data-history#ux-criteria)  | How will I access my `[service]`'s data history from ***Amazon Athena***?                     | 3 |
+| [My current service data](../dap-airflow/parking/access-my-current-service-data#ux-criteria)  | How will I access my `[service]`'s current data from ***Amazon Athena***?                     | 3 |
 | [Query my service data](../dap-airflow/parking/query-my-service-data#ux-criteria)             | How will I query and analyze my `[service]`'s data with ***Amazon Athena***?                  | 2 to 5 |
-| [Prototype simple transforms](../dap-airflow/parking/prototype-simple-transforms#ux-criteria) | How can I use ***Amazon Athena*** to prototype a simple table-join data transformation?       | 7 to 14 |
+| [Prototype simple transforms](../dap-airflow/parking/prototype-simple-transforms#ux-criteria) | How can I use ***Amazon Athena*** to prototype a simple table-join data transformation?       | 4 to 9 |
+| [Prototype legacy transforms](../dap-airflow/parking/prototype-legacy-transforms#ux-criteria) | How can I use ***Amazon Athena*** to prototype a legacy transformation?                       | 5 to 9 |
+| [Migrating transforms](../parking/migrating-transforms)                                       | How were Glue/Spark SQL queries migrated to **DAP⇨flow**?                                     | ? |
 | [GitHub access](../dap-airflow/parking/github-access#ux-criteria)                             | How do I set up my ***GitHub*** access for **DAP⇨flow**?                                      | 5 |
 | [GitHub branching](../dap-airflow/parking/github-branch#ux-criteria)                          | How do I create `[transform branch]` as my new working branch of **DAP⇨flow**'s repository?   | 4 to 6 |
 | [Committing transforms](../dap-airflow/parking/github-commit-transform#ux-criteria)           | How do I commit my working `[transform SQL]` to **DAP⇨flow**'s repository?                    | 12 to 20 |

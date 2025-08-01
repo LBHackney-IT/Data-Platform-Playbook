@@ -145,7 +145,7 @@ module.exports = {
         },
         {
           type: "category",
-          label: "📚Parking onboarding",
+          label: "📚Migration onboarding",
           /* items: getItems("dap-airflow/parking"), */
           items: [
             "dap-airflow/parking/begin", 
@@ -153,11 +153,12 @@ module.exports = {
             "dap-airflow/parking/access-the-AWS-Management-Console", 
             "dap-airflow/parking/access-the-AWS-region",
             "dap-airflow/parking/access-my-Amazon-Athena-database",
-            "dap-airflow/parking/access-my-current-service-data",
             "dap-airflow/parking/access-my-service-data-history",
+            "dap-airflow/parking/access-my-current-service-data",
             "dap-airflow/parking/query-my-service-data",
             "dap-airflow/parking/prototype-simple-transforms",
             "dap-airflow/parking/prototype-legacy-transforms",
+            "dap-airflow/parking/migrating-transforms",
             "dap-airflow/parking/github-access",
             "dap-airflow/parking/github-branch",
             "dap-airflow/parking/github-commit-transform",
