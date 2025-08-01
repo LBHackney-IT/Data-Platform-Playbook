@@ -12,7 +12,7 @@ tags: [onboarding]
 ## 1. Have you been added to your [`[service access group]` *Google Group*](https://groups.google.com/all-groups?q=saml-aws-data-platform-collaborator)? 
 Check here if you are not certain about that:
 
-👉  [**DAP⇨flow📚Begin here**](../onboarding/begin)  
+👉  [📚Begin here**](../onboarding/begin)  
 
 If you're certain you've been added and you know your `[service access group]` name then please proceed.
 
@@ -24,26 +24,32 @@ If you're certain you've been added and you know your `[service access group]` n
 
 **`Fig. 2`** ![Fig. 4](../images/welcome-two.png)
 
-The following **REMINDER** box appears throughout the [**DAP⇨flow📚Onboarding**](../introduction#📚Onboarding) documentation to remind you where to find the ***welcome*** document in case you want to be reminded of your **Service Terms`[]`**:
+The following **REMINDER** box appears throughout the [*DAP⇨flow📚Onboarding**](../introduction#📚Onboarding) documentation to remind you where to find the ***welcome*** document in case you want to be reminded of your **Service Terms`[]`**:
 :::info REMINDER
 👉  Your **Service Terms`[]`** are defined in the ***welcome*** document stored in your [**`[service access group]`** ***Google Drive subfolder***](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link).
 :::
 
 ## 3. Review your **Service Terms`[]`**
-Your Service's "***welcome***" document provides you with the necessary translations for the **Service Terms`[]`** used throughout the [**DAP⇨flow📚Onboarding**](../introduction#📚Onboarding) documentation, ensuring you are directed to the appropriate places while using the **Hackney Council AWS Console** or the **LBHackney-IT/dap-airflow** *GitHub repository*.
+Your Service's "***welcome***" document provides you with the necessary translations for the **Service Terms`[]`** used throughout the [📚Onboarding**](../introduction#📚Onboarding) documentation, ensuring you are directed to the appropriate places while using the **Hackney Council AWS Console** or the **LBHackney-IT/dap-airflow** *GitHub repository*.
 
-The **Service Terms`[]`** defined include:  
+The **Service Terms`[]`** must be defined defined:-  
 - `[service]`  
 - `[service access group]`  
 - `[service hotline]`  
 - `[service workgroup]`  
 - `[service role]`  
-- `[service raw zone]`  
-- `[service refined zone]`  
-- `[service trusted zone]`  
 - `[service database]`  
 - `[service dags]`  
 
+The Athena databases must be defined and, eg., expanded as required:- 
+- `[service zones]` = 
+    - `[service raw zone]`  
+    - eg. `[service raw zone 2]`  
+    - eg. `[service raw zone 3]` etc.
+    - `[service refined zone]`  
+    - eg. `[service refined zone 2]`  
+    - eg. `[service refined zone 3]` etc.
+    - `[service trusted zone]`  
 
 <br> 
 </br>  
@@ -78,17 +84,23 @@ The **Service Terms`[]`** defined include:
 **~and** there, open the document called "***welcome***"   
 
 **Then** that "***welcome***" document will define the **Service Terms`[]`** I need while using the [**DAP⇨flow📚Onboarding**](../introduction#📚Onboarding) documentation, ensuring I am directed to all the right places when using the **Hackney Council AWS Console** and the **LBHackney-IT/dap-airflow** *GitHub repository*  
-**~and** those definitions will include:  
+**~and** the following terms must be defined:  
 - `[service]`  
 - `[service access group]`  
 - `[service hotline]`  
 - `[service workgroup]`  
 - `[service role]`  
-- `[service raw zone]`  
-- `[service refined zone]`  
-- `[service trusted zone]`  
 - `[service database]`  
 - `[service dags]`  
+- `[service zones]` comprising:  
+    - `[service raw zone]`  
+    - `[service refined zone]`  
+    - `[service trusted zone]`  
+
+**~and** the terms belonging to the`[service zones]` shall be expanded as needed, for example:  
+- `[service raw zone 2]`  
+- `[service refined zone 2]`  
+- etc.  
 
 **Scale** of 3 **~and** flow features.
 :::
