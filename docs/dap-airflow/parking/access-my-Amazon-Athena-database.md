@@ -25,7 +25,7 @@ tags: [onboarding]
 ## 4. Select your `[service workgroup]`
 **`👁`** Look to the top right corner of the ***Amazon Athena*** interface, next to "**Workgroup**".  
 
-**`🖱`** From the list box there, click on **`▼`** to select your `[service workgroup]`.
+**`🖱`** From the list-box there, click on **`▼`** to select your `[service workgroup]`.
 
 **`Fig. 4 & 5`** ![Fig. 4 & 5](../images/access-my-Amazon-Athena-database-four-five.png)
 
@@ -33,10 +33,10 @@ tags: [onboarding]
 👉  Your **Service Terms`[]`** are defined in the ***welcome*** document stored in your [**`[service access group]`** ***Google Drive subfolder***](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link).
 :::
 
-## 5. Select your `[service raw zone]` database
-**`👁`** On the left side of the ***Amazon Athena*** interface, below the "**Database**" section, find the list box and check you can already see your `[service raw zone]` database.  
+## 5. Select your database
+**`👁`** On the left side of the ***Amazon Athena*** interface, below the "**Database**" section, find the list-box and check you can see one of your `[service zones]`.  
 
-**`🖱`** If you don't see it there, then simply click on **`▼`** to select your `[service raw zone]` database from the list box.
+**`🖱`** If you don't see it there, then simply click on **`▼`** to find and select any one of your `[service zones]` from the list-box.
 
 ---
 ## ***"We* ♡ *your feedback!"***
@@ -70,8 +70,8 @@ tags: [onboarding]
 **~and** I click through any splash screen that might appear, eg. “**Explore the Query Editor**”  
 
 **Then** I will be presented with the **Amazon Athena** interface  
-**~and** up at the right next to “**Workgroup**”, I should be offered my `[service workgroup]` from the list box  
-**~and** over on the left under “**Database**” I should be offered my `[service raw zone]` from the list box.  
+**~and** up at the right next to “**Workgroup**”, I should be offered my `[service workgroup]` from the list-box  
+**~and** over on the left under “**Database**” I should be offered my `[service zones]` from the list-box.  
 
 **Scale** of 3 to 4 **~and** flow features.  
 :::
