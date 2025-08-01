@@ -5,159 +5,241 @@ description: "Onboarding data analysts and engineers to DAP⇨flow, the Data Ana
 layout: playbook_js
 tags: [onboarding]
 ---
-# How can I use ***Amazon Athena*** to prototype a simple table-join data transformation?
-![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
+# How can I use ***Amazon Athena*** to prototype a simple *table-join* data transformation?
+![DAP⇨flow](../images/DAPairflowFLOWmigration.png)  
 
 ## 1. Access ***Amazon Athena***
 **`🖱`** In your web browser, log in to your AWS account, navigate to the ***AWS Management Console***, and open ***Amazon Athena***. 
    
-👉 First time ***Amazon Athena*** users should **start here ►** **[DAP⇨flow📚Amazon Athena](../onboarding/access-my-Amazon-Athena-database)** 
+👉 First time ***Amazon Athena*** users may want to **start here ►** **[📚Amazon Athena](../onboarding/access-my-Amazon-Athena-database)** 
 
 ## 2. Select your `[service workgroup]`
-**`🖱`** Ensure you have selected your `[service workgroup]` from the list box next to “**Workgroup**”.  
+**`🖱`** Ensure you have selected your `[service workgroup]` from the list-box next to “**Workgroup**”.  
 
 :::info REMINDER
 👉  Your **Service Terms`[]`** are defined in the ***welcome*** document stored in your [**`[service access group]`** ***Google Drive subfolder***](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link).
 :::
 
-## 3. Exploring your `[service raw zone]` database
-**`🖱`** Ensure you have selected your `[service raw zone]` from the list box under "**Database**" on the left side of the Athena interface.  
+## 3. Explore your databases
 
-**`🖱`** You can then expand the lists under "**`►` Tables**" or "**`►` Views**", then expand each name further to reveal column names and data types, as follows:
+💡 ***Athena’s*** **Database `[service zones]`** are named in the reverse *`"service-database-zone"`* format, where *`-zone`* *suffix* expands to either of:- 
+- *`-raw-zone`*
+- *`-refined-zone`*
+- *`-trusted-zone`*
 
-* "**`▼` Tables**"  
-👉 Documented here ► **[📚My service data history](../onboarding/access-my-service-data-history)** 
+**`🖱`** Find your `[service zones]` databases by ***🔍typing into search box*** below "**Database**" over on the left side of the *Athena interface*. Then select the database *prefixed `-raw-zone`* from the list-box, which is equivalent to your `[service database]`.  
 
-* "**`▼` Views**"  
-👉 Documented here ► **[📚My current service data](../onboarding/access-my-current-service-data)** 
+**`👁`** Afterwards, you should observe your `[service database]` equivalent tables with their columns and associated data types listed below "**`▼` Tables**". Make a note of columns which you understand to be a primary key of some sort.
 
-## 4. Understanding the data model
-**`👁`** Identify which tables and columns you need to use for your data transformation:  
+**`Fig. 3`** ![Fig. 3](../images/parking-prototype-simple-transforms-three.png)
 
-- Wherever you want a `<table>` originally from your `[service database]` you should be able to find it's name listed under "**`▼` Views**" below your `[service raw zone]` database. 
+**`🖱`** Go back to the list-box under "**Database**" and select the similarly named `service-database-`, this time *prefixed `-refined-zone`*.
 
-- For a simple simple table-join data transformation you will need:
+**`👁`** Now, when you check below "**`▼` Tables**", you should observe various *refined product* tables with names you might not recognize. However, some of their columns and associated data types should resemble those of your `[service database]`. Observe particular columns which are the same as those primary key columns you noted previously.
 
-    * The **`<parent table>`** with a unique `<parent key>`.
+👍 Great! You may have already discovered the tables you need to prototype a simple *table-join* SQL data transformation using **Athena**. Going forward, however, we will assume you have enough basic knowledge about your `[service database]` and data products available from the **Data Platform**, perhaps using BI tools and such like.
 
-    * The **`<child table>`** with a unique `<child key>` and a foreign key pointing to the `<parent key>` of the `<parent table>`.
+## 4. Prepare your `[Transform SQL]` query
 
-## 5. Prepare your `[transform SQL]` query
-**`🖱`** You can either:
+You can either start completely from scratch, building up your query as you go along, or, begin with a SQL template design.  
 
-* Start completely from scratch and building up your query in the editor as you go along;  
+👍 Let's get started! You will need to identify which tables and columns you need to use for your data transformation. We will assume, just like in the `[SQL template]`s below you want to join a *"child table"* from your  *`raw-zone` database* to a *"parent table"* from your *`refined-zone` database*. 
 
-* Or, begin with a SQL template design, eg. **`Fig. 5`** `[SQL template]`, by *copy-and-pasting* it into the query editor. 
+Decide whether your *transform query* needs to be **1:n** `LEFT JOIN` or **1:1** `INNER JOIN`:
 
-**`Fig. 5`** `[SQL template]`
+### a) `[SQL template]` = 1:n LEFT JOIN
+<details><summary>1:n LEFT JOIN query...</summary>  
+
 ```sql
--- Query will use table names from my [service database]...
+/********************************************************************************
+[Transform description] 
+*********************************************************************************/
 SELECT 
-    p.import_date AS original_import_date, -- added to my query
-    p.<parent key>, 
-    p.<col1>,
-    p.<col2>,
-	.
-	.
-    p.<etc.>,
-    c.<child key>, 
-    c.<col1>,
-    c.<col2>,
-	.
-	.
-    c.<etc.>
-FROM 
-    <parent table> p
-LEFT JOIN 
-    <child table> c
-ON 
-    c.<parent key> = p.<parent key>
+    p.[parent primary key], 
+    c.[child key], 
+
+    [output columns], 
+/* eg.
+    p.col1,
+    p.col2,
+    p.etc.,
+    c.col3,
+    c.col4,
+    c.etc., 
+*/
+    p.import_timestamp,
+    
+    /* Partition Columns */
+    p.import_year,
+    p.import_month,
+    p.import_day,
+    p.import_date
+
+FROM "[service refined zone]"."[parent table]_latest" p
+LEFT JOIN "[service raw zone]"."[child table]_latest" c
+    ON c.[parent foreign key] = p.[parent primary key]
+WHERE [filter expression]
 ORDER BY
-    p.<parent key>,
-    c.<child key>
-limit 100;
-```      
+    p.[parent primary key],
+    c.[child key]
+LIMIT [rows fetched];
+```  
 
-👉 You'll find considerations for SQL development discussed **here ► [📚Appendix ► Considerations](#appendix)**
+👉 You'll find information about ***Partition Columns*** and other considerations discussed **here ► [📚Appendix ► Considerations](#appendix)**
 
-## 6. Customizing a template query  
-When, for example, using the **`Fig. 5`** `[SQL template]`:  
+</details>  
 
-**`🖱`** You will need to replace the `<parent table>` and  `<child table>` template placeholders with actual names listed under “**`▼` Views**” over from the left-hand side of the interface. The Athena editor allows you to insert names directly into the code by simply clicking on the three dots **`⋮`** right of the name, then selecting “***insert into editor***”.
+### b) `[SQL template]` = 1:1 INNER JOIN
+<details><summary>1:1 INNER JOIN query...</summary>  
 
-**`Fig. 6a`** ![Fig. 6a](../images/prototype-simple-transforms-six-a.png)
+```sql
+/********************************************************************************
+[Transform description] 
+*********************************************************************************/
+SELECT 
+    p.[parent primary key], 
 
-**`🖱`** You will need to replace the  `<parent key>` and  `<child key>` template placeholders with corresponding key column names.
+    [output columns], 
+/* eg.
+    p.col1,
+    p.col2,
+    p.etc.,
+    c.col3,
+    c.col4,
+    c.etc., 
+*/
+    p.import_timestamp,
+    
+    /* Partition Columns */
+    p.import_year,
+    p.import_month,
+    p.import_day,
+    p.import_date
 
-**`Fig. 6b`** ![Fig. 6b](../images/prototype-simple-transforms-six-b.png)
+FROM "[service refined zone]"."[parent table]_latest" p
+INNER JOIN "[service raw zone]"."[child table]_latest" c
+    ON c.[parent foreign key] = p.[parent primary key]
+WHERE [filter expression]
+ORDER BY
+    p.[parent primary key]
+LIMIT [rows fetched];
+```  
 
-**`🖱`** Include all the columns you need. So replace the , placeholders `<col1>`, `<col2>`, etc., with actual column names. And so on.
+👉 You'll find information about ***Partition Columns*** and other considerations discussed **here ► [📚Appendix ► Considerations](#appendix)**
 
-👉 If your column expressions require functions, you can check the ***Amazon Athena* documentation ►[here](https://docs.aws.amazon.com/athena/latest/ug/functions.html)**.
+</details>  
 
-**`🖱`** Edit your table names to ensure they are fully qualified, as follows: 
+**💡** These were the most common query arrangements found in the **Data Platform** when the old SparkSQL *transformations* were migrated to **DAP⇨flow**. 
 
-- Table names should be prefixed by their correct database names, eg. `[service raw zone].<table name>`.  
+When creating *table-join* transforms in future, you might want to begin with a previously migrated *SQL transform*, and modify that just as you would a `[SQL template]` here.
 
-- ***Amazon Athena***, by default, renders editor-inserted names encapsulated in `"` double-quotes, eg. `“[service raw zone]”.“<table name>”`.  You don't need to do this! But FYI, the quotes are a safeguard in case of column names containing spaces, even though we never allow that.
+👉 After you've finish with this guide, you may want to check out guide for *Migrating SQL Transforms*, **here ►** **[📚Migrating transforms](../parking/migrating-transforms)**
 
-- Your original `[service database]` database name will not be used by **DAP⇨flow**, so you will need to swap it out with your `[service raw zone]`.
-   
-- Use of fully-qualified table names means you can use tables from databases elsewhere in the Data Platform. For example, you might want to join your table from your `[service raw zone]` database with a table or view from your `[service refined zone]`.   
+## 5. Understand your data model
 
-- You must avoid using the following column names in your transform query output because they are reserved by the **DAP⇨flow** implementation for writing your transform output to the S3 data lake partition folders:   
-    * `import_date`  
-    * `import_year`  
-    * `import_month`  
-    * `import_day`  
+**`🖱`** You can switch between your `[service databases]` whenever you need to by using the *list-box* beneath "**Database**" in the ***Athena*** *interface*. Then, listed under "**`▼` Tables**", you should find the table you need. To make everything simple going forward, please only select the tables with a  `_latest` *suffix*.
 
-    The **`Fig. 5`** template example shows the column `import_date` renamed as `original_import_date` which avoids that ever being a problem.  
+👉 For an explanation about **accessing your current service data**, using the `_latest` *suffix*, **check here ►** **[📚My current service data](../parking/access-my-current-service-data)** 
 
-    It isn't necessary to output a `original_import_date` column in your query but it is good practice to  inform users of your transform products about which generation the data came from.  
+For a *simple* ***table-join*** *data transformation* you will need the following tables:
 
-    Because **DAP⇨flow**'s Airflow ingestion can trigger transforms immediately afterward, it naturally follows that, the transform output dates will be the same as the original import dates. For that reason, you might not want to use `original_import_date` in your transform in production. But if the pipeline trigger logic might cause those dates to diverge in some future use case, then you should consider leaving it in.  
- 
-    **`Fig. 6c`** ![Fig. 6c](../images/prototype-simple-transforms-six-c.png)
+- The **`[parent table]_latest`** with a unique `[parent primary key]` column.
 
-* Here, it is recommended to order the output by `<parent key>` then `<child key>`.  
+- The **`[child table]_latest`** with a foreign key pointing to the `[parent table]`, which we will call the `[parent foreign key]` column. 
 
-    💡 Transformed data is written back to S3 in blocks of records organized into separate files collated into folders representing the the S3 partition scheme. Having records written out in a coherent order makes for more efficient scanning or crawling later on.  
- 
-    **`Fig. 6d`** ![Fig. 6d](../images/prototype-simple-transforms-six-d.png)
+- If this is will to be a typical **1:n** `LEFT JOIN` query, we should also feature a separate unique `[child key]` column, if we want to properly sort our results afterwards.
 
-* Adding a `limit` clause at the end of your query when testing SQL queries in the Athena console normally prevents long-running queries when testing. You will routinely remove the `limit` clause later when your transform goes into production.
+**`🖱`** Click the "**`🞧`**" adjacent those table names, suffixed `_latest`, to expand them and observe their associated columns and data types. 
 
-## 7. Run your `[transform SQL]` query  
+There, you should find:
+
+- The `[... key]` columns, identified above, for the ***table-join***. 
+
+- The source columns needed for your transformation's `[output columns]`.
+
+The `[output columns]` may variously comprise of either:
+
+- `.`*columns* directly associated with our tables used in the query.
+
+- `AS`*named-column* expressions, involving ****SQL Functions*** and operators used to manipulate variables or `.`*columns*.
+
+We may require a `[filter expression]` to ensure you only select the data we needed for your output. This is a logical-state expression which must involve at least one of our `.`*columns*, and may involve ***SQL Functions*** and operators to manipulate variables or various `.`*columns*.
+
+👉 If your expressions require ***SQL Functions***, you can check the ***Amazon Athena* documentation ►[here](https://docs.aws.amazon.com/athena/latest/ug/functions.html)**.
+
+Finally, take some time to think about how the `[Transform description]` should inform others about the data your SQL query will produce.
+
+## 6. Customize your SQL in the query editor
+
+**`🖱`** Begin by *copying* your preferred `[SQL template]` into your computer's clipboard, then *pasting* it directly into the ***Amazon Athena*** query editor
+
+Did you decide whether your *transform query* needed to be **1:n** `LEFT JOIN` or **1:1** `INNER JOIN`?
+
+👉 [📚**a)** `[SQL template]` = 1:n LEFT JOIN query...](#a-sql-template--1n-left-join)  
+
+👉 [📚**b)** `[SQL template]` = 1:1 INNER JOIN query...](#a-sql-template--11-left-join)  
+
+**`🖮`** Then, go through the `[SQL template]` line-by-line, replacing the `[`parameters`]` and making changes until you have created your new `[Transform SQL]`...
+
+**`🖱`**  When replacing the `[parent table]_latest` and `[child table]_latest` template `[`parameters`]`, the Athena editor allows you to insert an actual ***table name*** listed under “**`▼` Tables**” over from the left-hand side of the interface. Simply click on the three dots **`⋮`**, to the right of the *table name*, then select “***insert into editor***”. 
+
+**`Fig. 6a`** ![Fig. 6a](../images/parking-prototype-simple-transforms-six-a.png)
+
+**`🖮`** Unfortunately, *Athena* will not insert the ***database name*** for you, so you will need to type it yourself! If omitted, then, when you come to test your query using the *Athena* **"Run"** button, then *Athena* assumes the database is whatever is currently selected under **Database**.  
+
+- However, *table names* **must always** be qualified by their ***database name***, eg. `"[service raw zone]"."[table name]"` before deploying your `[Transform SQL]` using **DAP⇨flow**.  
+
+- Use of fully-qualified *table names* means you can use tables from databases anywhere inside the **Data Platform**. For example, you might want to join your `[service raw zone]` *table* to another table from a different set of`[service zones]` databases where you are granted access. **`Fig. 6a`** and **`Fig. 6a`** show such an example.
+
+**`🖱`** The Athena editor will insert actual ***column names*** after you have expanding them by clicking their "**`🞧`**" adjacent the table name. Again, right of the *column name*, adjacent it's data-type, simply click on the three dots **`⋮`**, then select “***insert into editor***”.  
+
+**`Fig. 6b`** ![Fig. 6b](../images/parking-prototype-simple-transforms-six-b.png)
+  
+- ***Amazon Athena***, by default, renders all editor-inserted names encapsulated in `"..."` double-quotes. Double-quotes are not mandatory but are included for names containing spaces. We like to keep them for table names, but unfortunately they can be annoying for column names where we tend to remove them because they are universally disliked!
+
+**`🖮`** You must include all the following partition-column names in your transform query output because they are expected later by the **DAP⇨flow** deployment, which writes your transform data out to their corresponding *S3 data lake* partition folders:  
+
+* `import_date`  
+* `import_year`  
+* `import_month`  
+* `import_day`
+
+**`🖮`** Also, make any necessary changes to the `import_timestamp` template column. Eg. **`Fig. 6b`** shows us finding an alternative column from the database that we can insert in front of it.
+
+👉 You'll find the full information on how to do ***Partition Columns*** etc., **expanded here ► [📚Appendix ► Considerations](#appendix)**
+
+**`🖮`** It is highly recommended to sort your transform's output using `ORDER BY` to ensures the fetch-behavior remains predictable. Enter the appropriate sort key columns as per your `[SQL Template]`. 
+
+**`🖮`** Adding a `LIMIT` clause at the end of your query when testing SQL queries in the Athena console normally prevents long-running queries when testing. You will routinely remove the `LIMIT` clause later when your transform goes into production.
+
+## 7. Run your `[Transform SQL]` query  
 **`🖱`** After customizing the SQL code, click “**Run**” or “**Run again**” located underneath the code window on the left side in the Athena interface.  
 
-**`Fig. 7`** ![Fig. 7](../images/prototype-simple-transforms-seven.png)
+**`Fig. 7`** ![Fig. 7](../images/parking-prototype-simple-transforms-seven.png)
 
-## 8. Review the results  
-**`👁`** ***Amazon Athena*** should fetch a number of rows based on your set `limit` (eg. `limit 100;` as in the **`Fig. 5`** `[SQL template]`).  
+## 8. Review your results  
+**`👁`** ***Amazon Athena*** should fetch data if no errors were found in your `[SQL Transform]`'s code.
 
-* If you included it, the first column `original_import_data` will inform us when the underlying data was ingested from your `[service database]`. If you do not see today’s date then you’ll immediately know that the data ingestion had failed sometime after the date shown, and you should contact the DAP Team to find out what the problem is. But so long as you have data of any given generation you can still test your transform query.  
+- The number of rows fetched should be determined by your `LIMIT [rows fetched];`  
 
-* The data should be sorted, eg.,  in the  `<parent key>` + `<child key>` order if that is what your `order by` clause says.  
+- The data should be sorted by whatever your `ORDER BY` specified. Eg. **`Fig. 7`** illustrates an `INNER JOIN` query sorted by a single `[parent primary key]` column.
 
-* If your query is based on a `<parent table>` left-joined to the `<child table>` it is possible for the `<child key>` and its associated child columns to output NULLs in the place of values, alongside the `<parent key>` and parent column values. It is worth paying attention to ensure such behavior is the same way as when querying your `[service database]` previously.  
+- The data should comprise your `[output columns]` in the order left to right, as they were specified top to bottom.  
 
-**`Fig. 8`** ![Fig. 8](../images/prototype-simple-transforms-eight.png)
-
-## 9. Save your query as `[transform SQL]`
+## 9. Save your query as `[Transform SQL]`
 **`🖱`** Check you are in your correct `[service workgroup]` before clicking on the three dots **⋮** to the right of your Query tab, and clicking “**Save as**”.  
 
-**`🖮`** When the dialogue pops up, enter a name for your `[transform SQL]` eg. `[transform].sql` and write a description before clicking the “**Save query**” button.
+**`Fig. 9`** ![Fig. 9a](../images/parking-prototype-simple-transforms-nine.png)  
 
-**`Fig. 9a`** ![Fig. 9a](../images/prototype-simple-transforms-nine-a.png)  
+**`🖮`** When the dialogue pops up, enter a name for your `[Transform SQL]` eg. `[transform].sql` and write a description before clicking the “**Save query**” button.
 
-**`Fig. 9b`** ![Fig. 9b](../images/prototype-simple-transforms-nine-b.png)
-
+**And you're done!**
 <br> 
 </br>  
 
 ---
 ## ***"We* ♡ *your feedback!"***
-![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
+![DAP⇨flow](../images/DAPairflowFLOWmigration.png)  
 :::tip UX  
 ### 👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / prototype-simple-transforms**](https://docs.google.com/forms/d/e/1FAIpQLSdqeNyWIPMNBHEr-YSyxnXQ4ggTwJPkffMYgFaJ4hGEhIL6LA/viewform?usp=pp_url&entry.339550210=prototype-simple-transforms)  
 
@@ -181,43 +263,98 @@ When, for example, using the **`Fig. 5`** `[SQL template]`:
 **Measures** the behavior of ***Amazon Athena*** while users prototype simple transforms:
 
 **Given** in my web browser, I have accessed ***Amazon Athena***  
-**~and** I have selected my `[service workgroup]`    
-**~and** I have my `[example data transformation]` I want to implement using my `[SQL template]` involving two related tables ingested from my`[service database]` that I want joined to produce a combined output  
-**~and** my `[example data transformation]` has a `<parent table>` containing a unique `<parent key>` which is a foreign key in a `<child table>` which also with its own unique `<child key>`  
-**~and** ***Amazon Athena*** shows my `[service raw zone]` with my `[service database]` equivalent tables and columns which includes the `<parent table>` and `<child table>`  
-**~and** the *optional* first column output from my `[SQL template]` named `original_import_date` is based on the `import_date` of the `<parent table>`  
-**~and** my `[SQL template]` was designed to fetch the first `<limit>` rows of data in the order `<parent key>`+`<child key>`  
+**~and** I have selected my `[service workgroup]`  
+**~and** ***Amazon Athena*** shows my `[service zones]` databases with my `[service database]` equivalent tables and columns needed for my `[Transform SQL]`  
 **~and** I am familiar with the concepts and basic requirements of writing an ***Amazon Athena*** SQL query  
+**~and** I have chosen a `[SQL template]` for a **simple table-join query** with added essential elements eg. *Partition Columns*  
+**~and** I can identify the following `[SQL template]` `[`*parameters*`]` needed for my `[Transform SQL]`:-
+- /\* `[Transform description]` \*/
+- SELECT `[output columns]`
+- FROM `"[service refined zone]"."[parent table]_latest" p`
+- JOIN `"[service raw zone]"."[child table]_latest" c`
+- ON `p.[parent primary key]` = `c.[parent foreign key]`
+- WHERE `[filter expression]`
+- ORDER BY `p.[parent primary key]` (with `, c.[child key]` if needed)
+- LIMIT `[rows fetched]`;
 
-**When** I copy-and-paste my `[SQL template]` into the query editor  
-**~and** I replace the  `<parent table>` and  `<child table>` placeholders with corresponding table names from my `[example data transformation]`  
-**~and** replace the  `<parent key>` and  `<child key>` placeholders with corresponding key column names from my `[example data transformation]`  
-**~and** include `<col1>, <col2>,..<etc.>` using column names from my `[example data transformation]` together with *optional* `[SQL template]` columns that I want fetched  
+**When** I copy-and-paste the `[SQL template]` into the query editor    
+**~and** I replace the `[SQL template]` `[`*parameters*`]` to create my `[Transform SQL]`  
+**~and** make any necessary changes to the *Partition Columns* with the  `import_timestamp`  
 **~and** I click “**Run**” underneath the code window on the left-hand side
 
-**Then** ***Amazon Athena*** should fetch the first `<limit>` rows of data sorted in `<parent key>`+`<child key>` order  
-**~and** the output should comprise the columns I selected  
-**~and** an *optional* column `original_import_date` would show when the data was ingested from my `[service database]`  
-**~and** I can save my SQL as a working and fully functional transform query with my name `[transform].sql` and description in my `[service workgroup]`.
+**Then** ***Amazon Athena*** will display the first `[rows fetched]` of data ordered by `[parent primary key]`and`[child key]`, showing my selected `[output columns]`  
+**~and** I can save my working and fully compliant `[Transform SQL]` query as `[transform].sql`, with a description, in my `[service workgroup]`.
 
-**Scale** of 7 to 14 **~and** flow features.  
+**Scale** of 4 to 9 **~and** flow features.  
 :::
-
 
 ## 📚Appendix
 
-<details><summary>Considerations</summary>
+<details><summary>Considerations for Amazon Athena SQL development</summary>
 
-### Considerations when adopting ***Amazon Athena*** for your future SQL development
+### A. ***Partition Columns***
+  
+Because *partition column* data is not written to the underlying Parquet files in the *S3 data lake*, it is strongly recommended to add a further column `import_timestamp` or `original_import_date` containing the same information in case it was ever necessary to deduce where misplaced, or exported, Parquet files were written to. 
 
-💡Migrating to a new technology or platform offers an ideal opportunity to raise coding standards and shed common old habits of the past.
+Here are a few ways *Partition Columns* are commonly inserted into transform queries:-
 
-* You have complete freedom over the SQL code formatting however we recommend always putting each element, table or column, on its own line. This helps debugging and readability. You should endeavour to be consistent in your style and agree a particular style among your service colleagues. In our examples, we will use 4-space tabulation and use "hard left" nesting, which you are welcome to adopt. 
+a) Generated by the *"now"* variables:
 
-* Nesting has no syntactic significance to SQL interpreters so its only impact is aesthetic alone. JOIN-clauses join everything previously to the table following, and not just the previous table, so nesting them does change order of execution. Execution order can only be affected by the use of bracketed sub-queries. The hard-left nesting style, on the other hand, is designed to help the reader be conscious of the execution order above all else.
+```sql
+    CAST(CURRENT_TIMESTAMP AS TIMESTAMP(3)) AS import_timestamp,
 
-* Avoid using lazy cartesian table products without JOIN-clauses in between the tables (or subqueries or CTEs). Likewise avoid using WHERE-clauses to perform cartesian filters and use JOIN-clauses instead. Conversely, Athena does not mind non-cartesian filters within JOIN-clauses and is even recommended where partition-columns are involved because it reduces the quantity of data scanned before any subsequent joins are executed.
+    /* Partition columns */
+    FORMAT_DATETIME(CURRENT_DATE, 'yyyy') AS import_year,
+    FORMAT_DATETIME(CURRENT_DATE, 'MM') AS import_month,
+    FORMAT_DATETIME(CURRENT_DATE, 'dd') AS import_day,
+    FORMAT_DATETIME(CURRENT_DATE, 'yyyyMMdd') AS import_date
+```
+"import" is really a misnomer here, since it is theoretically possible to generate these partitions the day after the data was actually ingested. However this still remains the convention, even though it has been suggested to use `transform_date` or even the "old school" `generation_date` instead. In practice the new **DAP⇨flow** orchestration's triggering of transforms should prevent these *partition columns* being out of alignment. Before **DAP⇨flow**, a scheduler might have still triggered a similar *Glue ETL job* even though the underlying ingestion had failed, leading to some confusion about what the partition data actually meant when it was later queried.
 
-* Always consider using CTEs in place of subqueries to help debugging and readability. ***Amazon Athena*** permits VALUES table constructors in CTEs allowing replacement of very lengthy WHERE-CASE filters with the more efficient JOIN-CTE filters.
+b) Derived directly from the `[service raw zone].[parent table] p`, for example:
+
+```sql
+    p.import_date AS original_import_date,  --> preserved in the Parquet file
+
+    /* Partition columns */
+    p.import_year,
+    p.import_month,
+    p.import_day,
+    p.import_date
+```  
+This is the preferred option for many as it makes the most logical sense. But you still might want to capture the `CURRENT_TIMESTAMP`, as in (a) above.
+
+c) Passed down from `[service refined zone].[parent table] p`, for example:
+
+```sql
+    p.import_timestamp,
+    -- This column might be named differently, eg...
+    -- p.ImportDateTime AS import_timestamp, 
+
+    /* Partition columns */
+    p.import_year,
+    p.import_month,
+    p.import_day,
+    p.import_date
+```  
+Tables in the *refined zone* are themselves products of transforms with partitions. So you would want to align their subsequent down-stream product to them. 
+
+In case `import_timestamp` was called something else or needs casting to a TIMESTAMP you will need to go check `[service refined zone].[parent table]` first!
+
+---
+
+### B. Conversations about style
+
+💡Migrating to new technologies or a new platform offers teams the opportunity to raise coding standards and shed those common old habits of the past.
+
+* You have complete freedom over the SQL code formatting however we recommend stacking tables and column expressions, each on their own line. That helps readability and line-by-line debugging. You should endeavour to be consistent in your style and agree on style among your service colleagues. In our examples, we used 4-space tabulation and indent column expressions after the statement, which you are welcome to adopt. 
+
+* Indentation has no syntactic significance for SQL interpreters so such a practice is purely aesthetic for readability. That is especially true of JOIN statements that not only join the previous table, but join *everything previous* to the table that follows. Further indentation of subsequent JOINs cannot imply nested right-to-left execution of table joins. Beginning every JOIN statement at the left emphasizes the true top-to-bottom execution order. Nesting the execution order can only be achieved using *bracketed sub-queries* which should naturally be indented for readability.
+
+* The use of leading commas is generally not considered compatible with the use of `-- trailing comments` when used in the same SQL script. Because merely auto-reformatting such SQL can easily cause a SQL syntactic failure making it no longer executable. There exists much legacy SQL, from way back last century, that uses leading commas. If the intention is to maintain such SQL, as it is, then you should also consider banning `-- trailing comments` and only allow `/* encapsulated comments */`. Alternately, please use SQL formatting tools to banish those leading commas forever!
+
+* Everyone disagrees about their favorite SQL formatting style. **SQL formatting tools** can help us quickly get around that problem. However do beware, SQL formatting tools allow you to keep all your bad habits as well as enforce good habits! And it is all too easy to be swayed by the popularity of some bad habits.
+
+* Are *all-caps SQL statements* considered a redundant practice? Well that depends! This is coming back into fashion to help emphasize SQL code embedded within C or Python code which is more generally lower-case. But People will never agree, so you must decide for yourself, or if there is a consensus among your colleagues, why not just go with that? Just be consistent!
 
 </details>
