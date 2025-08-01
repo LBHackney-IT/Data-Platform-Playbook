@@ -13,7 +13,7 @@ tags: [onboarding]
 
 **`🖱`** In your web browser, log in to your AWS account, navigate to the ***AWS Management Console***, and open ***Amazon Athena***. 
 
-**`🖱`** Ensure you have selected your `[service workgroup]` from the list box next to “**Workgroup**”.  
+**`🖱`** Ensure you have selected your `[service workgroup]` from the list-box next to “**Workgroup**”.  
 
 :::info REMINDER
 👉  Your **Service Terms`[]`** are defined in the ***welcome*** document stored in your [**`[service access group]`** ***Google Drive subfolder***](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link).

@@ -6,28 +6,26 @@ layout: playbook_js
 tags: [onboarding]
 ---
 # How will I query and analyze my `[service]`'s data with ***Amazon Athena***?
-![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
+![DAP⇨flow](../images/DAPairflowFLOWmigration.png)  
 
 ## 1. Access ***Amazon Athena***
 **`🖱`** In your web browser, log in to your AWS account, navigate to the AWS Management Console, and open Amazon Athena. 
    
-👉 First time Amazon Athena users should **start here ►** **[DAP⇨flow📚Amazon Athena](../onboarding/access-my-Amazon-Athena-database)** 
+👉 First time Amazon Athena users should **start here ►** **[📚Amazon Athena](../onboarding/access-my-Amazon-Athena-database)** 
 
 ## 2. Select your `[service workgroup]`
-**`🖱`** Ensure you have selected your `[service workgroup]` from the list box next to “**Workgroup**”.  
+**`🖱`** Ensure you have selected your `[service workgroup]` from the list-box next to “**Workgroup**”.  
 
 :::info REMINDER
 👉  Your **Service Terms`[]`** are defined in the ***welcome*** document stored in your [**`[service access group]`** ***Google Drive subfolder***](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link).
 :::
 
 ## 3. Explore your database
-**`🖱`** Ensure you have selected your `[service raw zone]` database from the list box under "**Database**" on the left side of the Athena interface, before expanding the lists under "**`►` Tables**" and/or "**`►` Views**. Expanding further should reveal column names and data types, as follows:
+**`🖱`** Select the `[service raw zone[ #]]` which is equivalent to your `[service database]`, from the list-box under "**Database**" on the left side of the Athena interface.  
 
-   - "**`▼` Tables**"  
-   👉 Documented here ► **[📚My service data history](../onboarding/access-my-service-data-history)** 
+**`🖱`** Expand the list under "**`►` Tables**" to reveal the database objects there.
 
-   - "**`▼` Views**"  
-   👉 Documented here ► **[📚My current service data](../onboarding/access-my-current-service-data)** 
+**`👁`** You should observe your `[service database]` equivalent tables, suffixed with `..._latest`, with their columns and associated data types listed.
 
 ## 4. Familiarize yourself with SQL queries
 **`🕮`** You will need to understand the concepts and basic requirements of writing SQL queries. This includes knowing how to select columns, filter data, join tables, etc.  
@@ -35,7 +33,7 @@ tags: [onboarding]
    👉 You can learn more about using Amazon Athena **►** [**here**](https://docs.aws.amazon.com/athena/latest/ug/using-athena-sql.html)
 
 ## 5. Run SQL queries
-**`🖱`** Use the SQL query editor in ***Amazon Athena*** to write and run queries involving tables and columns equivalent to the your original `[service database]`.
+**`🖱`** Use the SQL query editor in ***Amazon Athena*** to write and run queries involving tables and columns equivalent to those in your original `[service database]`.
 
 **`Fig. 5`** ![Fig. 5](../images/query-my-service-data-five.png)
 
@@ -52,7 +50,7 @@ tags: [onboarding]
 
 ---
 ## ***"We* ♡ *your feedback!"***
-![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
+![DAP⇨flow](../images/DAPairflowFLOWmigration.png)  
 :::tip UX  
 ### 👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / query-my-service-data**](https://docs.google.com/forms/d/e/1FAIpQLSdqeNyWIPMNBHEr-YSyxnXQ4ggTwJPkffMYgFaJ4hGEhIL6LA/viewform?usp=pp_url&entry.339550210=query-my-service-data)  
 
@@ -78,7 +76,7 @@ tags: [onboarding]
 
 **Given** in my web browser, I have accessed ***Amazon Athena***  
 **~and** I have selected my `[service workgroup]`  
-**~and** Amazon Athena shows my `[service raw zone]` with my `[service database]` equivalent tables and columns  
+**~and** Amazon Athena shows my `[service raw zone[ #]]` with my `[service database]` equivalent tables, suffixed with `..._latest`, with their columns and associated data types  
 **~and** I am familiar with the concepts and basic requirements of writing an ***Amazon Athena*** SQL query  
 
 **When** I run my SQL query containing given those tables and columns  
