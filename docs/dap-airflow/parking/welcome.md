@@ -32,24 +32,33 @@ The following **REMINDER** box appears throughout the [*DAP⇨flow📚Onboarding
 ## 3. Review your **Service Terms`[]`**
 Your Service's "***welcome***" document provides you with the necessary translations for the **Service Terms`[]`** used throughout the [📚Onboarding**](../introduction#📚Onboarding) documentation, ensuring you are directed to the appropriate places while using the **Hackney Council AWS Console** or the **LBHackney-IT/dap-airflow** *GitHub repository*.
 
-The **Service Terms`[]`** must be defined defined:-  
+These **Service Terms`[]`** must be defined:-  
 - `[service]`  
 - `[service access group]`  
 - `[service hotline]`  
 - `[service workgroup]`  
 - `[service role]`  
 - `[service database]`  
-- `[service dags]`  
 
-The Athena databases must be defined and, eg., expanded as required:- 
+The Athena databases must be defined and expanded as required:- 
 - `[service zones]` = 
     - `[service raw zone]`  
-    - eg. `[service raw zone 2]`  
-    - eg. `[service raw zone 3]` etc.
+    - `[service raw zone 2]` (optional second zone) 
+    - `[service raw zone 3]` (optional third, etc.) 
     - `[service refined zone]`  
-    - eg. `[service refined zone 2]`  
-    - eg. `[service refined zone 3]` etc.
+    - `[service refined zone 2]` (optional second zone) 
+    - `[service refined zone 3]` (optional third, etc.) 
     - `[service trusted zone]`  
+
+The Airflow dag, transform folders and orchestrations must be defined and expanded as required:- 
+- `[service dags]`  
+- `[dag folders]` = 
+    - `[transforms folder]`
+    - `[orchestration yaml]`
+    - `[transforms folder 2]`  (optional second folder) 
+    - `[orchestration yaml 2]` (optional second yaml) 
+    - `[transforms folder 3]`  (optional third, etc.) 
+    - `[orchestration yaml 3]` (optional third, etc.) 
 
 <br> 
 </br>  
