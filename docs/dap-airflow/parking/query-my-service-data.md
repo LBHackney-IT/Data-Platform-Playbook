@@ -21,26 +21,32 @@ tags: [onboarding]
 :::
 
 ## 3. Explore your database
-**`🖱`** Select the `[service raw zone[ #]]` which is equivalent to your `[service database]`, from the list-box under "**Database**" on the left side of the Athena interface.  
+**`🖱`** Find and select the `[service zones]` database which is equivalent to your `[service database]`, from the list-box under "**Database**" on the left side of the Athena interface.  
 
-**`🖱`** Expand the list under "**`►` Tables**" to reveal the database objects there.
+**`🖱`** Expand the list under "**`►` Tables**" to reveal the database objects there.  
 
-**`👁`** You should observe your `[service database]` equivalent tables, suffixed with `..._latest`, with their columns and associated data types listed.
+**`👁`** You should observe your `[service database]` equivalent tables, suffixed with `_latest`.
+
+**`🖱`** Click "`🞧`" adjacent a table name with the suffix `_latest`.  
+
+ **`👁`** You should observe column names and data types, equivalent to the same table in your `[service database]`.  
 
 ## 4. Familiarize yourself with SQL queries
-**`🕮`** You will need to understand the concepts and basic requirements of writing SQL queries. This includes knowing how to select columns, filter data, join tables, etc.  
+**`🕮`** You will need to understand the basic concepts and requirements of writing SQL queries. This includes knowing how to select columns, filter data, join tables, etc.  
 
-   👉 You can learn more about using Amazon Athena **►** [**here**](https://docs.aws.amazon.com/athena/latest/ug/using-athena-sql.html)
+👉 There is a comprehensive guide to help you write Athena SQL queries **provided here ►** **[📚Prototype simple transforms](../parking/prototype-simple-transforms)**  
+
+👉 You can also learn more about using Amazon Athena **►** [**here**](https://docs.aws.amazon.com/athena/latest/ug/using-athena-sql.html)
 
 ## 5. Run SQL queries
 **`🖱`** Use the SQL query editor in ***Amazon Athena*** to write and run queries involving tables and columns equivalent to those in your original `[service database]`.
 
-**`Fig. 5`** ![Fig. 5](../images/query-my-service-data-five.png)
+**`Fig. 5`** ![Fig. 5](../images/parking-query-my-service-data-five.png)
 
 ## 6. Analyze your data   
 **`👁`** Review the results of your SQL queries to find answers to your questions about your `[service database]`.
 
-**`Fig. 6`** ![Fig. 6](../images/query-my-service-data-six.png)
+**`Fig. 6`** ![Fig. 6](../images/parking-query-my-service-data-six.png)
 
 **`🖱`** You can copy results to the clipboard.  
 
@@ -76,7 +82,7 @@ tags: [onboarding]
 
 **Given** in my web browser, I have accessed ***Amazon Athena***  
 **~and** I have selected my `[service workgroup]`  
-**~and** Amazon Athena shows my `[service raw zone[ #]]` with my `[service database]` equivalent tables, suffixed with `..._latest`, with their columns and associated data types  
+**~and** Amazon Athena shows a `[service zones]` database equivalent to my `[service database]`, having equivalent tables suffixed with `_latest`, with the same columns and associated data types  
 **~and** I am familiar with the concepts and basic requirements of writing an ***Amazon Athena*** SQL query  
 
 **When** I run my SQL query containing given those tables and columns  
