@@ -63,8 +63,7 @@ When the documentation for these guides is finally completed, we will only need 
 | [My current service data](../dap-airflow/parking/access-my-current-service-data#ux-criteria)  | How will I access my `[service]`'s current data from ***Amazon Athena***?                     | 3 |
 | [Query my service data](../dap-airflow/parking/query-my-service-data#ux-criteria)             | How will I query and analyze my `[service]`'s data with ***Amazon Athena***?                  | 2 to 5 |
 | [Prototype simple transforms](../dap-airflow/parking/prototype-simple-transforms#ux-criteria) | How can I use ***Amazon Athena*** to prototype a simple table-join data transformation?       | 4 to 9 |
-| [Prototype legacy transforms](../dap-airflow/parking/prototype-legacy-transforms#ux-criteria) | How can I use ***Amazon Athena*** to prototype a legacy transformation?                       | 5 to 9 |
-| [Migrating transforms](../parking/migrating-transforms)                                       | How were Glue/Spark SQL queries migrated to **DAP⇨flow**?                                     | ? |
+| [Migrating transforms](../parking/migrating-transforms)                                       | How were Glue/Spark SQL queries migrated to **DAP⇨flow**?                                     | 8 to 11 |
 | [GitHub access](../dap-airflow/parking/github-access#ux-criteria)                             | How do I set up my ***GitHub*** access for **DAP⇨flow**?                                      | 5 |
 | [GitHub branching](../dap-airflow/parking/github-branch#ux-criteria)                          | How do I create `[transform branch]` as my new working branch of **DAP⇨flow**'s repository?   | 4 to 6 |
 | [Committing transforms](../dap-airflow/parking/github-commit-transform#ux-criteria)           | How do I commit my working `[transform SQL]` to **DAP⇨flow**'s repository?                    | 12 to 20 |

@@ -157,7 +157,6 @@ module.exports = {
             "dap-airflow/parking/access-my-current-service-data",
             "dap-airflow/parking/query-my-service-data",
             "dap-airflow/parking/prototype-simple-transforms",
-            "dap-airflow/parking/prototype-legacy-transforms",
             "dap-airflow/parking/migrating-transforms",
             "dap-airflow/parking/github-access",
             "dap-airflow/parking/github-branch",
