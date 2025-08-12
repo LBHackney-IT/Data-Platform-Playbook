@@ -5,9 +5,11 @@ description: "Onboarding data analysts and engineers to DAP⇨flow, the Data Ana
 layout: playbook_js
 tags: [onboarding]
 ---
-# How were Glue/Spark SQL queries migrated to **DAP⇨flow**?
+# How can my ***Amazon Glue*** *ETL job's Spark SQL query* be migrated to **DAP⇨flow**?
 ![DAP⇨flow](../images/DAPairflowFLOWmigration.png)  
 
+#### *** LEFT BLANK *** 
+#### *** AWAITING COMPLETION ***
 
 <br> 
 </br>  
@@ -35,25 +37,27 @@ tags: [onboarding]
 :::
 
 :::note BEHAVIOR  
-### How were Glue/Spark SQL queries migrated to **DAP⇨flow**?
-**Measures** the **DAP Platform Team** migration of Glue/Spark SQL queries to **DAP⇨flow**:  
+### How can my ***Amazon Glue*** *ETL job's Spark SQL query* be migrated to **DAP⇨flow**?
+**Measures** the successful migration of an ***Amazon Glue*** *ETL job* to **DAP⇨flow**:  
 
 **Given** in my web browser, I have accessed ***Amazon Athena***  
 **~and** I have selected my `[service workgroup]`  
-**~and** ***Amazon Athena*** shows my `[service raw zone[ #]]` with my `[service database]` equivalent tables and columns  
-**~and** data was previously ingested from my `[service database]` into my `[service raw zone[ #]]`  
-**~and** I have my `[legacy SQL query]` used by my `[service database]` that I now want to migrate to **DAP⇨flow**  
+**~and** ***Amazon Athena*** shows all my `[service zones]` databases  
+**~and** I have my ***Glue*** *ETL job*'s `[migration SQL query]` waiting to be fashioned into **DAP⇨flow** *transform* 
 
-**When** I copy-and-paste my `[legacy SQL query]` into the query editor  
-**~and** I ensure the table names are prefixed with my `[service raw zone[ #]]` instead of my `[service database]`  
-**~and** I ensure the table names are suffixed with `..._latest`  
-**~and** I ensure all the column functions and expressions are made input-and-output-compatible with ***Amazon Athena***  
+**When** I copy-and-paste my `[migration SQL query]` into the query editor  
+**~and** I ensure every ***Amazon Glue*** *ETL job* input-table alias is replaced by it's actual table name  
+**~and** I ensure every table name is correctly formatted and prefixed by it's `[service zones]` database name  
+**~and** I ensure every column expression is translated and made compatible with ***Amazon Athena***'s SQL DML structure, functions, syntax and behavior 
+**~and** I ensure the query output columns are ordered and `CAST` exactly as the original output in my ***Amazon Glue*** *ETL job*'s target `[service zones]` database and table  
+**~and** I ensure the query output *partition columns* are featured at the end of the column order  
 **~and** I click “**Run**” underneath the code window on the left-hand side
 
-**Then** ***Amazon Athena*** should fetch results as would my `[legacy SQL query]` have done when run by my `[service database]`    
-**~and** I can save my new `[transform SQL]` with a name `[transform].sql` and a description in my `[service workgroup]`.  
+**Then** ***Amazon Athena*** should fetch results resembling my ***Amazon Glue*** *ETL job*'s original target `[service zones]` database and table on the same day  
+**~and** I can save my working `[transform SQL]` with a name `[transform].sql` and a description in my `[service workgroup]`  
+**~and** I can continue improving, running and saving my `[transform SQL]` until the output perfect matches the original target table.   
 
-**Scale** of 5 to 9 **~and** flow features.  
+**Scale** of 8 to 11 **~and** flow features.  
 :::
 
 ## 📚Appendix
