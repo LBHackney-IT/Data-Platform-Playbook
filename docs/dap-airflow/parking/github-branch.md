@@ -7,12 +7,12 @@ tags: [onboarding]
 ---
 
 # How do I create `[transform branch]` as my new working branch of **DAP⇨flow**'s `dap-airflow` repository?
-![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
+![DAP⇨flow](../images/DAPairflowFLOWmigration.png)  
 
 ## 1. Log into your ***GitHub*** account
 **`🖱`** Open your web browser and log into your ***GitHub*** account using your ***Hackney email address*** with two-factor authentication.
  
-👉 Users without a ***GitHub*** account or existing ***GitHub*** users without membership of the **[London Borough of Hackney](https://github.com/LBHackney-IT) organization,** should **start here ►** **[DAP⇨flow📚GitHub access](../onboarding/github-access)** 
+👉 Users without a ***GitHub*** account or existing ***GitHub*** users without membership of the **[London Borough of Hackney](https://github.com/LBHackney-IT) organization,** should **start here ►** **[📚GitHub access](../parking/github-access)** 
 
 ## 2. Access the `dap-airflow` repository
 **`🖱`** When you are ready to begin, open the **[`dap-airflow`](https://github.com/LBHackney-IT/dap-airflow)** repository in your web browser.
@@ -21,7 +21,7 @@ tags: [onboarding]
 
 **`🖱`** Select the "**Code**" tab at the top of the repository page
 
-**`Fig. 3`** ![Fig. 3](../images/github-branch-three.png)
+**`Fig. 3`** ![Fig. 3](../images/parking-github-branch-three.png)
 
 **`🖱`** Below that, click on the "**![][branch]`main`**" branch dropdown button menu.
 
@@ -30,26 +30,26 @@ tags: [onboarding]
 **`🖱`** Below that on the dropdown menu, click on "Create branch **![][branch]`[transform branch]`** from **`main`.**"
 
 :::info REMINDER
-👉  Your **Service Terms`[]`** are defined in the ***welcome*** document stored in your [**`[service access group]`** ***Google Drive subfolder***](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link).
+👉  Your **Service Terms`[]`** are defined in your **`welcome`** document stored in your `[service access group]`'s **► ** [***Google Drive subfolder***](https://drive.google.com/drive/folders/1soY6hORmPVlRvlW_t1V1hTFXfZbLt6NS?usp=drive_link). 
 :::
 
 ## 4. Verify `[transform branch]` is now your working branch
 **`👁`** Check your "![][branch]`[trannsform branch]`” has replaced "![][branch]`main`" as your working branch.
 
-**`Fig. 4`** ![Fig. 4](../images/github-branch-four.png)
+**`Fig. 4`** ![Fig. 4](../images/parking-github-branch-four.png)
 
 <br> 
 </br>  
 
 ---
 ## ***"We* ♡ *your feedback!"***
-![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
+![DAP⇨flow](../images/DAPairflowFLOWmigration.png)   
 :::tip UX  
-### 👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / github-branch**](https://docs.google.com/forms/d/e/1FAIpQLSdqeNyWIPMNBHEr-YSyxnXQ4ggTwJPkffMYgFaJ4hGEhIL6LA/viewform?usp=pp_url&entry.339550210=github-branch)  
+### 👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / github-branch**](https://docs.google.com/forms/d/e/1FAIpQLSc7nv1XmfRJKZlZTYIJQxAwbimUfsZLXQOVt3TJO-zUOjcRGQ/viewform?usp=pp_url&entry.339550210=github-branch)  
 
 - Your feedback enables us to improve **DAP⇨flow** and our Data Analytics Platform service.  
 - We encourage all our users to be generous with their time, in giving us their recollections and honest opinions about our service.  
-- We especially encourage our new users to give feedback at the end of every **📚Onboarding** task because the quality of the onboarding experience really matters.  
+- We especially encourage our new users to give feedback at the end of every **DAP⇨flow📚Migration onboarding** task because the quality of the onboarding experience really matters.  
 
     ☝ **Please use this link to help us understand your user experience!**
 :::
