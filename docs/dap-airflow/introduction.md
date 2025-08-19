@@ -10,11 +10,12 @@ tags: [dap-airflow]
 ![DAP⇨flow](../dap-airflow/images/DAPairflowFLOWwide.png)  
 ## What is **DAP⇨flow**? 
 **DAP⇨flow** is an integration of ***Apache Airflow*** with ***Amazon Athena*** built upon Hackney's ***Data Analytics Platform***. 
-### **DAP⇨flow** allows Data Analysts, in the simplest way possible, to develop and run data pipelines using their own service's data and create data products for their service and service users.
+
+**DAP⇨flow** allows Data Analysts, in the simplest way possible, to develop and run data pipelines using their own service's data and create data products for their service and service users.
 
 #### Building data pipelines used to be harder and more complex and time consuming. 
 
-Data Analysts, after prototyping their SQL queries using ***Amazon Athena*** were required to convert *Athena SQL* code to *Spark SQL*, a different SQL dialect, then embed their code within an ***Amazon Glue*** job which they had to deploy using ***Terraform***.  
+Data Analysts, after prototyping their SQL queries using ***Amazon Athena*** were required to convert *Athena SQL* code to *Spark SQL*, a different SQL dialect, then embed their code within an ***Amazon Glue ETL*** job which they had to deploy using ***Terraform***.  
 
 Data Analysts were forced to query across multiple generations of the same data stored in the ***Amazon S3*** Data lake when all they actually wanted was just their current data. That meant they could not simply take legacy SQL queries and run them directly in ***Amazon Athena***.
 
@@ -28,7 +29,7 @@ Data Analysts were forced to query across multiple generations of the same data 
 ![Fig. 3](./images/introduction-three.png)
 
 #### How **DAP⇨flow** solved our problems
-* Firstly, Data Analysts no longer need to convert and re-test their prototype SQL transforms to run in the separate and more complex ***Amazon Glue*** run-time environment. 
+* Firstly, Data Analysts no longer need to convert and re-test their prototype SQL transforms to run in the separate and more complex ***Amazon Glue ETL*** run-time environment. 
 
     Instead, ***Apache Airflow*** can use exactly the same ***Amazon Athena*** to transform data in production with the outputs going directly into data products. So that Data Analysts' prototype SQL transform queries, that they spent time on testing until they were working, can simply be reused instead of being discarded.  
 
@@ -46,7 +47,7 @@ Data Analysts were forced to query across multiple generations of the same data 
 
 ## 📚Onboarding
 
-#### A series onboarding documents is available here, to help Data Analysts get started with **DAP⇨flow**
+#### A series onboarding guides to help Data Analysts get started with **DAP⇨flow**
 
 Anyone new to **DAP⇨flow** will start with [**📚Before you begin**](../dap-airflow/onboarding/begin) followed by [**📚Welcome!**](../dap-airflow/onboarding/welcome).
 
@@ -57,81 +58,97 @@ Data Analysts are encouraged to think about what they need to do before deciding
 #### ***"We* ♡ *your feedback!"***
 Your continuous feedback enables us to improve **DAP⇨flow** and our ***Data Analytics Platform*** service. Survey links are provided at the end of each onboarding document.
 
-#### **Below here, is the full list of topics currently on offer...**
-And more topics will be added as they are ready. [**Skip to the end**](#coming-soon) to discover what's coming next!
+#### Below, is the full list of topics currently on offer...
+More guides will be added when they are ready:
 
-### [Before you begin](../dap-airflow/onboarding/begin)
-#### How do I get onboard **DAP⇨flow**?
+| **📚Onboarding** | **Guide** |
+| --- | --- |
+| [Before you begin](../dap-airflow/onboarding/begin)                                  | What must happen before I can begin **DAP⇨flow**?                                              |
+| [Welcome!](../dap-airflow/onboarding/welcome)                                        | What are my **Service Terms`[]`**?                                                             |
+| [AWS Console access](../dap-airflow/onboarding/access-the-AWS-Management-Console)    | How will I access the ***AWS Management Console***?                                            |
+| [AWS region](../dap-airflow/onboarding/access-the-AWS-region)                        | How will I ensure I am in the correct **AWS region**?                                          |
+| [Amazon Athena](../dap-airflow/onboarding/access-my-Amazon-Athena-database)          | How will I use ***Amazon Athena*** to access my database?                                      |
+| [My current service data](../dap-airflow/onboarding/access-my-current-service-data)  | How will I access my `[service]`'s current data from ***Amazon Athena***?                      |
+| [My service data history](../dap-airflow/onboarding/access-my-service-data-history)  | How will I access my `[service]`'s data history from ***Amazon Athena***?                      |
+| [Query my service data](../dap-airflow/onboarding/query-my-service-data)             | How will I query and analyze my `[service]`'s data with ***Amazon Athena***?                   |
+| [Prototype simple transforms](../dap-airflow/onboarding/prototype-simple-transforms) | How can I use ***Amazon Athena*** to prototype a simple table-join data transformation?        |
+| [Prototype legacy transforms](../dap-airflow/onboarding/prototype-legacy-transforms) | How can I use ***Amazon Athena*** to prototype a legacy transformation?                        |
+| [GitHub access](../dap-airflow/onboarding/github-access)                             | How do I set up my ***GitHub*** access for **DAP⇨flow**?                                       |
+| [GitHub branching](../dap-airflow/onboarding/github-branch)                          | How do I create `[transform branch]` as my new working branch of **DAP⇨flow**'s repository?    |
+| [Committing transforms](../dap-airflow/onboarding/github-commit-transform)           | How do I commit my working `[transform SQL]` to **DAP⇨flow**'s repository?                     |
+| [GitHub pull requests](../dap-airflow/onboarding/github-pull-request)                | How do I raise a *"pull request"* to merge my `[transform branch]` into the `main` trunk of the **DAP⇨flow** repository? |
 
-### [Welcome!](../dap-airflow/onboarding/welcome)
-#### What are my **Service Terms`[]`**?
+ [**Skip to the end**](#coming-soon) to discover what's coming next!
 
-### [AWS Console access](../dap-airflow/onboarding/access-the-AWS-Management-Console)
-#### How will I access the ***AWS Management Console***?
+## 📚Migration onboarding
 
-### [AWS region](../dap-airflow/onboarding/access-the-AWS-region)
-#### How will I ensure I am in the correct **AWS region**?
+Users who had their SQL transforms migrated from ***Amazon Glue ETL*** to **DAP⇨flow**, now have their own series of onboarding guides. After migrating to **DAP⇨flow**, should start with [**📚Before you begin**](../dap-airflow/parking/begin) followed by [**📚Welcome!**](../dap-airflow/parking/welcome).
 
-### [Amazon Athena](../dap-airflow/onboarding/access-my-Amazon-Athena-database)
-#### How will I use ***Amazon Athena*** to access my database?
+### ***Amazon Glue ETL***'s legacy...
 
-### [My current service data](../dap-airflow/onboarding/access-my-current-service-data)
-#### How will I access my `[service]`'s current data from ***Amazon Athena***?
+We had the freedom to replace a large part of the code-base including the **Data Platform** data model in **DAP⇨flow**'s design. But that left us with the question of, how to migrate our ***Amazon Glue ETL*** users, who had already adapted their solutions around the old **Data Platform** table model. 
 
-### [My service data history](../dap-airflow/onboarding/access-my-service-data-history)
-#### How will I access my `[service]`'s data history from ***Amazon Athena***?
+***Amazon Glue ETL*** users were used to incorporating generational subqueries in their SQL queries and as a result we had acquired a considerable legacy of transformations, which in turn, produced a considerable catalog of historical data, all bearing the original unsuffixed table naming convention. That, unfortunately clashed with **DAP⇨flow**'s preferred naming scheme for our new users. 
 
-### [Query my service data](../dap-airflow/onboarding/query-my-service-data)
-#### How will I query and analyze my `[service]`'s data with ***Amazon Athena***?
+**DAP⇨flow**'s reason for changing our previous **Data Platform** table naming conventions was to allow users to quickly adapt the SQL brought across from their enterprise database systems. How could we adapt this for our ***Amazon Glue ETL*** users? 
 
-### [Prototype simple transforms](../dap-airflow/onboarding/prototype-simple-transforms)
-#### How can I use ***Amazon Athena*** to prototype a simple table-join data transformation?
+For better or worse, we decided to leave those users' existing data and transformation logic intact and support the old **Data Platform** way that data was organized, including support for legacy queries in the presentation layer.
 
-### [Prototype legacy transforms](../dap-airflow/onboarding/prototype-legacy-transforms)
-#### How do I use ***Amazon Athena*** to prototype a data transformation from my `[legacy SQL query]`?
+We did, however, find a reasonable compromise that would allow new transforms to be prototyped and deployed in a much simpler way. 
 
-### [GitHub access](../dap-airflow/onboarding/github-access)
-#### How do I set up my ***GitHub*** access for **DAP⇨flow**?
+So, we continue to support around 80 legacy data transforms in this way and will continue to do so until the Enterprise Databases, that supply them with data, are eventually replaced or are otherwise decommissioned.
 
-### [GitHub branching](../dap-airflow/onboarding/github-branch)
-#### How do I create `[transform branch]` as my new working branch of **DAP⇨flow**'s repository?
+### 🚧Under construction
 
-### [Committing transforms](../dap-airflow/onboarding/github-commit-transform)
-#### How do I commit my working `[transform SQL]` to **DAP⇨flow**'s repository?
+The guide contents below, represents the full list of topics currently on offer for users migrated to **DAP⇨flow** from ***Amazon Glue ETL***. 
 
-### [GitHub pull requests](../dap-airflow/onboarding/github-pull-request)
-#### How do I raise a *"pull request"* to merge my `[transform branch]` into the `main` trunk of the **DAP⇨flow** repository?
+These guides were released early, before the entire guide was finished, so that feedback could be incorporate directly into the next **Release #2:**
+- **Release #1:** 🚧Under construction *= early feedback.*
+- **Release #2:** 📚Migration onboarding *= guide complete.*
+- **Release #3:** 📚Onboarding *retrofit = brought back up-to-date.*
+
+More guides will be added when they are ready...
+
+| ![DAP⇨flow](../dap-airflow/images/migration-small.png) | **Guide** |
+| --- | --- |
+| [Before you begin](../dap-airflow/parking/begin)                                  | What must happen before I can begin **DAP⇨flow**?                                            |
+| [Welcome!](../dap-airflow/parking/welcome)                                        | What are my **Service Terms`[]`**?                                                            |
+| [AWS Console access](../dap-airflow/parking/access-the-AWS-Management-Console)    | How will I access the ***AWS Management Console***?                                           |
+| [AWS region](../dap-airflow/parking/access-the-AWS-region)                        | How will I ensure I am in the correct **AWS region**?                                         |
+| [Amazon Athena](../dap-airflow/parking/access-my-Amazon-Athena-database)          | How will I use ***Amazon Athena*** to access my database?                                     |
+| [My service data history](../dap-airflow/parking/access-my-service-data-history)  | How will I access my `[service]`'s data history from ***Amazon Athena***?                     |
+| [My current service data](../dap-airflow/parking/access-my-current-service-data)  | How will I access my `[service]`'s current data from ***Amazon Athena***?                     |
+| [Query my service data](../dap-airflow/parking/query-my-service-data)             | How will I query and analyze my `[service]`'s data with ***Amazon Athena***?                  |
+| [Prototype simple transforms](../dap-airflow/parking/prototype-simple-transforms) | How can I use ***Amazon Athena*** to prototype a simple table-join data transformation?       |
+| [Migrating transforms](../parking/migrating-transforms)                           | How was my ***Amazon Glue*** *ETL job's Spark SQL query* migrated to **DAP⇨flow**?         🚧|
+| [GitHub access](../dap-airflow/parking/github-access)                             | How do I set up my ***GitHub*** access for **DAP⇨flow**?                                     |
+| [GitHub branching](../dap-airflow/parking/github-branch)                          | How do I create `[transform branch]` as my new working branch of **DAP⇨flow**'s repository?  |
+| [Committing transforms](../dap-airflow/parking/github-commit-transform)           | How do I commit my working `[transform SQL]` to **DAP⇨flow**'s repository?                 🚧|
+| [Orchestrating transforms](../dap-airflow/parking/github-orchestrate-transform)   | How do I orchestrate my `[transform].sql` in the **DAP⇨flow** repository?                  🚧|
+| [GitHub pull requests](../dap-airflow/parking/github-pull-request)                | How do I raise a *"pull request"* to merge my `[transform branch]` into the `main` trunk of the **DAP⇨flow** repository? |
 
 ## 📚Coming soon...
-The following guides are due for completion.
+The following guides are due for completion:
 
-### Merging branches 
-#### How do i complete the merge of `[transform branch]` into the main trunk of **DAP⇨flow**'s repository?
-
-### Airflow
-#### How will I access my data transforms using ***Airflow*** on the web?
-
-### Adding tables to the raw-zone
-#### How do i add a new table ingestion to my `[service raw-zone]` database?
+| **🚧** | **Guide** |
+| --- | --- |
+| **Merging branches** | How do i complete the merge of `[transform branch]` into the main trunk of **DAP⇨flow**'s repository? | 
+| **Airflow** | How will I monitor my data transforms running in ***Airflow***? |
+| **Adding tables to the raw-zone** | How do i add a new table ingestion to my `[service raw-zone]` database? |
 
 ## 📚Suggested for later...
-The following guides are on our backlog.
+The following guides are in our backlog:
 
-#### Migrating old prototype Athena SQL to the new **DAP⇨flow**
-
-#### Migrating old production Spark SQL to the new **DAP⇨flow**
-
-#### Refined-zone views
-
-#### External access to **DAP⇨flow** products
-
-#### Removing tables from my `[service raw-zone]` database
-
-#### Removing products from the `[service refined-zone]` database
+| **🚧** |
+| --- |
+|Refined-zone views|
+|External access to **DAP⇨flow** products|
+|Removing transforms and products from the `[service refined-zone]` database|
+|Removing tables from my `[service raw-zone]` database|
 
 <br/>
 
-![Apache Airflow](../dap-airflow/images/worker_tap_valve_800_wht.jpg)  
+![Flow Worker](../dap-airflow/images/worker_tap_valve_400_wht.png)  
 
 <br/>
 
@@ -139,7 +156,7 @@ The following guides are on our backlog.
 
 <br/>
 
-![Apache Airflow](../dap-airflow/images/AmazonAthenaLogo.png)  
+![Amazon Athena](../dap-airflow/images/AmazonAthenaLogo.png)  
 
 
 

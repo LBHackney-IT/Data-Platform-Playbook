@@ -161,6 +161,7 @@ module.exports = {
             "dap-airflow/parking/github-access",
             "dap-airflow/parking/github-branch",
             "dap-airflow/parking/github-commit-transform",
+            "dap-airflow/parking/github-orchestrate-transform",
             "dap-airflow/parking/github-pull-request",
           ],
         },
