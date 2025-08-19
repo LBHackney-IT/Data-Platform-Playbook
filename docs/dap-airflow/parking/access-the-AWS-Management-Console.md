@@ -7,7 +7,7 @@ tags: [onboarding]
 ---
 
 #  How will I access the ***AWS Management Console***?
-![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
+![DAP⇨flow](../images/DAPairflowFLOWmigration.png)   
 
 ## 1. Log into your **Hackney Council** Google Account
 **`🖱`** Always start by logging into your **Hackney Council** Google account.
@@ -18,13 +18,13 @@ tags: [onboarding]
 ## 3. Expand the AWS accounts
 **`🖱`** If you were granted access to **Hackney Council's** ***AWS Management Console*** then you should be able to locate and fully expand the "**DataPlatform-Pre-Production**" section under “**AWS accounts**”.  
 
-**`Fig. 3 & 4`** ![Fig. 3 & 4](../images/access-the-AWS-Management-Console-three-four.png)
+**`Fig. 3 & 4`** ![Fig. 3 & 4](../images/parking-access-the-AWS-Management-Console-three-four.png)
 
 ## 4. Locate Your service role
 **`🖱`** Below "**DataPlatform-Pre-Production**", find your `[service role]` listed.  
 
 :::info REMINDER
-👉  Your **Service Terms`[]`** are defined in the ***welcome*** document stored in your [**`[service access group]`** ***Google Drive subfolder***](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link).
+👉  Your **Service Terms`[]`** are defined in your **`welcome`** document stored in your `[service access group]`'s **► ** [***Google Drive subfolder***](https://drive.google.com/drive/folders/1soY6hORmPVlRvlW_t1V1hTFXfZbLt6NS?usp=drive_link). 
 :::
 
 ## 5. Access the ***AWS Management Console***
@@ -32,9 +32,9 @@ tags: [onboarding]
 * You may need to accept cookies and respond to service messages.  
 * You may see errors caused by the AWS region not set correctly.  
 
-**`Fig. 5`** ![Fig. 5](../images/access-the-AWS-Management-Console-five.png)  
+**`Fig. 5`** ![Fig. 5](../images/parking-access-the-AWS-Management-Console-five.png)  
 
-👉 To fix the AWS region, **check here ►** **[DAP⇨flow📚AWS region](../onboarding/access-the-AWS-region)** 
+👉 To fix the AWS region, **check here ►** **[📚AWS region](../parking/access-the-AWS-region)** 
 
 <br> 
 </br>  
@@ -42,13 +42,13 @@ tags: [onboarding]
 ---
 
 ## ***"We* ♡ *your feedback!"***
-![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
+![DAP⇨flow](../images/DAPairflowFLOWmigration.png)   
 :::tip UX  
-### 👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / access-the-AWS-Management-Console**](https://docs.google.com/forms/d/e/1FAIpQLSdqeNyWIPMNBHEr-YSyxnXQ4ggTwJPkffMYgFaJ4hGEhIL6LA/viewform?usp=pp_url&entry.339550210=access-the-AWS-Management-Console)  
+### 👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / access-the-AWS-Management-Console**](https://docs.google.com/forms/d/e/1FAIpQLSc7nv1XmfRJKZlZTYIJQxAwbimUfsZLXQOVt3TJO-zUOjcRGQ/viewform?usp=pp_url&entry.339550210=access-the-AWS-Management-Console)  
 
 - Your feedback enables us to improve **DAP⇨flow** and our Data Analytics Platform service.  
 - We encourage all our users to be generous with their time, in giving us their recollections and honest opinions about our service.  
-- We especially encourage our new users to give feedback at the end of every **📚Onboarding** task because the quality of the onboarding experience really matters.  
+- We especially encourage our new users to give feedback at the end of every **DAP⇨flow📚Migration onboarding** task because the quality of the onboarding experience really matters.  
 
     ☝ **Please use this link to help us understand your user experience!**  
 :::
