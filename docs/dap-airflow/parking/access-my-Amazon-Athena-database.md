@@ -7,17 +7,17 @@ tags: [onboarding]
 ---
 
 # How will I use ***Amazon Athena*** to access my database?
-![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
+![DAP⇨flow](../images/DAPairflowFLOWmigration.png)   
 
 ## 1. Access the ***AWS Management Console***
 **`🖱`** In your web browser, log in to your AWS account to access the ***AWS Management Console***.  
    
-👉 First time AWS Users should **start here ►** **[DAP⇨flow📚AWS Console access](../onboarding/access-the-AWS-Management-Console)** 
+👉 First time AWS Users should **start here ►** **[📚AWS Console access](../parking/access-the-AWS-Management-Console)** 
 
 ## 2. Familiarize yourself with the console
 **`👁`** Take a moment to get comfortable with the layout and check out options available in the ***AWS Management Console*** interface.
 
-**`Fig. 2 & 3`** ![Fig. 2 & 3](../images/access-my-Amazon-Athena-database-two-three.png)
+**`Fig. 2 & 3`** ![Fig. 2 & 3](../images/parking-access-my-Amazon-Athena-database-two-three.png)
 
 ## 3. Open ***Amazon Athena***
 **`🖱`** Locate and open ***Amazon Athena*** from the services menu.
@@ -27,10 +27,10 @@ tags: [onboarding]
 
 **`🖱`** From the list-box there, click on **`▼`** to select your `[service workgroup]`.
 
-**`Fig. 4 & 5`** ![Fig. 4 & 5](../images/access-my-Amazon-Athena-database-four-five.png)
+**`Fig. 4 & 5`** ![Fig. 4 & 5](../images/parking-access-my-Amazon-Athena-database-four-five.png)
 
 :::info REMINDER
-👉  Your **Service Terms`[]`** are defined in the ***welcome*** document stored in your [**`[service access group]`** ***Google Drive subfolder***](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link).
+👉  Your **Service Terms`[]`** are defined in your **`welcome`** document stored in your `[service access group]`'s **► ** [***Google Drive subfolder***](https://drive.google.com/drive/folders/1soY6hORmPVlRvlW_t1V1hTFXfZbLt6NS?usp=drive_link). 
 :::
 
 ## 5. Select your database
@@ -40,13 +40,13 @@ tags: [onboarding]
 
 ---
 ## ***"We* ♡ *your feedback!"***
-![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
+![DAP⇨flow](../images/DAPairflowFLOWmigration.png)   
 :::tip UX  
-### 👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / access-my-Amazon-Athena-database**](https://docs.google.com/forms/d/e/1FAIpQLSdqeNyWIPMNBHEr-YSyxnXQ4ggTwJPkffMYgFaJ4hGEhIL6LA/viewform?usp=pp_url&entry.339550210=access-my-Amazon-Athena-database)  
+### 👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / access-my-Amazon-Athena-database**](https://docs.google.com/forms/d/e/1FAIpQLSc7nv1XmfRJKZlZTYIJQxAwbimUfsZLXQOVt3TJO-zUOjcRGQ/viewform?usp=pp_url&entry.339550210=access-my-Amazon-Athena-database)  
 
 - Your feedback enables us to improve **DAP⇨flow** and our Data Analytics Platform service.  
 - We encourage all our users to be generous with their time, in giving us their recollections and honest opinions about our service.  
-- We especially encourage our new users to give feedback at the end of every **📚Onboarding** task because the quality of the onboarding experience really matters.  
+- We especially encourage our new users to give feedback at the end of every **DAP⇨flow📚Migration onboarding** task because the quality of the onboarding experience really matters.  
 
     ☝ **Please use this link to help us understand your user experience!**  
 
