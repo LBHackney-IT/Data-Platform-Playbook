@@ -7,11 +7,11 @@ tags: [onboarding]
 ---
 
 # How do I set up my ***GitHub*** access for **DAP⇨flow**?
-![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
+![DAP⇨flow](../images/DAPairflowFLOWmigration.png)  
 
 ## 1. So you're a new DAP⇨flow user, and you're ready to go?
  
-👉 Check you did everything **here ►** **[DAP⇨flow📚Before you begin](../onboarding/begin)** 
+👉 Check you did everything **here ►** **[📚Before you begin](../parking/begin)** 
 
 👉 Have you introduced yourself on your **☎️DAP⇨flow** `[service hotline]` *Google Chat Space*?  
       
@@ -27,27 +27,27 @@ tags: [onboarding]
 
 👉 Use your **☎️DAP⇨flow** `[service hotline]` *Google Chat Space* to request collaborator access to **DAP⇨flow**'s private repository called `dap-airflow`.
 
-**`Fig. 4`** ![Fig. 4](../images/github-access-four.png)
+**`Fig. 4`** ![Fig. 4](../images/parking-github-access-four.png)
 
 ## 5. Access request granted
-The **DAP Platform Team** will 👉
+The **DAP Platform Team** will acknowledge your request and continue to update your status via a reply-thread in your **☎️DAP⇨flow** `[service hotline]` *Google Chat Space* 👉
 
-* Acknowledge your request and continue to update your status via a reply-thread on your **☎️DAP⇨flow** `[service hotline]`.
+* If you don't have membership already, they will ensure you [get invited](https://docs.github.com/en/enterprise-cloud@latest/organizations/managing-membership-in-your-organization/inviting-users-to-join-your-organization) to the [**London Borough of Hackney**](https://github.com/LBHackney-IT) organization on GitHub.
 
-* If you don't have membership already, [ensure you get invited](https://docs.github.com/en/enterprise-cloud@latest/organizations/managing-membership-in-your-organization/inviting-users-to-join-your-organization) to the [**London Borough of Hackney**](https://github.com/LBHackney-IT) organization on GitHub.
+* They will check your access to the [**`dap-airflow`** private repository](https://github.com/LBHackney-IT/dap-airflow).
 
-* Check your access to the [**`dap-airflow`** private repository](https://github.com/LBHackney-IT/dap-airflow).
+* They will confirm your ***GitHub*** `[service folder]` and point you to a `README.md` document in your primary `[dag folder]`.  
 
-* Confirm your `[service dags]` ***GitHub*** project folder and point you to the `README.md` there.
+    eg. `https://github.com/LBHackney-IT/dap-airflow/airflow/dags/[service folder]/[dag folder]/readme.md`  
+
+    If you can access that page, then you will be good to go!
 
 :::info REMINDER
-👉  Your **Service Terms`[]`** are defined in the ***welcome*** document stored in your [**`[service access group]`** ***Google Drive subfolder***](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link).
+👉  Your **Service Terms`[]`** are defined in your **`welcome`** document stored in your `[service access group]`'s **► ** [***Google Drive subfolder***](https://drive.google.com/drive/folders/1soY6hORmPVlRvlW_t1V1hTFXfZbLt6NS?usp=drive_link). 
 :::
 
-* Tell you your `dap-airflow` access is now configured while directing you back to the **📚Onboarding** documentation to learn about [what you should do next](../introduction#github-branching).
-
-
-**`Fig. 5`** ![Fig. 5](../images/github-access-five.png)
+There, you will find your  ***GitHub*** `[service folder]` and all of your `[service dags]` project folders defined, including your primary `[dag folder]`.
+:::
 
 <br> 
 </br>  
@@ -55,13 +55,13 @@ The **DAP Platform Team** will 👉
 ---
 ## ***"We* ♡ *your feedback!"***  
 
-![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
+![DAP⇨flow](../images/DAPairflowFLOWmigration.png)   
 :::tip UX  
-### 👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / github-access**](https://docs.google.com/forms/d/e/1FAIpQLSdqeNyWIPMNBHEr-YSyxnXQ4ggTwJPkffMYgFaJ4hGEhIL6LA/viewform?usp=pp_url&entry.339550210=github-access)  
+### 👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / github-access**](https://docs.google.com/forms/d/e/1FAIpQLSc7nv1XmfRJKZlZTYIJQxAwbimUfsZLXQOVt3TJO-zUOjcRGQ/viewform?usp=pp_url&entry.339550210=github-access)  
 
 - Your feedback enables us to improve **DAP⇨flow** and our Data Analytics Platform service.  
 - We encourage all our users to be generous with their time, in giving us their recollections and honest opinions about our service.  
-- We especially encourage our new users to give feedback at the end of every **📚Onboarding** task because the quality of the onboarding experience really matters.  
+- We especially encourage our new users to give feedback at the end of every **DAP⇨flow📚Migration onboarding** task because the quality of the onboarding experience really matters.  
 
     ☝ **Please use this link to help us understand your user experience!**
 :::
@@ -86,9 +86,8 @@ The **DAP Platform Team** will 👉
 
 **Then** the **DAP Platform Team** will acknowledge my request via a reply-thread on our **☎️DAP⇨flow** `[service hotline]`   
 **~and** ensure I am granted membership of [**London Borough of Hackney**](https://github.com/LBHackney-IT) organization on ***GitHub***  
-**~and** ensure I can subsequently access the [`dap-airflow`](https://github.com/LBHackney-IT/dap-airflow) private repository  
-**~and** confirm my `[service dags]` ***GitHub*** project folder with link to the `README.md` there  
-**~and** tell me my `dap-airflow` access is now configured while directing me back to the [**📚Onboarding** documentation](../introduction#github-branching). 
+**~and** ensure I can access the [`dap-airflow`](https://github.com/LBHackney-IT/dap-airflow) private repository  
+**~and** confirm my ***GitHub*** `[service folder]` and `[service dags]` project folders by sending me a link to the `README.md` in the primary `[dag folder]`.  
 
 **Scale** of 5 **~and** flow features.
 :::
