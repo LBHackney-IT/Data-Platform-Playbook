@@ -8,50 +8,50 @@ tags: [onboarding]
 
 # How do I raise a *"pull request"* to merge my `[transform branch]` back into the `main` trunk of **DAP⇨flow**'s `dap-airflow` repository?
 
-![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
+![DAP⇨flow](../images/DAPairflowFLOWmigration.png)   
 
 ## 1. Log into your ***GitHub*** account
 **`🖱`** Open your web browser and log into your ***GitHub*** account using your ***Hackney email address*** with two-factor authentication.
 
-👉 Users without a ***GitHub*** account or existing ***GitHub*** users without membership of the **[London Borough of Hackney](https://github.com/LBHackney-IT) organization,** should **start here ►** **[DAP⇨flow📚GitHub access](../onboarding/github-access)** 
+👉 Users without a ***GitHub*** account or existing ***GitHub*** users without membership of the **[London Borough of Hackney](https://github.com/LBHackney-IT) organization,** should **start here ►** **[📚GitHub access](../parking/github-access)** 
 
 ## 2. Access the `dap-airflow` repository
 **`🖱`** When you are ready, open the **[`dap-airflow`](https://github.com/LBHackney-IT/dap-airflow)** repository in your web browser.
 
 ## 3. Switch to your working `[transform branch]`
 
-👉  If you haven't yet created your `[transform branch]` then **see here** how to do that **►** **[DAP⇨flow📚GitHub branching](../onboarding/github-branch)**  
+👉  If you haven't yet created your `[transform branch]` then **see here** how to do that **►** **[📚GitHub branching](../parking/github-branch)**  
 
 **`🖱`** Select the "**Code**" tab at the top of the repository page.   
-**`Fig. 3a`** ![Fig. 3a](../images/github-pull-request-three-a.png)  
+**`Fig. 3a`** ![Fig. 3a](../images/parking-github-pull-request-three-a.png)  
 **`🖱`** Click the `▼`dropdown button next to ![][branch]`main`.  
 **`🖮`** Start typing your `[transform branch]` name.  
 **`🖱`** Find and select your `[transform branch]` from the menu below.  
 
-**`Fig. 3b`** ![Fig. 3b](../images/github-pull-request-three-b.png)  
+**`Fig. 3b`** ![Fig. 3b](../images/parking-github-pull-request-three-b.png)  
 **`👁`** Your **![][branch]`[transform branch]`** should reappear next to the `▼`dropdown button.  
 
-👉  If you've yet to *commit* your `[transform SQL]` to your `[transform branch]` then check back **here ► [DAP⇨flow📚Committing transforms](../onboarding/github-commit-transform)** 
+👉  If you've yet to *commit* your `[transform SQL]` to your `[transform branch]` then check back **here ► [📚Committing transforms](../parking/github-commit-transform)** 
 
 👉  If you don't remember if you *committed* your `[transform SQL]` to your `[transform branch]` then check **here ► [📚Appendix ► How will I know?](#appendix)**
 
 ## 4. Create your *pull request*
 **`🖱`** Select the "**Pull requests**" tab at the top of the repository page.  
-**`Fig. 4a`** ![Fig. 4a](../images/github-pull-request-four-a.png)  
+**`Fig. 4a`** ![Fig. 4a](../images/parking-github-pull-request-four-a.png)  
 **`🖱`** Click the "**New pull request**" button on the right.  
 
 **`🖱`** Set the `base:` branch to the **`main`** trunk.  
-**`Fig. 4b`** ![Fig. 4b](../images/github-pull-request-four-b.png)  
+**`Fig. 4b`** ![Fig. 4b](../images/parking-github-pull-request-four-b.png)  
 **`🖱`** Set the `compare:` branch to your **`[transform branch]`**.  
 
 **`🖱`** Click the "**Create pull request**" button.  
-**`Fig. 4c`** ![Fig. 4c](../images/github-pull-request-four-c.png)  
+**`Fig. 4c`** ![Fig. 4c](../images/parking-github-pull-request-four-c.png)  
 
 ## 5. Add the details to your *pull request*
 **`🖮`** Enter a title for your *pull request*.  
 **`🖮`** Add a description explaining the changes you have made.
 
-**`Fig. 5 & 6`** ![Fig. 5 & 6](../images/github-pull-request-five-six.png)  
+**`Fig. 5 & 6`** ![Fig. 5 & 6](../images/parking-github-pull-request-five-six.png)  
 
 ## 6. Submit your *pull request*  
 **`🖱`** Click the "**Create pull request**" button below the description on the right.
@@ -65,13 +65,13 @@ tags: [onboarding]
 
 ---
 ## ***"We* ♡ *your feedback!"***
-![DAP⇨flow](../images/DAPairflowFLOWleft.png)  
+![DAP⇨flow](../images/DAPairflowFLOWmigration.png)   
 :::tip UX  
-### 👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / github-pull-request**](https://docs.google.com/forms/d/e/1FAIpQLSdqeNyWIPMNBHEr-YSyxnXQ4ggTwJPkffMYgFaJ4hGEhIL6LA/viewform?usp=pp_url&entry.339550210=github-pull-request)  
+### 👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / github-pull-request**](https://docs.google.com/forms/d/e/1FAIpQLSc7nv1XmfRJKZlZTYIJQxAwbimUfsZLXQOVt3TJO-zUOjcRGQ/viewform?usp=pp_url&entry.339550210=github-pull-request)  
 
 - Your feedback enables us to improve **DAP⇨flow** and our Data Analytics Platform service.  
 - We encourage all our users to be generous with their time, in giving us their recollections and honest opinions about our service.  
-- We especially encourage our new users to give feedback at the end of every **📚Onboarding** task because the quality of the onboarding experience really matters.  
+- We especially encourage our new users to give feedback at the end of every **DAP⇨flow📚Migration onboarding** task because the quality of the onboarding experience really matters.  
 
     ☝ **Please use this link to help us understand your user experience!**
 :::
@@ -135,7 +135,7 @@ You must be [logged into your ***GitHub*** account](#1-log-into-your-github-acco
 ![Fig. 3-tip-b](../images/github-pull-request-three-tip-b.png)  
 **`👁`** If, below that, you get the message "**No activity matched your search**" then you can be certain you never actually *committed* a `[transform].sql` file.  
 
-👉  If you did not *commit* your `[transform SQL]` to your `[transform branch]` then check back **here ►[DAP⇨flow📚Committing transforms](../onboarding/github-commit-transform)**  
+👉  If you did not *commit* your `[transform SQL]` to your `[transform branch]` then check back **here ►[📚Committing transforms](../parking/github-commit-transform)**  
 
 **`👁`** Otherwise, you should see a list of one-or-more *commits* to your `[transform branch]`.
 
@@ -143,7 +143,7 @@ You must be [logged into your ***GitHub*** account](#1-log-into-your-github-acco
 ![Fig. 3-tip-c](../images/github-pull-request-three-tip-c.png)  
 **`👁`** Then, on the next screen you will be presented with a list of changes that should remind you what you actually did!
 
-👉  If you are not sure you have properly *committed* your `[transform SQL]` to your `[transform branch]` then you should retrace your steps **here ►[DAP⇨flow📚Committing transforms](../onboarding/github-commit-transform)**  
+👉  If you are not sure you have properly *committed* your `[transform SQL]` to your `[transform branch]` then you should retrace your steps **here ►[📚Committing transforms](../parking/github-commit-transform)**  
 
 
 </details>
