@@ -18,7 +18,7 @@ tags: [onboarding]
 **`🖱`** Select the `[service zones]` database, *prefixed `-raw-zone`*, that is equivalent to your `[service database]`, from the list-box under "**Database**" on the left side of the Athena interface.  
 
 :::info REMINDER
-👉  Your **Service Terms`[]`** are defined in the ***welcome*** document stored in your [**`[service access group]`** ***Google Drive subfolder***](https://drive.google.com/drive/folders/1k30M7Hh8WLttL5T5JVGbnKvSLNX7lVSg?usp=drive_link).
+👉  Your **Service Terms`[]`** are defined in your **`welcome`** document stored in your `[service access group]`'s **► ** [***Google Drive subfolder***](https://drive.google.com/drive/folders/1soY6hORmPVlRvlW_t1V1hTFXfZbLt6NS?usp=drive_link). 
 :::
 
 ## 3. Explore the tables in your database
@@ -49,17 +49,17 @@ tags: [onboarding]
 
 👉 A simpler solution for writing new Athena SQL transforms was developed using this `_latest` table feature which is **described here ►** **[📚Prototype simple transforms](../parking/prototype-simple-transforms)**  
 
-👉 Why didn't we implement simpler ***current views***? Users migrating to **DAP⇨flow** with their pre-existing *S3 data lakes* also used external reporting of the `_latest` tables via **Amazon Redshift**. Redshift does not support Athena's Views so it was decided to continue supporting `_latest` objects as *tables*. Where **DAP⇨flow** continues to be rolled out for other **Service Areas** with no previous **Data Platform** experience, we shall however, use the simpler Database design **described here ►** **[Onboarding📚My current service data](../onboarding/access-my-current-service-data)**  
+👉 Why didn't we implement simpler ***current views***? Users migrating to **DAP⇨flow** with their pre-existing *S3 data lakes* also used external reporting of the `_latest` tables via **Amazon Redshift**. Redshift does not support Athena's Views so it was decided to continue supporting `_latest` objects as *tables*. Where **DAP⇨flow** continues to be rolled out for other **Service Areas** with no previous **Data Platform** experience, we shall however, use the simpler Database design **described here ►** **[Onboarding📚My current service data](../parking/access-my-current-service-data)**  
 
 ---
 ## ***"We* ♡ *your feedback!"***
 ![DAP⇨flow](../images/DAPairflowFLOWmigration.png)  
 :::tip UX  
-### 👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / access-my-current-service-data**](https://docs.google.com/forms/d/e/1FAIpQLSdqeNyWIPMNBHEr-YSyxnXQ4ggTwJPkffMYgFaJ4hGEhIL6LA/viewform?usp=pp_url&entry.339550210=access-my-current-service-data)  
+### 👉 Please use **this link ►** [**DAP⇨flow** `UX` **Feedback / access-my-current-service-data**](https://docs.google.com/forms/d/e/1FAIpQLSc7nv1XmfRJKZlZTYIJQxAwbimUfsZLXQOVt3TJO-zUOjcRGQ/viewform?usp=pp_url&entry.339550210=access-my-current-service-data)  
 
 - Your feedback enables us to improve **DAP⇨flow** and our Data Analytics Platform service.  
 - We encourage all our users to be generous with their time, in giving us their recollections and honest opinions about our service.  
-- We especially encourage our new users to give feedback at the end of every **📚Onboarding** task because the quality of the onboarding experience really matters.  
+- We especially encourage our new users to give feedback at the end of every **DAP⇨flow📚Migration onboarding** task because the quality of the onboarding experience really matters.  
 
    ☝ **Please use this link to help us understand your user experience!**  
 
