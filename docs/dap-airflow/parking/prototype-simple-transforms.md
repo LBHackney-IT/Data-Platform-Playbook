@@ -48,7 +48,10 @@ You can either start completely from scratch, building up your query as you go a
 Decide whether your *transform query* needs to be **1:n** `LEFT JOIN` or **1:1** `INNER JOIN`:
 
 ### a) `[SQL template]` = 1:n LEFT JOIN
+
+```
 <details><summary>1:n LEFT JOIN query...</summary>  
+```
 
 ```sql
 /********************************************************************************
@@ -85,12 +88,17 @@ ORDER BY
 LIMIT [rows fetched];
 ```  
 
-👉 You'll find information about ***Partition Columns*** and other considerations discussed **here ► [📚Appendix ► Considerations](#appendix)**
+👉 You'll find information about ***Partition Columns*** and other considerations discussed **here ► [📚Appendix ► Considerations](#appendix)**  
 
-</details>  
+```
+</details>
+```
 
 ### b) `[SQL template]` = 1:1 INNER JOIN
+
+```
 <details><summary>1:1 INNER JOIN query...</summary>  
+```
 
 ```sql
 /********************************************************************************
@@ -125,9 +133,11 @@ ORDER BY
 LIMIT [rows fetched];
 ```  
 
-👉 You'll find information about ***Partition Columns*** and other considerations discussed **here ► [📚Appendix ► Considerations](#appendix)**
+👉 You'll find information about ***Partition Columns*** and other considerations discussed **here ► [📚Appendix ► Considerations](#appendix)**  
 
-</details>  
+```
+</details>
+```
 
 **💡** These were the most common query arrangements found in the **Data Platform** when the old SparkSQL *transformations* were migrated to **DAP⇨flow**. 
 
@@ -290,7 +300,9 @@ Did you decide whether your *transform query* needed to be **1:n** `LEFT JOIN` o
 
 ## 📚Appendix
 
+```
 <details><summary>Considerations for Amazon Athena SQL development</summary>
+```
 
 ### A. ***Partition Columns***
   
@@ -357,4 +369,6 @@ In case `import_timestamp` was called something else or needs casting to a TIMES
 
 * Are *all-caps SQL statements* considered a redundant practice? Well that depends! This is coming back into fashion to help emphasize SQL code embedded within C or Python code which is more generally lower-case. But People will never agree, so you must decide for yourself, or if there is a consensus among your colleagues, why not just go with that? Just be consistent!
 
+```
 </details>
+```

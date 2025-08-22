@@ -56,7 +56,9 @@ tags: [onboarding]
 
 ## 📚Appendix
 
+```
 <details><summary>Refactoring legacy SQL</summary>
+```
 
 ### A. Is denormalization a good or bad idea?
 
@@ -79,4 +81,6 @@ Legacy denormalized SQL Transforms and their data-products should be scrutinized
 
 **Push overreach:** Where over-engineered "push" data pipelines actually reduce the potential portfolio of presentation layer product opportunities. In the worst case scenario, a data pipeline may be observed to converge on just a one data product with no options for further data wrangling in the presentation layer, simply because the data product does not properly resemble a *data cube*. Over use of "push" pipelines is a symptom of not understanding the real needs of users accessing data through the presentation layer.
 
+```
 </details>
+```
