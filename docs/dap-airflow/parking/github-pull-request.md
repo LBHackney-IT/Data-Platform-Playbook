@@ -76,15 +76,15 @@ tags: [onboarding]
     ☝ **Please use this link to help us understand your user experience!**
 :::
 
-## 📚`UX` criteria
+## 📚`UX` criteria  
 :::info ABILITY  
 * Hackney **Google Workspace** user 
-* Hackney `[service]` Data Analyst
+* Hackney `[service]` Data Analyst  
 * ***GitHub*** beginner  
-:::
+:::  
 
 :::note BEHAVIOR  
-### How do I raise a *"pull request"* to merge my `[transform branch]` back into the `main` trunk of **DAP⇨flow**'s `dap-airflow` repository?
+#### How do I raise a *"pull request"* to merge my `[transform branch]` back into the `main` trunk of **DAP⇨flow**'s `dap-airflow` repository?  
 **Measures** the ***GitHub*** and `dap-airflow` repository behavior:  
 
 **Given** in my web browser, I am logged on to my ***GitHub*** account using my ***Hackney email address*** with two-factor authentication  
@@ -105,49 +105,17 @@ tags: [onboarding]
 **~and** I add a *title* for my pull request and a *description* explaining the changes I have made  
 **~and** below on the right, I click the "**Create pull request**" button  
 
-**Then** ***GitHub*** should begin the process of pulling my **`[transform branch]`** into the `main` trunk or the `dap-airflow` repository
+**Then** ***GitHub*** should begin the process of pulling my **`[transform branch]`**  into the `main` trunk or the `dap-airflow` repository  
 **~and** I will be sent an email confirming that  
-**~and** a *pull request* email will be sent to the **DAP Platform Team**.
+**~and** a *pull request* email will be sent to the **DAP Platform Team**.  
 
 **Scale** of 13 to 16 **~and** flow features.
 :::
 
-## 📚Appendix
+---
+## [📚Appendix](../parking/appendix-github-pull-request) 
 
-<details><summary>How will I know?</summary>
-
-Let's assume you set up your `[transform branch]` earlier but then you got distracted so, now, you are not certain if you actually *committed* your `[transform SQL]` to a `[transform].sql` file. 
-
-### So, how will you know if you did or you didn't?
-
-Those that have ***GitHub*** integrated with their editors eg. ***Visual Studio Code*** can quickly pull up a *Git Graph* to simply find out. But what if you only have ***GitHub***'s web interface available, because you are on a Chromebook or you don't have a local copy of the repository?
-
-#### Here's a neat trick you can use!
-You must be [logged into your ***GitHub*** account](#1-log-into-your-github-account) for this to work...
-
-**`🖱`** Use the following link to open a separate new tab in your web browser:   
-**[`https://github.com/LBHackney-IT/dap-airflow/activity?ref=[transform branch]`](https://github.com/LBHackney-IT/dap-airflow/activity?ref=transform%20branch)**
-
-**`🖮`** Then replace all the text immediately after `ref=` with the name of your `[transform branch]` before hitting *Enter*.  
-![Fig. 3-tip-a](../images/github-pull-request-three-tip-a.png)  
-
-**`👁`** Then below, ***GitHub*** should appear with your **![][branch]`[transform branch]`** showing.  
-![Fig. 3-tip-b](../images/github-pull-request-three-tip-b.png)  
-**`👁`** If, below that, you get the message "**No activity matched your search**" then you can be certain you never actually *committed* a `[transform].sql` file.  
-
-👉  If you did not *commit* your `[transform SQL]` to your `[transform branch]` then check back **here ►[📚Committing transforms](../parking/github-commit-transform)**  
-
-**`👁`** Otherwise, you should see a list of one-or-more *commits* to your `[transform branch]`.
-
-**`🖱`** But if you are not sure about those, then you can click on `…` after each *commit message* and select "**Compare changes**"  
-![Fig. 3-tip-c](../images/github-pull-request-three-tip-c.png)  
-**`👁`** Then, on the next screen you will be presented with a list of changes that should remind you what you actually did!
-
-👉  If you are not sure you have properly *committed* your `[transform SQL]` to your `[transform branch]` then you should retrace your steps **here ►[📚Committing transforms](../parking/github-commit-transform)**  
-
-
-</details>
-
+### ► [How will I know?](../parking/appendix-github-pull-request#how-will-i-know) 
 
 [branch]: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAAXNSR0IArs4c6QAAAU9JREFUOE+tk79Pg1AQx99bHPwf+k8URxJ2VngdtaTGMEDC4iqv0s2FxA4tjUl1fbzJiXSiOiKhy+s/wayDCWfbCKG/UBNveMPdffK9u3eH0bcRQmTbtl+EEJemaT6U/nrccZxr3/fvGGOvaz9eP+Px2JrNZveyLA+FEFYQBBt/3brdLrRareFyubQAwOacDzdJk8nEjaKIappG4zimo9FoDzZNExRFoZxzumJoGIb9KknX9XOE0CMAuJzz211lTdNuMMZ9hNBFGIZPVdlloq7rgDE+Y4y9HehZAoBkpVgJbpX3LzAhRDDGtsSLonhXVfWz1+udlIE9ZQAIJEm6StO0gtvtNprP5zRJkuc8z6vAHmwYBppOp6d1WUII6nQ6H7tz+HXPu+Cfpt0I//TPR+HFYuF6nte4YUfhLMuswWDQuNuNZa+vqkwor+YQUPd9AUZ2tBDCa9wvAAAAAElFTkSuQmCC>
 
