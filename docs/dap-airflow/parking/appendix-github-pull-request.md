@@ -6,9 +6,14 @@ layout: playbook_js
 tags: [onboarding]
 ---
 
-# 👉 [📚GitHub pull requests](../parking/github-pull-request)
+ 
+ # 👉 *Back to ►* [📚GitHub pull requests](../parking/github-pull-request)
 
 #### How do I raise a *"pull request"* to merge my `[transform branch]` back into the `main` trunk of **DAP⇨flow**'s `dap-airflow` repository?  
+
+# How was my ***Amazon Glue*** *ETL job's Spark SQL query* migrated to **DAP⇨flow**?
+![DAP⇨flow](../images/DAPairflowFLOWmigration.png)  
+  
 ---
 ## 📚Appendix
 
@@ -42,3 +47,6 @@ You must be [logged into your ***GitHub*** account](#1-log-into-your-github-acco
 **`👁`** Then, on the next screen you will be presented with a list of changes that should remind you what you actually did!   
 
 👉  If you are not sure you have properly *committed* your `[transform SQL]` to your `[transform branch]` then you should retrace your steps **here ►[📚Committing transforms](../parking/github-commit-transform)**  
+
+
+---

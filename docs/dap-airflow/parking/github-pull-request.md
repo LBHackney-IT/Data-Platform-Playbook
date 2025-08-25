@@ -33,7 +33,7 @@ tags: [onboarding]
 
 👉  If you've yet to *commit* your `[transform SQL]` to your `[transform branch]` then check back **here ► [📚Committing transforms](../parking/github-commit-transform)** 
 
-👉  If you don't remember if you *committed* your `[transform SQL]` to your `[transform branch]` then check **here ► [📚Appendix ► How will I know?](#appendix)**
+👉  If you don't remember if you *committed* your `[transform SQL]` to your `[transform branch]` then check **here ► [📚Appendix ► How will I know?](../parking/appendix-github-pull-request#how-will-i-know)**
 
 ## 4. Create your *pull request*
 **`🖱`** Select the "**Pull requests**" tab at the top of the repository page.  
@@ -116,6 +116,7 @@ tags: [onboarding]
 ## [📚Appendix](../parking/appendix-github-pull-request) 
 
 ### ► [How will I know?](../parking/appendix-github-pull-request#how-will-i-know) 
+---
 
 [branch]: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAAXNSR0IArs4c6QAAAU9JREFUOE+tk79Pg1AQx99bHPwf+k8URxJ2VngdtaTGMEDC4iqv0s2FxA4tjUl1fbzJiXSiOiKhy+s/wayDCWfbCKG/UBNveMPdffK9u3eH0bcRQmTbtl+EEJemaT6U/nrccZxr3/fvGGOvaz9eP+Px2JrNZveyLA+FEFYQBBt/3brdLrRareFyubQAwOacDzdJk8nEjaKIappG4zimo9FoDzZNExRFoZxzumJoGIb9KknX9XOE0CMAuJzz211lTdNuMMZ9hNBFGIZPVdlloq7rgDE+Y4y9HehZAoBkpVgJbpX3LzAhRDDGtsSLonhXVfWz1+udlIE9ZQAIJEm6StO0gtvtNprP5zRJkuc8z6vAHmwYBppOp6d1WUII6nQ6H7tz+HXPu+Cfpt0I//TPR+HFYuF6nte4YUfhLMuswWDQuNuNZa+vqkwor+YQUPd9AUZ2tBDCa9wvAAAAAElFTkSuQmCC>
 
