@@ -17,7 +17,7 @@ tags: [onboarding]
 ## 2. Understanding your Database `[service zones]`
 
 :::info REMINDER
-👉  Your **Service Terms`[]`** are defined in your **`welcome`** document stored in your `[service access group]`'s **► ** [***Google Drive subfolder***](https://drive.google.com/drive/folders/1soY6hORmPVlRvlW_t1V1hTFXfZbLt6NS?usp=drive_link). 
+👉  Your **Service Terms`[]`** are defined in your **`welcome`** document stored in your `[service access group]`'s **►** [***Google Drive subfolder***](https://drive.google.com/drive/folders/1soY6hORmPVlRvlW_t1V1hTFXfZbLt6NS?usp=drive_link). 
 :::
 
 💡 ***Athena’s*** *databases are catalogs* pointing to physical data contained in ***AWS S3*** *storage buckets* and *folders*, collectively known as an ***S3 data lake***. Each *storage bucket* is divided up hierarchically from top to bottom, approximating to `/zone`, `/service` then `/service database`, with possible further levels in between. Below all that, are finally formed the `/table` folders where data is produced.  

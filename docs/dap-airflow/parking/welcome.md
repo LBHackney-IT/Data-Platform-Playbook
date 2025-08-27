@@ -32,7 +32,7 @@ When you know your `[service access group]`, and you know you belong to it, then
 The following **REMINDER** appears throughout the [**DAP⇨flow📚Migration onboarding**](../introduction#migration-onboarding) quides, so you will be able to find your **`welcome`** document and be reminded of your **Service Terms`[]`** whenever you need them:
 
 :::info REMINDER
-👉  Your **Service Terms`[]`** are defined in your **`welcome`** document stored in your `[service access group]`'s **► ** [***Google Drive subfolder***](https://drive.google.com/drive/folders/1soY6hORmPVlRvlW_t1V1hTFXfZbLt6NS?usp=drive_link). 
+👉  Your **Service Terms`[]`** are defined in your **`welcome`** document stored in your `[service access group]`'s **►** [***Google Drive subfolder***](https://drive.google.com/drive/folders/1soY6hORmPVlRvlW_t1V1hTFXfZbLt6NS?usp=drive_link). 
 :::
 
 Your Service "**`welcome`**" document provides you with every necessary translation for the **Service Terms`[]`** used throughout the [**📚Migration onboarding**](../introduction#migration-onboarding) guides, ensuring you are directed to the appropriate places while using the **Hackney Council AWS Console** or the **LBHackney-IT/dap-airflow** *GitHub repository*.

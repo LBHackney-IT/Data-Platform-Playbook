@@ -24,7 +24,7 @@ tags: [onboarding]
 **`🖱`** Below "**DataPlatform-Pre-Production**", find your `[service role]` listed.  
 
 :::info REMINDER
-👉  Your **Service Terms`[]`** are defined in your **`welcome`** document stored in your `[service access group]`'s **► ** [***Google Drive subfolder***](https://drive.google.com/drive/folders/1soY6hORmPVlRvlW_t1V1hTFXfZbLt6NS?usp=drive_link). 
+👉  Your **Service Terms`[]`** are defined in your **`welcome`** document stored in your `[service access group]`'s **►** [***Google Drive subfolder***](https://drive.google.com/drive/folders/1soY6hORmPVlRvlW_t1V1hTFXfZbLt6NS?usp=drive_link). 
 :::
 
 ## 5. Access the ***AWS Management Console***

@@ -17,7 +17,7 @@ tags: [onboarding]
 **`🖱`** Ensure you have selected your `[service workgroup]` from the list-box next to “**Workgroup**”.  
 
 :::info REMINDER
-👉  Your **Service Terms`[]`** are defined in your **`welcome`** document stored in your `[service access group]`'s **► ** [***Google Drive subfolder***](https://drive.google.com/drive/folders/1soY6hORmPVlRvlW_t1V1hTFXfZbLt6NS?usp=drive_link). 
+👉  Your **Service Terms`[]`** are defined in your **`welcome`** document stored in your `[service access group]`'s **►** [***Google Drive subfolder***](https://drive.google.com/drive/folders/1soY6hORmPVlRvlW_t1V1hTFXfZbLt6NS?usp=drive_link). 
 :::
 
 ## 3. Explore your database

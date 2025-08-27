@@ -30,7 +30,7 @@ tags: [onboarding]
 **`🖱`** Below that on the dropdown menu, click on "Create branch **![][branch]`[transform branch]`** from **`main`.**"
 
 :::info REMINDER
-👉  Your **Service Terms`[]`** are defined in your **`welcome`** document stored in your `[service access group]`'s **► ** [***Google Drive subfolder***](https://drive.google.com/drive/folders/1soY6hORmPVlRvlW_t1V1hTFXfZbLt6NS?usp=drive_link). 
+👉  Your **Service Terms`[]`** are defined in your **`welcome`** document stored in your `[service access group]`'s **►** [***Google Drive subfolder***](https://drive.google.com/drive/folders/1soY6hORmPVlRvlW_t1V1hTFXfZbLt6NS?usp=drive_link). 
 :::
 
 ## 4. Verify `[transform branch]` is now your working branch

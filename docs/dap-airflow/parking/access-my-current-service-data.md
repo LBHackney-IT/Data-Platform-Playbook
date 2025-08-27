@@ -18,7 +18,7 @@ tags: [onboarding]
 **`🖱`** Select the `[service zones]` database, *prefixed `-raw-zone`*, that is equivalent to your `[service database]`, from the list-box under "**Database**" on the left side of the Athena interface.  
 
 :::info REMINDER
-👉  Your **Service Terms`[]`** are defined in your **`welcome`** document stored in your `[service access group]`'s **► ** [***Google Drive subfolder***](https://drive.google.com/drive/folders/1soY6hORmPVlRvlW_t1V1hTFXfZbLt6NS?usp=drive_link). 
+👉  Your **Service Terms`[]`** are defined in your **`welcome`** document stored in your `[service access group]`'s **►** [***Google Drive subfolder***](https://drive.google.com/drive/folders/1soY6hORmPVlRvlW_t1V1hTFXfZbLt6NS?usp=drive_link). 
 :::
 
 ## 3. Explore the tables in your database

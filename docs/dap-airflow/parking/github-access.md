@@ -43,7 +43,7 @@ The **DAP Platform Team** will acknowledge your request and continue to update y
     If you can access that page, then you will be good to go!
 
 :::info REMINDER
-👉  Your **Service Terms`[]`** are defined in your **`welcome`** document stored in your `[service access group]`'s **► ** [***Google Drive subfolder***](https://drive.google.com/drive/folders/1soY6hORmPVlRvlW_t1V1hTFXfZbLt6NS?usp=drive_link). 
+👉  Your **Service Terms`[]`** are defined in your **`welcome`** document stored in your `[service access group]`'s **►** [***Google Drive subfolder***](https://drive.google.com/drive/folders/1soY6hORmPVlRvlW_t1V1hTFXfZbLt6NS?usp=drive_link). 
 :::
 
 There, you will find your  ***GitHub*** `[service folder]` and all of your `[service dags]` project folders defined, including your primary `[dag folder]`.
