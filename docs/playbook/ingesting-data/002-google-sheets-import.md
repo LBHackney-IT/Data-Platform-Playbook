@@ -45,7 +45,7 @@ To ensure a Google Sheet is ready for ingestion, follow these steps:
 | Revenues | revenues@dataplatform-stg.iam.gserviceaccount.com | revenues@dataplatform-prod0.iam.gserviceaccount.com | |
 | Environmental Services | environmental-services@dataplatform-stg.iam.gserviceaccount.com | environmental-services@dataplatform-prod0.iam.gserviceaccount.com | |
 | Housing | housing@dataplatform-stg.iam.gserviceaccount.com | housing@dataplatform-prod0.iam.gserviceaccount.com | [Link](https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/housing/google_sheet_ingestion_config/housing.yaml) |
-| Child & Family Services | child-fam-services@dataplatform-prod0.iam.gserviceaccount.com | child-fam-services@dataplatform-stg.iam.gserviceaccount.com | [Link](https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/child_fam_services/google_sheet_ingestion_config/child_fam_services.yaml) |
+| Child & Family Services | child-fam-services@dataplatform-stg.iam.gserviceaccount.com | child-fam-services@dataplatform-prod0.iam.gserviceaccount.com | [Link](https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/child_fam_services/google_sheet_ingestion_config/child_fam_services.yaml) |
 
 
 
