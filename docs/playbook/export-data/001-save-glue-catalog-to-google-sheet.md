@@ -58,7 +58,7 @@ Each sheet export configuration can include the following parameters:
 - **`custom_query`**: (Optional) Custom SQL query to filter the catalog data before export.
   - By default, it's empty and means `SELECT * FROM glue_database.glue_table`
   - Cannot be used together with `only_latest_partition`
-- **`only_latest_partition`**: (Optional) Boolean (`true`/`false`). When `true`, automatically generates a query to get only the latest partition based on `import_date`:
+- **`only_latest_partition`**: (Optional) Boolean (`true`/`false`). Only allow to be `true` if table is partitioned by import_date. When `true`, automatically generates a query to get only the latest partition based on `import_date`:
   ```
   SELECT * FROM "database"."table" WHERE import_date = (SELECT MAX(import_date) FROM "database"."table")
   ```
