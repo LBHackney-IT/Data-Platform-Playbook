@@ -75,6 +75,11 @@ Each sheet export configuration can include the following parameters:
 
 ```yaml
 sheets:
+  - sheet_id: 1qgRT9GTSJw9DzJAazbLcN1sjIkqNXEMOMWaQD6m79M0
+    worksheet_name: Flat Table
+    glue_database: housing_nec_migration
+    glue_table: homeowners_flat_database
+
   - sheet_id: 1InRDSKgMGYuuhAB8huORD_mZVZKADuuVNM-egsZ_7hc
     worksheet_name: cfs_test1
     glue_database: child-fam-services-refined-zone
