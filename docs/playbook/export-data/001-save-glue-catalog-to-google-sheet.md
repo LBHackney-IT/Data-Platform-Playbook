@@ -74,19 +74,20 @@ Each sheet export configuration can include the following parameters:
 #### Example Configuration
 
 ```yaml
+# Example for non-partitioned table or view
 sheets:
   - sheet_id: 1qgRT9GTSJw9DzJAazbLcN1sjIkqNXEMOMWaQD6m79M0
     worksheet_name: Flat Table
     glue_database: housing_nec_migration
     glue_table: homeowners_flat_database
-
+# Example for custom query
   - sheet_id: 1InRDSKgMGYuuhAB8huORD_mZVZKADuuVNM-egsZ_7hc
     worksheet_name: cfs_test1
     glue_database: child-fam-services-refined-zone
     glue_table: addresses
     custom_query: SELECT id, flat_number, post_code FROM "child-fam-services-raw-zone"."addresses" where street = 'Essex Road'
     sheet_schedule: 30 3 * * 5
-
+# Example for partitioned table
   - sheet_id: 1InRDSKgMGYuuhAB8huORD_mZVZKADuuVNM-egsZ_7hc
     worksheet_name: cfs_test2
     glue_database: child-fam-services-refined-zone
