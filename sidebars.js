@@ -50,6 +50,11 @@ module.exports = {
         },
         {
           type: "category",
+          label: "Exporting data",
+          items: getItems("playbook/export-data"),
+        },
+        {
+          type: "category",
           label: "Transforming data",
           items: [
             {
@@ -127,9 +132,9 @@ module.exports = {
           label: "📚Onboarding",
           /* items: getItems("dap-airflow/onboarding"), */
           items: [
-            "dap-airflow/onboarding/begin", 
-            "dap-airflow/onboarding/welcome", 
-            "dap-airflow/onboarding/access-the-AWS-Management-Console", 
+            "dap-airflow/onboarding/begin",
+            "dap-airflow/onboarding/welcome",
+            "dap-airflow/onboarding/access-the-AWS-Management-Console",
             "dap-airflow/onboarding/access-the-AWS-region",
             "dap-airflow/onboarding/access-my-Amazon-Athena-database",
             "dap-airflow/onboarding/access-my-current-service-data",
@@ -148,9 +153,9 @@ module.exports = {
           label: "📚Migration onboarding",
           /* items: getItems("dap-airflow/parking"), */
           items: [
-            "dap-airflow/parking/begin", 
-            "dap-airflow/parking/welcome", 
-            "dap-airflow/parking/access-the-AWS-Management-Console", 
+            "dap-airflow/parking/begin",
+            "dap-airflow/parking/welcome",
+            "dap-airflow/parking/access-the-AWS-Management-Console",
             "dap-airflow/parking/access-the-AWS-region",
             "dap-airflow/parking/access-my-Amazon-Athena-database",
             "dap-airflow/parking/access-my-service-data-history",
