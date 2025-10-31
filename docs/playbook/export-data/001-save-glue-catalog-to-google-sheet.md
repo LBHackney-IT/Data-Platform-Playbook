@@ -65,6 +65,7 @@ Each sheet export configuration can include the following parameters:
   - Cannot be used together with `custom_query`. By default, it's `false`.
 - **`sheet_schedule`**: (Optional) Schedule for this specific sheet export within the DAG run.
   - If not specified, the task runs daily.
+  - If you want to export more than once a day, you still need to talk to the DAP to do some config behind the scenes.
   - Format: cron expression (e.g., `"30 3 * * 5"` for Friday at 3:30 AM)
 
 #### Important Notes
