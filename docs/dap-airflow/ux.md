@@ -81,7 +81,7 @@ When these guides are finally and fully completed, we should only need to consid
 | [Migrating transforms](../parking/migrating-transforms)                                       | How was my ***Amazon Glue*** *ETL job's Spark SQL query* migrated to **DAP⇨flow**?         🚧| 🚧 |
 | [GitHub access](../dap-airflow/parking/github-access#ux-criteria)                             | How do I set up my ***GitHub*** access for **DAP⇨flow**?                                      | 5 |
 | [GitHub branching](../dap-airflow/parking/github-branch#ux-criteria)                          | How do I create `[transform branch]` as my new working branch of **DAP⇨flow**'s repository?   | 4 to 6 |
-| [Committing transforms](../dap-airflow/parking/github-commit-transform#ux-criteria)           | How do I commit my working `[transform SQL]` to **DAP⇨flow**'s repository?                 🚧| 12 to 20 |
+| [Committing transforms](../dap-airflow/parking/github-commit-transform#ux-criteria)           | How do I commit my working `[transform SQL]` to **DAP⇨flow**'s repository?                    | 12 to 17 |
 | [Orchestrating transforms](../dap-airflow/parking/github-orchestrate-transform#ux-criteria)   | How do I orchestrate my `[transform].sql` in the **DAP⇨flow** repository?                  🚧| 🚧 |
 | [GitHub pull requests](../dap-airflow/parking/github-pull-request#ux-criteria)                | How do I raise a *"pull request"* to merge my `[transform branch]` into the `main` trunk of the **DAP⇨flow** repository? | 13 to 16 |
 
