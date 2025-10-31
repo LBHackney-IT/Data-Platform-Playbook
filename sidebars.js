@@ -51,7 +51,7 @@ module.exports = {
         {
           type: "category",
           label: "Exporting data",
-          items: getItems("playbook/export-data"),
+          items: getItems("playbook/exporting-data"),
         },
         {
           type: "category",
