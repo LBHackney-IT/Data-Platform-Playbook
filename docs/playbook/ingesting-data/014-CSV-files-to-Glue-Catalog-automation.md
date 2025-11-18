@@ -46,7 +46,7 @@ collapses consecutive underscores into one.
 
 - _Visibility:_ Every member of your department can currently see the CSV files and Glue tables created from these uploads, not just those stored under their own `<user_prefix>`.
 - _Schema:_ All columns in the generated Glue tables are currently created as `string` types.
-- _Upload location:_ Place one or more CSV files per upload. Do not add additional subfolders beneath your `<user_prefix>` folder.
+- _Upload location:_ Place one or more CSV files per upload. Not allowed to add additional subfolders beneath your `<user_prefix>` folder.
 
 ### Using Parking as an Example
 
