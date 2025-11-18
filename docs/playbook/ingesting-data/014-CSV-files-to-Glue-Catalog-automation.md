@@ -30,9 +30,6 @@ s3://dataplatform-prod-user-uploads/<department>/<user_prefix>/<file_name>.csv
 - `<file_name>` should describe the data set (e.g. `permits_march.csv`).
 - Only `.csv` files are supported; other extensions are rejected.
 
-_Visibility:_ Every member of your department can currently see the csv files and Glue tables
-created from these uploads, not just those stored under their own
-`<user_prefix>`.
 
 ### Table Names
 
@@ -44,6 +41,12 @@ normalize(<user_name>) + "_" + normalize(<file_name without .csv>)
 
 Normalization replaces non-alphanumeric characters with underscores and
 collapses consecutive underscores into one.
+
+## Notes
+
+- _Visibility:_ Every member of your department can currently see the CSV files and Glue tables created from these uploads, not just those stored under their own `<user_prefix>`.
+- _Schema:_ All columns in the generated Glue tables are currently created as `string` types.
+- _Upload location:_ Place one more CSV file per upload. Do not add additional subfolders beneath your `<user_prefix>` folder.
 
 ### Using Parking as an Example
 
