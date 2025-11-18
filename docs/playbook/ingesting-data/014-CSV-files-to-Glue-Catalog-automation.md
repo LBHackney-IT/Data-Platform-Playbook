@@ -74,8 +74,7 @@ Processing takes less than a minute. When complete:
   database (currently `parking_user_uploads_db` for the Parking workflow).
 - You can query the table immediately in Athena.
 
-## 5. Deleting CSV files (Console)
-
+## 4. Delete CSV files (Console)
 Deleting the CSV removes the corresponding Glue table.
 
 1. In S3, select the CSV under `<department>/<user_prefix>/`.
