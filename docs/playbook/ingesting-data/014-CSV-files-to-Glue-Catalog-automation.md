@@ -25,10 +25,14 @@ s3://dataplatform-prod-user-uploads/<department>/<user_prefix>/<file_name>.csv
 
 - `<department>` identifies your team (e.g. `parking`, `housing`).
 - `<user_prefix>` **must** be a folder named after the uploader (e.g.
-  `davina`, `john`). Each uploader should keep their files under their own
+  `davina`, `mike`). Each uploader should keep their files under their own
   prefix.
 - `<file_name>` should describe the data set (e.g. `permits_march.csv`).
 - Only `.csv` files are supported; other extensions are rejected.
+
+_Visibility:_ Every member of your department can currently see the csv files and Glue tables
+created from these uploads, not just those stored under their own
+`<user_prefix>`.
 
 ### Table Names
 
