@@ -67,6 +67,19 @@ Each sheet export configuration can include the following parameters:
   - If not specified, the task runs daily.
   - If you want to export more than once a day, you still need to talk to the DAP to do some config behind the scenes.
   - Format: cron expression (e.g., `"30 3 * * 5"` for Friday at 3:30 AM)
+- **`header_case`**: (Optional) Case format for column headers in the exported sheet.
+  - By default, it's `original` (no transformation - headers remain as `user_name`)
+  - Available options with examples (for column `user_name`):
+    - `original`: `user_name` (no transformation)
+    - `snake_case`: `user_name`
+    - `camelCase`: `userName`
+    - `PascalCase`: `UserName`
+    - `kebab-case`: `user-name`
+    - `UPPER_SNAKE_CASE`: `USER_NAME`
+    - `lower`: `user_name`
+    - `upper`: `USER_NAME`
+    - `title`: `User Name`
+    - `capitalize`: `User name`
 
 #### Important Notes
 
@@ -94,4 +107,11 @@ sheets:
     glue_database: child-fam-services-refined-zone
     glue_table: open_cin_cases_vs_supervisions
     only_latest_partition: true
+# Example with header_case formatting
+  - sheet_id: 1InRDSKgMGYuuhAB8huORD_mZVZKADuuVNM-egsZ_7hc
+    worksheet_name: housing_test
+    glue_database: housing-raw-zone
+    glue_table: housing_officer_patch_mapping
+    only_latest_partition: true
+    header_case: title  # Transforms column headers like "user_name" to "User Name"
 ```
