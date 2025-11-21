@@ -80,10 +80,17 @@ Each sheet export configuration can include the following parameters:
     - `upper`: `USER_NAME`
     - `title`: `User Name`
     - `capitalize`: `User name`
+  - Cannot be used together with `custom_header`
+- **`custom_header`**: (Optional) List of custom column header names to use in the exported sheet.
+  - Must be a YAML list of strings matching the exact order and count of columns in the DataFrame
+  - Example: `custom_header: [User Name, Email Address, Phone Number]`
+  - The number of header names must exactly match the number of columns in the query result
+  - Cannot be used together with `header_case`
 
 #### Important Notes
 
 - Use either `custom_query` OR `only_latest_partition`, not both.
+- Use either `header_case` OR `custom_header`, not both. They are mutually exclusive.
 
 #### Example Configuration
 
@@ -114,4 +121,15 @@ sheets:
     glue_table: housing_officer_patch_mapping
     only_latest_partition: true
     header_case: title  # Transforms column headers like "user_name" to "User Name"
+# Example with custom_header (specify exact column names)
+  - sheet_id: 1InRDSKgMGYuuhAB8huORD_mZVZKADuuVNM-egsZ_7hc
+    worksheet_name: custom_headers_example
+    glue_database: housing-raw-zone
+    glue_table: housing_officer_patch_mapping
+    only_latest_partition: true
+    custom_header:
+      - Officer Name
+      - Patch Code
+      - Assignment Date
+      - Status
 ```
