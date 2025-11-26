@@ -86,6 +86,7 @@ Each sheet export configuration can include the following parameters:
   - Example: `custom_header: [User Name, Email Address, Phone Number]`
   - The number of header names must exactly match the number of columns in the query result
   - Cannot be used together with `header_case`
+  - Double quote column names that start with `%` (or special chars like @, &, *, !, etc.) to avoid parser errors raised by YAML linter. E.g. `"% Ownership - S/O Only"`
 
 #### Important Notes
 
@@ -120,7 +121,7 @@ sheets:
     glue_database: housing-raw-zone
     glue_table: housing_officer_patch_mapping
     only_latest_partition: true
-    header_case: title  # Transforms column headers like "user_name" to "User Name"
+    header_case: title
 # Example with custom_header (specify exact column names)
   - sheet_id: 1InRDSKgMGYuuhAB8huORD_mZVZKADuuVNM-egsZ_7hc
     worksheet_name: custom_headers_example
