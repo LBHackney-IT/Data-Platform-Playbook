@@ -76,4 +76,5 @@ To configure data ingestion for a new sheet, follow these steps using **parking*
    - **`sheet_name`**: Specify the name of the sheet in the Google Spreadsheet.
    - **`sheet_id`**: Enter the unique Google Spreadsheet identifier.
    - **`target_table`**: Define the table name in the raw zone database (The table name in the raw zone database will be same as target_table specified here and it's not mandatory to add department name in the table name).
+   - **`starting_position`**: (Optional) Specify the first cell to read from using A1 notation, such as `A1`, `A2`, `W16`, or `AB123`. The import ignores rows above and columns to the left of this cell. The selected cell is treated as the first header cell, with the data rows expected below it. If this value is omitted, blank, or set to `None`, the import starts from `A1`.
    - **`pause_flag`**: Leave blank for scheduled ingestion or set to `true` to pause.
