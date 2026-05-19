@@ -2,9 +2,8 @@
 
 import logging
 
-import boto3
 import awswrangler as wr
-
+import boto3
 
 PROFILE = "DataPlatformDataAndInsightStg"
 REGION = "eu-west-2"
