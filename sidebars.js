@@ -23,10 +23,15 @@ module.exports = {
       type: "category",
       label: "Playbook",
       items: [
-      {
+        {
           type: "category",
           label: "Getting set up on the platform",
           items: getItems("playbook/getting-set-up"),
+        },
+        {
+          type: "category",
+          label: "Onboard ETL at DAP",
+          items: getItems("playbook/onboard-etl-at-dap"),
         },
         {
           type: "category",
