@@ -14,6 +14,9 @@ SOURCE_TABLE = "universal_calendar"
 TARGET_DATABASE = "data-and-insight-refined-zone"
 TARGET_BUCKET = "dataplatform-stg-refined-zone"
 TABLE_NAME = "test_tian_demo_calendar"
+ATHENA_OUTPUT_PREFIX = (
+    f"s3://dataplatform-stg-athena-storage/data-and-insight/{TABLE_NAME}/"
+)
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -41,11 +44,12 @@ def get_calendar_aggregate_query():
     """
 
 
-def read_calendar_aggregate(session):
+def read_calendar_aggregate(session, athena_output_prefix):
     return wr.athena.read_sql_query(
         sql=get_calendar_aggregate_query(),
         database=SOURCE_DATABASE,
         ctas_approach=False,
+        s3_output=athena_output_prefix,
         boto3_session=session,
     )
 
@@ -68,7 +72,7 @@ def write_calendar_table(df, session, target_prefix):
 def main():
     session = create_session()
     target_prefix = get_target_prefix()
-    df = read_calendar_aggregate(session)
+    df = read_calendar_aggregate(session, ATHENA_OUTPUT_PREFIX)
     result = write_calendar_table(df, session, target_prefix)
 
     logger.info("Wrote %s rows to %s", len(df), target_prefix)
