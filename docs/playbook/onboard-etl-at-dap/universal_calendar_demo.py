@@ -26,10 +26,6 @@ def create_session():
     return boto3.Session(profile_name=PROFILE, region_name=REGION)
 
 
-def get_target_prefix():
-    return f"s3://{TARGET_BUCKET}/data-and-insight/testing/demo/{TABLE_NAME}/"
-
-
 def get_calendar_aggregate_query():
     return f"""
     SELECT
@@ -71,7 +67,7 @@ def write_calendar_table(df, session, target_prefix):
 
 def main():
     session = create_session()
-    target_prefix = get_target_prefix()
+    target_prefix = f"s3://{TARGET_BUCKET}/data-and-insight/testing/demo/{TABLE_NAME}/"
     df = read_calendar_aggregate(session, ATHENA_OUTPUT_PREFIX)
     result = write_calendar_table(df, session, target_prefix)
 
