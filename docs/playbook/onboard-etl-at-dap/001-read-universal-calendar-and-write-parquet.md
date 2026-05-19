@@ -66,7 +66,7 @@ aws sts get-caller-identity --profile DataPlatformDataAndInsightStg
 ## 2. Install the Python packages
 
 ```powershell
-py -m pip install awswrangler boto3
+pip install awswrangler boto3
 ```
 
 ## 3. Check the Python script
