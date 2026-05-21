@@ -2,31 +2,40 @@
 
 import logging
 import os
+from typing import Any
 
 import awswrangler as wr
 import boto3
+import pandas as pd
+from boto3.session import Session
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-ENV: str = os.environ.get("env", "prod")
-boto3_session = boto3.Session()
+ENV: str = "stg"
+boto3_session: Session = boto3.Session(
+    profile_name="DataPlatformDataAndInsightStg", region_name="eu-west-2"
+)
 
-SOURCE_DATABASE = "unrestricted-raw-zone"
-SOURCE_TABLE = "universal_calendar"
+# When you schedule the script via Airflow, please comment out the above two lines and uncomment the below two lines to use the default session and env variable from Airflow, keep anything else unchanged.
+# ENV: str = os.environ.get("env", "prod")
+# boto3_session: Session = boto3.Session()
 
-TARGET_DATABASE = "data-and-insight-refined-zone"
-TARGET_BUCKET = f"dataplatform-{ENV}-refined-zone"
-TARGET_TABLE_NAME = "test_tian_demo_calendar"
-TARGET_S3_PREFIX = (
+SOURCE_DATABASE: str = "unrestricted-raw-zone"
+SOURCE_TABLE: str = "universal_calendar"
+
+TARGET_DATABASE: str = "data-and-insight-refined-zone"
+TARGET_BUCKET: str = f"dataplatform-{ENV}-refined-zone"
+TARGET_TABLE_NAME: str = "test_tian_demo_calendar"
+TARGET_S3_PREFIX: str = (
     f"s3://{TARGET_BUCKET}/data-and-insight/testing/demo/{TARGET_TABLE_NAME}/"
 )
-ATHENA_CACHE_PREFIX = (
+ATHENA_CACHE_PREFIX: str = (
     f"s3://dataplatform-{ENV}-athena-storage/data-and-insight/{TARGET_TABLE_NAME}/"
 )
 
 
-def get_calendar_aggregate_query():
+def get_calendar_aggregate_query() -> str:
     return f"""
     SELECT
       year(CAST(date_iso AS timestamp)) AS calendar_year,
@@ -40,7 +49,7 @@ def get_calendar_aggregate_query():
     """
 
 
-def read_calendar_aggregate():
+def read_calendar_aggregate() -> pd.DataFrame:
     df = wr.athena.read_sql_query(
         sql=get_calendar_aggregate_query(),
         database=SOURCE_DATABASE,
@@ -52,7 +61,7 @@ def read_calendar_aggregate():
     return df
 
 
-def write_calendar_table(df):
+def write_calendar_table(df: pd.DataFrame) -> dict[str, Any]:
     wr.s3.delete_objects(path=TARGET_S3_PREFIX, boto3_session=boto3_session)
     result = wr.s3.to_parquet(
         df=df,
@@ -73,7 +82,7 @@ def write_calendar_table(df):
     return result
 
 
-def main():
+def main() -> None:
     df = read_calendar_aggregate()
     write_calendar_table(df)
 
