@@ -15,7 +15,7 @@ SOURCE_TABLE = "universal_calendar"
 
 TARGET_DATABASE = "data-and-insight-refined-zone"
 TARGET_BUCKET = "dataplatform-stg-refined-zone"
-TABLE_NAME = "test_steve_demo_calendar"
+TABLE_NAME = "test_steve_demo_calendar_monthly_partitioned"
 ATHENA_OUTPUT_PREFIX = (
     f"s3://dataplatform-stg-athena-storage/data-and-insight/{TABLE_NAME}/"
 )
@@ -31,14 +31,14 @@ def create_session():
 def get_calendar_aggregate_query():
     return f"""
     SELECT
-      year(CAST(date_iso AS timestamp)) AS calendar_year,
-      count(*) AS day_count,
-      sum(CASE WHEN bank_holiday_flag THEN 1 ELSE 0 END) AS bank_holiday_count,
-      sum(CASE WHEN holiday_flag THEN 1 ELSE 0 END) AS holiday_count
-    FROM "{SOURCE_DATABASE}"."{SOURCE_TABLE}"
+        year(CAST(date_iso AS timestamp)) AS calendar_year,
+        month(CAST(date_iso AS timestamp)) AS calendar_month,
+        count(*) AS day_count,
+        sum(CASE WHEN bank_holiday_flag THEN 1 ELSE 0 END) AS bank_holiday_count
+    FROM "unrestricted-raw-zone"."universal_calendar"
     WHERE date_iso IS NOT NULL
-    GROUP BY 1
-    ORDER BY 1
+    GROUP BY 1, 2
+    ORDER BY 1, 2
     """
 
 
