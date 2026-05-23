@@ -97,14 +97,9 @@ Both scripts use `logging`, not `print`, so the run output is clear.
 
 Check the raw JSON file to  s3://dataplatform-stg-raw-zone/data-and-insight/testing/demo/police_api_crime_street/
 
-
 ## 5. Run  the transform
 
-
-
 Check the partitioned parquet files: s3://dataplatform-stg-raw-zone/data-and-insight/testing/demo/test_tian_demo_police_crime_street/
-
-
 
 ## 6. Check the result in Athena
 
