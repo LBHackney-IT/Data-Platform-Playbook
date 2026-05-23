@@ -30,11 +30,6 @@ module.exports = {
         },
         {
           type: "category",
-          label: "Onboard ETL at DAP",
-          items: getItems("playbook/onboard-etl-at-dap"),
-        },
-        {
-          type: "category",
           label: "Elements of the platform",
           items: getItems("playbook/elements-of-the-platform"),
         },
@@ -110,11 +105,18 @@ module.exports = {
       type: "category",
       label: "Training Modules",
       items: [
-          {
-            type: "category",
-            label: "Main Modules",
-            items: getItems("training-modules"),
-          },
+        {
+          type: "category",
+          label: "Main Modules",
+          items: getItems("training-modules"),
+        },
+        {
+          type: "category",
+          label: "Python transformation using local AWS profile",
+          items: getItems(
+            "training-modules/python-transformation-use-local-aws-profile"
+          ),
+        },
         {
           type: "category",
           label: "Qlik Modules",

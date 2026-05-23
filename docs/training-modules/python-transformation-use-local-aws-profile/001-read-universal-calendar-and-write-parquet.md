@@ -2,7 +2,7 @@
 title: Read universal_calendar and write a demo parquet table
 description: "Simple Windows example for reading universal_calendar, aggregating it, writing Parquet to S3, and registering a Glue table."
 layout: playbook_js
-tags: [playbook]
+tags: [training]
 ---
 
 ## Goal
@@ -74,7 +74,7 @@ pip install awswrangler boto3
 The runnable script is stored next to this page:
 
 ```text
-docs/playbook/onboard-etl-at-dap/universal_calendar_demo.py
+docs/training-modules/python-transformation-use-local-aws-profile/universal_calendar_demo.py
 ```
 
 It is safe to run more than once:
@@ -88,7 +88,7 @@ It is safe to run more than once:
 ## 4. Run it
 
 ```powershell
-cd C:\Users\<your_windows_username>\repos\Data-Platform-Playbook\docs\playbook\onboard-etl-at-dap
+cd C:\Users\<your_windows_username>\repos\Data-Platform-Playbook\docs\training-modules\python-transformation-use-local-aws-profile
 py .\universal_calendar_demo.py
 ```
 

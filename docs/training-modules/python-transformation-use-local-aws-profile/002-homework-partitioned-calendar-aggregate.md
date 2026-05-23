@@ -2,7 +2,7 @@
 title: Homework - write a partitioned calendar aggregate
 description: "Homework for writing a different universal_calendar aggregate to a partitioned refined-zone Glue table."
 layout: playbook_js
-tags: [playbook]
+tags: [training]
 ---
 
 ## Goal
