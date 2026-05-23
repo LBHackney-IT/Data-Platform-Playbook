@@ -53,7 +53,7 @@ def read_raw_json() -> list[dict[str, Any]]:
     if not isinstance(data, list):
         raise TypeError("Expected the raw S3 object to contain a JSON list")
 
-    logger.info("Read %s raw records from s3://%s/%s", len(data), RAW_BUCKET, RAW_KEY)
+    logger.info(f"Read {len(data)} raw records from s3://{RAW_BUCKET}/{RAW_KEY}")
     return data
 
 
@@ -69,7 +69,7 @@ def build_dataframe(data: list[dict[str, Any]]) -> pd.DataFrame:
     df["import_day"] = today.day
     df["import_date"] = today.isoformat()
 
-    logger.info("Built dataframe with %s rows and %s columns", len(df), len(df.columns))
+    logger.info(f"Built dataframe with {len(df)} rows and {len(df.columns)} columns")
     return df
 
 
@@ -88,10 +88,10 @@ def write_refined_table(df: pd.DataFrame) -> dict[str, Any]:
         boto3_session=boto3_session,
     )
 
-    logger.info("Wrote %s rows to %s", len(df), TARGET_S3_PREFIX)
-    logger.info("Registered table %s.%s", TARGET_DATABASE, TARGET_TABLE_NAME)
-    logger.info("Partition columns: %s", PARTITION_COLUMNS)
-    logger.info("Parquet files: %s", result["paths"])
+    logger.info(f"Wrote {len(df)} rows to {TARGET_S3_PREFIX}")
+    logger.info(f"Registered table {TARGET_DATABASE}.{TARGET_TABLE_NAME}")
+    logger.info(f"Partition columns: {PARTITION_COLUMNS}")
+    logger.info(f"Parquet files: {result['paths']}")
 
     return result
 

@@ -48,7 +48,7 @@ def read_crime_street_api() -> list[dict[str, Any]]:
     if not isinstance(data, list):
         raise TypeError("Expected the Police API to return a JSON list")
 
-    logger.info("Read %s records from %s", len(data), response.url)
+    logger.info(f"Read {len(data)} records from {response.url}")
     return data
 
 
@@ -63,7 +63,7 @@ def write_raw_json(data: list[dict[str, Any]]) -> None:
         ContentType="application/json",
     )
 
-    logger.info("Wrote raw JSON to s3://%s/%s", RAW_BUCKET, RAW_KEY)
+    logger.info(f"Wrote raw JSON to s3://{RAW_BUCKET}/{RAW_KEY}")
 
 
 def main() -> None:
