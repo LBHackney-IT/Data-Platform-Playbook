@@ -119,6 +119,11 @@ module.exports = {
         },
         {
           type: "category",
+          label: "Ingest from API",
+          items: getItems("training-modules/ingest_from_API"),
+        },
+        {
+          type: "category",
           label: "Qlik Modules",
           items: getItems("training-modules/Qlik"),
         },
