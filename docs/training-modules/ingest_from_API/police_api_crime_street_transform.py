@@ -1,4 +1,4 @@
-"""Demo transform: convert raw Police API JSON into a partitioned Glue table."""
+"""Demo transform: convert Police API JSON into a raw-zone Glue table."""
 
 import json
 import logging
@@ -31,8 +31,8 @@ RAW_KEY: str = (
     "crimes-street-all-crime-hackney.json"
 )
 
-TARGET_DATABASE: str = "data-and-insight-refined-zone"
-TARGET_BUCKET: str = f"dataplatform-{ENV}-refined-zone"
+TARGET_DATABASE: str = "data-and-insight-raw-zone"
+TARGET_BUCKET: str = f"dataplatform-{ENV}-raw-zone"
 TARGET_TABLE_NAME: str = "test_tian_demo_police_crime_street"
 TARGET_S3_PREFIX: str = (
     f"s3://{TARGET_BUCKET}/data-and-insight/testing/demo/{TARGET_TABLE_NAME}/"
@@ -46,6 +46,7 @@ PARTITION_COLUMNS: list[str] = [
 
 
 def read_raw_json() -> list[dict[str, Any]]:
+    """Read the raw Police API JSON file from S3."""
     s3_client = boto3_session.client("s3")
     response = s3_client.get_object(Bucket=RAW_BUCKET, Key=RAW_KEY)
     data = json.loads(response["Body"].read())
@@ -58,6 +59,7 @@ def read_raw_json() -> list[dict[str, Any]]:
 
 
 def build_dataframe(data: list[dict[str, Any]]) -> pd.DataFrame:
+    """Flatten the JSON records and add import partition columns."""
     if not data:
         raise ValueError("Raw Police API file contains no records")
 
@@ -73,7 +75,8 @@ def build_dataframe(data: list[dict[str, Any]]) -> pd.DataFrame:
     return df
 
 
-def write_refined_table(df: pd.DataFrame) -> dict[str, Any]:
+def write_raw_table(df: pd.DataFrame) -> dict[str, Any]:
+    """Write a partitioned parquet table to the raw zone."""
     wr.s3.delete_objects(path=TARGET_S3_PREFIX, boto3_session=boto3_session)
     result = wr.s3.to_parquet(
         df=df,
@@ -97,9 +100,10 @@ def write_refined_table(df: pd.DataFrame) -> dict[str, Any]:
 
 
 def main() -> None:
+    """Run the raw-zone table build."""
     data = read_raw_json()
     df = build_dataframe(data)
-    write_refined_table(df)
+    write_raw_table(df)
 
 
 if __name__ == "__main__":

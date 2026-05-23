@@ -83,14 +83,9 @@ It is safe to run more than once:
 - It stores temporary Athena query output under `s3://dataplatform-stg-athena-storage/data-and-insight/`.
 - It clears that folder before writing.
 - It uses `mode="overwrite"` so the Glue catalog table is replaced each run.
-- It uses `logging`, not `print`, so the run output is clear.
 
 ## 4. Run it
 
-```powershell
-cd C:\Users\<your_windows_username>\repos\Data-Platform-Playbook\docs\training-modules\python-transformation-use-local-aws-profile
-py .\universal_calendar_demo.py
-```
 
 ## 5. Check the result in Athena
 

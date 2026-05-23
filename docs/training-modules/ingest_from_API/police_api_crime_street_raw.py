@@ -41,6 +41,7 @@ RAW_KEY: str = (
 
 
 def read_crime_street_api() -> list[dict[str, Any]]:
+    """Read street-level crime records from the Police API."""
     response = requests.get(API_URL, params=API_PARAMS, timeout=30)
     response.raise_for_status()
 
@@ -53,6 +54,7 @@ def read_crime_street_api() -> list[dict[str, Any]]:
 
 
 def write_raw_json(data: list[dict[str, Any]]) -> None:
+    """Write the API response as one raw JSON file in S3."""
     s3_client = boto3_session.client("s3")
     body = json.dumps(data, indent=2, ensure_ascii=False)
 
@@ -67,6 +69,7 @@ def write_raw_json(data: list[dict[str, Any]]) -> None:
 
 
 def main() -> None:
+    """Run the raw API ingest."""
     data = read_crime_street_api()
     write_raw_json(data)
 

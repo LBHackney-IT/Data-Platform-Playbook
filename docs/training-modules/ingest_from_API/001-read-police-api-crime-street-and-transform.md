@@ -1,6 +1,6 @@
 ---
 title: Read Police API crime street data and transform it
-description: "Simple Windows example for reading Police API JSON, saving it to raw S3, and transforming it into a partitioned Glue table."
+description: "Simple Windows example for reading Police API JSON, saving it to raw S3, and creating a partitioned raw-zone Glue table."
 layout: playbook_js
 tags: [training]
 ---
@@ -19,10 +19,10 @@ Write the raw JSON response to:
 s3://dataplatform-stg-raw-zone/data-and-insight/testing/demo/police_api_crime_street/crimes-street-all-crime-hackney.json
 ```
 
-Then transform that raw JSON into a partitioned parquet Glue table:
+Then transform that raw JSON into a partitioned parquet Glue table in the raw zone:
 
 ```text
-"data-and-insight-refined-zone"."test_tian_demo_police_crime_street"
+"data-and-insight-raw-zone"."test_tian_demo_police_crime_street"
 ```
 
 Partition the transformed table by:
@@ -89,53 +89,23 @@ docs/training-modules/ingest_from_API/police_api_crime_street_transform.py
 
 The first script reads from the API and writes one JSON file to the raw zone.
 
-The second script reads that raw JSON file, flattens the nested API fields, adds import partition columns, writes parquet to the refined zone, and registers a Glue table.
+The second script reads that raw JSON file, flattens the nested API fields, adds import partition columns, writes parquet to the raw zone, and registers a Glue table.
 
 Both scripts use `logging`, not `print`, so the run output is clear.
 
 ## 4. Run the raw ingest
 
-```powershell
-cd C:\Users\<your_windows_username>\repos\Data-Platform-Playbook\docs\training-modules\ingest_from_API
-py .\police_api_crime_street_raw.py
-```
+Check the raw JSON file to  s3://dataplatform-stg-raw-zone/data-and-insight/testing/demo/police_api_crime_street/
 
-Check the raw JSON file:
 
-```powershell
-aws s3 ls s3://dataplatform-stg-raw-zone/data-and-insight/testing/demo/police_api_crime_street/ --profile DataPlatformDataAndInsightStg
-```
+## 5. Run  the transform
 
-## 5. Run the transform
 
-```powershell
-py .\police_api_crime_street_transform.py
-```
 
-Check the partitioned parquet files:
+Check the partitioned parquet files: s3://dataplatform-stg-raw-zone/data-and-insight/testing/demo/test_tian_demo_police_crime_street/
 
-```powershell
-aws s3 ls s3://dataplatform-stg-refined-zone/data-and-insight/testing/demo/test_tian_demo_police_crime_street/ --recursive --profile DataPlatformDataAndInsightStg
-```
 
-You should see partition folders like:
-
-```text
-import_year=2026/import_month=5/import_day=23/import_date=2026-05-23/
-```
 
 ## 6. Check the result in Athena
 
-Use this table:
-
-```sql
-SELECT
-  id,
-  category,
-  month,
-  location_street_name,
-  outcome_status_category,
-  import_date
-FROM "data-and-insight-refined-zone"."test_tian_demo_police_crime_street"
-LIMIT 10;
-```
+check "data-and-insight-raw-zone"."test_tian_demo_police_crime_street"
