@@ -108,13 +108,13 @@ This creates the separate `ringgo_payments` table.
 6. Leave the default permissions and encryption settings unchanged.
 7. Click **Upload**.
 
-Processing takes less than a minute. When complete:
+After the upload is complete, the automated processing takes less than a
+minute. When processing is complete, Parking users can query the table in
+Athena as:
 
-- The CSV is stored at
-  `<department>/<target_table_name>/<file_name>.csv`.
-- A Glue table with the generated name appears in the department upload
-  database (currently `parking_user_uploads_db` for the Parking workflow).
-- You can query the table immediately in Athena.
+```text
+parking_user_uploads_db.<target_table_name>
+```
 
 ## 4. Delete CSV files (Console)
 
