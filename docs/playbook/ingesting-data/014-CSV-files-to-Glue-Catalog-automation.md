@@ -23,82 +23,106 @@ a user from an enabled department uploads or removes CSV files in the
 Upload files to your departmental prefix inside the production bucket:
 
 ```
-s3://dataplatform-prod-user-uploads/<department>/<project_name_prefix>/<table_name>/<file_name>.csv
+s3://dataplatform-prod-user-uploads/<department>/<target_table_name>/<file_name>.csv
 ```
 
 - `<department>` identifies your team (e.g. `parking`, `housing`).
-- `<project_name_prefix>` is a required folder because it becomes the first
-  part of the Glue table name. Using a project or data-source name is
-  recommended (e.g. `parking_permits`, `ringgo`). For individual work, you can
-  use the uploader's name instead (e.g. `davina`).
-- `<table_name>` is a subfolder for one table (e.g. `permits`). A project folder
-  can contain multiple table subfolders.
-- `<file_name>` is the CSV for that table (e.g. `permits_march.csv`).
-- Only `.csv` files are supported; other extensions are rejected.
+- `<target_table_name>` is the folder immediately below the department and
+  becomes the Glue table name (e.g. `ringgo_permits`).
+- `<file_name>` is ignored when generating the Glue table name. Every CSV in
+  the same `<target_table_name>` folder contributes data to the same table.
+- Only lowercase `.csv` files are processed; other extensions are ignored.
 
 ### Table Names
 
 The table name is generated automatically as:
 
 ```
-normalize(<project_name_prefix>) + "_" + normalize(<table_name>)
+normalize(<target_table_name>)
 ```
 
 Normalization replaces non-alphanumeric characters with underscores and
 collapses consecutive underscores into one.
 
+### Required Path
+
+The Lambda accepts exactly one table folder beneath the department:
+
+```text
+<department>/<target_table_name>/<file_name>.csv
+```
+
+CSV files that do not match this path structure are rejected, an error is
+logged, and no Glue table is created. Other file types do not trigger this
+automation. For example:
+
+```text
+parking/permits.csv                         # Missing target table folder
+parking/ringgo/permits/permits.csv         # Too many folders
+parking/ringgo_permits/permits.xlsx        # Unsupported and not processed
+```
+
 ## Notes
 
 - _Visibility:_ Every member of your department can currently see the CSV
   files and Glue tables created from these uploads, not just those stored under
-  a particular `<project_name_prefix>`.
+  a particular `<target_table_name>`.
 - _Schema:_ All columns in the generated Glue tables are currently created as `string` types.
-- _Upload location:_ Create a separate `<table_name>` subfolder for every table
-  inside the project folder. Keep one CSV file in each table subfolder.
-- _Existing uploads:_ The legacy
-  `<department>/<project_name_prefix>/<file_name>.csv` layout remains supported,
-  but it should not be used for multiple tables because all files share the
-  same S3 table location.
+- _Table isolation:_ Each `<target_table_name>` folder is a separate table and
+  has its own S3 location.
+- _Multiple files:_ CSV files in the same table folder must have the same
+  header and schema because Athena reads them together as one table.
+- _Data format:_ The CSV files are not converted to Parquet. Athena reads the
+  original CSV files directly from the user uploads bucket.
 
 ### Using Parking as an Example
 
-Parking users can create two tables in the same `ringgo` project folder:
+Parking users can upload monthly files to the same table folder:
 
 ```
-s3://dataplatform-prod-user-uploads/parking/ringgo/permits/permits_march.csv
-s3://dataplatform-prod-user-uploads/parking/ringgo/payments/payments_march.csv
+s3://dataplatform-prod-user-uploads/parking/ringgo_permits/january.csv
+s3://dataplatform-prod-user-uploads/parking/ringgo_permits/february.csv
 ```
 
-These generate `ringgo_permits` and `ringgo_payments` inside the
-`parking_user_uploads_db` Glue database. Each table points only to its own
-table subfolder.
+These two files jointly make up `ringgo_permits`; they do not create two
+tables. The table is created inside the `parking_user_uploads_db` Glue database
+and points to the `parking/ringgo_permits/` S3 folder.
+
+To create a separate table, use another table folder:
+
+```text
+s3://dataplatform-prod-user-uploads/parking/ringgo_payments/payments.csv
+```
+
+This creates the separate `ringgo_payments` table.
 
 ## 3. Upload CSV files (Console)
 
 1. Sign in to the AWS Console and open **S3**.
 2. Navigate to the `dataplatform-prod-user-uploads` bucket.
 3. Browse into your department folder (e.g. `parking/`).
-4. Inside the `<department>` folder, create a subfolder named after the project
-   or data source (`<project_name_prefix>`), then open it.
-5. Inside the project folder, create a subfolder for the table
-   (`<table_name>`), then open it.
-6. Click **Upload** → **Add files** and choose the CSV for that table.
-7. Leave the default permissions and encryption settings unchanged.
-8. Click **Upload**.
+4. Inside the `<department>` folder, create a subfolder named after the target
+   table (`<target_table_name>`), then open it.
+5. Click **Upload** → **Add files** and choose one or more CSV files that have
+   the same header and schema.
+6. Leave the default permissions and encryption settings unchanged.
+7. Click **Upload**.
 
 Processing takes less than a minute. When complete:
 
 - The CSV is stored at
-  `<department>/<project_name_prefix>/<table_name>/<file_name>.csv`.
+  `<department>/<target_table_name>/<file_name>.csv`.
 - A Glue table with the generated name appears in the department upload
   database (currently `parking_user_uploads_db` for the Parking workflow).
 - You can query the table immediately in Athena.
 
 ## 4. Delete CSV files (Console)
 
-Deleting the CSV removes the corresponding Glue table.
+Deleting a CSV removes the Glue table only when no other CSV files remain in
+the same `<target_table_name>` folder.
 
 1. In S3, select the CSV under
-   `<department>/<project_name_prefix>/<table_name>/`.
+   `<department>/<target_table_name>/`.
 2. Choose **Delete** and confirm.
-3. Within less than a minute the table disappears from Glue/Athena.
+3. If it was the final CSV in the folder, the table disappears from Glue/Athena
+   within less than a minute. Otherwise, the table remains.
