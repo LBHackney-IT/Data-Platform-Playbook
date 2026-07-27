@@ -1,9 +1,21 @@
 ---
-title: Ingest manually uploaded csv files
+title: "[Deprecated] Ingest manually uploaded CSV files"
 description: "Ingest data from csv files"
 layout: playbook_js
 tags: [playbook]
 ---
+
+:::danger DEPRECATED
+
+This playbook describes the legacy manual CSV ingestion workflow and should
+not be used for new uploads. Use
+[Ingest manually uploaded CSV files into the Glue Catalog](./014-CSV-files-to-Glue-Catalog-automation.md)
+instead.
+
+This page is retained as a reference for people who previously used this
+workflow.
+
+:::
 
 ## Prerequisites
 
