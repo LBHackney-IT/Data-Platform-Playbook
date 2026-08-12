@@ -10,6 +10,10 @@ module.exports = {
   organizationName: "lbhackney-it",
   projectName: "Data Platform Playbook",
   trailingSlash: false,
+  markdown: {
+    mermaid: true,
+  },
+  themes: ["@docusaurus/theme-mermaid"],
   themeConfig: {
     prism: {
       additionalLanguages: ["csharp"],
