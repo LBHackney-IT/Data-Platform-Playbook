@@ -1,11 +1,11 @@
 ---
-title: Managing DataHub Metadata via Config Files
-description: "How to manage and ingest metadata to DataHub using YAML configuration files"
+title: Managing DataHub Metadata
+description: "How DataHub metadata is created and maintained"
 layout: playbook_js
 tags: [playbook]
 ---
 
-# Ingesting Metadata to DataHub
+# Managing DataHub Metadata
 
 ## Overview
 
