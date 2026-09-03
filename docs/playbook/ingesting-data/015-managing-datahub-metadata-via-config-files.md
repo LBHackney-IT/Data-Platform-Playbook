@@ -134,44 +134,38 @@ platforms:
 3. **Add the data product definition:**
 
 ```yaml
-id: urn:li:dataProduct:domain-name.product-name
-properties:
-  name: Product Display Name
-  description: "Business description of what this data product provides"
-  domain: urn:li:domain:domain-name
-  assets:
-    - urn:li:dataset:(urn:li:dataPlatform:glue,database.table1,${ENV})
-    - urn:li:dataset:(urn:li:dataPlatform:glue,database.table2,${ENV})
-  customProperties:
-    data_quality: "High"
-    refresh_frequency: "Daily"
+id: domain-name-product-name
+domain: urn:li:domain:domain-name
+display_name: Product Display Name
+description: Business description of what this data product provides.
 ```
 
 **Fields:**
-- `id`: URN format: `urn:li:dataProduct:domain.product-name`
+- `id`: Stable Data Product identifier
 - `domain`: Must match an existing domain
-- `assets`: List of dataset URNs to include
-- `customProperties`: Optional metadata (key-value pairs)
+- `display_name`: Name shown in the DataHub UI
+- `description`: Business description of the Data Product
+
+After creating the Data Product, authorized analysts and Asset Admins attach
+datasets to it through the DataHub UI. Dataset associations are not managed in
+the YAML definition.
 
 ---
 
-## How to Add Dataset Metadata (Advanced)
+## How to Maintain Dataset Metadata
 
-**Note:**  In most cases, you do NOT need to add dataset metadata manually as datasets are automatically created during ingestion from sources as the single source of truth. Only use this if you need to override or add additional metadata to existing datasets. Please consult with the DAP team before adding custom dataset metadata.
+Datasets are created by ingestion sources. Do not add dataset YAML under
+`dap-datahub-tools/yaml_config/metadata/datasets/`; that local directory is no
+longer part of the repository.
 
-**File:** Create a new YAML file in `metadata/datasets/` (e.g., `my_dataset.yaml` as below)
+Authorized analysts and Asset Admins maintain human-authored dataset metadata
+in the DataHub UI:
 
-```yaml
-id: database.table_name
-platform: glue
-env: '${ENV}'
-editableProperties:
-  description: "Your dataset description"
-globalTags:
-  tags:
-    - tag: urn:li:tag:YourTag
-ownership:
-  owners:
-    - owner: urn:li:corpuser:your.email@hackney.gov.uk
-      type: TECHNICAL_OWNER
-```
+1. Find the dataset through search or its Data Platform page.
+2. Edit its description and ownership on the dataset page.
+3. Use the UI to attach it to the correct Domain and Data Product.
+
+The separate Airflow asset-generation pipeline still publishes machine-
+generated metadata for web maps, Earthlight layers, and Qlik Sense Enterprise
+dashboards directly to the runtime S3 prefix. This is an automated system
+contract, not a manual YAML-authoring route.
