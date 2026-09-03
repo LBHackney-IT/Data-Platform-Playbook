@@ -51,57 +51,6 @@ yaml_config/
 
 ---
 
-## How to Add Tables to Glue Ingestion
-
-**File:** `ingestion/glue.yaml`
-
-### Add a Database
-
-Add to the `database_pattern.allow` list:
-
-```yaml
-database_pattern:
-  allow:
-    - your-database-name
-```
-
-### Add a Table
-
-Add to the `table_pattern.allow` list:
-
-```yaml
-table_pattern:
-  allow:
-    - database-name.table-name
-```
-
-### Remove a Table
-
-- The SQL-based sources (e.g. Glue) allow the enable of `remove_stale_metadata` parameter. Simply remove the table from the `table_pattern.allow` list. It will be automatically soft-deleted from DataHub on the next ingestion run.
-- Qlik Cloud ingestion does not support automatic deletion of stale metadata, so you will need to manually delete the dataset via DataHub UI or CLI if you want to remove it from the metadata store.
-
----
-
-## How to Add Qlik Spaces to Ingestion
-
-**File:** `ingestion/qlik_cloud.yaml`
-
-Add space names to the `space_pattern.allow` list:
-
-```yaml
-space_pattern:
-  allow:
-    - "Your Space Name"
-```
-
----
-
-## How to Add Ingestion from Other Sources
-
-If you need to add ingestion from sources other than Glue or Qlik Cloud, please **contact the DAP team** to create the YAML template for you for the first time.
-
----
-
 ## How to Add a New Domain
 
 **File:** `metadata/domains/domains.yaml`
