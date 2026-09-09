@@ -35,11 +35,6 @@ module.exports = {
         },
         {
           type: "category",
-          label: "Finding data on the platform",
-          items: getItems("playbook/finding-data"),
-        },
-        {
-          type: "category",
           label: "Getting access to data",
           items: getItems("playbook/getting-access-to-data"),
         },
