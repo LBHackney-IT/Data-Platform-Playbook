@@ -4,6 +4,7 @@ description: "A data engineer's guide to DataHub metadata ownership, configurati
 layout: playbook_js
 tags: [playbook]
 ---
+
 # Managing DataHub Metadata
 
 > **Primary audience:** DAP data engineers who maintain DataHub catalog
@@ -34,14 +35,14 @@ replace manual changes made in the wrong place.
 Use YAML when the definition, membership, or permission is intended to be
 reviewed and deployed as code.
 
-| What you are changing                                               | Source of truth                                                                        | Notes                                                                                                   |
-| ------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| Domain and Subdomain definitions                                    | `dap-datahub-tools/yaml_config/metadata/domains/*.yaml`                              | Each service-area file contains a`domains` list and may contain nested `subdomains`.                |
-| Data Platform display definitions                                   | `dap-datahub-tools/yaml_config/metadata/dataplatforms/dataplatforms.yaml`            | The built-in source IDs`glue`, `qlik-sense`, and `tableau` must not be changed.                   |
+| What you are changing                                               | Source of truth                                                                      | Notes                                                                                                 |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| Domain and Subdomain definitions                                    | `dap-datahub-tools/yaml_config/metadata/domains/*.yaml`                              | Each service-area file contains a`domains` list and may contain nested `subdomains`.                  |
+| Data Platform display definitions                                   | `dap-datahub-tools/yaml_config/metadata/dataplatforms/dataplatforms.yaml`            | The built-in source IDs`glue`, `qlik-sense`, and `tableau` must not be changed.                       |
 | Data Product definitions                                            | `dap-datahub-tools/yaml_config/metadata/dataproducts/<top-level-group>/*.yaml`       | The`domain` field, rather than the folder name, determines the DataHub Domain relationship.           |
-| Reusable DataHub metadata permission profiles                       | `dap-datahub-tools/yaml_config/authorization/permission_profiles.yaml`               | Defines capabilities only; it does not assign users or groups.                                          |
-| Profiles assigned to every Lake Formation-derived group             | `dap-datahub-tools/yaml_config/authorization/lakeformation_group_authorization.yaml` | The resulting DataHub policies are restricted by each group's LF-tags.                                  |
-| DataHub-only groups, authoritative members, and profile assignments | `dap-datahub-tools/yaml_config/authorization/managed_datahub_groups.yaml`            | Use this for groups that do not come from Lake Formation.                                               |
+| Reusable DataHub metadata permission profiles                       | `dap-datahub-tools/yaml_config/authorization/permission_profiles.yaml`               | Defines capabilities only; it does not assign users or groups.                                        |
+| Profiles assigned to every Lake Formation-derived group             | `dap-datahub-tools/yaml_config/authorization/lakeformation_group_authorization.yaml` | The resulting DataHub policies are restricted by each group's LF-tags.                                |
+| DataHub-only groups, authoritative members, and profile assignments | `dap-datahub-tools/yaml_config/authorization/managed_datahub_groups.yaml`            | Use this for groups that do not come from Lake Formation.                                             |
 | Lake Formation-derived group members and LF-tag scopes              | `dap-access-management/groups/<team>/<group>.yaml`                                   | This also controls DAP access intent. Do not duplicate these members in`managed_datahub_groups.yaml`. |
 
 Removing a repository-managed Domain, Data Platform, or Data Product from YAML
@@ -52,8 +53,8 @@ can cause the corresponding DataHub entity to be hard-deleted by automated recon
 Use the DataHub UI for permitted human-authored enrichment and associations on
 existing assets.
 
-| What you are changing                        | Where to change it            | Who can change it                                                                                                                                                                                              |
-| -------------------------------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| What you are changing                        | Where to change it            | Who can change it                                                                                                                                                                                            |
+| -------------------------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Dataset descriptions                         | The asset page in DataHub     | Members of a matching Lake Formation-derived group can edit descriptions where the asset's LF-tags match their scope. Members of`dap-datahub-asset-admins` can edit the configured asset types more broadly. |
 | Dataset column descriptions                  | The Dataset schema in DataHub | Members of a matching Lake Formation-derived group and members of`dap-datahub-asset-admins`.                                                                                                                 |
 | Ownership and other permitted asset metadata | The asset page in DataHub     | Members of`dap-datahub-asset-admins`.                                                                                                                                                                        |
@@ -76,10 +77,10 @@ replacement entities manually in DataHub.
 | Glue Catalog assets                                                             | The Glue DataHub ingestion source                                                                                                             |
 | Qlik Cloud dashboards                                                           | The Qlik Cloud DataHub ingestion source                                                                                                       |
 | Tableau Cloud dashboards                                                        | The Tableau Cloud DataHub ingestion source; each published workbook with an allowed visible dashboard is represented as one DataHub Dashboard |
-| Web map, Earthlight, and Qlik Sense Enterprise Dataset metadata                 | The`data_and_insight_datahub_assets_yaml_generate_dag` Airflow DAG and generated runtime YAML                                               |
-| Creation and updates of YAML-managed Domains, Data Platforms, and Data Products | The`data_and_insight_datahub_metadata` Airflow DAG                                                                                          |
+| Web map, Earthlight, and Qlik Sense Enterprise Dataset metadata                 | The`data_and_insight_datahub_assets_yaml_generate_dag` Airflow DAG and generated runtime YAML                                                 |
+| Creation and updates of YAML-managed Domains, Data Platforms, and Data Products | The`data_and_insight_datahub_metadata` Airflow DAG                                                                                            |
 | Removal of entities that disappear from managed YAML                            | The metadata DAG's guarded reconciliation tasks                                                                                               |
-| DataHub Groups, memberships, and metadata policies declared in YAML             | The independent`data_and_insight_datahub_authorization` Airflow DAG                                                                         |
+| DataHub Groups, memberships, and metadata policies declared in YAML             | The independent`data_and_insight_datahub_authorization` Airflow DAG                                                                           |
 
 The repository intentionally has no
 `dap-datahub-tools/yaml_config/metadata/datasets/` directory. Generated Dataset
@@ -120,8 +121,8 @@ dap-access-management/
 
 Metadata management and authorization run as separate Airflow DAGs:
 
-| Airflow DAG                                | DAG source path                                                                                  | Responsibility                                                                                       |
-| ------------------------------------------ | ------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
+| Airflow DAG                              | DAG source path                                                                                | Responsibility                                                                                       |
+| ---------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | `data_and_insight_datahub_metadata`      | `dap-airflow/airflow/dags/data_and_insight/datahub/metadata/datahub_metadata_dag.py`           | Creates and updates managed metadata and technical assets, then reconciles removed managed entities. |
 | `data_and_insight_datahub_authorization` | `dap-airflow/airflow/dags/data_and_insight/datahub/authorization/datahub_authorization_dag.py` | Reconciles DataHub Groups, authoritative memberships, and metadata policies.                         |
 
@@ -233,8 +234,8 @@ category; it has not been renamed. The Asset Admin group is one DataHub-only
 Group with the stable ID `dap-datahub-asset-admins`. A group's `display_name`
 is only its label in the DataHub UI.
 
-| Group type                   | How permissions are managed                                                                                                                                                                                                                                                                                                                                                                                         |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Group type                   | How permissions are managed                                                                                                                                                                                                                                                                                                                                                                                   |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Lake Formation-derived Group | No DataHub configuration change is required for normal use. Membership and LF-tag scope come from`dap-access-management/groups/<team>/<group>.yaml`. The authorization workflow automatically creates the DataHub Group and gives its users `EDIT_ENTITY_DOCS` and `EDIT_DATASET_COL_DESCRIPTION` on matching catalog assets, allowing them to edit asset and column descriptions.                            |
 | DataHub-only Group           | Use this when selected users need metadata permissions beyond the two automatically assigned permissions. Add users to the appropriate group in`dap-datahub-tools/yaml_config/authorization/managed_datahub_groups.yaml` and assign an existing profile in `permission_profiles`. If a new capability is required, define it first in `dap-datahub-tools/yaml_config/authorization/permission_profiles.yaml`. |
 

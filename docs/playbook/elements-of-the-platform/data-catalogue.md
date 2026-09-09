@@ -22,9 +22,7 @@ However, a data catalogue _isn't_:
 
 ## How is our data catalogue built
 
-The data catalogue is built using a tool called [DataHub](https://datahubproject.io/docs/features). 
+The data catalogue is built using a tool called [DataHub](https://datahubproject.io/docs/features).
 
-- DataHub catalogues our data based on event-sourced metadata. When new data is added, or existing data updated, an event will be registered by the DataHub API and the change being made to the data will be added to the catalogue 
+- DataHub catalogues our data based on event-sourced metadata. When new data is added, or existing data updated, an event will be registered by the DataHub API and the change being made to the data will be added to the catalogue
 - DataHub also catalogues our data based on relational models. These models use similar types of data (eg. names, dates of birth), as defined by Hackney, to identify where there is a relationship between different pieces of data
-
-More detailed information on how to use the Data Catalogue can be found here: [Using the Data Catalogue](../finding-data/data-catalogue.md)
