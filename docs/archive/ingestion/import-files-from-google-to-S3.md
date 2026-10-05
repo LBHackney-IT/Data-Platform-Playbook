@@ -3,7 +3,14 @@ title: Import files from google to s3
 description: "Import files from google to s3 description"
 layout: playbook_js
 tags: [playbook]
+slug: /archived-articles/import-files-from-google-to-S3
 ---
+
+:::warning Archived
+
+This page was archived in October 2026. It describes how the platform used to work and is kept as a record. To ingest a Google Sheet today, see [Ingesting data from Google Sheets](/playbook/ingesting-data/google-sheets-import).
+
+:::
 
 ## Preparing to import the file from Google drive
 
@@ -24,7 +31,7 @@ tags: [playbook]
 - You will need to obtain the document key from the url
 - The document id is the portion of the url between `https://docs.google.com/file/d/` and `/edit#gid=0`. See example below
 
-  ![file id](./images/google_spreadsheet_id_example.png)
+  ![file id](../../playbook/images/google_spreadsheet_id_example.png)
 
 ## Setting up the copier lambda
 

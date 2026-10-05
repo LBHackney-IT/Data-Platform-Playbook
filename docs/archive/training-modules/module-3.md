@@ -3,7 +3,14 @@ title: Deploying a job in AWS Glue
 description: "Training module: Deploying a job in AWS Glue"
 layout: playbook_js
 tags: [training]
+slug: /training-modules/module-3
 ---
+
+:::warning Archived
+
+This page was archived in October 2026. It describes how the platform used to work and is kept as a record. New transforms are built with Airflow. Start with [DAP⇨flow onboarding](/dap-airflow/onboarding/begin).
+
+:::
 
 # Deploying a job in Glue
 
@@ -54,7 +61,7 @@ If you need more detailed instructions at any point checkout [the guide to set u
     * Open the job and familiarise yourself with the steps (reading, transforming and writing data) and note the differences compared to the Notebook template.
    
 
-![Cloning a glue job](./images/cloning_jobs.png)
+![Cloning a glue job](../../training-modules/images/cloning_jobs.png)
 
 3. Write your Glue job.
     * In a different tab, open Sagemaker and navigate to the notebook you created in Module 2.
@@ -65,7 +72,7 @@ If you need more detailed instructions at any point checkout [the guide to set u
       You should also update the S3 path in the **Script path** field to `s3://dataplatform-stg-glue-scripts/custom/`. 
 
 
-![job parameters](./images/job_parameters.png)
+![job parameters](../../training-modules/images/job_parameters.png)
 
 4. Run your job.
 5. Review the run result logs.
@@ -94,7 +101,7 @@ In this second part of Module 3, you will ‘productionize’ the job you’ve t
 
 This is so that we can check that the job deployed through the Terraform that you are about to write, actually works. To delete your data, navigate to it in S3 (Refined zone bucket, Sandbox department) and permanently delete the two full folders with your name (there should be one folder for Locations and one for Vaccinations). *Do NOT* delete your data from the Raw zone, otherwise you would have to ingest it again by running the ingestion job created in *Ingesting data from Google Sheets!*
 
-![Deleting folders in S3](./images/delete_S3_folder.png)
+![Deleting folders in S3](../../training-modules/images/delete_S3_folder.png)
 
 10. Create and add your PySpark script to the GitHub repository.
 
@@ -118,7 +125,7 @@ A module is a block of Terraform code that creates a set of related resources in
 * The job parameters (this is the same as what you defined manually in *Job details* in the Glue console)
 * A crawler to crawl the results of your job so that data is available to view in a tabular format in the Glue data catalogue (rather than as a set of parquet files in S3)
 
-![Module example](./images/job-module-example.png)
+![Module example](../../training-modules/images/job-module-example.png)
   
 You’ll create your module in the existing file: [terraform/core/40-aws-glue-job-sandbox.tf][job module in repo - sandbox]. This link takes you to the `main` branch of the repository, but you should make sure you switch to the branch you were using to develop the Pythin script in the previous step. 
 
@@ -138,7 +145,7 @@ Commit your code to your current working branch and then open a Pull Request. Th
 
 When you have received **two approvals** from reviewers, go back to GitHub. You will now be able to merge your branch (the merge button is green). 
 
-![Merge your branch](./images/merge-branch.png)
+![Merge your branch](../../training-modules/images/merge-branch.png)
 
 The automated deployment will now start and make take up to an hour to complete.
 To check how it is going, you can navigate to the [Actions tab][github actions] and monitor the progress of your code deployment. 
@@ -158,11 +165,11 @@ You can now run your job manually from Glue Studio. After it has completed, the 
 * Open the [Query editor][Athena query editor]
 * Make sure workgroup is “sandbox” and you’re using the “sandbox-raw-zone” database
 
-![Sandbox workgroup in Athena](./images/athena-sandbox-workgroup.png)
+![Sandbox workgroup in Athena](../../training-modules/images/athena-sandbox-workgroup.png)
 
 * Run a simple query in Athena against your tables (created/ updated) by the Crawlers. A simple way to do this is to select the 3 vertical dots by the table name and select “Preview Table” to see the top 10 lines. (The dialect of SQL used in Athena is [Presto SQL][Presto SQL])
 
-![Preview table in AThena](./images/athena-preview-table.png)
+![Preview table in AThena](../../training-modules/images/athena-preview-table.png)
 
 17. Delete the job prototype you've created manually in the Glue console in the Part 1 of this training module.
 
@@ -180,15 +187,15 @@ If the deployed job has worked successfully, you can safely delete the one you c
 [about_jupyter]: https://jupyter.org/
 [pyspark_by_example]: https://sparkbyexamples.com/pyspark-tutorial/
 [aws_glue_studio]: https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/jobs
-[querying_with_athena]: ../playbook/querying-and-analysing-data/querying-data-using-sql.md
-[sagemaker_article]: ../playbook/transforming-data/using-aws-glue/006-using-sagemaker.md 
-[setting_up_etl_job]: ../playbook/transforming-data/using-aws-glue/001-using-glue-studio.md
-[monitoring_jobs]: ../playbook/transforming-data/using-aws-glue/001-using-glue-studio.md#monitoring-a-glue-job-run
+[querying_with_athena]: ../../playbook/querying-and-analysing-data/querying-data-using-sql.md
+[sagemaker_article]: ../sagemaker-notebooks/006-using-sagemaker.md 
+[setting_up_etl_job]: ../glue-jobs/001-using-glue-studio.md
+[monitoring_jobs]: ../glue-jobs/001-using-glue-studio.md#monitoring-a-glue-job-run
 [hackney_sso]: https://hackney.awsapps.com/start#/
 [s3]: https://s3.console.aws.amazon.com/s3/home?region=eu-west-2
 [athena_query_editor]: https://eu-west-2.console.aws.amazon.com/athena/home?region=eu-west-2#/query-editor/
 [glue_crawlers]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#catalog:tab=crawlers
-[refined_zone]: ../glossary.md#refined-zone
+[refined_zone]: ../../glossary.md#refined-zone
 [using github]: https://lbhackney-it.github.io/Data-Platform-Playbook/playbook/transforming-data/using-aws-glue/deploy-glue-jobs/#1-add-your-script-to-the-data-platform-project-using-the-github-ui
 [job module example]: https://lbhackney-it.github.io/Data-Platform-Playbook/playbook/transforming-data/using-aws-glue/deploy-glue-jobs/#example-module-block
 [job module in repo - sandbox]:https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/40-aws-glue-job-sandbox.tf

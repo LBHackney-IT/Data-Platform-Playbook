@@ -4,7 +4,14 @@ title: Guide to testing data quality in Glue Jobs
 description: "A guide to continuous data quality testing in Glue Jobs"
 layout: playbook_js
 tags: [playbook]
+slug: /playbook/transforming-data/guides-to-testing-in-the-platform/data-quality-testing-guide
 ---
+
+:::warning Archived
+
+This page was archived in October 2026. It describes how the platform used to work and is kept as a record. It may still help if you maintain one of the remaining Glue jobs.
+
+:::
 
 ## Resources
 

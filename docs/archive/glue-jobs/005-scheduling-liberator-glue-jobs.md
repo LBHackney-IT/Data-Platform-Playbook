@@ -4,7 +4,14 @@ title: Scheduling Liberator Glue Jobs
 description: "Schedule a glue job to run when new liberator data is added into the platform"
 layout: playbook_js
 tags: [playbook]
+slug: /playbook/transforming-data/using-aws-glue/practical-examples/scheduling-liberator-glue-jobs
 ---
+
+:::warning Archived
+
+This page was archived in October 2026. It describes how the platform used to work and is kept as a record. Scheduling is now handled by Airflow. See the [DAP⇨flow introduction](/dap-airflow/introduction).
+
+:::
 
 ## Intro
 
@@ -54,11 +61,11 @@ Your job is now scheduled to run when new liberator data is added to the platfor
 - Continue following the instructions above.
 
 [aws_glue_workflows]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=workflows;workflowView=workflow-list
-[raw_zone]: ../../../../zones.md#raw-zone
-[refined_zone]: ../../../../zones.md#refined-zone
+[raw_zone]: ../../zones.md#raw-zone
+[refined_zone]: ../../zones.md#refined-zone
 [aws_glue_triggers]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#etl:tab=triggers
 [aws_glue_studio]: https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/jobs
 [aws_athena]: https://eu-west-2.console.aws.amazon.com/athena/home?region=eu-west-2#query
 [hackney_aws_sso]: https://hackney.awsapps.com/start#/
 [creating_a_glue_job]: ./using-glue-studio
-[workshop]: ../../../../workshop/aws_glue_studio_parking.md
+[workshop]: aws_glue_studio_parking.md

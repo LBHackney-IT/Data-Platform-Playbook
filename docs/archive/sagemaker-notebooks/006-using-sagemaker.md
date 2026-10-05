@@ -4,8 +4,14 @@ title: Prototyping glue jobs in a notebook
 description: "Prototyping transformation scripts using a Jupyter Notebook"
 layout: playbook_js
 tags: [playbook]
+slug: /playbook/transforming-data/using-aws-glue/using-sagemaker
 ---
 
+:::warning Archived
+
+This page was archived in October 2026. It describes how the platform used to work and is kept as a record. To prototype transforms today, see [Prototype simple transforms](/dap-airflow/onboarding/prototype-simple-transforms).
+
+:::
 
 ## Prototyping glue jobs in a Jupyter notebook
 
@@ -19,7 +25,7 @@ We use notebooks to prototype transformation scripts before they are run and sch
 3. Find the notebook appended by your department name, for example `sagemaker-notebook-parking`.
 If you can't see a notebook for your department then please contact the Data Platform team to request one.
 4. If the Status of the notebook is `InService`, go on the step 5.
-If not, click `Start` under the **Actions** column. ![start_notebook.png](../../images/start_notebook.png)
+If not, click `Start` under the **Actions** column. ![start_notebook.png](../../playbook/images/start_notebook.png)
 The notebook will then go to `Pending` status, if this is the first time the notebook has been used that day it will take around 10 minutes to start up.
 5. Once the Status of the notebook has changed to `InService`, click the [JupyterLab][jupyter_lab_docs] link in the **Actions** column to open up the notebook.
 
@@ -32,12 +38,12 @@ If you want to keep the changes you have made to any scripts you must commit the
 - You should work in the folder **"Data-Platform-Notebooks/notebooks"**, where all the notebooks are stored. 
   Click into this folder if you aren't already in there.
 
-  ![notebook_folders.png](../../images/notebook_folders.png)
+  ![notebook_folders.png](../../playbook/images/notebook_folders.png)
 
 - Always start by pulling any latest changes from this repository. 
   To do this, click on the Github icon on the left panel and then select the icon to pull the latest changes, as shown below.
 
-  ![git_pull_in_jupyter_lab.png](../../images/git_pull_in_jupyter_lab.png)
+  ![git_pull_in_jupyter_lab.png](../../playbook/images/git_pull_in_jupyter_lab.png)
 
 - There are a few templates in the **templates** folder that you can copy and paste into your departments folder and then use as a starting point.
 - Commit your changes by following the next section when you have finished working, so you don't lose your work.
@@ -60,7 +66,7 @@ When you do this the file will move to the Staged section, this lists all the ch
 You'll be prompted to enter your github username and a password.  
 In the password box you should paste in the personal access token created in the first step.
 
-  ![jupyter_push_icon.png](../../images/jupyter_push_icon.png)
+  ![jupyter_push_icon.png](../../playbook/images/jupyter_push_icon.png)
 
 ## Helpful resources
 

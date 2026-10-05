@@ -3,7 +3,14 @@ title: Getting started with training
 description: "Training Module: Getting started with training"
 layout: playbook_js
 tags: [training]
+slug: /training-modules/module-0
 ---
+
+:::warning Archived
+
+This page was archived in October 2026. It describes how the platform used to work and is kept as a record. For current training, see [Read Police API crime street data and transform it](/training-modules/ingest_from_API/read-police-api-crime-street-and-transform).
+
+:::
 
 # Introduction
 

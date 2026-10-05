@@ -3,7 +3,14 @@ title: Optimizing Glue jobs
 description: "Elements for optimizing glue jobs"
 layout: playbook_js
 tags: [playbook]
+slug: /playbook/transforming-data/using-aws-glue/optimizing-glue-jobs
 ---
+
+:::warning Archived
+
+This page was archived in October 2026. It describes how the platform used to work and is kept as a record. It may still help if you maintain one of the remaining Glue jobs.
+
+:::
 
 This article proposes a few principles to follow so that Glue jobs don’t run unnecessarily slowly.
 
@@ -14,7 +21,7 @@ When working from the *Trusted zone*, most of the time, only the latest data is 
 As shown on the picture below, the typical job first loads some data from S3 using `Execution_context.get_dataframe` or `glueContext.create_dynamic_frame.from_catalog`, and then filters it down to only keep the latest records using `df.get_latest_partition` or
 `df.get_latest_partition_optimized`.
 
-![Typical steps when loading and processing data from S3](../../images/loading-processing-steps.png)
+![Typical steps when loading and processing data from S3](../../playbook/images/loading-processing-steps.png)
 
 There are opportunities to filter data at both stages: before creating the dataframe and afterwards. Options are described below.
 
@@ -26,7 +33,7 @@ In this section we’ll explore job bookmarks and pushdown predicates.
 Job Bookmark is a Glue feature that operates at file level. It completely ignores partitions. 
 With Bookmark on, the Glue job will only load files that have changed or have been created in the source bucket/folder since the last successful run. It will result in a smaller dataframe.
 
-| ![Loading and processing data from S3 using Glue job bookmarks](../../images/loading-processing-steps-with-bookmarks.png) | 
+| ![Loading and processing data from S3 using Glue job bookmarks](../../playbook/images/loading-processing-steps-with-bookmarks.png) | 
 |:--:| 
 | *In this example, since the last job run, one additional file has been created on the 4/10/2022 and 2 on the 5/10/2022. These 3 files are in different partitions but the bookmarks ignores this fact. The 3 files will get loaded into the same dataframe and processed in the next job run.* |
 
@@ -49,11 +56,11 @@ Bookmarks are not very convenient for a test job that is meant to process severa
 Enabling bookmarks requires 2 steps.
 1. In the job parameters or in Terraform: Use the standard job parameter `bookmark=enable` (It is disabled by default in Glue console and in our Job terraform module).
 
-![Enabling job bookmarks in Terraform](../../images/enabling-bookmark-in-terraform.png)
+![Enabling job bookmarks in Terraform](../../playbook/images/enabling-bookmark-in-terraform.png)
 
 2. In the job script: for incremental data sources that need bookmarking, set the `transformation_ctx` to a unique string value when creating the data frame. For data sources that don't change and need to be processed each time, don't set a `transformation_ctx` and the bookmark won't apply.
 
-![Setting the transformation_ctx for job bookmarks](../../images/setting-transformation-ctx-for-job-bookmarks.png)
+![Setting the transformation_ctx for job bookmarks](../../playbook/images/setting-transformation-ctx-for-job-bookmarks.png)
 
 ### External doc about job bookmarks
 https://docs.aws.amazon.com/glue/latest/dg/monitor-continuations.html
@@ -83,7 +90,7 @@ These 3 approaches and their pros/cons are described below.
 ### Pushdown predicate based on the current date + a few days buffer
 This methos loads the current day's partition + the n previous ones.
 
-| ![Loading and processing data from S3 using a pushdown predicate with a 1 day buffer](../../images/loading-processing-steps-with-pushdown-predicate-buffer.png) |
+| ![Loading and processing data from S3 using a pushdown predicate with a 1 day buffer](../../playbook/images/loading-processing-steps-with-pushdown-predicate-buffer.png) |
 |:--:| 
 | *In this example, we have 3 partitions for 3 different import_dates. The job runs on the 5/10/2022. Because of the pushdown predicate wih buffer, it will load and process data from the same day's partition, + 1 previous day.* |
 
@@ -101,7 +108,7 @@ This is not suitable if the data source comes very irregularly, because you may 
 1. Import the helper function called `create_pushdown_predicate`.
 2. Call the `create_pushdown_predicate()` method in the `push_down_predicate` option of the `createDataFrame` block. Pass the name of the partition column as the first argument and the number of days before the current date as the second argument. For instance, to load the data written in the last 7 days, write:
 
-![Write a pushdown predicate with a 7 days buffer](../../images/write-pushdown-predicate-with-7-days-buffer.png)
+![Write a pushdown predicate with a 7 days buffer](../../playbook/images/write-pushdown-predicate-with-7-days-buffer.png)
 
 *Warning*: a buffer size of 0 means that you’re loading the full dataset.
 
@@ -110,7 +117,7 @@ This is not suitable if the data source comes very irregularly, because you may 
 ### Pushdown predicate based on the max value of date partition registered in the Glue catalogue
 With this method, a helper queries the Glue catalogue with boto3 to get the max partition value as a string, i.e. '20221005' (this string can also be returned). It then creates a pushdown predicate to load only this partition.
 
-| ![Loading and processing data from S3 using a pushdown predicate fetching the max partition date value from the Glue catalogue](../../images/loading-processing-steps-with-pushdown-predicate-on-max-date.png) |
+| ![Loading and processing data from S3 using a pushdown predicate fetching the max partition date value from the Glue catalogue](../../playbook/images/loading-processing-steps-with-pushdown-predicate-on-max-date.png) |
 |:--:|
 | *In this example, we have 3 partitions for 3, 4, and 5/10/2022. The job runs on the 7/10/2022. The max import_date partition in the cataloque is '20221005'. The pushdown predicate will be based on this and the job will load and process this partition only.* |
 
@@ -123,7 +130,7 @@ With this method, a helper queries the Glue catalogue with boto3 to get the max 
 - This approach assumes you have a date partitions with values in 'yyyymmdd' format, and that you know the name of the partition key.
 - This approach relies on the Glue catalogue being up-to-date and not containing empty partitions. If data is deleted, we want the corresponding partition to be removed from the catalogue. If crawlers are used to update the catalogue, they must be set up with the non-standard option as below::
 
-![Crawler option to delete empty partitions](../../images/crawler-option-to-delete-empty-partitions.png)
+![Crawler option to delete empty partitions](../../playbook/images/crawler-option-to-delete-empty-partitions.png)
 
 #### Scenarios when not to use it
 This is not suitable if the catalogue contains deprecated partitions. Not suitable if you don't have a date partition. For instance, it won't support data with only import_year, import_month and import_day.
@@ -132,12 +139,12 @@ This is not suitable if the catalogue contains deprecated partitions. Not suitab
 1. Import the DP helper method `create_pushdown_predicate_for_max_date_partition_value`
 2. Call the method in the `push_down_predicate` option of the `createDataFrame` block (the example below uses the `execution_context` to create the data frame but the same can be achieved using `create_dynamic_frame.from_catalogue`)
 
-![Write a pushdown predicate based on the max partition date from the Glue catalogue](../../images/how-to-use-pushdown-predicate-on-max-date.png)
+![Write a pushdown predicate based on the max partition date from the Glue catalogue](../../playbook/images/how-to-use-pushdown-predicate-on-max-date.png)
 
 ### Pushdown predicate based on the latest written partition registered in the Glue catalogue
 With this method, a helper queries the Glue catalogue with boto3 to get the all the partitions creation timestamps. It then selected the latest one, get the partitions key-value pairs, and create a pushdown predicate with these.
 
-| ![Loading and processing data from S3 using a pushdown predicate fetching the latest written partition from the Glue catalogue](../../images/loading-processing-steps-with-pushdown-predicate-on-latest-written.png) |
+| ![Loading and processing data from S3 using a pushdown predicate fetching the latest written partition from the Glue catalogue](../../playbook/images/loading-processing-steps-with-pushdown-predicate-on-latest-written.png) |
 |:--:|
 | *In this example, we have 3 partitions for 3, 4, and 5/10/2022 but they don't have a date partition, only year/month/date. The job runs on the 7/10/2022. The helper will check the creation timestamps of partitons in the Glue catalogue. It will identify that the partition written on 05/10/2022 is the most recent one and that its partition values are 2022, 10 and 5. The pushdown predicate will be created based on these 3 values and the job will load and process this partition only.* |
 
@@ -151,7 +158,7 @@ With this method, a helper queries the Glue catalogue with boto3 to get the all 
 - If the partitions are more granular than a day (i.e. several a day) or less granular, you won't get exactly one day of data
 - Like the previous one, this approach relies on the Glue catalogue being up-to-date and not containing empty partitions. If data is deleted, we want the corresponding partition to be removed from the catalogue. If crawlers are used to update the catalogue, they must be set up with the non-standard option as below:
 
-![Crawler option to delete empty partitions](../../images/crawler-option-to-delete-empty-partitions.png)
+![Crawler option to delete empty partitions](../../playbook/images/crawler-option-to-delete-empty-partitions.png)
 
 #### Scenarios when not to use it
 This is not suitable if the catalogue contains deprecated partitions. Not suitable if data is being written more than once a day and you do want to load a full day.
@@ -160,7 +167,7 @@ This is not suitable if the catalogue contains deprecated partitions. Not suitab
 1. Import the DP helper method `create_pushdown_predicate_for_latest_written_partition`
 2. Call the method in the `push_down_predicate` option of the `createDataFrame` block (the example below uses the `execution_context` to create the data frame but the same can be achieved using `create_dynamic_frame.from_catalogue`)
 
-![Write a pushdown predicate based on the latest written partition from the Glue catalogue](../../images/how-to-use-pushdown-predicate-on-latest-written-partition.png)
+![Write a pushdown predicate based on the latest written partition from the Glue catalogue](../../playbook/images/how-to-use-pushdown-predicate-on-latest-written-partition.png)
 
 ### External documentation about pushdown predicates
 https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-partitions.html
@@ -185,7 +192,7 @@ Can be very expensive if you have loaded many partitions in your dataframe.
 
 2. Call the method after having loaded the data into a dataframe. It requires a Spark dataframe, not a Glue Dynamic Frame, so you must convert your dynamic frame if necessary.
 
-![Using get_latest_snapshot after loading the data](../../images/using_get_latest_snapshot_after_loading_data.png)
+![Using get_latest_snapshot after loading the data](../../playbook/images/using_get_latest_snapshot_after_loading_data.png)
 
 ## Conclusion
 We've covered different approaches to make sure the job only processes the data it needs. Many jobs use both filtering before and after loading data into the dataframe. Normally, using a pushdown predicate based on the lasted partition from the Glue catalogue can be used on its own and doesn't require further filtering. Also remember that working from the Trusted zone is he best way to only get the latest data, without needing to filter out older partitions!  

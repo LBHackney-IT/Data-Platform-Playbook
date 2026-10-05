@@ -58,23 +58,6 @@ module.exports = {
                 "playbook/transforming-data/guides-to-testing-in-the-platform"
               ),
             },
-            {
-              type: "category",
-              label: "Using AWS Glue",
-              items: [
-                ...getItems("playbook/transforming-data/using-aws-glue"),
-                {
-                  type: "category",
-                  label: "Practical examples",
-                  items: [
-                    ...getItems(
-                      "playbook/transforming-data/using-aws-glue/practical-examples"
-                    ),
-                    "workshop/aws_glue_studio_parking",
-                  ],
-                },
-              ],
-            },
           ],
         },
         {
@@ -99,11 +82,6 @@ module.exports = {
       type: "category",
       label: "Training Modules",
       items: [
-        {
-          type: "category",
-          label: "Main Modules",
-          items: getItems("training-modules"),
-        },
         {
           type: "category",
           label: "Python transformation using local AWS profile",
@@ -205,6 +183,33 @@ module.exports = {
       type: "doc",
       id: "roles",
       label: "Roles",
+    },
+    {
+      type: "category",
+      label: "Archive",
+      collapsed: true,
+      items: [
+        {
+          type: "category",
+          label: "AWS Glue jobs",
+          items: getItems("archive/glue-jobs"),
+        },
+        {
+          type: "category",
+          label: "SageMaker notebooks",
+          items: getItems("archive/sagemaker-notebooks"),
+        },
+        {
+          type: "category",
+          label: "Ingestion",
+          items: getItems("archive/ingestion"),
+        },
+        {
+          type: "category",
+          label: "Training modules",
+          items: getItems("archive/training-modules"),
+        },
+      ],
     },
 /*
 */

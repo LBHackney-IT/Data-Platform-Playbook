@@ -392,7 +392,7 @@ module "ingest_rev_bev_council_tax" {
 [terraform-directory]: https://github.com/LBHackney-IT/Data-Platform/tree/main/terraform/core
 [getting-set-up]: ../getting-set-up/index.md
 [project-module-example]: https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/core/13-mssql-ingestion.tf
-[using-glue-studio]: ../transforming-data/using-aws-glue/001-using-glue-studio.md
-[deploy-glue-job-and-crawler]: ../transforming-data/using-aws-glue/002-deploy-glue-jobs.md
+[using-glue-studio]: ../../archive/glue-jobs/001-using-glue-studio.md
+[deploy-glue-job-and-crawler]: ../../archive/glue-jobs/002-deploy-glue-jobs.md
 [glue-jobs]: https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/jobs 
-[scheduling-glue-jobs]: ../transforming-data/using-aws-glue/002-deploy-glue-jobs.md#variables-used-for-scheduling-a-glue-job
+[scheduling-glue-jobs]: ../../archive/glue-jobs/002-deploy-glue-jobs.md#variables-used-for-scheduling-a-glue-job

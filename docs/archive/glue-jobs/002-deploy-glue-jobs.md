@@ -4,7 +4,14 @@ title: Deploying Glue jobs to the Data Platform
 description: "Creating Glue jobs in terraform"
 layout: playbook_js
 tags: [playbook]
+slug: /playbook/transforming-data/using-aws-glue/deploy-glue-jobs
 ---
+
+:::warning Archived
+
+This page was archived in October 2026. It describes how the platform used to work and is kept as a record. New transforms are built with Airflow. Start with [DAP⇨flow onboarding](/dap-airflow/onboarding/begin).
+
+:::
 
 ## Deploying Glue jobs to the Data Platform using the Glue jobs Terraform template
 

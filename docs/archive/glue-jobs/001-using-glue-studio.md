@@ -4,7 +4,14 @@ title: Using Glue Studio
 description: "Using AWS Glue Studio to create ETL processes."
 layout: playbook_js
 tags: [playbook]
+slug: /playbook/transforming-data/using-aws-glue/using-glue-studio
 ---
+
+:::warning Archived
+
+This page was archived in October 2026. It describes how the platform used to work and is kept as a record. New transforms are built with Airflow. Start with [DAP⇨flow onboarding](/dap-airflow/onboarding/begin).
+
+:::
 
 ## Using AWS Glue Studio to create ETL processes
 
@@ -92,16 +99,16 @@ Enabling continuous logging will allow you to [view logs][aws-docs-viewing-logs]
 #### Enabling continuous logging
 
 To enable continous logging you need to check the "Continuous logging" box in the "Advanced properties" section of the job details.
-![continous looging checkbox](../../images/glue_studio_cont_log_checkbox.png)
+![continous looging checkbox](../../playbook/images/glue_studio_cont_log_checkbox.png)
 
 #### Viewing logs with continuous logging enabled
 
 To view the logs, navigate to the `Runs` tab and click on "All logs" under "Cloudwatch logs" in the run details, highlighted in the image below. 
-![glue job run details](../../images/glue_run_details.png)
+![glue job run details](../../playbook/images/glue_run_details.png)
 This will take you to the list of logs streams for that job run.
 There will be one for each executor of the job, including the driver, most of the time the driver logs will hold the most helpful information.
 The driver logs are in the stream postfixed by -driver, like in the screenshot below.
-![list of log streams for all logs](../../images/glue_all_log_streams.png)
+![list of log streams for all logs](../../playbook/images/glue_all_log_streams.png)
 You can click on this log stream to see the logs. 
 
 ### When a glue job errors
@@ -116,7 +123,7 @@ This will take you to a list of logs streams for that job run.
 There will be one for each executor of the job, including the driver, most of the time the driver logs will hold the most helpful information.
 You can open up the logs for the driver by selecting the log stream which isn't postfixed by a second identifier.
 The driver log stream is highlighted in the sreenshot below.
-![list of log streams for errors](../../images/glue_error_log_streams.png)
+![list of log streams for errors](../../playbook/images/glue_error_log_streams.png)
 You may need to expand the log stream column size in order to see this.
 Click on the driver logs to see the full error output and stack trace.
 

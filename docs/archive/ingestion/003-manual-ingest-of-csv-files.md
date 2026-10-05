@@ -3,13 +3,20 @@ title: "[Deprecated] Ingest manually uploaded CSV files"
 description: "Ingest data from csv files"
 layout: playbook_js
 tags: [playbook]
+slug: /playbook/ingesting-data/manual-ingest-of-csv-files
 ---
+
+:::warning Archived
+
+This page was archived in October 2026. It describes how the platform used to work and is kept as a record. See [Ingest manually uploaded CSV and TSV files into the Glue Catalog](/playbook/ingesting-data/CSV-files-to-Glue-Catalog-automation).
+
+:::
 
 :::danger DEPRECATED
 
 This playbook describes the legacy manual CSV ingestion workflow and should
 not be used for new uploads. Use
-[Ingest manually uploaded CSV files into the Glue Catalog](./014-CSV-files-to-Glue-Catalog-automation.md)
+[Ingest manually uploaded CSV files into the Glue Catalog](../../playbook/ingesting-data/014-CSV-files-to-Glue-Catalog-automation.md)
 instead.
 
 This page is retained as a reference for people who previously used this
@@ -89,7 +96,7 @@ The job uses the CSVs "created at" timestamp to process only the CSVs which have
 
 Next we'll confirm the data has been ingested correctly by crawling the data with
 [AWS Glue Crawler][aws_glue_crawler_console] and then inspecting it within
-[AWS Athena](../querying-and-analysing-data/querying-data-using-sql.md).
+[AWS Athena](../../playbook/querying-and-analysing-data/querying-data-using-sql.md).
 
 - Before accessing the data within Athena, you will need to run the crawler for this data.
   Navigate to the [AWS Glue Crawler][aws_glue_crawler_console] interface, select the crawler named `<department>-copy-manually-uploaded-csvs-to-raw`, then click on "Run crawler".

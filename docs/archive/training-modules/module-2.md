@@ -3,7 +3,14 @@ title: Transforming data to refined zone using Sagemaker
 description: "Training module: Transforming data to the refined zone using Sagemaker"
 layout: playbook_js
 tags: [training]
+slug: /training-modules/module-2
 ---
+
+:::warning Archived
+
+This page was archived in October 2026. It describes how the platform used to work and is kept as a record. To prototype transforms today, see [Prototype simple transforms](/dap-airflow/onboarding/prototype-simple-transforms).
+
+:::
 
 # Data Platform Training Module - Transforming data using PySpark and writing to the refined zone
 
@@ -63,19 +70,19 @@ In the [next module][module_3], you will turn your script into a [Glue][about_gl
 
 [module_0]: ./module-0.md
 [module_1]: ./module-1.md
-[module_3]: ./module-3.md
+[module_3]: module-3.md
 [module_1_step_6]: ./module-1.md#6-crawling-the-ingested-data-to-make-it-available-in-the-glue-catalogue
 [about_pyspark]: https://spark.apache.org/docs/latest/api/python/
 [about_glue]: https://aws.amazon.com/glue/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc
 [about_jupyter]: https://jupyter.org/
 [pyspark_by_example]: https://sparkbyexamples.com/pyspark-tutorial/
 [aws_glue_studio]: https://eu-west-2.console.aws.amazon.com/gluestudio/home?region=eu-west-2#/jobs
-[querying_with_athena]: ../playbook/querying-and-analysing-data/querying-data-using-sql.md
-[sagemaker_article]: ../playbook/transforming-data/using-aws-glue/006-using-sagemaker.md 
-[setting_up_etl_job]: ../playbook/transforming-data/using-aws-glue/001-using-glue-studio.md
-[monitoring_jobs]: ../playbook/transforming-data/using-aws-glue/001-using-glue-studio.md#monitoring-a-glue-job-run
+[querying_with_athena]: ../../playbook/querying-and-analysing-data/querying-data-using-sql.md
+[sagemaker_article]: ../sagemaker-notebooks/006-using-sagemaker.md 
+[setting_up_etl_job]: ../glue-jobs/001-using-glue-studio.md
+[monitoring_jobs]: ../glue-jobs/001-using-glue-studio.md#monitoring-a-glue-job-run
 [hackney_sso]: https://hackney.awsapps.com/start#/
 [s3]: https://s3.console.aws.amazon.com/s3/home?region=eu-west-2
 [athena_query_editor]: https://eu-west-2.console.aws.amazon.com/athena/home?region=eu-west-2#/query-editor/
 [glue_crawlers]: https://eu-west-2.console.aws.amazon.com/glue/home?region=eu-west-2#catalog:tab=crawlers
-[refined_zone]: ../glossary.md#refined-zone
+[refined_zone]: ../../glossary.md#refined-zone
