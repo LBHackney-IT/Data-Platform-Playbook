@@ -47,7 +47,7 @@ module.exports = {
         docs: {
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://github.com/LBHackney-IT/data-platform-playbook/edit/master/",
+          editUrl: "https://github.com/LBHackney-IT/Data-Platform-Playbook/edit/main/",
         },
         theme: {
           customCss: './src/css/custom.css',
