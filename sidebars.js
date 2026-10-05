@@ -13,7 +13,6 @@ const getItems = (folder) => {
 
 module.exports = {
   docs: [
-    //"release-notes",
     {
       type: "category",
       label: "About",

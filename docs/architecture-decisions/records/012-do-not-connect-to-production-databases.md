@@ -1,6 +1,6 @@
 ---
 id: do-not-connect-to-production-databases
-title: "Using Event Streaming to Ingest Data - ADR 012"
+title: "Do Not Connect to Production Databases - ADR 012"
 description: ""
 tags: [adr]
 number: "12"
