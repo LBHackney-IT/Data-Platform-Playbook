@@ -3,7 +3,14 @@ title: Ingesting data from Google Sheets
 description: "Training Module: Ingesting data from Google Sheets into the Data Platform raw zone"
 layout: playbook_js
 tags: [training]
+slug: /training-modules/module-1
 ---
+
+:::warning Archived
+
+This page was archived in October 2026. It describes how the platform used to work and is kept as a record. To ingest a Google Sheet today, see [Ingesting data from Google Sheets](/playbook/ingesting-data/google-sheets-import).
+
+:::
 
 # Ingesting data from Google Sheets
 
@@ -31,7 +38,7 @@ Your Google sheet is going to be ingested by a job running in [AWS Glue](https:/
 
 You will write a bit of [Terraform](https://lbhackney-it.github.io/Data-Platform-Playbook/glossary/#terraform) that will deploy this job automatically in the AWS environment. You are going to write this code directly in your web browser in GitHub [here](https://github.com/LBHackney-IT/Data-Platform/blob/main/terraform/etl/08-google-sheets-imports.tf), adding to the existing terraform script `26-google-sheets-imports.tf`.
 
-![Terraform script](./images/edit_terraform_google_sheets.png)
+![Terraform script](../../training-modules/images/edit_terraform_google_sheets.png)
 
 You could also write the job locally within your interactive development environment, but editing via the GitHub web interface will be easier in this case as you won't need to clone the repository.
 
@@ -65,7 +72,7 @@ In everyday use you may not need the data to be immediately available, in which 
 
 Log in to [AWS][hackney_sso] as the `DataPlatformSandboxStg` role via the `Management Console` for that role.
 
-![AWS console](./images/sandox-console.png)
+![AWS console](../../training-modules/images/sandox-console.png)
 
 ### 5. Finding and running your jobs in the AWS console
 
@@ -83,7 +90,7 @@ It is sometimes helpful to check the specific output [S3][s3] bucket for a job t
 You can find the data by navigating to the location highlighted in the screenshot below but using your job name instead of `daro-covid-vaccinations`.
 You should see data for today's date under the job you have run.
 
-![s3 bucket](./images/s3_check_partitions.png)
+![s3 bucket](../../training-modules/images/s3_check_partitions.png)
 
 &nbsp;
 ### 6. Crawling the ingested data to make it available in the Glue catalogue. 

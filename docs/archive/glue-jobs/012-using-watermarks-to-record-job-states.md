@@ -3,7 +3,15 @@ title: Using Watermarks to Record AWS GLue Job States Between Runs
 description: "Use of the watermarks class for recording Glue job states between runs"
 layout: playbook_js
 tags: [playbook]
+slug: /playbook/ingesting-data/using-watermarks-to-record-job-states
 ---
+
+:::warning Archived
+
+This page was archived in October 2026. It describes how the platform used to work and is kept as a record. The watermark helper code has since been removed from the Data-Platform repository.
+
+:::
+
 # Using Watermarks to Record AWS Glue Job States Between Runs
 A common pattern for ingesting data to the data analytics platform is to do an initial full load of any existing data, then incrementally load any change (delta).
 

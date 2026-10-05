@@ -3,7 +3,14 @@ title: Local Notebook Environment Setup
 description: "Local Notebook Environment Setup"
 layout: playbook_js
 tags: [playbook, setup]
+slug: /playbook/getting-set-up/notebook-setup
 ---
+
+:::warning Archived
+
+This page was archived in October 2026. It describes how the platform used to work and is kept as a record. To prototype transforms today, see [Prototype simple transforms](/dap-airflow/onboarding/prototype-simple-transforms).
+
+:::
 
 ## Introduction
 
