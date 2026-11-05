@@ -13,6 +13,12 @@ Query data in the Analytics account from [DBeaver](https://dbeaver.io/), a deskt
 
 - Data Analyst
 
+:::danger Only use a Hackney-managed device
+Only follow this guide on a laptop issued and managed by Hackney Council. Do not set it up on a personal device.
+
+When you run a query in DBeaver, the results are downloaded to your device. They no longer stay inside AWS. This includes any personal or sensitive data in the results. Handle query results in line with Hackney's data protection and information security policies. Do not copy or export them to personal storage.
+:::
+
 ## Before you start
 
 You need:
