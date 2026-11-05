@@ -5,6 +5,12 @@ layout: playbook_js
 tags: [playbook]
 ---
 
+:::danger Only use a Hackney managed device
+Only follow this guide on a laptop issued and managed by Hackney Council. Do not set it up on a personal device.
+
+When you run a query in DBeaver, the results are downloaded to your device. They no longer stay inside AWS. This includes any personal or sensitive data in the results. Handle query results in line with Hackney's data protection and information security policies. Do not copy or export them to personal storage.
+:::
+
 ## Objective
 
 Query data in the Analytics account from [DBeaver](https://dbeaver.io/), a desktop SQL client, rather than the Athena query editor in the AWS console.
@@ -12,12 +18,6 @@ Query data in the Analytics account from [DBeaver](https://dbeaver.io/), a deskt
 ## Intended audience
 
 - Data Analyst
-
-:::danger Only use a Hackney-managed device
-Only follow this guide on a laptop issued and managed by Hackney Council. Do not set it up on a personal device.
-
-When you run a query in DBeaver, the results are downloaded to your device. They no longer stay inside AWS. This includes any personal or sensitive data in the results. Handle query results in line with Hackney's data protection and information security policies. Do not copy or export them to personal storage.
-:::
 
 ## Before you start
 
@@ -51,10 +51,7 @@ The AWS CLI is a command-line tool from AWS. You use it to create the profile an
 
    You should see a version that starts with `aws-cli/2`.
 
-:::note Screenshot placeholder
-Terminal showing the output of `aws --version`.
-Suggested file: `../images/dbeaver-analytics-aws-cli-version.png`
-:::
+![PowerShell Terminal session showing the AWS version aws-cli/2.36.32](../images/dbeaver-analytics-aws-cli-version.png)
 
 ## 2. Find your account and role in the AWS access portal
 
@@ -63,10 +60,7 @@ Suggested file: `../images/dbeaver-analytics-aws-cli-version.png`
 3. Expand the Analytics account (account ID `577817260960`).
 4. Note the name of the role listed under it, for example `data-insight-data-analyst`. You will choose this role in the next step.
 
-:::note Screenshot placeholder
-AWS access portal with the Analytics account expanded and the team role visible.
-Suggested file: `../images/dbeaver-analytics-access-portal.png`
-:::
+![AWS start page demonstrating where to find the roles you have available for the Analytics account](../images/dbeaver-analytics-access-portal.png)
 
 ## 3. Create the AWS profile
 
@@ -77,7 +71,6 @@ Suggested file: `../images/dbeaver-analytics-access-portal.png`
    ```
 
 2. Answer each question as follows. Press Enter after each answer.
-
    | Question | Answer |
    | --- | --- |
    | `SSO session name (Recommended)` | `hackney` |
@@ -85,12 +78,9 @@ Suggested file: `../images/dbeaver-analytics-access-portal.png`
    | `SSO region [None]` | `eu-west-1` |
    | `SSO registration scopes [sso:account:access]` | Press Enter to accept the default |
 
-3. Your browser opens and asks you to allow the AWS CLI to access your data. Check that the code in the browser matches the code in your terminal, then select **Allow**.
+3. Your browser opens and asks you to allow the AWS CLI to access your data. Select **Allow access**.
 
-   :::note Screenshot placeholder
-   Browser page asking you to allow access for the AWS CLI.
-   Suggested file: `../images/dbeaver-analytics-allow-cli.png`
-   :::
+![Browser page asking you to allow access for the AWS CLI](../images/dbeaver-analytics-allow-cli.png)
 
 4. Go back to the terminal. If you have access to more than one account, the CLI lists them. Use the arrow keys to select the Analytics account (`577817260960`) and press Enter.
 5. If you have more than one role in that account, select your team role, for example `data-insight-data-analyst`.
@@ -100,12 +90,7 @@ Suggested file: `../images/dbeaver-analytics-access-portal.png`
    | --- | --- |
    | `Default client Region [None]` | `eu-west-2` |
    | `CLI default output format [None]` | `json` |
-   | `Profile name` | `analytics` |
-
-   :::note Screenshot placeholder
-   Terminal showing the completed `aws configure sso` prompts.
-   Suggested file: `../images/dbeaver-analytics-configure-sso.png`
-   :::
+   | `Profile name` | `analytics` or some other descriptive name |
 
 7. Check that the profile works:
 
@@ -113,7 +98,7 @@ Suggested file: `../images/dbeaver-analytics-access-portal.png`
    aws sts get-caller-identity --profile analytics
    ```
 
-   The output includes `"Account": "577817260960"` and your role name in the `Arn` value.
+   The output includes `"Account": "577817260960"` and your role name in the `ARN` value.
 
 The CLI saves the profile in a file called `config`:
 
@@ -144,27 +129,20 @@ Download and install [DBeaver Community](https://dbeaver.io/download/) if you do
 
 ### Why not use the Athena connection type?
 
-The Analytics account's team workgroups store query results in Athena-managed storage, not in an S3 bucket that you choose. DBeaver's built-in Athena connection type expects you to give it an S3 results location, and fails without one. To get around this, you copy the Athena driver and use it as a generic JDBC driver. It is still the official AWS Athena JDBC driver, but DBeaver no longer asks for a results location.
+The Analytics account's team workgroups store query results in Athena managed storage, not in an S3 bucket that you choose. DBeaver's built-in Athena connection type expects you to give it an S3 results location, and fails without one. To get around this, you copy the Athena driver and use it as a generic JDBC driver. It is still the official AWS Athena JDBC driver, but DBeaver no longer asks for a results location.
 
 ### Create the driver
 
 1. In DBeaver, select **Database** > **Driver Manager**.
 2. Select **Athena** in the list, then select **Copy**.
 
-   :::note Screenshot placeholder
-   Driver Manager with the Athena driver selected and the Copy button visible.
-   Suggested file: `../images/dbeaver-analytics-driver-manager.png`
-   :::
-
+![Driver Manager with the Athena driver selected and the Copy button visible.](../images/dbeaver-analytics-driver-manager.png)
 3. In the driver settings:
    - Set **Driver Name** to `Athena Managed Storage`.
    - Set **Driver Type** to **Generic**.
    - Leave the other settings and the **Libraries** tab as they are.
 
-   :::note Screenshot placeholder
-   Driver settings for "Athena Managed Storage" with Driver Type set to Generic.
-   Suggested file: `../images/dbeaver-analytics-driver-settings.png`
-   :::
+![Driver settings for "Athena Managed Storage" with Driver Type set to Generic.](../images/dbeaver-analytics-driver-settings.png)
 
 4. Select **OK**, then close the Driver Manager.
 
@@ -172,7 +150,7 @@ The Analytics account's team workgroups store query results in Athena-managed st
 
 1. Select **Database** > **New Database Connection**.
 2. Search for `Athena Managed Storage`, select it, then select **Next**.
-3. In **JDBC URL**, enter the following. Replace `dap-data-insight` with your team's workgroup.
+3. In **JDBC URL**, enter the following. Replace `dap-data-insight` with your team's workgroup and if you set your profile name to a value other than `analytics` when setting up your AWS profile then that value also needs to be replaced.
 
    ```text
    jdbc:athena://Region=eu-west-2;Workgroup=dap-data-insight;Catalog=AwsDataCatalog;CredentialsProvider=ProfileCredentials;ProfileName=analytics;
@@ -180,20 +158,14 @@ The Analytics account's team workgroups store query results in Athena-managed st
 
 4. Leave **Username** and **Password** empty.
 
-   :::note Screenshot placeholder
-   New connection window with the JDBC URL filled in.
-   Suggested file: `../images/dbeaver-analytics-connection-settings.png`
-   :::
+![New connection window with the JDBC URL filled in.](../images/dbeaver-analytics-connection-settings.png)
 
 5. Select **Test Connection**. If DBeaver asks to download driver files, select **Download**.
 6. When the test succeeds, select **Finish**.
 
 The connection appears in the **Database Navigator**. Expand it to see the databases you have access to.
 
-:::note Screenshot placeholder
-Database Navigator showing the new connection expanded, with databases listed.
-Suggested file: `../images/dbeaver-analytics-navigator.png`
-:::
+![Database Navigator showing the new connection expanded, with databases listed.](../images/dbeaver-analytics-navigator.png)
 
 ## 5. Run a query
 
@@ -206,11 +178,6 @@ Suggested file: `../images/dbeaver-analytics-navigator.png`
 
 3. Press **Ctrl+Enter** (**Cmd+Enter** on macOS) to run it.
 
-:::note Screenshot placeholder
-SQL editor with a query and its results.
-Suggested file: `../images/dbeaver-analytics-query-results.png`
-:::
-
 ## Day-to-day use
 
 Your AWS login expires after a few hours. When it expires, DBeaver shows an error about expired or missing credentials. To log in again:
@@ -218,7 +185,7 @@ Your AWS login expires after a few hours. When it expires, DBeaver shows an erro
 1. Open a terminal and run:
 
    ```shell
-   aws sso login --profile analytics
+   aws sso login --profile analytics <or the profile name you chose>
    ```
 
 2. Select **Allow** in the browser.
@@ -229,8 +196,8 @@ Your AWS login expires after a few hours. When it expires, DBeaver shows an erro
 | Problem | What to do |
 | --- | --- |
 | `aws` is not recognised | Close and reopen your terminal after installing the AWS CLI. If it still fails, restart your laptop. |
-| The Analytics account is not listed in `aws configure sso` | Check that you can see it in the [AWS access portal](https://hackney.awsapps.com/start). If you cannot, ask the Data Platform team for access. |
+| The Analytics account is not listed in `aws configure sso` | Check that you can see it in the [AWS access portal](https://hackney.awsapps.com/start). If you cannot, ask the Data Analytics Platform team for access. |
 | DBeaver says the token has expired or the profile cannot be loaded | Run `aws sso login --profile analytics`, then reconnect in DBeaver. |
 | DBeaver asks for an S3 output location | You are using the built-in Athena connection type. Create the connection with the `Athena Managed Storage` driver instead. |
 | Access denied on the workgroup | Check the `Workgroup` value in the JDBC URL matches your team's workgroup. Your role can only use its own team's workgroup. |
-| You cannot see a database or table | Your team does not have access to it. Ask the Data Platform team. |
+| You cannot see a database or table | Your team does not have access to it. Ask the Data Analytics Platform team. |
