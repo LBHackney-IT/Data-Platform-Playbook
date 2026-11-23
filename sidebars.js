@@ -62,6 +62,11 @@ module.exports = {
         },
         {
           type: "category",
+          label: "Team workflow repositories",
+          items: getItems("playbook/team-workflows"),
+        },
+        {
+          type: "category",
           label: "Querying and analysing data",
           items: [
                 {
