@@ -9,7 +9,11 @@ tags: [playbook, team-workflows]
 # Project reference
 
 Each folder in `projects/` is one project and one Airflow DAG. The folder name
-is the project name. Use lowercase letters, numbers and hyphens.
+is the project name:
+
+- Use lowercase letters, numbers and hyphens, starting with a letter.
+- Keep it short: `dap-<team>-<project>-workflow` must be 64 characters or fewer
+  (for example, up to 34 characters for `data-and-insight`).
 
 ```text
 projects/example-project/
@@ -31,7 +35,7 @@ Deploy copies `project.yaml` and `sql/` to Airflow. If the project has a
 ## project.yaml
 
 ```yaml
-schedule: "0 6 * * 1-5"
+schedule: "0 6 * * 1-5" # 06:00 Monday to Friday, UK time
 database: data-and-insight-refined-zone
 tasks:
   - id: clean_requests
@@ -44,21 +48,39 @@ tasks:
 | Setting | Required | Meaning |
 | --- | --- | --- |
 | `schedule` | No | When the DAG runs, as a cron expression in UK time. Without it, the DAG runs only when someone triggers it. |
-| `database` | For table tasks | The database that table tasks write to, by its production name. A task can set its own. |
-| `zone` | No | `refined` or `trusted`. Needed only when the database name doesn't end in `-refined-zone` or `-trusted-zone`. A task can set its own. |
+| `database` | For table tasks | The database that table tasks write to, by its production name (must be in the refined or trusted zone, never raw). A task can set its own. |
+| `zone` | No | `refined` or `trusted` (see [Zones](../../zones)). Needed only when the database name doesn't end in `-refined-zone` or `-trusted-zone`. A task can set its own. |
 | `tags` | No | Extra Airflow tags for the DAG. Use underscores, not hyphens. |
 | `tasks` | Yes | The list of tasks. Each one is a table task or a Python task. |
 
 Each task can have `after:`, a list of tasks that must succeed first. Without
-`after:`, a task starts when the run starts. A table task's ID is its table
-name.
+`after:`, a task starts when the run starts.
 
-[crontab.guru](https://crontab.guru/) helps with writing a `schedule`.
+Task IDs and table names must use lowercase letters, numbers and
+**underscores** (not hyphens), starting with a letter. A table task's ID is its
+`table:` name — don't add `id:` to a table task.
+
+### Common schedules
+
+Schedules use standard 5-field cron syntax in UK time (automatically adjusting
+for GMT and BST):
+
+| Schedule | When it runs |
+| --- | --- |
+| `"0 6 * * *"` | Every day at 06:00 |
+| `"0 6 * * 1-5"` | Monday to Friday at 06:00 |
+| `"30 7 * * 1"` | Every Monday at 07:30 |
+| `"0 6 1 * *"` | First day of each month at 06:00 |
+| *(omit `schedule`)* | Only when triggered manually in Airflow |
+
+[crontab.guru](https://crontab.guru/) helps with writing and checking other
+expressions.
 
 ## Table tasks
 
 A table task runs `sql/<table>.sql` in Athena and saves the result as the table
-`<table>`.
+`<table>` in a refined or trusted zone database (table tasks can't write to
+`-raw-zone`).
 
 ```yaml
 - table: requests_per_category              # runs sql/requests_per_category.sql
@@ -66,12 +88,15 @@ A table task runs `sql/<table>.sql` in Athena and saves the result as the table
   database: data-and-insight-trusted-zone   # optional, overrides the project's database
 ```
 
-Write the SQL file as one `SELECT` query, the way you would test it in Athena:
+Write the SQL file as **one `SELECT` query**, the way you would test it in
+Athena:
 
+- Leave out `CREATE TABLE`, `INSERT`, and extra statements — the platform
+  creates and fills the table for you.
 - Use production database names. Pre-production changes them for you.
 - Quote database names with double quotes, for example
-  `"data-and-insight-refined-zone"."my_table"`. Athena `SELECT` queries don't accept
-  backticks.
+  `"data-and-insight-refined-zone"."my_table"`. Athena `SELECT` queries don't
+  accept backticks.
 - Don't return columns called `import_year`, `import_month`, `import_day` or
   `import_date`. Each run adds these.
 
@@ -81,17 +106,22 @@ What each run does:
 2. Each later run replaces everything in the table with the query's result.
 3. Each run adds the columns `import_year`, `import_month`, `import_day` and
    `import_date`, so you can see which run the data came from. The date is the
-   end of the Airflow run's interval, in UK time.
-4. If the query has a new column, the run adds it to the table.
-5. If the query removes, renames or changes the type of a column, the run fails
-   and says which column changed. Ask the platform team how to change the table.
+   day the run covers in UK time (the end of Airflow's run interval — for
+   example, a daily job running at 06:00 on 10 November 2026 stamps
+   `import_date = '20261110'`, and a manual trigger stamps the day you run it).
+4. If the query adds a new simple column (such as a string, number or date), the
+   run adds it to the table automatically.
+5. If the query removes, renames or changes the type of an existing column, or
+   adds a new `array`, `map` or `struct` column, the run fails and says which
+   column changed. Ask the platform team to drop or update the table.
 
 ![A table made by a table task in Athena, showing the four import_ columns](../images/team-workflows-table-in-athena.png)
 
 ### Keeping history
 
 Add `history: true` to keep a copy of every run as well. The run then also saves
-its result in `<table>_history`, with one partition for each run's date:
+its result in `<table>_history`, with one partition for each run's date (don't
+name another task `<table>_history`):
 
 - Running a day again replaces that day's copy. It doesn't add a second one.
 - `<table>` still holds only the newest data. Running an older day again
@@ -127,7 +157,8 @@ Airflow passes these environment variables:
 
 Python code adds the prefixes to database names itself. The example project's
 `src/example_project/settings.py` shows how, with `source_database()` and
-`output_database()`.
+`output_database()`. Remember to set `TEAM` and `PROJECT` in `settings.py` to
+your department and project folder name.
 
 A Python task can write files only under `<team>/<project>/` in each zone's
 bucket, for example
@@ -144,6 +175,6 @@ change the `Dockerfile`.
 
 Each project runs as its own AWS role, `dap-<team>-<project>-workflow`. The
 platform team sets the role up from the databases you list when you
-[add a project](adding-a-project). A project that reads or writes a database
-outside that list fails with an access error. Ask the platform team to change
-the list.
+[add a project](add-a-project). A project that reads or writes a database
+outside that list fails **Check** (for writes) or fails at runtime with an
+access error (for reads). Ask the platform team to update the list.

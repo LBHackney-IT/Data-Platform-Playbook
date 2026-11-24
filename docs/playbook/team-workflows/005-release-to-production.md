@@ -24,8 +24,9 @@ A team lead or the platform team then approves the release.
 1. Open the repository's **Actions** tab.
 2. Select **Promote** in the list of workflows.
 3. Select **Run workflow**.
-4. Under **Project to promote**, enter the project's folder name, for example
-   `success-measures-row-counts`.
+4. Under **Project to promote**, enter the project's folder name from
+   `projects/` — with hyphens, for example `success-measures-row-counts` (not
+   the Airflow DAG name with underscores).
 5. Under **Commit to promote**, leave it empty to release the version that
    pre-production has. To release an earlier version, see
    [Choose a version](#choose-a-version).
@@ -47,8 +48,10 @@ Open the run and read its summary before asking for approval. It says:
 
 ## Get it approved
 
-The **Deploy to production** job then waits. A team lead or the platform team
-approves it:
+The **Deploy to production** job then waits for approval. Send the link to the
+**Promote** run to a team lead or the platform team so they know it is ready.
+
+To approve it, they:
 
 1. Open the **Promote** run in the **Actions** tab.
 2. Select **Review deployments**.
@@ -60,9 +63,9 @@ When the job turns green, the project is in production. The DAG runs on its
 schedule, or you can trigger it in production Airflow.
 
 :::info
-The first time a project reaches production, its DAG starts paused. Switch on
-the toggle next to its name in production Airflow, or it won't run on its
-schedule.
+The first time a project reaches production, its DAG starts paused. Open
+production Airflow and switch on the toggle next to its name, or it won't run
+on its schedule.
 :::
 
 If you start a second promotion of the same project while one is waiting for
