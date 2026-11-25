@@ -13,9 +13,9 @@ and save. The account needs permission to download the file.
 | ----------------------- | ------------------------------------------------------- | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Parking                 | DAP.Parking.AutomationAccount@hackney.gov.uk            | `parking`            | [Edit YAML](https://github.com/LBHackney-IT/dap-airflow/edit/main/airflow/dags/team_projects/parking/google-drive/project.yaml)                     |
 | Housing                 | DAP.Housing.AutomationAccount@hackney.gov.uk            | `housing`            | [Edit YAML](https://github.com/LBHackney-IT/dap-airflow/edit/main/airflow/dags/team_projects/housing/google-drive/project.yaml)                     |
-| Child & Family Services | DAP.Children-Families.AutomationAccount@hackney.gov.uk  | `child-fam-services` | [Edit YAML](https://github.com/LBHackney-IT/dap-airflow/edit/main/airflow/dags/team_projects/child-fam-services/google-drive/project.template.yaml) |
-| Children & Education    | DAP.Children-Education.AutomationAccount@hackney.gov.uk | `children-and-edu`   | [Edit YAML](https://github.com/LBHackney-IT/dap-airflow/edit/main/airflow/dags/team_projects/children-and-edu/google-drive/project.template.yaml)   |
-| Environmental Health    | DAP.Env-Health.AutomationAccount@hackney.gov.uk         | `env-health`         | [Edit YAML](https://github.com/LBHackney-IT/dap-airflow/edit/main/airflow/dags/team_projects/env-health/google-drive/project.template.yaml)         |
+| Child & Family Services | DAP.Children-Families.AutomationAccount@hackney.gov.uk  | `child-fam-services` | [Edit YAML](https://github.com/LBHackney-IT/dap-airflow/edit/main/airflow/dags/team_projects/child-fam-services/google-drive/project.yaml) |
+| Children & Education    | DAP.Children-Education.AutomationAccount@hackney.gov.uk | `children-and-edu`   | [Edit YAML](https://github.com/LBHackney-IT/dap-airflow/edit/main/airflow/dags/team_projects/children-and-edu/google-drive/project.yaml)   |
+| Environmental Health    | DAP.Env-Health.AutomationAccount@hackney.gov.uk         | `env-health`         | [Edit YAML](https://github.com/LBHackney-IT/dap-airflow/edit/main/airflow/dags/team_projects/env-health/google-drive/project.yaml)         |
 
 
 ## 2. Configure the import
