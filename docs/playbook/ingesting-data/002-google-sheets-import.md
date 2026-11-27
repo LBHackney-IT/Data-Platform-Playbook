@@ -32,12 +32,12 @@ To ensure a Google Sheet is ready for ingestion, follow these steps:
 
 | Department | Workspace Automation Account | YAML File URL |
 | --- | --- | --- |
-| Parking | DAP.Parking.AutomationAccount@hackney.gov.uk | [Link](https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/parking/google_sheet_ingestion_config/parking.yaml) |
+| Parking | dap.parking.automationaccount@hackney.gov.uk | [Link](https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/parking/google_sheet_ingestion_config/parking.yaml) |
 | Data & Insight | dap.data-insight.automationaccount@hackney.gov.uk | [Link](https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/data_and_insight/google_sheet_ingestion_config/data_and_insight.yaml) |
-| Env Health | DAP.Env-Health.AutomationAccount@hackney.gov.uk | [Link](https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/env_health/google_sheet_ingestion_config/env_health.yaml) |
-| Housing | DAP.Housing.AutomationAccount@hackney.gov.uk | [Link](https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/housing/google_sheet_ingestion_config/housing.yaml) |
-| Child & Family Services | DAP.Children-Families.AutomationAccount@hackney.gov.uk | [Link](https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/child_fam_services/google_sheet_ingestion_config/child_fam_services.yaml) |
-| Children & Education | DAP.Children-Education.AutomationAccount@hackney.gov.uk | [Link](https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/children_and_edu/google_sheet_ingestion_config/children_and_edu.yaml) |
+| Env Health | dap.env-health.automationaccount@hackney.gov.uk | [Link](https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/env_health/google_sheet_ingestion_config/env_health.yaml) |
+| Housing | dap.housing.automationaccount@hackney.gov.uk | [Link](https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/housing/google_sheet_ingestion_config/housing.yaml) |
+| Child & Family Services | dap.children-families.automationaccount@hackney.gov.uk | [Link](https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/child_fam_services/google_sheet_ingestion_config/child_fam_services.yaml) |
+| Children & Education | dap.children-education.automationaccount@hackney.gov.uk | [Link](https://github.com/LBHackney-IT/dap-airflow/blob/main/airflow/dags/children_and_edu/google_sheet_ingestion_config/children_and_edu.yaml) |
 
 
 
